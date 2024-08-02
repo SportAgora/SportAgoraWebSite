@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/imagens/SportAgora.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Eventos</title>
+    
+</head>
+
+<body class="Eventospage">
+
+    <%- include('../partials/navbar'); %>
+    
+
+    <div class="container">
+        <header class="Eventos1">
+            <h1 class="text">Eventos</h1>
+        </header>
+        <div class="filtros1">
+            <div class="left-filtros">
+                <label for="esporte">Esporte:</label>
+                <select id="esporte" name="esporte">
+                    <option value="futebol">Futebol</option>
+                    <option value="basquete">Basquete</option>
+                    <option value="volei">Vôlei</option>
+                </select>
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado">
+                    <option value="sp">SP</option>
+                    <option value="rj">RJ</option>
+                    <option value="mg">MG</option>
+                </select>
+                <label for="cidade">Cidade:</label>
+                <select id="cidade" name="cidade">
+                    <option value="sao-paulo">São Paulo</option>
+                    <option value="rio-de-janeiro">Rio de Janeiro</option>
+                    <option value="belo-horizonte">Belo Horizonte</option>
+                </select>
+            </div>
+            <div class="right-filtros">
+                <label for="data">Data do Evento:</label>
+                <input type="date" id="data" name="data">
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/evento'); %>
+    <%- include('../partials/evento'); %>
+    <%- include('../partials/evento'); %>
+    <%- include('../partials/evento'); %>
+    
+    
+
+    <%- include('../partials/footer'); %>
+
+</body>
+</html>

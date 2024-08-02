@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/imagens/SportAgora.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>SportAgora</title>
+    
+</head>
+<body>
+    <%- include('../partials/navbar'); %>
+    
+    <main>
+        <article class="hero">
+            <a href="/infopost">
+            <img  src="/imagens/banner.jpg" alt="Banner">
+        </a>
+            <nav>
+                <section>
+                <img src="/imagens/pessoa.png" alt="User">
+                <a href="#">Danzx</a>
+            </section>
+                <h2 class="HeroPostTitle">AS MELHORES JOGADAS DE VÔLEI QUE ACONTECERAM EM 2024</h2>
+                <section>
+                <h4 class="HeroPostLikes">152.78 mil</h4>
+                <i class="material-symbols-outlined">Favorite</i>
+                </section>
+            </nav>
+        </article>
+
+       
+        <section>
+
+            <section class="barrapesquisa">
+            <h1 class="postagens">Postagens</h1>
+            <input type="text" class="search-bar" placeholder="Pesquisar...">
+        </section>
+
+        <%- include('../partials/post'); %>
+        <%- include('../partials/post'); %>
+        <%- include('../partials/post'); %>
+        <%- include('../partials/post'); %>
+
+        </section>
+
+
+
+    </main>
+
+    <%- include('../partials/footer'); %>
+
+</body>
+</html>

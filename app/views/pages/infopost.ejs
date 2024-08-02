@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/imagens/SportAgora.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Informações post</title>
+
+</head>
+<body>
+    <%- include('../partials/navbar'); %>
+
+    <div class="container4">
+        <div class="main-content">
+            <div class="post-header">
+                <div class="post-image">
+                    <img src="/imagens/futebol.png" alt="Imagem do Post">
+                </div>
+                <div class="post-info-box">
+                    <div class="post-info">
+                        <h2>Nome do Post</h2>
+                        <div class="likes">
+                            <i class="fas fa-thumbs-up"></i> 123 curtidas
+                        </div>
+                        <div class="post-meta">Publicado há 5 horas</div>
+                        <div class="post-details">
+                            <p>Informações do post...</p>
+                        </div>
+                        <div class="creador-info">
+                            <img src="/imagens/pessoa1.jpg" alt="Criador" width="50">
+                            <span>Nome do Criador</span>
+                            <div class="seguidor-info">
+                                <span>1234 seguidores</span>
+                                <button>Seguir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="antigo-posts-box">
+            <h3>Antigos Posts</h3>
+            <div class="antigo-post">
+                <img src="/imagens/oldpost.jpeg" alt="Imagem do Post" class="antigo-post-image">
+                <div class="antigo-post-info">
+                    <h4>Título do Post</h4>
+                    <div class="likes">
+                        <i class="fas fa-thumbs-up"></i> 45 curtidas
+                    </div>
+                </div>
+            </div>
+            <!-- Repita a estrutura acima para outros posts -->
+        </div>
+        <div class="comentarios-section-box">
+            <h3>Comentários</h3>
+            <div class="comentario-count">123 comentários</div>
+            <div class="comentario-form">
+                <textarea placeholder="Digite seu comentário..."></textarea>
+                <button>Enviar</button>
+            </div>
+            <div class="comentarios">
+                <div class="comentario">
+                    <img src="/imagens/pessoa2.png" alt="Comentador" width="50">
+                    <div class="comentario-info">
+                        <span>Nome do Comentador</span>
+                        <p>Comentário...</p>
+                    </div>
+                </div>
+                <!-- Repita a estrutura acima para outros comentários -->
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <%- include('../partials/footer'); %>
+
+</body>
+</html>

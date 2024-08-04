@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <%- include('../partials/navbar'); %>
+    </header>
+    <main class="main_login">
+        <section class="container">
+            <article class="buttonsForm">
+                <div class="btnColor"></div>
+                <button id="btnSignin">Sign in</button>
+                <button id="btnSignup">Sign up</button>
+            </article>
+        
+            <form id="signin">
+                <input type="text" placeholder="Email" required />
+                <i class="fas fa-envelope iEmail"></i>
+                <input type="password" id="senhaa" placeholder="Senha" required />
+                <i class="fas fa-lock iPassword"></i>
+                <div class="divCheck">
+                <input type="checkbox" />
+                <span>Lembre minha senha</span>
+                </div>
+                <button type="submit" onclick="signinValidacao()">CONECTAR</button>
+            </form>
+        
+            <form id="signup">
+                <input type="text" placeholder="Email" required />
+                <i class="fas fa-envelope iEmail"></i>
+                <input type="password" placeholder="Senha" required />
+                <i class="fas fa-lock iPassword"></i>
+                <input type="password" placeholder="Senha confirme sua senha" required />
+                <i class="fas fa-lock iPassword2"></i>
+                <div class="divCheck">
+                <input type="checkbox" required />
+                <span>Termos</span>
+                </div>
+                <button type="submit" onclick="perfilex()">CONECTAR</button>
+            </form>
+        </section>
+        <section class="outras">
+            <h1>Outras opções de conexão de conta</h1>
+            <button type="submit" class="google" onclick="google()">
+                <img src='http://localhost:3000/imagens/normal_u17.png' alt="Google">
+            </button>
+            <button type="submit" class="microsofiti" onclick="microsofiti()">
+                <img src='http://localhost:3000/imagens/normal_u20.png' alt="Google">
+            </button>
+        </section>
+    </main>
+<%- include('../partials/footer'); %>
+</body>
+</html>

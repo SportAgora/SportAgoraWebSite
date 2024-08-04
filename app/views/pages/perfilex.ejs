@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script defer src="/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <%- include('../partials/navbar'); %> 
+    </header>
+    <main class="perfil1">
+        <section class="bioPadrão">
+            <article class="planoFundo">
+                <img src="http://localhost:3000/imagens/planodefundo.jpeg" alt="planodefundo" class="planodefundo">
+                <article class="perfilo">
+                    <img src="http://localhost:3000/imagens/pessoa2.png" alt="ftdePerfil" class="ftdePerfil">
+                    <div class="nomes">
+                        <h2>oSxt_</h2>
+                        <p>Kaique Sexy Fialho</p>
+                    </div>
+                    <p>194 <b>seguidores</b> 230 <b>seguindo</b></p>
+                </article>
+                <button class="editPerf" onclick="editPerfil()">Editar perfil</button>
+            </article> 
+            <article class="biografia">
+                <aside>
+                    <h2>Biografia</h2>
+                    <p>Pellentesque sit amet elit eu nisl mattis suscipit. Donec placerat urna in massa suscipit, eu eleifend nisl <br>
+                    lobortis. Donec tempus ante vel laoreet cursus. </p>
+                </aside>
+                <aside class="linquis">
+                    <h2>Links</h2>
+                    <div class="social">
+                        <button class="twitter" onclick="">
+                            <img src='http://localhost:3000/imagens/twitterlogo.png' alt="Twitter">
+                        </button>
+                        <button class="instagram" onclick="">
+                            <img src='http://localhost:3000/imagens/instalogo.png' alt="Instagram">
+                        </button>
+                        <button class="youtube" onclick="">
+                            <img src='http://localhost:3000/imagens/youtube.png' alt="Youtube">
+                        </button>
+                    </div>
+                </aside>
+            </article>
+        </section>
+        <hr size="2" width="100%" align="center" noshade>
+        <section class="editPerfil">
+            <article class="editinfo">
+                <aside>
+                    <img src="http://localhost:3000/imagens/pessoa2.png" alt="ftdePerfil" class="perfiledit">
+                    <img src="http://localhost:3000/imagens/normal_u112.png" alt="upload" class="upload">
+                </aside>
+                <aside>
+                    <h2>Nome de usuário</h2>
+                    <input type="text" name="" id="" placeholder="oSxt_">
+                </aside>
+                <aside>
+                    <h2>Nome</h2>
+                    <input type="text" name="" id="" placeholder="Kaique Sexy Fialho">
+                </aside>
+            </article>
+            <article class="socialedit">
+                <aside class="linquis">
+                    <h2>Links</h2>
+                    <div class="social">
+                        <button class="twitter" onclick="">
+                            <img src='http://localhost:3000/imagens/twitterlogo.png' alt="Twitter">
+                        </button>
+                        <button class="instagram" onclick="">
+                            <img src='http://localhost:3000/imagens/instalogo.png' alt="Instagram">
+                        </button>
+                        <button class="youtube" onclick="">
+                            <img src='http://localhost:3000/imagens/youtube.png' alt="Youtube">
+                        </button>
+                    </div>
+                </aside>
+                <aside>
+                    <h2>Biografia (156/200)</h2>
+                    <textarea id="subject" name="subject" placeholder="Pellentesque sit amet elit eu nisl mattis suscipit. Donec placerat urna in massa suscipit, eu eleifend nisl lobortis. Donec tempus ante vel laoreet cursus." style="height:70px; width:600px;font-size:18px;"></textarea>
+                </aside>
+            </article>
+            <article class="fundo">
+                <aside>
+                    <img src="http://localhost:3000/imagens/planodefundo.jpeg" alt="planodefundo" class="planodefundoedit">
+                    <img src="http://localhost:3000/imagens/normal_u112.png" alt="upload" class="upload">
+                </aside>
+            </article>
+            <button class="salvar" onclick="salvar()">Salvar</button>
+        </section>
+        <section class="opicoes">
+            <article class="botoes">
+                <button id="botaoPostagens" onclick="mudarAbaPerfil('postagens')">Postagens</button>
+                <button id="botaoCurtidos" onclick="mudarAbaPerfil('curtidos')">Curtidos</button>
+                <button id="botaoTime" onclick="mudarAbaPerfil('time')">Meu Time</button>
+            </article>
+            <article class="adicionarPost" onclick="">
+                <input type="" name="" id="adpost" placeholder="O que deseja escrever hoje?" onsubmit="">
+                <img src="http://localhost:3000/imagens/adicionarimagem.png" alt="imagem" class="adimagem">
+            </article>
+        </section>
+        <section class="postagensPerfil">
+            <%- include('../partials/post'); %>
+        </section>
+        <section class="curtidosPerfil">
+            <%- include('../partials/post'); %>
+            <%- include('../partials/post'); %>
+        </section>
+        <section class="timePerfil">
+            <article class="timeMBR">
+                <aside class="ftMBR">
+                    <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                    <div class="textoMBR">
+                    <h2>Made in Brazil (MIBR)</h2>
+                    <p>2.3 mil  seguidores</p>
+                    </div>
+                </aside>
+                <aside class="historicoMBR">
+                    <h1>Histórico de campeonatos</h1>
+                    <p>Total de campeonatos jogados: 8 <br>
+                    Total de vitórias: 0</p>
+                </aside>
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Participações</th>
+                            <th>Posição</th>
+                            <th>Situação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Campeonato de Futebol 2024 </td>
+                            <td>5º lugar</td>
+                            <td>Derrota</td>
+                        </tr>
+                        <tr>
+                            <td>Campeonato de Futebol 2023 </td>
+                            <td>6º lugar</td>
+                            <td>Derrota</td>
+                        </tr>
+                        <tr>
+                            <td>Campeonato de Futebol 2022 </td>
+                            <td>4º lugar</td>
+                            <td>Derrota</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <article class="jogadores">
+                <h1>(11/11) Jogadores</h1>
+                <aside class="imagensJogadores">
+                    <aside>
+                        <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                        <h3>oSxt_</h3>
+                    </aside>
+                    <aside>
+                        <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                        <h3>Danran</h3>
+                    </aside>
+                    <aside>
+                        <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                        <h3>oVino</h3>
+                    </aside>
+                    <aside>
+                        <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                        <h3>Nawak10</h3>
+                    </aside>
+                    <aside>
+                        <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                        <h3>Ravioli</h3>
+                    </aside>
+                    <aside>
+                        <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                        <h3>Farsxz</h3>
+                    </aside>
+                    <aside>
+                        <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                        <h3>Felps</h3>
+                    </aside>
+                    <aside>
+                        <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                        <h3>Portuga</h3>
+                    </aside>
+                    <aside>
+                        <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                        <h3>Fiat Uno</h3>
+                    </aside>
+                    <aside>
+                        <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                        <h3>Banheiro</h3>
+                    </aside>
+                    <aside>
+                        <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                        <h3>Saque</h3>
+                    </aside>
+                </aside>
+                <aside class="treinadores">
+                    <h1>(1/2) Treinadores</h1>
+                    <aside class="tecnicos">
+                        <aside>
+                            <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                            <h3>oSxt_</h3>
+                        </aside>
+                        <aside>
+                            <img src="http://localhost:3000/imagens/normal_u44.svg" alt="mbr">
+                            <h3>oSxt_</h3>
+                        </aside>
+                    </aside>
+                </aside>
+            </article>
+        </section>
+    </main>
+<%- include('../partials/footer'); %>
+</body>
+</html>

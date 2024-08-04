@@ -37,4 +37,8 @@ router.get('/infoevento2', function(req,res){
     res.render('pages/infoevento2');  
 })
 
+router.get('/perfilex', function(req,res){
+    res.render('pages/perfilex');  
+})
+
 module.exports = router;

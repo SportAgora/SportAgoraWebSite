@@ -48,7 +48,7 @@ function signinValidacao(){
     } else {
     successValidation(firstname);
     window.location = "/perfilex"
-}
+    }
 }
 function perfilex(){
     window.location = "/perfilex"

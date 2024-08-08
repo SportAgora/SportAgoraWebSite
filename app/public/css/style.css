@@ -10,6 +10,7 @@
     --branco: white;
     --brancopost: #f1eded;
     --brancobg:rgb(226, 221, 221);
+    --cinza: gray;
 }
 
 /*BODY*/
@@ -1199,14 +1200,14 @@ form {
     transition: .5s;
     width: 300px;
     height: 400px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .buttonsForm {
     margin-top: 40px;
     position: relative;
     border-radius: 30px;
-    box-shadow: 0 0 7px 0 var(--preto);
+    box-shadow: 0 4px 4px 0 var(--cinza);
 }
 
 .buttonsForm button {

@@ -187,9 +187,9 @@ footer img {
 
     color: var(--branco);
     margin-left: 93%;
-  }
+}
 
-  .postspage .material-symbols-outlined {
+.postspage .material-symbols-outlined {
     font-variation-settings:
     'FILL' 0,
     'wght' 400,
@@ -1280,13 +1280,20 @@ i {
 }
 .outras button {
     background-color: var(--branco);
-    width: 50%;
+    height: 60px;
+    width: 90%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: var(--preto) 1px solid;
+    border-radius: 20px;
+    padding-top: 5px;
+    cursor: pointer;
 }
 .google img {
-    height: 25px;
+    height: 45px;
 }
 .microsofiti img {
-    height: 25px;
+    height: 45px;
 }
 
 /* Perfil (Editavel e tals) */

@@ -174,6 +174,15 @@ footer {
     padding: 0 20px;
 }
 
+.fixarRodape {  
+        position: absolute;
+        background-color: var(--verde_especial);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 98%;
+}
+
 footer h2, footer h3 {
     color: var(--branco);
     margin: 0;

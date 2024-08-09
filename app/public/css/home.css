@@ -1,0 +1,112 @@
+/*HERO BANNER*/
+
+.hero img {
+    width: 100%;
+    padding: 0px;
+    margin:0px;
+}
+
+.hero nav img {
+    width:50px;
+}
+
+.hero nav {
+    background-color: var(--preto);
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero #nick_user{
+    align-self: center;
+    text-decoration: none;
+    color: var(--branco);
+    font-size: 16px;
+    padding-left:10px;
+}
+
+.hero {
+    background-color: var(--preto);
+    margin-bottom: 3px;
+}
+
+.hero section {
+    display: flex;
+    align-items: center;
+    color: var(--branco);
+    margin-bottom:3px;
+    margin-inline: 10px;
+}
+
+.hero h2 {
+    color:var(--branco);
+}
+
+
+.hero-pessoa a {
+    text-decoration: none;
+    color: var(--branco);
+    margin-left: 10%;
+ 
+}
+
+
+/*ICONES*/
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+
+    color: var(--branco);
+    margin-left: 93%;
+}
+
+.postspage .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    color: var(--preto);
+    margin-left:10px;
+  }
+  
+  /*MEDIA*/
+
+@media (max-width: 480px){
+    .header img{
+        width: 50px;
+    }
+
+    .header li a{
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .header li a:hover{
+        font-size: 14px;
+    }
+
+
+}
+
+
+@media (max-width: 1200px) {
+    .post {
+        flex: 1 0 28%; /* Ajuste para garantir 3 colunas em telas menores */
+    }
+}
+
+@media (max-width: 900px) {
+    .post {
+        flex: 1 0 45%; /* Ajuste para garantir 2 colunas em telas menores */
+    }
+}
+
+@media (max-width: 600px) {
+    .post {
+        flex: 1 0 100%; /* Ajuste para garantir 1 coluna em telas menores */
+    }
+}

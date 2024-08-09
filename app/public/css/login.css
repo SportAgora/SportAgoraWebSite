@@ -1,0 +1,137 @@
+
+
+/* Loguin */
+
+.main_login {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.container5 {
+    background-color: whitesmoke;
+    padding: 6px;
+    width: 380px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 darkgrey;
+    margin-top: 7.5%;
+    font-size: 18px;
+}
+
+form {
+    position: absolute;
+    margin-top: 80px;
+    transition: .5s;
+    width: 300px;
+    height: 400px;
+    font-size: 18px;
+}
+
+.buttonsForm {
+    margin-top: 40px;
+    position: relative;
+    border-radius: 30px;
+    box-shadow: 0 4px 4px 0 var(--cinza);
+}
+
+.buttonsForm button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    position: relative;
+    padding: 10px 29px;
+}
+
+.btnColor {
+    position: absolute;
+    width: 108px;
+    height: 100%;
+    background: var(--verde_especial);
+    border-radius: 30px;
+    transition: .3s;
+}
+
+input[type="text"], input[type="password"] {
+    border: none;
+    margin-top: 40px;
+    border-radius: 60px;
+    padding: 8px 0 8px 35px;
+    outline: none;
+    width: 100%;
+    font-size: 20px;
+    background-color: var(--backgroundpost);
+}
+
+#enviar_login {
+    background: var(--verde_especial);
+    color: white;
+    border-radius: 30px;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px 0 8px 4px;
+    font-size: 15px;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.divCheck {
+    margin: 10px 0 0 5px;
+    width: 80%;
+    font-size: 13px;
+}
+
+#signin {
+    left: 25px;
+}
+
+#signup {
+    left: 450px;
+}
+
+i {
+    position: absolute;
+    left: 0;
+    padding: 10px 10px;
+}
+
+.iEmail {
+    top: 40px;
+}
+
+.iPassword {
+    top: 114px;
+}
+
+.iPassword2 {
+    top: 190px;
+}
+
+.outras {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.outras button {
+    background-color: var(--branco);
+    height: 60px;
+    width: 90%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: var(--preto) 1px solid;
+    border-radius: 20px;
+    padding-top: 5px;
+    cursor: pointer;
+}
+.google img {
+    height: 45px;
+}
+.microsofiti img {
+    height: 45px;
+}

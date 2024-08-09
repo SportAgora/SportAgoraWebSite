@@ -1,0 +1,107 @@
+/* SPORT+ */
+
+.container3 {
+    text-align: center;
+    width: 100%;
+}
+
+.hero-content {
+    margin-bottom: 20px;
+}
+
+.logo-and-text {
+margin-right: 80px;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+.preco {
+    font-size: 1.5em;
+    margin-top: 10px;
+    margin-right: 70px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.planos-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.plano-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 350px;
+    height: 450px;
+    text-align: center;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    justify-content: space-between;
+}
+
+.plano-box h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.plano-box ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    flex-grow: 1;
+    display: flex;
+    font-weight: bold;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.plano-box ul li {
+    margin-bottom: 10px;
+}
+
+.plano-box .preco-month, .plano-box .preco-year {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+.escolher-plano {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.escolher-plano:hover {
+    background-color: #0056b3;
+}
+
+.recomendado {
+    border: 2px ;
+    transform: scale(0.8.0.8);
+    width: 350px;
+    height: 450px;
+    margin-bottom: -10px; 
+}

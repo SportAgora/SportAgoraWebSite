@@ -1,0 +1,295 @@
+/* Perfil (Editavel e tals) */
+
+.perfil1 {
+    margin-top: 99px;
+}
+
+.ftdePerfil {
+    height: 144px;
+    width: 144px;
+}
+
+.nomes {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.perfilo {
+    display: flex;
+    flex-direction: row;
+    align-items: self-end;
+    position: absolute;
+    left: 10px;
+    top: 200px;
+}
+
+.planoFundo{
+    position: relative;
+}
+
+.planodefundo{
+    height: 359px;
+    width: 100%;
+}
+
+.editPerf {
+    position: absolute;
+    right: 15px;
+    top: 320px;
+    background-color: var(--preto);
+    color: var(--branco);
+    border-radius: 15px;
+    cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.biografia {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.biografia p {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.linquis {
+    display: flex;
+    flex-direction: column;
+}
+
+.linquis button {
+    height: 67px;
+    width: 100px;
+    cursor: pointer;
+    background-color: var(--cinza);
+    border: none;
+}
+
+.linquis h2 {
+    float: right;
+}
+
+.social {
+    display: flex;
+    flex-direction: row;
+}
+
+.twitter img {
+    height: 52px;
+    width: 52px;
+}
+
+.instagram {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.instagram img {
+    height: 56px;
+    width: 56px;
+}
+
+.youtube img {
+    height: 56px;
+    width: 79px;
+}
+
+.editPerfil {
+    height: 600px;
+    width: 1200px;
+    background-color: gray;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-wrap: wrap;
+    
+}
+.editinfo input[type="text"] {
+    border: none;
+    margin-top: 20px;
+    border-radius: 60px;
+    padding: 8px 0 8px 35px;
+    outline: none;
+    width: 100%;
+    font-size: 18px;
+}
+
+.perfiledit {
+    height: 150px;
+    width: 150px;
+}
+.upload {
+    height: 75px;
+    width: 75px;
+    cursor: pointer;
+}
+.editinfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+}
+.editinfo aside{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.socialedit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.socialedit aside {
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.fundo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.planodefundoedit{
+    height: 200px;
+    width: 1000px;
+}
+
+.opicoes {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.salvar {
+    border: none;
+    color: var(--branco);
+    margin-top: 20px;
+    border-radius: 60px;
+    padding: 10px 20px 10px 20px;
+    outline: none;
+    font-size: 18px;
+    background-color: var(--verde_especial);
+    margin-bottom: 10px;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    bottom: 2px;
+}
+
+.botoes button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.adicionarPost {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.adicionarPost img {
+    height: 35px;
+    width: 35px;
+}
+#adpost {
+    font-size: 17px;
+}
+
+.postagensPerfil {
+    display: block;
+} 
+.curtidosPerfil{
+    display: none;
+}
+.timePerfil{
+    display: none;
+    flex-direction: row;
+}
+
+#botaoPostagens {
+    color: var(--preto);
+}
+#botaoCurtidos {
+    color: var(--cinza);
+}
+#botaoTime {
+    color: var(--cinza);
+}
+
+.timeMBR {
+    display: flex;
+    flex-direction: row;
+}
+
+.ftMBR {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+.textoMBR {
+    margin-left: 15px;
+}
+
+.tabela, th, td{
+    border-collapse: collapse; /*define a separação entre as bordar*/
+    padding: 10px;
+    text-align: left;
+    border: 1px sold var(--cinza);
+}
+th{
+    background-color: lightgray;
+}
+
+.imagensJogadores {
+    width: 1200px;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+.imagensJogadores aside{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.jogadores {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.treinadores {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.tecnicos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+.tecnicos aside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

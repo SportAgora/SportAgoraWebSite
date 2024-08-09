@@ -1,0 +1,144 @@
+*{
+    margin:0px;
+    padding:0px;
+    font-family:"Open Sans", sans-serif;
+}
+
+:root {
+    --verde_especial: #339933;
+    --preto: #1b1b1b;
+    --branco: white;
+    --brancobg:#ffffff;
+    --cinza: gray;
+    --backgroundpost: #e0d9d9;
+}   
+
+/*BODY*/
+
+body {
+    background-color: var(--brancobg);
+}
+
+
+
+/*NAV BAR*/
+
+.header img{
+    width: 70px;
+}
+
+.header li a{
+    text-decoration: none;
+    color: var(--branco);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+.header li a:hover{
+    font-size: 22px;
+    
+}
+
+.header ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+.header li {
+    margin: 10px;
+    align-self: center;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    background-color: var(--verde_especial);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header button{
+    border: none;
+    background-color: transparent;
+    float: center;
+}
+
+/*LOGIN*/
+
+.login {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.login a {
+    margin-right: 5px;
+    color: var(--branco);
+    text-decoration: none;
+    color: var(--branco);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+  /*SUBNAV*/
+
+.header_subscription{
+    position: absolute;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    justify-content: center;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.5);
+    top: 73px;
+
+    
+}
+
+
+.header_subscription a {
+    padding: 0;
+    text-align: center;
+    color: black;
+    float: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+/*FOOTER*/
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    color: var(--branco);
+    background-color: var(--verde_especial);
+    padding: 0 20px;
+}
+
+.fixarRodape {  
+        position: absolute;
+        background-color: var(--verde_especial);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 98%;
+}
+
+footer h2, footer h3 {
+    color: var(--branco);
+    margin: 0;
+}
+
+footer img {
+    max-width: 100px;
+    height: 100px;
+    margin-left: 200px;
+}

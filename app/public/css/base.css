@@ -95,11 +95,12 @@ body {
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s ease;
+    justify-content: space-between;
 }
 
 .login-button img {
     height: 50px;
-    margin-right: 10px;
+    margin-left: 8px;
 }
 
 .login-button:hover {
@@ -109,7 +110,7 @@ body {
 .login-button a{
     text-decoration: none;
     color: rgba(255, 255, 255, 1);
-    font-size: medium;
+    font-size:large;
     font-weight: bold;
 }
 

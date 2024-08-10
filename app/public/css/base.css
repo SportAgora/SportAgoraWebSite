@@ -23,94 +23,121 @@ body {
 
 /*NAV BAR*/
 
-.header img{
-    width: 70px;
-}
-
-.header li a{
-    text-decoration: none;
-    color: var(--branco);
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.2s;
-}
-
-.header li a:hover{
-    font-size: 22px;
-    
-}
-
-.header ul {
+.navbar {
     display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    float: left;
-}
-.header li {
-    margin: 10px;
-    align-self: center;
-}
-
-.header {
-    position: absolute;
-    top: 0;
-    background-color: var(--verde_especial);
-    display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
+    padding: 10px 20px;
+    background-color: var(--verde_especial);
+    color: white;
+}
+
+.logo img {
+    height: 70px;
+}
+
+.section {
+    flex: 1;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    position: relative;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #ff6347;
+}
+
+
+/* Animações dos botões  */
+
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ff6347;
+    transition: width 0.3s;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+}
+
+.nav-links a:hover::after {
     width: 100%;
 }
 
-.header button{
+/* Login botão */
+
+.login-button {
+    background-color: var(--verde_especial);
     border: none;
-    background-color: transparent;
-    float: center;
-}
-
-/*LOGIN*/
-
-.login {
+    padding: 10px 15px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-.login a {
-    margin-right: 5px;
-    color: var(--branco);
-    text-decoration: none;
-    color: var(--branco);
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.2s;
+
+.login-button img {
+    height: 50px;
+    margin-right: 10px;
 }
+
+.login-button:hover {
+    background-color: green
+}
+
 
   /*SUBNAV*/
 
-.header_subscription{
+  .subnav {
     position: absolute;
     width: 100%;
     margin: 0px;
     padding: 0px;
     justify-content: center;
+    text-align: center;
     display: flex;
     background-color: rgba(255, 255, 255, 0.6);
-    top: 73px;
-
-    
+    top: 95px;
 }
 
-
-.header_subscription a {
-    padding: 0;
-    text-align: center;
+.subscribe-button {
+    background-color: rgba(255, 255, 255, 0.1);
     color: black;
-    float: center;
-    text-decoration: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
     font-weight: bold;
-    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+    display: inline-block;
+    margin-right: 4%;
 }
+
+.subscribe-button:hover {
+    background-color: black;
+    color: white;
+}
+
+
 /*FOOTER*/
 
 .footer {

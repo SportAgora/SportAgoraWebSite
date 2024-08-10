@@ -30,10 +30,11 @@ body {
     padding: 10px 20px;
     background-color: var(--verde_especial);
     color: white;
+    flex-wrap: wrap;
 }
 
 .logo img {
-    height: 70px;
+    height: 75px;
 }
 
 .section {
@@ -56,6 +57,7 @@ body {
     position: relative;
     transition: color 0.3s ease;
     font-weight: bold;
+    align-items: center;
 }
 
 .nav-links a:hover {
@@ -86,11 +88,12 @@ body {
 .login-button {
     background-color: var(--verde_especial);
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     cursor: pointer;
+    text-align: center;
     transition: background-color 0.3s ease;
 }
 
@@ -101,6 +104,13 @@ body {
 
 .login-button:hover {
     background-color: green
+}
+
+.login-button a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+    font-size: medium;
+    font-weight: bold;
 }
 
 
@@ -116,6 +126,7 @@ body {
     display: flex;
     background-color: rgba(255, 255, 255, 0.6);
     top: 95px;
+    flex-wrap: wrap;
 }
 
 .subscribe-button {
@@ -129,7 +140,7 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
     text-align: center;
     display: inline-block;
-    margin-right: 4%;
+    margin-right: 6%;
 }
 
 .subscribe-button:hover {
@@ -137,6 +148,38 @@ body {
     color: white;
 }
 
+/* Media */
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .login-button {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .subnav {
+        padding: 15px;
+        width: 100%; /* Garante que a subnav siga a largura da navbar */
+    }
+
+    .subscribe-button {
+        width: 100%; /* Botão ocupa toda a largura disponível */
+    }
+}
 
 /*FOOTER*/
 

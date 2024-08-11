@@ -59,9 +59,7 @@
     'wght' 400,
     'GRAD' 0,
     'opsz' 24;
-
     color: var(--branco);
-
 }
 
 .postspage .material-symbols-outlined {
@@ -71,9 +69,11 @@
     'GRAD' 0,
     'opsz' 24;
     color: var(--preto);
-    margin-left:10px;
   }
   
+  .HeroPostLikes {
+    margin-left: 5px;
+  }
   /*MEDIA*/
 
 @media (max-width: 480px){

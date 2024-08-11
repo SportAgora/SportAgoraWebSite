@@ -117,17 +117,28 @@ body {
 
   /*SUBNAV*/
 
+  .subnav-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
   .subnav {
     position: absolute;
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
+    width: 105%;
     justify-content: center;
     text-align: center;
     display: flex;
     background-color: rgba(255, 255, 255, 0.6);
     top: 98px;
     flex-wrap: wrap;
+    margin-right: 5%;
 }
 
 .subscribe-button {
@@ -141,7 +152,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
     text-align: center;
     display: inline-block;
-    margin-right: 5%;
 }
 
 .subscribe-button:hover {

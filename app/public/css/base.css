@@ -61,7 +61,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: #ff6347;
+    color: #fff;
 }
 
 
@@ -72,7 +72,7 @@ body {
     display: block;
     width: 0;
     height: 2px;
-    background: #ff6347;
+    background: #fff;
     transition: width 0.3s;
     position: absolute;
     left: 0;
@@ -194,15 +194,87 @@ body {
 
 /*FOOTER*/
 
-.footer {
-    justify-content: center;
-    display: flex;
-    padding: 30px 0px 30px 0px;
-    background: var(--verde_especial);
-    color: white;
-    width: 100%;
-  }
+footer {
+    background-color: var(--verde_especial);
+    color: #fff;
+    padding: 40px 0 20px;
+}
 
-  .text-footer {
-     margin-right: 3%;
-  }
+.footer-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.footer-secao {
+    display: flex;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.footer-bloco {
+    margin: 0 15px;
+}
+
+.footer-bloco h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #f1f1f1;
+}
+
+.footer-bloco ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-bloco ul li {
+    margin-bottom: 10px;
+}
+
+.footer-bloco ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-bloco ul li a:hover {
+    color: #fff;
+}
+
+.footer-conecte {
+    text-align: center;
+    margin-left: 40px;
+}
+
+.footer-conecte h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #f1f1f1;
+}
+
+.redes-sociais {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.redes-sociais a img {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s;
+    border-radius: 50%;
+}
+
+.redes-sociais a img:hover {
+    transform: scale(1.1);
+}
+
+.copyright {
+    text-align: center;
+    font-size: 14px;
+    color: #ccc;
+    margin-top: 20px;
+}
+

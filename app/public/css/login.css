@@ -3,6 +3,7 @@
 /* Loguin */
 
 .main_login {
+    display: flex;
     align-items: center;
     justify-content: center;
 }

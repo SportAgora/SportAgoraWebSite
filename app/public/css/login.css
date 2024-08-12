@@ -9,7 +9,7 @@
 }
 .container5 {
     background-color: var(--branco);
-
+    height: 780px;
     width: 880px;
     display: flex;
     flex-direction: column;
@@ -56,7 +56,7 @@ form {
     transition: .3s;
 }
 
-input[type="email"], input[type="password"] {
+input[type="email"], input[type="password"], input[type="text"] {
     border: none;
     margin-top: 40px;
     border-radius: 60px;
@@ -72,26 +72,26 @@ input[type="email"], input[type="password"] {
     background: var(--verde_especial);
     color: white;
     border-radius: 30px;
-    width: 100%;
+    width: 150%;
     border: none;
     outline: none;
     padding: 8px 0 8px 4px;
     font-size: 15px;
     margin-top: 40px;
-    margin-left: 90%;
+    margin-left: 60%;
     cursor: pointer;
 }
 #enviar_registrar {
     background: var(--verde_especial);
     color: white;
     border-radius: 30px;
-    width: 100%;
+    width: 150%;
     border: none;
     outline: none;
     padding: 8px 0 8px 4px;
     font-size: 15px;
     margin-top: 20px;
-    margin-left: 90%;
+    margin-left: 60%;
     cursor: pointer;
 }
 
@@ -138,7 +138,7 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 360px;
+    margin-top: 460px;
 }
 .outras button {
     background-color: var(--branco);
@@ -159,16 +159,47 @@ i {
 }
 
 @media (max-width: 925px) {
+    .main_login {
+        width: 100%;
+        margin: auto;
+    }
     .container5{
-        background-color: var(--preto);
+        width: 100%;
+        margin: 2em auto;
+
     }
     #signin {
         left: 15px;
-        width: 35%;
+        width: 34%;
     }
     
     #signup {
         left: 950px;
-        width: 35%;
+        width: 34%;
+    }
+    #enviar_login {
+        width: 150%;
+        margin-left: 60%;
+
+    }
+}
+
+@media (max-width: 600px) {
+    #signin {
+        left: 15px;
+        width: 30%;
+    }
+    
+    #signup {
+        left: 950px;
+        width: 30%;
+    }
+    #enviar_login {
+        width: 200%;
+        margin-left: 60%;
+    }
+    #enviar_registrar{
+        width: 200%;
+        margin-left: 60%;
     }
 }

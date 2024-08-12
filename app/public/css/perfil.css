@@ -39,6 +39,8 @@
     cursor: pointer;
     padding-left: 20px;
     padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .biografia {
@@ -46,9 +48,14 @@
     display: flex;
     justify-content: space-between;
 }
+.biografia h2 {
+    margin: 10px;
+}
 .biografia p {
     font-size: 17px;
     font-weight: bold;
+    color: var(--cinza);
+    margin-left: 10px;
 }
 
 .linquis {
@@ -60,7 +67,7 @@
     height: 67px;
     width: 100px;
     cursor: pointer;
-    background-color: var(--cinza);
+
     border: none;
 }
 
@@ -103,7 +110,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     flex-wrap: wrap;
-    
+    z-index: 1;
 }
 .editinfo input[type="text"] {
     border: none;
@@ -179,8 +186,24 @@
     margin-bottom: 10px;
     cursor: pointer;
     position: absolute;
+    right: 100px;
+    top: 2px;
+    z-index: 1;
+}
+.fechar {
+    border: none;
+    margin-top: 20px;
+    border-radius: 60px;
+    padding: 10px 20px 10px 20px;
+    outline: none;
+    font-size: 25px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    position: absolute;
     right: 30px;
-    bottom: 2px;
+    top: 1px;
+    z-index: 1;
+    background: none;
 }
 
 .botoes button {
@@ -189,6 +212,7 @@
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+    margin: 10px;
 }
 
 .adicionarPost {
@@ -212,7 +236,7 @@
 }
 .timePerfil{
     display: none;
-    flex-direction: row;
+
 }
 
 #botaoPostagens {
@@ -227,9 +251,14 @@
 
 .timeMBR {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 50px;
 }
-
+.timeMBR aside {
+    margin: 45px;
+}
 .ftMBR {
     display: flex;
     align-items: center;
@@ -250,7 +279,7 @@ th{
 }
 
 .imagensJogadores {
-    width: 1200px;
+    width: 1000px;
     display: flex;
     align-items: stretch;
     flex-wrap: wrap;
@@ -268,6 +297,7 @@ th{
     justify-content: center;
     flex-direction: column;
     margin-top: 15px;
+    margin-left: 50px;
 }
 
 .treinadores {
@@ -289,4 +319,11 @@ th{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+.divisao{
+    height: 600px;
+    width: 2px;
+    background-color: var(--preto);
+    border: none;
+    margin-right: 10px;
 }

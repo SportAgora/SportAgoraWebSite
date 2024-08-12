@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <%- include('../partials/navbar'); %> 
+<%- include('../partials/navbar'); %> 
     </header>
     <main class="perfil1">
         <section class="bioPadrão">
@@ -53,6 +53,8 @@
         </section>
         <hr size="2" width="99.8%" align="center" noshade>
         <section class="editPerfil">
+            <button class="salvar" onclick="salvar()">Salvar</button>
+            <button class="fechar" onclick="salvar()">X</button>
             <article class="editinfo">
                 <aside>
                     <img src="imagens/pessoa2.png" alt="ftdePerfil" class="perfiledit">
@@ -93,7 +95,6 @@
                     <img src="imagens/normal_u112.png" alt="upload" class="upload">
                 </aside>
             </article>
-            <button class="salvar" onclick="salvar()">Salvar</button>
         </section>
         <section class="opicoes">
             <article class="botoes">
@@ -107,6 +108,7 @@
             </article>
         </section>
         <section class="postagensPerfil">
+            <%- include('../partials/post'); %>
             <%- include('../partials/post'); %>
         </section>
         <section class="curtidosPerfil">
@@ -154,6 +156,7 @@
                     </tbody>
                 </table>
             </article>
+            <article class="divisao"></article>
             <article class="jogadores">
                 <h1>(11/11) Jogadores</h1>
                 <aside class="imagensJogadores">
@@ -218,6 +221,6 @@
             </article>
         </section>
     </main>
-<%- include('../partials/footer'); %>
+<%- include('../partials/footer'); %> 
 </body>
 </html>

@@ -28,7 +28,7 @@
     margin-right: 20px;
 }
 
-.creator-and-old-posts {
+.creador-and-antigo-posts {
     margin-top: 50px;
     flex: 2;
     margin-right: 20px;
@@ -105,23 +105,23 @@
     font-size: 16px;
 }
 
-.creator-info {
+.creador-info {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.creator-info img {
+.creador-info img {
     border-radius: 50%;
     margin-right: 10px;
 }
 
-.creator-details {
+.creador-details {
     flex-grow: 1;
 }
 
-.creator-details .followers {
+.creador-details .followers {
     display: block;
     font-size: 14px;
     color: #777;
@@ -138,11 +138,11 @@
     cursor: pointer;
 }
 
-.old-posts-box h3 {
+.antigo-posts-box h3 {
     margin-bottom: 20px;
 }
 
-.old-post {
+.antigo-post {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
@@ -152,49 +152,49 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.old-post-image {
+.antigo-post-image {
     width: 160px;
     height: 110px;
     margin-right: 15px;
     border-radius: 25px;
 }
 
-.old-post-image img {
+.antigo-post-image img {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
 
-.old-post-info {
+.antigo-post-info {
     flex-grow: 1;
 }
 
-.old-post-info h4 {
+.antigo-post-info h4 {
     margin: 0;
     font-size: 16px;
 }
 
-.comments-section-box h3 {
+.comentarios-section-box h3 {
     margin-bottom: 10px;
 }
 
-.comments-section-box {
+.comentarios-section-box {
     margin-top: 50px;
 }
 
-.comment-count {
+.comentario-count {
     font-size: 14px;
     color: #777;
     margin-bottom: 10px;
 }
 
-.comment-form {
+.comentario-form {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
 }
 
-.comment-form textarea {
+.comentario-form textarea {
     height: 80px;
     padding: 10px;
     margin-bottom: 10px;
@@ -202,7 +202,7 @@
     border-radius: 3px;
 }
 
-.comment-form button {
+.comentario-form button {
     align-self: flex-end;
     padding: 5px 10px;
     background-color: #007bff;
@@ -212,12 +212,12 @@
     cursor: pointer;
 }
 
-.comments {
+.comentarios {
     display: flex;
     flex-direction: column;
 }
 
-.comment {
+.comentario {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
@@ -227,13 +227,13 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.commenter-info {
+.comentarioer-info {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
 }
 
-.commenter-image {
+.comentarioer-image {
     border-radius: 50%;
     margin-right: 10px;
     width: 50px;
@@ -241,15 +241,15 @@
     object-fit: cover;
 }
 
-.commenter-name {
+.comentarioer-name {
     font-weight: bold;
 }
 
-.comment-text {
+.comentario-text {
     margin-top: 5px;
 }
 
-.comment-text p {
+.comentario-text p {
     margin: 0;
 }
 

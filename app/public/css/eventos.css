@@ -105,7 +105,6 @@ label {
     border: none;
     background-color: var(--verde_especial);
     color: white;
-    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -239,6 +238,12 @@ select:hover, input[type="date"]:hover {
 
 .inscrever-button:hover, .contact-button:hover {
     background-color: #0056b3;
+    transition: 0.3s ease-in-out;
+}
+
+.contato-button:hover, .contact-button:hover {
+    background-color: #0056b3;
+    transition: 0.3s ease-in-out;
 }
 
 /* EVENTOS RELACIONADOS */

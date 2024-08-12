@@ -6,7 +6,7 @@
 }
 
 .text {
-    margin-right: 70px;
+    margin-right: 90px;
     text-align: center;
 }
 
@@ -78,7 +78,7 @@ label {
     border-radius: 15px;
     padding: 10px;
     text-align: center;
-    margin: 5%;
+    margin-top: 10px;
 }
 
 .evento img {

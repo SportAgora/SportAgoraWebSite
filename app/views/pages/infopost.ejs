@@ -12,67 +12,73 @@
 <body>
     <%- include('../partials/navbar'); %>
 
-    <div class="container4">
-        <div class="main-content">
-            <div class="post-header">
-                <div class="post-image">
-                    <img src="/imagens/futebol.png" alt="Imagem do Post">
-                </div>
-                <div class="post-info-box">
-                    <div class="post-info">
-                        <h2>Nome do Post</h2>
-                        <div class="likes">
-                            <i class="fas fa-thumbs-up"></i> 123 curtidas
-                        </div>
-                        <div class="post-meta">Publicado há 5 horas</div>
-                        <div class="post-details">
-                            <p>Informações do post...</p>
-                        </div>
-                        <div class="creador-info">
-                            <img src="/imagens/pessoa1.jpg" alt="Criador" width="50">
-                            <span>Nome do Criador</span>
-                            <div class="seguidor-info">
-                                <span>1234 seguidores</span>
-                                <button>Seguir</button>
+    <body>
+        <div class="container">
+            <div class="main-content">
+                <div class="post-header">
+                    <div class="post-image">
+                        <img src="post-image.jpg" alt="Imagem do Post">
+                        <div class="post-title">
+                            <h2>Nome do Post</h2>
+                            <div class="likes">
+                                <i class="fas fa-heart"></i>
+                                <span>123</span>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="antigo-posts-box">
-            <h3>Antigos Posts</h3>
-            <div class="antigo-post">
-                <img src="/imagens/oldpost.jpeg" alt="Imagem do Post" class="antigo-post-image">
-                <div class="antigo-post-info">
-                    <h4>Título do Post</h4>
-                    <div class="likes">
-                        <i class="fas fa-thumbs-up"></i> 45 curtidas
+                    <div class="post-meta">Publicado há 5 horas</div>
+                    <div class="post-info">
+                        <p>Informações do post...</p>
                     </div>
                 </div>
             </div>
-            <!-- Repita a estrutura acima para outros posts -->
-        </div>
-        <div class="comentarios-section-box">
-            <h3>Comentários</h3>
-            <div class="comentario-count">123 comentários</div>
-            <div class="comentario-form">
-                <textarea placeholder="Digite seu comentário..."></textarea>
-                <button>Enviar</button>
-            </div>
-            <div class="comentarios">
-                <div class="comentario">
-                    <img src="/imagens/pessoa2.png" alt="Comentador" width="50">
-                    <div class="comentario-info">
-                        <span>Nome do Comentador</span>
-                        <p>Comentário...</p>
+    
+            <div class="creator-and-old-posts">
+                <div class="creator-info">
+                    <img src="creator-image.jpg" alt="Criador" width="50">
+                    <span>Nome do Criador</span>
+                    <div class="follow-info">
+                        <span>1234 seguidores</span>
+                        <button>Seguir</button>
                     </div>
                 </div>
-                <!-- Repita a estrutura acima para outros comentários -->
+    
+                <div class="old-posts-box">
+                    <h3>Antigos Posts</h3>
+                    <div class="old-post">
+                        <img src="old-post-image.jpg" alt="Imagem do Post" class="old-post-image">
+                        <div class="old-post-info">
+                            <h4>Título do Post</h4>
+                            <div class="likes">
+                                <i class="fas fa-thumbs-up"></i> 45 curtidas
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repita a estrutura acima para outros posts -->
+                </div>
+            </div>
+    
+            <div class="comments-section-box">
+                <h3>Comentários</h3>
+                <div class="comment-count">123 comentários</div>
+                <div class="comment-form">
+                    <textarea placeholder="Digite seu comentário..."></textarea>
+                    <button>Enviar</button>
+                </div>
+                <div class="comments">
+                    <div class="comment">
+                        <img src="commenter-image.jpg" alt="Comentador" width="50">
+                        <div class="comment-info">
+                            <span>Nome do Comentador</span>
+                            <p>Comentário...</p>
+                        </div>
+                    </div>
+                    <!-- Repita a estrutura acima para outros comentários -->
+                </div>
             </div>
         </div>
-    </div>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    </body>
 
     <%- include('../partials/footer'); %>
 

@@ -124,7 +124,7 @@
 
         } else if(abaSelecionada == "time") {
 
-            abaTime.style.display = 'block';
+            abaTime.style.display = 'flex';
             abaPostagens.style.display = 'none';
             abaCurtidos.style.display = 'none';
 

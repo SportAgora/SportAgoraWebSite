@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <%- include('../partials/navbar'); %>
+     <%- include('../partials/navbar'); %> 
     </header>
     <main class="main_login">
         <section class="container5">
@@ -36,6 +36,8 @@
             </form>
         
             <form id="signup">
+                <input type="text" placeholder="Nome" required />
+                <i class="fas fa-envelope iName"></i>
                 <input type="email" placeholder="Email" required />
                 <i class="fas fa-envelope iEmail"></i>
                 <input type="password" placeholder="Senha" required />
@@ -59,6 +61,6 @@
             </section>
         </section>  
     </main>
-<%- include('../partials/footer'); %>
+    <%- include('../partials/footer'); %>
 </body>
 </html>

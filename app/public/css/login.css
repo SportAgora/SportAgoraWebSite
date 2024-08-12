@@ -3,14 +3,14 @@
 /* Loguin */
 
 .main_login {
+    display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 .container5 {
-    background-color: whitesmoke;
-    padding: 6px;
+    background-color: var(--branco);
+    height: 780px;
     width: 880px;
-    height: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +18,7 @@
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 0 20px 0 darkgrey;
-    margin-top: 7.5%;
+    margin-top: 100px;
     font-size: 18px;
     margin-bottom: 60px;
 }
@@ -56,7 +56,7 @@ form {
     transition: .3s;
 }
 
-input[type="text"], input[type="password"] {
+input[type="email"], input[type="password"], input[type="text"] {
     border: none;
     margin-top: 40px;
     border-radius: 60px;
@@ -72,26 +72,26 @@ input[type="text"], input[type="password"] {
     background: var(--verde_especial);
     color: white;
     border-radius: 30px;
-    width: 100%;
+    width: 150%;
     border: none;
     outline: none;
     padding: 8px 0 8px 4px;
     font-size: 15px;
     margin-top: 40px;
-    margin-left: 20px;
+    margin-left: 60%;
     cursor: pointer;
 }
 #enviar_registrar {
     background: var(--verde_especial);
     color: white;
     border-radius: 30px;
-    width: 100%;
+    width: 150%;
     border: none;
     outline: none;
     padding: 8px 0 8px 4px;
     font-size: 15px;
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 60%;
     cursor: pointer;
 }
 
@@ -101,12 +101,18 @@ input[type="text"], input[type="password"] {
     font-size: 13px;
 }
 
+#btnSignin {
+    color: var(--branco);
+}
+
 #signin {
     left: 25px;
+    width: 35%;
 }
 
 #signup {
     left: 950px;
+    width: 35%;
 }
 
 i {
@@ -132,6 +138,7 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 460px;
 }
 .outras button {
     background-color: var(--branco);
@@ -149,4 +156,50 @@ i {
 }
 .microsofiti img {
     height: 45px;
+}
+
+@media (max-width: 925px) {
+    .main_login {
+        width: 100%;
+        margin: auto;
+    }
+    .container5{
+        width: 100%;
+        margin: 2em auto;
+
+    }
+    #signin {
+        left: 15px;
+        width: 34%;
+    }
+    
+    #signup {
+        left: 950px;
+        width: 34%;
+    }
+    #enviar_login {
+        width: 150%;
+        margin-left: 60%;
+
+    }
+}
+
+@media (max-width: 600px) {
+    #signin {
+        left: 15px;
+        width: 30%;
+    }
+    
+    #signup {
+        left: 950px;
+        width: 30%;
+    }
+    #enviar_login {
+        width: 200%;
+        margin-left: 60%;
+    }
+    #enviar_registrar{
+        width: 200%;
+        margin-left: 60%;
+    }
 }

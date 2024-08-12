@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <%- include('../partials/navbar'); %>
+     <%- include('../partials/navbar'); %> 
     </header>
     <main class="main_login">
         <section class="container5">
@@ -24,7 +24,7 @@
             </article>
         
             <form id="signin">
-                <input type="text" placeholder="Email" required />
+                <input type="email" placeholder="Email" required />
                 <i class="fas fa-envelope iEmail"></i>
                 <input type="password" id="senhaa" placeholder="Senha" required />
                 <i class="fas fa-lock iPassword"></i>
@@ -36,7 +36,9 @@
             </form>
         
             <form id="signup">
-                <input type="text" placeholder="Email" required />
+                <input type="text" placeholder="Nome" required />
+                <i class="fas fa-envelope iName"></i>
+                <input type="email" placeholder="Email" required />
                 <i class="fas fa-envelope iEmail"></i>
                 <input type="password" placeholder="Senha" required />
                 <i class="fas fa-lock iPassword"></i>
@@ -48,17 +50,17 @@
                 </div>
                 <a href="/perfilex"><button id="enviar_registrar">CONECTAR</button></a>
             </form>
-        </section>
-        <section class="outras">
-            <h1>Outras opções de conexão de conta</h1>
-            <button type="submit" class="google" onclick="google()">
-                <img src='imagens/normal_u17.png' alt="Google">
-            </button>
-            <button type="submit" class="microsofiti" onclick="microsofiti()">
-                <img src='imagens/normal_u20.png' alt="Google">
-            </button>
-        </section>
+            <section class="outras">
+                <h1>Outras opções de conexão de conta</h1>
+                <button type="submit" class="google" onclick="google()">
+                    <img src='imagens/normal_u17.png' alt="Google">
+                </button>
+                <button type="submit" class="microsofiti" onclick="microsofiti()">
+                    <img src='imagens/normal_u20.png' alt="Google">
+                </button>
+            </section>
+        </section>  
     </main>
-<%- include('../partials/footer'); %>
+    <%- include('../partials/footer'); %>
 </body>
 </html>

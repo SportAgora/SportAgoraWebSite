@@ -195,7 +195,7 @@ body {
 /*FOOTER*/
 
 footer {
-    background-color: var(--verde_especial);
+    background-color:var(--verde_especial);
     color: #fff;
     padding: 40px 0 20px;
 }
@@ -204,6 +204,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap; /* Permite que os itens se reorganizem em telas menores */
     margin-bottom: 20px;
 }
 
@@ -211,10 +212,13 @@ footer {
     display: flex;
     justify-content: space-around;
     flex: 1;
+    flex-wrap: wrap; /* Permite que as seções se reorganizem em telas menores */
 }
 
 .footer-bloco {
     margin: 0 15px;
+    flex: 1 1 200px; /* Flexível para ajustar-se em diferentes larguras */
+    min-width: 200px; /* Largura mínima para evitar que quebre em telas muito pequenas */
 }
 
 .footer-bloco h4 {
@@ -244,7 +248,8 @@ footer {
 
 .footer-conecte {
     text-align: center;
-    margin-left: 40px;
+    margin: 20px 0 0;
+    flex: 1 1 200px; /* Flexível para ajustar-se em diferentes larguras */
 }
 
 .footer-conecte h4 {
@@ -278,3 +283,20 @@ footer {
     margin-top: 20px;
 }
 
+@media (max-width: 768px) {
+    .footer-conteudo {
+        flex-direction: column; /* Reorganiza os blocos verticalmente em telas menores */
+        align-items: center;
+    }
+    .footer-secao {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-bloco {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .footer-conecte {
+        margin-top: 20px;
+    }
+}

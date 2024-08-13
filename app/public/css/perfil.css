@@ -1,6 +1,5 @@
 /* Perfil (Editavel e tals) */
 
-
 .ftdePerfil {
     height: 144px;
     width: 144px;
@@ -67,7 +66,6 @@
     height: 67px;
     width: 100px;
     cursor: pointer;
-
     border: none;
 }
 
@@ -101,8 +99,7 @@
 }
 
 .editPerfil {
-    height: 600px;
-    width: 1200px;
+    width: 90%;
     background-color: gray;
     display: none;
     position: absolute;
@@ -138,22 +135,41 @@
     flex-direction: row;
     width: 100%;
 }
+.ftdoeditperfil{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-bottom: 20px;
+}
 .editinfo aside{
     margin-left: 50px;
     margin-right: 50px;
+}
+.inputisdoedit{
+    display: flex;
+
+}
+.inputisdoedit aside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+#subject {
+    width: 335px;
+    height: 70px;
+    font-size: 18px;
 }
 
 .socialedit {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: row;
     width: 100%;
     margin-bottom: 15px;
-}
-.socialedit aside {
-    margin-left: 80px;
-    margin-right: 80px;
+    align-items: center;
 }
 
 .fundo {
@@ -221,8 +237,8 @@
     align-items: center;
 }
 .adicionarPost img {
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
 }
 #adpost {
     font-size: 17px;
@@ -236,11 +252,13 @@
 }
 .timePerfil{
     display: none;
-
+    justify-content: center;
+    align-items: center;
 }
 
 #botaoPostagens {
     color: var(--preto);
+    text-decoration:underline;
 }
 #botaoCurtidos {
     color: var(--cinza);
@@ -254,7 +272,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: 50px;
+    width: 100%;
 }
 .timeMBR aside {
     margin: 45px;
@@ -279,16 +297,18 @@ th{
 }
 
 .imagensJogadores {
-    width: 1000px;
+    width: 100%;
     display: flex;
-    align-items: stretch;
+    align-items: center;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .imagensJogadores aside{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 10px;
 }
 
 .jogadores {
@@ -298,6 +318,10 @@ th{
     flex-direction: column;
     margin-top: 15px;
     margin-left: 50px;
+}
+.jogadores h1{
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .treinadores {
@@ -319,11 +343,160 @@ th{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin: 10px;
 }
 .divisao{
-    height: 600px;
+    height: 750px;
     width: 2px;
     background-color: var(--preto);
     border: none;
     margin-right: 10px;
+}
+
+@media(max-width: 925px){
+    .planodefundo{
+        height: 359x;
+        width: 100%;
+    }
+    .opicoes {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .timePerfil{
+        flex-direction: column;
+        align-items: center;
+    }
+    .divisao {
+        display: none;
+    }
+    .jogadores {
+        margin-left: 20px;
+    }
+    .editPerfil {
+        margin-top: 50px;
+    }
+    .editinfo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .socialedit {
+        margin-top: 40px;
+    }
+    .linquis button {
+        height: 67px;
+        width: 70px;
+        cursor: pointer;
+        border: none;
+    }
+    .twitter img {
+        height: 32px;
+        width: 32px;
+    }
+    .instagram {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .instagram img {
+        height: 36px;
+        width: 36px;
+    }
+    .youtube img {
+        height: 36px;
+        width: 59px;
+    }
+    #subject {
+        width:280px;
+        height: 60px;
+    }
+    .planodefundoedit{
+        width: 500px;
+    }
+}
+
+@media(max-width: 600px){
+    .perfilo {
+        flex-direction: column;
+        align-items: center;
+        width: 96%;
+        top: 50px;
+        margin-right: 50px;
+    }
+    .planodefundo{
+        height: 300px;
+    }
+    .editPerf {
+        top: 98%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+    }
+    .biografia {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nomes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .biografia .linquis {
+        display: flex;
+        align-items: center;
+    }   
+    .opicoes {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .botoes{
+        margin-top: 15px;
+    }
+    .ftMBR {
+        flex-direction: column;
+        width: 100%;
+    }
+    .jogadores {
+        margin-left: 10px;
+    }
+    .inputisdoedit {
+        flex-direction: column;
+    }
+    .editPerfil {
+        margin-top: 150px;
+    }
+    .editinfo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .editinfo aside {
+        margin: 0;
+    }
+    .socialedit{
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    .fundo{
+        flex-direction: column;
+        align-items: baseline;
+        align-items: center;
+    }
+    .planodefundoedit{
+        width: 300px;
+        height: 150px;
+    }
+    .salvar{
+        right: 30px;
+    }
+    .fechar{
+        display: none;
+    }
+    .bibi{
+        margin-top: 20px;
+    }
 }

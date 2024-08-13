@@ -113,24 +113,6 @@ input[type="email"], input[type="password"], input[type="text"] {
     width: 35%;
 }
 
-i {
-    position: absolute;
-    left: 0;
-    padding: 10px 10px;
-}
-
-.iEmail {
-    top: 40px;
-}
-
-.iPassword {
-    top: 114px;
-}
-
-.iPassword2 {
-    top: 190px;
-}
-
 .outras {
     display: flex;
     flex-direction: column;

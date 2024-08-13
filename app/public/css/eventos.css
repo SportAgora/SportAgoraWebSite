@@ -14,10 +14,10 @@ select, input[type="date"] {
     padding: 10px;
     margin-top: 5px;
     display: block;
-    width: 100%;
     max-width: 300px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin: 10px;
     background-color: #f9f9f9;
     transition: border-color 0.3s ease-in-out;
 }
@@ -52,6 +52,7 @@ header {
 
 .left-filtros{
     margin-left: 30px;
+    width: 30%;
 }
 
 select:focus, input[type="date"]:focus {
@@ -61,7 +62,7 @@ select:focus, input[type="date"]:focus {
 }
 
 label {
-    margin-top: 10px;
+    margin-top: 20px;
     font-weight: bold;
     color: #333;
 }
@@ -109,11 +110,11 @@ label {
 }
 
 select {
-    appearance: none;
     background-image: url('date:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 12px;
+    margin: 10px;
 }
 
 select:hover, input[type="date"]:hover {
@@ -193,12 +194,18 @@ select:hover, input[type="date"]:hover {
     gap: 10px;
     margin: 15px 0;
     margin-right: 10px;
+    transition: transform 0.3s;
 }
 
 .social-icones img {
     width: 30px;
     border-radius: 50%;
     margin-right: 10px;
+    transition: transform 0.3s;
+}
+
+.social-icones img:hover {
+    transform: scale(1.1);
 }
 
 /* seçoes */

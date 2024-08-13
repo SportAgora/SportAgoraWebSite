@@ -14,17 +14,17 @@
 <body>
     <header>
         <%- include('../partials/navbar'); %> 
-    </header>
+    </header> 
     <main class="perfil1">
         <section class="bioPadrão">
             <article class="planoFundo">
                 <img src="imagens/planodefundo.jpeg" alt="planodefundo" class="planodefundo">
                 <article class="perfilo">
                     <img src="imagens/pessoa2.png" alt="ftdePerfil" class="ftdePerfil">
-                    <div class="nomes">
+                    <aside class="nomes">
                         <h2>oSxt_</h2>
                         <p>Kaique Sexy Fialho</p>
-                    </div>
+                    </aside>
                     <p>194 <b>seguidores</b> 230 <b>seguindo</b></p>
                 </article>
                 <button class="editPerf" onclick="editPerfil()">Editar perfil</button>
@@ -37,7 +37,7 @@
                 </aside>
                 <aside class="linquis">
                     <h2>Links</h2>
-                    <div class="social">
+                    <aside class="social">
                         <button class="twitter" onclick="">
                             <img src='imagens/twitterlogo.png' alt="Twitter">
                         </button>
@@ -47,24 +47,28 @@
                         <button class="youtube" onclick="">
                             <img src='imagens/youtube.png' alt="Youtube">
                         </button>
-                    </div>
+                    </aside>
                 </aside>
             </article>
         </section>
         <hr size="2" width="99.8%" align="center" noshade>
         <section class="editPerfil">
+            <button class="salvar" onclick="salvar()">Salvar</button>
+            <button class="fechar" onclick="salvar()">X</button>
             <article class="editinfo">
-                <aside>
+                <aside class="ftdoeditperfil">
                     <img src="imagens/pessoa2.png" alt="ftdePerfil" class="perfiledit">
                     <img src="imagens/normal_u112.png" alt="upload" class="upload">
                 </aside>
-                <aside>
-                    <h2>Nome de usuário</h2>
-                    <input type="text" name="" id="" placeholder="oSxt_">
-                </aside>
-                <aside>
-                    <h2>Nome</h2>
-                    <input type="text" name="" id="" placeholder="Kaique Sexy Fialho">
+                <aside class="inputisdoedit">
+                    <aside>
+                        <h2>Nome de usuário</h2>
+                        <input type="text" name="" id="" placeholder="oSxt_">
+                    </aside>
+                    <aside>
+                        <h2>Nome</h2>
+                        <input type="text" name="" id="" placeholder="Kaique Sexy Fialho">
+                    </aside>
                 </aside>
             </article>
             <article class="socialedit">
@@ -82,9 +86,9 @@
                         </button>
                     </div>
                 </aside>
-                <aside>
+                <aside class="bibi">
                     <h2>Biografia (156/200)</h2>
-                    <textarea id="subject" name="subject" placeholder="Pellentesque sit amet elit eu nisl mattis suscipit. Donec placerat urna in massa suscipit, eu eleifend nisl lobortis. Donec tempus ante vel laoreet cursus." style="height:70px; width:600px;font-size:18px;"></textarea>
+                    <textarea id="subject" name="subject" placeholder="Pellentesque sit amet elit eu nisl mattis suscipit. Donec placerat urna in massa suscipit, eu eleifend nisl lobortis. Donec tempus ante vel laoreet cursus."></textarea>
                 </aside>
             </article>
             <article class="fundo">
@@ -93,7 +97,6 @@
                     <img src="imagens/normal_u112.png" alt="upload" class="upload">
                 </aside>
             </article>
-            <button class="salvar" onclick="salvar()">Salvar</button>
         </section>
         <section class="opicoes">
             <article class="botoes">
@@ -101,12 +104,13 @@
                 <button id="botaoCurtidos" onclick="mudarAbaPerfil('curtidos')">Curtidos</button>
                 <button id="botaoTime" onclick="mudarAbaPerfil('time')">Meu Time</button>
             </article>
-            <article class="adicionarPost" onclick="">
-                <input type="" name="" id="adpost" placeholder="O que deseja escrever hoje?" onsubmit="">
+            <article class="adicionarPost" onclick="adicionar()">
+                <input type="text" name="" id="adpost" placeholder="O que deseja escrever hoje?" onsubmit="adicionar()">
                 <img src="imagens/adicionarimagem.png" alt="imagem" class="adimagem">
             </article>
         </section>
         <section class="postagensPerfil">
+            <%- include('../partials/post'); %>
             <%- include('../partials/post'); %>
         </section>
         <section class="curtidosPerfil">
@@ -154,6 +158,7 @@
                     </tbody>
                 </table>
             </article>
+            <article class="divisao"></article>
             <article class="jogadores">
                 <h1>(11/11) Jogadores</h1>
                 <aside class="imagensJogadores">
@@ -218,6 +223,6 @@
             </article>
         </section>
     </main>
-<%- include('../partials/footer'); %>
+<%- include('../partials/footer'); %> 
 </body>
 </html>

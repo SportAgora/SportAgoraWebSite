@@ -115,6 +115,8 @@ body {
 }
 
 
+
+
   /*SUBNAV*/
 
   .subnav-container {
@@ -136,28 +138,45 @@ body {
     text-align: center;
     display: flex;
     background-color: rgba(255, 255, 255, 0.6);
-    top: 98px;
+    top: 99px;
     flex-wrap: wrap;
     margin-right: 5%;
 }
 
-.subscribe-button {
-    background-color: rgba(255, 255, 255, 0.1);
+.subscribe-button  {
+    background-color: rgba(255, 255, 255, 0);
     color: black;
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 17px;
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s ease, color 0.3s ease;
     text-align: center;
     display: inline-block;
+    text-decoration: none;
 }
 
 .subscribe-button:hover {
-    background-color: black;
-    color: white;
+    color: #2D5731
 }
+
+.subscribe-button a:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+}
+
+.subscribe-button a:hover::after {
+    width: 100%;
+}
+
 
 /* Media */
 

@@ -93,6 +93,9 @@
             window.scrollTo(0,0);
             document.getElementsByTagName('body')[0].style.overflow = 'visible';
     }
+    function adicionar(){
+        window.location = "/planos"
+    }
     function mudarAbaPerfil(abaSelecionada){
         var abaPostagens = document.querySelector('.postagensPerfil');
         var abaCurtidos = document.querySelector('.curtidosPerfil');
@@ -112,6 +115,10 @@
             selecCurtidos.style.color = 'var(--cinza)';
             selecTime.style.color = 'var(--cinza)';
 
+            selecPostagem.style.textDecoration = "underline";
+            selecCurtidos.style.textDecoration = "none";
+            selecTime.style.textDecoration = "none";
+
         } else if(abaSelecionada == "curtidos") {
 
             abaCurtidos.style.display = 'block';
@@ -122,6 +129,10 @@
             selecCurtidos.style.color = 'var(--preto)';
             selecTime.style.color = 'var(--cinza)';
 
+            selecPostagem.style.textDecoration = "none";
+            selecCurtidos.style.textDecoration = "underline";
+            selecTime.style.textDecoration = "none";
+
         } else if(abaSelecionada == "time") {
 
             abaTime.style.display = 'flex';
@@ -131,5 +142,9 @@
             selecPostagem.style.color = 'var(--cinza)';
             selecCurtidos.style.color = 'var(--cinza)';
             selecTime.style.color = 'var(--preto)';
+
+            selecPostagem.style.textDecoration = "none";
+            selecCurtidos.style.textDecoration = "none";
+            selecTime.style.textDecoration = "underline";
         }
     }

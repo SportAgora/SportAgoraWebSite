@@ -156,6 +156,7 @@ body {
     display: inline-block;
     text-decoration: none;
     white-space: nowrap;
+    margin-right: 130px;
 }
 
 .subscribe-button:hover {
@@ -205,6 +206,10 @@ body {
         padding: 5px 8px;
         font-size: 14px;
     }
+
+    .subscribe-button  {
+        margin-left: 130px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -233,6 +238,11 @@ body {
     .subscribe-button {
         font-size: 14px;
         padding: 8px 15px;
+        margin-left: 130px;
+    }
+
+    .subscribe-button  {
+        margin-left: 130px;
     }
 }
 
@@ -325,6 +335,8 @@ footer {
     font-size: 14px;
     color: #ccc;
     margin-top: 20px;
+    margin-right: 150px;
+    white-space: nowrap;
 }
 
 @media (max-width: 768px) {
@@ -342,5 +354,9 @@ footer {
     }
     .footer-conecte {
         margin-top: 20px;
+    }
+
+    .copyright {
+    margin-left: 80px; 
     }
 }

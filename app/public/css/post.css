@@ -90,10 +90,9 @@ body {
 .postagens {
     font-weight: bold;
     margin-left: 60px;
-    margin-top: 50px;
+    display: flex;
     margin: 0;
     margin-right: 850px;
     font-size: x-large;
     z-index: 0;
 }
-

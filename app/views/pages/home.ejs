@@ -11,30 +11,32 @@
 </head>
 <body>
     <%- include('../partials/navbar'); %>
-    
+
     <main>
-        <article class="hero">
-            <a href="/infopost">
-            <img  src="/imagens/banner.jpg" alt="Banner">
-        </a>
-            <nav>
-                <section class="hero-pessoa">
-                <img src="/imagens/pessoa.png" alt="User">
-                <a href="perfilex">Danzx</a>
-            </section>
-                <h2>AS MELHORES JOGADAS DE VÔLEI QUE ACONTECERAM EM 2024</h2>
-                <section class="likes-hero">
-                <i class="material-symbols-outlined">Favorite</i>
-                <h4>152.78 mil</h4>
-                </section>
-            </nav>
-        </article>
+    
+    <div class="hero-container">
+        <img src="/imagens/banner.jpg" alt="Banner Image" class="hero-banner">
+        <div class="hero-content">
+          <div class="user-info">
+            <img src="/imagens/pessoa.png" alt="User Photo" class="user-photo">
+            <span class="user-name">Nome do Usuário</span>
+          </div>
+          <h1 class="hero-title">Título do Hero</h1>
+          <div class="like-info">
+            <i class="heart-icon"></i>
+            <span class="like-count">123</span>
+          </div>
+        </div>
+      </div>
 
         <section>
 
-            <section class="barrapesquisa">
-            <h1 class="postagens">Postagens</h1>
-        </section>
+            <section class="post-section">
+                <div class="post-header">
+                  <h2 class="post-title">Postagem</h2>
+                  <input type="text" class="search-bar" placeholder="Pesquisar...">
+                </div>
+              </section>
 
         <%- include('../partials/post'); %>
         <%- include('../partials/post'); %>
@@ -42,8 +44,6 @@
         <%- include('../partials/post'); %>
 
         </section>
-
-
 
     </main>
 

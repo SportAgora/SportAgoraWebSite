@@ -4,11 +4,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.tab {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
 
 .post {
     flex: 1 0 21%;
@@ -43,16 +38,16 @@ body {
     padding-bottom: 0px;
     margin-bottom: 5px;
     z-index: 0;
+    object-fit: cover;
 }
 
 .post-detalhes {
     display: flex;
     align-items: left;
     margin-bottom: 1px;
-    z-index: 0;
-
-    
+    z-index: 0; 
 }
+
 .post-detalhes h3{
     text-align: left;
 }
@@ -95,4 +90,5 @@ body {
     margin-right: 850px;
     font-size: x-large;
     z-index: 0;
+    margin-top: 30px;
 }

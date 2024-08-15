@@ -19,8 +19,6 @@ body {
     background-color: var(--brancobg);
 }
 
-
-
 /*NAV BAR*/
 
 .navbar {
@@ -258,7 +256,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap; /* Permite que os itens se reorganizem em telas menores */
+    flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
@@ -303,7 +301,7 @@ footer {
 .footer-conecte {
     text-align: center;
     margin: 20px 0 0;
-    flex: 1 1 200px; /* Flexível para ajustar-se em diferentes larguras */
+    flex: 1 1 200px;
 }
 
 .footer-conecte h4 {
@@ -341,7 +339,7 @@ footer {
 
 @media (max-width: 768px) {
     .footer-conteudo {
-        flex-direction: column; /* Reorganiza os blocos verticalmente em telas menores */
+        flex-direction: column;
         align-items: center;
     }
     .footer-secao {
@@ -357,6 +355,34 @@ footer {
     }
 
     .copyright {
-    margin-left: 80px; 
+    margin-left: 150px; 
+    }
+}
+
+
+
+/* responsividade */
+
+.tab {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .tab {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .tab {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .tab {
+        grid-template-columns: repeat(1, 1fr);
     }
 }

@@ -7,14 +7,21 @@
     height: auto;
     display: block;
   }
+
+  .hero-container img {
+    width: 100%;
+    padding: 0px;
+    margin:0px;
+}
   
   .hero-content {
     background-color: black;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    margin-top: -4px;
   }
   
   .user-info {
@@ -119,3 +126,42 @@
       width: 100%;
     }
   }
+
+
+  /* coração */
+
+  .heart {
+    color: white;
+    font-size: 24px;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.heart:hover {
+    transform: scale(1.1);
+}
+
+
+.likes {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.likes i {
+  color: white;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 16px; 
+}
+
+.likes span {
+  margin-left: 5px;
+}
+
+.user-info a {
+  text-decoration: none;
+  color: white;
+  margin: 8px;
+}

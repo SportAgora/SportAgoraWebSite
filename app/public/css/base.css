@@ -338,24 +338,28 @@ footer {
 }
 
 @media (max-width: 768px) {
+
     .footer-conteudo {
         flex-direction: column;
         align-items: center;
     }
+
     .footer-secao {
         flex-direction: column;
         align-items: center;
     }
+
     .footer-bloco {
         text-align: center;
         margin-bottom: -10px;
     }
+
     .footer-conecte {
         margin-top: 20px;
     }
 
     .copyright {
-    margin-left: 150px; 
+    margin-left: 20%; 
     }
 }
 

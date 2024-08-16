@@ -29,7 +29,7 @@
   margin-top: -5px;
 }
 
-.user-info {
+.user-info1 {
   display: flex;
   align-items: center;
 }
@@ -51,6 +51,7 @@
   font-size: 1.5em;
   text-align: center;
   flex: 1;
+  flex-wrap: nowrap;
 }
 
 .like-info {
@@ -65,7 +66,7 @@
   margin-bottom: 5px;
 }
 
-/* coração */
+/* coração */ 
 
 .heart-icon {
   color: white;
@@ -98,7 +99,7 @@ font-size: 16px;
 margin-left: 5px;
 }
 
-.user-info a {
+.user-info1 a {
 text-decoration: none;
 color: white;
 margin: 8px;
@@ -126,7 +127,7 @@ margin: 8px;
   margin-left: 5px;
 }
 
-.user-info a {
+.user-info1 a {
   text-decoration: none;
   color: white;
   margin: 8px;
@@ -162,7 +163,7 @@ margin: 8px;
 .search-bar:focus {
   width: 300px;
   outline: none;
-}
+} 
 
 /* Responsividade */
 
@@ -171,12 +172,39 @@ margin: 8px;
       text-align: center;
   }
 
+  .heart-icon{
+    margin-top: -5px;
+  }
+
+  .hero-banner {
+    max-height: 100%;
+    max-width: 100%;
+    background-size: 300px;
+  }
+
   .hero-title {
       font-size: 1.2em;
       margin: 10px 0;
+      flex-wrap: nowrap;
+  }
+  
+  .user-info1 {
+    flex-direction: column;
+    font-size: x-small;
   }
 
-  .user-info,
+  .user-info1 a {
+        margin-top: -5px;
+  }
+
+  .user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: -4px;
+    margin: 5px;
+    }
+
   .likes {
       justify-content: left;
   }
@@ -198,24 +226,31 @@ margin: 8px;
 
 @media (max-width: 480px) {
   .hero-content {
-      padding: 5px;
+      padding: 0.5px;
   }
 
   .hero-title {
-      font-size: 1em;
-  }
-
-  .user-info {
-    text-align: left;
+      font-size: 0.8em;
+      margin-left: 5px;
   }
 
   .likes {
     text-align: left;
-     
+    flex-direction: column;
+  }
+
+  .likes i {
+    font-size:x-small;
   }
 
   .post-title {
       font-size: 1.5em;
       text-align: center;
   }
+}
+
+
+
+.post-detalhes p {
+  text-align: left;
 }

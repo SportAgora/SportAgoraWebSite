@@ -17,6 +17,7 @@
     position: absolute;
     left: 10px;
     top: 200px;
+    width: 100%;
 }
 
 .planoFundo{
@@ -30,8 +31,8 @@
 
 .editPerf {
     position: absolute;
-    right: 15px;
-    top: 320px;
+    right: 50px;
+    top: 120px;
     background-color: var(--preto);
     color: var(--branco);
     border-radius: 15px;
@@ -43,6 +44,7 @@
 }
 
 .biografia {
+    margin-top: 15px;
     margin: 10px;
     display: flex;
     justify-content: space-between;
@@ -60,6 +62,7 @@
 .linquis {
     display: flex;
     flex-direction: column;
+    background-color: none;
 }
 
 .linquis button {
@@ -67,6 +70,7 @@
     width: 100px;
     cursor: pointer;
     border: none;
+    background-color: none;
 }
 
 .linquis h2 {
@@ -76,7 +80,7 @@
 .social {
     display: flex;
     flex-direction: row;
-}
+} 
 
 .twitter img {
     height: 52px;
@@ -352,7 +356,9 @@ th{
     border: none;
     margin-right: 10px;
 }
-
+.titulobiografia {
+    margin-left: 5px;
+}
 @media(max-width: 925px){
     .planodefundo{
         height: 359x;
@@ -420,33 +426,44 @@ th{
 @media(max-width: 600px){
     .perfilo {
         flex-direction: column;
-        align-items: center;
-        width: 96%;
+        justify-content: left;
+        align-items: flex-start;
+        width: 100%;
         top: 50px;
-        margin-right: 50px;
+        margin-left: 15px;
     }
     .planodefundo{
-        height: 300px;
+        height: 125px;
     }
     .editPerf {
-        top: 98%;
-        left: 50%;
+        top: 60%;
+        right: -5%;
         transform: translate(-50%, -50%);
         font-size: 16px;
     }
     .biografia {
+        margin-top: 150px;
         flex-direction: column;
         align-items: center;
     }
     .nomes {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        margin-bottom: 15px;
+    }
+    .nomes h3{
+        color: var(--cinza);
+    }
+    .perfilo p {
+        margin-left: 15px;  
     }
     .biografia .linquis {
         display: flex;
         align-items: center;
     }   
+    .biografia .titulobiografia {
+        margin-left: 40%;
+    }
     .opicoes {
         flex-direction: column-reverse;
         align-items: center;

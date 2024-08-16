@@ -1,135 +1,103 @@
 .hero-container {
-    position: relative;
-  }
-  
-  .hero-banner {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .hero-container img {
-    width: 100%;
-    padding: 0px;
-    margin:0px;
+  position: relative;
+  overflow: hidden;
 }
-  
-  .hero-content {
-    background-color: black;
-    padding: 10px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    margin-top: -4px;
-    gap: 10px;
-  }
-  
-  .user-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .user-photo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .user-name {
-    color: white;
-    font-size: 1.2em;
-  }
-  
-  .hero-title {
-    color: white;
-    font-size: 1.5em;
-    text-align: center;
-    flex: 1;
-  }
-  
-  .like-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .heart-icon {
-    width: 24px;
-    height: 24px;
-    background: url('heart-icon.svg') no-repeat center center;
-    background-size: contain;
-    margin-right: 5px;
-  }
-  
-  .like-count {
-    color: white;
-    font-size: 1.2em;
-  }
-  
-  @media (max-width: 768px) {
-    .hero-content {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .hero-title {
-      text-align: left;
-      margin: 10px 0;
-    }
-  
-    .like-info {
-      margin-top: 10px;
-    }
-  }
 
-  /* SEARCH BAR E POSTAGENS */
+.hero-banner {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
 
-  .post-section {
-    padding: 20px;
-  }
-  
-  .post-header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-  }
-  
-  .post-title {
-    font-size: 2em;
-    color: #333;
-    letter-spacing: 2px;
-  }
-  
-  .search-bar {
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 25px;
-    border: 2px solid #333;
-    width: 250px;
-    transition: width 0.3s ease-in-out;
-  }
-  
-  .search-bar:focus {
-    width: 300px;
-    outline: none;
-  }
+.hero-content {
+  background-color: black;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
 
+.user-info {
+  display: flex;
+  align-items: center;
+}
 
-  /* coração */
+.user-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
 
-  .heart-icon {
-    color: white;
-    font-size: 24px;
-    margin-right: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    margin-bottom: 5px;
+.user-name {
+  color: white;
+  font-size: 1.2em;
+}
+
+.hero-title {
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  flex: 1;
+}
+
+.like-info {
+  display: flex;
+  align-items: center;
+}
+
+.heart-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+/* coração */
+
+.heart-icon {
+  color: white;
+  font-size: 24px;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  margin-bottom: 5px;
 }
 
 .heart:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
+
+.likes {
+display: flex;
+align-items: center;
+font-size: 18px;
+}
+
+.likes i {
+color: white;
+margin-right: 5px;
+cursor: pointer;
+font-size: 16px; 
+}
+
+.likes span {
+margin-left: 5px;
+}
+
+.user-info a {
+text-decoration: none;
+color: white;
+margin: 8px;
+}
+
+.like-count {
+  color: white;
+  font-size: 1.2em;
+}
 
 .likes {
   display: flex;
@@ -154,54 +122,88 @@
   margin: 8px;
 }
 
-/* responsividade */
+/* SEARCH BAR E POSTAGENS */
+
+.post-section {
+  padding: 20px;
+}
+
+.post-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.post-title {
+  font-size: 2em;
+  color: #333;
+  letter-spacing: 2px;
+}
+
+.search-bar {
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 25px;
+  border: 2px solid #333;
+  width: 250px;
+  transition: width 0.3s ease-in-out;
+}
+
+.search-bar:focus {
+  width: 300px;
+  outline: none;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
   .hero-content {
-    grid-template-columns: 1fr;
-    text-align: left;
+      grid-template-columns: 1fr;
+      text-align: center;
   }
 
   .hero-title {
-    margin: 10px 0;
-    font-size: 1.2em;
+      font-size: 1.2em;
+      margin: 10px 0;
   }
 
-  .user-info {
-    justify-content: flex-start;
-  }
-
-  .like-info {
-    align-items: flex-start;
+  .user-info,
+  .likes {
+      justify-content: center;
   }
 
   .post-header {
-    grid-template-columns: 1fr;
-    gap: 15px;
+      grid-template-columns: 1fr;
+      gap: 15px;
   }
 
   .search-bar {
-    width: 100%;
+      width: 100%;
   }
 
   .search-bar:focus {
-    width: 100%;
+      width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .user-name {
-    font-size: 1em;
+  .hero-content {
+      padding: 5px;
   }
 
   .hero-title {
-    font-size: 1em;
+      font-size: 1em;
   }
 
-  .like-count {
-    font-size: 0.9em;
+  .user-info {
+      display: none; /* Esconde a foto do usuário e o nome */
+  }
+
+  .likes {
+      display: none; /* Esconde o coração e o número de curtidas */
   }
 
   .post-title {
-    font-size: 1.2em;
+      font-size: 1.5em;
+      text-align: center;
   }
 }

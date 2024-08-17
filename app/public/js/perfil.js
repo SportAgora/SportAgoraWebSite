@@ -1,52 +1,6 @@
-    document.addEventListener('DOMContentLoaded', function() {
-        // MAPA
-        const map = L.map('map').setView([-23.5055, -46.8798], 15); // Ajuste o valor do zoom para 15
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        const locations = [
-            { name: 'Ginásio Poliesportivo', position: [-23.501, -46.881] },
-            { name: 'Parque Municipal', position: [-23.506, -46.876] },
-            { name: 'Clube Esportivo', position: [-23.509, -46.873] },
-        ];
-
-        locations.forEach(location => {
-            L.marker(location.position).addTo(map)
-                .bindPopup(location.name)
-                .openPopup();
-        });
-    });
-
-    // LOGUIN
-    var formSignin = document.querySelector('#signin')
-    var formSignup = document.querySelector('#signup')
-    var btnColor = document.querySelector('.btnColor')
-    var btnSignin = document.querySelector('#btnSignin')
-    var btnSignup = document.querySelector('#btnSignup')
-
-
-    document.querySelector('#btnSignin')
-        .addEventListener('click', () => {
-        formSignin.style.left = "25px"
-        formSignup.style.left = "900px"
-        btnColor.style.left = "0px"
-        btnSignin.style.color = "var(--branco)"
-        btnSignup.style.color = "var(--preto)"
-    })
-
-    document.querySelector('#btnSignup')
-        .addEventListener('click', () => {
-        formSignin.style.left = "-900px"
-        formSignup.style.left = "25px"
-        btnColor.style.left = "110px"
-        btnSignup.style.color = "var(--branco)"
-        btnSignin.style.color = "var(--preto)"
-        
-    }) 
-
-    // Perfil Kique Sexy
+ 
+ 
+ // Perfil Kique Sexy
 
     function signinValidacao(){
         const firstnameValue = firstname.value()
@@ -149,30 +103,3 @@
             selecTime.style.textDecoration = "underline";
         }
     }
-
-     //CODIGO CARROSEL
-
-     const carrosselItems = document.querySelector('.carrossel-items');
-     const carrosselItem = document.querySelectorAll('.carrossel-item');
-     const totalItems = carrosselItem.length;
-     const controlLeft = document.querySelector('.carrossel-controle.left');
-     const controlRight = document.querySelector('.carrossel-controle.right');
-
-let index = 0;
-
-controlRight.addEventListener('click', () => {
-    index = (index + 1) % totalItems;
-    updateCarrossel();
-});
-
-controlLeft.addEventListener('click', () => {
-    index = (index - 1 + totalItems) % totalItems;
-    updateCarrossel();
-});
-
-functionupdateCarrossel()
-    carrosselItems.style.transform = `translateX(${-index * (carrosselItem[0].offsetWidth + 20)}px)`;
-
-
-
-

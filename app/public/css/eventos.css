@@ -37,6 +37,8 @@ header {
     margin-bottom: 20px;
 }
 
+/* FILTROS */
+
 .filtros1 {
     display: flex;
     justify-content: space-between;
@@ -66,6 +68,110 @@ label {
     font-weight: bold;
     color: #333;
 }
+
+/* CARROSEL */
+
+.carrossel-container {
+    width: 100%;
+    text-align: center;
+    padding: 20px0;
+    background-color: #f5f5f5;
+}
+
+.filtro-titulo {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.carrossel {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.carrossel-controle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #007bff;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.carrossel-controle:hover {
+    transform: scale(1.2);
+}
+
+.carrossel-items {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carrossel-item {
+    min-width: 120px;
+    margin: 010px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.carrossel-item:hover {
+    transform: scale(1.1);
+}
+
+.carrossel-imagem {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.carrossel-controle.left {
+    position: absolute;
+    left: 10px;
+}
+
+.carrossel-controle.right {
+    position: absolute;
+    right: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .carrossel-item {
+        min-width: 100px;
+    }
+
+    .carrossel-imagem {
+        width: 60px;
+        height: 60px;
+    }
+
+    .filtro-titulo {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carrossel-item {
+        min-width: 80px;
+    }
+
+    .carrossel-imagem {
+        width: 50px;
+        height: 50px;
+    }
+
+    .filtro-titulo {
+        font-size: 18px;
+    }
+}
+
+
+
+/* EVENTOS */
 
 .evento-grid {
     display: grid;

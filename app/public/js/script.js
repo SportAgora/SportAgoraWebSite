@@ -1,5 +1,5 @@
     document.addEventListener('DOMContentLoaded', function() {
-        // Initialize and add the map with a higher zoom level
+        // MAPA
         const map = L.map('map').setView([-23.5055, -46.8798], 15); // Ajuste o valor do zoom para 15
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -81,6 +81,7 @@
     //         document.getElementsByClassName(".postagensPerfil").style.display = "none";
     //     }
     // }
+
     function editPerfil() {
         var editPerfil = document.querySelector('.editPerfil');
             editPerfil.style.display = 'flex';
@@ -148,3 +149,30 @@
             selecTime.style.textDecoration = "underline";
         }
     }
+
+     //CODIGO CARROSEL
+
+     const carrosselItems = document.querySelector('.carrossel-items');
+     const carrosselItem = document.querySelectorAll('.carrossel-item');
+     const totalItems = carrosselItem.length;
+     const controlLeft = document.querySelector('.carrossel-controle.left');
+     const controlRight = document.querySelector('.carrossel-controle.right');
+
+let index = 0;
+
+controlRight.addEventListener('click', () => {
+    index = (index + 1) % totalItems;
+    updateCarrossel();
+});
+
+controlLeft.addEventListener('click', () => {
+    index = (index - 1 + totalItems) % totalItems;
+    updateCarrossel();
+});
+
+functionupdateCarrossel()
+    carrosselItems.style.transform = `translateX(${-index * (carrosselItem[0].offsetWidth + 20)}px)`;
+
+
+
+

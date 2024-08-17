@@ -3,23 +3,31 @@
   overflow: hidden;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(45deg, #1a1a1a, #333);
 }
+
 
 .hero-banner {
   width: 100%;
   height: auto;
-  display: absolute;
+  display: block;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.hero-banner:hover {
+  transform: scale(1.02);
 }
 
 .hero-content {
-  background-color: black;
-  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 15px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   margin-top: -5px;
+  border-radius: 0 0 15px 15px;
 }
 
 .user-info1 {
@@ -33,37 +41,48 @@
   align-items: center; /* Centraliza o conteúdo horizontalmente */
 }
 
-.post-time {
-  color: #aaa;
-  font-size: 0.8em;
-  margin-left: 5px;
-  margin-top: 5px;
+.user-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+  transition: transform 0.3s ease;
 }
 
-.user-photo {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
+.user-photo:hover {
+  transform: scale(1.1);
 }
 
 .user-name {
   color: white;
-  font-size: 1.2em;
-  margin-right: 10px;
+  font-size: 1.5em;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .user-name:hover {
   color: #007bff;
-  transition: 0.3s;
+  text-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  transition: 0.3;
+}
+
+.post-time {
+  color: #aaa;
+  font-size: 1em;
+  margin-top: 5px;
+  font-style: italic;
 }
 
 .hero-title {
   color: white;
-  font-size: 1.5em;
+  font-size: 1.8em;
   text-align: center;
   flex: 1;
   flex-wrap: nowrap;
+  transition: font-size 0.5s ease
+}
+
+.hero-title:hover {
+  font-size: 1.85em;
 }
 
 .like-info {
@@ -82,22 +101,33 @@
 
 .heart-icon {
   color: white;
-  font-size: 24px;
-  margin-right: 8px;
+  font-size: 1.5em;
+  margin-right: 10px;
   cursor: pointer;
   transition: transform 0.2s ease;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
-.heart:hover {
-  transform: scale(1.1);
+.heart-icon:hover {
+  color: #e74c3c;
+  transform: scale(1.2);
 }
 
 
 .likes {
-display: flex;
-align-items: center;
-font-size: 18px;
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  color: white;
+}
+
+.letras-like {
+  font-size: 1.2em;
+  transition: color 0.3s ease;
+}
+
+.letras-like:hover {
+  color: #007bff;
 }
 
 .likes i {
@@ -214,16 +244,19 @@ margin: 8px;
   }
 
   .post-time {
-    margin-top: 5px;
+    margin-top: 20px;
+    margin-left: -45px;
   }
 
   .user-info1 a {
         margin-top: -5px;
+        font-size: x-small;
   }
 
   .user-photo {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
     border-radius: 50%;
     }
 
@@ -240,10 +273,6 @@ margin: 8px;
   .post-header {
       grid-template-columns: 1fr;
       gap: 15px;
-  }
-
-  .search-bar {
-    margin-left: 30%;
   }
 
   .search-bar:focus {
@@ -275,9 +304,9 @@ margin: 8px;
   }
 
   .post-time {
-    font-size: xx-small;
+    font-size: 8px;
     margin-top: 5px;
-    margin-left: -45px;
+    margin-left: -40px;
   }
 
   .hero-title {
@@ -294,7 +323,7 @@ margin: 8px;
   }
 
   .post-title {
-      font-size: 1.5em;
+      font-size: 1em;
       text-align: center;
   }
 }

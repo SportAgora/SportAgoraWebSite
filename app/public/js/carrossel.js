@@ -1,6 +1,4 @@
-    
-    
-    //CODIGO CARROSEL
+     //CODIGO CARROSEL
 
      document.addEventListener("DOMContentLoaded", function() {
         const carousel = document.querySelector('.carousel');

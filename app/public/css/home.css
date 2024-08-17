@@ -27,6 +27,19 @@
   align-items: center;
 }
 
+.user-details {
+  display: flex;
+  align-items: flex-start;
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+}
+
+.post-time {
+  color: #aaa;
+  font-size: 0.8em;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
 .user-photo {
   width: 50px;
   height: 50px;
@@ -37,6 +50,7 @@
 .user-name {
   color: white;
   font-size: 1.2em;
+  margin-right: 10px;
 }
 
 .user-name:hover {
@@ -163,6 +177,10 @@ margin: 8px;
   outline: none;
 } 
 
+.post-detalhes p {
+  text-align: left;
+}
+
 /* Responsividade */
 
 @media (max-width: 768px) {
@@ -181,14 +199,22 @@ margin: 8px;
   }
 
   .hero-title {
-      font-size: 1.2em;
-      margin: 10px 0;
-      flex-wrap: nowrap;
+    font-size: 0.8em;
+    margin: 10px 0;
   }
   
   .user-info1 {
-    flex-direction: column;
+    align-items: center;
     font-size: x-small;
+    padding: 0;
+  }
+
+  .user-details {
+    margin-top: 5px;
+  }
+
+  .post-time {
+    margin-top: 5px;
   }
 
   .user-info1 a {
@@ -199,12 +225,16 @@ margin: 8px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin-right: -4px;
-    margin: 5px;
+    }
+
+    .likes i {
+      font-size:x-small;
+      
     }
 
   .likes {
       justify-content: left;
+      flex-direction: column;
   }
 
   .post-header {
@@ -213,7 +243,7 @@ margin: 8px;
   }
 
   .search-bar {
-    margin-left: 10%;
+    margin-left: 30%;
   }
 
   .search-bar:focus {
@@ -227,9 +257,31 @@ margin: 8px;
       padding: 0.5px;
   }
 
+  .user-info1 {
+    flex-direction: column;
+    align-items: center;
+    font-size: x-small;
+    padding: 0;
+  }
+
+  .search-bar {
+    margin-left: 10%;
+  }
+
+  .user-details {
+    align-items: center;
+    font-size: x-small;
+    margin-top: 5px; /* Adiciona espaço no topo */
+  }
+
+  .post-time {
+    font-size: xx-small;
+    margin-top: 5px;
+    margin-left: -45px;
+  }
+
   .hero-title {
-      font-size: 0.8em;
-      margin-left: 5px;
+    font-size: 0.8em;
   }
 
   .likes {
@@ -238,17 +290,11 @@ margin: 8px;
   }
 
   .likes i {
-    font-size:x-small;
+    font-size:xx-small;
   }
 
   .post-title {
       font-size: 1.5em;
       text-align: center;
   }
-}
-
-
-
-.post-detalhes p {
-  text-align: left;
 }

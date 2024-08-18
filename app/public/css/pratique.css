@@ -6,6 +6,7 @@
     max-width: 1400px;
     margin: 1rem;
     margin-top: 50px;
+    gap: 0.3rem;
 }
 
 /* localização */
@@ -24,23 +25,53 @@ background-color: #f4f4f4;
 padding: 1rem;
 width: 400px;
 margin-bottom: 1rem;
-border-radius: 8px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.localizacaosecao:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
 .localizacaosecao img {
-max-width: 160px;
-margin-right: 1rem;
-border-radius: 8px;
-height: 160px;
+    width: 250px;
+    height: 180px;
+    border-radius: 8px;
+    margin-right: 1rem;
+    object-fit: cover;
 }
 
 .info {
 flex: 1;
 }
 
+.info h3 {
+    margin: 0 0 0.5rem;
+}
+
 .avaliacao {
-color: gold;
-font-size: 1.2rem;
+    color: gold;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+.info p {
+    margin: 0.5rem 0;
+    color: #555;
+    font-style: italic;
 }
 
 /* mapa */
@@ -51,8 +82,11 @@ margin: 0 1rem;
 display: flex;
 flex-direction: column;
 align-items: center;
-margin-top: 30px;
+margin-top: -10px;
 margin-left: 450px;
+position: relative;
+border-radius: 10px;
+padding: 3rem;
 }
 
 .map-container h2 {
@@ -60,24 +94,25 @@ margin: 0;
 padding: 1rem 0;
 width: 100%;
 text-align: center;
+z-index: 1;
+position: relative;
+color: #333;
 }
 
 .directions-btn {
-
     background-color: #4CAF50;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
-    cursor: pointer;
     border-radius: 4px;
-    margin-top: 0.5rem;
-    text-decoration: none;
-    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
     text-align: center;
 }
 
 .directions-btn:hover {
 background-color: #45a049;
+transform: scale(1.05);
 }
 
 #map {
@@ -99,12 +134,70 @@ margin-left: 50px;
 
 /* FIltros */
 
-.filtros input, .filtros select {
-width: 100%;
-padding: 0.5rem;
-border: 1px solid #ccc;
-border-radius: 4px;
-transition: border-color 0.3s;
+
+.localizacaosecao-filtros {
+    flex: 1;
+    margin: 0 1rem;
+    max-height: 80vh;
+    margin-top: 90px;
+    margin-left: 450px;
+    width: 1000px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .localizacaosecao-filtros h2 img {
+    margin-right: 0.5rem;
+    }
+    
+    .localizacaosecao-filtros h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    }
+
+    .localizacaosecao-filtros label {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        display: block;
+        color: #333;
+        transition: color 0.3s;
+    }
+
+
+.localizacaosecao-filtros input, 
+.localizacaosecao-filtros select {
+    width: 90%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f4f4f4;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.localizacaosecao-filtros input:focus, 
+.localizacaosecao-filtros select:focus {
+    border-color: #4CAF50;
+    background-color: #fff;
+    outline: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.localizacaosecao, 
+.map-container, 
+.localizacaosecao-filtros {
+    animation: fadeIn 1s ease-in-out;
 }
 
 .filtros {
@@ -112,60 +205,67 @@ margin-top: 50px;
 }
 
 .icon {
-width: 24px;
+width: 20px;
 vertical-align: middle;
 margin-right: 8px;
+flex-wrap: nowrap;
 }
 
 .filtros {
 margin-bottom: 1rem;
 }
 
-.filtros label {
-display: block;
-margin-bottom: 0.5rem;
-font-weight: bold;
-}
-
-.localizacaosecao-filtros {
-flex: 1;
-margin: 0 1rem;
-max-height: 80vh;
-margin-top: 90px;
-margin-left: 450px;
-width: 1000px;
-background-color: #f9f9f9;
-border-radius: 8px;
-border: 1px solid #ddd;
-padding: 2rem;
-}
-
-.localizacaosecao-filtros h2 img {
-margin-right: 0.5rem;
-}
-
-.localizacaosecao-filtros h2 {
-font-size: 1.5rem;
-margin-bottom: 1rem;
-display: flex;
-align-items: center;
-}
-
-.filtros input:focus, .filtros select:focus {
-border-color: #4CAF50;
-outline: none;
-}
-
-select, input[type="date"] {
-    padding: 10px;
-    margin-top: 5px;
-    display: block;
-    width: 100%;
-    max-width: 300px;
+.localizacaosecao-filtros input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none; /* Para navegadores WebKit */
+    -moz-appearance: none; /* Para Firefox */
+    background-color: #f4f4f4;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #f9f9f9;
-    transition: border-color 0.3s ease-in-out;
+    padding: 0.75rem;
+    width: 90%;
+    color: #333;
+    font-size: 1rem;
+    transition: border-color 0.3s, background-color 0.3s;
+    cursor: pointer;
+}
+
+
+.localizacaosecao-filtros input[type="date"]::-webkit-datetime-edit {
+    color: #999;
+}
+
+.localizacaosecao-filtros input[type="date"]:focus {
+    border-color: #4CAF50;
+    background-color: #fff;
+    outline: none;
+}
+
+
+.localizacaosecao-filtros input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+
+.localizacaosecao-filtros input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    color: #4CAF50;
+    cursor: pointer;
+}
+
+
+.localizacaosecao-filtros input[type="date"]::-webkit-calendar-picker-indicator {
+    background-image: url('/imagens/calendar-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    margin-right: 10px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.localizacaosecao-filtros input[type="date"]:hover::-webkit-calendar-picker-indicator {
+    opacity: 1;
 }
 
 select {

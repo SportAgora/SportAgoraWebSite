@@ -1,15 +1,3 @@
-
-
-
-
-
-@media (max-width: 768px) {
-    .planos-section {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
 /* INFORMAÇÔES DOS POSTS */
 
 .container {
@@ -20,6 +8,7 @@
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .main-content {
@@ -35,13 +24,29 @@
     background-color: #ffffff;
     padding: 20px;
     margin-bottom: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.creador-and-antigo-posts:hover {
+    transform: scale(1.05);
 }
 
 .post-header {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.post-header:hover {
+    transform: scale(1.03);
 }
 
 .post-image {
@@ -51,12 +56,29 @@
     overflow: hidden;
     margin-bottom: 10px;
     border-radius: 25px;
+    transition: transform 0.5s ease;
 }
 
 .post-image img {
     width: 100%;
     height: auto;
     object-fit: cover;
+}
+
+.post-image img:hover {
+    transform: scale(1);
+}
+
+.post-header .post-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+.post-header .post-title:hover {
+    color: #007bff;
 }
 
 .post-title-meta {
@@ -67,8 +89,15 @@
 
 .post-title-meta h2 {
     margin: 0;
-    font-size: 24px;
+    font-size: 28px;
     text-align: center;
+    font-weight: 700;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.post-title-meta h2:hover {
+    color: #007bff;
 }
 
 .post-meta {
@@ -82,27 +111,57 @@
 .post-time {
     font-size: 14px;
     color: #777;
+    transition: color 0.3s ease;
+}
+
+.post-time:hover {
+    color: #333;
 }
 
 .likes {
     display: flex;
     align-items: center;
-    font-size: 18px;
+    margin-top: 5px;
+    font-size: 16px;
+    color: #555;
 }
 
-.likes i {
-    color: #e74c3c;
-    margin-right: 5px;
+.likes:hover {
+    color:#007bff
+}
+
+.likes .heart {
+    color: #ff4d4d;
+    font-size: 24px;
+    margin-right: 8px;
     cursor: pointer;
+    transition: transform 0.2s ease, color 0.3s ease;
 }
 
-.likes span {
-    margin-left: 5px;
+.likes .heart:hover {
+    transform: scale(1.1);
+    color: #ff6666;
+}
+
+.like-count {
+    font-size: 18px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.like-count:hover {
+    color: #007bff;
 }
 
 .post-info {
     margin-top: 20px;
     font-size: 16px;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.post-info:hover {
+    color: #555;
 }
 
 .creador-info {
@@ -115,6 +174,11 @@
 .creador-info img {
     border-radius: 50%;
     margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.creador-info img:hover {
+    transform: scale(1.1);
 }
 
 .creador-details {
@@ -125,26 +189,45 @@
     display: block;
     font-size: 14px;
     color: #777;
+    transition: color 0.3s ease;
+}
+
+.creador-details span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.creador-details span:hover {
+    color: #007bff;
 }
 
 .follow-btn {
-    padding: 5px 15px;
+    padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 25px;
-    margin-right: 40%;
-    width: 25%;
     cursor: pointer;
+    width: 25%;
+    margin-right: 180px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .follow-btn:hover {
-    background-color: blue;
-    transition: 1s;
+    background-color: #0056b3;
+    transform: scale(1.1);
 }
 
 .antigo-posts-box h3 {
     margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.antigo-posts-box h3:hover {
+    color: #007bff;
 }
 
 .antigo-post {
@@ -153,15 +236,25 @@
     margin-bottom: 15px;
     padding: 10px;
     background-color: #f9f9f9;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.antigo-post:hover {
+    transform: scale(1.05);
 }
 
 .antigo-post-image {
-    width: 160px;
-    height: 110px;
-    margin-right: 15px;
-    border-radius: 25px;
+    width: 170px;
+    height: 120px;
+    margin-right: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.antigo-post-image:hover {
+    transform: scale(1.1);
 }
 
 .antigo-post-image img {
@@ -171,111 +264,148 @@
 }
 
 .antigo-post-info {
-    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .antigo-post-info h4 {
-    margin: 0;
-    font-size: 16px;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 30px;
+    transition: color 0.3s ease;
 }
 
-.comentarios-section-box h3 {
-    margin-bottom: 10px;
+.antigo-post-info h4:hover {
+    color: #007bff;
 }
 
 .comentarios-section-box {
-    margin-top: 50px;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.comentarios-section-box:hover {
+    transform: scale(1.03);
+}
+
+.comentarios-section-box h3 {
+    font-weight: 700;
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.comentarios-section-box h3:hover {
+    color: #007bff;
 }
 
 .comentario-count {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.comentario-count:hover {
+    color: #007bff;
 }
 
 .comentario-form {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
 }
 
 .comentario-form textarea {
-    height: 80px;
+    flex-grow: 1;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.comentario-form textarea:focus {
+    border-color: #007bff;
 }
 
 .comentario-form button {
-    align-self: flex-end;
-    padding: 5px 10px;
+    padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 3px;
+    border-radius: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.comentario-form button:hover{
-    background-color: blue;
-    transition: 1s;
+.comentario-form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
 }
 
 .comentarios {
-    display: flex;
-    flex-direction: column;
+    margin-top: 20px;
 }
 
 .comentario {
-    display: flex;
-    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 15px;
-    background-color: #f4f4f4;
     padding: 10px;
-    border-radius: 3px;
+    background-color: #fff;
+    border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.comentario:hover {
+    transform: scale(1.03);
 }
 
 .comentarioer-info {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
+    margin-right: 10px;
 }
 
 .comentarioer-image {
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     margin-right: 10px;
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.comentarioer-image:hover {
+    transform: scale(1.1);
 }
 
 .comentarioer-name {
     font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
 }
 
-.comentario-text {
-    margin-top: 5px;
+.comentarioer-name:hover {
+    color: #007bff;
 }
 
 .comentario-text p {
-    margin: 0;
+    margin: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+    transition: color 0.3s ease;
 }
 
-.heart {
-    color: red;
-    font-size: 24px;
-    margin-right: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.heart:hover {
-    transform: scale(1.1);
-}
-
-.like-count {
-    font-size: 18px;
+.comentario-text p:hover {
     color: #333;
 }

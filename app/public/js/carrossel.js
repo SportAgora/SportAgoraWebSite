@@ -11,15 +11,15 @@
         const totalItems = items.length;
     
         function updateCarousel() {
-            const offset = index * -20; // Move 20% do tamanho do carrossel para cada item
+            const offset = index * -20; 
             carousel.style.transform = `translateX(${offset}%)`;
         }
-    
+        
         rightArrow.addEventListener('click', () => {
             if (index < totalItems - itemsPerPage) {
                 index++;
             } else {
-                index = 0; // Volta para o primeiro conjunto de itens
+                index = 0; 
             }
             updateCarousel();
         });
@@ -28,7 +28,7 @@
             if (index > 0) {
                 index--;
             } else {
-                index = totalItems - itemsPerPage; // Volta para o último conjunto de itens
+                index = totalItems - itemsPerPage; 
             }
             updateCarousel();
         });

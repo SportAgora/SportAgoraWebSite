@@ -176,7 +176,7 @@ h1 {
     font-weight: bold;
     border-radius: 30px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 5px 10px greenyellow;
+    box-shadow: 0 5px 10px;
     letter-spacing: 0.05em;
 }
 

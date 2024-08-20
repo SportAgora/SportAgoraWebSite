@@ -120,12 +120,12 @@
 }
 
 .inscrever-button:hover, .contact-button:hover {
-    background-color: #0056b3;
+    background-color: #4CAF50;
     transition: 0.3s ease-in-out;
 }
 
 .contato-button:hover, .contact-button:hover {
-    background-color: #0056b3;
+    background-color: #4CAF50;
     transition: 0.3s ease-in-out;
 }
 

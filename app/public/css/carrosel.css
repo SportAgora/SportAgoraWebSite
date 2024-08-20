@@ -27,7 +27,7 @@
 }
 
 .carousel-item {
-    flex: 0 0 20%; /* Each item takes up 20% of the carousel width, showing 5 items */
+    flex: 0 0 20%; 
     max-width: 20%;
     text-align: center;
     cursor: pointer;
@@ -35,8 +35,8 @@
 
 .carousel-item a {
     display: block;
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit the color from parent */
+    text-decoration: none;
+    color: inherit; 
 }
 
 .carousel-item img {
@@ -62,7 +62,7 @@
 }
 
 .carousel-item:hover p {
-    color: #007bff;
+  color:  #03A60E;
 }
 
 .carousel-arrow {
@@ -73,29 +73,29 @@
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    padding: 15px; /* Increased padding for better visibility */
+    padding: 15px; 
     border-radius: 50%;
     border: 2px solid #fff;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 .carousel-arrow:hover {
-    background-color: #007bff;
+    background-color:  #03A60E; 
     transform: translateY(-50%) scale(1.1);
 }
 
 .left-arrow {
-    left: -1px; /* Adjusted spacing on the left */
+    left: -1px; 
 }
 
 .right-arrow {
-    right: -1px; /* Adjusted spacing on the right */
+    right: -1px; 
 }
 
 /* Responsiveness */
 @media (max-width: 768px) {
     .carousel-item {
-        flex: 0 0 40%; /* Adjusted flex for smaller screens */
+        flex: 0 0 40%; 
         max-width: 40%;
     }
 

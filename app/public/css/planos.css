@@ -3,15 +3,20 @@
 .container {
     text-align: center;
     width: 100%;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;  
 }
 
 .hero-content {
     margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .logo-and-text {
-    margin-right: 160px;
-    margin-top: 100px;
+    margin-right: 120px;
+    margin-top: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,14 +25,29 @@
 .logo {
     max-width: 100px;
     margin-right: 10px;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+h1 {
+    font-size: 2.2em;
+    color: black;
+    font-weight: bold;
+    margin: 0;
+    animation: slideInLeft 1s ease-out;
 }
 
 .preco {
     font-size: 1.5em;
     margin-top: 10px;
-    margin-right: 140px;
+    margin-right: 100px;
     text-align: center;
     font-weight: bold;
+    animation: bounceIn 1s ease-out;
 }
 
 
@@ -36,81 +56,172 @@
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    margin-right: 130px;
+    margin-right: 100px;
+}
+
+.plano-box .precos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .plano-box {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    border-radius: 20px;
+    border: 1px solid green;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    width: 300px;
+    width: 320px;
     height: 400px;
     text-align: center;
     margin: 10px;
     display: flex;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     flex-direction: column;
-    border-radius: 30px;
     justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plano-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid #397317;
+}
+
+.plano-box .preco-month {
+    font-size: 1.2em; 
+    font-weight: bold;
+    color: green; 
+    margin-top: 5px;
+    letter-spacing: 1px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.plano-box .preco-year {
+    font-size: 1.5em; 
+    font-weight: bold;
+    color: #397317;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .plano-box h2 {
-    font-size: 1.5em;
+    font-size: 1.7em;
     font-weight: bold;
     margin-bottom: 20px;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.plano-box h2:hover {
+    color: #333;
+    transform: scale(1.05);
 }
 
 .plano-box h4 {
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
-    color: #aaa;
+    color: #666;
     margin-bottom: 20px;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.plano-box h4:hover {
+    color: #333;
 }
 
 .plano-box ul {
     list-style-type: none;
-    padding: 0;
+    padding: 5px;
     margin: 0;
-    margin-bottom: 20px;
     font-size: 1em;
     flex-grow: 1;
     display: flex;
     font-weight: bold;
     flex-direction: column;
     justify-content: space-around;
+    animation: fadeInUp 1s ease-out;
+    line-height: 1.5; 
+    color: #333;
+    transition: color 0.3s ease; 
 }
 
 .plano-box ul li {
     margin-bottom: 10px;
 }
 
-.plano-box .preco-month, .plano-box .preco-year {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #007BFF;
-    margin-bottom: 10px;
+.plano-box ul li:hover {
+    color: black; 
+    transform: translateX(3px); 
+}
+
+.plano-box .preco-month:hover, 
+.plano-box .preco-year:hover {
+    color: #0DF205;
+    transform: scale(1.05);
 }
 
 .escolher-plano {
-    background-color: #007BFF;
+    background-color: green;
     color: white;
     border: none;
     padding: 15px 25px;
-    font-size: 1.2em;
+    font-size: 1.4em;
     cursor: pointer;
-    border-radius: 15px;
-    transition: background-color 0.3s ease;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 10px greenyellow;
+    letter-spacing: 0.05em;
 }
 
 .escolher-plano:hover {
-    background-color: #0056b3;
+    background-color:  #03A60E;
+    transform: scale(1.05);
+    transform: translateY(-5px); 
 }
 
 .recomendado {
-    border: 2px ;
-    transform: scale(0.8.0.8);
-    width: 440px;
+    width: 350px;
     height: 450px;
-    margin-bottom: -10px; 
+    margin-bottom: -10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recomendado:hover {
+    box-shadow: 0 5px 10px;
+}
+
+/* Animações */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes bounceIn {
+    from { transform: scale(0.5); }
+    to { transform: scale(1); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }

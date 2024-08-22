@@ -16,46 +16,38 @@
 <body>
     <%- include('../partials/navbar'); %>
 
-      <div class="hero-container">
+    <section class="hero-container">
         <a href="/infopost">
             <img src="/imagens/banner.jpg" alt="Banner" class="hero-banner">
         </a>
-         <div class="hero-content">
-        <div class="user-info1">
+        <article class="hero-content">
+            <aside class="user-info1">
                 <img src="/imagens/pessoa.png" alt="User Photo" class="user-photo">
-
-                <div class="user-details">
-                <a href="perfilex" class="user-name">Danzx</a>
-                <span class="post-time">3 horas atrás</span>
-            </div>
-
-        </div>
+                <aside class="user-details">
+                    <a href="perfilex" class="user-name">Danzx</a>
+                    <span class="post-time">3 horas atrás</span>
+                </aside>
+            </aside>
             <h1 class="hero-title">AS MELHORES JOGADAS DE VÔLEI QUE ACONTECERAM EM 2024</h1>
-            <div class="likes">
+            <aside class="likes">
                 <span class="heart-icon">&#10084;</span>
                 <i class="letras-like">152.78 mil curtidas</i>
-            </div>
-        </div>
-    </div>
-    
+            </aside>
+        </article>
+    </section>
 
     <section class="post-section">
-        <div class="post-header">
+        <article class="post-header">
             <h2 class="post-title">Postagem</h2>
             <input type="text" class="search-bar" placeholder="Pesquisar...">
-        </div>
-        
+        </article>
     </section>
     
-
         <%- include('../partials/post'); %>
         <%- include('../partials/post'); %>
         <%- include('../partials/post'); %>
         <%- include('../partials/post'); %>
-
 
     <%- include('../partials/footer'); %>
-
 </body>
-
 </html>

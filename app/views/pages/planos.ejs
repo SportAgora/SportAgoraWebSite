@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="imagens/SportAgora.png">
-        <link rel="stylesheet" href="/css/base.css">
-        <link rel="stylesheet" href="/css/planos.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <title>SPORT+</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/planos.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>SPORT+</title>
     </head>
-    
 <body>
     <%- include('../partials/navbar'); %>
-
-    <div class="container">
-        <div class="hero-content">
-            <div class="logo-and-text">
+    <main class="container">
+        <section class="hero-content">
+            <article class="logo-and-text">
                 <img src="imagens/SportAgora.png" alt="Sport+" class="logo">
                 <h1>Sport+</h1>
-            </div>
+            </article>
             <p class="preco">A partir de R$19,99/mês</p>
-        </div>
-        <div class="planos-section">
-            <div class="plano-box basic">
+        </section>
+        <section class="planos-section">
+            <article class="plano-box basic">
                 <h2>Sport Básico</h2>
                 <h4>Plano Grátis</h4>
                 <ul>
@@ -32,8 +30,8 @@
                     <li>- Com anúncios</li>
                 </ul>
                 <button class="escolher-plano">Gratuito</button>
-            </div>
-            <div class="plano-box recomendado">
+            </article>
+            <article class="plano-box recomendado">
                 <h2>Sport Premium</h2>
                 <h4>Plano Recomendado</h4>
                 <ul>
@@ -46,8 +44,8 @@
                 <p class="preco-month">R$19,99/mês</p>
                 <p class="preco-year">R$149,99/ano</p>
                 <button class="escolher-plano">Escolher plano</button>
-            </div>
-            <div class="plano-box intermediate">
+            </article>
+            <article class="plano-box intermediate">
                 <h2>Sport Plus</h2>
                 <h4>Plano Intermediário</h4>
                 <ul>
@@ -60,10 +58,9 @@
                 <p class="preco-month">R$9,99/mês</p>
                 <p class="preco-year">R$99,99/ano</p>
                 <button class="escolher-plano">Escolher plano</button>
-            </div>
-        </div>
-    </div>
-
+            </article>
+        </section>
+    </main>
     <%- include('../partials/footer'); %>
 </body>
 </html>

@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Eventos</title>
-        <link rel="stylesheet" href="/css/base.css">
-        <link rel="stylesheet" href="/css/eventos.css">
-        <link rel="stylesheet" href="/css/carrosel.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-        <script defer src="/js/carrossel.js"></script>
-        <link rel="icon" href="imagens/SportAgora.png">
-    </head>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/eventos.css">
+    <link rel="stylesheet" href="/css/carrosel.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script defer src="/js/carrossel.js"></script>
+    <link rel="icon" href="imagens/SportAgora.png">
+</head>
 <body class="Eventospage">
-
     <%- include('../partials/navbar'); %>
-    
 
-    <article class="container">
+    <section class="container">
         <header class="Eventos1">
             <h1 class="text">Eventos</h1>
         </header>
@@ -49,93 +46,83 @@
                 <input type="date" id="data" name="data">
             </article>
         </article>
-    </article>
-
+    </section>
     <!-- Carrosel -->
-
-    <article class="carousel-section">
+    <section class="carousel-section">
         <article class="carousel-title">FILTROS RÁPIDOS</article>
         <article class="carousel-container">
-            <article class="carousel">
-                <article class="carousel-item">
+            <aside class="carousel">
+                <aside class="carousel-item">
                     <a href="pagina1.html">
                     <img src="/imagens/corrida.png" alt="Corrida de Rua">
                     <p>Corrida de Rua</p>
                     </a>
-                </article>
-                <article class="carousel-item">
+                </aside>
+                <aside class="carousel-item">
                     <a href="pagina1.html">
                     <img src="/imagens/ciclismo.png" alt="Ciclismo">
                     <p>Ciclismo</p>
                     </a>
-                </article>
-                <article class="carousel-item">
+                </aside>
+                <aside class="carousel-item">
                     <a href="pagina1.html">
                     <img src="/imagens/bikemotanha.png" alt="Mountain Bike">
                     <p>Mountain Bike</p>
                     </a>
-                </article>
-                <article class="carousel-item">
+                </aside>
+                <aside class="carousel-item">
                     <a href="pagina1.html">
                     <img src="/imagens/triatlo.png" alt="Triathlon">
                     <p>Triathlon</p>
                     </a>
-                </article>
-                <article class="carousel-item">
+                </aside>
+                <aside class="carousel-item">
                     <a href="pagina1.html">
                     <img src="/imagens/natacao.png" alt="Natação">
                     <p>Natação</p>
                     </a>
-                </article>
-                <article class="carousel-item">
+                </aside>
+                <aside class="carousel-item">
                     <a href="pagina1.html">
                     <img src="/imagens/fut.png" alt="Triathlon Brasil">
                     <p>Futebol</p>
                     </a>
-                </article>
-                <article class="carousel-item">
+                </aside>
+                <aside class="carousel-item">
                     <a href="pagina1.html">
                     <img src="/imagens/volei.png" alt="Uphill">
                     <p>Volei</p>
                     </a>
-                </article>
-                <article class="carousel-item">
+                </aside>
+                <aside class="carousel-item">
                     <a href="pagina1.html">
                     <img src="/imagens/trilha.png" alt="Corrida de Aventura">
                     <p>Trilha</p>
                     </a>
-                </article>
-                <article class="carousel-item">
+                </aside>
+                <aside class="carousel-item">
                     <a href="pagina1.html">
                     <img src="/imagens/ping.png" alt="Uphill">
                     <p>Ping pong</p>
                     </a>
-                </article>
-                <article class="carousel-item">
+                </aside>
+                <aside class="carousel-item">
                     <a href="pagina1.html">
                     <img src="/imagens/skate.png" alt="Uphill">
                     <p>Skate</p>
                     </a>
-                </article>
-            </article>
-            
-            <article class="carousel-arrow left-arrow">&lt;</article>
-            <article class="carousel-arrow right-arrow">&gt;</article>
+                </aside>
+            </aside>
+            <aside class="carousel-arrow left-arrow">&lt;</aside>
+            <aside class="carousel-arrow right-arrow">&gt;</aside>
         </article>
-    </article>
-
+    </section>
     <script defer src="/js/carrossel.js"></script>
-    
-
-             
     <%- include('../partials/evento'); %>
     <%- include('../partials/evento'); %>
     <%- include('../partials/evento'); %>
     <%- include('../partials/evento'); %>
-    
-    
 
     <%- include('../partials/footer'); %>
-
 </body>
 </html>

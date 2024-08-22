@@ -29,6 +29,8 @@
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 50px;
+    object-fit: cover;
+    width: 98%; aspect-ratio: 16/9
 }
 
 .banner:hover {
@@ -40,7 +42,7 @@
     background-image: url('/imagens/bannerevento2.png');
     background-size: cover;
     background-position: center;
-    height: 600px;
+    height: auto;
     position: relative;
     color: white;
     display: flex;
@@ -48,6 +50,8 @@
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 50px;
+    object-fit: cover;
+    width: 98%; aspect-ratio: 16/9
 }
 
 .banner2:hover {
@@ -252,6 +256,7 @@ h1:hover {
     width: 100%;
     height: auto;
     border-radius: 10px;
+    object-fit: cover;
     transition: transform 0.3s ease;
 }
 

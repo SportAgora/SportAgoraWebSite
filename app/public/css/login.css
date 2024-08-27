@@ -1,5 +1,6 @@
 /* Loguin */
 
+
 .main_login {
     display: flex;
     align-items: center;
@@ -54,7 +55,7 @@ form {
     transition: .3s;
 }
 
-input[type="email"], input[type="password"], input[type="text"] {
+#signin #email, #senha{
     border: none;
     margin-top: 40px;
     border-radius: 60px;
@@ -65,6 +66,17 @@ input[type="email"], input[type="password"], input[type="text"] {
     background-color: var(--backgroundpost);
     margin-left: 20px;
 }
+/* input[type="email"], input[type="password"], input[type="text"] {
+    /* border: none;
+    margin-top: 40px;
+    border-radius: 60px;
+    padding: 8px 0 8px 35px;
+    outline: none;
+    width: 250%;
+    font-size: 20px;
+    background-color: var(--backgroundpost);
+    margin-left: 20px;
+} */
 
 #enviar_login {
     background: var(--verde_especial);
@@ -103,9 +115,27 @@ input[type="email"], input[type="password"], input[type="text"] {
     color: var(--branco);
 }
 
+
+.erro{
+    background-color: rgb(189, 98, 98);
+    border: 2px solid red;
+    color: red;
+}
+.erro #email {
+    border: 2px solid red;
+}
+.erro #senha {
+    border: 2px solid red; 
+}
+
+
 #signin {
     left: 25px;
     width: 35%;
+}
+.spanerro{
+    margin-left: 55px;
+    color: gray;    
 }
 
 #signup {
@@ -137,6 +167,7 @@ input[type="email"], input[type="password"], input[type="text"] {
 .microsofiti img {
     height: 45px;
 }
+
 
 @media (max-width: 925px) {
     .main_login {

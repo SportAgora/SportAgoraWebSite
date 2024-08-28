@@ -34,16 +34,6 @@ form {
 .buttonsForm {
     margin-top: 40px;
     position: relative;
-    border-radius: 30px;
-    box-shadow: 0 4px 4px 0 var(--cinza);
-}
-
-.buttonsForm button {
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    position: relative;
-    padding: 10px 29px;
 }
 
 .btnColor {

@@ -129,8 +129,8 @@ form {
     width: 35%;
 }
 #email::placeholder, #senha::placeholder, #nome::placeholder, #repsenha::placeholder{
-    color: var(--preto);
-    font-size: 22px;
+    color: #888586;
+    font-size: 19px;
 }
 .spanerro{
     margin-left: 55px;

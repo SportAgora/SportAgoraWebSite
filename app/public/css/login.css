@@ -35,6 +35,9 @@ form {
     margin-top: 40px;
     position: relative;
 }
+.buttonsForm h1 {
+    font-size: 30px;
+}
 
 .btnColor {
     position: absolute;

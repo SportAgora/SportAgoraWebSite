@@ -55,7 +55,7 @@ form {
     transition: .3s;
 }
 
-#signin #email, #senha{
+#email, #senha{
     border: none;
     margin-top: 40px;
     border-radius: 60px;
@@ -113,19 +113,6 @@ form {
 
 #btnSignin {
     color: var(--branco);
-}
-
-
-.erro{
-    background-color: rgb(189, 98, 98);
-    border: 2px solid red;
-    color: red;
-}
-.erro #email {
-    border: 2px solid red;
-}
-.erro #senha {
-    border: 2px solid red; 
 }
 
 

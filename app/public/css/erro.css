@@ -1,0 +1,11 @@
+#signin .erro{
+    background-color: rgb(255, 202, 202);
+    border: 2px solid red;
+    color: red;
+}
+.erro #email {
+    border: 2px solid red;
+}
+.erro #senha {
+    border: 2px solid red; 
+}

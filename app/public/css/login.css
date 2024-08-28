@@ -55,7 +55,22 @@ form {
     transition: .3s;
 }
 
-#email, #senha{
+#email, #senha, #nome, #repsenha{
+    /* border-bottom: 2px solid var(--cinza); */
+    border-top: 1px double #fff;
+    border-right: 1px double #fff;
+    border-bottom: 3px solid var(--cinza);
+    border-left: 1px double #fff;
+    margin-top: 40px;
+    padding: 8px 0 8px 35px;
+    outline: none;
+    width: 250%;
+    font-size: 20px;
+    background-color: var(--backgroundpost);
+    margin-left: 20px;
+}
+/* 
+#email, #senha, #nome, #repsenha{
     border: none;
     margin-top: 40px;
     border-radius: 60px;
@@ -65,7 +80,7 @@ form {
     font-size: 20px;
     background-color: var(--backgroundpost);
     margin-left: 20px;
-}
+} */
 /* input[type="email"], input[type="password"], input[type="text"] {
     /* border: none;
     margin-top: 40px;
@@ -120,13 +135,17 @@ form {
     left: 25px;
     width: 35%;
 }
+#email::placeholder, #senha::placeholder, #nome::placeholder, #repsenha::placeholder{
+    color: var(--preto);
+    font-size: 22px;
+}
 .spanerro{
     margin-left: 55px;
     color: gray;    
 }
 
 #signup {
-    left: 950px;
+    left: 25px;
     width: 35%;
 }
 

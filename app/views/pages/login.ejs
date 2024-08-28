@@ -33,10 +33,12 @@
     <header>
     <%- include('../partials/navbar'); %> 
     </header>
-    <main class="main_login">    <!-- pq q eu fiz uma class pra main sendo q ja é main? -->
+    <main class="main_login">  
+        <img src='imagens/normal_u1.png' alt="pessoa">  <!-- pq q eu fiz uma class pra main sendo q ja é main? -->
         <section class="container5">
             <article class="buttonsForm">
-                <h1>Bem-vindo</h1>
+                <h1>Bem-vindo de volta!</h1>
+                <a href="/registro">Ainda não possuo uma conta</a>
             </article>
 
             <form id="signin" method="post" action="/login_post">
@@ -51,22 +53,22 @@
                 <span>Lembre minha senha</span>
                 </div>
 
-                <input type="submit" id="enviar_login" value="CONECTAR">
+                <input type="submit" id="enviar_login" value="Conectar-se">
             </form>
 
             <section class="outras">
-                <h1>Outras opções de conexão de conta</h1>
                 <button type="submit" class="google" onclick="google()">
-                    <img src='imagens/normal_u17.png' alt="Google">
+                    <img src='imagens/google.png' alt="Google">
                 </button>
-                <button type="submit" class="microsofiti" onclick="microsofiti()">
-                    <img src='imagens/normal_u20.png' alt="Google">
+                <button type="submit" class="facebook" onclick="facebook()">
+                    <img src='imagens/facebooklogoo.png' alt="facebook">
+                </button>
+                <button type="submit" class="apple" onclick="apple()">
+                    <img src='imagens/apple.png' alt="apple">
                 </button>
             </section>
-          <section>
-             <a href="/registro">Ainda não possuo uma conta</a>
-          </section>
         </section>  
+        <img src='imagens/normal_u0.png' alt="pessooaaa">
     </main>
     <%- include('../partials/footer'); %>
 </body>

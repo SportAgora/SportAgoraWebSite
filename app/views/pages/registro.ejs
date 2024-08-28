@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Registro</title>
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/erro.css">
@@ -15,10 +15,14 @@
 </head>
 <body>
     <%
-    let  erroValidacao =  {"email":"", "senha":"" };
-    let  msgErro =  {"email":"", "senha":"" };
+    let  erroValidacao =  {"nome":"","email":"", "senha":"", "repsenha":"" };
+    let  msgErro =  {"nome":"","email":"", "senha":"","repsenha":"" };
     if(erros) {
         erros.errors.forEach(function(erro) {
+            if (erro.path == "nome") {
+                erroValidacao.nome = "erro",
+                msgErro.nome = erro.msg
+            }
             if (erro.path == "email") {
                 erroValidacao.email = "erro",
                 msgErro.email = erro.msg
@@ -26,6 +30,10 @@
             if (erro.path == "senha") {
                 erroValidacao.senha = "erro",
                 msgErro.senha = erro.msg
+            }
+            if (erro.path == "repsenha") {
+                erroValidacao.repsenha = "erro",
+                msgErro.repsenha = erro.msg
             }
         })
     }; %>
@@ -37,22 +45,28 @@
         <section class="container5">
             <article class="buttonsForm">
                 <div class="btnColor"></div>
-                <button id="btnSignin">Logar</button>
+                <button id="btnSignin">Registrar</button>
             </article>
 
-            <form id="signin" method="post" action="/login_post">
+            <form id="signin" method="post" action="/registro_post">
+                <input type="text" placeholder="Nome" name="nome" id="nome" value="<%= valores.nome  %>" class="<%= erroValidacao.nome %>"> 
+                <span class="spanerro"><%= msgErro.nome %></span><br>
+
                 <input type="text" placeholder="Email" name="email" id="email" value="<%= valores.email  %>" class="<%= erroValidacao.email %>"> 
                 <span class="spanerro"><%= msgErro.email %></span><br>
 
                 <input type="text" placeholder="Senha" name="senha" id="senha" value="<%= valores.senha  %>" class="<%= erroValidacao.senha %>"> 
                 <span class="spanerro"><%= msgErro.senha %></span><br>
 
+                <input type="text" placeholder="Repita a Senha" name="repsenha" id="repsenha" value="<%= valores.repsenha  %>" class="<%= erroValidacao.repsenha %>"> 
+                <span class="spanerro"><%= msgErro.repsenha %></span><br>
+                
                 <div class="divCheck">
                 <input type="checkbox" />
                 <span>Lembre minha senha</span>
                 </div>
 
-                <input type="submit" id="enviar_login" value="CONECTAR">
+                <input type="submit" id="enviar_login" value="REGISTRAR">
             </form>
 
             <section class="outras">

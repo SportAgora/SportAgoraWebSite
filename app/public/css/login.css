@@ -62,11 +62,11 @@ form {
     border-bottom: 3px solid var(--cinza);
     border-left: 1px double #fff;
     margin-top: 40px;
-    padding: 8px 0 8px 35px;
+    padding: 8px 0 8px 15px;
     outline: none;
     width: 250%;
     font-size: 20px;
-    background-color: var(--backgroundpost);
+    background-color: var(--branco);
     margin-left: 20px;
 }
 /* 

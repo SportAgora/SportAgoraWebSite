@@ -6,13 +6,35 @@
     align-items: center;
     justify-content: space-between;
 }
+.main_logi {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .container5 {
     background-color: var(--branco);
-    height: 600px;
     width: 880px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 darkgrey;
+    margin-top: 100px;
+    font-size: 18px;
+    margin-bottom: 60px;
+}
+.container6 {
+    background-color: var(--branco);
+    height: 900px;
+    width: 880px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: relative;
     overflow: hidden;
     border-radius: 10px;
@@ -67,9 +89,7 @@ form {
     background-color: var(--branco);
     margin-left: 80px;
 }
-#email {
-    margin-top: 70px;
-}
+
 /* 
 #email, #senha, #nome, #repsenha{
     border: none;
@@ -123,8 +143,10 @@ form {
 
 .divCheck {
     margin: 20px 0 0 80px;
-    width: 100%;
+    width: 150%;
     font-size: 13px;
+    display: flex;
+    align-items: center;
 }
 
 #btnSignin {
@@ -146,6 +168,7 @@ form {
 }
 
 #signup {
+    top: 70px;
     left: 25px;
     width: 35%;
 }
@@ -164,6 +187,22 @@ form {
     cursor: pointer;
 }
 .outras img {
+    height: 45px;
+}
+.outros {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 600px;
+}
+.outros button {
+    height: 70px;
+    margin: 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.outros img {
     height: 45px;
 }
 .facebook{
@@ -188,40 +227,54 @@ form {
     .container5{
         width: 100%;
         margin: 4em auto;
-
+    }
+    .container6{
+        width: 100%;
+        margin: 4em auto;
+    }
+    .pessoa1{
+        display: none;
+    }
+    .pessoa2{
+        display: none;
     }
     #signin {
         left: 15px;
-        width: 34%;
-    }
-    
-    #signup {
-        left: 950px;
         width: 34%;
     }
     #enviar_login {
         width: 150%;
         margin-left: 60%;
-
     }
 }
 
 @media (max-width: 600px) {
     #signin {
-        left: 15px;
-        width: 30%;
+        left: -45px;
+        width: 36%;
     }
-    
     #signup {
-        left: 950px;
-        width: 30%;
+        left: -35px;
+        width: 35%;
     }
     #enviar_login {
-        width: 200%;
-        margin-left: 60%;
+        width: 220%;
+        margin-left: 50%;
     }
     #enviar_registrar{
-        width: 200%;
-        margin-left: 60%;
+        width: 220%;
+        margin-left: 70%;
+    }
+    .buttonsForm h1 {
+        font-size: 30px;
+    }
+    .facebook{
+        width: 70px;
+    }
+    .apple{
+        width: 70px;
+    }
+    .google {
+        width: 60px;
     }
 }

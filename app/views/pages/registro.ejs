@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="/js/login.js" defer></script>
     <link rel="icon" href="imagens/SportAgora.png">
 </head>
 <body>
@@ -41,12 +40,14 @@
     <header>
     <%- include('../partials/navbar'); %> 
     </header>
-    <main class="main_login">    <!-- pq q eu fiz uma class pra main sendo q ja é main? -->
-        <section class="container5">
+    <main class="main_logi">    <!-- pq q eu fiz uma class pra main sendo q ja é main? -->
+        <img src='imagens/normal_u1.png' alt="pessoa" class="pessoa1">
+        <section class="container6">
             <article class="buttonsForm">
-                <h1>Bem-vindo</h1>
+                <h1>Bem-vindo!</h1>
+                <a href="/login">Já possuo uma conta</a>
             </article>
-
+        
             <form id="signup" method="post" action="/registro_post">
                 <input type="text" placeholder="Nome" name="nome" id="nome" value="<%= valores.nome  %>" class="<%= erroValidacao.nome %>"> 
                 <span class="spanerro"><%= msgErro.nome %></span><br>
@@ -68,16 +69,19 @@
                 <input type="submit" id="enviar_login" value="REGISTRAR">
             </form>
 
-            <section class="outras">
-                <h1>Outras opções de conexão de conta</h1>
+            <section class="outros">
                 <button type="submit" class="google" onclick="google()">
-                    <img src='imagens/normal_u17.png' alt="Google">
+                    <img src='imagens/google.png' alt="Google">
                 </button>
-                <button type="submit" class="microsofiti" onclick="microsofiti()">
-                    <img src='imagens/normal_u20.png' alt="Google">
+                <button type="submit" class="facebook" onclick="facebook()">
+                    <img src='imagens/facebooklogoo.png' alt="facebook">
+                </button>
+                <button type="submit" class="apple" onclick="apple()">
+                    <img src='imagens/apple.png' alt="apple">
                 </button>
             </section>
         </section>  
+        <img src='imagens/normal_u0.png' alt="pessooaaa" class="pessoa2">
     </main>
     <%- include('../partials/footer'); %>
 </body>

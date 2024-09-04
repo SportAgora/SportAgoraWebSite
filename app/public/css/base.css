@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css');
 
+
 *{
     margin:0px;
     padding:0px;
@@ -38,7 +39,7 @@ body {
 }
 
 .navbar-center {
-    margin-left: -150px;
+    margin-left: -100px;
 }
 
 .logo {
@@ -48,9 +49,12 @@ body {
 }
 
 .site-name {
-    font-family: 'Airbnb Cereal', sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-size: 1.5rem;
     font-weight: bold;
+    letter-spacing: 1px;
     color: white;
     margin-right:-600px;
 }
@@ -58,7 +62,9 @@ body {
 .nav-button {
     background: none;
     border: none;
-    font-family: 'Airbnb Cereal', sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-size: 1rem;
     color: white;
     margin: 0 25px;
@@ -100,7 +106,7 @@ body {
     border-radius: 75px;
     padding: 10px 15px;
     margin-right: 20px;
-    width: 320px;
+    width: 330px;
 }
 
 
@@ -113,10 +119,12 @@ body {
     border: none;
     background: none;
     outline: none;
-    font-family: 'Airbnb Cereal', sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-size: 1rem;
     padding: 5px;
-    width: 300px;
+    width: 350px;
     color: white;
 }
 
@@ -128,11 +136,13 @@ body {
 }
 
 .subscribe-button {
-    background-color: #3dd922;
+    background-color: #34b91c;
     color: white;
     border: none;
     border-radius: 25px; 
-    font-family: 'Airbnb Cereal', sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-size: 1rem; 
     margin-right: 20px;
     padding: 12px 15px; 
@@ -155,7 +165,9 @@ body {
     border: 1px solid #ccc;
     border-radius: 20px;
     padding: 8px 15px;
-    font-family: 'Airbnb Cereal', sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-size: 1rem;
     cursor: pointer;
     margin-right: 30px;
@@ -194,7 +206,9 @@ body {
     padding: 10px 20px;
     background: none;
     border: none;
-    font-family: 'Airbnb Cereal', sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-size: 1rem;
     color: white;
     text-align: left;
@@ -212,6 +226,13 @@ hr {
     border-top: 1px solid #333;
 }
 
+.links-home {
+    text-decoration: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 /*FOOTER*/
 
 footer {
@@ -219,6 +240,9 @@ footer {
     color: #fff;
     padding: 40px 0 20px;
     margin-top: 30px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 .footer-conteudo {
@@ -246,6 +270,9 @@ footer {
     font-size: 18px;
     margin-bottom: 20px;
     color: #f1f1f1;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 .footer-bloco ul {
@@ -277,6 +304,9 @@ footer {
     font-size: 18px;
     margin-bottom: 20px;
     color: #f1f1f1;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 .redes-sociais {
@@ -304,6 +334,9 @@ footer {
     margin-top: 20px;
     margin-right: 150px;
     white-space: nowrap;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 @media (max-width: 768px) {

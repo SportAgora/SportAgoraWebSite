@@ -1,21 +1,27 @@
 <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 <nav class="navbar">
     <div class="navbar-left">
+        <a class="links-home"  href="/home">
         <img src="imagens/SportAgora.png" alt="Logo" class="logo">
         <span class="site-name">SportAgora</span>
+        </a>
     </div>
     <div class="navbar-center">
-        <button class="nav-button">Eventos</button>
-        <button class="nav-button">Pratique</button>
-        <button class="nav-button">Organizador</button>
+        <button class="nav-button" onclick="location.href='/home'"> Início</button>
+        <button class="nav-button" onclick="location.href='/eventos'">Eventos</button>
+        <button class="nav-button" onclick="location.href='/pratique'">Pratique</button>
+        <button class="nav-button" onclick="location.href='/organizador'">Organizador</button>
     </div>
     <div class="navbar-right">
         <div class="search-bar">
             <img src="/imagens/search.png" alt="Search" class="search-icon">
             <input type="text" placeholder="Busque por Esportes e muito mais...">
         </div>
-        <button class="subscribe-button">Assine Sport+</button>
+        <button class="subscribe-button" onclick="location.href='/planos'">Assine Sport+</button>
         <button class="login-button">
             <img src="/imagens/icon.png" alt="User" class="user-icon">
             <img src="/imagens/menu-burger.png" alt="Menu" class="menu-icon">
@@ -24,10 +30,10 @@
 </nav>
 
 <div id="menu-panel" class="menu-panel">
-    <button class="panel-button">Cadastra-se</button>
-    <button class="panel-button">Login</button>
+    <button class="panel-button" onclick="location.href='/registro'">Cadastra-se</button>
+    <button class="panel-button" onclick="location.href='/login'">Login</button>
     <hr>
-    <button class="panel-button">Anuncie seu evento</button>
+    <button class="panel-button" onclick="location.href='/login'">Anuncie seu evento</button>
 </div>
 
 <script src="script.js"></script>

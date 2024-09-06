@@ -46,7 +46,6 @@
 .informacoes-usuario {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
 }
 
 .foto-usuario {

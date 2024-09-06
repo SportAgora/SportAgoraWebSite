@@ -2,8 +2,8 @@
 .secao-boxes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px; 
-    padding: 20px;
+    gap: 60px; 
+    padding: 30px;
 }
 
 /* Box dos posts */
@@ -14,8 +14,8 @@
     overflow: hidden;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 15px;
-    min-height: 280px; 
+    padding: 20px;
+    min-height: 300px; 
 }
 
 .box:hover {

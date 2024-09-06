@@ -6,128 +6,105 @@
     <link rel="icon" href="/imagens/SportAgora.png">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/infopost.css">
-    <script defer src="/js/script.js"></script>
+    <script defer src="/js/script1.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Informações post</title>
 
 </head>
 <body>
+
     <%- include('../partials/navbar'); %>
 
-    <main class="container">
-        <section class="main-content">
-            <article class="post-header">
-                <aside class="post-image">
-                    <img src="/imagens/futebol.png" alt="Imagem do Post">
-                </aside>
-                <aside class="post-title-meta">
-                    <h2>As melhores jogadas do futebol</h2>
-                    <aside class="post-meta">
-                        <span class="post-time">Publicado há 5 horas</span>
-                        <aside class="likes">
-                            <span class="heart">&#10084;</span>
-                            <span class="like-count">152.78 mil curtidas</span>
-                        </aside>
-                    </aside>
-                </aside>
-                <aside class="post-info">
-                    <p>Pellentesque sit amet elit eu nisl mattis suscipit. Donec placerat urna in massa suscipit, eu eleifend nisl lobortis. Donec tempus ante vel laoreet cursus. Cras justo dui, imperdiet vitae leo nec, egestas iaculis sapien. Duis aliquet congue sem eu porttitor. Donec accumsan diam neque, sit amet molestie ex pulvinar quis. In ac placerat risus. Donec vel ligula quis eros pellentesque posuere. Vivamus eget erat mollis enim dignissim vulputate ac nec dolor. Fusce eget risus et justo porttitor semper quis ut mi. Sed convallis, odio in hendrerit auctor, velit massa consectetur lacus, eget hendrerit sem sapien maximus dui. Pellentesque ultricies, tortor id dapibus malesuada, nisi nisi sollicitudin elit, a fermentum erat felis non lectus. Mauris dignissim, nibh a eleifend efficitur, elit leo sollicitudin justo, ullamcorper sagittis elit augue sit amet tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin accumsan tortor a tellus tempor, at ornare nibh dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In blandit facilisis neque vitae auctor. Sed a ligula sed lacus cursus eleifend. Phasellus at dignissim metus. Nulla dictum eget elit congue ultrices. Maecenas et enim at mi interdum iaculis a sed lacus. Vestibulum sed ipsum vel nisi dapibus mollis quis fermentum nisl. Donec metus neque, dictum et tellus id, luctus egestas felis. Mauris ac ultrices tellus.</p>
-                </aside>
-            </article>
-        </section>
-        <section class="creador-and-antigo-posts">
-            <article class="creador-info">
-                <img src="imagens/pessoa1.jpg" alt="Criador" width="50">
-                <aside class="creador-details">
-                    <span>Kawan Barreto</span>
-                    <span class="followers">123.45 mil seguidores</span>
-                </aside>
-                <button class="follow-btn">Seguir</button>
-            </article>
-            <article class="antigo-posts-box">
-                <h3>Do mesmo usuário</h3>
-                <aside class="antigo-post">
-                    <img src="imagens/evento4.jpeg" alt="Imagem do Post" class="antigo-post-image">
-                    <aside class="antigo-post-info">
-                        <h4>Torneio valendo coca 2 litros</h4>
-                        <aside class="likes">
-                            <span class="heart">&#10084;</span>
-                            <i class="fas fa-thumbs-up"></i> 152.78 mil curtidas
-                        </aside>
-                    </aside>
-                </aside>
-                <aside class="antigo-post">
-                    <img src="imagens/torneio.jpeg" alt="Imagem do Post" class="antigo-post-image">
-                    <aside class="antigo-post-info">
-                        <h4>Torneio valendo coca 2 litros</h4>
-                        <aside class="likes">
-                            <span class="heart">&#10084;</span>
-                            <i class="fas fa-thumbs-up"></i> 152.78 mil curtidas
-                        </aside>
-                    </aside>
-                </aside>
-                <aside class="antigo-post">
-                    <img src="imagens/evento1.jpeg" alt="Imagem do Post" class="antigo-post-image">
-                    <aside class="antigo-post-info">
-                        <h4>Torneio valendo coca 2 litros</h4>
-                        <aside class="likes">
-                            <span class="heart">&#10084;</span>
-                            <i class="fas fa-thumbs-up"></i> 152.78 mil curtidas
-                        </aside>
-                    </aside>
-                </aside>
-                <!-- Repita para fazer mais antigos posts -->  <!--   <<<  si pá isso aqui não foi um humano q fez em -->
-            </article>
-        </section>
-        <section class="comentarios-section-box">
-            <h3>Comentários</h3>
-            <article class="comentario-count">123 comentários</aside>
-            <article class="comentario-form">
-                <textarea placeholder="Digite seu comentário..."></textarea>
-                <button>Enviar</button>
-            </article>
-            <article class="comentarios">
-                <aside class="comentario">
-                    <aside class="comentarioer-info">
-                        <img src="imagens/pessoa2.png" alt="Comentador" class="comentarioer-image">
-                        <aside class="comentarioer-name">Bebel</aside>
-                    </aside>
-                    <aside class="comentario-text">
-                        <p>Palmeiras não tem mundial</p>
-                    </aside>
-                </aside>
-                <aside class="comentario">
-                    <aside class="comentarioer-info">
-                        <img src="imagens/pessoa2.png" alt="Comentador" class="comentarioer-image">
-                        <aside class="comentarioer-name">Bebel</aside>
-                    </aside>
-                    <aside class="comentario-text">
-                        <p>Palmeiras não tem mundial</p>
-                    </aside>
-                </aside>
-                <aside class="comentario">
-                    <aside class="comentarioer-info">
-                        <img src="imagens/pessoa2.png" alt="Comentador" class="comentarioer-image">
-                        <aside class="comentarioer-name">Bebel</aside>
-                    </aside>
-                    <aside class="comentario-text">
-                        <p>Palmeiras não tem mundial</p>
-                    </aside>
-                </aside>
-                <aside class="comentario">
-                    <aside class="comentarioer-info">
-                        <img src="imagens/pessoa2.png" alt="Comentador" class="comentarioer-image">
-                        <aside class="comentarioer-name">Bebel</aside>
-                    </aside>
-                    <aside class="comentario-text">
-                        <p>Palmeiras não tem mundial</p>
-                    </aside>
-                </aside>
-                <!-- Repita para adiconar mais comentarios -->  <!--   <<<  si pá isso aqui não foi um humano q fez dnv -->
-            </article>
-        </section>
-    </main>
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <%- include('../partials/footer'); %>
+    <section class="informacao-post">
+        <div class="box-post">
+          <h1 class="titulo-post">Sport x Náutico: onde assistir ao clássico na Copa do Nordeste</h1>
+          <div class="info-post">
+            <p class="detalhes-post">Danzx • 19 / 11 / 2024 • 18:30</p>
+            <div class="likes">
+                <img class="coracao" src="/imagens/coracao.png" alt="Coração Verde">
+              <span class="num-likes">152.78 likes</span>
+            </div>
+          </div>
+          <img class="imagem-post" src="imagens/sport.jpg" alt="Imagem do Post">
+          <p class="descricao-post">
+            Sport e Náutico se enfrentam nesta quarta-feira (20) na Arena de Pernambuco em partida válida pela sexta rodada da Copa do Nordeste. <br>  O Leão é o líder do Grupo A com 10 pontos, enquanto o Timbu ocupa a quarta colocação do Grupo B com cinco pontos. <br><br> <strong>Confira a seguir onde assistir Sport x Náutico ao vivo.   <br> <br> Transmissão: TV Globo e ge; </strong> <br><br>
+            Na partida mais recente, o Rubro-Negro se garantiu na final do Campeonato Pernambucano após vencer o Santa Cruz nos pênaltis no jogo de volta da semifinal. <br>  No tempo normal, a partida terminou empatada sem gols. Então, na decisão por pênaltis, o Sport acertou todas as cobranças, enquanto a equipe Coral perdeu uma.<br> 
+          </p>
+        </div>
+        <div class="box-direita">
+          <div class="box-criador">
+            <img class="foto-criador" src="imagens/pessoa3.png" alt="Foto do Criador">
+            <div class="info-criador">
+              <h2 class="nome-criador">Kawan Barreto</h2>
+              <p class="seguidores">123.45 mil seguidores</p>
+              <button class="seguir">Seguir</button>
+            </div>
+            <div class="posts-anteriores">
+              <div class="box-mini-posts">
+                <div class="mini-box">
+                  <img class="imagem-mini-post" src="imagens/evento1.jpeg" alt="Post Anterior">
+                  <div class="info-mini-post">
+                    <p class="nome-mini-post">Campeonato de lei com os criat</p>
+                    <div class="likes-mini-post">
+                <img class="coracao-mini" src="/imagens/coracao.png" alt="Coração">
+                      <span class="num-likes-mini">152.78 mil curtidas</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mini-box">
+                    <img class="imagem-mini-post" src="imagens/evento2.jpeg" alt="Post Anterior">
+                    <div class="info-mini-post">
+                      <p class="nome-mini-post">Campeonato de lei com os criat</p>
+                      <div class="likes-mini-post">
+                  <img class="coracao-mini" src="/imagens/coracao.png" alt="Coração">
+                        <span class="num-likes-mini">152.78 mil curtidas</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mini-box">
+                    <img class="imagem-mini-post" src="imagens/evento3.jpeg" alt="Post Anterior">
+                    <div class="info-mini-post">
+                      <p class="nome-mini-post">Campeonato de lei com os criat</p>
+                      <div class="likes-mini-post">
+                  <img class="coracao-mini" src="/imagens/coracao.png" alt="Coração">
+                        <span class="num-likes-mini">152.78 mil curtidas</span>
+                      </div>
+                    </div>
+                  </div>
+                <!-- Repetir mini-box 3 vezes -->
+              </div>
+              <button class="ver-publicacoes">Veja todas as publicações</button>
+            </div>
+          </div>
+      
+          <section class="comentarios">
+            <h2 class="titulo-comentarios">Comentários</h2>
+            <p class="numero-comentarios">123 comentários</p>
+        <div class="form-comentario">
+            <textarea class="campo-comentario" placeholder="Escreva seu comentário"></textarea>
+            <button class="botao-enviar">Enviar</button>
+        </div>
+      
+            <div class="box-comentario">
+              <img class="foto-usuario" src="imagens/pessoa.png" alt="Foto do Usuário">
+              <div class="info-comentario">
+                <p class="nome-usuario">Pelé Narreto</p>
+                <p class="texto-comentario">Palmeiras não tem mundial</p>
+              </div>
+            </div>
+            <div class="box-comentario">
+                <img class="foto-usuario" src="imagens/pessoa.png" alt="Foto do Usuário">
+                <div class="info-comentario">
+                  <p class="nome-usuario">Pelé Narreto</p>
+                  <p class="texto-comentario">Palmeiras não tem mundial</p>
+                </div>
+              </div>
+            <!-- Repetir box de comentário -->
+          </div>
+        </div>
+      </section>
+
+  <%- include('../partials/footer'); %>
+
 </body>
 </html>

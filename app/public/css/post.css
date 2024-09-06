@@ -2,7 +2,7 @@
 .secao-boxes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 60px; 
+    gap: 40px; 
     padding: 30px;
 }
 
@@ -87,8 +87,8 @@
 }
 
 
-.link-usuario {
-    z-index: 2; 
+.usuariolink {
+    z-index: 3; 
     position: relative;
 }
 

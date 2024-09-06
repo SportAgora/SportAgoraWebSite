@@ -17,6 +17,9 @@
     color: #2d2d2dd7;
     letter-spacing: 0.5px;
     font-weight:700;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     margin-bottom: 20px;
   }
 
@@ -40,6 +43,9 @@
   }
 
   .likes-mini-post {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     display: flex;
     align-items: center;
     font-size: 16px; 
@@ -50,6 +56,9 @@
   .detalhes-post {
     color: #888888;
     font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
   }
 
   .coracao {
@@ -62,6 +71,9 @@
 
   .num-likes {
     font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     color: #888888;
     margin-bottom: 5px;
   }
@@ -84,6 +96,9 @@
   }
 
   .descricao-post {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     color: #555;
     margin-top: 20px;
     font-size: 18px; 
@@ -152,6 +167,9 @@
   }
 
   .nome-mini-post {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-size: 18px; 
     font-weight: bold;
     color: #000000; 
@@ -180,18 +198,21 @@
     background-color: transparent;
     border: 2px solid #319939;
     color: #319939;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     width: 550px;
     font-size: large;
     font-weight: bold;
     cursor: pointer;
-    padding: 20px; /* Aumentando o tamanho do botão */
-    border-radius: 25px; /* Aumentando o border-radius */
+    padding: 20px; 
+    border-radius: 25px; 
     transition: background-color 0.3s, transform 0.3s;
   }
   
   .ver-publicacoes:hover {
     background-color: #e8f5e9;
-    transform: scale(1.05); /* Animação no hover */
+    transform: scale(1.05);
   }
 
   .comentarios {
@@ -206,10 +227,16 @@
     font-size: 26px;
     font-weight: bold;
     margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
   }
 
   .numero-comentarios {
     font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     color: #888888;
     margin-bottom: 20px;
   }
@@ -228,6 +255,9 @@
     flex-grow: 1;
     background-color: transparent;
     padding: 12px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-size: 16px;
     border: none;
     outline: none;
@@ -254,6 +284,9 @@
     border: none;
     padding: 12px 20px;
     border-radius: 50px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-size: 16px;
     margin-left: 15px;
     cursor: pointer;
@@ -295,6 +328,9 @@
     color: #000000; /* Preto forte para destaque */
     margin-top: 5px;
     margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     margin-left: 5px; /* Adicionando margin ao nome */
     display: flex;
     align-items: center; /* Alinhando no meio da foto */
@@ -302,6 +338,9 @@
 
   .texto-comentario {
     font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     color: #555555;
     margin-top: 5px;
     line-height: 1.5;
@@ -336,4 +375,12 @@
     height: 70px;
     border-radius: 50%;
     margin-right: 20px; 
+  }
+
+  .nome-usuario {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000df; 
+    margin-bottom: 10px;
+    margin-left: -5px;
   }

@@ -6,20 +6,28 @@
 }
 
 .carousel-title {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
-    margin-bottom: 70px;
-    margin-right: 85px;
+    text-align: left;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin-left: 50px;
+    margin-bottom: 50px;
 }
 
 .carousel-container {
     position: relative;
-    width: 100%;
-    max-width: 1100px; 
-    margin: 0 auto;
-    padding: 0 25px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+    width: 80%;
+    height: 220px;
+    padding-bottom: 20px;
     overflow: hidden;
 }
+
 
 .carousel {
     display: flex;
@@ -27,10 +35,8 @@
 }
 
 .carousel-item {
-    flex: 0 0 20%; 
-    max-width: 20%;
+    flex: 0 0 20%;
     text-align: center;
-    cursor: pointer;
 }
 
 .carousel-item a {
@@ -40,21 +46,21 @@
 }
 
 .carousel-item img {
-    width: 110px;
-    height: 110px;
-    transition: transform 0.3s;
-    margin-bottom: 10px;
-    border-radius: 50%;
+    width: 40%;
+    height: 150px;
+    border-radius: 50%; 
+    transition: transform 0.3s, border 0.3s ease;
 }
 
 .carousel-item p {
-    font-size: 16px;
-    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
     margin-top: 8px;
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.3s;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: bold;
+    color: #000;
 }
 
 .carousel-item:hover img {
@@ -66,17 +72,25 @@
 }
 
 .carousel-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
+    font-weight: bold;
     top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 50px;
+    height: 60px;
+    background-color: #28a745; /* Cor verde */
     color: white;
-    padding: 15px; 
+    font-size: 24px;
     border-radius: 50%;
-    border: 2px solid #fff;
-    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+    z-index: 10;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .carousel-arrow:hover {
@@ -85,48 +99,39 @@
 }
 
 .left-arrow {
-    left: -1px; 
+    left: 2%;
 }
 
 .right-arrow {
-    right: -1px; 
+    right: 2%;
 }
+
+.carousel-arrow:hover {
+    transform: translateY(-50%) scale(1.2);
+    background-color: #218838; /* Verde mais escuro ao passar o mouse */
+}
+
+.carousel-arrow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-item:hover img {
+    border: 5px solid #28a745; /* Borda verde ao passar o mouse */
+    transform: scale(1.1); /* Aumenta o tamanho da imagem */
+}
+
 
 /* Responsiveness */
+
+
 @media (max-width: 768px) {
     .carousel-item {
-        flex: 0 0 40%; 
-        max-width: 40%;
+        flex: 0 0 33%;
     }
-
+    
     .carousel-arrow {
+        width: 35px;
+        height: 35px;
         font-size: 20px;
-    }
-
-    .left-arrow {
-        left: 10px;
-    }
-
-    .right-arrow {
-        right: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .carousel-item {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    .carousel-title {
-        margin-bottom: 20px;
-    }
-
-    .carousel-arrow {
-        font-size: 18px;
-    }
-
-    .left-arrow, .right-arrow {
-        top: 60%;
     }
 }

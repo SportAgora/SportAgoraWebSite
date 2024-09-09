@@ -1,16 +1,19 @@
 /* EVENTOS */
 
-/* Container para o título e subtítulo */
+
 .event-container {
     text-align: center;
-    background-color: #f0f0f0; /* fundo cinza suave */
+    background-color: #f0f0f0; 
     padding: 50px 0;
 }
 
-/* Estilização do título */
+
 .event-title {
-    font-size: 4.5rem; /* fonte maior */
-    color: #28a745; /* verde estilizado */
+    font-size: 4.5rem; 
+    color: #28a745; 
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-weight: bold;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -18,87 +21,124 @@
     animation: fadeInDown 1s ease-out;
 }
 
-/* Estilização do subtítulo */
+
 .event-subtitle {
-    font-size: 1.4rem; /* fonte maior */
-    color: #555; /* preto claro */
-    margin-bottom: 50px; /* margem inferior para espaçamento */
+    font-size: 1.4rem; 
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #6d6d6d; 
+    margin-bottom: 50px; 
     animation: fadeInUp 1s ease-out;
 }
 
-/* Estilização da box de filtros */
+
+
 .filter-box {
     display: flex;
-    justify-content: flex-start; /* Alinhar à esquerda */
+    justify-content: space-between; 
     align-items: center;
     background-color: #fff;
-    padding: 20px; /* Aumentar padding */
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* sombra suave */
-    max-width: 80%; /* mantém o tamanho */
+    padding: 20px; 
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    max-width: 80%; 
     margin: 0 auto;
     animation: fadeIn 1.5s ease-out;
+    flex-wrap: wrap; 
 }
 
-/* Estilo de cada item de filtro */
+
 .filter-item {
-    margin-right: 30px; /* aumentar espaço entre filtros */
+    margin-right: 10px;
     display: flex;
     align-items: center;
 }
 
-/* Texto de "Filtrar" */
+
 .filter-label {
-    font-size: 1.5rem; /* aumentar tamanho da fonte */
-    color: #28a745; /* verde claro */
+    font-size: 1.8rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    letter-spacing: 1px; 
+    color: #28a745; 
+    margin-left: 15px;
     font-weight: bold;
 }
 
-/* Linha de separação */
 .separator {
     height: 40px;
     width: 1px;
-    background-color: #ccc; /* preto claro */
-    margin-right: 25px; /* mais espaçamento entre separador e filtros */
+    background-color: #ccc;
+    margin-right: 25px; 
 }
 
-/* Estilo do texto de cada filtro */
+
+
 .filter-text {
-    font-size: 1.2rem; /* aumentar tamanho da fonte */
+    font-size: 1.2rem; 
     color: #333;
-    margin-right: 15px; /* aumentar espaço entre texto e select */
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin-right: 15px; 
     font-weight: bold;
 }
 
-/* Estilo dos seletores */
-.filter-select, .filter-date {
-    padding: 10px 20px; /* aumentar padding */
-    border: 2px solid #cccccc; /* borda cinza combinando com a box */
-    border-radius: 6px;
+.filter-select {
+    padding: 15px 30px; 
+    border: 2px solid #cccccc; 
+    border-radius: 10px; 
     background: #fff;
     color: #333;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     cursor: pointer;
-    font-size: 1.1rem; /* aumentar tamanho da fonte */
-    appearance: none; /* Remove o estilo padrão */
+    appearance: none; 
     background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
     background-repeat: no-repeat;
-    background-position: right 15px center; /* ajustar posição da seta */
-    background-size: 12px;
-    transition: border-color 0.3s, box-shadow 0.3s; /* Animação */
+    background-position: right 20px center; 
+    background-size: 16px; 
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 150px;
 }
 
-/* Animação hover para os seletores e input date */
-.filter-select:hover, .filter-date:hover {
-    border-color: #999; /* cinza mais escuro ao passar o mouse */
-    box-shadow: 0 0 5px rgba(60, 60, 60, 0.2); /* sombra leve cinza */
+.filter-select:hover {
+    border-color: #999; 
+    box-shadow: 0 0 5px rgba(60, 60, 60, 0.2); 
 }
 
-/* Estilo para o input date */
+
 .filter-date {
-    width: 200px; /* tamanho ideal */
+    padding: 15px 20px;
+    border: 2px solid #cccccc;
+    border-radius: 10px;
+    background: #fff;
+    color: #333;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 230px; 
+    margin-left: auto; 
 }
 
-/* Animação de fadeIn para os elementos */
+.filter-date:hover {
+    border-color: #999; 
+    box-shadow: 0 0 5px rgba(60, 60, 60, 0.2); 
+}
+
+
+.filter-date {
+    width: 200px; 
+}
+
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -131,92 +171,112 @@
 }
 
 
-
 /* EVENTOS PARTIALS*/
 
-.container {
-    width: 95%;
-    margin: 0 auto;
-}
-
-.evento-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.evento {
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-top: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-    text-align: center;
-}
-
-.evento:hover {
-    transform: translateY(-5px);
-}
-
-.event-image-container {
-    overflow: hidden;
-}
-
-.evento img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s;
-}
-
-.event:hover img {
-    transform: scale(1.1);
-}
-
-.evento-name {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 15px 0;
-    color: black;
-}
-
-.evento-info {
+.container-eventos {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 5px 15px;
-}
-
-.evento-info span {
-    font-size: 1em;
-    color: black;
-}
-
-.evento-info button {
-    padding: 5px 15px;
-    border: none;
-    background-color: #339933;
-    color: white;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.evento-info button:hover {
-    background-color:  #03A60E;
+    gap: 40px; /* Aumenta a margin entre as boxes */
+    padding: 5px;
+    margin: 20px;
+    background-color: #f0f0f0;
+  }
+  
+  .evento-box {
+    background-color: #fff;
+    border-radius: 20px; /* Deixa a box mais arredondada */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 22%; /* Diminui o tamanho da box */
+    text-align: left;
+    transition: transform 0.3s ease;
+    height: 470px;
+  }
+  
+  .evento-box:hover {
     transform: scale(1.05);
-}
+  }
+  
+  .evento-img {
+    width: 100%;
+    height: 240px; 
+    object-fit: cover; 
+    border-radius: 10px;
+  }
+  
+  .evento-status {
+    margin-top: 10px;
+    padding: 3px 10px; 
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    border: 1px solid #ccc;
+    color: #333;
+  }
+  
+  .evento-status.gratis {
+    background-color: #28a745; 
+    color: white;
+    text-align: center;
+    width: 50px;
+    padding: 10px;
+  }
+  
+  .evento-status.pago {
+    color: white;
+    text-align: center;
+    background-color: #007bff;
+    width: 50px;
+    padding: 10px;
+  }
+  
+  .evento-nome {
+    color: #2D2D2D;
+    font-size: 24px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  
+  .evento-detalhes {
+    color: #727272;
+    font-size: 18px; 
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+  
+  .evento-btn {
+    background-color: #319939;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 25px;
+    margin-right: 10px;
+    bottom: 50px;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    float: right; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
 
-select {
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 12px;
-    margin: 10px;
-}
 
-select:hover, input[type="date"]:hover {
-    border-color: #888;
-}
+  .evento-btn:hover {
+    background-color: #218838; 
+    transform: scale(1.05); 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
+  }
+  
+  .evento-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  }

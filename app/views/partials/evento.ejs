@@ -3,51 +3,38 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-<section class="container">
-    <article class="evento-grid">
-        <aside class="evento">
-            <aside class="event-image-container">
-            <img src="imagens/eventobanner.png" alt="Imagem do evento">
-        </aside>
-            <h1 class="evento-name">Campeonato de Futebol</h1>
-            <aside class="evento-info">
-                <span>Barueri - SP</span>
-                <button onclick="location.href='infoevento';" >Participar</button>
-                <span>14/09/2024</span>
-            </aside>
-        </aside>
-        <aside class="evento">
-            <aside class="event-image-container">
-            <img src="imagens/evento2.jpeg" alt="Imagem do evento">
-        </aside>
-            <h1 class="evento-name">Campeonato de Basquete</h1>
-            <aside class="evento-info">
-                <span>São Paulo - SP</span>
-                <button onclick="location.href='infoevento';" >Participar</button>
-                <span>19/11/2024</span>
-            </aside>
-        </aside>
-        <aside class="evento">
-            <aside class="event-image-container">
-            <img src="imagens/evento3.jpeg" alt="Imagem do evento">
-        </aside>
-            <h1 class="evento-name">Evento de Skate</h1>
-            <aside class="evento-info">
-                <span>Carapicuiba - SP</span>
-                <button onclick="location.href='infoevento';" >Participar</button>
-                <span>09/12/2024</span>
-            </aside>
-        </aside>
-        <aside class="evento">
-            <aside class="event-image-container">
-            <img src="imagens/evento4.jpeg" alt="Imagem do evento">
-        </aside>
-            <h1 class="evento-name">Campeonato de Ping Pong</h1>
-            <aside class="evento-info">
-                <span>Rio De Janeiro - RJ</span>
-                <button onclick="location.href='infoevento';" >Participar</button>
-                <span>11/01/2025</span>
-            </aside>
-        </aside>
-    </article>
-</section>
+<section class="container-eventos">
+    <div class="evento-box">
+      <img src="/imagens/evento1.jpeg" alt="Imagem do Evento" class="evento-img">
+      <div class="evento-status gratis">Grátis</div>
+      <h2 class="evento-nome">Campeonato de Barueri de Basquete</h2>
+      <p class="evento-detalhes">Barueri, SP<br><br>19/11/2024</p>
+      <button class="evento-btn" onclick="location.href='/infoevento'">Participar</button>
+    </div>
+  
+    <div class="evento-box">
+      <img src="/imagens/evento2.jpeg" alt="Imagem do Evento" class="evento-img">
+      <div class="evento-status pago">Pago</div>
+      <h2 class="evento-nome">Campeonato de Barueri de Basquete</h2>
+      <p class="evento-detalhes">Barueri, SP<br><br>19/11/2024</p>
+      <button class="evento-btn" onclick="location.href='/infoevento'">Participar</button>
+    </div>
+
+    <div class="evento-box">
+        <img src="/imagens/evento3.jpeg" alt="Imagem do Evento" class="evento-img">
+        <div class="evento-status gratis">Grátis</div>
+        <h2 class="evento-nome">Campeonato de Barueri de Basquete</h2>
+        <p class="evento-detalhes">Barueri, SP<br><br>19/11/2024</p>
+        <button class="evento-btn" onclick="location.href='/infoevento'">Participar</button>
+      </div>
+    
+      <div class="evento-box">
+        <img src="/imagens/evento4.jpeg" alt="Imagem do Evento" class="evento-img">
+        <div class="evento-status pago">Pago</div>
+        <h2 class="evento-nome">Campeonato de Barueri de Basquete</h2>
+        <p class="evento-detalhes">Barueri, SP<br><br>19/11/2024</p>
+        <button class="evento-btn" onclick="location.href='/infoevento'">Participar</button>
+      </div>
+  
+
+  </section>

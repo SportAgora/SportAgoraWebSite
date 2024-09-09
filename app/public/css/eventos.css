@@ -1,104 +1,143 @@
 /* EVENTOS */
 
+/* Container para o título e subtítulo */
+.event-container {
+    text-align: center;
+    background-color: #f0f0f0; /* fundo cinza suave */
+    padding: 50px 0;
+}
+
+/* Estilização do título */
+.event-title {
+    font-size: 4.5rem; /* fonte maior */
+    color: #28a745; /* verde estilizado */
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Estilização do subtítulo */
+.event-subtitle {
+    font-size: 1.4rem; /* fonte maior */
+    color: #555; /* preto claro */
+    margin-bottom: 50px; /* margem inferior para espaçamento */
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Estilização da box de filtros */
+.filter-box {
+    display: flex;
+    justify-content: flex-start; /* Alinhar à esquerda */
+    align-items: center;
+    background-color: #fff;
+    padding: 20px; /* Aumentar padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* sombra suave */
+    max-width: 80%; /* mantém o tamanho */
+    margin: 0 auto;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Estilo de cada item de filtro */
+.filter-item {
+    margin-right: 30px; /* aumentar espaço entre filtros */
+    display: flex;
+    align-items: center;
+}
+
+/* Texto de "Filtrar" */
+.filter-label {
+    font-size: 1.5rem; /* aumentar tamanho da fonte */
+    color: #28a745; /* verde claro */
+    font-weight: bold;
+}
+
+/* Linha de separação */
+.separator {
+    height: 40px;
+    width: 1px;
+    background-color: #ccc; /* preto claro */
+    margin-right: 25px; /* mais espaçamento entre separador e filtros */
+}
+
+/* Estilo do texto de cada filtro */
+.filter-text {
+    font-size: 1.2rem; /* aumentar tamanho da fonte */
+    color: #333;
+    margin-right: 15px; /* aumentar espaço entre texto e select */
+    font-weight: bold;
+}
+
+/* Estilo dos seletores */
+.filter-select, .filter-date {
+    padding: 10px 20px; /* aumentar padding */
+    border: 2px solid #cccccc; /* borda cinza combinando com a box */
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+    font-size: 1.1rem; /* aumentar tamanho da fonte */
+    appearance: none; /* Remove o estilo padrão */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center; /* ajustar posição da seta */
+    background-size: 12px;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Animação */
+}
+
+/* Animação hover para os seletores e input date */
+.filter-select:hover, .filter-date:hover {
+    border-color: #999; /* cinza mais escuro ao passar o mouse */
+    box-shadow: 0 0 5px rgba(60, 60, 60, 0.2); /* sombra leve cinza */
+}
+
+/* Estilo para o input date */
+.filter-date {
+    width: 200px; /* tamanho ideal */
+}
+
+/* Animação de fadeIn para os elementos */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* EVENTOS PARTIALS*/
+
 .container {
     width: 95%;
     margin: 0 auto;
 }
-
-.Eventos1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 70px;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: -80px;
-}
-
-.text {
-    font-size: 2.5em;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-select, input[type="date"] {
-    padding: 10px;
-    margin-top: 5px;
-    display: block;
-    max-width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin: 10px;
-    background-color: #f9f9f9;
-    transition: border-color 0.3s ease-in-out;
-}
-
-.Eventospage {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-/* FILTROS */
-
-.filtros1 {
-    background-color: rgb(246, 246, 246);
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    border-radius: 8%;
-}
-
-.filtros1 select,
-.filtros1 input {
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 1em;
-    transition: 0.3s;
-    background-color: #f4f4f4;
-}
-
-.filtros1 select:hover,
-.filtros1 input:hover {
-    border-color: #03A60E;;
-}
-
-
-.left-filtros, .right-filtros {
-    display: flex;
-    flex-direction:row;
-    margin-right: 30px;
-}
-
-.left-filtros{
-    margin-left: 30px;
-    width: 30%;
-}
-
-select:focus, input[type="date"]:focus {
-    outline: none;
-    border-color: green;
-    box-shadow: 0 0 5px #03A60E;
-}
-
-label {
-    margin-top: 20px;
-    font-weight: bold;
-    color: #333;
-}
-
-
-/* EVENTOS */
 
 .evento-grid {
     display: grid;

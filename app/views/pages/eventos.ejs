@@ -22,37 +22,47 @@
 <body class="Eventospage">
     <%- include('../partials/navbar'); %>
 
-    <section class="container">
-        <header class="Eventos1">
-            <h1 class="text">Eventos</h1>
-        </header>
-        <article class="filtros1">
-            <article class="left-filtros">
-                <label for="esporte">Esporte:</label>
-                <select id="esporte" name="esporte">
-                    <option value="futebol">Futebol</option>
-                    <option value="basquete">Basquete</option>
-                    <option value="volei">Vôlei</option>
+
+    <div class="event-container">
+        <h1 class="event-title">EVENTOS</h1>
+        <p class="event-subtitle">Encontre os principais eventos de esportes para a sua região</p>
+        
+        <div class="filter-box">
+            <div class="filter-item">
+                <span class="filter-label">Filtrar</span>
+            </div>
+            <div class="separator"></div>
+            <div class="filter-item">
+                <span class="filter-text">Esporte</span>
+                <select class="filter-select">
+                    <option>Futebol</option>
+                    <option>Basquete</option>
+                    <option>Vôlei</option>
                 </select>
-                <label for="estado">Estado:</label>
-                <select id="estado" name="estado">
-                    <option value="sp">SP</option>
-                    <option value="rj">RJ</option>
-                    <option value="mg">MG</option>
+            </div>
+            <div class="filter-item">
+                <span class="filter-text">Estado</span>
+                <select class="filter-select">
+                    <option>SP</option>
+                    <option>RJ</option>
+                    <option>BH</option>
                 </select>
-                <label for="cidade">Cidade:</label>
-                <select id="cidade" name="cidade">
-                    <option value="sao-paulo">São Paulo</option>
-                    <option value="rio-de-janeiro">Rio de Janeiro</option>
-                    <option value="belo-horizonte">Belo Horizonte</option>
+            </div>
+            <div class="filter-item">
+                <span class="filter-text">Cidade</span>
+                <select class="filter-select">
+                    <option>Barueri</option>
+                    <option>Jandira</option>
+                    <option>Itapevi</option>
                 </select>
-            </article>
-            <article class="right-filtros">
-                <label for="data">Data do Evento:</label>
-                <input type="date" id="data" name="data">
-            </article>
-        </article>
-    </section>
+            </div>
+            <div class="filter-item">
+                <span class="filter-text">Data do evento</span>
+                <input type="date" class="filter-date">
+            </div>
+        </div>
+    </div>
+
     <!-- Carrosel -->
     <section class="carousel-section">
         <article class="carousel-title">FILTROS RÁPIDOS</article>
@@ -124,6 +134,8 @@
         </article>
     </section>
     <script defer src="/js/carrossel.js"></script>
+
+
     <%- include('../partials/evento'); %>
     <%- include('../partials/evento'); %>
     <%- include('../partials/evento'); %>

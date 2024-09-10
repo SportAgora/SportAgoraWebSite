@@ -60,7 +60,32 @@ body {
     color: white;
     align-items: center;
     margin-right:-250px;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
+
+.site-name:hover {
+    transform: translateY(-2px); 
+}
+
+.site-name:hover::after {
+    width: 100%; 
+    left: 0; 
+    bottom: 10;
+    margin-top: 30px;
+}
+
+.site-name::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: #42ff21;
+    bottom: 10;
+    margin-top: 30px;
+    left: 50%;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
 
 .nav-button {
     background: none;

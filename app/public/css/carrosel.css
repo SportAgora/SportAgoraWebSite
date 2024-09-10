@@ -50,7 +50,7 @@
 }
 
 .carousel-item img {
-    width: 40%;
+    width: 35%;
     height: 150px;
     border-radius: 50%; 
     transition: transform 0.3s, border 0.3s ease;

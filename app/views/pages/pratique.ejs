@@ -19,69 +19,69 @@
 </head>
 <body>
     <%- include('../partials/navbar'); %>
-    <main>
-        <section class="container1">
-            <aside class="localizacao">
-                <h2>Locais</h2>
-                <section class="localizacaosecao">
-                    <img src="/imagens/ginacio.jpg" alt="Ginásio Poliesportivo">
-                    <section class="info">
-                        <h3>Ginásio Poliesportivo</h3>
-                        <section class="avaliacao">
-                            ★★★★☆
-                        </section>
-                        <p>Endereço: Rua Exemplo, 123</p>
-                        <button class="directions-btn" onclick="location.href='https://maps.app.goo.gl/LgyRXREg1Fvhi1g58'"> Como Chegar</button>
-                    </section>
-                </section>
-                <section class="localizacaosecao">
-                    <img src="/imagens/parque.jpeg" alt="Parque Municipal">
-                    <section class="info">
-                        <h3>Parque Municipal</h3>
-                        <section class="avaliacao">
-                            ★★★☆☆
-                        </section>
-                        <p>Endereço: Avenida Exemplo</p>
-                        <button class="directions-btn" onclick="location.href='https://maps.app.goo.gl/7wmtczQiFZAsuCVLA'"> Como Chegar</button>
-                    </section>
-                </section>
-                <section class="localizacaosecao">
-                    <img src="/imagens/clube.jpeg" alt="Clube Esportivo">
-                    <section class="info">
-                        <h3>Clube Esportivo</h3>
-                        <section class="avaliacao">
-                            ★★★★★
-                        </section>
-                        <p>Endereço: Rua Exemplo, 789</p>
-                        <button class="directions-btn" onclick="location.href='https://maps.app.goo.gl/RuATqmE1DmBE4PX77'"> Como Chegar</button>
-                    </section>
-                </section>
-            </aside>
-            <section class="map-container">
-                <h2 class="Mapatexto">Mapa</h2>
-                <section id="map"></section>
-            </section>
-            <section class="localizacaosecao-filtros">
-                <h2><img src="/imagens/pin.png" alt="Pin Icon" class="icon"> Sua Localização</h2>
-                <label for="start-localizacaosecao">Endereço de Partida:</label>
-                <input type="text" id="start-localizacaosecao" placeholder="Digite seu endereço">
-                
-                <label for="search-distance">Distância de Busca (km):</label>
-                <input type="number" id="search-distance" placeholder="Digite a distância">
-    
-                <label for="desired-sport">Esporte Desejado:</label>
-                <select id="desired-sport">
-                    <option value="all">Todos</option>
-                    <option value="basketball">Basquete</option>
-                    <option value="soccer">Futebol</option>
-                    <option value="tennis">Tênis</option>
+
+        <h1 class="pratique-title">PRATIQUE</h1>
+        <p class="pratique-subtitle">Não sabe como, onde e quanto praticar? Da uma pesquisa no que a SportAgora tem</p>
+
+        <div class="filtro-container">
+            <input type="text" class="input-localizacao" placeholder="Coloque seu CEP, Endereço, cidade ou estado">
+            
+            <div class="select-container">
+                <label for="esporte">Esporte</label>
+                <select id="esporte" name="esporte">
+                    <option value="todos">Ver tudo</option>
+                    <option value="futebol">Futebol</option>
+                    <option value="basquete">Basquete</option>
+                    <option value="volei">Vôlei</option>
                 </select>
-    
-                <label for="desired-date">Data Desejada:</label>
-                <input type="date" id="desired-date">
-            </section>
-        </section>
-    </main>
+            </div>
+            
+            <div class="select-container">
+                <label for="data-evento">Data do evento</label>
+                <input type="date" id="data-evento" class="input-data">
+            </div>
+        </div>
+    <div class="container">
+        <div class="locais-box">
+            <h2>Locais</h2>
+
+            <div class="cards-container">
+                <div class="card">
+                    <img src="imagens/clube.jpeg" alt="Ginásio Poliesportivo">
+                    <div class="info">
+                        <h3>Ginásio Poliesportivo</h3>
+                        <p>Endereço: Rua Exemplo, 123</p>
+                        <button class="botao">Como chegar</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="imagens/clube.jpeg" alt="Ginásio Poliesportivo">
+                    <div class="info">
+                        <h3>Ginásio Poliesportivo</h3>
+                        <p>Endereço: Rua Exemplo, 123</p>
+                        <button class="botao">Como chegar</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="imagens/clube.jpeg" alt="Ginásio Poliesportivo">
+                    <div class="info">
+                        <h3>Ginásio Poliesportivo</h3>
+                        <p>Endereço: Rua Exemplo, 123</p>
+                        <button class="botao">Como chegar</button>
+                    </div>
+                </div>
+                <!-- Repetição dos cartões -->
+            </div>
+        </div>
+
+        <!-- Box do Mapa -->
+        <div class="map-box">
+            <h2 class="map-title">Mapa dos Locais</h2>
+            <div id="map" class="map"></div>
+        </div>
+    </div>
+
     <%- include('../partials/footer'); %>
+    
 </body>
 </html>

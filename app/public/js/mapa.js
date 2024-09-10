@@ -1,25 +1,37 @@
-  
-  
-  
-  document.addEventListener('DOMContentLoaded', function() {
-      
-      
-        // MAPA
-        const map = L.map('map').setView([-23.5055, -46.8798], 15); // Ajuste o valor do zoom para 15
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
+var map = L.map('map').setView([-23.5120, -46.8764], 15); 
 
-        const locations = [
-            { name: 'Ginásio Poliesportivo', position: [-23.501, -46.881] },
-            { name: 'Parque Municipal', position: [-23.506, -46.876] },
-            { name: 'Clube Esportivo', position: [-23.509, -46.873] },
-        ];
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
-        locations.forEach(location => {
-            L.marker(location.position).addTo(map)
-                .bindPopup(location.name)
-                .openPopup();
-        });
-    });
+var locais = [
+    {
+        nome: "Centro Esportivo do Engenho Novo",
+        coords: [-23.508320, -46.879759]
+    },
+    {
+        nome: "CIE (Centro de Iniciação Esportiva)",
+        coords: [-23.506477, -46.879247]
+    },
+    {
+        nome: "Complexo Esportivo Vila Porto",
+        coords: [-23.516296, -46.882218]
+    },
+    {
+        nome: "Complexo Esportivo Jardim Silveira",
+        coords: [-23.524246, -46.885038]
+    },
+    {
+        nome: "Ginásio Poliesportivo",
+        coords: [-23.5120, -46.8764]
+    }
+];
+
+// Adicionando marcadores no mapa para cada local
+locais.forEach(function(local) {
+    L.marker(local.coords)
+        .addTo(map)
+        .bindPopup(`<b>${local.nome}</b>`)
+        .openPopup();
+});

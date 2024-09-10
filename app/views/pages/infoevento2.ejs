@@ -18,20 +18,20 @@
 <body>
     <%- include('../partials/navbar'); %>
     
-    <main class="main-container">
-        <section class="banner2">
-            <article class="evento-details">
-                <h1>NETSHOES RUN SÃO PAULO</h1>
-                <aside class="icones">
-                    <img src="/imagens/local.jpg" alt="Ícone de Data"> <span>25/08/2024</span>
-                </aside>
-                <aside class="icones">
-                    <img src="/imagens/local.png" alt="Ícone de Local"> <span>Parque do Povo : São Paulo, SP, Brasil</span>
-                </aside>
-            </article>
-        </section>
-        <section class="evento-info">
-            <article class="esquerda-secao">
+    <div class="aba-evento">
+        <div class="aba-evento">
+            <div class="container-ver-eventos">
+                <button class="botao-seta" onclick="location.href='/eventos'">
+                    <img src="/imagens/left-arrow.png" alt="Seta"> </button>
+                <span class="ver-eventos">Ver todos os eventos</span>
+            </div>
+    
+        <div class="banner-evento">
+            <img src="/imagens/bannerevento2.png" alt="Banner do evento">
+        </div>
+    
+        <div class="info-container">
+            <div class="box-esquerda">
                 <h2>Sobre o Evento</h2>
                 <p>A Netshoes RUN está de volta à São Paulo!
                     Depois do sucesso da primeira edição e de passar por cidades como Franca, Florianópolis e Salvador, a Netshoes Run volta à São Paulo para mais um evento histórico!
@@ -58,33 +58,29 @@
                     1º lote R$ 99,90 + taxas do site<br>
                     2º lote R$ 119,90 + taxas do site<br>
                     3º lote R$ 139,90 + taxas do site<br>
-                    
                     Kit Intermediário<br><br>
                     Promo R$ 109,90 + taxas do site<br>
                     1º lote R$ 119,90 + taxas do site<br>
                     2º lote R$ 139,90 + taxas do site<br>
                     3º lote R$ 149,90 + taxas do site<br>
-                    
                     Kit Premium<br><br>
                     Promo R$ 199,90 + taxas do site<br>
                     1º lote R$ 209,90 + taxas do site<br>
                     2º lote R$ 219,90 + taxas do site<br>
                     3º lote R$ 239,90 + taxas do site<br>
-                    
                     Kit infantil<br><br>
                     Promo 79,90 + taxas do site<br>
                     1º lote R$ 89,90 + taxas do site<br>
                     2º lote R$ 99,90 + taxas do site<br>
-                    3º lote R$ 119,90 + taxas do site<br><br>
-                    
-                    *Lote Promo: 7 dias ou até esgotarem as vagas do lote</p>
+                    3º lote R$ 119,90 + taxas do site<br><br>   
+                    *Lote Promo: 7 dias ou até esgotarem as vagas do lote</p><br>
                 <h2>Kits</h2>
                 <p>LOCAL:  EM BREVE <br>
-                DATAS E HORÁRIOS: EM BREVE</p>
-                <h2>Percursos</h2>  <br>
-                <a href="https://drive.google.com/file/d/1WUUxIqKCOfFxYc7uap3RMisBJlbaJuia/view"> CLIQUE AQUI</a>
-                <h2>Regulamentos</h2><br>
-                <a href="https://drive.google.com/file/d/1WUUxIqKCOfFxYc7uap3RMisBJlbaJuia/view"> CLIQUE AQUI</a>
+                    DATAS E HORÁRIOS: EM BREVE</p><br>
+                <h2>Percursos</h2> 
+                <a href="https://drive.google.com/file/d/1WUUxIqKCOfFxYc7uap3RMisBJlbaJuia/view"> CLIQUE AQUI</a><br><br>
+                <h2>Regulamentos</h2>
+                <a href="https://drive.google.com/file/d/1WUUxIqKCOfFxYc7uap3RMisBJlbaJuia/view"> CLIQUE AQUI</a><br><br>
                 <h2>Dúvidas Frequentes</h2> <br>
                 <p>DESCONTO PARA +60 ANOS<br><br>
                     Terá o desconto de 50% sobre o valor do Kit Básico correspondente ao preço cheio do último lote de inscrição que inclui o kit (Camiseta manga curta + Sacochila + Número de peito + Meia + Medalha (pós prova)). Esse valor com desconto para o idoso não incide sobre preços promocionais. O desconto de 50% não é cumulativo. <br>
@@ -98,24 +94,35 @@
                         Não serão entregues kits após o período da retirada de kits, determinado previamente pela organização.<br>
                     Os resultados serão informados através do site oficial do evento no prazo de 48 horas após o término da corrida.<br>
                     CANCELAMENTO DE INSCRIÇÃO<br><br>
-                    De acordo com o código de defesa do consumidor, o atleta tem o prazo de 7 (sete) dias corridos após a data da compra para solicitar o cancelamento e estorno do valor inscrição. O valor da inscrição não será devolvido depois dessa data.<br>
+                        De acordo com o código de defesa do consumidor, o atleta tem o prazo de 7 (sete) dias corridos após a data da compra para solicitar o cancelamento e estorno do valor inscrição. O valor da inscrição não será devolvido depois dessa data.<br>
                     ENTREGA DE KIT APÓS O EVENTO<br><br>
-                    Não serão entregues kits após o período da retirada de kits, determinado previamente pela organização.</p>
-            </article>
-            <article  class="direita-secao">
-                <aside class="inscrever-info">
-                    <p>Inscrições até: <strong>20/08/2024 23:59 ou até o limite de vagas.</strong></p>
-                    <button class="inscrever-button">Inscrever-se</button>
-                    <p> <strong>Organizador </strong> <br> Sagaz Esportes</p>
-                    <aside class="social-icones">
-                        <img src="/imagens/facebook.png" alt="Facebook">
-                        <img src="/imagens/twitter.png" alt="Twitter">
-                        <img src="/imagens/instagram.png" alt="Instagram">
-                    </aside>
-                    <button class="contato-button">Fale Conosco</button>
-                </aside>
-            </article>
-        </section>
+                        Não serão entregues kits após o período da retirada de kits, determinado previamente pela organização.</p>
+            </div>
+    
+            <div class="box-direita">
+                <div class="evento-status pago">Pago</div>
+                <h2 class="nome-evento">Netshoes RUN São Paulo</h2>
+                <hr class="linha-separadora">
+                <div class="detalhes-evento">
+                    <div class="data-evento">
+                        <img src="/imagens/local.jpg" alt="Calendário">
+                        <span>19/11/2024</span>
+                    </div>
+                    <div class="local-evento">
+                        <img src="/imagens/local.png" alt="Local">
+                        <span>Parque do Povo, São Paulo, SP</span>
+                    </div>
+                </div>
+                <hr class="linha-separadora">
+                <p class="data-limite">Inscrições até: 20/08/2024 23:59 ou até o limite de vagas.</p>
+                <div class="botoes-inscricao">
+                    <button class="btn-fale-conosco">Fale conosco</button>
+                    <button class="btn-inscrever-se">Inscrever-se</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
         <section class="relacionado-eventos">
             <article class="relacionado-evento">
                 <a href="/infoevento" class="invisible-button1"></a>

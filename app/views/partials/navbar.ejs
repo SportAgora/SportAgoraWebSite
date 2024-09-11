@@ -5,6 +5,9 @@
 
 <nav class="navbar">
     <div class="navbar-left">
+        <button class="hamburger-menu">
+            <img src="/imagens/menu-burger.png" alt="Menu" class="menu-icon">
+        </button>
         <a class="links-home"  href="/home">
         <img src="imagens/SportAgora.png" alt="Logo" class="logo">
         <span class="site-name">SportAgora</span>
@@ -35,5 +38,18 @@
     <hr>
     <button class="panel-button" onclick="location.href='/login'">Anuncie seu evento</button>
 </div>
+
+<div id="mobile-menu" class="mobile-menu">
+    <button class="mobile-nav-button" onclick="location.href='/home'">Início</button>
+    <button class="mobile-nav-button" onclick="location.href='/eventos'">Eventos</button>
+    <button class="mobile-nav-button" onclick="location.href='/pratique'">Pratique</button>
+    <button class="mobile-nav-button" onclick="location.href='/organizador'">Organizador</button>
+</div>
+
+<div class="mobile-search-bar">
+    <input type="text" placeholder="Busque por Esportes e muito mais...">
+    <button class="mobile-subscribe-button" onclick="location.href='/planos'">Assine Sport+</button>
+</div>
+
 
 <script src="script.js"></script>

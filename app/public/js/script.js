@@ -1,4 +1,4 @@
-// Toggle do menu do usuário (login)
+
 const loginButton = document.querySelector('.login-button');
 const menuPanel = document.getElementById('menu-panel');
 
@@ -14,7 +14,7 @@ loginButton.addEventListener('click', () => {
     }
 });
 
-// Toggle do menu hambúrguer (navegação móvel)
+
 const hamburgerMenu = document.querySelector('.hamburger-menu');
 const mobileMenu = document.getElementById('mobile-menu');
 

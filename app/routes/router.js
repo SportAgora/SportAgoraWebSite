@@ -42,6 +42,10 @@ router.get('/perfilex', function(req,res){
     res.render('pages/perfilex');  
 })
 
+router.get('/organizador', function(req,res){
+    res.render('pages/organizador');  
+})
+
 router.get('/registro', function(req,res){
     res.render('pages/registro', { "erros": null, "valores": {"nome":"","email":"","senha":"","repsenha":""},"retorno":null });  
 })

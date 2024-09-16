@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Agora</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/pagamento.css">
+    <script defer src="/js/pagamento.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="imagens/SportAgora.png">
+</head>
+<body>
+    <header>
+    <%- include('../partials/navbar'); %> 
+    </header>
+    <main>  
+        <h1>Insira as informações de pagamento.</h1>
+        <section class="container">
+            <form id="pagamento_form">
+                <label for="first-name">Nome</label>
+                <input type="text" id="first-name" name="first-name" required>
+                
+                <label for="last-name">Sobrenome</label>
+                <input type="text" id="last-name" name="last-name" required>
+                
+                <label for="cpf">CPF do Titular</label>
+                <input type="text" id="cpf" name="cpf" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                
+                <label for="card-number">Número do Cartão</label>
+                <input type="text" id="card-number" name="card-number" required pattern="\d{4} \d{4} \d{4} \d{4}">
+                
+                <article class="expiry-security-group">
+                    <aside class="expiry-date-group">
+                        <label for="expiry-date">Data de Validade</label>
+                        <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/AA" pattern="\d{2}/\d{2}">
+                    </aside>
+                    <aside class="security-code-group">
+                        <label for="security-code">Código de Segurança</label>
+                        <input type="text" id="security-code" name="security-code" required pattern="\d{3}">
+                    </aside>
+                </article>
+                <article>
+                    <aside class="matrizinfotxt">
+                    <aside class="infotxt">
+                        <label for="plano">Plano Selecionado</label>
+                        <h1>Sport Premium</h1>
+                    </aside>
+                        <aside class="infotxt">
+                            <label for="valor">Valor</label>
+                            <h1>R$29,90 ao mês</h1>
+                        </aside>
+                    </aside>
+                    <aside class="texte">
+                        <input type="checkbox" id="permicao" name="permicao" />
+                        <label for="permicao" class="permicao">Se a cobrança no crédito falhar, você nos autoriza a tentar no débito (caso seu cartão tenha essa opção)</label>
+                    </aside>
+                </article>
+                <button type="submit">REALIZAR O PAGAMENTO</button>
+            </form>
+        </section>
+    </main>
+    <%- include('../partials/footer'); %>
+</body>
+</html>

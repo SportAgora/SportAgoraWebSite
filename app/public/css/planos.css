@@ -237,3 +237,9 @@ input[type="radio"]{
     display: none;
 }
 
+input[type=radio]:checked+label{
+    background-color: #10d96d;
+    border-radius: 30px;
+    transition: 0.5s;
+}
+

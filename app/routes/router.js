@@ -50,6 +50,10 @@ router.get('/pagamento', function(req,res){
     res.render('pages/pagamento');  
 })
 
+router.get('/inscrito', function(req,res){
+    res.render('pages/inscrito');  
+})
+
 router.get('/registro', function(req,res){
     res.render('pages/registro', { "erros": null, "valores": {"nome":"","email":"","senha":"","repsenha":""},"retorno":null });  
 })
@@ -87,6 +91,21 @@ router.post(
         return res.render("pages/perfilex", { "erros": null, "valores":req.body,"retorno":req.body});
     }
   );
+
+  router.post(
+    "/pagamento",
+    function (req, res) {
+        let selected_plan = req.body.plano
+        switch(selected_plan){
+            case "basico" : selected_plan = "Sport Básico"; var price = "R$9,90"; break;
+            case "premium" : selected_plan = "Sport Premium"; var price = "R$29,90"; break;
+            case "plus" : selected_plan = "Sport Plus"; var price = "R$19,90"; break;
+        }
+
+        return res.render("pages/pagamento", {"valores":{"selecionado":selected_plan, "preco":price}})
+    }
+
+  )
 
 
 module.exports = router;

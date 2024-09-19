@@ -16,10 +16,10 @@
     </head>
 <body>
     <%- include('../partials/navbar'); %>
-    <form class="container">
+    <form class="container" action="/pagamento" method="POST">
         <h1 class="titulo">Escolha o melhor plano para você.</h1>
         <section class="planos" id="basico">
-            <input type="radio" id="sportbasico" name="plano" checked="checked" onclick="select(0)">
+            <input type="radio" id="sportbasico" name="plano" checked="checked" value="basico">
             <label for="sportbasico">
             <article class="plano" onclick="">
                 <aside>
@@ -36,7 +36,7 @@
                 <p class="preco">por apenas R$9,90 por mês</p>
             </article>
         </label>
-        <input type="radio" id="sportpremium" name="plano">
+        <input type="radio" id="sportpremium" name="plano" value="premium">
         <label for="sportpremium">
             <article class="plano" id="premium">
                 <aside>
@@ -59,7 +59,7 @@
                 <p class="preco">por apenas R$29,90 por mês</p>
             </article>
         </label>
-        <input type="radio" id="sportplus" name="plano">
+        <input type="radio" id="sportplus" name="plano" value="plus">
         <label for="sportplus">
             <article class="plano" id="plus">
                 <aside>

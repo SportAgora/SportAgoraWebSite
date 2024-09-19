@@ -1,4 +1,4 @@
-/* Perfil (Editavel e tals) */
+    /* Perfil (Editavel e tals) */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css');
@@ -29,9 +29,11 @@
 }
 
 .planodefundo{
-    height: 359px;
+    height: 285px;
     width: 100%;
     object-fit: cover;
+    margin-bottom: 50px;
+    box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.25);
 }
 
 .editPerf {

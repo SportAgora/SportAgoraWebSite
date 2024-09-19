@@ -23,7 +23,7 @@
     transform: translateY(-2px);
     transition: 0.2s ease;
 }
-section {
+.sec {
     margin: 60px;
     border: #339933 2px solid;
     padding: 20px;
@@ -33,6 +33,11 @@ section {
 .info_organizador p {
     margin: 10px;
     font-size: 17px;
+    line-height: 1.5;
+
+}
+.info_organizador h1{
+    font-size: 32px;
 }
 .info_organizador {
     display: flex;
@@ -40,6 +45,8 @@ section {
     justify-content: center;
     flex-direction: column;
     margin-top: 20px;
+    text-align: center;
+    
 }
 .banner {
     border-radius: 15px;

@@ -6,7 +6,6 @@
     <title>Sport Agora</title>
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/pagamento.css">
-    <script defer src="/js/pagamento.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -17,33 +16,57 @@
     <link rel="icon" href="imagens/SportAgora.png">
 </head>
 <body>
+    <%
+    var cssErro = {"nome":"","sobrenome":"","cpf":""}  
+    var msgErro = {"nome":"","sobrenome":"","cpf":""}
+    if(erros) { 
+     
+    erros.errors.forEach(function(itemErro){
+         if (itemErro.path  == "nome"){ 
+            cssErro.nome = "erro";
+            msgErro.nome = itemErro.msg;
+        }  
+         if (itemErro.path  == "sobrenome"){ 
+            cssErro.sobrenome = "erro";
+            msgErro.sobrenome = itemErro.msg;            
+         }   
+         if (itemErro.path  == "cpf"){
+            cssErro.cpf = "erro";
+            msgErro.cpf = itemErro.msg;                
+         }  
+     }); 
+    }; %>
+
     <header>
     <%- include('../partials/navbar'); %> 
     </header>
     <main>  
         <h1>Insira as informações de pagamento.</h1>
         <section class="container">
-            <form id="pagamento_form">
-                <label for="first-name">Nome</label>
-                <input type="text" id="first-name" name="first-name" required>
-                
-                <label for="last-name">Sobrenome</label>
-                <input type="text" id="last-name" name="last-name" required>
-                
+            <form id="pagamento_form" method="POST" action="/processar_pagamento">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" value="<%= valores.nome %>" class="<%= cssErro.nome %>">
+                <span><%= msgErro.nome %></span>
+
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" id="sobrenome" name="sobrenome" value="<%= valores.sobrenome %>" class="<%= cssErro.sobrenome %>">
+                <span><%= msgErro.sobrenome %></span>
+
                 <label for="cpf">CPF do Titular</label>
-                <input type="text" id="cpf" name="cpf" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
-                
-                <label for="card-number">Número do Cartão</label>
-                <input type="text" id="card-number" name="card-number" required pattern="\d{4} \d{4} \d{4} \d{4}">
+                <input type="text" id="cpf" name="cpf" value="<%= valores.cpf %>" class="<%= cssErro.cpf %>">
+                <span><%= msgErro.cpf %></span>
+
+                <label for="cartao_numero">Número do Cartão</label>
+                <input type="text" id="cartao_numero" name="cartao_numero" >
                 
                 <article class="expiry-security-group">
                     <aside class="expiry-date-group">
-                        <label for="expiry-date">Data de Validade</label>
-                        <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/AA" pattern="\d{2}/\d{2}">
+                        <label for="cartao_validade">Data de Validade</label>
+                        <input type="text" id="cartao_validade" name="cartao_validade" placeholder="MM/AA" >
                     </aside>
                     <aside class="security-code-group">
-                        <label for="security-code">Código de Segurança</label>
-                        <input type="text" id="security-code" name="security-code" required pattern="\d{3}">
+                        <label for="cartao_codigo">Código de Segurança</label>
+                        <input type="text" id="cartao_codigo" name="cartao_codigo" >
                     </aside>
                 </article>
                 <article>

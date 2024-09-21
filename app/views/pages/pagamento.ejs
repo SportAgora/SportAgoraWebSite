@@ -15,11 +15,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="icon" href="imagens/SportAgora.png">
+    <script src="/js/pagamento.js"></script>
 </head>
-<body>
+<body onload="start()">
     <%
-    var cssErro = {"nome":"","sobrenome":"","cpf":""}  
-    var msgErro = {"nome":"","sobrenome":"","cpf":""}
+    var cssErro = {"nome":"","sobrenome":"","cpf":"","cartao_numero":"","cartao_validade":"","cartao_cvv":""}  
+    var msgErro = {"nome":"","sobrenome":"","cpf":"","cartao_numero":"","cartao_validade":"","cartao_cvv":""}
     if(erros) { 
      
     erros.errors.forEach(function(itemErro){
@@ -34,7 +35,19 @@
          if (itemErro.path  == "cpf"){
             cssErro.cpf = "erro";
             msgErro.cpf = itemErro.msg;                
-         }  
+         } 
+         if (itemErro.path  == "cartao_numero"){
+            cssErro.cartao_numero = "erro";
+            msgErro.cartao_numero = itemErro.msg;                
+         } 
+         if (itemErro.path  == "cartao_validade"){
+            cssErro.cartao_validade = "erro";
+            msgErro.cartao_validade = itemErro.msg;                
+         } 
+         if (itemErro.path  == "cartao_cvv"){
+            cssErro.cartao_cvv = "erro";
+            msgErro.cartao_cvv = itemErro.msg;                
+         } 
      }); 
     }; %>
 
@@ -58,16 +71,19 @@
                 <span><%= msgErro.cpf %></span>
 
                 <label for="cartao_numero">Número do Cartão</label>
-                <input type="text" id="cartao_numero" name="cartao_numero" >
+                <input type="text" id="cartao_numero" name="cartao_numero" value="<%= valores.cartao_numero %>" class="<%= cssErro.cartao_numero %>">
+                <span><%= msgErro.cartao_numero %></span>
                 
                 <article class="expiry-security-group">
                     <aside class="expiry-date-group">
                         <label for="cartao_validade">Data de Validade</label>
-                        <input type="text" id="cartao_validade" name="cartao_validade" placeholder="MM/AA" >
+                        <input type="text" autocomplete="off" maxlength="5" id="cartao_validade" name="cartao_validade" placeholder="MM/AA" value="<%= valores.cartao_validade %>" class="<%= cssErro.cartao_validade %>">
+                        <span><%= msgErro.cartao_validade %></span>
                     </aside>
                     <aside class="security-code-group">
-                        <label for="cartao_codigo">Código de Segurança</label>
-                        <input type="text" id="cartao_codigo" name="cartao_codigo" >
+                        <label for="cartao_cvv">Código de Segurança</label>
+                        <input type="text" maxlength="3" id="cartao_cvv" name="cartao_cvv" value="<%= valores.cartao_cvv %>" class="<%= cssErro.cartao_cvv %>">
+                        <span><%= msgErro.cartao_cvv %></span>
                     </aside>
                 </article>
                 <article>

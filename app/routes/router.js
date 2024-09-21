@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { body, validationResult} = require("express-validator")
-var {validarCPF} = require("../helpers/validar_pagamento");
+var {validarCPF, validarCartao, validarData} = require("../helpers/validar_pagamento");
 
 router.get('/', function(req,res){
     res.render('pages/home');  
@@ -108,7 +108,7 @@ router.post(
 
 
   router.get('/pagamento', function(req,res){
-    res.render('pages/pagamento', { "erros": null, "valores": {"nome":"","sobrenome":"","cpf":""},"retorno":null });  
+    res.render('pages/pagamento', { "erros": null, "valores": {"nome":"","sobrenome":"","cpf":"","cartao_numero":"","cartao_validade":"","cartao_cvv":""},"retorno":null });  
 })
 
   router.post(
@@ -123,6 +123,23 @@ router.post(
           throw new Error('CPF inválido!');
         }
         }),
+    body("cartao_numero")
+    .custom((value) => {
+      if (validarCartao(value)){
+        return true
+      } else {
+        throw new Error("Cartão Inválido")
+      }
+    }),
+    body("cartao_validade")
+    .custom((value) => {
+      if (validarData(value)){
+        return true
+      } else {
+        throw new Error("Data Inválido")
+      }
+    }),
+    body("cartao_cvv").isLength({min:3,max:3}).withMessage("Código Inválido"),
     function (req, res) {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {

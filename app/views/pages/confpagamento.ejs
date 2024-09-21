@@ -1,1 +1,52 @@
-// Fazer dnv pq o professor n deixou eu salvar 
+<!-- Fazer dnv pq o professor n deixou eu salvar  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrito</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/Inscrito.css">
+    <link rel="stylesheet" href="/css/confpagamento.css">
+    <script defer src="/js/script.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="imagens/SportAgora.png">
+</head>
+<body>
+<header>
+    <%- include('../partials/navbar'); %> 
+    </header>
+    <main class="main_inscrito">  
+        <section class="sec">
+            <article class="info_organizador">
+                <h1>Pagamento realizado com sucesso!</h1>
+                <p>Agradecemos por escolher nosso serviço. 
+                <br>
+                Seu pagamento para o plano foi processado com sucesso.
+                <br><!--<br>-->
+                <h2>Detalhes da compra:</h2>
+                <ul>
+                    <li><b>Plano:</b> Premium</li>
+                    <li><b>Valor:</b> R$ 29,90</li>
+                    <li><b>Método de pagamento:</b> Cartão de crédito</li>
+                </ul>
+                <br><!--<br> -->
+                Agradecemos pela sua confiança e estamos ansiosos para que você aproveite todos os benefícios <br>
+                que seu novo plano oferece.
+                
+                Caso tenha alguma dúvida ou precise de assistência, nossa equipe<br> está aqui para ajudar!</p>
+                <button class="btn_solicitacao" onclick="location.href='/home'">Votar para o Início</button>
+                <button class="btn_solicitacao" onclick="location.href='/perfilex'">Gerenciar Plano</button>
+            </article>
+        </section>
+    </main>
+    <%- include('../partials/footer'); %>   
+</body>
+</html>

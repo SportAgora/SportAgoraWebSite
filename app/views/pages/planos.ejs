@@ -6,6 +6,7 @@
     <link rel="icon" href="imagens/SportAgora.png">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/planos.css">
+    
     <script defer src="/js/script.js"></script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,56 +17,71 @@
     </head>
 <body>
     <%- include('../partials/navbar'); %>
-    <main class="container">
-        <section class="hero-content">
-            <article class="logo-and-text">
-                <img src="imagens/SportAgora.png" alt="Sport+" class="logo">
-                <h1>Sport+</h1>
-            </article>
-            <p class="preco">A partir de R$19,99/mês</p>
-        </section>
-        <section class="planos-section">
-            <article class="plano-box basic">
-                <h2>Sport Básico</h2>
-                <h4>Plano Grátis</h4>
+    <form class="container" action="/pagamento_selec" method="POST">
+        <h1 class="titulo">Escolha o melhor plano para você.</h1>
+        <section class="planos" id="basico">
+            <input type="radio" id="sportbasico" name="plano" checked="checked" value="basico">
+            <label for="sportbasico">
+            <article class="plano" onclick="">
+                <aside>
+                <aside class="destaque">
+                    <h1>Sport Básico</h1>
+                </aside>
                 <ul>
-                    <li>- Máximo de posts por semana 3</li>
-                    <li>- Sem direito a post em destaque</li>
-                    <li>- Sem direito a criar equipes</li>
-                    <li>- Com anúncios</li>
+                    <li>Sem anúncios</li>
+                    <p>_____________________________________</p>
+                    <li>1 post com chance em destaque por mês</li>
+                    <p>_____________________________________</p>
                 </ul>
-                <button class="escolher-plano">Gratuito</button>
+            </aside>
+                <p class="preco">por apenas R$9,90 por mês</p>
             </article>
-            <article class="plano-box recomendado">
-                <h2>Sport Premium</h2>
-                <h4>Plano Recomendado</h4>
+        </label>
+        <input type="radio" id="sportpremium" name="plano" value="premium">
+        <label for="sportpremium">
+            <article class="plano" id="premium">
+                <aside>
+                <aside class="destaque">
+                    <h1>Sport Premium</h1>
+                </aside>
                 <ul>
-                    <li>- Pode fazer posts em destaque ilimitados</li>
-                    <li>- Pode criar posts ilimitados</li>
-                    <li>- Pode criar equipes</li>
-                    <li>- Selo Premium</li>
                     <li>- Sem anúncios</li>
+                    <p>_____________________________________</p>
+                    <li>- 5 post com chance em destaque por mês</li>
+                    <p>_____________________________________</p>
+                    <li>- Permissão para a criação de Equipes</li>
+                    <p>_____________________________________</p>
+                    <li>- Permissão para criação de Eventos</li>
+                    <p>_____________________________________</p>
+                    <li>- Selo premium  ✅</li>
+                    <p>_____________________________________</p>
                 </ul>
-                <p class="preco-month">R$19,99/mês</p>
-                <p class="preco-year">R$149,99/ano</p>
-                <button class="escolher-plano">Escolher plano</button>
+                </aside>
+                <p class="preco">por apenas R$29,90 por mês</p>
             </article>
-            <article class="plano-box intermediate">
-                <h2>Sport Plus</h2>
-                <h4>Plano Intermediário</h4>
+        </label>
+        <input type="radio" id="sportplus" name="plano" value="plus">
+        <label for="sportplus">
+            <article class="plano" id="plus">
+                <aside>
+                <aside class="destaque">
+                    <h1>Sport Plus</h1>
+                </aside>
                 <ul>
-                    <li>- Pode fazer 5 posts em destaque</li>
-                    <li>- Máximo de posts por semana 10</li>
-                    <li>- Sem direito a criar equipes</li>
-                    <li>- Selo Plus</li>
                     <li>- Sem anúncios</li>
+                    <p>_____________________________________</p>
+                    <li>- 3 post com chance em destaque por mês</li>
+                    <p>_____________________________________</p>
+                    <li>- Permissão para a criação de Equipes</li>
+                    <p>_____________________________________</p>
                 </ul>
-                <p class="preco-month">R$9,99/mês</p>
-                <p class="preco-year">R$99,99/ano</p>
-                <button class="escolher-plano">Escolher plano</button>
+                </aside>
+                <p class="preco">por apenas R$19,90 por mês</p>
             </article>
+        </label>
         </section>
-    </main>
+        <button class="destaque" id="prosseguir" onclick="location.href='/pagamento'">Prosseguir</button>
+    </form>
     <%- include('../partials/footer'); %>
 </body>
 </html>

@@ -155,6 +155,7 @@
   .info-criador {
     margin-left: 80px;
     position: relative;
+    cursor: pointer;
   }
   
   .box-mini-posts {

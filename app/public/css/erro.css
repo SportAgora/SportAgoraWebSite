@@ -24,3 +24,9 @@
 .erro #repsenha {
     border: 2px solid red ;
 }
+
+.erro{
+    background-color: rgb(255, 202, 202);
+    border: 2px solid red;
+    color: red;
+}

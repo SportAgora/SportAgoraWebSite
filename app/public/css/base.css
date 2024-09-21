@@ -15,12 +15,17 @@
     --brancobg:#ffffff;
     --backgroundpost: #e6e6e6;
     --cinza: gray;
+    --cinzaclaro: #ccc;
+    --cordefundopadrao: #f0f0f0;
+    --verdenavfooter: #2a8d3f;
+    --verdeneon: #42ff21;
+    --brancofraco: #f1f1f1;
 }   
 
 /*BODY*/
 
 body {
-    background-color: #f0f0f0;
+    background-color: var(--cordefundopadrao)
 }
 
 /*NAV BAR*/
@@ -30,7 +35,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
-    background-color: #2a8d3f;
+    background-color: var(--verdenavfooter);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -91,7 +96,7 @@ body {
     position: absolute;
     width: 0;
     height: 3px;
-    background-color: #42ff21;
+    background-color: var(--verdeneon);
     bottom: 10;
     margin-top: 30px;
     left: 50%;
@@ -106,7 +111,7 @@ body {
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 1rem;
-    color: white;
+    color: var(--branco);
     margin: 0 25px;
     cursor: pointer;
     padding: 5px 0;
@@ -119,7 +124,7 @@ body {
     position: absolute;
     width: 0;
     height: 2px;
-    background-color: #42ff21;
+    background-color: var(--verdeneon);
     bottom: 0;
     left: 50%;
     transition: width 0.3s ease, left 0.3s ease;
@@ -151,7 +156,7 @@ body {
 
 
 .search-bar input::placeholder {
-    color: white;
+    color: var(--branco);
     opacity: 1; 
 }
 
@@ -165,7 +170,7 @@ body {
     font-size: 1rem;
     padding: 10px;
     width: 450px;
-    color: white;
+    color: var(--branco);
 }
 
 
@@ -177,7 +182,7 @@ body {
 
 .subscribe-button {
     background-color: #34b91c;
-    color: white;
+    color: var(--branco);
     border: none;
     border-radius: 25px; 
     font-family: "Montserrat", sans-serif;
@@ -200,9 +205,10 @@ body {
 .login-button {
     display: flex;
     align-items: center;
-    background-color: #2a8d3f;
-    color: white;
-    border: 1px solid #ccc;
+    background-color: var(--verdenavfooter);
+    color: var(--branco);
+    /* border: 1px solid var(--cinza); */
+    border: none;
     border-radius: 20px;
     padding: 8px 15px;
     font-family: "Montserrat", sans-serif;
@@ -217,7 +223,7 @@ body {
 }
 
 .login-button:hover {
-    color: white;
+    color: var(--branco);
     transform: scale(1.02);
 }
 
@@ -283,7 +289,7 @@ body {
 }
 
 .panel-button:hover {
-    background-color: #2a8d3f;
+    background-color: var(--verdenavfooter);
     border-radius: 10px;
 }
 
@@ -412,8 +418,8 @@ hr {
 /*FOOTER*/
 
 footer {
-    background-color: #2a8d3f;
-    color: #fff;
+    background-color: var(--verdenavfooter);
+    color: var(--branco);
     padding: 40px 0 20px;
     margin-top: 30px;
     font-family: "Montserrat", sans-serif;
@@ -445,7 +451,7 @@ footer {
 .footer-bloco h4 {
     font-size: 18px;
     margin-bottom: 20px;
-    color: #f1f1f1;
+    color: var(--brancofraco);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -461,13 +467,13 @@ footer {
 }
 
 .footer-bloco ul li a {
-    color: #ccc;
+    color: var(--cinzaclaro);
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .footer-bloco ul li a:hover {
-    color: #fff;
+    color: var(--branco);
 }
 
 .footer-conecte {
@@ -479,7 +485,7 @@ footer {
 .footer-conecte h4 {
     font-size: 18px;
     margin-bottom: 20px;
-    color: #f1f1f1;
+    color: var(--brancofraco);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -506,7 +512,7 @@ footer {
 .copyright {
     text-align: center;
     font-size: 14px;
-    color: #ccc;
+    color: var(--cinzaclaro);
     margin-top: 20px;
     margin-right: 150px;
     white-space: nowrap;

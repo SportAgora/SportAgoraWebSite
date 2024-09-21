@@ -243,3 +243,17 @@ input[type=radio]:checked+label{
     transition: 0.5s;
 }
 
+.pratique-title {
+    font-size: 3.5rem; 
+    color: #28a745; 
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin-top: 50px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-out;
+}

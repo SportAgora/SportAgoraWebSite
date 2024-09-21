@@ -8,16 +8,17 @@
     height: 47px;
     padding: 2px 2px 2px 2px;
     border-radius: 24px;
-    background-image: linear-gradient(-258.3746929600658deg, #339933 0%, #3ce206 100%);
+    background-color: #ffffff;
     box-sizing: border-box;
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.35);
-    color: #ffffff;
+    color: var(--verde_especial);
     text-align: center;
     line-height: normal;
     border-style: none;
     cursor: pointer;
     margin-top: 15px;
     font-size: 18px;
+    font-weight: bolder;
 }
 .btn_solicitacao:hover{
     transform: translateY(-2px);
@@ -29,6 +30,8 @@
     padding: 20px;
     border-radius: 24px;
     padding-bottom: 30px;
+    background-color: var(--verde_especial);
+    color: #ffffff;
 }
 .info_organizador p {
     margin: 10px;
@@ -50,4 +53,5 @@
 }
 .banner {
     border-radius: 15px;
+    width: 940px;
 }

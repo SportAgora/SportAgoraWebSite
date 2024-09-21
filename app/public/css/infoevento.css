@@ -70,12 +70,6 @@
 }
 
 
-.ver-eventos:hover {
-    color: #1e7d36;
-    transform: scale(1.05); 
-}
-
-
 .banner-evento img {
     width: 100%;
     max-width: 1840px;

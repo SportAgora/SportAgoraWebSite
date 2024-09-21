@@ -147,7 +147,7 @@ router.post(
         return res.render("pages/pagamento", { "erros": errors, "valores":req.body,"retorno":null});
       } else {
   
-        return res.render("pages/perfilex", { "erros": null, "valores":req.body,"retorno":req.body});
+        return res.render("pages/confpagamento", { "erros": null, "valores":req.body,"retorno":req.body});
       }
     }
   );

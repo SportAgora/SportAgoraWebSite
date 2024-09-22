@@ -9,7 +9,7 @@
 }
 #signup .erro{
     background-color: rgb(255, 202, 202);
-    border: 2px solid redvar(--vermelhoerro);
+    border: 2px solid var(--vermelhoerro);
     color: var(--vermelhoerro);
 }
 .erro #email {

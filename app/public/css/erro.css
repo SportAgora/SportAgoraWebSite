@@ -4,29 +4,29 @@
 
 #signin .erro{
     background-color: rgb(255, 202, 202);
-    border: 2px solid red;
-    color: red;
+    border: 2px solid var(--vermelhoerro);
+    color: var(--vermelhoerro);
 }
 #signup .erro{
     background-color: rgb(255, 202, 202);
-    border: 2px solid red;
-    color: red;
+    border: 2px solid redvar(--vermelhoerro);
+    color: var(--vermelhoerro);
 }
 .erro #email {
-    border: 2px solid red;
+    border: 2px solid var(--vermelhoerro);
 }
 .erro #senha {
-    border: 2px solid red; 
+    border: 2px solid var(--vermelhoerro); 
 }
 .erro #nome {
-    border: 2px solid red;
+    border: 2px solid var(--vermelhoerro);
 }
 .erro #repsenha {
-    border: 2px solid red ;
+    border: 2px solid var(--vermelhoerro);
 }
 
 .erro{
     background-color: rgb(255, 202, 202);
-    border: 2px solid red;
-    color: red;
+    border: 2px solid var(--vermelhoerro);
+    color: var(--vermelhoerro);
 }

@@ -171,7 +171,9 @@ body {
     font-style: normal;
     font-size: 1rem;
     padding: 10px;
-    width: 450px;
+    width: 75%;
+    background-color: #1e6e3d;
+    border-radius: 25px;
     color: var(--branco);
 }
 
@@ -320,34 +322,38 @@ hr {
 }
 
 .links-home {
-    text-decoration: none;
+    display:flex;
     position: relative;
-    display: flex;
+    text-align: center;
     align-items: center;
 }
 
 /* Mobile Search Bar */
 
 .search-bar-mobile {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: var(--verdenavfooter);
-}
-
-.mobile-search-bar input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
     border: none;
-    border-radius: 25px;
+    background: none;
+    outline: none;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-size: 1rem;
-    background-color: #216F27;
+    padding: 5px;
+    width: 90%;
+    background-color: #1e6e3d;
+    border-radius: 25px;
     color: var(--branco);
 }
+
+
 
 .mobile-search-bar input::placeholder {
     color: var(--branco);
+}
+
+.mobile-search-bar {
+    background-color: var(--verdenavfooter);
+    padding: 12px;
 }
 
 .mobile-subscribe-button {
@@ -364,6 +370,10 @@ hr {
 
 .mobile-subscribe-button:hover {
     background-color: var(--verde_escuro);
+}
+
+.mobile-search-bar {
+    display: none;
 }
 
 .login-button-mobile {
@@ -390,6 +400,13 @@ hr {
         display: none;
     }
 
+    .links-home {
+        display:flex;
+        position: relative;
+        text-align: center;
+        align-items: center;
+    }
+
     .search-bar-mobile {
         display: block;
     }
@@ -399,9 +416,14 @@ hr {
     }    
 
     .search-icon {
-        height: 20px;
-        margin-left: 5px;
-        margin-right: 10px;
+        height: 15px;
+        width: 15px;
+        text-align: center;
+        align-items: center;
+        position: relative;
+        top: 2px;
+        display:inline-block;
+        margin: 5px 0px 0px 15px;
     }
 }
 
@@ -409,6 +431,10 @@ hr {
     .navbar {
         flex-wrap: wrap;
         padding: 10px 15px;
+    }
+
+    .mobile-search-bar {
+        display: block;
     }
 
     .login-button {
@@ -512,8 +538,11 @@ hr {
         border-radius: 0%;
         width: 110%;
         height: 50px;
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        align-items: center;
     }
-
 }
 
 /*FOOTER*/

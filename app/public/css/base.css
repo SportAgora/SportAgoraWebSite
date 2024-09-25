@@ -169,7 +169,7 @@ body {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    font-size: 1rem;
+    font-size: 0.85rem;
     padding: 10px;
     width: 75%;
     background-color: #1e6e3d;
@@ -328,6 +328,11 @@ hr {
     align-items: center;
 }
 
+a {
+    text-decoration: none;
+  }
+  
+
 /* Mobile Search Bar */
 
 .search-bar-mobile {
@@ -339,7 +344,8 @@ hr {
     font-style: normal;
     font-size: 1rem;
     padding: 5px;
-    width: 90%;
+    margin-left: 5px;
+    width: 95%;
     background-color: #1e6e3d;
     border-radius: 25px;
     color: var(--branco);
@@ -393,9 +399,15 @@ hr {
     display: none;
 }
 
+.a {
+    text-decoration: none;
+}
+
 
 /* Responsividade */
-@media (max-width: 1024px) {
+
+
+@media (max-width: 768px) {
     .search-bar {
         display: none;
     }
@@ -403,7 +415,9 @@ hr {
     .links-home {
         display:flex;
         position: relative;
+        flex: 1;
         text-align: center;
+        justify-content:center;
         align-items: center;
     }
 
@@ -425,11 +439,10 @@ hr {
         display:inline-block;
         margin: 5px 0px 0px 15px;
     }
-}
 
-@media (max-width: 768px) {
     .navbar {
         flex-wrap: wrap;
+        display: flex;
         padding: 10px 15px;
     }
 
@@ -459,7 +472,7 @@ hr {
         font-size: 1rem;
         font-weight: bold;
         cursor: pointer;
-        margin-right: 30px;
+        margin-right: 5px;
         position: relative;
         transition: transform 0.5s ease;
     }
@@ -477,7 +490,6 @@ hr {
     }
 
     .navbar-right {
-        flex: 1;
         justify-content: flex-end;
     }
 
@@ -487,6 +499,10 @@ hr {
     }
 
     .site-name {
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        cursor: pointer;
         font-size: 1.2rem;
     }
 
@@ -536,7 +552,7 @@ hr {
     .mobile-subscribe-button {
         background-color: #216F27;
         border-radius: 0%;
-        width: 110%;
+        width: 100%;
         height: 50px;
         position: relative;
         display: inline-block;
@@ -574,8 +590,8 @@ footer {
 
 .footer-bloco {
     margin: 0 15px;
-    flex: 1 1 200px; /* Flexível para ajustar-se em diferentes larguras */
-    min-width: 200px; /* Largura mínima para evitar que quebre em telas muito pequenas */
+    flex: 1 1 200px;
+    min-width: 200px; 
 }
 
 .footer-bloco h4 {
@@ -674,33 +690,5 @@ footer {
 
     .copyright {
     margin-left: 20%; 
-    }
-}
-
-
-
-/* responsividade posts */
-
-.tab {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-}
-
-@media (min-width: 768px) {
-    .tab {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    .tab {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .tab {
-        grid-template-columns: repeat(1, 1fr);
     }
 }

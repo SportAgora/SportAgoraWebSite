@@ -60,7 +60,8 @@ body {
 }
 
 .navbar-center {
-    margin-left: -100px;
+    flex:1;
+    margin-left: 10px;
 }
 
 .logo {
@@ -344,8 +345,9 @@ a {
     font-style: normal;
     font-size: 1rem;
     padding: 5px;
-    margin-left: 5px;
+    margin-left: 10px;
     width: 95%;
+    margin-right: 5px;
     background-color: #1e6e3d;
     border-radius: 25px;
     color: var(--branco);
@@ -404,13 +406,103 @@ a {
 }
 
 
+.mobile-subscribe-button {
+    background-color: #216F27;
+    border-radius: 0%;
+    width: 100%;
+    height: 50px;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    align-items: center;
+}
+
+.mobile-subscribe-button {
+    display: none;
+}
+
+
 /* Responsividade */
 
+@media (min-width: 866px)  and (max-width:1370px) {
 
-@media (max-width: 768px) {
+    .subscribe-button {
+        display: none;
+    }
+
+    .mobile-subscribe-button{
+        display: block;
+    }    
+
+
+    .nav-button {
+        justify-content:flex-start ;
+    }
+
     .search-bar {
         display: none;
     }
+
+    .search-bar-mobile {
+        display: block;
+        border: none;
+        background: none;
+        outline: none;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-size: 1rem;
+        padding: 5px;
+        margin-left: 10px;
+        width: 98%;
+        margin-right: 5px;
+        background-color: #1e6e3d;
+        border-radius: 25px;
+        color: var(--branco);
+    }
+
+    .search-icon {
+        height: 20px;
+        width: 20px;
+        text-align: center;
+        align-items: center;
+        position: relative;
+        top: 2px;
+        display:inline-block;
+        margin: 5px 0px 0px 15px;
+    }
+
+    .search-bar-mobile input {
+        border: none;
+        background: none;
+        outline: none;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-size: 1rem;
+        padding: 10px;
+        width: 75%;
+        background-color: #1e6e3d;
+        border-radius: 25px;
+        color: var(--branco);
+    }
+
+    .mobile-search-bar {
+        display: block;
+    }
+
+    .site-name {
+        font-size: large;
+    }
+
+    .logo {
+        margin-left: 0;
+    }
+
+}
+
+
+@media (max-width: 865px) {
 
     .links-home {
         display:flex;
@@ -419,6 +511,10 @@ a {
         text-align: center;
         justify-content:center;
         align-items: center;
+    }
+
+    .logo {
+        margin-left: 0;
     }
 
     .search-bar-mobile {
@@ -450,6 +546,10 @@ a {
         display: block;
     }
 
+    .site-name {
+        font-size: medium;
+    }
+
     .login-button {
         display: none;
     }
@@ -472,8 +572,9 @@ a {
         font-size: 1rem;
         font-weight: bold;
         cursor: pointer;
-        margin-right: 5px;
+        margin-right: 10px;
         position: relative;
+        flex: 1;
         transition: transform 0.5s ease;
     }
 
@@ -538,7 +639,7 @@ a {
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
         font-style: normal;
-        font-size: 1rem;
+        font-size: 0.8rem;
         color: var(--branco);
         margin: 0 25px;
         cursor: pointer;
@@ -547,17 +648,6 @@ a {
         text-align: left;
         align-items: left;
         transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .mobile-subscribe-button {
-        background-color: #216F27;
-        border-radius: 0%;
-        width: 100%;
-        height: 50px;
-        position: relative;
-        display: inline-block;
-        text-align: center;
-        align-items: center;
     }
 }
 

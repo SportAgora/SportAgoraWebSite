@@ -424,16 +424,7 @@ a {
 
 /* Responsividade */
 
-@media (min-width: 866px)  and (max-width:1370px) {
-
-    .subscribe-button {
-        display: none;
-    }
-
-    .mobile-subscribe-button{
-        display: block;
-    }    
-
+@media (min-width: 978px)  and (max-width:1370px) {
 
     .nav-button {
         justify-content:flex-start ;
@@ -502,7 +493,7 @@ a {
 }
 
 
-@media (max-width: 865px) {
+@media (max-width: 977px) {
 
     .links-home {
         display:flex;
@@ -511,6 +502,14 @@ a {
         text-align: center;
         justify-content:center;
         align-items: center;
+    }
+
+    .mobile-subscribe-button{
+        display: block;
+    }    
+
+    .subscribe-button {
+        display: none;
     }
 
     .logo {

@@ -4,11 +4,12 @@
 
 .hero-banner {
   width: 100%;
-  height: 550px;
+  height: auto; /* Ajusta automaticamente conforme a tela */
+  max-height: 550px;
   object-fit: cover;
   background-size: cover;
+  transition: filter 0.3s ease, transform 0.3s ease, brightness 0.3s ease;
   background-position: center;
-  transition: transform 0.5s ease, filter 0.5s ease;
 }
 
 .hero-banner:hover {
@@ -16,28 +17,25 @@
 }
 
 .post-box {
-  display: flex;
-  align-items: center;
-  padding-top: 50px;
-  justify-content: space-between;
-  background-color: white;
-  padding: 30px;
-  margin: 30px auto 0;
-  width: 90%;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 1s ease-in-out;
-  z-index: 10;
-  top: 60%; 
-  margin-bottom: 40px;
-  right: 4%;
-  position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 35px;
+    margin: 30px auto 0;
+    width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
+    top: -80px;
+    z-index: 10;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .post-box:hover {
-  transform: translateY(-10px); /* Efeito de elevação */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Sombra mais intensa */
+  transform: translateY(-10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); 
 }
 
 .post-left {
@@ -59,7 +57,7 @@
 }
 
 .user-photo:hover {
-  transform: scale(1.1); /* Aumenta ao passar o mouse */
+  transform: scale(1.1); 
 }
 
 .post-info {
@@ -93,7 +91,7 @@
 }
 
 .post-title {
-  font-size: 32px; /* Tamanho aumentado */
+  font-size: 32px; 
   font-weight: bold;
   color: black;
   margin-bottom: 10px;
@@ -103,7 +101,7 @@
 
 .post-subtitle {
   color: #888;
-  font-size: 18px;
+  font-size: 20px;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -117,61 +115,49 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 20px;
 }
 
-.heart-icon {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  position: relative;
+
+.coracao1 {
+  width: 30px;
+  height: 30px;
   cursor: pointer;
-  border: 2px solid #32cd32;
-  transition: background-color 0.3s, transform 0.3s;
-  margin-bottom: 10px;
+  margin-right: 10px;
+  transition: transform 0.3s;
 }
 
-.heart-icon {
-  width: 40px;
-  height: 40px;
-  position: relative;
-  cursor: pointer;
-  background-color: transparent; /* Sem borda */
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+.coracao1:hover {
+  transform: scale(1.2);
 }
 
-.heart-icon::before {
+.coracao1::before {
   content: '♥';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 24px; /* Tamanho do ícone aumentado */
-  color: #32cd32; /* Cor inicial mais sutil */
+  font-size: 24px; 
+  color: #32cd32; 
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.heart-icon:hover {
-  transform: scale(1.2); /* Aumenta levemente ao passar o mouse */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adiciona sombra ao passar o mouse */
+.coracao1:hover::before {
+  color: #00fa00; 
 }
 
-.heart-icon:hover::before {
-  color: #00fa00; /* Cor verde mais intensa ao passar o mouse */
+.coracao1.clicked {
+  background-color: transparent; 
 }
 
-.heart-icon.clicked {
-  background-color: transparent; /* Remove fundo sólido */
-}
-
-.heart-icon.clicked::before {
-  color: #32cd32; /* Coração fica verde quando clicado */
-  transform: scale(1.3); /* Coração aumenta levemente ao clicar */
+.coracao1.clicked::before {
+  color: #32cd32;
+  transform: scale(1.3);
 }
 
 .like-count {
-  font-size: 20px;
-  transition: font-size 0.3s;
+  color: #7c7c7c;
+  font-size: 18px;
+  margin-top: 5px;
 }
 
 @keyframes fadeIn {
@@ -209,4 +195,155 @@ a {
 
 .post-detalhes p {
   text-align: left;
+}
+
+
+/* Responsividade */
+
+@media (min-width: 1000px) and (max-width: 1245px)  {
+
+  .post-section {
+    margin-top: 20px;
+  }
+
+  .post-box {
+    padding: 20px;
+    top: -30px;
+  }
+
+
+  .post-title {
+    font-size: 22xpx; /* Ajuste do título */
+  }
+
+  .post-subtitle {
+    font-size: 15px; /* Ajuste do subtítulo */
+    margin-bottom: 25px;
+  }
+
+  .post-left {
+    margin-left: 0;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .user-name {
+    margin-left: 5px;
+  }
+
+  .post-time{
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  .like-count {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+}
+
+@media (max-width: 1005px) {
+
+  .post-section {
+    margin-top: 20px;
+  }
+
+  .post-box {
+    padding: 15px;
+    top: -30px;
+  }
+
+  .post-left {
+    margin-left: 0;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .user-photo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .user-name {
+    font-size: 15px;
+    margin-top: 5px;
+    margin-right: 20px;
+  }
+
+  .post-time {
+    display: none; /* Remover o tempo do post em telas pequenas */
+  }
+
+  .post-center {
+    margin-top: 20px;
+  }
+
+  .post-title {
+    font-size: 20px; /* Ajuste do título */
+  }
+
+  .post-subtitle {
+    font-size: 12px; /* Ajuste do subtítulo */
+    margin-bottom: 25px;
+  }
+
+  .post-right {
+    margin-right: 0;
+    margin-top: 20px;
+  }
+
+  .coracao1 {
+    width: 20px;
+    height: 20px;
+  }
+
+  .coracao1::before {
+    font-size: 16px; /* Ajusta o tamanho do ícone */
+  }
+
+  .like-count {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 645px) {
+
+  .post-section {
+    margin-top: 20px;
+  }
+
+  .post-box {
+    padding: 10px;
+    top: -30px;
+  }
+
+  .user-photo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .post-title {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  .post-subtitle {
+    display: none;
+  }
+
+  .coracao1 {
+    width: 15px;
+    height: 15px;
+  }
+
+  .coracao1::before {
+    font-size: 14px;
+  }
+
+  .like-count {
+    font-size: 12px;
+    margin-left: 10px;
+  }
 }

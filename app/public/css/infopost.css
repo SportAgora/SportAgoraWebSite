@@ -466,6 +466,7 @@
 @media (max-width: 1292px) {
 
   .box-post{
+    margin-right: 0;
     margin-bottom: 20px;
   }
 

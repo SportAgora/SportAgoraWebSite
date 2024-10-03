@@ -9,9 +9,10 @@
   }
   
   .box-post {
-    width: 60%;
+    margin-right: 10px;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 20px; 
+    position: relative;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
@@ -156,6 +157,9 @@
     margin-left: 80px;
     position: relative;
     cursor: pointer;
+    justify-content: flex-end; /* Alinha o conteúdo à direita */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 20px; /* Espaçamento ao redor do contêiner */
   }
   
   .box-mini-posts {
@@ -183,7 +187,7 @@
   
   .imagem-mini-post {
     width: 200px; 
-    height: 130px;
+    height: auto;
     margin-right: 15px;
     border-radius: 5px;
   }
@@ -357,19 +361,31 @@
   }
 
   .seguir {
-    position: absolute;
-    right: 180px; 
-    top: 10%;
-    background-color: #4CAF50;
-    color: white;
-    width: 120px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    padding: 12px 24px; 
-    border-radius: 50px;
-  }
-  
+    background-color: #4CAF50; /* Cor de fundo verde */
+    color: white; /* Cor do texto em branco */
+    padding: 16px 28px; /* Espaçamento interno */
+    border: none; /* Sem borda */
+    border-radius: 50px; /* Bordas arredondadas */
+    font-family: "Montserrat", sans-serif; /* Fonte Montserrat */
+    font-size: 18px; /* Tamanho da fonte */
+    cursor: pointer; /* Mão como cursor */
+    transition: background-color 0.3s, transform 0.3s; /* Animações ao passar o mouse */
+    display: block; /* Para que a margem funcione */
+    margin-left: 60%; /* Empurra o botão para a direita */
+    margin-top: -50px;
+}
+
+.seguir:hover {
+    background-color: #45a049; /* Tom mais escuro ao passar o mouse */
+    transform: scale(1.05); /* Aumento sutil ao passar o mouse */
+}
+
+.seguir:focus {
+    outline: none; /* Remove a borda padrão ao focar */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Sombra ao focar */
+}
+
+
   .seguir:hover {
     background-color: #45a049;
     transform: scale(1.05);
@@ -443,4 +459,122 @@
   cursor: pointer;
   margin-left: 20px;  
   transition: color 0.3s ease-in-out;
+}
+
+/* Responsividade */
+
+@media (max-width: 1292px) {
+
+  .box-post{
+    margin-bottom: 20px;
+  }
+
+  .informacao-post {
+    flex-direction: column; 
+    margin: 20px;
+  }
+
+  .seguir {
+    font-size: 14px;
+    padding: 8px; 
+}
+
+  .box-direita {
+    width: 100%; /* Reduzido para ocupar menos espaço em telas grandes */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .titulo-post {
+    font-size: 24px; /* Diminui o tamanho da fonte em telas menores */
+  }
+
+  .detalhes-post, .num-likes {
+    font-size: 16px; /* Diminui o tamanho da fonte em telas menores */
+  }
+
+  .info-post {
+    flex-direction: column; /* Muda a direção para coluna */
+    align-items: flex-start; /* Alinha itens ao início */
+  }
+
+  .likes {
+    margin-top: 10px; /* Adiciona espaço entre as informações */
+  }
+
+  .imagem-post {
+    margin-top: 10px; /* Diminui a margem da imagem */
+  }
+
+  .descricao-post {
+    font-size: 16px; /* Diminui o tamanho da fonte */
+  }
+
+  .foto-criador {
+    width: 50px; /* Diminui a largura da foto do criador */
+    height: 50px; /* Diminui a altura da foto do criador */
+  }
+
+  .seguidores {
+    margin-left: 5px; /* Diminui o espaço à esquerda */
+  }
+
+  .campo-comentario {
+    font-size: 14px; /* Diminui o tamanho da fonte do comentário */
+  }
+
+  .botao-enviar {
+    font-size: 14px; /* Diminui o tamanho da fonte do botão */
+  }
+
+  @media (max-width: 600px) {
+
+    .mini-box {
+      flex-direction: column; 
+    }
+  
+    .nome-mini-post {
+      font-size: 16px; /* Tamanho adequado para mini box */
+      margin: 5px 0;
+  }
+
+  .titulo-post {
+    font-size: 20px; /* Diminui mais o tamanho da fonte */
+  }
+
+  .descricao-post {
+    font-size: 14px; /* Diminui ainda mais a fonte */
+  }
+
+  .titulo-comentarios, .numero-comentarios {
+    font-size: 16px; /* Ajusta o tamanho do título e número de comentários */
+  }
+
+  .botao-seta {
+    margin-bottom: 10px; /* Adiciona margem inferior */
+  }
+
+  .ver-publicacoes {
+    width: 100%; /* Botão ocupa a largura total */
+  }
+ }
+}
+
+@media (max-width: 768px) {
+  .seguir {
+      font-size: 14px; /* Tamanho da fonte menor em telas menores */
+      padding: 10px 20px; /* Ajuste do padding */
+  }
+
+  .container {
+      padding: 5px; /* Reduza o padding em telas menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .seguir {
+      font-size: 12px; /* Tamanho da fonte ainda menor */
+      padding: 8px 16px; /* Ajuste do padding */
+      margin-top: -70px; /* Ajuste da margem superior para telas menores */
+  }
 }

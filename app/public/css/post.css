@@ -3,6 +3,7 @@
 
 
 /* Seção de posts */
+
 .secao-boxes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -95,4 +96,37 @@
 
 .box:hover .conteudo-box {
     transform: scale(1.05);
+}
+
+/* Responsividade */
+
+@media (max-width: 1292px) {
+    .secao-boxes {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+    .secao-boxes {
+        grid-template-columns: 1fr;
+    }
+    
+    .imagem-post {
+        height: 200px;
+    }
+
+    /* Reduzindo o tamanho da foto do usuário em telas menores */
+    .foto-usuario {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Reduzindo o tamanho das fontes em telas menores */
+    .nome-post {
+        font-size: 20px;
+    }
+
+    .dados-post {
+        font-size: 16px;
+    }
 }

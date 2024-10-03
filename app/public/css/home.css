@@ -175,9 +175,9 @@ a {
   text-decoration: none;
 }
 
-.post-section {
-  margin-top: 90px;
-  padding: 70px;
+.post-section { 
+  margin-left: 30px;
+  padding: 10px;
 }
 
 .post-header {
@@ -202,10 +202,6 @@ a {
 
 @media (min-width: 1000px) and (max-width: 1245px)  {
 
-  .post-section {
-    margin-top: 20px;
-  }
-
   .post-box {
     padding: 20px;
     top: -30px;
@@ -213,11 +209,11 @@ a {
 
 
   .post-title {
-    font-size: 22xpx; /* Ajuste do título */
+    font-size: 22xpx; 
   }
 
   .post-subtitle {
-    font-size: 15px; /* Ajuste do subtítulo */
+    font-size: 15px; 
     margin-bottom: 25px;
   }
 
@@ -245,10 +241,6 @@ a {
 
 @media (max-width: 1005px) {
 
-  .post-section {
-    margin-top: 20px;
-  }
-
   .post-box {
     padding: 15px;
     top: -30px;
@@ -272,7 +264,7 @@ a {
   }
 
   .post-time {
-    display: none; /* Remover o tempo do post em telas pequenas */
+    display: none;
   }
 
   .post-center {
@@ -280,11 +272,11 @@ a {
   }
 
   .post-title {
-    font-size: 20px; /* Ajuste do título */
+    font-size: 20px; 
   }
 
   .post-subtitle {
-    font-size: 12px; /* Ajuste do subtítulo */
+    font-size: 12px; 
     margin-bottom: 25px;
   }
 
@@ -299,7 +291,7 @@ a {
   }
 
   .coracao1::before {
-    font-size: 16px; /* Ajusta o tamanho do ícone */
+    font-size: 16px; 
   }
 
   .like-count {
@@ -309,10 +301,6 @@ a {
 }
 
 @media (max-width: 645px) {
-
-  .post-section {
-    margin-top: 20px;
-  }
 
   .post-box {
     padding: 10px;
@@ -334,8 +322,8 @@ a {
   }
 
   .coracao1 {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
   }
 
   .coracao1::before {
@@ -344,6 +332,6 @@ a {
 
   .like-count {
     font-size: 12px;
-    margin-left: 10px;
+    margin-left: 15px;
   }
 }

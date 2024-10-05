@@ -100,7 +100,7 @@ body {
     position: absolute;
     width: 0;
     height: 3px;
-    background-color: var(--verdeneon);
+    background-color: var(--branco);
     bottom: 10;
     margin-top: 30px;
     left: 50%;
@@ -778,6 +778,7 @@ footer {
     }
 
     .copyright {
-    margin-left: 20%; 
+        text-align: center;
+        margin-left: 10%;
     }
 }

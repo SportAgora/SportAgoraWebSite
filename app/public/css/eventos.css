@@ -5,183 +5,205 @@
 
 
 .event-container {
-    text-align: center;
-    background-color: #f0f0f0; 
-    padding: 50px 0;
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 50px 0;
 }
-
 
 .event-title {
-    font-size: 4.5rem; 
-    color: #28a745; 
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    animation: fadeInDown 1s ease-out;
+  font-size: 4.5rem;
+  color: #28a745;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInDown 1s ease-out;
 }
-
 
 .event-subtitle {
-    font-size: 1.4rem; 
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    color: #6d6d6d; 
-    margin-bottom: 50px; 
-    animation: fadeInUp 1s ease-out;
+  font-size: 1.4rem;
+  font-family: "Montserrat", sans-serif;
+  color: #6d6d6d;
+  margin-bottom: 50px;
+  animation: fadeInUp 1s ease-out;
 }
 
-
-
+/* Box de filtros */
 .filter-box {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    background-color: #fff;
-    padding: 20px; 
-    border-radius: 25px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-    max-width: 80%; 
-    margin: 0 auto;
-    animation: fadeIn 1.5s ease-out;
-    flex-wrap: wrap; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  margin: 0 auto;
+  animation: fadeIn 1.5s ease-out;
+  flex-wrap: wrap; /* Adicionado para melhor responsividade */
 }
 
-
+/* Itens de filtro */
 .filter-item {
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
 }
-
 
 .filter-label {
-    font-size: 1.8rem;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    letter-spacing: 1px; 
-    color: #28a745; 
-    margin-left: 15px;
-    font-weight: bold;
+  font-size: 1.8rem;
+  color: #28a745;
+  margin-left: 15px;
+  font-weight: bold;
 }
 
 .separator {
-    height: 40px;
-    width: 1px;
-    background-color: #ccc;
-    margin-right: 25px; 
+  height: 40px;
+  width: 1px;
+  background-color: #ccc;
+  margin-right: 25px;
 }
 
-
-
 .filter-text {
-    font-size: 1.2rem; 
-    color: #333;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    margin-right: 15px; 
-    font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+  margin-right: 15px;
+  font-weight: bold;
 }
 
 .filter-select {
-    padding: 15px 30px; 
-    border: 2px solid #cccccc; 
-    border-radius: 10px; 
-    background: #fff;
-    color: #333;
-    font-size: 1.2rem;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    cursor: pointer;
-    appearance: none; 
-    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 20px center; 
-    background-size: 16px; 
-    transition: border-color 0.3s, box-shadow 0.3s;
-    width: 150px;
+  padding: 15px 30px;
+  border: 2px solid #cccccc;
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  font-size: 1.2rem;
+  cursor: pointer;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 150px;
 }
 
 .filter-select:hover {
-    border-color: #999; 
-    box-shadow: 0 0 5px rgba(60, 60, 60, 0.2); 
+  border-color: #999;
+  box-shadow: 0 0 5px rgba(60, 60, 60, 0.2);
 }
-
 
 .filter-date {
-    padding: 15px 20px;
-    border: 2px solid #cccccc;
-    border-radius: 10px;
-    background: #fff;
-    color: #333;
-    font-size: 1.2rem;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    cursor: pointer;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    width: 230px; 
-    margin-left: auto; 
+  padding: 15px 20px;
+  border: 2px solid #cccccc;
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 230px;
+  margin-left: auto;
 }
 
-.filter-date:hover {
-    border-color: #999; 
-    box-shadow: 0 0 5px rgba(60, 60, 60, 0.2); 
-}
-
-
-.filter-date {
-    width: 200px; 
-}
-
-
+/* Animações */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }
 
 @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
 
+/* Responsividade */
+
+@media (max-width: 768px) {
+  .event-title {
+      font-size: 3rem;
+  }
+
+  .event-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+  }
+
+  .filter-box {
+      flex-direction: column;
+      max-width: 90%; 
+      padding: 15px;
+  }
+
+  .filter-item {
+      margin-bottom: 15px;
+      width: 100%;
+  }
+
+  .filter-select, .filter-date {
+      width: 100%;
+      padding: 10px 15px;
+  }
+
+  .separator {
+      display: none; 
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1105px) {
+  .event-title {
+      font-size: 3.8rem;
+  }
+
+  .event-subtitle {
+      font-size: 1.3rem;
+  }
+
+  .filter-box {
+      flex-wrap: wrap;
+      max-width: 85%;
+  }
+
+  .filter-item {
+      margin-bottom: 10px;
+      width: calc(50% - 20px); /* Cada item ocupa 50% do espaço */
+  }
+
+  .filter-select, .filter-date {
+      width: 100%;
+  }
+}
 
 /* EVENTOS PARTIALS*/
 
 .container-eventos {
     display: flex;
     justify-content: space-between;
-    gap: 40px; /* Aumenta a margin entre as boxes */
     padding: 5px;
     margin: 20px;
+    flex-wrap: wrap;
     background-color: #f0f0f0;
   }
   
@@ -283,3 +305,50 @@
     transform: scale(0.98);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   }
+
+  /* responsividade */
+
+  @media (min-width: 1024px) {
+    .evento-box {
+        width: 22%; /* 4 boxes na tela */
+        height: 470px;
+    }
+}
+
+/* Responsividade: tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container-eventos {
+    flex-wrap: wrap;
+  }
+    .evento-box {
+        width: 45%; /* 2 boxes por linha */
+        margin-bottom: 20px;
+        height: 470px;
+    }
+}
+
+/* Responsividade: mobile */
+@media (max-width: 767px) {
+    .evento-box {
+        width: 100%; /* 1 box por linha */
+        margin-bottom: 20px;
+        height: auto; /* Altura ajustável */
+    }
+
+    .evento-img {
+        height: 200px; /* Ajusta o tamanho da imagem para mobile */
+    }
+
+    .evento-btn {
+        padding: 10px 20px; /* Botão menor em mobile */
+        font-size: 14px; /* Texto menor no botão */
+    }
+
+    .evento-nome {
+        font-size: 20px; /* Tamanho menor para mobile */
+    }
+
+    .evento-detalhes {
+        font-size: 16px; /* Texto menor para os detalhes */
+    }
+}

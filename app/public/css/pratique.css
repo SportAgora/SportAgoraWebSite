@@ -30,15 +30,6 @@
     animation: fadeInUp 1s ease-out;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -48,9 +39,9 @@
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-@keyframes fadeInUp {
+  }
+  
+  @keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -59,8 +50,8 @@
         opacity: 1;
         transform: translateY(0);
     }
-}
-
+  }
+  
 
 /* localização */
 
@@ -159,7 +150,7 @@ select:hover, .input-data:hover, .input-localizacao:hover {
     background: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .filtro-container {
         flex-direction: column;
         width: 100%;
@@ -168,7 +159,7 @@ select:hover, .input-data:hover, .input-localizacao:hover {
 
     .input-localizacao {
         margin-bottom: 15px;
-        width: 100%;
+        width: 80%;
     }
 
     .select-container {
@@ -308,18 +299,5 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* responsividade */
 
-
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .locais-box, .map-box {
-        width: 100%; /* Ocupa 100% da largura da tela em dispositivos móveis */
-    }
-
-    .map {
-        height: 400px; /* Altura menor em dispositivos móveis */
-    }
-}

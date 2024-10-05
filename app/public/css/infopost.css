@@ -154,12 +154,10 @@
   }
   
   .info-criador {
-    margin-left: 80px;
     position: relative;
     cursor: pointer;
-    justify-content: flex-end; /* Alinha o conteúdo à direita */
-    align-items: center; /* Centraliza verticalmente */
-    padding: 20px; /* Espaçamento ao redor do contêiner */
+    justify-content: flex-end; 
+    align-items: center; 
   }
   
   .box-mini-posts {
@@ -186,7 +184,7 @@
   }
   
   .imagem-mini-post {
-    width: 200px; 
+    width: 250px; 
     height: auto;
     margin-right: 15px;
     border-radius: 5px;
@@ -475,11 +473,6 @@
     margin: 20px;
   }
 
-  .seguir {
-    font-size: 14px;
-    padding: 8px; 
-}
-
   .box-direita {
     width: 100%; /* Reduzido para ocupar menos espaço em telas grandes */
     display: flex;
@@ -503,8 +496,27 @@
     margin-top: 10px; /* Adiciona espaço entre as informações */
   }
 
-  .imagem-post {
-    margin-top: 10px; /* Diminui a margem da imagem */
+  .imagem-mini-post {
+    width: auto;
+  }
+
+  .info-mini-post {
+    justify-content:flex-start;
+  }
+
+  .nome-mini-post {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .coracao-mini {
+    height: 25px;
+    width: 25px;
+  }
+
+  .likes-mini-post {
+    font-size: 20px;
   }
 
   .descricao-post {
@@ -527,11 +539,17 @@
   .botao-enviar {
     font-size: 14px; /* Diminui o tamanho da fonte do botão */
   }
+}
 
-  @media (max-width: 600px) {
+  @media (max-width: 619px) {
 
     .mini-box {
       flex-direction: column; 
+      padding: 0%;
+    }
+
+    .seguidores {
+      margin-bottom: 20px;
     }
   
     .nome-mini-post {
@@ -551,31 +569,28 @@
     font-size: 16px; /* Ajusta o tamanho do título e número de comentários */
   }
 
-  .botao-seta {
-    margin-bottom: 10px; /* Adiciona margem inferior */
-  }
-
   .ver-publicacoes {
     width: 100%; /* Botão ocupa a largura total */
   }
  }
-}
 
-@media (max-width: 768px) {
-  .seguir {
-      font-size: 14px; /* Tamanho da fonte menor em telas menores */
-      padding: 10px 20px; /* Ajuste do padding */
-  }
 
-  .container {
-      padding: 5px; /* Reduza o padding em telas menores */
-  }
-}
+/* botão seguir */
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .seguir {
       font-size: 12px; /* Tamanho da fonte ainda menor */
-      padding: 8px 16px; /* Ajuste do padding */
-      margin-top: -70px; /* Ajuste da margem superior para telas menores */
+      padding: 12px 20px; /* Ajuste do padding */
+      margin-top: 1px; /* Ajuste da margem superior para telas menores */
+      margin-left: 30%;
+      width: 110px;
+      margin-bottom: 10px;
+  } 
+
+  .foto-criador{
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
   }
+  
 }

@@ -4,11 +4,6 @@
 
 /* CARROSEL */
 
-.carousel-section {
-    text-align: center;
-    margin: 50px 0;
-}
-
 .carousel-title {
     font-size: 30px;
     font-weight: bold;
@@ -17,29 +12,23 @@
     font-optical-sizing: auto;
     font-style: normal;
     margin-left: 50px;
+    margin-top: 50px;
     margin-bottom: 50px;
 }
 
 .carousel-container {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 100px;
-    width: 80%;
-    height: 220px;
-    padding-bottom: 20px;
+    width: 100%;
     overflow: hidden;
 }
 
-
 .carousel {
     display: flex;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out; /* Suavidade na transição */
 }
 
 .carousel-item {
-    flex: 0 0 20%;
+    min-width: 20%; /* Tamanho fixo para cada item */
     text-align: center;
 }
 
@@ -57,13 +46,15 @@
     transition: transform 0.3s, border 0.3s ease;
 }
 
+.carousel-item:hover img {
+    border: 3px solid #28a745; /* Borda verde ao passar o mouse */
+    transform: scale(1.1); /* Aumenta o tamanho da imagem */
+}
+
 .carousel-item p {
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 8px;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
     font-weight: bold;
     color: #000;
 }
@@ -113,30 +104,37 @@
 
 .carousel-arrow:hover {
     transform: translateY(-50%) scale(1.2);
-    background-color: #218838; /* Verde mais escuro ao passar o mouse */
+    background-color: #218838; 
 }
 
 .carousel-arrow {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.carousel-item:hover img {
-    border: 5px solid #28a745; /* Borda verde ao passar o mouse */
-    transform: scale(1.1); /* Aumenta o tamanho da imagem */
-}
-
-
 /* Responsiveness */
 
-
-@media (max-width: 768px) {
-    .carousel-item {
-        flex: 0 0 33%;
+@media (max-width: 900px) {
+    .carousel {
+        scroll-behavior: smooth;
+        overflow-x: auto;
     }
-    
+
+    .carousel-title {
+        margin-top: 50px;
+        font-size: x-large;
+    }
+
+    .carousel-item {
+        flex: 0 0 40%; /* Exibir 2 itens em telas menores */
+    }
+
     .carousel-arrow {
-        width: 35px;
-        height: 35px;
-        font-size: 20px;
+        display: none; /* Esconder setas em dispositivos móveis */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-item {
+        flex: 0 0 60%; /* Exibir 1 item em telas muito pequenas */
     }
 }

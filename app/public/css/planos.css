@@ -262,3 +262,9 @@ input[type=radio]:checked+label>article{
     letter-spacing: 2px;
     animation: fadeInDown 1s ease-out;
 }
+
+@media (max-width: 1490px) { 
+    .pratique-title{
+        font-size: 2em;
+    }
+}

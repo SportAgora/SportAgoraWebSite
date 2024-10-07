@@ -333,6 +333,9 @@ a {
     text-decoration: none;
   }
   
+  .mobile-subscribe-button:hover {
+    background-color: #319939;
+  }
 
 /* Mobile Search Bar */
 
@@ -376,8 +379,9 @@ a {
     transition: background-color 0.3s ease;
 }
 
-.mobile-subscribe-button:hover {
-    background-color: var(--verde_escuro);
+.mobile-subscribe-button:active {
+    background-color: #1e6e3d; 
+    transform: scale(1.1); /* Efeito de aumento ao clicar */
 }
 
 .mobile-search-bar {
@@ -632,21 +636,38 @@ a {
         transition: transform 0.5s ease;
     }
 
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        background-color: var(--verdenavfooter);
+        padding: 20px;
+        position: absolute;
+        right: 0;
+        width: 100%;
+    }
+
     .mobile-nav-button {
         background: none;
         border: none;
         font-family: "Montserrat", sans-serif;
-        font-optical-sizing: auto;
-        font-style: normal;
-        font-size: 0.8rem;
+        font-size: 1.2rem;
         color: var(--branco);
-        margin: 0 25px;
+        padding: 10px;
+        margin-bottom: 10px;
         cursor: pointer;
-        padding: 5px 0;
-        position: relative;
+        transition: background-color 0.3s ease, transform 0.3s ease;
         text-align: left;
-        align-items: left;
-        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .mobile-nav-button:active {
+        transform: scale(0.95); 
+    }
+    
+}
+
+@media (max-width: 480px) { 
+    .nome-post {
+        font-size: 16px;
     }
 }
 

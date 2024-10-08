@@ -155,7 +155,7 @@ body {
     border-radius: 75px;
     margin-left: 50px;
     padding: 10px 15px;
-    margin-right: 50px;
+    margin-right: 50px;  
 }
 
 .search-bar-mobile input::placeholder {
@@ -312,6 +312,11 @@ body {
 }
 
 .panel-button:hover {
+    background-color: var(--verdenavfooter);
+    border-radius: 10px;
+}
+
+.panel-button::after {
     background-color: var(--verdenavfooter);
     border-radius: 10px;
 }
@@ -622,7 +627,7 @@ a {
         background-color: var(--verdenavfooter);
         color: var(--branco);
         border: none;
-        width: 100%;
+        width: auto;
         padding: 8px 15px;
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
@@ -631,8 +636,12 @@ a {
         font-weight: bold;
         cursor: pointer;
         margin-right: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         flex-direction: column;
-        position: relative;
+        border-radius: 0 0 25px 25px;
+        position: absolute;
+        right: auto;
+        z-index: 1000000000000000000000000;
         transition: transform 0.5s ease;
     }
 

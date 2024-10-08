@@ -315,6 +315,7 @@ a {
   .post-title {
     font-size: 18px;
     margin-bottom: 25px;
+    margin-right: 10px;
   }
 
   .post-subtitle {
@@ -332,6 +333,5 @@ a {
 
   .like-count {
     font-size: 12px;
-    margin-left: 15px;
   }
 }

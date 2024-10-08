@@ -19,11 +19,14 @@
 .carousel-container {
     position: relative;
     width: 100%;
+    height: auto;
     overflow: hidden;
 }
 
 .carousel {
     display: flex;
+    height: auto;
+    margin: 1%;
     transition: transform 0.5s ease-in-out; /* Suavidade na transição */
 }
 
@@ -43,11 +46,13 @@
     height: 150px;
     object-fit: cover;
     border-radius: 50%; 
-    transition: transform 0.3s, border 0.3s ease;
+    height: auto;
+    transition: transform 0.3s, border 0.5s ease;
 }
 
 .carousel-item:hover img {
     border: 3px solid #28a745; /* Borda verde ao passar o mouse */
+    height: auto;
     transform: scale(1.1); /* Aumenta o tamanho da imagem */
 }
 

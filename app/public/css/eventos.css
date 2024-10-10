@@ -139,6 +139,14 @@
   }
 }
 
+.event-filtros-p {
+  text-align: center;
+  color: #333;
+  font-size: x-large;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 /* Responsividade */
 
 @media (max-width: 768px) {

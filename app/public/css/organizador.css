@@ -116,9 +116,6 @@
         margin-top: 20px;
         margin-bottom: 20px;
     }
-    body{
-        background-color: gray;
-    }
     .info_organizador {
         margin-left: 50px;
     }
@@ -140,10 +137,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-    body {
-        background-color: red;
-
     }
     .txtmuie {
         display: flex;

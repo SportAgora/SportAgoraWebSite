@@ -32,7 +32,7 @@
 }
 .container6 {
     background-color: var(--branco);
-    height: 900px;
+    /* height: 900px; */
     width: 880px;
     display: flex;
     flex-direction: column;
@@ -158,29 +158,37 @@ form {
 
 
 #signin {
-    left: 25px;
+    left:0;
     width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
 }
 #email::placeholder, #senha::placeholder, #nome::placeholder, #repsenha::placeholder{
     color: #888586;
     font-size: 19px;
 }
 .spanerro{
-    margin-left: 55px;
+
     color: gray;    
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 #signup {
     top: 70px;
-    left: 25px;
+    left: 0;
     width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
 }
 
 .outras {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 350px;
+    margin-top: 450px;
 }
 .outras button {
     height: 70px;
@@ -196,7 +204,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 600px;
+    margin-top: 685px;
 }
 .outros button {
     height: 70px;

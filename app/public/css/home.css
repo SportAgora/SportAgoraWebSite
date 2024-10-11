@@ -93,7 +93,7 @@
 .post-title {
   font-size: 32px; 
   font-weight: bold;
-  color: black;
+  color: var(--preto);;
   margin-bottom: 10px;
   font-family: "Montserrat", sans-serif;
   transition: font-size 0.3s ease, color 0.3s ease;

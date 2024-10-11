@@ -10,16 +10,17 @@
 
 :root {
     --verde_especial: #339933;
-    --preto: #1b1b1b;
+    --preto: #ffffff;
     --branco: white;
     --brancobg:#ffffff;
-    --backgroundpost: #e6e6e6;
     --cinza: gray;
     --cinzaclaro: #ccc;
-    --cordefundopadrao: #f0f0f0;
+    --cordefundopadrao: #0d0d0d;
     --verdenavfooter: #2a8d3f;
     --verdeneon: #42ff21;
     --brancofraco: #f1f1f1;
+    --postcor: #373434;
+    --textopost: #333;
 
     /* Cores Específicas */
     --vermelhoerro: red;
@@ -28,7 +29,8 @@
 /*BODY*/
 
 body {
-    background-color: var(--cordefundopadrao)
+    background-color: var(--cordefundopadrao);
+    
 }
 
 /*NAV BAR*/

@@ -20,7 +20,8 @@
     --verdeneon: #42ff21;
     --brancofraco: #f1f1f1;
     --postcor: #373434;
-    --textopost: #333;
+    --textopost: white;
+    --textopostinfo: white;
 
     /* Cores Específicas */
     --vermelhoerro: red;

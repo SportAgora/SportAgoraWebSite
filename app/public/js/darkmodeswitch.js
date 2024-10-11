@@ -9,23 +9,26 @@ var cores_claro = [
     ["--verdenavfooter","#2a8d3f"],
     ["--verdeneon","#42ff21"],
     ["--brancofraco","#f1f1f1"],
-    ["--postcor", "#373434"],
-    ["--textopost", "#333"]
+    ["--postcor", "white"],
+    ["--textopost", "#333"],
+    ["--textopostinfo", "#777"]
 ]
   
-var cores_claro = [
+var cores_escuro = [
     ["--verde_especial","#339933"],
     ["--preto", "#1b1b1b"],
     ["--branco", "white"],
     ["--brancobg", "#ffffff"],
     ["--cinza","gray"],
     ["--cinzaclaro","#ccc"],
-    ["--cordefundopadrao","#f0f0f0"],
+    ["--cordefundopadrao","#0d0d0d"],
     ["--verdenavfooter","#2a8d3f"],
     ["--verdeneon","#42ff21"],
-    ["--brancofraco","#f1f1f1"]
+    ["--brancofraco","#f1f1f1"],
+    ["--postcor", "#373434"],
+    ["--textopost", "white"],
+    ["--textopostinfo", "white"]
 ]
-  
 function loadMode() {
     const mode = localStorage.getItem('mode');
     if (mode === 'dark') {
@@ -37,8 +40,8 @@ function loadMode() {
   // set darkmode
   function setDarkMode() {
     let actual_color = 0
-    for(i = cores_claro.length; i > 0; i--){
-        document.documentElement.style.setProperty(cores_escura[actual_color][0], cores_escura[actual_color][1]);
+    for(i = cores_escuro.length; i > 0; i--){
+        document.documentElement.style.setProperty(cores_escuro[actual_color][0], cores_escuro[actual_color][1]);
         actual_color += 1
     }
     localStorage.setItem('mode', 'dark');

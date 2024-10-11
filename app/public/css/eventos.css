@@ -6,7 +6,6 @@
 
 .event-container {
   text-align: center;
-  background-color: #f0f0f0;
   padding: 50px 0;
 }
 
@@ -24,7 +23,7 @@
 .event-subtitle {
   font-size: 1.4rem;
   font-family: "Montserrat", sans-serif;
-  color: #6d6d6d;
+  color: var(--textopostinfo);
   margin-bottom: 50px;
   animation: fadeInUp 1s ease-out;
 }
@@ -34,7 +33,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--postcor); 
   padding: 20px;
   border-radius: 25px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -61,13 +60,13 @@
 .separator {
   height: 40px;
   width: 1px;
-  background-color: #ccc;
+  background-color: var(--postcor); 
   margin-right: 25px;
 }
 
 .filter-text {
   font-size: 1.2rem;
-  color: #333;
+  color: var(--textopost);
   margin-right: 15px;
   font-weight: bold;
 }
@@ -76,8 +75,8 @@
   padding: 15px 30px;
   border: 2px solid #cccccc;
   border-radius: 10px;
-  background: #fff;
-  color: #333;
+  background-color: var(--postcor); 
+  color: var(--textopost);
   font-size: 1.2rem;
   cursor: pointer;
   appearance: none;
@@ -98,8 +97,8 @@
   padding: 15px 20px;
   border: 2px solid #cccccc;
   border-radius: 10px;
-  background: #fff;
-  color: #333;
+  background-color: var(--postcor); 
+  color: var(--textopost);
   font-size: 1.2rem;
   cursor: pointer;
   transition: border-color 0.3s, box-shadow 0.3s;
@@ -141,7 +140,7 @@
 
 .event-filtros-p {
   text-align: center;
-  color: #333;
+  color: var(--textopost);
   font-size: x-large;
   font-weight: bold;
   margin-bottom: 20px;
@@ -212,11 +211,11 @@
     padding: 5px;
     margin: 20px;
     flex-wrap: wrap;
-    background-color: #f0f0f0;
+  
   }
   
   .evento-box {
-    background-color: #fff;
+    background-color: var(--postcor); 
     border-radius: 20px; /* Deixa a box mais arredondada */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 15px;
@@ -266,7 +265,7 @@
   }
   
   .evento-nome {
-    color: #2D2D2D;
+    color: var(--textopost);
     font-size: 24px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -276,7 +275,7 @@
   }
   
   .evento-detalhes {
-    color: #727272;
+    color: var(--textopostinfo);
     font-size: 18px; 
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;

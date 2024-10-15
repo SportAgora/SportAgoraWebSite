@@ -18,7 +18,7 @@
 
 h1 {
     font-size: 2.2em;
-    color: black;
+    color: var(--textopost);
     font-weight: bold;
     margin: 0;
     animation: slideInLeft 1s ease-out;
@@ -29,6 +29,7 @@ h1 {
     text-align: center;
     font-weight: bold;
     animation: bounceIn 1s ease-out;
+    color: var(--textopost);
 }
 /* 
 .plano:hover {
@@ -40,7 +41,7 @@ h1 {
 .plano-box .preco-month {
     font-size: 1.2em; 
     font-weight: bold;
-    color: green; 
+    color: var(--verde_especial); 
     margin-top: 5px;
     letter-spacing: 1px;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -59,28 +60,28 @@ h1 {
     font-size: 1.7em;
     font-weight: bold;
     margin-bottom: 20px;
-    color: black;
+    color: var(--textopost);
     text-transform: uppercase;
     letter-spacing: 1.5px;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .plano-box h2:hover {
-    color: #333;
+    color: var(--textopost);
     transform: scale(1.05);
 }
 
 .plano-box h4 {
     font-size: 1.2em;
     font-weight: bold;
-    color: #666;
+    color: var(--textopostinfo);
     margin-bottom: 20px;
     letter-spacing: 1px;
     transition: color 0.3s ease;
 }
 
 .plano-box h4:hover {
-    color: #333;
+    color: var(--textopost);
 }
 
 .plano-box ul {
@@ -95,7 +96,7 @@ h1 {
     justify-content: space-around;
     animation: fadeInUp 1s ease-out;
     line-height: 1.5; 
-    color: #333;
+    color: var(--textopost);
     transition: color 0.3s ease; 
 }
 
@@ -104,7 +105,7 @@ h1 {
 }
 
 .plano-box ul li:hover {
-    color: black; 
+    color: var(--textopost);
     transform: translateX(3px); 
 }
 
@@ -119,7 +120,7 @@ h1 {
 }
 
 .plano:hover {
-    background-color:  #cdf7cf;
+    background-color:  var(--hoverplanos);
     transform: scale(1.05);
     transform: translateY(-5px);
     cursor: pointer;
@@ -171,7 +172,7 @@ h1 {
     width: 350px;
     height: 600px;
     border-radius: 20px;
-    background-color: #fff;
+    background-color: var(--postcor);
     box-sizing: border-box;
     box-shadow: 0px 8px 7px 0px rgba(0, 0, 0, 0.33);
     display: flex;
@@ -194,7 +195,7 @@ h1 {
     justify-content: space-evenly;
     animation: fadeInUp 1s ease-out;
     line-height: 1.5; 
-    color: #333;
+    color: var(--textopost);
     transition: color 0.3s ease; 
 }
 .plano h1 {

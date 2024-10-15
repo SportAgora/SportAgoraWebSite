@@ -5,7 +5,7 @@ main {
     flex-direction: column;
 }
 .container {
-    background-color: #fff;
+    background-color: var(--postcor);;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -17,12 +17,14 @@ h1 {
     margin: 25px;
     font-size: 34px;
     text-align: center;
+    color: var(--textopost);
 }
 
 label {
     display: block;
     margin: 10px 0 5px;
     font-weight: 650;
+    color: var(--textopost);
 }
 
 input {

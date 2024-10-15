@@ -11,7 +11,8 @@ var cores_claro = [
     ["--brancofraco","#f1f1f1"],
     ["--postcor", "white"],
     ["--textopost", "#333"],
-    ["--textopostinfo", "#777"]
+    ["--textopostinfo", "#777"],
+    ["--hoverplanos", "#cdf7cf"]
 ]
   
 var cores_escuro = [
@@ -27,7 +28,8 @@ var cores_escuro = [
     ["--brancofraco","#f1f1f1"],
     ["--postcor", "#373434"],
     ["--textopost", "white"],
-    ["--textopostinfo", "white"]
+    ["--textopostinfo", "white"],
+    ["--hoverplanos", "#1f2e20"]
 ]
 function loadMode() {
     const mode = localStorage.getItem('mode');
@@ -66,3 +68,4 @@ function loadMode() {
         setDarkMode();
     }
   }
+  window.onload = loadMode()

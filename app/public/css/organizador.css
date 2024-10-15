@@ -1,6 +1,6 @@
 .pratique-title {
     font-size: 4.5rem; 
-    color: #28a745; 
+    color: var(--verde_especial); 
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -19,9 +19,12 @@
     font-optical-sizing: auto;
     font-style: normal;
     text-align: center;
-    color: #6d6d6d; 
+    color: var(--textopostinfo); 
     margin-bottom: 50px; 
     animation: fadeInUp 1s ease-out;
+}
+.txtmuie1 {
+    color: var(--textopost);
 }
 
 @keyframes fadeInDown {

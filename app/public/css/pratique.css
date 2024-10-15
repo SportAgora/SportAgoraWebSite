@@ -59,7 +59,7 @@
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    background-color: #fff;
+    background-color: var(--postcor);
     padding: 20px; 
     padding-bottom: 10px;
     border-radius: 25px;
@@ -80,7 +80,8 @@
     border: 1px solid #ccc;
     padding: 25px;
     border-radius: 15px;
-    color: #727272;
+    color: var(--textopostinfo);
+    background-color: var(--postcor);
     margin-right: 15px;
     font-size: 18px;
     font-family: "Montserrat", sans-serif;
@@ -99,6 +100,8 @@
     flex-direction: column;
     align-items: flex-start;
     margin-left: 15px;
+    color: var(--textopostinfo);
+    background-color: var(--postcor);
 }
 
 .select-container label {
@@ -106,7 +109,7 @@
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    color: #333;
+    color: var(--textopostinfo);
     margin-bottom: 5px;
     font-weight: 500;
 }
@@ -114,7 +117,7 @@
 select, .input-data {
     border: 1px solid #ccc;
     border-radius: 15px;
-    color: #727272;
+    color: var(--textopostinfo);
     padding: 25px;
     margin: 10px;
     font-size: 18px;
@@ -182,8 +185,9 @@ select:hover, .input-data:hover, .input-localizacao:hover {
 .locais-box {
     width: 28%;
     margin-left: 50px;
-    background-color: #fff;
-    border: 1px solid #E8E8E8;
+    color: var(--textopostinfo);
+    background-color: var(--postcor);
+    border: 1px solid var(--postcor);
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -192,8 +196,9 @@ select:hover, .input-data:hover, .input-localizacao:hover {
 .map-box {
     width: 60%;
     margin-right: 30px;
-    background-color: #fff;
-    border: 1px solid #E8E8E8;
+    color: var(--textopostinfo);
+    background-color: var(--postcor);
+    border: 1px solid var(--postcor);
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -222,15 +227,17 @@ h2 {
     font-style: normal;
     margin-top: 10px;
     margin-bottom: 30px;
-    color: #2D2D2D;
+    color: var(--textopost);
+    background-color: var(--postcor);
 }
 
 .card {
     display: flex;
     align-items: left;
     border-radius: 25px;
-    background-color: #fff;
-    border: 1px solid #E8E8E8; 
+    color: var(--textopost);
+    background-color: var(--postcor);
+    border: 1px solid var(--postcor);
     margin-bottom: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     padding: 17px;
@@ -260,7 +267,8 @@ h2 {
     font-style: normal;
     margin-bottom: 15px;
     margin-left: 10px;
-    color: #2D2D2D;
+    color: var(--textopost);
+    background-color: var(--postcor);
 }
 
 .info p {
@@ -270,14 +278,15 @@ h2 {
     font-style: normal;
     margin-left: 10px;
     margin-bottom: 10px;
-    color: #727272;
+    color: var(--textopostinfo);
+    background-color: var(--postcor);
 }
 
 .botao {
     padding: 12px 22px;
-    border: 2px solid #28a745;
-    background-color: #fff;
-    color: #28a745;
+    border: 2px solid var(--verde_especial);
+    color: var(--textopost);
+    background-color: var(--postcor);
     margin-top: 10px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -411,4 +420,9 @@ h2 {
         font-size: 1rem;
         margin-bottom: 30px;
         }
+}
+
+#esporte {
+    color: var(--textopostinfo);
+    background-color: var(--postcor);
 }

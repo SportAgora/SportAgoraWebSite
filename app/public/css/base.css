@@ -9,19 +9,20 @@
 }
 
 :root {
-    --verde_especial: #339933;
-    --preto: #ffffff;
+    --verde_especial: #28a745;
+    --preto: #1b1b1b;
     --branco: white;
     --brancobg:#ffffff;
     --cinza: gray;
     --cinzaclaro: #ccc;
-    --cordefundopadrao: #0d0d0d;
+    --cordefundopadrao: #f0f0f0;
     --verdenavfooter: #2a8d3f;
     --verdeneon: #42ff21;
     --brancofraco: #f1f1f1;
-    --postcor: #373434;
-    --textopost: white;
-    --textopostinfo: white;
+    --postcor: white;
+    --textopost: #333;
+    --textopostinfo: #777;
+    --hoverplanos: #cdf7cf;
 
     /* Cores Específicas */
     --vermelhoerro: red;

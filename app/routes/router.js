@@ -52,6 +52,15 @@ router.get('/inscrito', function(req,res){
     res.render('pages/inscrito');  
 })
 
+router.get('/intem-do-carrosel', function(req,res){
+  res.render('pages/intem-do-carrosel');  
+})
+
+
+router.get('/infoevento-natacao.ejs', function(req,res){
+  res.render('pages/infoevento-natacao.ejs');  
+})
+
 router.get('/registro', function(req,res){
     res.render('pages/registro', { "erros": null, "valores": {"nome":"","email":"","senha":"","repsenha":""},"retorno":null });  
 })

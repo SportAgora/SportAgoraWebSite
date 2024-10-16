@@ -12,7 +12,8 @@ var cores_claro = [
     ["--postcor", "white"],
     ["--textopost", "#333"],
     ["--textopostinfo", "#777"],
-    ["--hoverplanos", "#cdf7cf"]
+    ["--hoverplanos", "#cdf7cf"],
+    ["--searchbar", "#216F27"]
 ]
   
 var cores_escuro = [
@@ -23,13 +24,14 @@ var cores_escuro = [
     ["--cinza","gray"],
     ["--cinzaclaro","#ccc"],
     ["--cordefundopadrao","#0d0d0d"],
-    ["--verdenavfooter","#2a8d3f"],
+    ["--verdenavfooter","#216F27"],
     ["--verdeneon","#42ff21"],
     ["--brancofraco","#f1f1f1"],
     ["--postcor", "#373434"],
     ["--textopost", "white"],
-    ["--textopostinfo", "white"],
-    ["--hoverplanos", "#1f2e20"]
+    ["--textopostinfo", "#ccc"],
+    ["--hoverplanos", "#1f2e20"],
+    ["--searchbar", "#2a8d3f"]
 ]
 function loadMode() {
     const mode = localStorage.getItem('mode');

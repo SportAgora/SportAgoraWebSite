@@ -10,7 +10,7 @@
   
   .box-post {
     margin-right: 10px;
-    background-color: #ffffff;
+    background-color: var(--postcor); 
     padding: 20px; 
     position: relative;
     border-radius: 10px;
@@ -19,7 +19,7 @@
 
   .titulo-post {
     font-size: 28px;
-    color: #2d2d2dd7;
+    color: var(--textopost);
     letter-spacing: 0.5px;
     font-weight:700;
     font-family: "Montserrat", sans-serif;
@@ -55,11 +55,11 @@
     align-items: center;
     font-size: 16px; 
     margin-bottom: 40px;
-    color: #444444;
+    color: var(--textopostinfo);
   }
 
   .detalhes-post {
-    color: #888888;
+    color: var(--textopostinfo);
     font-size: 18px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -79,7 +79,7 @@
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    color: #888888;
+    color: var(--textopostinfo);
     margin-bottom: 5px;
   }
 
@@ -104,7 +104,7 @@
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    color: #555;
+    color: var(--textopost);
     margin-top: 20px;
     font-size: 18px; 
     line-height: 1.6;
@@ -113,13 +113,10 @@
     transition: all 0.3s ease-in-out;
   }
 
-  .descricao-post:hover {
-    color: #333333;
-    transform: translateY(-5px); /* Animação ao passar o mouse */
-  }
+
   
   .box-criador {
-    background-color: #ffffff;
+    background-color: var(--postcor);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -133,7 +130,8 @@
   }
   
   .box-criador, .box-comentarios {
-    background-color: #ffffff;
+    background-color: var(--postcor);
+    color: var(--textopost);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -151,6 +149,7 @@
   .seguidores {
     margin-top: 5px;
     margin-left: 10px;
+    color: var(--textopostinfo);
   }
   
   .info-criador {
@@ -168,7 +167,7 @@
   .mini-box {
     display: flex;
     margin-top: 30px;
-    background-color: #f9f9f9;
+    background-color: var(--cordefundopadrao);
     padding: 10px;
     border-radius: 10px;
   }
@@ -179,7 +178,7 @@
     font-style: normal;
     font-size: 18px; 
     font-weight: bold;
-    color: #000000; 
+    color: var(--textopost);
     margin-top: 5px;
   }
   
@@ -218,12 +217,12 @@
   }
   
   .ver-publicacoes:hover {
-    background-color: #e8f5e9;
+    background-color: var(--hoverplanos);
     transform: scale(1.05);
   }
 
   .comentarios {
-    background-color: #ffffff;
+    background-color: var(--postcor);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -237,6 +236,7 @@
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+    color: var(--textopost);
   }
 
   .numero-comentarios {
@@ -244,14 +244,14 @@
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    color: #888888;
+    color: var(--textopostinfo);
     margin-bottom: 20px;
   }
 
   .form-comentario {
     display: flex;
     align-items: center;
-    background-color: #f5f5f5;
+    background-color: var(--cordefundopadrao);
     border-radius: 12px;
     padding: 15px;
     box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -271,17 +271,17 @@
     border-radius: 8px;
     transition: all 0.3s ease;
     resize: none;
-    color: #333;
+    color: var(--textopost);
   }
 
   .campo-comentario::placeholder {
-    color: #aaa;
+    color: var(--textopostinfo);
   }
 
   .campo-comentario:focus {
     border-color: transparent;
     outline: none;
-    background-color: #eaeaea;
+    background-color: var(--postcor);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
@@ -313,11 +313,12 @@
   .box-comentario {
     display: flex;
     align-items: flex-start;
-    background-color: #f9f9f9;
+    background-color: var(--cordefundopadrao);
     padding: 20px;
     border-radius: 15px;
     margin-bottom: 15px;
     transition: all 0.3s ease;
+    color: var(--textopost);
   }
   
 
@@ -332,7 +333,7 @@
   .nome-criador {
     font-size: 24px; /* Aumentando o tamanho da fonte */
     font-weight: bold;
-    color: #000000; /* Preto forte para destaque */
+    color: var(--textopost); /* Preto forte para destaque */
     margin-top: 5px;
     margin-bottom: 10px;
     font-family: "Montserrat", sans-serif;
@@ -348,15 +349,12 @@
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    color: #555555;
+    color: var(--textopostinfo);
     margin-top: 5px;
     line-height: 1.5;
     transition: color 0.3s ease-in-out;
   }
 
-  .texto-comentario:hover {
-    color: #333333;
-  }
 
   .seguir {
     background-color: #4CAF50; /* Cor de fundo verde */
@@ -399,7 +397,7 @@
   .nome-usuario {
     font-size: 20px;
     font-weight: bold;
-    color: #000000df; 
+    color: var(--textopost); 
     margin-bottom: 10px;
     margin-left: -5px;
   }
@@ -449,7 +447,7 @@
 }
 
 .ver-eventos {
-  color: #727272;
+  color: var(--textopostinfo);
   font-size: 20px;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;

@@ -289,14 +289,14 @@
 }
 
 #botaoPostagens {
-    color: var(--preto);
+    color: var(--textopost);
     text-decoration:underline;
 }
 #botaoCurtidos {
-    color: var(--cinza);
+    color: var(--textopostinfo);
 }
 #botaoTime {
-    color: var(--cinza);
+    color: var(--textopostinfo);
 }
 
 .timeMBR {
@@ -305,6 +305,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    color: var(--textopost);
 }
 .timeMBR aside {
     margin: 45px;
@@ -325,7 +326,7 @@
     border: 1px sold var(--cinza);
 }
 th{
-    background-color: lightgray;
+    background-color: var(--postcor);
 }
 
 .imagensJogadores {
@@ -334,6 +335,7 @@ th{
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
+    color: var(--textopost);
 }
 .imagensJogadores aside{
     display: flex;
@@ -354,6 +356,7 @@ th{
 .jogadores h1{
     margin-top: 15px;
     margin-bottom: 15px;
+    color: var(--textopost);
 }
 
 .treinadores {

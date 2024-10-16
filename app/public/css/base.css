@@ -23,6 +23,7 @@
     --textopost: #333;
     --textopostinfo: #777;
     --hoverplanos: #cdf7cf;
+    --searchbar: #216F27;
 
     /* Cores Específicas */
     --vermelhoerro: red;
@@ -155,7 +156,7 @@ body {
 .search-bar {
     display: flex;
     align-items: center;
-    background-color: #216F27;
+    background-color: var(--searchbar);
     border-radius: 75px;
     margin-left: 50px;
     padding: 10px 15px;
@@ -177,7 +178,7 @@ body {
     font-size: 0.85rem;
     padding: 10px;
     width: 75%;
-    background-color: #1e6e3d;
+    background-color: var(--searchbar);
     border-radius: 25px;
     color: var(--branco);
 }
@@ -460,7 +461,7 @@ a {
         margin-left: 10px;
         width: 98%;
         margin-right: 5px;
-        background-color: #1e6e3d;
+        background-color: var(--searchbar);
         border-radius: 25px;
         color: var(--branco);
     }
@@ -486,7 +487,7 @@ a {
         font-size: 1rem;
         padding: 10px;
         width: 75%;
-        background-color: #1e6e3d;
+        background-color: var(--searchbar);
         border-radius: 25px;
         color: var(--branco);
     }
@@ -531,6 +532,7 @@ a {
 
     .search-bar-mobile {
         display: block;
+        background-color: var(--searchbar);
     }
 
     .mobile-subscribe-button{
@@ -628,7 +630,7 @@ a {
         display: flex;
         text-align: left;
         align-items: left;
-        background-color: var(--verdenavfooter);
+        background-color: #319939;
         color: var(--branco);
         border: none;
         width: auto;
@@ -652,7 +654,7 @@ a {
     .mobile-menu {
         display: none;
         flex-direction: column;
-        background-color: var(--verdenavfooter);
+        background-color: #319939;
         padding: 20px;
         position: absolute;
         right: 0;

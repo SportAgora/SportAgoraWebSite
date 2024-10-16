@@ -16,7 +16,7 @@
 }
 
 .container5 {
-    background-color: var(--branco);
+    background-color: var(--postcor);
     width: 880px;
     display: flex;
     flex-direction: column;
@@ -31,7 +31,7 @@
     margin-bottom: 60px;
 }
 .container6 {
-    background-color: var(--branco);
+    background-color: var(--postcor);  
     /* height: 900px; */
     width: 880px;
     display: flex;
@@ -68,6 +68,7 @@ form {
     font-size: 45px;
     margin-bottom: 10px;
     margin-top: 10px;
+    color: var(--textopost);
 }
 
 .btnColor {
@@ -150,6 +151,7 @@ form {
     font-size: 13px;
     display: flex;
     align-items: center;
+    color: var(--textopost);
 }
 
 #btnSignin {

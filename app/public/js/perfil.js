@@ -1,6 +1,4 @@
- 
- 
- // Perfil Kique Sexy
+// Perfil Kique Sexy
 
     function signinValidacao(){
         const firstnameValue = firstname.value()
@@ -66,9 +64,9 @@
             abaTime.style.display = 'none';
             abaCurtidos.style.display = 'none';
 
-            selecPostagem.style.color = 'var(--textopost)';
-            selecCurtidos.style.color = 'var(--textopostinfo)';
-            selecTime.style.color = 'var(--textopostinfo)';
+            selecPostagem.style.color = 'var(--preto)';
+            selecCurtidos.style.color = 'var(--cinza)';
+            selecTime.style.color = 'var(--cinza)';
 
             selecPostagem.style.textDecoration = "underline";
             selecCurtidos.style.textDecoration = "none";
@@ -80,9 +78,9 @@
             abaTime.style.display = 'none';
             abaPostagens.style.display = 'none';
 
-            selecPostagem.style.color = 'var(--textopostinfo)';
-            selecCurtidos.style.color = 'var(--textopost)';
-            selecTime.style.color = 'var(--textopostinfo)';
+            selecPostagem.style.color = 'var(--cinza)';
+            selecCurtidos.style.color = 'var(--preto)';
+            selecTime.style.color = 'var(--cinza)';
 
             selecPostagem.style.textDecoration = "none";
             selecCurtidos.style.textDecoration = "underline";
@@ -90,13 +88,13 @@
 
         } else if(abaSelecionada == "time") {
 
-            abaTime.style.display = 'flex';
+            abaTime.style.display = 'grid';
             abaPostagens.style.display = 'none';
             abaCurtidos.style.display = 'none';
 
-            selecPostagem.style.color = 'var(--textopostinfo)';
-            selecCurtidos.style.color = 'var(--textopostinfo)';
-            selecTime.style.color = 'var(--textopost)';
+            selecPostagem.style.color = 'var(--cinza)';
+            selecCurtidos.style.color = 'var(--cinza)';
+            selecTime.style.color = 'var(--preto)';
 
             selecPostagem.style.textDecoration = "none";
             selecCurtidos.style.textDecoration = "none";

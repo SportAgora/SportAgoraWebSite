@@ -1,69 +1,81 @@
-<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportAgora</title>
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
 
-<nav class="navbar">
-    <div class="navbar-left">
-        <button class="hamburger-menu">
-            <img src="/imagens/menu-burger.png" alt="Menu" class="menu-icon">
-        </button>
-        <a class="links-home"  href="/home">
-        <img src="imagens/SportAgora.png" alt="Logo" class="logo">
-        <span class="site-name">SportAgora</span>
-        </a>
-    </div>
-    <div class="navbar-center">
-        <button class="nav-button" onclick="location.href='/home'"> Início</button>
-        <button class="nav-button" onclick="location.href='/eventos'">Eventos</button>
-        <button class="nav-button" onclick="location.href='/pratique'">Pratique</button>
-        <button class="nav-button" onclick="location.href='/organizador'">Organizador</button>
-    </div>
-    <div class="navbar-right">
-
-        <div class="search-bar">
-            <img src="/imagens/search.png" alt="Search" class="search-icon">
-            <input type="text" placeholder="Busque por Esportes e muito mais...">
-        </div>   
-           
-        <button class="subscribe-button" onclick="location.href='/planos'">Assine Sport+</button>
-        <button class="login-button">
-            <img src="/imagens/Icon.png" alt="User" class="user-icon">
-            <img src="/imagens/menu-burger.png" alt="Menu" class="menu-icon">
-        </button>
-        <div class="login-button-mobile">
-            <a onclick="location.href='/login'">
-            <img src="/imagens/Icon.png" alt="User" class="user-icon">
+<header>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <button class="hamburger-menu">
+                <img src="/imagens/menu-burger.png" alt="Menu" class="menu-icon">
+            </button>
+            <a class="links-home" href="/home">
+                <img src="imagens/SportAgora.png" alt="Logo" class="logo">
+                <span class="site-name">SportAgora</span>
             </a>
         </div>
-    </div>
-</nav>
+        <div class="navbar-center">
+            <button class="nav-button" onclick="location.href='/home'">Início</button>
+            <button class="nav-button" onclick="location.href='/eventos'">Eventos</button>
+            <button class="nav-button" onclick="location.href='/pratique'">Pratique</button>
+            <button class="nav-button" onclick="location.href='/organizador'">Organizador</button>
+        </div>
+        <div class="navbar-right">
+            <div class="search-bar">
+                <img src="/imagens/search.png" alt="Search" class="search-icon">
+                <input type="text" placeholder="Busque por Esportes e muito mais...">
+            </div>   
+            <button class="subscribe-button" onclick="location.href='/planos'">Assine Sport+</button>
+            <button class="login-button">
+                <img src="/imagens/Icon.png" alt="User" class="user-icon">
+                <img src="/imagens/menu-burger.png" alt="Menu" class="menu-icon">
+            </button>
+            <div class="login-button-mobile">
+                <a onclick="location.href='/login'">
+                    <img src="/imagens/Icon.png" alt="User" class="user-icon">
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
 
-<div id="menu-panel" class="menu-panel">
+<aside id="menu-panel" class="menu-panel">
     <button class="panel-button" onclick="location.href='/registro'">Cadastra-se</button>
     <button class="panel-button" onclick="location.href='/login'">Login</button>
     <hr>
     <button class="panel-button" onclick="location.href='/login'">Anuncie seu evento</button>
     <hr>
     <button class="panel-button" onclick="toggleMode()">Claro/Escuro</button>
-</div>
+</aside>
 
-<div id="mobile-menu" class="mobile-menu">
+<section id="mobile-menu" class="mobile-menu">
     <button class="mobile-nav-button" onclick="location.href='/home'">Início</button>
     <button class="mobile-nav-button" onclick="location.href='/eventos'">Eventos</button>
     <button class="mobile-nav-button" onclick="location.href='/pratique'">Pratique</button>
     <button class="mobile-nav-button" onclick="location.href='/organizador'">Organizador</button>
-</div>
+</section>
 
-<div class="mobile-search-bar">
-    <div class="search-bar-mobile">
+<article class="mobile-search-bar">
+    <article class="search-bar-mobile">
         <img src="/imagens/search.png" alt="Search" class="search-icon">
         <input type="text" placeholder="Busque por Esportes e muito mais...">
-    </div>   
-</div>
+    </article>   
+</article>
 
-<div class="mobile-assinatura">
+<section class="mobile-assinatura">
     <button class="mobile-subscribe-button" onclick="location.href='/planos'">Assine Sport+</button>
-</div>
+</section>
 
 <script src="script.js"></script>
+
+</body>
+</html>

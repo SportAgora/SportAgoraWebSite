@@ -29,6 +29,10 @@
     --vermelhoerro: red;
 }   
 
+.link-post {
+    text-decoration: none;
+}
+
 /*BODY*/
 
 body {

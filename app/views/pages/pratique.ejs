@@ -24,10 +24,10 @@
         <h1 class="pratique-title">PRATIQUE</h1>
         <p class="pratique-subtitle">Não sabe como, onde e quanto praticar? Da uma pesquisa no que a SportAgora tem</p>
 
-        <div class="filtro-container">
+        <main class="filtro-container">
             <input type="text" class="input-localizacao" placeholder="Coloque seu CEP, Endereço, cidade ou estado">
             
-            <div class="select-container">
+            <section class="select-container">
                 <label for="esporte">Esporte</label>
                 <select id="esporte" name="esporte">
                     <option value="todos">Ver tudo</option>
@@ -35,56 +35,54 @@
                     <option value="basquete">Basquete</option>
                     <option value="volei">Vôlei</option>
                 </select>
-            </div>
+            </section>
             
-            <div class="select-container">
+            <section class="select-container">
                 <label for="data-evento">Data do evento</label>
                 <input type="date" id="data-evento" class="input-data">
-            </div>
-        </div>
+            </section>
+        </main>
 
         <!-- parte baixo -->
 
-        
-    <div class="container">
-        <div class="locais-box">
+    <main class="container">
+        <section class="locais-box">
             <h2>Locais</h2>
-
-            <div class="cards-container">
-                <div class="card">
+            <section class="cards-container">
+                <section class="card">
                     <img src="imagens/clube.jpeg" alt="Ginásio Poliesportivo">
-                    <div class="info">
+                    <article class="info">
                         <h3>Ginásio Poliesportivo</h3>
                         <p>Endereço: Rua Exemplo, 123</p>
                         <button class="botao">Como chegar</button>
-                    </div>
-                </div>
-                <div class="card">
+                    </article>
+                </section>
+                <section class="card">
                     <img src="imagens/clube.jpeg" alt="Ginásio Poliesportivo">
-                    <div class="info">
+                    <article class="info">
                         <h3>Ginásio Poliesportivo</h3>
                         <p>Endereço: Rua Exemplo, 123</p>
                         <button class="botao">Como chegar</button>
-                    </div>
-                </div>
-                <div class="card">
+                    </article>
+                </section>
+                <section class="card">
                     <img src="imagens/clube.jpeg" alt="Ginásio Poliesportivo">
-                    <div class="info">
+                    <article class="info">
                         <h3>Ginásio Poliesportivo</h3>
                         <p>Endereço: Rua Exemplo, 123</p>
                         <button class="botao">Como chegar</button>
-                    </div>
-                </div>
+                    </article>
+                </section>
                 <!-- Repetição dos cartões -->
-            </div>
-        </div>
+            </section>    
+        </section>
 
         <!-- Box do Mapa -->
-        <div class="map-box">
+        <section class="map-box">
             <h2 class="map-title">Mapa dos Locais</h2>
-            <div id="map" class="map"></div>
-        </div>
-    </div>
+            <article id="map" class="map"></article>
+        </section>
+    </main>
 
     <%- include('../partials/footer'); %>
     

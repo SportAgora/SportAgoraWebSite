@@ -19,20 +19,20 @@
 <body>
     <%- include('../partials/navbar'); %>
 
- <div class="aba-evento">
-    <div class="aba-evento">
-        <div class="container-ver-eventos">
+ <main class="aba-evento">
+    <section class="aba-evento">
+        <article class="container-ver-eventos">
             <button class="botao-seta" onclick="location.href='/eventos'">
                 <img src="/imagens/left-arrow.png" alt="Seta"> </button>
             <span class="ver-eventos">Ver todos os eventos</span>
-        </div>
+        </article>
 
-    <div class="banner-evento">
+    <article class="banner-evento">
         <img src="/imagens/eventobanner.png" alt="Banner do evento">
-    </div>
+    </article>
 
-    <div class="info-container">
-        <div class="box-esquerda">
+    <section class="info-container">
+        <section class="box-esquerda">
             <h2>Sobre o Evento</h2>
             <p>A Netshoes RUN está de volta à São Paulo!
                 Depois do sucesso da primeira edição e de passar por cidades como Franca, Florianópolis e Salvador, a Netshoes Run volta à São Paulo para mais um evento histórico!
@@ -98,59 +98,55 @@
                     De acordo com o código de defesa do consumidor, o atleta tem o prazo de 7 (sete) dias corridos após a data da compra para solicitar o cancelamento e estorno do valor inscrição. O valor da inscrição não será devolvido depois dessa data.<br>
                 ENTREGA DE KIT APÓS O EVENTO<br><br>
                     Não serão entregues kits após o período da retirada de kits, determinado previamente pela organização.</p>
-        </div>
+        </section>
 
-        <div class="box-direita">
-            <div class="evento-status gratis">Grátis</div>
+        <section class="box-direita">
+            <article class="evento-status gratis">Grátis</article>
             <h2 class="nome-evento">Netshoes RUN São Paulo</h2>
             <hr class="linha-separadora">
-            <div class="detalhes-evento">
-                <div class="data-evento">
+            <section class="detalhes-evento">
+                <article class="data-evento">
                     <img src="/imagens/local.jpg" alt="Calendário">
                     <span>19/11/2024</span>
-                </div>
-                <div class="local-evento">
+                </article>
+                <article class="local-evento">
                     <img src="/imagens/local.png" alt="Local">
                     <span>Parque do Povo, São Paulo, SP</span>
-                </div>
-            </div>
+                </article>
+            </section>
             <hr class="linha-separadora">
             <p class="data-limite">Inscrições até: 20/08/2024 23:59 ou até o limite de vagas.</p>
-            <div class="botoes-inscricao">
+            <article class="botoes-inscricao">
                 <button class="btn-fale-conosco">Fale conosco</button>
-                <button class="btn-inscrever-se"  onclick="location.href='/inscrito'">Inscrever-se</button>
-            </div>
-        </div>
-    </div>
-</div>
+                <button class="btn-inscrever-se">Inscrever-se</button>
+            </article>
+        </section>
+    </section>
+</section>
+    
+    <section class="relacionado-eventos">
+        <article class="relacionado-evento">
+            <a href="/infoevento2" class="invisible-button1"></a>
+            <img src="/imagens/bannerevento2.png" alt="Evento 1">
+            <p><strong>Nome do Evento 2 </strong></p>
+            <p><strong>Data do Evento 2 </strong></p>
+            <p><strong>Data do Evento 2 </strong> </p>
+        </article>
+        <article class="relacionado-evento">
+            <a href="/infoevento2" class="invisible-button1"></a>
+            <img src="/imagens/bannerevento2.png" alt="Evento 2">
+            <p><strong>Nome do Evento 2 </strong></p>
+            <p><strong>Data do Evento 2 </strong></p>
+            <p><strong>Data do Evento 2 </strong> </p>
+        </article>
+    </section>
+</main>
 
-<div class="mobile-fixed-bottom-bar">
+
+<section class="mobile-fixed-bottom-bar">
     <p>Inscrições até: 20/08/2024 23:59 ou até o limite de vagas.</p>
     <button class="inscrever-btn">Inscrever-se</button>
-  </div>
-
-
-
-
-        <!-- RELACIONADO EVENTOS -->
-
-        <section class="relacionado-eventos">
-            <aside class="relacionado-evento">
-                <a href="/infoevento2" class="invisible-button1"></a>
-                <img src="/imagens/bannerevento2.png" alt="Evento 1">
-                <p><strong>Nome do Evento 1</strong></p>
-                <p><strong>Data do Evento 1</strong></p>
-                <p><strong>Local do Evento 1</strong></p>
-            </aside>
-            <aside class="relacionado-evento">
-                <a href="/infoevento2" class="invisible-button1"></a>
-                <img src="/imagens/bannerevento2.png" alt="Evento 2">
-                <p><strong>Nome do Evento 2</strong></p>
-                <p><strong>Data do Evento 2</strong></p>
-                <p><strong>Local do Evento 2</strong></p>
-            </aside>
-        </section>
-        
+  </section>
 
 <%- include('../partials/footer'); %>
 </body>

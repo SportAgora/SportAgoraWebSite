@@ -8,20 +8,23 @@
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/erro.css">
     <script defer src="/js/script.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="js/darkmodeswitch.js"></script>
+    <script src="js/passwordvalidator.js" defer></script>
+    <link rel="stylesheet" href="css/passwordvalidator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
-<body>
+<body onload="testarSenha()">
     <%
-    let  erroValidacao =  {"nome":"","email":"", "senha":"", "repsenha":"" };
-    let  msgErro =  {"nome":"","email":"", "senha":"","repsenha":"" };
+    let  erroValidacao =  {"nome":"","email":"", "repsenha":"","senha":""};
+    let  msgErro =  {"nome":"","email":"","repsenha":"","senha":""};
     if(erros) {
         erros.errors.forEach(function(erro) {
             if (erro.path == "nome") {
@@ -32,13 +35,13 @@
                 erroValidacao.email = "erro",
                 msgErro.email = erro.msg
             }
-            if (erro.path == "senha") {
-                erroValidacao.senha = "erro",
-                msgErro.senha = erro.msg
-            }
             if (erro.path == "repsenha") {
                 erroValidacao.repsenha = "erro",
                 msgErro.repsenha = erro.msg
+            }
+            if (erro.path == "senha") {
+                erroValidacao.senha = "erro",
+                msgErro.senha = erro.msg
             }
         })
     }; %>
@@ -60,10 +63,34 @@
 
                 <input type="text" placeholder="Email" name="email" id="email" value="<%= valores.email  %>" class="<%= erroValidacao.email %>"> 
                 <span class="spanerro"><%= msgErro.email %></span><br>
-
-                <input type="text" placeholder="Senha" name="senha" id="senha" value="<%= valores.senha  %>" class="<%= erroValidacao.senha %>"> 
-                <span class="spanerro"><%= msgErro.senha %></span><br>
-
+                
+                    <input type="text" placeholder="Senha" name="senha" id="senha" value="<%= valores.senha  %>" class="<%= erroValidacao.senha %>">
+                    <div class="content">
+                      <p>Senha deve conter</p>
+                      <ul class="requirement-list">
+                        <li>
+                          <i class="fa-solid fa-circle"></i>
+                          <span>ao menos 8 caracteres</span>
+                        </li>
+                        <li>
+                          <i class="fa-solid fa-circle"></i>
+                          <span>ao menos 1 número</span>
+                        </li>
+                        <li>
+                          <i class="fa-solid fa-circle"></i>
+                          <span>ao menos 1 letra minúscula</span>
+                        </li>
+                        <li>
+                          <i class="fa-solid fa-circle"></i>
+                          <span>ao menos 1 simbolo (@#$...)</span>
+                        </li>
+                        <li>
+                          <i class="fa-solid fa-circle"></i>
+                          <span>ao menos 1 letra maiúscula </span>
+                        </li>
+                      </ul>
+                    </div>
+                  
                 <input type="text" placeholder="Repita a Senha" name="repsenha" id="repsenha" value="<%= valores.repsenha  %>" class="<%= erroValidacao.repsenha %>"> 
                 <span class="spanerro"><%= msgErro.repsenha %></span><br>
                 

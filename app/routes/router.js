@@ -68,7 +68,7 @@ router.get('/registro', function(req,res){
 router.post(
     "/login_post",
     body("email").isEmail().withMessage("Email inválido."),
-    body("senha").isStrongPassword().withMessage("Senha muito fraca!"),
+    body("senha").isStrongPassword().withMessage("Senha não é valida."),
     function (req, res) {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {

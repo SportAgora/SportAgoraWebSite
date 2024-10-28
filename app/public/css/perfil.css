@@ -469,6 +469,9 @@
     .botoes{
         margin-top: 15px;
     }
+    .botoes button {
+        font-size: 15px;
+    }
     .ftMBR {
         flex-direction: column;
         width: 100%;

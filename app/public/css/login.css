@@ -32,7 +32,7 @@
 }
 .container6 {
     background-color: var(--postcor);  
-    /* height: 900px; */
+    height: 1080px;
     width: 880px;
     display: flex;
     flex-direction: column;
@@ -206,7 +206,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 685px;
+    margin-top: 750px;
 }
 .outros button {
     height: 70px;

@@ -108,7 +108,6 @@ article {
 
 @media(max-width: 600px){ 
     .container {
-        background-color: aqua;
         width: 90%;
     }
     input {

@@ -105,3 +105,17 @@ article {
     display: flex;
     justify-content: space-between;
 }
+
+@media(max-width: 600px){ 
+    .container {
+        width: 90%;
+    }
+    input {
+        width: calc(100% - 22px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        font-size: 17px;
+    }
+}

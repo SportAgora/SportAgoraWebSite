@@ -36,7 +36,7 @@ input {
     font-size: 17px;
 }
 
-button {
+.botao {
     width: 100%;
     padding: 10px;
     background-color: #28a745;
@@ -47,7 +47,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.botao:hover {
     background-color: #218838;
 }
 select {

@@ -22,7 +22,7 @@
 
 
 .botao-seta {
-    background-color: #28a745;
+    background-color: var(--verdenavfooter);
     border: none;
     color: #fff;
     height: 55px;
@@ -59,7 +59,7 @@
 
 
 .ver-eventos {
-    color: #727272;
+    color: var(--textopostinfo);
     font-size: 20px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -77,7 +77,7 @@
     display: block;
     margin: 0 auto;
     object-fit: cover;
-    height: 700px;
+    height: auto;
 }
 
 .info-container {
@@ -91,16 +91,17 @@
     flex: 1;
     margin-right: 20px;
     margin-left: 30px;
-    background-color: #fff;
+    background-color: var(--postcor);
     padding: 20px;
     border-radius: 25px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     max-width: 65%;
+    
 }
 
 .box-direita {
     width: 550px;
-    background-color: #fff;
+    background-color: var(--postcor);
     padding: 20px;
     height: 420px;
     position: sticky;
@@ -120,7 +121,7 @@
 
 .box-esquerda h2 {
     font-size: 22px;
-    color: #2D2D2D;
+    color: var(--textopost);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -135,7 +136,7 @@
     font-optical-sizing: auto;
     font-style: normal;
     margin: 10px;
-    color: #727272;
+    color: var(--textopostinfo);
 }
 
 .box-esquerda a {
@@ -155,7 +156,7 @@ a:hover {
 
 .nome-evento {
     font-size: 34px;  
-    color: #2D2D2D;
+    color: var(--textopost);
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -179,7 +180,7 @@ a:hover {
     align-items: center;
     margin-bottom: 15px; 
     font-weight: bold;
-    color: #999;
+    color: var(--textopostinfo);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -188,7 +189,7 @@ a:hover {
 
 .data-limite {
     font-size: 18px;  
-    color: #666;
+    color: var(--textopostinfo);
     margin: 10px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -204,7 +205,7 @@ a:hover {
 }
 
 .btn-fale-conosco {
-    background-color: #fff;
+    background-color: var(--postcor);
     border: 2px solid #28a745;
     color: #28a745;
     padding: 15px 25px;
@@ -416,7 +417,7 @@ a:hover {
 
 .relacionado-evento {
     width: 32%;
-    background-color: #ffffff;
+    background-color: var(--postcor);
     padding: 20px;
     border-radius: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -444,7 +445,7 @@ a:hover {
 
 .relacionado-evento p strong {
     font-size: 16px;
-    color: #333;
+    color: var(--textopost);
     line-height: 2;
     margin: 10px 0;
     font-family: "Montserrat", sans-serif;
@@ -476,7 +477,7 @@ a {
 }
 
 strong {
-    color: #333;
+    color: var(--textopost);
 }
 
 /* responsividade */

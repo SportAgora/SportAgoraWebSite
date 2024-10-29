@@ -57,6 +57,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     border: none;
+    display: none;
 }
 
 .biografia {
@@ -264,7 +265,7 @@
 }
 
 .adicionarPost {
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
     background-color:  var(--postcor);
@@ -467,6 +468,9 @@
     }
     .botoes{
         margin-top: 15px;
+    }
+    .botoes button {
+        font-size: 15px;
     }
     .ftMBR {
         flex-direction: column;

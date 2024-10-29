@@ -74,7 +74,7 @@ body {
 }
 
 .logo {
-    height: 70px;
+    height: 90px;
     margin-right: 15px;
     margin-left: 40px;
 }
@@ -442,7 +442,7 @@ a {
 
 /* Responsividade */
 
-@media (min-width: 978px)  and (max-width:1370px) {
+@media (min-width: 978px)  and (max-width:1700px) {
 
     .nav-button {
         justify-content:flex-start ;

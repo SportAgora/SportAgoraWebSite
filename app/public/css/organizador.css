@@ -127,37 +127,52 @@
 @media(max-width: 600px){ 
     .organiza{
         margin-bottom: 50px;
-        margin-top: 0;
-        width: 100%;
-    }
+        margin-top: 75px;
+        margin-right: 0;
+        margin-left: -95px;
+    } 
     .pratique-title {
-        font-size: 3rem; 
+        font-size: 2.6rem; 
     }
     .pratique-subtitle {
-        font-size: 1.3rem; 
+        font-size: 1rem; 
     }
+    .muie {
+        width: 70%;
+        margin-left: 120px;
+        display: flex;
+        align-items: center;
+    }
+    .molier {
+        position: absolute;
+        right: 40px;
+        bottom: 0;
+    }
+    .txtmuie1 {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 125px;
+        margin-top: 10px;
+        width: 80%; 
+    }
+    .info_organizador {
+        margin-left: 0px;
+    }
+    .btn_solicitacao {
+        margin-left: 105px;
+    }
+    /*
     .info_organizador {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    .txtmuie {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        margin-left: 30px;
-        margin-top: 10px;
-        width: 56%;
-    }
+    
     .txtmuie1{
         display: none;
     }
-    .muie {
-        width: 100%;
-        height: 330px;
-        display: flex;
-        align-items: center;
-    }
+    
     .molier {
         position: absolute;
         right: -60px;
@@ -170,5 +185,6 @@
     }
     .info_organizador {
         margin-left: 0;
-    }
+    } */
 }
+

@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
+    <script defer src="/js/perfil.js"></script>
 </head>
 <body>
 
@@ -30,9 +31,9 @@
             <button class="nav-button" onclick="location.href='/organizador'">Organizador</button>
         </article>
         <article class="navbar-right">
-            <article class="search-bar">
-                <img src="/imagens/search.png" alt="Search" class="search-icon">
-                <input type="text" placeholder="Busque por Esportes e muito mais...">
+            <article class="search-bar" onclick="pesquisar()">
+                <img src="/imagens/search.png" alt="Search" class="search-icon" onclick="pesquisar()">
+                <input type="text" placeholder="Busque por Esportes e muito mais..." onclick="pesquisar()">
             </article>   
             <button class="subscribe-button" onclick="location.href='/planos'">Assine Sport+</button>
             <button class="login-button">

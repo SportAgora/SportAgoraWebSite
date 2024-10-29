@@ -24,3 +24,12 @@ ul {
     color: var(--verde_especial);
     font-weight: bold;
 }
+
+@media(max-width: 600px){ 
+    .btn_solicitacao {
+        width: 300px;
+    }
+    .sec{
+        width: 90%;
+    }
+}

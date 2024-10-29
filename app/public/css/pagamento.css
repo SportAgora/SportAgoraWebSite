@@ -13,6 +13,9 @@ main {
     max-width: 500px;
 }
 
+.spanerro {
+    color: var(--textopost);
+}
 h1 {
     margin: 25px;
     font-size: 34px;

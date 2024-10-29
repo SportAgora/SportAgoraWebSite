@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -60,30 +60,30 @@
             <form id="pagamento_form" method="POST" action="/processar_pagamento">
                 <label for="nome">Nome</label>
                 <input type="text" id="nome" name="nome" value="<%= valores.nome %>" class="<%= cssErro.nome %>">
-                <span><%= msgErro.nome %></span>
+                <span class="spanerro"><%= msgErro.nome %></span>
 
                 <label for="sobrenome">Sobrenome</label>
                 <input type="text" id="sobrenome" name="sobrenome" value="<%= valores.sobrenome %>" class="<%= cssErro.sobrenome %>">
-                <span><%= msgErro.sobrenome %></span>
+                <span class="spanerro"><%= msgErro.sobrenome %></span>
 
                 <label for="cpf">CPF do Titular</label>
                 <input type="text" id="cpf" name="cpf" value="<%= valores.cpf %>" class="<%= cssErro.cpf %>">
-                <span><%= msgErro.cpf %></span>
+                <span class="spanerro"><%= msgErro.cpf %></span>
 
                 <label for="cartao_numero">Número do Cartão</label>
                 <input type="text" id="cartao_numero" name="cartao_numero" value="<%= valores.cartao_numero %>" class="<%= cssErro.cartao_numero %>">
-                <span><%= msgErro.cartao_numero %></span>
+                <span class="spanerro"><%= msgErro.cartao_numero %></span>
                 
                 <article class="expiry-security-group">
                     <aside class="expiry-date-group">
                         <label for="cartao_validade">Data de Validade</label>
                         <input type="text" autocomplete="off" maxlength="5" id="cartao_validade" name="cartao_validade" placeholder="MM/AA" value="<%= valores.cartao_validade %>" class="<%= cssErro.cartao_validade %>">
-                        <span><%= msgErro.cartao_validade %></span>
+                        <span class="spanerro"><%= msgErro.cartao_validade %></span>
                     </aside>
                     <aside class="security-code-group">
                         <label for="cartao_cvv">Código de Segurança</label>
                         <input type="text" maxlength="3" id="cartao_cvv" name="cartao_cvv" value="<%= valores.cartao_cvv %>" class="<%= cssErro.cartao_cvv %>">
-                        <span><%= msgErro.cartao_cvv %></span>
+                        <span class="spanerro"><%= msgErro.cartao_cvv %></span>
                     </aside>
                 </article>
                 <article>

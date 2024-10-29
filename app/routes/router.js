@@ -153,7 +153,7 @@ router.post(
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         console.log(errors);
-        return res.render("pages/pagamento", { "erros": errors, "valores":req.body,"retorno":null});
+        return res.render("pages/pagamento", { "erros": errors, "valores":{"selecionado":"Sport Plus", "preco":"R$19,90","nome":"","sobrenome":"","cpf":"","cartao_numero":"","cartao_validade":"","cartao_cvv":""},"retorno":null});
       } else {
   
         return res.render("pages/confpagamento", { "erros": null, "valores":req.body,"retorno":req.body});

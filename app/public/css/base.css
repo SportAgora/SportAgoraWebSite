@@ -442,7 +442,7 @@ a {
 
 /* Responsividade */
 
-@media (min-width: 978px)  and (max-width:1500px) {
+@media (min-width: 978px)  and (max-width:1700px) {
 
     .nav-button {
         justify-content:flex-start ;

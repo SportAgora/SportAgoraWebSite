@@ -3,6 +3,9 @@ var router = express.Router();
 const { body, validationResult} = require("express-validator")
 var {validarCPF, validarCartao, validarData} = require("../helpers/validar_pagamento");
 
+const userController = require("../controllers/userController");
+
+
 router.get('/', function(req,res){
     res.render('pages/home');  
 })
@@ -80,24 +83,15 @@ router.post(
     }
   );
 
+
+
+
   router.post(
-    "/registro_post",
-    body("nome").isLength({min:3,max:30}).withMessage("Insira um nome válido."),
-    body("email").isEmail().withMessage("Email inválido."),
-    body("senha").isStrongPassword().withMessage("Senha muito fraca!"),
-    body("repsenha").custom((value, { req }) => {
-        return value === req.body.senha;
-    }).withMessage("Senhas estão diferentes"),
-    function (req, res) {
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        console.log(errors);
-        return res.render("pages/registro", { "erros": errors, "valores":req.body,"retorno":null});
-      }
-  
-        return res.render("pages/perfilex", { "erros": null, "valores":req.body,"retorno":req.body});
-    }
-  );
+    "/registro_post", 
+    userController.CreateUserValidationRules ,(req, res) =>{
+        userController.createUser(req, res);
+    } );
+
 
   router.post(
     "/pagamento_selec",

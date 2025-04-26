@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const env = require("dotenv").config();
 
 app.use(express.static('app/public'));
 
@@ -14,8 +14,6 @@ app.use(express.json())
 var rotas = require('./app/routes/router');
 app.use('/', rotas);
 
-app.set("/navbar", './app/views/partial/navbar');
-
-app.listen(port, () =>{
-    console.log(`Servidor online \nhttp://localhost:${port}`);
-})
+app.listen(process.env.APP_PORT, ()=>{
+    console.log(`Servidor onLine!\nhttp://localhost:${process.env.APP_PORT}`);
+});

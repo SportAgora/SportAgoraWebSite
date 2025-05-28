@@ -44,14 +44,14 @@
         <section class="container5">
             <article class="buttonsForm">
                 <h1>Bem-vindo de volta!</h1>
-                <a href="/registro">Ainda não possuo uma conta</a>
+                <a href="/cadastro">Ainda não possuo uma conta</a>
             </article>
 
-            <form id="signin" method="post" action="/login_post">
-                <input type="text" placeholder="Email" name="email" id="email" value="<%= valores.email  %>" class="<%= erroValidacao.email %>"> 
+            <form id="signin" method="post" action="/login">
+                <input type="text" placeholder="Email" name="email" id="email" value="<%= dados.email  %>" class="<%= erroValidacao.email %>"> 
                 <span class="spanerro"><%= msgErro.email %></span><br>
 
-                <input type="text" placeholder="Senha" name="senha" id="senha" value="<%= valores.senha  %>" class="<%= erroValidacao.senha %>"> 
+                <input type="text" placeholder="Senha" name="senha" id="senha" value="<%= dados.senha  %>" class="<%= erroValidacao.senha %>"> 
                 <span class="spanerro"><%= msgErro.senha %></span><br>
 
                 <article class="divCheck">

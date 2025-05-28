@@ -5,6 +5,7 @@ CREATE TABLE USUARIO (
 	cpf CHAR(11) UNIQUE,
 	nome VARCHAR(100),
 	senha VARCHAR(25),
+	email VARCHAR(55),
 	enderecoId INTEGER,
 	id_contato INTEGER,
 	PRIMARY KEY(id)

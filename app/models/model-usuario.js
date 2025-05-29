@@ -8,7 +8,7 @@ const UsuarioModel = {
   // Buscar usuário por ID
   findId: async (id) => {
     try {
-      const query = "SELECT * FROM USUARIO WHERE id = ?";
+      const query = "SELECT * FROM usuario WHERE usu_id = ?";
       const [rows] = await pool.query(query, [id]);
       return rows.length > 0 ? rows[0] : null;
     } catch (error) {
@@ -20,7 +20,7 @@ const UsuarioModel = {
   // Verificar se email já existe
   findByEmail: async (email) => {
     try {
-      const query = "SELECT * FROM USUARIO WHERE Email = ?";
+      const query = "SELECT * FROM usuario WHERE usu_email = ?";
       const [rows] = await pool.query(query, [email]);
       return rows.length > 0 ? rows[0] : null;
     } catch (error) {
@@ -36,12 +36,9 @@ const UsuarioModel = {
  
       // Preparar os dados para inserção
       const data = {
-        nome,
-        email,
-        senha: senha, // Já deve estar com hash
-        // Telefone: Telefone || null,
-        // DataNascimento: DataNascimento ? moment(DataNascimento).format('YYYY-MM-DD') : null,
-        // LogradouroId: LogradouroId || null
+        usu_nome : nome,
+        usu_email:email,
+        usu_senha: senha, // Já deve estar com hash
       };
  
       // Construir a query dinamicamente
@@ -49,7 +46,7 @@ const UsuarioModel = {
       const values = fields.map(field => data[field]);
       const placeholders = fields.map(() => '?').join(', ');
      
-      const query = `INSERT INTO USUARIO (${fields.join(', ')}) VALUES (${placeholders})`;
+      const query = `INSERT INTO usuario (${fields.join(', ')}) VALUES (${placeholders})`;
      
       const [result] = await pool.query(query, values);
       return result.insertId;
@@ -62,16 +59,22 @@ const UsuarioModel = {
   // Atualizar usuário
   atualizar: async (id, userData) => {
     try {
-      const { nome, email, telefone, data_nascimento, logradouro_id, cpf } = userData;
+      const { nome, arroba, email, data_nascimento, logradouro_id, cpf, telefone, plano, tipo, foto, banner, bio} = userData;
  
       // Preparar os dados para atualização
       const data = {
-        nome: nome,
-        Email: email,
-        Telefone: telefone || null,
-        DataNascimento: data_nascimento ? moment(data_nascimento).format('YYYY-MM-DD') : null,
-        LogradouroId: logradouro_id || null,
-        Cpf: cpf ? formatCPF(cpf) : null
+        usu_nome: nome,
+        perf_nome : arroba,
+        usu_email: email,
+        usu_nasc: data_nascimento ? moment(data_nascimento).format('YYYY-MM-DD') : null,
+        endereco_id: logradouro_id || null,
+        usu_cpf: cpf ? formatCPF(cpf) : null,
+        contato_id: telefone,
+        plano_id : plano,
+        tipo : tipo,
+        perf_foto : foto,
+        banner : banner,
+        biografia : bio
       };
  
       // Construir a query dinamicamente
@@ -86,7 +89,7 @@ const UsuarioModel = {
       // Adicionar o ID no final dos valores
       values.push(id);
      
-      const query = `UPDATE USUARIO SET ${updates.join(', ')} WHERE id = ?`;
+      const query = `UPDATE usuario SET ${updates.join(', ')} WHERE id = ?`;
      
       const [result] = await pool.query(query, values);
       return result.affectedRows > 0;
@@ -99,7 +102,7 @@ const UsuarioModel = {
   // Excluir usuário
   excluir: async (id) => {
     try {
-      const query = "DELETE FROM USUARIO WHERE id = ?";
+      const query = "DELETE FROM usuario WHERE id = ?";
       const [result] = await pool.query(query, [id]);
       return result.affectedRows > 0;
     } catch (error) {
@@ -113,13 +116,13 @@ const UsuarioModel = {
     try {
       // Consulta para obter os usuários com paginação
       const queryUsuarios = `
-        SELECT * FROM USUARIO
+        SELECT * FROM usuario
         ORDER BY nome
         LIMIT ? OFFSET ?
       `;
      
       // Consulta para obter o total de usuários
-      const queryTotal = "SELECT COUNT(*) as total FROM USUARIO";
+      const queryTotal = "SELECT COUNT(*) as total FROM usuario";
      
       // Executar as consultas
       const [usuarios] = await pool.query(queryUsuarios, [limite, offset]);
@@ -141,7 +144,7 @@ const UsuarioModel = {
       // Hash da nova senha
       const senhaHash = await bcrypt.hash(novaSenha, 10);
      
-      const query = "UPDATE USUARIO SET SenhaHash = ? WHERE id = ?";
+      const query = "UPDATE USUARIO SET senha = ? WHERE id = ?";
       const [result] = await pool.query(query, [senhaHash, id]);
      
       return result.affectedRows > 0;

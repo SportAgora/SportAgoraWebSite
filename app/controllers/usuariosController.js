@@ -100,7 +100,7 @@ autenticarUsuario: async (req, res) => {
       }
      
       // Verificar se a senha está correta
-      const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
+      const senhaCorreta = await bcrypt.compare(senha, usuario.usu_senha);
      
       if (!senhaCorreta) {
         return res.render("pages/login", {
@@ -111,9 +111,9 @@ autenticarUsuario: async (req, res) => {
      
       // Criar a sessão do usuário
       req.session.usuario = {
-        id: usuario.id,
-        email: usuario.email,
-        nome: usuario.nome
+        id: usuario.usu_id,
+        email: usuario.usu_email,
+        nome: usuario.usu_nome
       };
      
        res.redirect("/perfil");
@@ -139,7 +139,12 @@ autenticarUsuario: async (req, res) => {
     const userinfos = await UsuarioModel.findByEmail(user.email);
     
     res.render("pages/perfil", {
-      usuario: userinfos
+        usuario: {
+        id: userinfos.usu_id,
+        nome: userinfos.usu_nome,
+        email: userinfos.usu_email,
+        arroba: userinfos.perf_nome
+        }
     });
 
   } catch (err) {

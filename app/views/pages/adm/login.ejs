@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SportAgora - Administrativo</title>
+    <link rel="stylesheet" href="/css/erro.css">
+     <link rel="stylesheet" href="/css/adm/login.css">
+</head>
+<body>
+    <%
+    let  erroValidacao =  {"username":"", "senha":"" };
+    let  msgErro =  {"username":"", "senha":"" };
+    if(erros) {
+        erros.errors.forEach(function(erro) {
+            if (erro.path == "username") {
+                erroValidacao.username = "erro",
+                msgErro.username = erro.msg
+            }
+            if (erro.path == "senha") {
+                erroValidacao.senha = "erro",
+                msgErro.senha = erro.msg
+            }
+        })
+    }; %>
+    <section class="login-container">
+        <h1 class="banner">AREA ADMINISTRATIVA</h1>
+        <h1>SportAgora</h1>
+        <form>
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username" placeholder="Digite seu usuário" value="<%= valores.username  %>" class="<%= erroValidacao.username %>">
+            <span class="spanerro"><%= msgErro.username %></span><br>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" placeholder="Digite sua senha" value="<%= valores.senha  %>" class="<%= erroValidacao.senha %>">
+            <span class="spanerro"><%= msgErro.senha %></span><br>
+
+            <button type="submit">Entrar</button>
+        </form>
+        <br><br>
+        <a href="#">Voltar</a>
+    </section>
+</body>
+</html>

@@ -1,14 +1,13 @@
 const { body, validationResult} = require("express-validator")
 var express = require('express');
 var router = express.Router();
-const path = require('path');
 const guestMiddleware = require('../helpers/guestMiddleware');
 const usuariosController = require("../controllers/usuariosController");
 const pagamentoController = require('../controllers/pagamentosController');
 
 
 /*
- 
+
 AUTENTICACAO
 
 */
@@ -62,6 +61,8 @@ PAGINAS
 
 */
 
+router.get('/perfil',verificarAutenticacao, usuariosController.carregarPerfil)
+
 router.get('/', function(req,res){
     res.render('pages/home');  
 })
@@ -103,8 +104,8 @@ router.get('/inscrito', function(req,res){
     res.render('pages/inscrito');  
 })
 
-router.get('/intem-do-carrosel', function(req,res){
-  res.render('pages/intem-do-carrosel');  
+router.get('/item-do-carrosel', function(req,res){
+  res.render('pages/item-do-carrosel');  
 })
 
 
@@ -125,71 +126,27 @@ router.get('/home', function(req,res){res.redirect('/')})
 router.post('/pagamento_selec', pagamentoController.receberPlano);
 router.post('/processar_pagamento', pagamentoController.processarPagamento);
 
+
+/* ADM */
+
+router.get('/adm/home', function(req,res){
+    res.render('pages/adm/home');  
+}) 
+
+router.get('/adm/login', function(req,res){
+    res.render('pages/adm/login');  
+}) 
+
+router.get('/adm/novo_usuario', function(req,res){
+    res.render('pages/adm/novousuario');  
+}) 
+
+router.get('/adm/postagem', function(req,res){
+    res.render('pages/adm/postagem');  
+}) 
+
+router.get('/adm/usuarios', function(req,res){
+    res.render('pages/adm/usuarios');  
+}) 
+
 module.exports = router;
-
-
-
-
-//   router.post(
-//     "/pagamento_selec",
-//     function (req, res) {
-//         let selected_plan = req.body.plano
-//         switch(selected_plan){
-//             case "basico" : selected_plan = "Sport Básico"; var price = "R$9,90"; break;
-//             case "premium" : selected_plan = "Sport Premium"; var price = "R$29,90"; break;
-//             case "plus" : selected_plan = "Sport Plus"; var price = "R$19,90"; break;
-//         }
-
-//         return res.render("pages/pagamento", {"erros": null,"valores":{"selecionado":selected_plan, "preco":price}})
-//     }
-
-
-//   )
-
-
-//   router.get('/pagamento', function(req,res){
-//     res.render('pages/pagamento', { "erros": null, "valores": {"nome":"","sobrenome":"","cpf":"","cartao_numero":"","cartao_validade":"","cartao_cvv":""},"retorno":null });  
-// })
-
-//   router.post(
-//     "/processar_pagamento",
-//     body("nome").isLength({min:3,max:30}).withMessage("Insira um nome válido."),
-//     body("sobrenome").isLength({min:3,max:30}).withMessage("Insira um sobrenome válido."),
-//     body("cpf")
-//     .custom((value) => {
-//         if (validarCPF(value)) {
-//           return true;
-//         } else {
-//           throw new Error('CPF inválido!');
-//         }
-//         }),
-//     body("cartao_numero")
-//     .custom((value) => {
-//       if (validarCartao(value)){
-//         return true
-//       } else {
-//         throw new Error("Cartão Inválido")
-//       }
-//     }),
-//     body("cartao_validade")
-//     .custom((value) => {
-//       if (validarData(value)){
-//         return true
-//       } else {
-//         throw new Error("Data Inválido")
-//       }
-//     }),
-//     body("cartao_cvv").isLength({min:3,max:3}).withMessage("Código Inválido"),
-//     function (req, res) {
-//       const errors = validationResult(req);
-//       if (!errors.isEmpty()) {
-//         console.log(errors);
-//         return res.render("pages/pagamento", { "erros": errors, "valores":{"selecionado":"Sport Plus", "preco":"R$19,90","nome":"","sobrenome":"","cpf":"","cartao_numero":"","cartao_validade":"","cartao_cvv":""},"retorno":null});
-//       } else {
-  
-//         return res.render("pages/confpagamento", { "erros": null, "valores":req.body,"retorno":req.body});
-//       }
-//     }
-//   );
-
-// module.exports = router;

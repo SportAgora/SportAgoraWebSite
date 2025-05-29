@@ -57,7 +57,7 @@ module.exports = {
       };
      
       // Redirecionar para contaConsumidor
-      res.redirect("/perfilex");
+      res.redirect("/perfil");
      
     } catch (e) {
       console.error(e);
@@ -116,7 +116,7 @@ autenticarUsuario: async (req, res) => {
         nome: usuario.nome
       };
      
-       res.redirect("/perfilex");
+       res.redirect("/perfil");
     } catch (error) {
       console.error(error);
       res.render("pages/login", {
@@ -131,6 +131,23 @@ autenticarUsuario: async (req, res) => {
     req.session.destroy(() => {
       res.redirect("/login");
     });
+  },
+
+  carregarPerfil: async (req, res) => {
+  try {
+    const user = req.session.usuario;
+    const userinfos = await UsuarioModel.findByEmail(user.email);
+    
+    res.render("pages/perfil", {
+      usuario: userinfos
+    });
+
+  } catch (err) {
+    console.error(err);
+    // Aqui também use return pra garantir que não continue
+    return res.redirect("/login");
   }
+}
+
 };
  

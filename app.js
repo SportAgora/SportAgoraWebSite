@@ -40,9 +40,7 @@ app.use(flash());
  
 // Middleware para disponibilizar variáveis para as views
 app.use((req, res, next) => {
-  res.locals.sucesso = req.flash("sucesso");
-  res.locals.erro = req.flash("erro");
-  res.locals.usuario = req.session.usuario || null;
+  res.locals.usuario = req.session.usuario;
   next();
 });
  
@@ -59,7 +57,7 @@ const guestMiddleware = require('./app/helpers/guestMiddleware');
  
 // Aplicar o middleware de guest às rotas específicas
 app.use('/login', guestMiddleware);
-app.use('/cadastre-se', guestMiddleware);
+app.use('/cadastro', guestMiddleware);
  
 // Importar e usar as rotas
 const rotas = require('./app/routes/router');

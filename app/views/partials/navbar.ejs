@@ -21,7 +21,7 @@
             </button>
             <a class="links-home" href="/">
                 <img src="imagens/SportAgora.png" alt="Logo" class="logo">
-                <span class="site-name">SportAgora</span>
+                <span class="site-name">SportAgora
             </a>
         </article>
         <article class="navbar-center">
@@ -35,9 +35,12 @@
                 <img src="/imagens/search.png" alt="Search" class="search-icon" onclick="pesquisar()">
                 <input type="text" placeholder="Busque por Esportes e muito mais..." onclick="pesquisar()">
             </article>   
-            <button class="subscribe-button" onclick="location.href='/planos'">Assine Sport+</button>
+            <button class="subscribe-button" onclick="location.href='/planos'">Assine Sport+ </button>
             <button class="login-button">
                 <img src="/imagens/Icon.png" alt="User" class="user-icon">
+                <% if (usuario) { %>
+                    <p><%= usuario.nome %></p>
+                    <% } %></span>
                 <img src="/imagens/menu-burger.png" alt="Menu" class="menu-icon">
             </button>
             <article class="login-button-mobile">
@@ -50,9 +53,14 @@
 </header>
 
 <aside id="menu-panel" class="menu-panel">
+    <% if (usuario) { %>
+    <button class="panel-button" onclick="location.href='/perfilex'">Perfil</button>
+    <button class="panel-button" onclick="location.href='/logout'">Sair</button>
+    <% } else { %>
     <button class="panel-button" onclick="location.href='/cadastro'">Cadastra-se</button>
     <button class="panel-button" onclick="location.href='/login'">Login</button>
-    <button class="panel-button" onclick="location.href='/logout'">sair</button>
+    <% } %>
+
     <hr>
     <button class="panel-button" onclick="location.href='/login'">Anuncie seu evento</button>
     <hr>

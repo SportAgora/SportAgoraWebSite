@@ -149,4 +149,14 @@ router.get('/adm/usuarios', function(req,res){
     res.render('pages/adm/usuarios');  
 }) 
 
+router.get('/pagamento-evento', function(req,res){
+  res.render('pages/pagamento-evento');  
+})
+
+router.get('/criar-evento', function(req,res){
+  res.render('pages/criar-evento');  
+})
+
+
+
 module.exports = router;

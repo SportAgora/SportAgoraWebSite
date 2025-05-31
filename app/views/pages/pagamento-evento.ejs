@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Do</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/pagamento-evento.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script defer src="/js/validação-pagamento.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="icon" href="imagens/SportAgora.png">
+    <script defer src="/js/script.js"></script>
+</head>
+
+<header>
+  <%- include('../partials/navbar'); %> 
+  </header>
+
+<body>
+    <section class="container">
+      <div class="box-esquerda">
+        <div class="box-dados">
+          <h2>1. Informações dos Participantes</h2>
+          <section class="usuario-info">
+            <img src="/imagens/pessoa2.png" alt="Foto do Usuário">
+            <div>
+              <p class="nome">Danilo Cardoso</p>
+              <p class="email">ldarkrai.boss@gmail.com</p>
+            </div>
+          </section>
+  
+          <section class="formulario">
+            <label>Telefone:</label>
+            <input type="tel" id="telefone" required>
+  
+            <label>CPF:</label>
+            <input type="text" id="cpf" maxlength="14" required>
+  
+            <label>Data de Nascimento:</label>
+            <input type="date" id="nascimento" required>
+  
+            <label>Gênero:</label>
+            <select id="genero" required>
+              <option value="">Selecione</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Masculino">Masculino</option>
+              <option value="NaoIdentificar">Não identificar</option>
+            </select>
+  
+            <button id="btnProximo">Próximo</button>
+          </section>
+        </div>
+  
+        <div id="pagamento" class="box-dados hidden">
+          <h2>Dados do Pagamento</h2>
+  
+          <label>Nome impresso no cartão:</label>
+          <input type="text" id="nomeCartao" required>
+  
+          <div class="cartao-info">
+            <input type="text" id="numeroCartao" placeholder="Número do cartão" required>
+            <input type="text" id="validadeCartao" placeholder="MM/AA" required>
+            <input type="text" id="codigoSeguranca" placeholder="CVV" required>
+          </div>
+  
+          <button id="btnConfirmar">Confirmar Pagamento</button>
+        </div>
+      </div>
+  
+      <div class="box-direita">
+        <section class="evento box-resumo">
+          <img src="/imagens/eventobanner.png" alt="Foto do Evento">
+          <div>
+            <h3>NUMANICE | SÃO PAULO</h3>
+            <p class="subtexto">Sábado, 07 de Jun - 14:00</p>
+          </div>
+        </section>
+  
+        <section class="resumo-pedido box-resumo">
+          <div class="item">
+            <span>1 Lote Extra | [Open Bar]</span>
+            <span>R$ 645,00</span>
+          </div>
+          <p class="subtexto">(R$ 645,00 cada)</p>
+  
+          <div class="item">
+            <span>Pedido Protegido</span>
+            <span>R$ 53,89</span>
+          </div>
+  
+          <div class="item">
+            <span>Taxas</span>
+            <span>R$ 83,85</span>
+          </div>
+  
+          <hr>
+  
+          <div class="total">
+            <strong>Total:</strong>
+            <strong>R$ 782,74</strong>
+          </div>
+          <p class="subtexto">(1 item)</p>
+        </section>
+      </div>
+    </section>
+    <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+  </body>
+
+
+</html>

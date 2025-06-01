@@ -10,6 +10,31 @@
     border: 6px solid var(--postcor);
     border-radius: 100%;
 }
+
+.perfil-container {
+    position: relative;
+    display: inline-block;
+}
+
+.icone-editar {
+    position: absolute;
+    top: -30px;
+    right: -20px;
+    border-radius: 50%;
+    transition: transform 0.3s ease
+}
+
+.icone-editar:hover {
+    transition: transform 0.3s ease;
+    transform: translateY(-5px);
+}
+
+.icone-editar img {
+    width: 90px;
+    height: 90px;
+    cursor: pointer;
+}
+
 .perfil1 {
     padding: 30px;
 }

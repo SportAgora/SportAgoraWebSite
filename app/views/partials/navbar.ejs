@@ -9,7 +9,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
+
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script defer src="/js/perfil.js"></script>
+    <script defer src="/js/script.js"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="imagens/SportAgora.png">
+    <script defer src="/js/perfil.js"></script>
+    <script src="js/darkmodeswitch.js"></script>
 </head>
 <body>
 
@@ -55,9 +69,10 @@
 <aside id="menu-panel" class="menu-panel">
     <% if (usuario) { %>
     <button class="panel-button" onclick="location.href='/perfil'">Perfil</button>
+    <button class="panel-button" onclick="location.href='/editar-perfil'">Editar Perfil</button>
     <button class="panel-button" onclick="location.href='/logout'">Sair</button>
     <% } else { %>
-    <button class="panel-button" onclick="location.href='/cadastro'">Cadastra-se</button>
+    <button class="panel-button" onclick="location.href='/cadastro'">Cadastre-se</button>
     <button class="panel-button" onclick="location.href='/login'">Login</button>
     <% } %>
 

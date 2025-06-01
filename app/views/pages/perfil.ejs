@@ -4,18 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@oSxT_</title>
-    <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/perfil.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script defer src="/js/perfil.js"></script>
-    <script defer src="/js/script.js"></script>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="icon" href="imagens/SportAgora.png">
 </head>
 <body>
     <header>
@@ -26,7 +15,11 @@
             <article class="planoFundo">
                 <img src="imagens/planodefundo.jpeg" alt="planodefundo" class="planodefundo">
                 <article class="perfilo">
+                    <% if (usuario.img_perfil) { %>
                     <img src="imagens/pessoa2.png" alt="ftdePerfil" class="ftdePerfil">
+                    <% }else{%>
+                    <img src="imagens/usuarios/default_user.jpg" alt="ftdePerfil" class="ftdePerfil">
+                    <%}%>
                     <button class="editPerf" onclick="editPerfil()">Editar perfil</button>
                     <aside class="nomes">
                         <h2>    
@@ -34,15 +27,19 @@
                     </h2>
                         <h3>@<%= usuario.nome %></h3>
                     </aside>
-                    <p>194 <b>seguidores</b> 230 <b>seguindo</b></p>
+                    <p><%= usuario.seguidores %> <b>seguidores</b> <%= usuario.seguindo %> <b>seguindo</b></p>
                 </article>
                 
             </article> 
             <article class="biografia">
                 <aside>
+                    <% if (usuario.bio) { %>
                     <h2 class="titulobiografia">Biografia</h2>
-                    <p>Pellentesque sit amet elit eu nisl mattis suscipit. Donec placerat urna in massa suscipit, eu eleifend nisl <br>
-                    lobortis. Donec tempus ante vel laoreet cursus. </p>
+                    <p><%= usuario.bio %></p>
+                    <% }else{%>
+                        <br>
+                        <p>Este usuário não inseriu uma Biografia</p>
+                    <%}%>
                 </aside>
                 <aside class="linquis">
                     <h2>Links</h2>

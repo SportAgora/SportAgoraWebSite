@@ -159,7 +159,7 @@ router.get('/criar-evento', function(req,res){
 
 
 router.get('/editar-perfil', function(req,res){
-  res.render('pages/criar-evento');  
+  res.render('pages/editar-perfil');  
 })
 
 

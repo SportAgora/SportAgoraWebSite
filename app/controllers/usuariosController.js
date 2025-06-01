@@ -143,7 +143,10 @@ autenticarUsuario: async (req, res) => {
         id: userinfos.usu_id,
         nome: userinfos.usu_nome,
         email: userinfos.usu_email,
-        arroba: userinfos.perf_nome
+        arroba: userinfos.perf_nome,
+        bio: userinfos.biografia,
+        seguidores: userinfos.quantidade_seguidores,
+        seguindo: userinfos.quantidade_seguindo,
         }
     });
 

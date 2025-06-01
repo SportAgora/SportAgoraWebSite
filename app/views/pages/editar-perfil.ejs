@@ -10,107 +10,117 @@
 
 </head>
 <body>
+  
   <!-- <header>
         <%- include('../partials/navbar'); %> 
     </header>  -->
+
     <a href="/home" class="btn-voltar">← Voltar</a>
 
-<div class="banner-container">
-  <div class="banner-overlay">
-    <img src="banner.jpg" alt="Banner" id="bannerImage">
-    <div class="icon-overlay" id="editBanner">
-      <img src="Logoz-_3_ (1).png"Editar Banner">
+<form id="form-perfil" class="form-container" enctype="multipart/form-data" method="POST" action="/salvar-perfil">
+
+  <!-- Banner -->
+  <div class="banner-container">
+    <div class="banner-overlay">
+      <img src="banner.jpg" alt="Banner" id="bannerImage">
+      <div class="icon-overlay" id="editBanner">
+        <img src="Logoz-_3_ (1).png" alt="Editar Banner">
+      </div>
+    </div>
+
+    <div class="profile-info">
+      <div class="profile-pic-overlay">
+        <img src="pessoa2.png" alt="Perfil" id="profileImage">
+        <div class="icon-overlay small" id="editProfile">
+          <img src="Logoz-_3_ (1).png" alt="Editar Perfil">
+        </div>
+      </div>
+      <div class="name-info">
+        <h2>João da Silva</h2>
+        <p>@joaosilva</p>
+      </div>
     </div>
   </div>
 
-  <div class="profile-info">
-    <div class="profile-pic-overlay">
-      <img src="pessoa2.png" alt="Perfil" id="profileImage">
-      <div class="icon-overlay small" id="editProfile">
-        <img src="Logoz-_3_ (1).png"Editar Perfil">
-      </div>
-    </div>
-    <div class="name-info">
-      <h2>João da Silva</h2>
-      <p>@joaosilva</p>
+  <!-- Inputs ocultos para imagens -->
+  <input type="file" id="bannerInput" name="banner" accept="image/*" hidden>
+  <input type="file" id="profileInput" name="profile" accept="image/*" hidden>
+
+  <!-- Conteúdo dos formulários -->
+  <h1>Editar Perfil</h1>
+
+  <div class="tabs">
+    <button type="button" class="tab active" data-tab="usuario">Informações do Usuário</button>
+    <button type="button" class="tab" data-tab="pessoal">Informações Pessoais</button>
+  </div>
+
+  <!-- Aba Informações do Usuário -->
+  <div id="form-usuario" class="form active">
+    <label>Nome Completo
+      <input type="text" name="nome" value="João da Silva" required>
+    </label>
+    <label>Nome de Usuário
+      <input type="text" name="usuario" value="joaosilva" required>
+    </label>
+    <label>Senha
+      <input type="password" name="senha" id="senha" placeholder="Nova senha">
+    </label>
+    <label>Confirmar Senha
+      <input type="password" name="confirmar_senha" id="confirmar-senha" placeholder="Confirme a senha">
+    </label>
+    <label>E-mail
+      <input type="email" name="email" value="joao.silva@email.com">
+    </label>
+    <label>Confirmar E-mail
+      <input type="email" name="confirmar_email" value="joao.silva@email.com">
+    </label>
+    <small>Não preencha senha ou e-mail se não quiser alterar</small>
+
+    <h3>Redes Sociais</h3>
+    <div class="socials">
+      <div class="social-box"><img src="youtube.png" alt=""><span>YouTube</span></div>
+      <div class="social-box"><img src="twitter.png" alt=""><span>Twitter</span></div>
+      <div class="social-box"><img src="instagram.png" alt=""><span>Instagram</span></div>
     </div>
   </div>
-</div>
 
+  <!-- Aba Informações Pessoais -->
+  <div id="form-pessoal" class="form">
+    <label>Telefone
+      <input type="tel" name="telefone" value="(11) 99999-9999">
+    </label>
+    <label>CEP
+      <input type="text" name="cep" id="cep" value="01001-000">
+    </label>
 
-  <div class="form-container">
-    <h1>Editar Perfil</h1>
-    <div class="tabs">
-      <button class="tab active" data-tab="usuario">Informações do Usuário</button>
-      <button class="tab" data-tab="pessoal">Informações Pessoais</button>
+    <div class="row">
+      <label>Rua
+        <input type="text" name="rua" id="rua" value="Praça da Sé">
+      </label>
+      <label>Número
+        <input type="text" name="numero" id="numero" value="100">
+      </label>
+      <label>Complemento
+        <input type="text" name="complemento" id="complemento" value="Apto 12">
+      </label>
     </div>
 
-    <form id="form-usuario" class="form active">
-      <label>Nome Completo
-        <input type="text" value="João da Silva" required>
+    <div class="row">
+      <label>Bairro
+        <input type="text" name="bairro" id="bairro" value="Sé">
       </label>
-      <label>Nome de Usuário
-        <input type="text" value="joaosilva" required>
+      <label>Cidade
+        <input type="text" name="cidade" id="cidade" value="São Paulo">
       </label>
-      <label>Senha
-        <input type="password" id="senha" placeholder="Nova senha">
+      <label>UF
+        <input type="text" name="uf" id="uf" value="SP">
       </label>
-      <label>Confirmar Senha
-        <input type="password" id="confirmar-senha" placeholder="Confirme a senha">
-      </label>
-      <label>E-mail
-        <input type="email" value="joao.silva@email.com">
-      </label>
-      <label>Confirmar E-mail
-        <input type="email" value="joao.silva@email.com">
-      </label>
-      <small>Não preencha este campo para manter as configurações atuais</small>
-
-      <h3>Redes Sociais</h3>
-      <div class="socials">
-        <div class="social-box"><img src="youtube.png" alt=""><span>YouTube</span></div>
-        <div class="social-box"><img src="twitter.png" alt=""><span>Twitter</span></div>
-        <div class="social-box"><img src="instagram.png" alt=""><span>Instagram</span></div>
-      </div>
-
-      <button type="submit" class="btn-salvar">Salvar Alterações</button>
-    </form>
-
-    <form id="form-pessoal" class="form">
-      <label>Telefone
-        <input type="tel" value="(11) 99999-9999">
-      </label>
-      <label>CEP
-        <input type="text" id="cep" value="01001-000">
-      </label>
-
-      <div class="row">
-        <label>Rua
-          <input type="text" id="rua" value="Praça da Sé">
-        </label>
-        <label>Número
-          <input type="text" id="numero" value="100">
-        </label>
-        <label>Complemento
-          <input type="text" id="complemento" value="Apto 12">
-        </label>
-      </div>
-
-      <div class="row">
-        <label>Bairro
-          <input type="text" id="bairro" value="Sé">
-        </label>
-        <label>Cidade
-          <input type="text" id="cidade" value="São Paulo">
-        </label>
-        <label>UF
-          <input type="text" id="uf" value="SP">
-        </label>
-      </div>
-
-      <button type="submit" class="btn-salvar">Salvar Alterações</button>
-    </form>
+    </div>
   </div>
+
+  <button type="submit" class="btn-salvar">Salvar Alterações</button>
+</form>
+
 
   <!-- Modal de Recorte -->
 
@@ -128,10 +138,6 @@
   </div>
 </div>
 
-
-  <!-- Inputs ocultos -->
-<input type="file" id="bannerInput" accept="image/*" hidden>
-<input type="file" id="profileInput" accept="image/*" hidden>
 
 <script src="script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>

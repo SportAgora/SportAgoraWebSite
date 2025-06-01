@@ -13,14 +13,22 @@
     <main class="perfil1">
         <section class="bioPadrão">
             <article class="planoFundo">
+                <% if (usuario.bg_perfil) { %>
                 <img src="imagens/planodefundo.jpeg" alt="planodefundo" class="planodefundo">
+                <% }else{%>
+                <img src="imagens/usuarios/default_background.jpg" alt="planodefundo" class="planodefundo">
+                <%}%>
                 <article class="perfilo">
+                    <div class="perfil-container">
                     <% if (usuario.img_perfil) { %>
                     <img src="imagens/pessoa2.png" alt="ftdePerfil" class="ftdePerfil">
                     <% }else{%>
                     <img src="imagens/usuarios/default_user.jpg" alt="ftdePerfil" class="ftdePerfil">
                     <%}%>
-                    <button class="editPerf" onclick="editPerfil()">Editar perfil</button>
+                    <a href="/editar-perfil" class="icone-editar" title="Editar perfil">
+                    <img src="imagens/lapis-verde.png" alt="Editar">
+                     </a>
+                     </div>
                     <aside class="nomes">
                         <h2>    
                     <%= usuario.nome %></p>
@@ -57,53 +65,7 @@
                 </aside>
             </article>
         </section>
-        <hr size="2" width="99.8%" align="center" noshade>
-        <section class="editPerfil">
-            <button class="salvar" onclick="salvar()">Salvar</button>
-            <button class="fechar" onclick="salvar()">X</button>
-            <article class="editinfo">
-                <aside class="ftdoeditperfil">
-                    <img src="imagens/pessoa2.png" alt="ftdePerfil" class="perfiledit">
-                    <img src="imagens/normal_u112.png" alt="upload" class="upload">
-                </aside>
-                <aside class="inputisdoedit">
-                    <aside>
-                        <h2>Nome de usuário</h2>
-                        <input type="text" name="" id="" placeholder="oSxt_">
-                    </aside>
-                    <aside>
-                        <h2>Nome</h2>
-                        <input type="text" name="" id="" placeholder="Kaique Sexy Fialho">
-                    </aside>
-                </aside>
-            </article>
-            <article class="socialedit">
-                <aside class="linquis">
-                    <h2>Links</h2>
-                    <article class="social">
-                        <button class="twitter" onclick="">
-                            <img src='imagens/twitterlogo.png' alt="Twitter">
-                        </button>
-                        <button class="instagram" onclick="">
-                            <img src='imagens/instalogo.png' alt="Instagram">
-                        </button>
-                        <button class="youtube" onclick="">
-                            <img src='imagens/youtube.png' alt="Youtube">
-                        </button>
-                    </article>
-                </aside>
-                <aside class="bibi">
-                    <h2>Biografia (156/200)</h2>
-                    <textarea id="subject" name="subject" placeholder="Pellentesque sit amet elit eu nisl mattis suscipit. Donec placerat urna in massa suscipit, eu eleifend nisl lobortis. Donec tempus ante vel laoreet cursus."></textarea>
-                </aside>
-            </article>
-            <article class="fundo">
-                <aside>
-                    <img src="imagens/planodefundo.jpeg" alt="planodefundo" class="planodefundoedit">
-                    <img src="imagens/normal_u112.png" alt="upload" class="upload">
-                </aside>
-            </article>
-        </section>
+        <hr size="2" width="99.8%" align="center" noshade>   
         <section class="opicoes">
             <article class="botoes">
                 <button id="botaoPostagens" onclick="mudarAbaPerfil('postagens')">Postagens</button>

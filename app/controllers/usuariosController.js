@@ -1,6 +1,7 @@
 const UsuarioModel = require('../models/model-usuario');
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require("express-validator");
+const removeImg = require("../helpers/removeImg"); 
  
 module.exports = {
   regrasValidacao: [
@@ -46,7 +47,7 @@ module.exports = {
       const novoUsuario = await UsuarioModel.create({
         nome: nome,
         email: email,
-        senha: senhaHash
+        senha: senhaHash,
       });
      
       // AUTOLOGIN: Criar sessão diretamente após cadastro
@@ -147,6 +148,8 @@ autenticarUsuario: async (req, res) => {
         bio: userinfos.biografia,
         seguidores: userinfos.quantidade_seguidores,
         seguindo: userinfos.quantidade_seguindo,
+        foto: userinfos.usu_img,
+        banner: userinfos.usu_banner
         }
     });
 
@@ -155,7 +158,130 @@ autenticarUsuario: async (req, res) => {
     // Aqui também use return pra garantir que não continue
     return res.redirect("/login");
   }
-}
+},
+
+  carregarEditarPerfil: async (req, res) => {
+  try {
+    const user = req.session.usuario;
+    const userinfos = await UsuarioModel.findByEmail(user.email);
+    
+    res.render("pages/editar-perfil", {
+        usuario: {
+        id: userinfos.usu_id,
+        nome: userinfos.usu_nome,
+        email: userinfos.usu_email,
+        arroba: userinfos.perf_nome,
+        bio: userinfos.biografia,
+        foto: userinfos.usu_img,
+        banner: userinfos.usu_banner
+        // telefone: userinfos.quantidade_seguidores,
+        // cep: userinfos.quantidade_seguindo,
+        // numero_cep: userinfos.numero_cep
+        }
+    });
+
+  } catch (err) {
+    console.error(err);
+    // Aqui também use return pra garantir que não continue
+    return res.redirect("/login");
+  }
+},  
+    regrasValidacaoEditarPerfil: [
+  body("nome").isLength({ min: 3 }).withMessage("Nome deve ter pelo menos 3 letras."),
+  body("email").isEmail().withMessage("Email inválido."),
+  body("senha").optional({ checkFalsy: true }).isStrongPassword().withMessage("Senha fraca. Use letras, números e símbolos."),
+  body("repsenha").custom((value, { req }) => {
+    if (req.body.senha && value !== req.body.senha) {
+      throw new Error("Senhas não coincidem.");
+    }
+    return true;
+  })
+    ],
+    gravarPerfil: async (req, res) => {
+    const errors = validationResult(req);
+    const erroMulter = req.session.erroMulter;
+
+    if (!errors.isEmpty() || erroMulter != null) {
+      let listaErros = !errors.isEmpty() ? errors : { formatter: null, errors: [] };
+      if (erroMulter) {
+        listaErros.errors.push(erroMulter);
+      }
+      console.log(listaErros)
+      return res.render("pages/editar-perfil", {
+        dados: req.body,
+        erros: listaErros
+      });
+    }
+
+    try {
+      const { nome, email, senha, arroba, bio } = req.body;
+
+      const dadosAtualizados = {
+        usu_nome: nome,
+        usu_email: email,
+        perf_nome: arroba,
+        biografia: bio
+      };
+
+      if (senha && senha !== "") {
+        dadosAtualizados.usu_senha = await bcrypt.hash(senha, 10);
+      }
+
+      const imagemPerfil = req.files?.fotoPerfil?.[0];
+      const imagemBanner = req.files?.fotoBanner?.[0];
+
+      if (imagemPerfil) {
+      dadosAtualizados.usu_img = "imagem/perfil/" + imagemPerfil.filename;
+      removeImg(req.session.usuario.foto); 
+      }
+
+      if (imagemBanner) {
+      dadosAtualizados.banner_img = "imagem/perfil/" + imagemBanner.filename;
+      removeImg(req.session.usuario.banner); 
+      }
+
+      const resultado = await UsuarioModel.atualizar(req.session.usuario.id, dadosAtualizados);
+
+      if (resultado.changedRows === 1) {
+        const usuarioAtualizado = await UsuarioModel.findByEmail(email);
+
+        req.session.usuario = {
+          nome: usuarioAtualizado.usu_nome,
+          email: usuarioAtualizado.usu_email,
+          foto: usuarioAtualizado.usu_img,
+          banner: usuarioAtualizado.usu_banner
+        };
+
+        res.render("pages/editar-perfil", {
+          dados: req.body,
+          erros: null,
+          usuario: {
+            nome: usuarioAtualizado.usu_nome,
+            email: usuarioAtualizado.usu_email,
+            arroba: usuarioAtualizado.perf_nome,
+            bio: usuarioAtualizado.biografia,
+            foto: usuarioAtualizado.usu_img,
+            banner: usuarioAtualizado.usu_banner
+          }
+        });
+      } else {
+        res.render("pages/editar-perfil", {
+          dados: req.body,
+          erros: null,
+          usuario: req.body
+        });
+      }
+
+    } catch (e) {
+      console.error(e);
+      res.render("pages/editar-perfil", {
+        dados: req.body,
+        erros: { errors: [{ path: 'email', msg: "Erro ao atualizar o perfil. Tente novamente mais tarde." }] }
+      });
+    }
+  }
+
+  
 
 };
  

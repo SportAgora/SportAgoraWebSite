@@ -6,6 +6,8 @@ const usuariosController = require("../controllers/usuariosController");
 const pagamentoController = require('../controllers/pagamentosController');
 
 
+const uploader = require("../helpers/uploader");
+const caminhoImagens = "public/imagens/perfil";
 /*
 
 AUTENTICACAO
@@ -62,6 +64,14 @@ PAGINAS
 */
 
 router.get('/perfil',verificarAutenticacao, usuariosController.carregarPerfil)
+
+router.get('/editar-perfil', verificarAutenticacao, usuariosController.carregarEditarPerfil)
+
+router.post('/editar-perfil', 
+  verificarAutenticacao, 
+  uploader(caminhoImagens, 3),
+  usuariosController.gravarPerfil
+)
 
 router.get('/', function(req,res){
     res.render('pages/home');  
@@ -158,9 +168,7 @@ router.get('/criar-evento', function(req,res){
 })
 
 
-router.get('/editar-perfil', function(req,res){
-  res.render('pages/editar-perfil');  
-})
+
 
 
 module.exports = router;

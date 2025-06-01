@@ -42,15 +42,16 @@ CREATE TABLE usuario (
     usu_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usu_cpf CHAR(11) UNIQUE,
     usu_email VARCHAR(55) NOT NULL UNIQUE,
-    usu_nome VARCHAR(100) UNIQUE,
+    usu_nome VARCHAR(100) NOT NULL UNIQUE,
     usu_senha VARCHAR(72) NOT NULL,
-    usu_nasc DATE ,
+    usu_nasc DATE,
+    usu_foto VARCHAR(255),
+    usu_banner VARCHAR(255),
     endereco_id INT UNSIGNED ,
     contato_id INT UNSIGNED ,
     plano_id INT UNSIGNED ,
     tipo ENUM('comum', 'organizador', 'administrador') NOT NULL DEFAULT 'comum',
-    perf_nome NOT NULL VARCHAR(100),  -- nome do perfil ou do usuário
-    perf_foto BLOB,
+    perf_nome VARCHAR(100) NOT NULL ,  -- nome do perfil ou do usuário
 	contato_social_id INT UNSIGNED,
  
     -- Campos adicionais solicitados (perfil comum e organizador)
@@ -59,7 +60,6 @@ CREATE TABLE usuario (
     biografia VARCHAR(500),
     link_posts VARCHAR(255),
     curtidas INT UNSIGNED DEFAULT 0,
-    banner BLOB,
  
     FOREIGN KEY (endereco_id) REFERENCES endereco_usu(usu_id),
     FOREIGN KEY (contato_id) REFERENCES contato_org(cont_org_id),

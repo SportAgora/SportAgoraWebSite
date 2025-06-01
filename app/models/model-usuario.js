@@ -39,6 +39,7 @@ const UsuarioModel = {
         usu_nome : nome,
         usu_email:email,
         usu_senha: senha, // Já deve estar com hash
+        perf_nome: nome
       };
  
       // Construir a query dinamicamente
@@ -89,7 +90,7 @@ const UsuarioModel = {
       // Adicionar o ID no final dos valores
       values.push(id);
      
-      const query = `UPDATE usuario SET ${updates.join(', ')} WHERE id = ?`;
+      const query = `UPDATE usuario SET ${updates.join(', ')} WHERE usu_id= ?`;
      
       const [result] = await pool.query(query, values);
       return result.affectedRows > 0;

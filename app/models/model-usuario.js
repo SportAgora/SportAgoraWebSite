@@ -37,7 +37,7 @@ const UsuarioModel = {
       // Preparar os dados para inserção
       const data = {
         usu_nome : nome,
-        usu_email:email,
+        usu_email:  email,
         usu_senha: senha, // Já deve estar com hash
         perf_nome: nome
       };
@@ -73,8 +73,8 @@ const UsuarioModel = {
         contato_id: telefone,
         plano_id : plano,
         tipo : tipo,
-        perf_foto : foto,
-        banner : banner,
+        usu_foto : foto,
+        usu_banner : banner,
         biografia : bio
       };
  

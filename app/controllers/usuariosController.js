@@ -1,7 +1,9 @@
 const UsuarioModel = require('../models/model-usuario');
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require("express-validator");
-const removeImg = require("../helpers/removeImg"); 
+
+const {removeImg }= require("../helpers/removeImg")
+
  
 module.exports = {
   regrasValidacao: [
@@ -114,7 +116,8 @@ autenticarUsuario: async (req, res) => {
       req.session.usuario = {
         id: usuario.usu_id,
         email: usuario.usu_email,
-        nome: usuario.usu_nome
+        nome: usuario.usu_nome,
+        foto: usuario.usu_foto
       };
      
        res.redirect("/perfil");
@@ -148,7 +151,7 @@ autenticarUsuario: async (req, res) => {
         bio: userinfos.biografia,
         seguidores: userinfos.quantidade_seguidores,
         seguindo: userinfos.quantidade_seguindo,
-        foto: userinfos.usu_img,
+        foto: userinfos.usu_foto,
         banner: userinfos.usu_banner
         }
     });
@@ -166,13 +169,13 @@ autenticarUsuario: async (req, res) => {
     const userinfos = await UsuarioModel.findByEmail(user.email);
     
     res.render("pages/editar-perfil", {
-        usuario: {
+        valores: {
         id: userinfos.usu_id,
         nome: userinfos.usu_nome,
         email: userinfos.usu_email,
         arroba: userinfos.perf_nome,
         bio: userinfos.biografia,
-        foto: userinfos.usu_img,
+        foto: userinfos.usu_foto,
         banner: userinfos.usu_banner
         // telefone: userinfos.quantidade_seguidores,
         // cep: userinfos.quantidade_seguindo,
@@ -185,103 +188,76 @@ autenticarUsuario: async (req, res) => {
     // Aqui também use return pra garantir que não continue
     return res.redirect("/login");
   }
-},  
-    regrasValidacaoEditarPerfil: [
-  body("nome").isLength({ min: 3 }).withMessage("Nome deve ter pelo menos 3 letras."),
-  body("email").isEmail().withMessage("Email inválido."),
-  body("senha").optional({ checkFalsy: true }).isStrongPassword().withMessage("Senha fraca. Use letras, números e símbolos."),
-  body("repsenha").custom((value, { req }) => {
-    if (req.body.senha && value !== req.body.senha) {
-      throw new Error("Senhas não coincidem.");
-    }
-    return true;
-  })
+},
+
+    regrasValidacaoPerfil: [
+        body("nome")
+            .isLength({ min: 3, max: 45 }).withMessage("Nome deve ter de 3 a 45 caracteres!"),
+        body("email")
+            .isEmail().withMessage("Digite um e-mail válido!")
     ],
+
     gravarPerfil: async (req, res) => {
-    const errors = validationResult(req);
-    const erroMulter = req.session.erroMulter;
+    
+      const erros = validationResult(req);
+      const erroMulter = req.session.erroMulter;
+       if (!erros.isEmpty() || erroMulter != null ) {
+            lista =  !erros.isEmpty() ? erros : {formatter:null, errors:[]};
+            if(erroMulter != null ){
+                lista.errors.push(erroMulter);
+            } 
+            console.log(lista)
+            return res.render("pages/editar-perfil", { listaErros: lista, valores: req.body })
+        }
+        try {
+            var dadosForm = {
+                nome: req.body.nome,
+                email: req.body.email,
+                foto: req.session.usuario.foto
+            };
+            if (req.body.senha != "") {
+                dadosForm.senha = bcrypt.hashSync(req.body.senha, 10);
+            }
+            if (!req.file) {
+                console.log("Falha no carregamento");
+            } else {
+                //Armazenando o caminho do arquivo salvo na pasta do projeto 
+                caminhoArquivo = "imagens/perfil/" + req.file.filename; 
+                if(dadosForm.foto != caminhoArquivo ){
+                    removeImg(dadosForm.foto);
+                }
+                dadosForm.foto = caminhoArquivo;
+            }
+            let resultUpdate = await UsuarioModel.atualizar(req.session.usuario.id, dadosForm);
+            if (!resultUpdate.isEmpty) {
+                if (resultUpdate.changedRows == 1) {
+                  var result = await UsuarioModel.findId(req.session.usuario.id);
+                  var usuario = {
+                    nome: result[0].usu_nome,
+                    id: result[0].usu_id,
+                    foto: result[0].usu_foto,
+                    email: result[0].usu_email
+                  }
+                  
+                   req.session.usuario = usuario;
 
-    if (!errors.isEmpty() || erroMulter != null) {
-      let listaErros = !errors.isEmpty() ? errors : { formatter: null, errors: [] };
-      if (erroMulter) {
-        listaErros.errors.push(erroMulter);
-      }
-      console.log(listaErros)
-      return res.render("pages/editar-perfil", {
-        dados: req.body,
-        erros: listaErros
-      });
+                  var valores = usuario;
+                  valores.senha = "";
+
+                  //salvo certo
+                  res.render("pages/editar-perfil", {valores: valores});
+                } else {
+                  //salvo certo mas sem alterar nada
+                  res.render("pages/editar-perfil", {valores: dadosForm});
+                }
+            }
+
+    } catch(e){
+      console.log(e)
+      console.log("oxi")
+      res.render("pages/editar-perfil", {valores: req.body})
+
     }
-
-    try {
-      const { nome, email, senha, arroba, bio } = req.body;
-
-      const dadosAtualizados = {
-        usu_nome: nome,
-        usu_email: email,
-        perf_nome: arroba,
-        biografia: bio
-      };
-
-      if (senha && senha !== "") {
-        dadosAtualizados.usu_senha = await bcrypt.hash(senha, 10);
-      }
-
-      const imagemPerfil = req.files?.fotoPerfil?.[0];
-      const imagemBanner = req.files?.fotoBanner?.[0];
-
-      if (imagemPerfil) {
-      dadosAtualizados.usu_img = "imagem/perfil/" + imagemPerfil.filename;
-      removeImg(req.session.usuario.foto); 
-      }
-
-      if (imagemBanner) {
-      dadosAtualizados.banner_img = "imagem/perfil/" + imagemBanner.filename;
-      removeImg(req.session.usuario.banner); 
-      }
-
-      const resultado = await UsuarioModel.atualizar(req.session.usuario.id, dadosAtualizados);
-
-      if (resultado.changedRows === 1) {
-        const usuarioAtualizado = await UsuarioModel.findByEmail(email);
-
-        req.session.usuario = {
-          nome: usuarioAtualizado.usu_nome,
-          email: usuarioAtualizado.usu_email,
-          foto: usuarioAtualizado.usu_img,
-          banner: usuarioAtualizado.usu_banner
-        };
-
-        res.render("pages/editar-perfil", {
-          dados: req.body,
-          erros: null,
-          usuario: {
-            nome: usuarioAtualizado.usu_nome,
-            email: usuarioAtualizado.usu_email,
-            arroba: usuarioAtualizado.perf_nome,
-            bio: usuarioAtualizado.biografia,
-            foto: usuarioAtualizado.usu_img,
-            banner: usuarioAtualizado.usu_banner
-          }
-        });
-      } else {
-        res.render("pages/editar-perfil", {
-          dados: req.body,
-          erros: null,
-          usuario: req.body
-        });
-      }
-
-    } catch (e) {
-      console.error(e);
-      res.render("pages/editar-perfil", {
-        dados: req.body,
-        erros: { errors: [{ path: 'email', msg: "Erro ao atualizar o perfil. Tente novamente mais tarde." }] }
-      });
-    }
-  }
-
-  
-
+  },
 };
  

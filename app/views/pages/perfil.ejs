@@ -13,15 +13,15 @@
     <main class="perfil1">
         <section class="bioPadrão">
             <article class="planoFundo">
-                <% if (usuario.bg_perfil) { %>
-                <img src="imagens/planodefundo.jpeg" alt="planodefundo" class="planodefundo">
+                <% if (usuario.banner) { %>
+                <img src="<%= usuario.banner %>" alt="planodefundo" class="planodefundo">
                 <% }else{%>
                 <img src="imagens/usuarios/default_background.jpg" alt="planodefundo" class="planodefundo">
                 <%}%>
                 <article class="perfilo">
                     <div class="perfil-container">
-                    <% if (usuario.img_perfil) { %>
-                    <img src="imagens/pessoa2.png" alt="ftdePerfil" class="ftdePerfil">
+                    <% if (usuario.foto) { %>
+                    <img src="<%= usuario.foto %>" alt="ftdePerfil" class="ftdePerfil">
                     <% }else{%>
                     <img src="imagens/usuarios/default_user.jpg" alt="ftdePerfil" class="ftdePerfil">
                     <%}%>

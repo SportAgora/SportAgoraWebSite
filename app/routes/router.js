@@ -5,9 +5,7 @@ const guestMiddleware = require('../helpers/guestMiddleware');
 const usuariosController = require("../controllers/usuariosController");
 const pagamentoController = require('../controllers/pagamentosController');
 
-
-const uploader = require("../helpers/uploader");
-const caminhoImagens = "public/imagens/perfil";
+const uploadFile = require("../helpers/uploader")("./app/public/imagens/perfil/");
 /*
 
 AUTENTICACAO
@@ -67,10 +65,13 @@ router.get('/perfil',verificarAutenticacao, usuariosController.carregarPerfil)
 
 router.get('/editar-perfil', verificarAutenticacao, usuariosController.carregarEditarPerfil)
 
-router.post('/editar-perfil', 
+router.post('/salvar-perfil', 
   verificarAutenticacao, 
-  uploader(caminhoImagens, 3),
-  usuariosController.gravarPerfil
+  uploadFile("foto"),
+  // usuariosController.regrasValidacaoPerfil,
+  async function(req,res){
+    usuariosController.gravarPerfil(req,res);
+  }
 )
 
 router.get('/', function(req,res){

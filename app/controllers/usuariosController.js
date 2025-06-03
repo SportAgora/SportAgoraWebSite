@@ -108,7 +108,7 @@ autenticarUsuario: async (req, res) => {
       if (!senhaCorreta) {
         return res.render("pages/login", {
            dados: req.body,
-          erros: { errors: [{ path: 'email', msg: "Senha incorreta." }] }
+          erros: { errors: [{ path: 'senha', msg: "Senha incorreta." }] }
         });
       }
      
@@ -254,7 +254,6 @@ autenticarUsuario: async (req, res) => {
 
     } catch(e){
       console.log(e)
-      console.log("oxi")
       res.render("pages/editar-perfil", {valores: req.body})
 
     }

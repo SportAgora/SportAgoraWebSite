@@ -49,13 +49,10 @@ input {
   font-size: 17px;
 }
 
-label + label {
-  margin-top: 10px;
+.form {
+  gap: 20px;
 }
 
-.form {
-  gap: 20px; /* Aumenta o espaçamento entre os campos */
-}
 
 .social-box {
   padding: 14px 24px;

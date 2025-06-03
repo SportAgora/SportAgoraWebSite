@@ -64,10 +64,6 @@
     margin-top: 10px;
   }
   
-  .classification div, .datetime div, .location-fields label {
-    flex: 1 1 200px;
-  }
-  
   .image-upload {
     border: 2px dashed #ced4da;
     padding: 20px;

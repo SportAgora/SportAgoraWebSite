@@ -4,134 +4,251 @@ body {
     padding: 0;
     background: #f8f9fa;
     color: #333;
-  }
-  
-  .container {
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.container {
     display: flex;
     justify-content: space-between;
     padding: 30px;
     gap: 20px;
-  }
-  
-  .box-esquerda, .box-direita {
+}
+
+.box-esquerda, .box-direita {
     display: flex;
     flex-direction: column;
     gap: 20px;
-  }
-  
-  .box-esquerda {
+}
+
+.box-esquerda {
     width: 60%;
-  }
-  
-  .box-direita {
+}
+
+.box-direita {
     width: 35%;
     position: sticky;
     top: 20px;
     height: fit-content;
-  }
-  
-  .box-dados, .box-resumo {
+}
+
+.box-dados, .box-resumo {
     background: white;
     border-radius: 12px;
-    padding: 20px;
+    padding: 24px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
-  
-  h2 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 18px;
     color: #212529;
-  }
-  
-  .usuario-info {
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.usuario-info {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-  }
-  
-  .usuario-info img {
-    width: 50px;
-    height: 50px;
+}
+
+.usuario-info img {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     margin-right: 15px;
-  }
-  
-  .nome {
-    font-weight: bold;
-  }
-  
-  .email {
+}
+
+.nome {
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.email {
     color: var(--cinza);
-    font-size: 0.9em;
-  }
-  
-  .formulario input, .formulario select,
-  #pagamento input {
-    width: 100%;
-    margin-bottom: 12px;
-    padding: 10px 12px;
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+.formulario input, 
+.formulario select,
+#pagamento input {
+    width: 93%;
+    margin-bottom: 16px;
+    padding: 14px 16px;
     border: 1px solid var(--cinzaclaro);
     border-radius: 8px;
-    font-size: 0.95em;
+    font-size: 1.05em;
+    font-weight: 500;
     transition: border-color 0.3s;
-  }
-  
-  input:focus, select:focus {
+}
+
+input:focus, 
+select:focus {
     border-color: var(--verde_especial);
     outline: none;
-  }
-  
-  button {
+}
+
+button {
     background: var(--verde_especial);
     color: var(--branco);
-    padding: 12px 18px;
+    padding: 14px 20px;
     border: none;
     border-radius: 8px;
-    font-size: 1em;
+    font-size: 1.05em;
+    font-weight: 600;
     cursor: pointer;
     transition: background 0.3s;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background: var(--verdenavfooter);
-  }
-  
-  .cartao-info {
+}
+
+.cartao-info {
     display: flex;
-    gap: 10px;
-  }
-  
-  .cartao-info input {
+    gap: 12px;
+}
+
+.cartao-info input {
     flex: 1;
-  }
-  
-  .evento {
+}
+
+.evento {
     display: flex;
     align-items: center;
-    gap: 10px;
-  }
-  
-  .evento img {
+    gap: 12px;
+}
+
+.evento img {
     width: 200px;
     height: 100px;
     border-radius: 8px;
-  }
-  
-  .resumo-pedido .item, .total {
+}
+
+.resumo-pedido .item, 
+.total {
     display: flex;
     justify-content: space-between;
-    margin: 10px 0;
-  }
-  
-  .subtexto {
+    margin: 12px 0;
+    font-weight: 600;
+}
+
+.subtexto {
     color: var(--textopostinfo);
-    font-size: 0.85em;
-  }
-  
-  hr {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+hr {
     border: 0.5px solid var(--cinzaclaro);
-  }
-  
-  .hidden {
+}
+
+.hidden {
     display: none;
-  }
+}
+
+/* Estilo base já existente permanece */
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .box-esquerda, .box-direita {
+        width: 100%;
+    }
+
+    .evento img {
+        width: 100%;
+        height: auto;
+    }
+
+    .cartao-info {
+        flex-direction: column;
+    }
+
+    .cartao-info input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.6em;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    .usuario-info img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .nome {
+        font-size: 1em;
+    }
+
+    .email {
+        font-size: 0.9em;
+    }
+
+    .evento {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .evento img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 16px;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .cartao-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .evento {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .evento img {
+        width: 100%;
+        height: auto;
+    }
+
+    .resumo-pedido .item,
+    .total {
+        flex-direction: column;
+        gap: 4px;
+        align-items: flex-start;
+    }
+}

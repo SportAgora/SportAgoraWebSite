@@ -7,138 +7,144 @@
     <script defer src="/js/script.js"></script>
     <script defer src="/js/editar-perfil.js"></script>
     <link rel="stylesheet" href="/css/editar-perfil.css">
-
+    <link rel="stylesheet" href="/css/base.css">
 </head>
+
 <body>
-  
-  <!-- <header>
-        <%- include('../partials/navbar'); %> 
-    </header>  -->
 
-    <a href="/perfil" class="btn-voltar">← Voltar</a>
+    <nav class="container-ver-eventos">
+        <button class="botao-seta" onclick="location.href='/perfilex'">
+            <img src="/imagens/left-arrow.png" alt="Seta">
+        </button>
+        <span class="ver-eventos">Voltar</span>
+    </nav>
 
-<form id="form-perfil" class="form-container" enctype="multipart/form-data" method="POST" action="/salvar-perfil">
+    <main>
+        <form id="form-perfil" class="form-container" enctype="multipart/form-data" method="POST" action="/salvar-perfil">
 
-  <!-- Banner -->
-  <div class="banner-container">
-    <div class="banner-overlay">
-      <img src="banner.jpg" alt="Banner" id="bannerImage">
-      <div class="icon-overlay" id="editBanner">
-        <img src="Logoz-_3_ (1).png" alt="Editar Banner">
-      </div>
-    </div>
+            <section class="banner-container">
+                <figure class="banner-overlay">
+                    <img src="banner.jpg" alt="Banner" id="bannerImage">
+                    <figcaption class="icon-overlay" id="editBanner">
+                        <img src="imagens/Logoz-_3_ (1).png" alt="Editar Banner">
+                    </figcaption>
+                </figure>
 
-    <div class="profile-info">
-      <div class="profile-pic-overlay">
-        <img src="pessoa2.png" alt="Perfil" id="profileImage">
-        <div class="icon-overlay small" id="editProfile">
-          <img src="Logoz-_3_ (1).png" alt="Editar Perfil">
-        </div>
-      </div>
-      <div class="name-info">
-        <h2>João da Silva</h2>
-        <p>@joaosilva</p>
-      </div>
-    </div>
-  </div>
+                <section class="profile-info">
+                    <figure class="profile-pic-overlay">
+                        <img src="pessoa2.png" alt="Perfil" id="profileImage">
+                        <figcaption class="icon-overlay small" id="editProfile">
+                            <img src="imagens/Logoz-_3_ (1).png" alt="Editar Perfil">
+                        </figcaption>
+                    </figure>
+                    <section class="name-info">
+                        <h2>João da Silva</h2>
+                        <p>@joaosilva</p>
+                    </section>
+                </section>
+            </section>
 
-  <!-- Inputs ocultos para imagens -->
-  <input type="file" id="bannerInput" value="<%= valores.banner %>" name="banner" accept="image/*" hidden>
-  <input type="file" id="profileInput" value="<%= valores.foto %>" name="foto" accept="image/*" hidden>
+            <!-- Inputs ocultos para imagens -->
+            <input type="file" id="bannerInput" value="<%= valores.banner %>" name="banner" accept="image/*" hidden>
+            <input type="file" id="profileInput" value="<%= valores.foto %>" name="foto" accept="image/*" hidden>
 
-  <!-- Conteúdo dos formulários -->
-  <h1>Editar Perfil</h1>
+            <header>
+                <h1>Editar Perfil</h1>
+            </header>
 
-  <div class="tabs">
-    <button type="button" class="tab active" data-tab="usuario">Informações do Usuário</button>
-    <button type="button" class="tab" data-tab="pessoal">Informações Pessoais</button>
-  </div>
+            <nav class="tabs">
+                <button type="button" class="tab active" data-tab="usuario">Informações do Usuário</button>
+                <button type="button" class="tab" data-tab="pessoal">Informações Pessoais</button>
+            </nav>
 
-  <!-- Aba Informações do Usuário -->
-  <div id="form-usuario" class="form active">
-    <label>Nome Completo
-      <input type="text" value="<%= valores.nome %>" name="nome" required>
-    </label>
-    <label>Nome de Usuário
-      <input type="text" name="usuario" value="<%= valores.nome %>" required>
-    </label>
-    <label>Senha
-      <input type="password" name="senha" id="senha" placeholder="Nova senha" >
-    </label>
-    <label>Confirmar Senha
-      <input type="password" name="confirmar_senha" id="confirmar-senha" placeholder="Confirme a senha">
-    </label>
-    <label>E-mail
-      <input type="email" name="email" value="<%= valores.email %>">
-    </label>
-    <small>Não preencha senha ou e-mail se não quiser alterar</small>
+            <!-- Aba Informações do Usuário -->
+            <section id="form-usuario" class="form active">
+                <label>Nome Completo
+                    <input type="text" value="<%= valores.nome %>" name="nome" required>
+                </label>
+                <label>Nome de Usuário
+                    <input type="text" name="usuario" value="<%= valores.nome %>" required>
+                </label>
+                <label>Senha
+                    <input type="password" name="senha" id="senha" placeholder="Nova senha">
+                </label>
+                <label>Confirmar Senha
+                    <input type="password" name="confirmar_senha" id="confirmar-senha" placeholder="Confirme a senha">
+                </label>
+                <label>E-mail
+                    <input type="email" name="email" value="<%= valores.email %>">
+                </label>
+                <small>Não preencha senha ou e-mail se não quiser alterar</small>
 
-    <h3>Redes Sociais</h3>
-    <div class="socials">
-      <div class="social-box"><img src="youtube.png" alt=""><span>YouTube</span></div>
-      <div class="social-box"><img src="twitter.png" alt=""><span>Twitter</span></div>
-      <div class="social-box"><img src="instagram.png" alt=""><span>Instagram</span></div>
-    </div>
-  </div>
+                <h3>Redes Sociais</h3>
+                <section class="socials">
+                    <article class="social-box">
+                        <img src="youtube.png" alt=""><span>YouTube</span>
+                    </article>
+                    <article class="social-box">
+                        <img src="twitter.png" alt=""><span>Twitter</span>
+                    </article>
+                    <article class="social-box">
+                        <img src="instagram.png" alt=""><span>Instagram</span>
+                    </article>
+                </section>
+            </section>
 
-  <!-- Aba Informações Pessoais -->
-  <div id="form-pessoal" class="form">
-    <label>Telefone
-      <input type="tel" name="telefone" value="(11) 99999-9999">
-    </label>
-    <label>CEP
-      <input type="text" name="cep" id="cep" value="01001-000">
-    </label>
+            <!-- Aba Informações Pessoais -->
+            <section id="form-pessoal" class="form">
+                <label>Telefone
+                    <input type="tel" name="telefone" value="(11) 99999-9999">
+                </label>
+                <label>CEP
+                    <input type="text" name="cep" id="cep" value="01001-000">
+                </label>
 
-    <div class="row">
-      <label>Rua
-        <input type="text" name="rua" id="rua" value="Praça da Sé">
-      </label>
-      <label>Número
-        <input type="text" name="numero" id="numero" value="100">
-      </label>
-      <label>Complemento
-        <input type="text" name="complemento" id="complemento" value="Apto 12">
-      </label>
-    </div>
+                <section class="row">
+                    <label>Rua
+                        <input type="text" name="rua" id="rua" value="Praça da Sé">
+                    </label>
+                    <label>Número
+                        <input type="text" name="numero" id="numero" value="100">
+                    </label>
+                    <label>Complemento
+                        <input type="text" name="complemento" id="complemento" value="Apto 12">
+                    </label>
+                </section>
 
-    <div class="row">
-      <label>Bairro
-        <input type="text" name="bairro" id="bairro" value="Sé">
-      </label>
-      <label>Cidade
-        <input type="text" name="cidade" id="cidade" value="São Paulo">
-      </label>
-      <label>UF
-        <input type="text" name="uf" id="uf" value="SP">
-      </label>
-    </div>
-  </div>
+                <section class="row">
+                    <label>Bairro
+                        <input type="text" name="bairro" id="bairro" value="Sé">
+                    </label>
+                    <label>Cidade
+                        <input type="text" name="cidade" id="cidade" value="São Paulo">
+                    </label>
+                    <label>UF
+                        <input type="text" name="uf" id="uf" value="SP">
+                    </label>
+                </section>
+            </section>
 
-  <button type="submit" class="btn-salvar">Salvar Alterações</button>
-</form>
+            <button type="submit" class="btn-salvar">Salvar Alterações</button>
+        </form>
+    </main>
 
+    <!-- Modal de Recorte -->
+    <aside id="cropperModal" class="modal">
+        <section class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Recortar Imagem</h2>
+            <section class="image-container">
+                <img id="cropperImage" src="">
+            </section>
+            <section class="modal-buttons">
+                <button id="confirmCrop" class="btn-salvar">Confirmar</button>
+                <button id="cancelCrop" class="btn-cancelar">Cancelar</button>
+            </section>
+        </section>
+    </aside>
 
-  <!-- Modal de Recorte -->
-
-  <div id="cropperModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Recortar Imagem</h2>
-    <div class="image-container">
-      <img id="cropperImage" src="">
-    </div>
-    <div class="modal-buttons">
-      <button id="confirmCrop" class="btn-salvar">Confirmar</button>
-      <button id="cancelCrop" class="btn-cancelar">Cancelar</button>
-    </div>
-  </div>
-</div>
-
-
-<script src="script.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 
 </body>
-
 </html>

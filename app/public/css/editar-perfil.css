@@ -1,19 +1,143 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #f5f8fa;
+  background: var(--branco);
   margin: 0;
   padding: 20px;
+  font-size: 20px; /* Aumenta a fonte */
+  font-weight: 500; /* Peso médio bonito */
+}
+
+/* configurações das letras */
+
+h1, h2, h3 {
+  font-weight: 700; /* Negrito bonito */
+  margin-bottom: 15px; /* Espaço abaixo dos títulos */
+}
+
+.name-info h2 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.name-info p {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.tab {
+  font-weight: 600;
   font-size: 18px;
 }
 
-.btn-voltar {
-  text-decoration: none;
-  color: #1DA1F2;
-  font-weight: bold;
-  font-size: 20px;
-  margin-bottom: 20px;
-  display: inline-block;
+.btn-salvar, .btn-cancelar {
+  font-weight: 600;
+  font-size: 18px;
 }
+
+.ver-eventos {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+input {
+  padding: 14px;
+  font-size: 17px;
+}
+
+.form {
+  gap: 20px;
+}
+
+
+.social-box {
+  padding: 14px 24px;
+  font-weight: 600;
+}
+
+.socials {
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.form-container {
+  padding: 50px;
+  gap: 25px;
+}
+
+.row {
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.profile-info {
+  margin-top: -50px;
+  gap: 15px;
+}
+
+
+  /* seta */
+
+  .container-ver-eventos {
+    display: flex;
+    margin-top: 10px;
+    align-items: center; 
+    margin-bottom: 30px; 
+}
+
+
+.botao-seta {
+    background-color: var(--verdenavfooter);
+    border: none;
+    color: var(--branco);;
+    height: 55px;
+    margin-left: 30px;
+    width: 55px;
+    padding: 10px 20px;
+    border-radius: 50%; 
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+
+.botao-seta:hover {
+    transform: scale(1.05);  
+    background-color: var(--verdenavfooter);;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
+}
+
+
+.botao-seta img {
+    margin-right: 30px;  
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.botao-seta:hover img {
+    transform: translateX(-5px); 
+}
+
+
+.ver-eventos {
+    color: var(--textopostinfo);
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    cursor: pointer;
+    margin-left: 20px;  
+    transition: color 0.3s ease-in-out;
+}
+
 
 .profile-info {
   display: flex;
@@ -29,7 +153,7 @@ body {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 4px solid white;
+  border: 4px solid var(--branco);;
   object-fit: cover;
 }
 
@@ -58,7 +182,7 @@ body {
 }
 
 .form-container {
-  background: white;
+  background: var(--branco);;
   padding: 40px;
   border-radius: 20px;
   max-width: 900px;
@@ -75,7 +199,7 @@ body {
 .tab {
   padding: 12px 25px;
   border: none;
-  background: #e6ecf0;
+  background: var(--branco-fosco);
   cursor: pointer;
   border-radius: 8px;
   font-weight: bold;
@@ -83,8 +207,8 @@ body {
 }
 
 .tab.active {
-  background: #1DA1F2;
-  color: white;
+  background: var(--verde_especial);
+  color: var(--branco);
 }
 
 .form {
@@ -109,14 +233,14 @@ label {
 
 input {
   padding: 12px;
-  border: 1px solid #ccd6dd;
+  border: 1px solid var(--branco-fosco);
   border-radius: 8px;
   font-size: 16px;
 }
 
 .btn-salvar {
-  background: #1DA1F2;
-  color: white;
+  background: var(--verde_especial);
+  color: var(--branco);
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
@@ -127,7 +251,7 @@ input {
 }
 
 .btn-salvar:hover {
-  background: #1991da;
+  background: var(--verdenavfooter);
   transform: scale(1.05);
 }
 
@@ -140,7 +264,7 @@ input {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #e6ecf0;
+  background: var(--branco-fosco);
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -148,7 +272,7 @@ input {
 }
 
 .social-box:hover {
-  background: #d0d8de;
+  background: var(--cinzaclaro);
 }
 
 .row {
@@ -218,6 +342,11 @@ body {
   position: relative;
   width: 100px;
   height: 100px;
+    transition: filter 0.3s ease;
+}
+
+.profile-pic-overlay:hover {
+  filter: brightness(0.8);
 }
 
 .profile-pic-overlay img {
@@ -227,6 +356,7 @@ body {
   object-fit: cover;
 }
 
+
 .icon-overlay.small {
     height: 70px;
   top: 50%;
@@ -235,7 +365,7 @@ body {
 
 .name-info {
   margin-left: 15px;
-  color: white;
+  color:var(--preto);
   text-shadow: 0 0 5px rgba(0,0,0,0.8);
 }
 
@@ -288,7 +418,7 @@ body {
   display: none;
   font-size: 32px;
   height: 300px;
-  color: white;
+  color: var(--branco);
   cursor: pointer;
 }
 
@@ -316,8 +446,8 @@ body {
   height: 120px;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid white;
-  background-color: white;
+  border: 4px solid var(--branco-fosco);
+  background-color: var(--branco);
 }
 
 .profile-pic-overlay img {
@@ -342,7 +472,7 @@ body {
 .name-info p {
   margin: 4px 0 0;
   font-size: 16px;
-  color: gray;
+  color:var(--cinza);
 }
 
 /* Modal */
@@ -359,7 +489,7 @@ body {
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: var(--brancobg);
   margin: 5% auto;
   padding: 20px;
   border-radius: 12px;
@@ -369,7 +499,7 @@ body {
 }
 
 .close {
-  color: #aaa;
+  color: var(--cinzaclaro);
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -377,7 +507,7 @@ body {
 }
 
 .close:hover {
-  color: black;
+  color: var(--preto);
 }
 
 .image-container {
@@ -397,8 +527,8 @@ body {
 }
 
 .btn-cancelar {
-  background: gray;
-  color: white;
+  background: var(--textopostinfo);
+  color: var(--branco);
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
@@ -407,5 +537,133 @@ body {
 }
 
 .btn-cancelar:hover {
-  background: #555;
+  background: var(--cinza);
+}
+
+
+/* Responsividade geral */
+@media (max-width: 1024px) {
+  .form-container {
+    padding: 30px;
+    margin: 30px 20px;
+  }
+
+  .banner-overlay {
+    height: 220px;
+  }
+
+  .profile-pic-overlay {
+    width: 100px;
+    height: 100px;
+  }
+
+  .name-info h2 {
+    font-size: 20px;
+  }
+
+  .name-info p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-ver-eventos {
+    margin-left: 10px;
+  }
+
+  .botao-seta {
+    margin-left: 10px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .ver-eventos {
+    font-size: 18px;
+  }
+
+  .profile-info {
+    flex-direction: row;
+    margin-top: -50px;
+  }
+
+  .profile-pic-overlay {
+    width: 90px;
+    height: 90px;
+  }
+
+  .name-info h2 {
+    font-size: 18px;
+  }
+
+  .name-info p {
+    font-size: 14px;
+  }
+
+  .tabs {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .socials {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-overlay {
+    height: 180px;
+  }
+
+  .profile-pic-overlay {
+    width: 70px;
+    height: 70px;
+  }
+
+  .name-info h2 {
+    font-size: 16px;
+  }
+
+  .name-info p {
+    font-size: 12px;
+  }
+
+  .botao-seta {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+  }
+
+  .ver-eventos {
+    font-size: 16px;
+  }
+
+  .form-container {
+    padding: 20px;
+    margin: 20px 10px;
+  }
+
+  .tab {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .btn-salvar,
+  .btn-cancelar {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+
+  .social-box {
+    padding: 8px 12px;
+  }
 }

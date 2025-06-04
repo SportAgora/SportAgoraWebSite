@@ -84,6 +84,7 @@ h3 {
     border: 1px solid var(--cinzaclaro);
     border-radius: 8px;
     font-size: 1.05em;
+    display: flex;
     font-weight: 500;
     transition: border-color 0.3s;
 }

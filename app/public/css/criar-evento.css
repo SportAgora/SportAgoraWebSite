@@ -109,10 +109,6 @@
     transition: background 0.3s ease;
   }
   
-  button:hover {
-    background: #0056b3;
-  }
-  
   .meia-btn.active {
     background: #ffc107 !important;
     color: #212529;
@@ -363,10 +359,6 @@
     transition: background 0.3s ease;
   }
   
-  button:hover {
-    background: #0056b3;
-  }
-  
   .meia-btn.active {
     background: #ffc107 !important;
     color: #212529;
@@ -486,6 +478,10 @@
     margin-top: 20px;
     margin-left: 20px;  
     transition: color 0.3s ease-in-out;
+}
+
+.publicar-button:hover {
+  background-color: #1e7d36;
 }
 
   

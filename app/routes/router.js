@@ -110,6 +110,10 @@ router.get('/item-do-carrosel', function(req,res){
   res.render('pages/item-do-carrosel');  
 })
 
+router.get('/criar-post', function(req,res){
+  res.render('pages/criar-post');  
+})
+
 
 router.get('/infoevento-natacao.ejs', function(req,res){
   res.render('pages/infoevento-natacao.ejs');  

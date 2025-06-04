@@ -259,6 +259,7 @@ body {
 .login-button:hover {
     color: var(--branco);
     transform: scale(1.02);
+    background-color: #2a8d3f00;
 }
 
 .menu-icon, .user-icon {

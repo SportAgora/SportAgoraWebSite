@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criação De Evento</title>
+  <title>Criação De Post</title>
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/criar-evento.css">
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
@@ -31,10 +31,10 @@
 
       <section class="container">
         <h1>1. Informações básicas</h1>
-        <p class="subtitle">Adicione as principais informações do evento.</p>
+        <p class="subtitle">Adicione as principais informações do post.</p>
 
-        <label>Nome do evento *</label>
-        <input type="text" id="nome-evento" maxlength="100" required>
+        <label>Nome do post *</label>
+        <input type="text" id="nome-post" maxlength="100" required>
 
         <label>Imagem de divulgação</label>
         <figure class="image-upload" id="image-drop">
@@ -43,9 +43,8 @@
           <img id="image-preview" src="" alt="Preview" style="display:none; max-width: 100%; margin-top: 10px;">
         </figure>
 
-        <label>Classifique seu evento</label>
         <article class="classification">
-          <legend class="visually-hidden">Classificação do evento</legend>
+          <legend class="visually-hidden">Classificação do post</legend>
 
           <section>
             <label>Assunto *</label>
@@ -58,48 +57,19 @@
           </section>
 
           <section>
-            <label>Categoria</label>
+            <label>Sobre *</label>
             <select>
               <option value="">Selecione</option>
-              <option>Torneio</option>
-              <option>Várzea</option>
-              <option>Corrida</option>
+              <option>Noticia</option>
+              <option>Meme</option>
+              <option>Curiosidade</option>
             </select>
           </section>
         </article>
       </section>
 
       <section class="container">
-        <h1>2. Data e horário</h1>
-        <p class="subtitle">Informe aos participantes quando seu evento vai acontecer.</p>
-
-        <article class="datetime">
-          <legend class="visually-hidden">Data e horário do evento</legend>
-
-          <section>
-            <label>Data de início *</label>
-            <input type="date" required>
-          </section>
-
-          <section>
-            <label>Horário de início *</label>
-            <input type="time" required>
-          </section>
-
-          <section>
-            <label>Data de término *</label>
-            <input type="date" required>
-          </section>
-
-          <section>
-            <label>Horário de término *</label>
-            <input type="time" required>
-          </section>
-        </article>
-      </section>
-
-      <section class="container">
-        <h1>3. Descrição do evento</h1>
+        <h1>2. Descrição do Post</h1>
         <p class="subtitle">Conte todos os detalhes do seu evento, como a programação e os diferenciais da sua produção!</p>
 
         <section id="editor-container">
@@ -136,77 +106,11 @@
 
           <section id="editor" style="height: 300px;"></section>
         </section>
-      </section>
 
-      <section class="container">
-        <h1>4. Onde o seu evento vai acontecer?</h1>
-
-        <article class="location-fields">
-          <legend class="visually-hidden">Localização do evento</legend>
-
-          <label>Local</label>
-          <input type="text" id="local">
-
-          <label>Endereço</label>
-          <input type="text" id="endereco">
-
-          <label>Nome do local</label>
-          <input type="text" id="nome-local">
-
-          <label>CEP</label>
-          <input type="text" id="cep" placeholder="00000-000">
-
-          <label>Rua</label>
-          <input type="text" id="rua">
-
-          <label>Número</label>
-          <input type="text" id="numero">
-
-          <label>Complemento</label>
-          <input type="text" id="complemento">
-
-          <label>Bairro</label>
-          <input type="text" id="bairro">
-
-          <label>Cidade</label>
-          <input type="text" id="cidade">
-
-          <label>Estado</label>
-          <input type="text" id="estado">
-        </article>
-      </section>
-
-      <section class="container">
-        <h1>5. Ingressos</h1>
-        <p>Que tipo de ingresso você deseja criar?</p>
-
-        <label>Nome do ingresso</label>
-        <input type="text" id="nome-ingresso">
-
-        <label>Valor</label>
-        <input type="number" id="valor-ingresso">
-
-        <label>Quantidade</label>
-        <input type="number" id="quantidade-ingresso">
-
-        <button type="button" id="meia-entrada" class="meia-btn">Adicionar meia-entrada</button>
-        <button type="button" id="publicar-ingresso">Publicar ingresso</button>
-
-        <table id="ingresso-tabela">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Valor</th>
-              <th>Quantidade</th>
-              <th>Meia-entrada</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-
-        <section class="center">
-          <button type="submit" id="publicar-evento">Publicar evento</button>
+                <section class="center">
+          <button class="publicar-button"type="submit" id="publicar-evento">Publicar evento</button>
         </section>
+
       </section>
 
     </form>

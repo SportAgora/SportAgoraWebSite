@@ -125,17 +125,20 @@
                 <!-- <label>Nome de Usuário
                     <input type="text" name="usuario" value="<%= valores.nome %>" required>
                 </label> -->
-                <label>Senha
-                    <input type="password" name="senha" id="senha" placeholder="Nova senha">
-                </label>
-                <label>Confirmar Senha
-                    <input type="password" name="repsenha" id="repsenha" placeholder="Confirme a senha">
-                </label>
                 <label>E-mail
                     <input type="email" name="email" value="<%= valores.email %>">
                 </label>
+                <label>Biografia
+                    <input type="text" name="biografia" value="<%= valores.biografia %>" placeholder="Escreva algo sobre você...">
+                </label>   
+                <label>Senha
+                    <input type="password" name="senha" id="senha" placeholder="Nova senha">
+                </label>
                 <small>Não preencha senha ou e-mail se não quiser alterar</small>
-
+                <label>Confirmar Senha
+                    <input type="password" name="repsenha" id="repsenha" placeholder="Confirme a senha">
+                </label>
+                
                 <!-- <h3>Redes Sociais</h3>
                 <section class="socials">
                     <article class="social-box">

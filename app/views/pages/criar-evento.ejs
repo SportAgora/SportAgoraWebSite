@@ -138,43 +138,52 @@
         </section>
       </section>
 
-      <section class="container">
-        <h1>4. Onde o seu evento vai acontecer?</h1>
+<section class="container">
+  <h1>4. Onde o seu evento vai acontecer?</h1>
 
-        <article class="location-fields">
-          <legend class="visually-hidden">Localização do evento</legend>
+  <article class="location-fields">
 
-          <label>Local</label>
-          <input type="text" id="local">
+    <legend class="visually-hidden">Localização do evento</legend>
 
-          <label>Endereço</label>
-          <input type="text" id="endereco">
+<article class="input-box">
+  <label for="local">Local</label>
+  <input type="text" id="local" name="local" placeholder="Digite o local">
+</article>
 
-          <label>Nome do local</label>
-          <input type="text" id="nome-local">
+    <label>Endereço</label>
+    <input type="text" id="endereco" placeholder="Digite o endereço">
 
-          <label>CEP</label>
-          <input type="text" id="cep" placeholder="00000-000">
+    <label>Nome do local</label>
+    <input type="text" id="nome-local" placeholder="Ex.: Auditório Principal">
 
-          <label>Rua</label>
-          <input type="text" id="rua">
+    <label>CEP</label>
+    <article class="cep-wrapper">
+      <input type="text" id="cep" placeholder="00000-000">
+      <article class="spinner" id="spinner"></article>
+    </article>
 
-          <label>Número</label>
-          <input type="text" id="numero">
+<article class="input-box">
+  <label for="rua">Rua</label>
+  <input type="text" id="rua" name="rua" placeholder="Digite a rua">
+</article>
 
-          <label>Complemento</label>
-          <input type="text" id="complemento">
+    <label>Número</label>
+    <input type="text" id="numero" placeholder="Número">
 
-          <label>Bairro</label>
-          <input type="text" id="bairro">
+    <label>Complemento</label>
+    <input type="text" id="complemento" placeholder="Apartamento, bloco, etc.">
 
-          <label>Cidade</label>
-          <input type="text" id="cidade">
+    <label>Bairro</label>
+    <input type="text" id="bairro" placeholder="Bairro">
 
-          <label>Estado</label>
-          <input type="text" id="estado">
-        </article>
-      </section>
+    <label>Cidade</label>
+    <input type="text" id="cidade" placeholder="Cidade">
+
+    <label>Estado</label>
+    <input type="text" id="estado" placeholder="Estado">
+  </article>
+</section>
+
 
       <section class="container">
         <h1>5. Ingressos</h1>

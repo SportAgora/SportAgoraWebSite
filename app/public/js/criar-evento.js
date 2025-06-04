@@ -26,21 +26,38 @@ const quill = new Quill('#editor', {
   });
   
   // CEP auto-complete
-  document.getElementById('cep').addEventListener('blur', function () {
+document.getElementById('cep').addEventListener('blur', function() {
     const cep = this.value.replace(/\D/g, '');
-    if (cep.length !== 8) return;
-  
+    const spinner = document.getElementById('spinner');
+
+    if (cep.length !== 8) {
+        alert('CEP inválido!');
+        return;
+    }
+
+    spinner.style.display = 'block';
+
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
-      .then(res => res.json())
-      .then(data => {
-        if (!data.erro) {
-          document.getElementById('rua').value = data.logradouro;
-          document.getElementById('bairro').value = data.bairro;
-          document.getElementById('cidade').value = data.localidade;
-          document.getElementById('estado').value = data.uf;
-        }
-      });
-  });
+        .then(response => response.json())
+        .then(data => {
+            if (data.erro) {
+                alert('CEP não encontrado!');
+            } else {
+                document.getElementById('rua').value = data.logradouro || '';
+                document.getElementById('bairro').value = data.bairro || '';
+                document.getElementById('cidade').value = data.localidade || '';
+                document.getElementById('estado').value = data.uf || '';
+                document.getElementById('complemento').value = data.complemento || '';
+            }
+        })
+        .catch(() => {
+            alert('Erro ao buscar o CEP!');
+        })
+        .finally(() => {
+            spinner.style.display = 'none';
+        });
+});
+
   
   // Meia entrada toggle
   let meiaEntradaAtivo = false;

@@ -324,6 +324,25 @@
     flex-wrap: wrap;
     margin-top: 10px;
   }
+
+  .input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%; /* ocupa a largura do container pai */
+}
+
+
+.input-box input {
+        width: 100%;
+        padding: 14px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        font-size: 1em;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
   
   .image-upload {
     border: 2px dashed #ced4da;
@@ -483,6 +502,30 @@
 .publicar-button:hover {
   background-color: #1e7d36;
 }
+
+/* Spinner CEP */
+.cep-wrapper {
+  position: flex;
+}
+
+.spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ccc;
+  border-top: 3px solid var(--verde_especial, #28a745);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes spin {
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
 
   
   /* Responsividade */

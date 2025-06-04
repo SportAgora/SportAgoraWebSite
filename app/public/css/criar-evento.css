@@ -74,7 +74,11 @@
     flex-wrap: wrap;
     margin-top: 10px;
   }
-  
+
+.location-fields {
+    flex-direction: column;
+  }
+
   .image-upload {
     border: 2px dashed #ced4da;
     padding: 20px;
@@ -107,6 +111,10 @@
     cursor: pointer;
     font-size: 1em;
     transition: background 0.3s ease;
+  }
+
+    button:hover {
+    background: var(--searchbar);
   }
   
   .meia-btn.active {
@@ -314,7 +322,7 @@
   
   input:focus, select:focus {
     border-color: var(--verde_especial);
-    box-shadow: 0 0 5px rgba(0,123,255,0.25);
+    box-shadow: 0 0 5px var(--verdenavfooter);
     outline: none;
   }
   
@@ -376,6 +384,10 @@
     cursor: pointer;
     font-size: 1em;
     transition: background 0.3s ease;
+  }
+
+ button:hover {
+    background: var(--verde_especial);
   }
   
   .meia-btn.active {

@@ -57,7 +57,6 @@
             <button class="login-button">
                 <% if (usuario) { %>
                 <img src="<%= usuario.foto %>" alt="User" class="user-icon">
-                    <p><%= usuario.nome %></p>
                     <% } else {%>
                 <img src="/imagens/Icon.png" alt="User" class="user-icon">
                 <% }%>
@@ -65,8 +64,12 @@
                 <img src="/imagens/menu-burger.png" alt="Menu" class="menu-icon">
             </button>
             <article class="login-button-mobile">
-                <a onclick="location.href='/login'">
+                <a onclick="location.href='/perfil'">
+                <% if (usuario) { %>
+                    <img src="<%= usuario.foto %>" alt="User" class="user-icon">
+                        <% } else {%>
                     <img src="/imagens/Icon.png" alt="User" class="user-icon">
+                    <% }%>
                 </a>
             </article>
         </article>
@@ -87,13 +90,32 @@
     <button class="panel-button" onclick="location.href='/login'">Anuncie seu evento</button>
     <hr>
     <button class="panel-button" onclick="toggleMode()">Claro/Escuro</button>
+    <hr>
+
 </aside>
+
+
+
+<!-- mobile search bar -->
 
 <section id="mobile-menu" class="mobile-menu">
     <button class="mobile-nav-button" onclick="location.href='/'">Início</button>
     <button class="mobile-nav-button" onclick="location.href='/eventos'">Eventos</button>
     <button class="mobile-nav-button" onclick="location.href='/pratique'">Pratique</button>
     <button class="mobile-nav-button" onclick="location.href='/organizador'">Organizador</button>
+    <hr>
+    <button class="mobile-nav-button" onclick="location.href='/login'">Anuncie seu evento</button>
+    <hr>
+    <button class="mobile-nav-button" onclick="toggleMode()">Claro/Escuro</button>
+    <hr>
+    <% if (usuario) { %>
+        <button class="mobile-nav-button" onclick="location.href='/perfil'">Perfil</button>
+        <button class="mobile-nav-button" onclick="location.href='/editar-perfil'">Editar Perfil</button>
+        <button class="mobile-nav-button" onclick="location.href='/logout'">Sair</button>
+        <% } else { %>
+        <button class="mobile-nav-button" onclick="location.href='/cadastro'">Cadastre-se</button>
+        <button class="mobile-nav-button" onclick="location.href='/login'">Login</button>
+        <% } %>
 </section>
 
 <article class="mobile-search-bar">

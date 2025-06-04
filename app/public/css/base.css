@@ -267,7 +267,8 @@ body {
 }
 
 .user-icon {
-    height: 30px;
+    height: 50px;
+    border-radius: 50%;
 }
 
 .menu-panel {

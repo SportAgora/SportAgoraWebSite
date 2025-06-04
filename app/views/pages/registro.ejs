@@ -47,7 +47,7 @@
             </article>
         
             <form id="signup" method="post" action="/cadastrar">
-                <input type="text" placeholder="Nome" name="nome" id="nome" value="<%= dados.nome  %>" class="<%= erroValidacao.nome %>"> 
+                <input type="text" placeholder="Nome de usuário" name="nome" id="nome" value="<%= dados.nome  %>" class="<%= erroValidacao.nome %>"> 
                 <span class="spanerro"><%= msgErro.nome %></span><br>
 
                 <input type="email" placeholder="Email" name="email" id="email" value="<%= dados.email  %>" class="<%= erroValidacao.email %>"> 

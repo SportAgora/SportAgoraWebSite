@@ -28,6 +28,17 @@ const UsuarioModel = {
       throw error;
     }
   },
+
+  findByName: async (nome) => {
+    try {
+      const query = "SELECT * FROM usuario WHERE usu_nome = ?";
+      const [rows] = await pool.query(query, [nome]);
+      return rows.length > 0 ? rows[0] : null;
+    } catch (error) {
+      console.error("Erro ao verificar nome:", error);
+      throw error;
+    }
+  },
  
   // Criar novo usuário
   create: async (userData) => {

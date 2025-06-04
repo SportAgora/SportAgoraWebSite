@@ -35,11 +35,22 @@ module.exports = {
       if (email){
       const usuarioExistente = await UsuarioModel.findByEmail(email);
       if (usuarioExistente) {
-        res.render("pages/registro", {
+       return res.render("pages/registro", {
         dados: req.body,
         erros: { errors: [{ path: 'email', msg: "Este email já está cadastrado" }] }
       });
     }
+
+    if (nome){
+      const nomeExistente = await UsuarioModel.findByName(nome);
+      if (nomeExistente) {
+        return res.render("pages/registro", {
+        dados: req.body,
+        erros: { errors: [{ path: 'nome', msg: "Este nome já está cadastrado" }] }
+      });
+    }
+  }
+
       }
      
       // Hash da senha
@@ -55,22 +66,32 @@ module.exports = {
       });
      
       // AUTOLOGIN: Criar sessão diretamente após cadastro
+      // req.session.usuario = {
+      //   id: novoUsuario.insertId, // ID do novo usuário
+      //   email: email,
+      //   foto: "imagens/usuarios/default_user.jpg",
+      //   banner: "imagens/usuarios/default_background.jpg"
+      // };
+
+      const usuario = await UsuarioModel.findByEmail(email);
+      
       req.session.usuario = {
-        id: novoUsuario.insertId, // ID do novo usuário
-        email: email,
-        foto: "imagens/usuarios/default_user.jpg",
-        banner: "imagens/usuarios/default_background.jpg"
+        id: usuario.usu_id,
+        email: usuario.usu_email,
+        nome: usuario.usu_nome,
+        foto: usuario.usu_foto,
+        banner: usuario.usu_banner
       };
-     
+
       // Redirecionar para contaConsumidor
       res.redirect("/perfil");
      
     } catch (e) {
       console.error(e);
       res.render("pages/registro", {
-  dados: req.body,
-  erros: { errors: [{ path: 'email', msg: "Ocorreu um erro ao criar a conta" }] }
-});
+      dados: req.body,
+      erros: { errors: [{ path: 'email', msg: "Ocorreu um erro ao criar a conta" }] }
+    });
 
       
     }
@@ -230,7 +251,7 @@ autenticarUsuario: async (req, res) => {
               }, 
               dadosNotificacao: {
             titulo: "Erro ao atualizar o perfil!",
-            mensagem: "Verifique os campos destacados!",
+            mensagem: "Verifique se os dados foram inseridos corretamente.",
             tipo: "error"
         } })
         }
@@ -253,18 +274,20 @@ autenticarUsuario: async (req, res) => {
               } else {
                 if (req.files.foto) {
                   const caminhoFoto = "imagens/perfil/" + req.files.foto[0].filename;
-                  if (dadosForm.foto !== caminhoFoto && caminhoFoto !== "imagens/usuarios/default_user.jpg") removeImg(dadosForm.foto);
+                  if (dadosForm.foto !== caminhoFoto && dadosForm.foto !== "imagens/usuarios/default_user.jpg") removeImg(dadosForm.foto);
                   dadosForm.foto = caminhoFoto;
                   console.log(caminhoFoto)
                 }
 
                 if (req.files.banner) {
                   const caminhoBanner = "imagens/perfil/" + req.files.banner[0].filename;
-                  if (dadosForm.banner !== caminhoBanner && caminhoBanner !== "imagens/usuarios/default_background.jpg") removeImg(dadosForm.banner);
+                  if (dadosForm.banner !== caminhoBanner && dadosForm.banner !== "imagens/usuarios/default_background.jpg") removeImg(dadosForm.banner);
                   dadosForm.banner = caminhoBanner;
                 }
               }
 
+            console.log(dadosForm)
+            console.log(req.session.usuario)
 
             let resultUpdate = await UsuarioModel.atualizar(req.session.usuario.id, dadosForm);
             console.log(resultUpdate)

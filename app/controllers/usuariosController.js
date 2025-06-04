@@ -253,13 +253,14 @@ autenticarUsuario: async (req, res) => {
               } else {
                 if (req.files.foto) {
                   const caminhoFoto = "imagens/perfil/" + req.files.foto[0].filename;
-                  if (dadosForm.foto !== caminhoFoto) removeImg(dadosForm.foto);
+                  if (dadosForm.foto !== caminhoFoto && caminhoFoto !== "imagens/usuarios/default_user.jpg") removeImg(dadosForm.foto);
                   dadosForm.foto = caminhoFoto;
+                  console.log(caminhoFoto)
                 }
 
                 if (req.files.banner) {
                   const caminhoBanner = "imagens/perfil/" + req.files.banner[0].filename;
-                  if (dadosForm.banner !== caminhoBanner) removeImg(dadosForm.banner);
+                  if (dadosForm.banner !== caminhoBanner && caminhoBanner !== "imagens/usuarios/default_background.jpg") removeImg(dadosForm.banner);
                   dadosForm.banner = caminhoBanner;
                 }
               }

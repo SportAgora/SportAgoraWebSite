@@ -1,136 +1,109 @@
-
-// Tabs com animação
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.form').forEach(f => f.classList.remove('active'));
-
-    tab.classList.add('active');
-    document.getElementById(`form-${tab.dataset.tab}`).classList.add('active');
-  });
-});
-
-// CEP Auto-preenchimento
-document.getElementById('cep').addEventListener('blur', () => {
-  const cep = document.getElementById('cep').value.replace(/\D/g, '');
-  fetch(`https://viacep.com.br/ws/${cep}/json/`)
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('rua').value = data.logradouro;
-      document.getElementById('bairro').value = data.bairro;
-      document.getElementById('cidade').value = data.localidade;
-      document.getElementById('uf').value = data.uf;
-    });
-});
-
-// troca imagem
-
 let cropper;
-let currentTarget = ''; // 'banner' ou 'profile'
-
-const modal = document.getElementById('cropperModal');
+const cropperModal = document.getElementById('cropperModal');
 const cropperImage = document.getElementById('cropperImage');
 const closeModal = document.querySelector('.close');
 const confirmCrop = document.getElementById('confirmCrop');
 const cancelCrop = document.getElementById('cancelCrop');
-
-// Elementos dos inputs
+ 
 const bannerInput = document.getElementById('bannerInput');
 const profileInput = document.getElementById('profileInput');
-
+ 
 const bannerImage = document.getElementById('bannerImage');
 const profileImage = document.getElementById('profileImage');
-
+ 
 const editBanner = document.getElementById('editBanner');
 const editProfile = document.getElementById('editProfile');
-
-// Ações de clicar nos ícones
+ 
+let currentType = ''; // 'banner' ou 'profile'
+ 
+// Ação ao clicar no banner
 editBanner.addEventListener('click', () => {
-  currentTarget = 'banner';
-  bannerInput.click();
+    currentType = 'banner';
+    bannerInput.click();
 });
-
+ 
+// Ação ao clicar na foto de perfil
 editProfile.addEventListener('click', () => {
-  currentTarget = 'profile';
-  profileInput.click();
+    currentType = 'profile';
+    profileInput.click();
 });
-
-// Ações ao escolher arquivos
+ 
+// Ao selecionar uma imagem
 [bannerInput, profileInput].forEach(input => {
-  input.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = event => {
-        openCropper(event.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  });
+    input.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                cropperImage.src = reader.result;
+                openModal();
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 });
-
-// Função para abrir o cropper
-function openCropper(imageSrc) {
-  cropperImage.src = imageSrc;
-  modal.style.display = 'block';
-
-  if (cropper) {
-    cropper.destroy();
-  }
-
-  cropper = new Cropper(cropperImage, {
-    aspectRatio: currentTarget === 'banner' ? 16 / 9 : 1,
-    viewMode: 1,
-    dragMode: 'move',
-    guides: true,
-    movable: true,
-    cropBoxResizable: true,
-    background: false
-  });
+ 
+// Abrir modal de crop
+function openModal() {
+    cropperModal.style.display = 'flex';
+ 
+    if (cropper) cropper.destroy();
+ 
+    cropper = new Cropper(cropperImage, {
+        aspectRatio: currentType === 'banner' ? 16 / 5 : 1,
+        viewMode: 1,
+        background: false,
+        movable: true,
+        zoomable: true,
+        scalable: false,
+        rotatable: false,
+        dragMode: 'move',
+        autoCropArea: 1
+    });
 }
-
-// Confirmar recorte
+ 
+// Fechar modal
+function closeCropper() {
+    cropper.destroy();
+    cropper = null;
+    cropperModal.style.display = 'none';
+}
+ 
+// Botão de confirmar crop
 confirmCrop.addEventListener('click', () => {
-  const canvas = cropper.getCroppedCanvas({
-    width: currentTarget === 'banner' ? 1600 : 400,
-    height: currentTarget === 'banner' ? 900 : 400
-  });
-
-  const croppedImage = canvas.toDataURL('image/png');
-
-  if (currentTarget === 'banner') {
-    bannerImage.src = croppedImage;
-  } else if (currentTarget === 'profile') {
-    profileImage.src = croppedImage;
-  }
-
-  closeModalFunction();
+    const canvas = cropper.getCroppedCanvas({
+        width: currentType === 'banner' ? 1600 : 500,
+        height: currentType === 'banner' ? 500 : 500,
+        imageSmoothingQuality: 'high'
+    });
+ 
+    canvas.toBlob(blob => {
+        const url = URL.createObjectURL(blob);
+ 
+        if (currentType === 'banner') {
+            bannerImage.src = url;
+            const file = new File([blob], 'banner.png', { type: 'image/png' });
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            bannerInput.files = dataTransfer.files;
+        } else if (currentType === 'profile') {
+            profileImage.src = url;
+            const file = new File([blob], 'profile.png', { type: 'image/png' });
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            profileInput.files = dataTransfer.files;
+        }
+        closeCropper();
+    }, 'image/png');
 });
-
-// Cancelar
-cancelCrop.addEventListener('click', closeModalFunction);
-closeModal.addEventListener('click', closeModalFunction);
-
-function closeModalFunction() {
-  modal.style.display = 'none';
-  if (cropper) {
-    cropper.destroy();
-  }
-  cropper = null;
-  cropperImage.src = '';
-}
-
-// Tabs
-const tabs = document.querySelectorAll('.tab');
-const forms = document.querySelectorAll('.form');
-
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    forms.forEach(f => f.classList.remove('active'));
-
-    tab.classList.add('active');
-    const selectedForm = document.getElementById(`form-${tab.dataset.tab}`);
-    selectedForm.classList.add('active');
-  });
+ 
+// Cancelar crop
+cancelCrop.addEventListener('click', closeCropper);
+closeModal.addEventListener('click', closeCropper);
+ 
+// Fechar modal clicando fora
+window.addEventListener('click', (e) => {
+    if (e.target === cropperModal) {
+        closeCropper();
+    }
 });

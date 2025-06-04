@@ -102,8 +102,30 @@
     margin-left: 10px;
 }
 
-.linquis {
+.criarpost{
     display: flex;
+    flex-direction: column;
+    background-color: none;
+}
+
+.criarpost-btn {
+    background-color: var(--verde_especial);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.criarpost-btn:hover {
+    background-color: var(--verdenavfooter);
+} 
+
+.linquis {
+    display: none;
+    /* display: flex; */
     flex-direction: column;
     background-color: none;
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criação De Evento</title>
+  <title>Pagamento Do</title>
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/criar-evento.css">
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
@@ -13,10 +13,6 @@
   <link rel="icon" href="imagens/SportAgora.png">
   <script defer src="/js/script.js"></script>
 </head>
-
-    <header>
-        <%- include('../partials/navbar'); %> 
-    </header> 
 
 <body>
   <header class="container-ver-eventos">
@@ -138,52 +134,34 @@
         </section>
       </section>
 
-<section class="container">
-  <h1>4. Onde o seu evento vai acontecer?</h1>
+      <section class="container">
+        <h1>4. Onde o seu evento vai acontecer?</h1>
+        <article class="location-fields">
+          <legend class="visually-hidden">Localização do evento</legend>
 
-  <article class="location-fields">
+          <label>CEP</label>
+          <input type="text" id="cep" placeholder="00000-000">
 
-    <legend class="visually-hidden">Localização do evento</legend>
+          <label>Rua</label>
+          <input type="text" id="rua" disabled>
 
-<article class="input-box">
-  <label for="local">Local</label>
-  <input type="text" id="local" name="local" placeholder="Digite o local">
-</article>
+          <label>Número</label>
+          <input type="text" id="numero">
 
-    <label>Endereço</label>
-    <input type="text" id="endereco" placeholder="Digite o endereço">
+          <label>Complemento</label>
+          <input type="text" id="complemento">
 
-    <label>Nome do local</label>
-    <input type="text" id="nome-local" placeholder="Ex.: Auditório Principal">
+          <label>Bairro</label>
+          <input type="text" id="bairro" disabled>
 
-    <label>CEP</label>
-    <article class="cep-wrapper">
-      <input type="text" id="cep" placeholder="00000-000">
-      <article class="spinner" id="spinner"></article>
-    </article>
+          <label>Cidade</label>
+          <input type="text" id="cidade" disabled>
 
-<article class="input-box">
-  <label for="rua">Rua</label>
-  <input type="text" id="rua" name="rua" placeholder="Digite a rua">
-</article>
+          <label>Estado</label>
+          <input type="text" id="estado" disabled>
 
-    <label>Número</label>
-    <input type="text" id="numero" placeholder="Número">
-
-    <label>Complemento</label>
-    <input type="text" id="complemento" placeholder="Apartamento, bloco, etc.">
-
-    <label>Bairro</label>
-    <input type="text" id="bairro" placeholder="Bairro">
-
-    <label>Cidade</label>
-    <input type="text" id="cidade" placeholder="Cidade">
-
-    <label>Estado</label>
-    <input type="text" id="estado" placeholder="Estado">
-  </article>
-</section>
-
+        </article>
+      </section>
 
       <section class="container">
         <h1>5. Ingressos</h1>

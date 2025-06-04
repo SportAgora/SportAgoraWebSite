@@ -122,7 +122,9 @@
 
 .criarpost-btn:hover {
     background-color: var(--verdenavfooter);
-} 
+    transition: transform 0.3s ease;
+    transform: translateY(-1px);
+}
 
 .linquis {
     display: none;

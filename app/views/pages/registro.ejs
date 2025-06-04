@@ -50,10 +50,10 @@
                 <input type="text" placeholder="Nome" name="nome" id="nome" value="<%= dados.nome  %>" class="<%= erroValidacao.nome %>"> 
                 <span class="spanerro"><%= msgErro.nome %></span><br>
 
-                <input type="text" placeholder="Email" name="email" id="email" value="<%= dados.email  %>" class="<%= erroValidacao.email %>"> 
+                <input type="email" placeholder="Email" name="email" id="email" value="<%= dados.email  %>" class="<%= erroValidacao.email %>"> 
                 <span class="spanerro"><%= msgErro.email %></span><br>
                 
-                    <input type="text" placeholder="Senha" name="senha" id="senha" value="<%= dados.senha  %>" class="<%= erroValidacao.senha %>">
+                    <input type="password" placeholder="Senha" name="senha" id="senha" value="<%= dados.senha  %>" class="<%= erroValidacao.senha %>">
                     <div class="content">
                       <p>Senha deve conter</p>
                       <ul class="requirement-list">
@@ -80,7 +80,7 @@
                       </ul>
                     </div>
                   
-                <input type="text" placeholder="Repita a Senha" name="repsenha" id="repsenha" value="<%= dados.repsenha  %>" class="<%= erroValidacao.repsenha %>"> 
+                <input type="password" placeholder="Repita a Senha" name="repsenha" id="repsenha" value="<%= dados.repsenha  %>" class="<%= erroValidacao.repsenha %>"> 
                 <span class="spanerro"><%= msgErro.repsenha %></span><br>
                 
                 <section class="divCheck">

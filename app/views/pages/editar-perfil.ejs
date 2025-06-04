@@ -8,23 +8,77 @@
     <script defer src="/js/editar-perfil.js"></script>
     <link rel="stylesheet" href="/css/editar-perfil.css">
     <link rel="stylesheet" href="/css/base.css">
+
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 </head>
 
 <body>
 
     <nav class="container-ver-eventos">
-        <button class="botao-seta" onclick="location.href='/perfilex'">
+        <button class="botao-seta" onclick="location.href='/perfil'">
             <img src="/imagens/left-arrow.png" alt="Seta">
         </button>
         <span class="ver-eventos">Voltar</span>
     </nav>
 
     <main>
-        <form id="form-perfil" class="form-container" enctype="multipart/form-data" method="POST" action="/salvar-perfil">
+
+      <% 
+            let avisoErro = {nome:"", email:"",foto:"", banner:"", senha:""}
+            let msgErro = ""
+                if(listaErros){
+                    listaErros.errors.forEach(function(itemErro){
+                        if(itemErro.path == "nome"){
+                            avisoErro.nome = "erro";
+                            msgErro += `* ${itemErro.msg} <br>`
+                        }
+                        if(itemErro.path == "senha"){
+                            avisoErro.senha = "erro";
+                            msgErro += `* ${itemErro.msg} <br>`
+                        }
+                        if(itemErro.path == "email"){
+                            avisoErro.email = "erro";
+                            msgErro += `* ${itemErro.msg} <br>`
+                        }
+                        if(itemErro.path == "foto"){
+                            avisoErro.foto = "erro";
+                            msgErro += `* ${itemErro.msg} <br>`
+                        }
+                        if(itemErro.path == "banner"){
+                            avisoErro.banner = "erro";
+                            msgErro += `* ${itemErro.msg} <br>`
+                        }
+                    })
+                    if(msgErro != ""){
+                    %>
+                        <script>
+                            let msgErro ="<%= msgErro %>"
+                            notify("Erro(s) no preenchimento", 
+                                   "Verifique o(s) campo(s) <br> " + msgErro.replace(/&lt;/g,"<").replace(/&gt;/g,">"), 
+                                   "error", "center", 5000)                        
+                        </script>
+                    <%
+                    }
+                }
+                if (dadosNotificacao) { %>
+                    <script>
+                            notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+                                                 
+                    </script>
+                <% } %>
+
+      <form id="form-perfil" class="form-container" enctype="multipart/form-data" method="POST" action="/salvar-perfil">
 
             <section class="banner-container">
                 <figure class="banner-overlay">
-                    <img src="banner.jpg" alt="Banner" id="bannerImage">
+                    <% if (usuario.banner) { %>
+                    <img src="<%=valores.banner%>" alt="Banner" id="bannerImage">
+                    <%}else{ %>
+                      <img src="imagens/usuarios/default_background.jpg" alt="Banner" id="bannerImage">
+                      <%} %>
                     <figcaption class="icon-overlay" id="editBanner">
                         <img src="imagens/Logoz-_3_ (1).png" alt="Editar Banner">
                     </figcaption>
@@ -32,14 +86,18 @@
 
                 <section class="profile-info">
                     <figure class="profile-pic-overlay">
-                        <img src="pessoa2.png" alt="Perfil" id="profileImage">
+                        <% if (usuario.foto) { %>
+                        <img src="<%=valores.foto%>" alt="Perfil" id="profileImage">
+                        <%}else{ %>
+                          <img src="imagens/usuarios/default_user.jpg" alt="Perfil" id="profileImage">
+                          <%} %>
                         <figcaption class="icon-overlay small" id="editProfile">
                             <img src="imagens/Logoz-_3_ (1).png" alt="Editar Perfil">
                         </figcaption>
                     </figure>
                     <section class="name-info">
-                        <h2>João da Silva</h2>
-                        <p>@joaosilva</p>
+                        <h2><%= valores.nome %></h2>
+                        <p>@<%= valores.nome %></p>
                     </section>
                 </section>
             </section>
@@ -62,14 +120,14 @@
                 <label>Nome Completo
                     <input type="text" value="<%= valores.nome %>" name="nome" required>
                 </label>
-                <label>Nome de Usuário
+                <!-- <label>Nome de Usuário
                     <input type="text" name="usuario" value="<%= valores.nome %>" required>
-                </label>
+                </label> -->
                 <label>Senha
                     <input type="password" name="senha" id="senha" placeholder="Nova senha">
                 </label>
                 <label>Confirmar Senha
-                    <input type="password" name="confirmar_senha" id="confirmar-senha" placeholder="Confirme a senha">
+                    <input type="password" name="repsenha" id="repsenha" placeholder="Confirme a senha">
                 </label>
                 <label>E-mail
                     <input type="email" name="email" value="<%= valores.email %>">
@@ -143,7 +201,6 @@
         </section>
     </aside>
 
-    <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 
 </body>

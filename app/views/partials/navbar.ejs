@@ -24,6 +24,10 @@
     <link rel="icon" href="imagens/SportAgora.png">
     <script defer src="/js/perfil.js"></script>
     <script src="js/darkmodeswitch.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 </head>
 <body>
 
@@ -51,10 +55,13 @@
             </article>   
             <button class="subscribe-button" onclick="location.href='/planos'">Assine Sport+ </button>
             <button class="login-button">
-                <img src="/imagens/Icon.png" alt="User" class="user-icon">
                 <% if (usuario) { %>
+                <img src="<%= usuario.foto %>" alt="User" class="user-icon">
                     <p><%= usuario.nome %></p>
-                    <% } %></span>
+                    <% } else {%>
+                <img src="/imagens/Icon.png" alt="User" class="user-icon">
+                <% }%>
+                </span>
                 <img src="/imagens/menu-burger.png" alt="Menu" class="menu-icon">
             </button>
             <article class="login-button-mobile">

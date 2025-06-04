@@ -50,13 +50,16 @@ module.exports = {
         nome: nome,
         email: email,
         senha: senhaHash,
+        foto: "imagens/usuarios/default_user.jpg",
+        banner: "imagens/usuarios/default_background.jpg"
       });
      
       // AUTOLOGIN: Criar sessão diretamente após cadastro
       req.session.usuario = {
         id: novoUsuario.insertId, // ID do novo usuário
         email: email,
-        nome: nome
+        foto: "imagens/usuarios/default_user.jpg",
+        banner: "imagens/usuarios/default_background.jpg"
       };
      
       // Redirecionar para contaConsumidor
@@ -74,8 +77,7 @@ module.exports = {
   },
 
   regrasValidacaoLogin :[
-  body("email").isEmail().withMessage("Email inválido."),
-  body("senha").notEmpty().withMessage("Senha obrigatória.")
+  body("email").isEmail().withMessage("Email inválido.")
 ],
  
   // Autenticar usuário (login)
@@ -117,7 +119,8 @@ autenticarUsuario: async (req, res) => {
         id: usuario.usu_id,
         email: usuario.usu_email,
         nome: usuario.usu_nome,
-        foto: usuario.usu_foto
+        foto: usuario.usu_foto,
+        banner: usuario.usu_banner
       };
      
        res.redirect("/perfil");
@@ -180,7 +183,9 @@ autenticarUsuario: async (req, res) => {
         // telefone: userinfos.quantidade_seguidores,
         // cep: userinfos.quantidade_seguindo,
         // numero_cep: userinfos.numero_cep
-        }
+        },
+        listaErros:"",
+        dadosNotificacao:""
     });
 
   } catch (err) {
@@ -192,9 +197,17 @@ autenticarUsuario: async (req, res) => {
 
     regrasValidacaoPerfil: [
         body("nome")
+        .optional()
             .isLength({ min: 3, max: 45 }).withMessage("Nome deve ter de 3 a 45 caracteres!"),
         body("email")
-            .isEmail().withMessage("Digite um e-mail válido!")
+        .optional()
+            .isEmail().withMessage("Digite um e-mail válido!"),
+        body("senha")
+        .optional({ checkFalsy: true })
+        .isStrongPassword().withMessage("Senha muito fraca!"),
+        body("repsenha").custom((value, { req }) => {
+          return value === req.body.senha;
+        }).withMessage("Senhas estão diferentes")
     ],
 
     gravarPerfil: async (req, res) => {
@@ -207,54 +220,93 @@ autenticarUsuario: async (req, res) => {
                 lista.errors.push(erroMulter);
             } 
             console.log(lista)
-            return res.render("pages/editar-perfil", { listaErros: lista, valores: req.body })
+            return res.render("pages/editar-perfil", { listaErros: lista, valores: {
+              nome: req.body.nome,
+                email: req.body.email,
+                foto: req.session.usuario.foto,
+                banner: req.session.usuario.banner,
+                senha: ""
+                
+              }, 
+              dadosNotificacao: {
+            titulo: "Erro ao atualizar o perfil!",
+            mensagem: "Verifique os campos destacados!",
+            tipo: "error"
+        } })
         }
         try {
             var dadosForm = {
                 nome: req.body.nome,
                 email: req.body.email,
-                foto: req.session.usuario.foto
+                foto: req.session.usuario.foto,
+                banner: req.session.usuario.banner,
+                senha: req.body.senha
             };
-            if (req.body.senha != "") {
-                dadosForm.senha = bcrypt.hashSync(req.body.senha, 10);
-            }
-            if (!req.file) {
-                console.log("Falha no carregamento");
-            } else {
-                //Armazenando o caminho do arquivo salvo na pasta do projeto 
-                caminhoArquivo = "imagens/perfil/" + req.file.filename; 
-                if(dadosForm.foto != caminhoArquivo ){
-                    removeImg(dadosForm.foto);
+
+              if (req.body.senha && req.body.senha.trim() !== "") {
+                  dadosForm.senha = bcrypt.hashSync(req.body.senha, 10);
+              } else {
+                  delete dadosForm.senha; // Remove do objeto para não sobrescrever
+              }
+            if (!req.files || (!req.files.foto && !req.files.banner)) {
+                console.log("Nenhuma imagem enviada.");
+              } else {
+                if (req.files.foto) {
+                  const caminhoFoto = "imagens/perfil/" + req.files.foto[0].filename;
+                  if (dadosForm.foto !== caminhoFoto) removeImg(dadosForm.foto);
+                  dadosForm.foto = caminhoFoto;
                 }
-                dadosForm.foto = caminhoArquivo;
-            }
+
+                if (req.files.banner) {
+                  const caminhoBanner = "imagens/perfil/" + req.files.banner[0].filename;
+                  if (dadosForm.banner !== caminhoBanner) removeImg(dadosForm.banner);
+                  dadosForm.banner = caminhoBanner;
+                }
+              }
+
+
             let resultUpdate = await UsuarioModel.atualizar(req.session.usuario.id, dadosForm);
-            if (!resultUpdate.isEmpty) {
+            console.log(resultUpdate)
+            if (resultUpdate) {
                 if (resultUpdate.changedRows == 1) {
                   var result = await UsuarioModel.findId(req.session.usuario.id);
                   var usuario = {
-                    nome: result[0].usu_nome,
-                    id: result[0].usu_id,
-                    foto: result[0].usu_foto,
-                    email: result[0].usu_email
+                    nome: result.usu_nome,
+                    id: result.usu_id,
+                    foto: result.usu_foto,
+                    email: result.usu_email,
+                    banner: result.usu_banner
                   }
+                
                   
                    req.session.usuario = usuario;
 
                   var valores = usuario;
                   valores.senha = "";
+                  console.log("salvo")
 
                   //salvo certo
-                  res.render("pages/editar-perfil", {valores: valores});
+                  res.render("pages/editar-perfil", {
+                    listaErros: null,
+                    valores: valores,
+                     dadosNotificacao: { titulo: "Perfil! atualizado com sucesso", mensagem: "Alterações Gravadas", tipo: "success" }
+                  });
                 } else {
                   //salvo certo mas sem alterar nada
-                  res.render("pages/editar-perfil", {valores: dadosForm});
+                  console.log("nada pra salvar")
+                  res.render("pages/editar-perfil", {
+                    listaErros: null,
+                    valores: dadosForm,
+                     dadosNotificacao: { titulo: "Perfil! atualizado com sucesso", mensagem: "Sem alterações", tipo: "success" }
+                });
                 }
             }
 
     } catch(e){
       console.log(e)
-      res.render("pages/editar-perfil", {valores: req.body})
+      res.render("pages/editar-perfil", {valores: req.body,
+        dadosNotificacao: { listaErros: erros, titulo: "Erro ao atualizar o perfil!", mensagem: "Verifique os valores digitados!", tipo: "error" }
+      })
 
     }
   },

@@ -42,15 +42,6 @@ router.get("/login", (req, res) => {
 
 router.post("/login",   usuariosController.regrasValidacaoLogin, usuariosController.autenticarUsuario);
 
-// // Rota de perfil (protegida)
-// router.get("/alterar_perfil", verificarAutenticacao, (req, res) => {
-// res.render("pages/alterar-perfil", { usuario: req.session.usuario });
-// });
-
-// router.post("/alterar_perfil", verificarAutenticacao, (req, res) => {
-// res.redirect("pages/alterar-perfil"); 
-// });
-
 // Rota de logout
 router.get("/logout", usuariosController.logout);
 router.post("/logout", usuariosController.logout);
@@ -67,8 +58,8 @@ router.get('/editar-perfil', verificarAutenticacao, usuariosController.carregarE
 
 router.post('/salvar-perfil', 
   verificarAutenticacao, 
-  uploadFile("foto"),
-  // usuariosController.regrasValidacaoPerfil,
+  uploadFile(["foto","banner"]),
+  usuariosController.regrasValidacaoPerfil,
   async function(req,res){
     usuariosController.gravarPerfil(req,res);
   }

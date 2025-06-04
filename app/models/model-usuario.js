@@ -32,14 +32,16 @@ const UsuarioModel = {
   // Criar novo usuário
   create: async (userData) => {
     try {
-      const { nome, email, senha } = userData;
+      const { nome, email, senha, foto, banner } = userData;
  
       // Preparar os dados para inserção
       const data = {
         usu_nome : nome,
         usu_email:  email,
         usu_senha: senha, // Já deve estar com hash
-        perf_nome: nome
+        perf_nome: nome,
+        usu_foto:foto,
+        usu_banner:banner
       };
  
       // Construir a query dinamicamente
@@ -60,13 +62,14 @@ const UsuarioModel = {
   // Atualizar usuário
   atualizar: async (id, userData) => {
     try {
-      const { nome, arroba, email, data_nascimento, logradouro_id, cpf, telefone, plano, tipo, foto, banner, bio} = userData;
+      const { nome, arroba, email, data_nascimento, logradouro_id, cpf, telefone, plano, tipo, foto, banner, bio, senha} = userData;
  
       // Preparar os dados para atualização
       const data = {
         usu_nome: nome,
         perf_nome : arroba,
         usu_email: email,
+        usu_senha:senha,
         usu_nasc: data_nascimento ? moment(data_nascimento).format('YYYY-MM-DD') : null,
         endereco_id: logradouro_id || null,
         usu_cpf: cpf ? formatCPF(cpf) : null,
@@ -93,7 +96,7 @@ const UsuarioModel = {
       const query = `UPDATE usuario SET ${updates.join(', ')} WHERE usu_id= ?`;
      
       const [result] = await pool.query(query, values);
-      return result.affectedRows > 0;
+      return result;
     } catch (error) {
       console.error("Erro ao atualizar usuário:", error);
       throw error;

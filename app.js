@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = process.env.DB_PORT || 21006;
+const port = 3000;
 const axios = require('axios');
 const helmet = require('helmet');
 const session = require('express-session');
@@ -63,8 +63,16 @@ app.use('/cadastro', guestMiddleware);
 const rotas = require('./app/routes/router');
 app.use('/', rotas);
  
+// REMOVER: Esta rota está duplicada e deve estar no arquivo de rotas
+// app.get('/cadastre-se', (req, res) => {
+//   res.render('cadastre-se', {
+//     dados: {},
+//     erros: []
+//   });
+// });
+ 
 // Iniciar o servidor
 app.listen(port, () => {
-  console.log(`Servidor ouvindo na porta ${port}\nhttp://sportagora.kinghost.net:${port}`);
+  console.log(`Servidor ouvindo na porta ${port}\nhttp://localhost:${port}`);
 });
  

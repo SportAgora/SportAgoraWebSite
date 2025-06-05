@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagamento Do PLano</title>
+    <title>Pagamento Do Plano</title>
     <link rel="stylesheet" href="/css/pagamento.css">
     <link rel="stylesheet" href="/css/erro.css">
     <script src="/js/pagamento.js"></script>
+
     <link rel="icon" href="imagens/SportAgora.png">
 </head>
-<body onload="start()">
+<body onload="comeco()">
     <%
     var cssErro = {"nome":"","sobrenome":"","cpf":"","cartao_numero":"","cartao_validade":"","cartao_cvv":""}  
     var msgErro = {"nome":"","sobrenome":"","cpf":"","cartao_numero":"","cartao_validade":"","cartao_cvv":""}
@@ -98,6 +99,7 @@
             </form>
         </section>
     </main>
+    <script src="/js/validacao-pagamento.js"></script>
     <%- include('../partials/footer'); %>
 </body>
 </html>

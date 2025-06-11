@@ -5,87 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADM Sport Agora</title>
     <link rel="stylesheet" href="/css/adm/styles.css">
+    <link rel="stylesheet" href="/css/adm/home.css">
 </head>
 <body>
     <%- include('../../partials/adm_navbar'); %>
     <main>
-        <section>
-            <h2>Dados Cliente</h2>
-            <p><strong>Name:</strong> GABRIEL DA SILVA FERREIRA</p>
-            <p><strong>CPF:</strong> ***.***.***-**</p>
-            <p><strong>Email:</strong> gabrielfer@gmail.com</p>
-            <p><strong>Phone:</strong> (12) 1234 5678</p>
-            <p><strong>Date of Birth:</strong> 24/11/1968 (56 anos)</p>
-            <p><strong>Last Updated:</strong> 09/05/2025 18:32:26</p>
-        </section>
-        <section class="endereco">
-            <h2>Endereços</h2>
-            <table class="endereco-tabela">
-                <thead>
-                    <tr>
-                        <th>Rua</th>
-                        <th>Bairro</th>
-                        <th>Cidade</th>
-                        <th>Número</th>
-                        <th>UF</th>
-                        <th>CEP</th>
-                        <th>Complemento</th>
-                        <th>Referência</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="limite">Estrada Fernao Dias</td>
-                        <td class="limite">Macopa</td>
-                        <td class="limite">Telemaco Borba</td>
-                        <td class="limite">207</td>
-                        <td class="limite">PR</td>
-                        <td class="limite">84263000</td>
-                        <td class="limite">CASA PROXIMO PATIO DA PREFEITURA</td>
-                        <td class="limite">PROXIMO PATIO DA PREFEITURA</td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class="endereco-btn">+ Novo Endereço</button>
-        </section>
-        <section class="postagens">
-            <h2>Postagens</h2>
-            <table class="postagens-tabela">
-                <thead>
-                    <tr>
-                        <th>Usuario</th>
-                        <th>Data/hora</th>
-                        <th>Titulo</th>
-                        <th>Foto</th>
-                        <th>Descrição</th>
-                        <th>Conteudo</th>
-                        <th>Categoria</th>
-                        <th>Curtidas</th>
-                        <th>Compartilhamentos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="limite">GABRIEL</td>
-                        <td class="limite">09/05/2025 15:53</td>
-                        <td class="limite">Corrida no Parque</td>
-                        <td class="limite">https://www.sportagora.com.br/imagens/1.jpg</td>
-                        <td class="limite">Resistro de momentos</td>
-                        <td class="limite">Hoje eu sai com a minha namorada para corrermos no parque, a meta era correr 5km mas não deu 😂</td>
-                        <td class="limite">humor/passatempo</td>
-                        <td class="limite">142k</td>
-                        <td class="limite">345</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-        </section>
-        <section>
-            <h2>Painel</h2>
-            <p>N sei o q colocar aqui</p>
+        <section class="botoesHome">
+            <a href="usuarios.html"><button class="botaohome">Pesquisar Usuarios</button></a>
+            <a href="eventos.html"><button class="botaohome">Pesquisar Eventos</button></a>
+            <a href="usuarios.html"><button class="botaohome">Pesquisar Postagens</button></a>
         </section>
     </main>
-    <footer>
+    <footer class="fixarRodape">
         <p>&copy; 2025 Sport Agora</p>
     </footer>
 </body>

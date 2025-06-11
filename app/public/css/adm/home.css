@@ -1,0 +1,25 @@
+.botaohome {
+    background-color: #216F27;
+    color: white; 
+    border: none;
+    padding: 40px 20px 40px 20px;
+    margin: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer; 
+}
+.botaohome:hover {
+    background-color: #184d1b;
+}
+
+.fixarRodape {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+.botoesHome{
+    display: flex;
+    justify-content: center;
+    
+}

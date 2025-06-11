@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--branco);
+    background-color: #f9f9f9;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,7 +11,7 @@ body {
 
 .post-container {
     display: flex;
-    background-color: var(--brancobg);
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;

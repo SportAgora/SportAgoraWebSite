@@ -135,36 +135,37 @@ router.post('/processar_pagamento', pagamentoController.processarPagamento);
 
 /* ADM */
 
+router.get('/adm/login', function(req,res){
+  res.render('pages/adm/login');  
+}) 
+
 router.get('/adm/home', function(req,res){
     res.render('pages/adm/home');  
 }) 
 
-router.get('/adm/login', function(req,res){
-    res.render('pages/adm/login');  
-}) 
-
-router.get('/adm/novo_usuario', function(req,res){
+router.get('/adm/novousuario', function(req,res){
     res.render('pages/adm/novousuario');  
 }) 
+ 
 
-router.get('/adm/postagem', function(req,res){
-    res.render('pages/adm/postagem');  
+router.get('/adm/teste', function(req,res){
+  res.render('pages/adm/teste');  
 }) 
 
 router.get('/adm/usuarios', function(req,res){
-    res.render('pages/adm/usuarios');  
+  res.render('pages/adm/usuarios');  
 }) 
 
-router.get('/pagamento-evento', function(req,res){
-  res.render('pages/pagamento-evento');  
-})
+router.get('/adm/usuario_ex', function(req,res){
+  res.render('pages/adm/usuario_ex');  
+}) 
 
-router.get('/criar-evento', function(req,res){
-  res.render('pages/criar-evento');  
-})
+router.get('/adm/eventos', function(req,res){
+  res.render('pages/adm/eventos');  
+}) 
 
-
-
-
+router.get('/adm/descricaoEvento', function(req,res){
+  res.render('pages/adm/descricaoEvento');  
+}) 
 
 module.exports = router;

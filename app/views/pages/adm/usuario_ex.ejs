@@ -5,46 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADM Sport Agora</title>
     <link rel="stylesheet" href="/css/adm/styles.css">
-    <link rel="stylesheet" href="/css/adm/usuarios.css">
-    <script>
-        function apagar() {
-            alert("Em manutenção!");
-        }
-    </script>
 </head>
 <body>
     <%- include('../../partials/adm_navbar'); %>
     <main>
+        <section>
+            <h2>Dados Cliente</h2>
+            <p><strong>Name:</strong> GABRIEL DA SILVA FERREIRA</p>
+            <p><strong>CPF:</strong> ***.***.***-**</p>
+            <p><strong>Email:</strong> gabrielfer@gmail.com</p>
+            <p><strong>Phone:</strong> (12) 1234 5678</p>
+            <p><strong>Date of Birth:</strong> 24/11/1968 (56 anos)</p>
+            <p><strong>Last Updated:</strong> 09/05/2025 18:32:26</p>
+        </section>
         <section class="endereco">
-            <h2>Usuarios</h2>
+            <h2>Endereços</h2>
             <table class="endereco-tabela">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>UserName</th>
-                        <th>Tipo</th>
-                        <th>Postagens</th>
-                        <th>?</th>
-                        <th>?</th>
-                        <th>-</th>
-                        <th>-</th>
+                        <th>Rua</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th>
+                        <th>Número</th>
+                        <th>UF</th>
+                        <th>CEP</th>
+                        <th>Complemento</th>
+                        <th>Referência</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>GABRIEL</td>
-                        <td>bielzindoGrau</td>
-                        <td>1 - UsuarioComum</td>
-                        <td>207</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td><button onclick="apagar()">Apagar</button></td>
-                        <td><button onclick="apagar()">Penalizar</button></td>
+                        <td class="limite">Estrada Fernao Dias</td>
+                        <td class="limite">Macopa</td>
+                        <td class="limite">Telemaco Borba</td>
+                        <td class="limite">207</td>
+                        <td class="limite">PR</td>
+                        <td class="limite">84263000</td>
+                        <td class="limite">CASA PROXIMO PATIO DA PREFEITURA</td>
+                        <td class="limite">PROXIMO PATIO DA PREFEITURA</td>
                     </tr>
                 </tbody>
             </table>
-            <a href="novousuario.html"><button class="endereco-btn">+ Novo Usuario</button></a>
-            </button>
+            <button class="endereco-btn">+ Novo Endereço</button>
         </section>
         <section class="postagens">
             <h2>Postagens</h2>

@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--brancobg);
+    background-color: #f5f5e9;
     margin: 0;
     padding: 0;
 }
@@ -16,11 +16,11 @@ h1 {
 }
 
 form {
-    background: var(--branco);
+    background: #ffffff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--branco-fosco);
+    border: 1px solid #ddd;
 }
 
 form input[type="text"],
@@ -29,13 +29,13 @@ form input[type="password"] {
     width: 98%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid var(--cinzaclaro);
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 form input[type="submit"] {
-    background: var(--preto);
-    color: var(--brancobg);
+    background: #35424a;
+    color: #ffffff;
     border: none;
     padding: 10px 15px;
     cursor: pointer;
@@ -43,12 +43,12 @@ form input[type="submit"] {
 }
 
 form input[type="submit"]:hover {
-    background: var(--verde_especial);
+    background: #45a049;
 }
 
 .enviar-btn{
-    background-color: var(--searchbar);
-    color: var(--branco);
+    background-color: #216F27;
+    color: white;
     border: none;
     padding: 10px 15px;
     font-size: 14px;

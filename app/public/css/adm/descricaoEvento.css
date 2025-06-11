@@ -1,0 +1,44 @@
+article{
+    display: flex;
+    justify-content: space-between;
+}
+.btn-evento{
+    border: 0;
+}
+.editarevento{
+    background-color: #216F27;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.editarevento:hover {
+    background-color: #184d1b;
+}
+.excluirevento{
+    background-color: #6f3c21;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.excluirevento:hover {
+    background-color: #4d1818;
+}
+
+.voltar-btn {
+    background-color: #216F27;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.voltar-btn:hover {
+    background-color: #184d1b;
+}

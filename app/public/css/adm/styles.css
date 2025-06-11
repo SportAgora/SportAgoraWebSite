@@ -1,12 +1,12 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5e9;
+    background-color: var(--brancobg);
     margin: 0;
     padding: 0;
 }
 header {
-    background-color: #4a4a4a;
-    color: white;
+    background-color: var(--cinza-escuro);
+    color: var(--branco);
     padding: 10px 20px;
     text-align: center;
 }
@@ -14,15 +14,15 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #e3e3d5;
+    background-color: var(--branco-fosco);
     padding: 10px 20px;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid var(--cinzaclaro);
 }
 
 .logo {
     font-family: 'Arial', sans-serif;
     font-size: 24px;
-    color: #2a8d3f;
+    color: var(--verde_especial);
     font-weight: bold;
 }
 
@@ -39,21 +39,21 @@ header {
 
 .menu ul li a {
     text-decoration: none;
-    color: #4a4a4a;
+    color: var(--cinza-escuro);
     font-weight: bold;
     font-size: 14px;
 }
 
 .menu ul li a.active {
-    color: #216F27;
-    background-color: #d0d0b5;
+    color: var(--searchbar);
+    background-color: var(--amarelado);
     padding: 5px 10px;
     border-radius: 5px;
 }
 
 .user {
     font-size: 14px;
-    color: #4a4a4a;
+    color: var(--preto);
     font-weight: bold;
     cursor: pointer;
 }
@@ -65,18 +65,18 @@ main {
 section {
     margin-bottom: 20px;
     padding: 15px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: var(--brancobg);
+    border: 1px solid var(--cinzaclaro);
     border-radius: 5px;
 }
 h2 {
-    color: #4a4a4a;
+    color: var(--preto);
 }
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #2a8d3f;
-    color: white;
+    background-color: var(--verdenavfooter);
+    color: var(--branco);
     bottom: 0;
     width: 98.5%;
 }
@@ -84,7 +84,7 @@ p {
     margin: 5px 0;
 }
 strong {
-    color: #333;
+    color: var(--textopost);
 }
 
 /* sla */
@@ -92,13 +92,13 @@ strong {
 .endereco {
     margin-top: 20px;
     padding: 15px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: var(--brancobg);
+    border: 1px solid var(--cinzaclaro);
     border-radius: 5px;
 }
 
 .endereco h2 {
-    color: #4a4a4a;
+    color: var(--preto);
     margin-bottom: 15px;
 }
 
@@ -109,29 +109,29 @@ strong {
 }
 
 .endereco-tabela th, .endereco-tabela td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--cinzaclaro);
     padding: 8px;
     text-align: left;
     font-size: 14px;
 }
 
 .endereco-tabela th {
-    background-color: #e3e3d5;
-    color: #4a4a4a;
+    background-color: var(--amarelado);
+    color: var(--cinza-escuro);
     font-weight: bold;
 }
 
 .endereco-tabela tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: var(--branco-fosco);
 }
 
 .endereco-tabela tr:hover {
-    background-color: #f1f1f1;
+    background-color: var(--brancobg);
 }
 
 .endereco-btn {
-    background-color: #216F27;
-    color: white;
+    background-color: var(--verdenavfooter);
+    color: var(--branco);
     border: none;
     padding: 10px 15px;
     font-size: 14px;
@@ -140,7 +140,7 @@ strong {
 }
 
 .endereco-btn:hover {
-    background-color: #184d1b;
+    background-color: var(--searchbar);
 }
 
 /* sla dnv */
@@ -148,13 +148,13 @@ strong {
 .postagens {
     margin-top: 20px;
     padding: 15px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: var(--brancobg);
+    border: 1px solid var(--branco-fosco);
     border-radius: 5px;
 }
 
 .postagens h2 {
-    color: #4a4a4a;
+    color: var(--cinza-escuro);
     margin-bottom: 15px;
 }
 
@@ -165,24 +165,24 @@ strong {
 }
 
 .postagens-tabela th, .postagens-tabela td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--branco-fosco);
     padding: 8px;
     text-align: left;
     font-size: 14px;
 }
 
 .postagens-tabela th {
-    background-color: #e3e3d5;
-    color: #4a4a4a;
+    background-color: var(--amarelado);
+    color: var(--cinza-escuro);
     font-weight: bold;
 }
 
 .postagens-tabela tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: var(--branco-fosco);
 }
 
 .postagens-tabela tr:hover {
-    background-color: #f1f1f1;
+    background-color: var(--brancobg);
 }
 
 .limite {

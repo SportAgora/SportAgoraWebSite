@@ -3,15 +3,15 @@ body {
   background: var(--branco);
   margin: 0;
   padding: 20px;
-  font-size: 20px; /* Aumenta a fonte */
-  font-weight: 500; /* Peso médio bonito */
+  font-size: 20px; 
+  font-weight: 500; 
 }
 
-/* configurações das letras */
+
 
 h1, h2, h3 {
-  font-weight: 700; /* Negrito bonito */
-  margin-bottom: 15px; /* Espaço abaixo dos títulos */
+  font-weight: 700; 
+  margin-bottom: 15px; 
 }
 
 .name-info h2 {

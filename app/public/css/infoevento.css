@@ -24,7 +24,7 @@
 .botao-seta {
     background-color: var(--verdenavfooter);
     border: none;
-    color: #fff;
+    color: var(--branco);
     height: 55px;
     margin-left: 30px;
     width: 55px;
@@ -40,7 +40,7 @@
 
 .botao-seta:hover {
     transform: scale(1.05);  
-    background-color: #1e7d36;
+    background-color: var(--searchbar);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
 }
 
@@ -115,7 +115,7 @@
 
 .linha-separadora {
     border: none;
-    border-top: 1px solid #D9D9D9;  
+    border-top: 1px solid var(--cinzaclaro);  
     margin: 20px 0;
 }
 
@@ -140,7 +140,7 @@
 }
 
 .box-esquerda a {
-    color: #28a745;
+    color: var(--verde_especial);
     text-decoration: underline;
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
@@ -151,7 +151,7 @@
 }
 
 a:hover {
-    color: #1d5f33;
+    color: var(--searchbar);
 }
 
 .nome-evento {
@@ -206,8 +206,8 @@ a:hover {
 
 .btn-fale-conosco {
     background-color: var(--postcor);
-    border: 2px solid #28a745;
-    color: #28a745;
+    border: 2px solid var(--verde_especial);
+    color: var(--verde_especial);
     padding: 15px 25px;
     border-radius: 25px;
     font-size: large;
@@ -216,18 +216,18 @@ a:hover {
     font-optical-sizing: auto;
     font-style: normal;
     transition: 0.3s;
-    flex: 1;  /* Deixar o botão menor */
+    flex: 1; 
     margin-right: 15px;
 }
 
 .btn-inscrever-se {
-    background-color: #28a745;
+    background-color: var(--verde_especial);
     border: none;
     font-size: large;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    color: #fff;
+    color: var(--branco);
     padding: 15px 30px; 
     border-radius: 25px;
     cursor: pointer;
@@ -248,37 +248,37 @@ a:hover {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    border: 1px solid #ccc;
-    color: #333;
+    border: 1px solid var(--cinzaclaro);
+    color: var(--preto);
 }
 
 .evento-status.gratis {
-    background-color: #28a745;
-    color: white;
+    background-color: var(--verde_especial);
+    color: var(--branco);
     text-align: center;
     margin-bottom: 15px;
     width: 60px;
 }
 
 .evento-status.pago {
-    color: white;
+    color: var(--branco);
     margin-bottom: 15px;
     text-align: center;
-    background-color: #007bff;
+    background-color: var(--verdenavfooter);
     width: 60px;
     padding: 10px;
   }
 
   .linha-separadora {
-    color: #c8c8c8;
+    color: var(--cinzaclaro);
   }
 
   .mobile-fixed-bottom-bar {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #ffffff; 
-    border-top: 1px solid #ccc;
+    background-color: var(--branco); 
+    border-top: 1px solid var(--cinzaclaro);
     text-align: center;
     padding: 10px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
@@ -290,14 +290,14 @@ a:hover {
 
   .mobile-fixed-bottom-bar p {
     font-size: 14px;
-    color: #333;
+    color: var(--preto);
     margin: 0;
     padding-bottom: 8px;
   }
 
   .inscrever-btn {
-    background-color: #28a745; 
-    color: white;
+    background-color: var(--verde_especial); 
+    color: var(--branco);
     border: none;
     padding: 15px 30px;
     font-size: 16px;
@@ -311,7 +311,7 @@ a:hover {
   }
 
   .inscrever-btn:hover {
-    background-color: #218838; 
+    background-color: var(--verdenavfooter); 
   }
 
   /* responsividade */
@@ -456,12 +456,12 @@ a:hover {
 }
 
 .relacionado-evento p strong:hover {
-    color: #03A60E;
+    color: var(--verde_especial);
     transform: scale(1.1);
 }
 
 a {
-    color: green;
+    color: var(--verdenavfooter);
     transition: color 0.3s ease;
 }
 

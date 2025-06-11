@@ -202,8 +202,8 @@
     display: block;
     margin: 20px auto;
     background-color: transparent;
-    border: 2px solid #319939;
-    color: #319939;
+    border: 2px solid var(--verde_especial);
+    color: var(--verde_especial);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -285,8 +285,8 @@
   }
 
   .botao-enviar {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--verde_especial);
+    color: var(--branco);
     border: none;
     padding: 12px 20px;
     border-radius: 50px;
@@ -300,12 +300,12 @@
   }
 
   .botao-enviar:hover {
-    background-color: #45a049;
+    background-color: var();
     transform: scale(1.1);
   }
 
   .botao-enviar:hover {
-    background-color: #45a049;
+    background-color: var(--verdenavfooter);
     transform: scale(1.05); /* Animação no hover */
   }
   
@@ -330,17 +330,17 @@
   }
 
   .nome-criador {
-    font-size: 24px; /* Aumentando o tamanho da fonte */
+    font-size: 24px; 
     font-weight: bold;
-    color: var(--textopost); /* Preto forte para destaque */
+    color: var(--textopost); 
     margin-top: 5px;
     margin-bottom: 10px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    margin-left: 5px; /* Adicionando margin ao nome */
+    margin-left: 5px; 
     display: flex;
-    align-items: center; /* Alinhando no meio da foto */
+    align-items: center; 
   }
 
   .texto-comentario {
@@ -356,33 +356,33 @@
 
 
   .seguir {
-    background-color: #4CAF50; /* Cor de fundo verde */
-    color: white; /* Cor do texto em branco */
-    padding: 16px 28px; /* Espaçamento interno */
-    border: none; /* Sem borda */
-    border-radius: 50px; /* Bordas arredondadas */
-    font-family: "Montserrat", sans-serif; /* Fonte Montserrat */
-    font-size: 18px; /* Tamanho da fonte */
-    cursor: pointer; /* Mão como cursor */
-    transition: background-color 0.3s, transform 0.3s; /* Animações ao passar o mouse */
-    display: block; /* Para que a margem funcione */
-    margin-left: 60%; /* Empurra o botão para a direita */
+    background-color: var(--verde_especial); 
+    color: var(--branco); 
+    padding: 16px 28px; 
+    border: none; 
+    border-radius: 50px; 
+    font-family: "Montserrat", sans-serif; 
+    font-size: 18px; 
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; 
+    display: block;
+    margin-left: 60%; 
     margin-top: -50px;
 }
 
 .seguir:hover {
-    background-color: #45a049; /* Tom mais escuro ao passar o mouse */
-    transform: scale(1.05); /* Aumento sutil ao passar o mouse */
+    background-color: var(--verdenavfooter); 
+    transform: scale(1.05);
 }
 
 .seguir:focus {
-    outline: none; /* Remove a borda padrão ao focar */
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Sombra ao focar */
+    outline: none; 
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); 
 }
 
 
   .seguir:hover {
-    background-color: #45a049;
+    background-color: var(--verdenavfooter); 
     transform: scale(1.05);
   }
   
@@ -410,9 +410,9 @@
 }
 
 .botao-seta {
-  background-color: #28a745;
+  background-color: var(--verde_especial);
   border: none;
-  color: #fff;
+  color: var(--branco);
   height: 55px;
   margin-left: 30px;
   width: 55px;
@@ -428,7 +428,7 @@
 
 .botao-seta:hover {
   transform: scale(1.05);  
-  background-color: #1e7d36;
+  background-color: var(--verdenavfooter);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
 }
 

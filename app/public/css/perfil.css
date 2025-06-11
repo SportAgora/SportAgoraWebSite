@@ -377,7 +377,7 @@
 
 .boxH {
     position: relative;
-    background-color: #ffffff; 
+    background-color: var(--branco); 
     border-radius: 20px; 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -406,7 +406,7 @@
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    color: #444; 
+    color: var(--preto); 
     text-align: center;
     margin-top: 15px;
 }

@@ -5,7 +5,7 @@
 
 .pratique-title {
     font-size: 4.5rem; 
-    color: #28a745; 
+    color: var(--verde_especial); 
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -25,7 +25,7 @@
     font-optical-sizing: auto;
     font-style: normal;
     text-align: center;
-    color: #6d6d6d; 
+    color: var(--cinza-escuro); 
     margin-bottom: 50px; 
     animation: fadeInUp 1s ease-out;
 }
@@ -77,7 +77,7 @@
 
 .input-localizacao {
     flex-grow: 2;
-    border: 1px solid #ccc;
+    border: 1px solid var(--cinzaclaro);
     padding: 25px;
     border-radius: 15px;
     color: var(--textopostinfo);
@@ -92,8 +92,8 @@
 }
 
 .input-localizacao:focus {
-    border-color: #4caf50; /* Destaque verde ao focar */
-    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    border-color: var(--verde_especial);
+    box-shadow: 0 0 10px var(--verdenavfooter);
 }
 
 .select-container {
@@ -115,7 +115,7 @@
 }
 
 select, .input-data {
-    border: 1px solid #ccc;
+    border: 1px solid var(--cinzaclaro);
     border-radius: 15px;
     color: var(--textopostinfo);
     padding: 25px;
@@ -130,22 +130,22 @@ select, .input-data {
 }
 
 select:focus, .input-data:focus {
-    border-color: #4caf50;
-    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    border-color: var(--cinzaclaro);
+    box-shadow: 0 0 10px var(--verdenavfooter);
 }
 
 
 select {
     appearance: none;
     background: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%23666" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 10px center;
-    background-color: #fff;
+    background-color: var(--branco);
     background-size: 12px;
     padding-right: 40px;
 }
 
 select:hover, .input-data:hover, .input-localizacao:hover {
-    border-color: #4caf50;
-    box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+    border-color: var(--verde_especial);
+    box-shadow: 0 0 8px var(--verdenavfooter);
 }
 
 .input-data {
@@ -179,7 +179,7 @@ select:hover, .input-data:hover, .input-localizacao:hover {
     flex-direction: row;
     justify-content: space-between;
     gap: 30px;
-    flex-wrap: wrap; /* Para responsividade */
+    flex-wrap: wrap; 
 }
 
 .locais-box {
@@ -303,8 +303,8 @@ h2 {
 }
 
 .botao:hover {
-    background-color: #28a745;
-    color: #fff;
+    background-color: var(--verdenavfooter);
+    color: var(--branco);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -313,7 +313,7 @@ h2 {
 }
 
 .cards-container::-webkit-scrollbar-thumb {
-    background-color: #28a745;
+    background-color: var(--verde_especial);
     border-radius: 10px;
 }
 

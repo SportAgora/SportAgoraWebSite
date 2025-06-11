@@ -50,7 +50,7 @@ h1 {
 .plano-box .preco-year {
     font-size: 1.5em; 
     font-weight: bold;
-    color: #397317;
+    color: var(--searchbar);
     margin-bottom: 15px;
     letter-spacing: 1px;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -200,7 +200,7 @@ h1 {
 }
 .plano h1 {
     font-size: 30px;
-    color: #fff;
+    color: var(--branco-fosco);
     font-weight: bold;
     margin: 0;
     animation: slideInLeft 1s ease-out;
@@ -210,9 +210,9 @@ h1 {
     width: 310px;
     height: 94px;
     border-radius: 28px;
-    background-image: linear-gradient(-232.50888118351457deg, #2ea92c 0%, #10d96d 94.37005104982693%);
+    background-image: linear-gradient(-232.50888118351457deg, var(--verde_especial) 0%, var(--verdeneon) 94.37005104982693%);
     box-sizing: border-box;
-    color: #fff;
+    color: var(--branco-fosco);
     text-align: center;
     line-height: normal;
     display: flex;
@@ -251,7 +251,7 @@ input[type=radio]:checked+label>article{
 
 .pratique-title {
     font-size: 3.5rem; 
-    color: #28a745; 
+    color: var(--verde_especial); 
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;

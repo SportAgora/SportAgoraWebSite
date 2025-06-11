@@ -76,7 +76,7 @@
 }
 
 .user-name:hover {
-  color: #18d421;
+  color: var(--verdeneon);
 }
 
 .post-time {
@@ -137,12 +137,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 24px; 
-  color: #32cd32; 
+  color: var(--verde_especial); 
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .coracao1:hover::before {
-  color: #00fa00; 
+  color: var(--verdeneon); 
 }
 
 .coracao1.clicked {
@@ -150,7 +150,7 @@
 }
 
 .coracao1.clicked::before {
-  color: #32cd32;
+  color: var(--hoverplanos);
   transform: scale(1.3);
 }
 
@@ -188,7 +188,7 @@ a {
 
 .post-title1 {
   font-size: 2em;
-  color: #333;
+  color: var(--preto);
   letter-spacing: 2px;
   margin: 20px;
 }

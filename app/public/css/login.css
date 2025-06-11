@@ -25,7 +25,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 0 20px 0 darkgrey;
+    box-shadow: 0 0 20px 0 var(--cinza-escuro);
     margin-top: 100px;
     font-size: 18px;
     margin-bottom: 60px;
@@ -41,7 +41,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 0 20px 0 darkgrey;
+    box-shadow: 0 0 20px 0 var(--cinza-escuro);
     margin-top: 100px;
     font-size: 18px;
     margin-bottom: 60px;
@@ -84,10 +84,10 @@ form {
 }
 
 #email, #senha, #nome, #repsenha{
-    border-top: 1px double #fff;
-    border-right: 1px double #fff;
+    border-top: 1px double var(--branco);
+    border-right: 1px double var(--branco);
     border-bottom: 2px solid var(--cinza);
-    border-left: 1px double #fff;
+    border-left: 1px double var(--branco);
     margin-top: 40px;
     padding: 8px 0 8px 15px;
     outline: none;
@@ -123,7 +123,7 @@ form {
 
 #enviar_login {
     background: var(--verde_especial);
-    color: white;
+    color: var(--branco);
     border-radius: 15px;
     width: 200%;
     border: none;
@@ -136,7 +136,7 @@ form {
 }
 #enviar_registrar {
     background: var(--verde_especial);
-    color: white;
+    color: var(--branco);
     border-radius: 30px;
     width: 150%;
     border: none;
@@ -170,12 +170,12 @@ form {
     align-items: baseline;
 }
 #email::placeholder, #senha::placeholder, #nome::placeholder, #repsenha::placeholder{
-    color: #888586;
+    color: var(--textopostinfo);
     font-size: 19px;
 }
 .spanerro{
 
-    color: gray;    
+    color: var(--cinza);    
     display: flex;
     flex-direction: row-reverse;
 }
@@ -222,15 +222,15 @@ form {
     height: 45px;
 }
 .facebook{
-    background-color:#0866ff;
+    background-color: rgba(0, 102, 255, 0.747);
     width: 170px;
 }
 .apple{
-    background-color: black;
+    background-color: var(--preto);
     width: 140px;
 }
 .google {
-    background-color: rgb(216, 216, 216);
+    background-color:var(--hoverplanos);
     width: 140px;
 }
 

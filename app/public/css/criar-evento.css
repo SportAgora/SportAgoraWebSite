@@ -7,9 +7,9 @@
   
   body {
     font-family: 'Montserrat', sans-serif;
-    background: #f0f2f5;
+    background: var(--branco);
     font-size: 1em;
-    color: #333;/* Reset básico */
+    color: var(--preto);/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -18,13 +18,12 @@
   
   body {
     font-family: 'Montserrat', sans-serif;
-    background: #f0f2f5;
     font-size: 1em;
-    color: #333;
+    color: var(--preto);
   }
   
   .container {
-    background: #fff;
+    background: var(--branco);
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     margin-bottom: 30px;
@@ -41,7 +40,7 @@
   }
   
   .subtitle {
-    color: #6c757d;
+    color: var(--textopostinfo);
     margin-bottom: 20px;
   }
   
@@ -57,7 +56,7 @@
     padding: 14px;
     margin-top: 5px;
     border-radius: 8px;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--cinzaclaro);
     font-size: 1em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
@@ -80,7 +79,7 @@
   }
 
   .image-upload {
-    border: 2px dashed #ced4da;
+    border: 2px dashed var(--cinzaclaro);
     padding: 20px;
     text-align: center;
     cursor: pointer;
@@ -90,7 +89,7 @@
   }
   
   .image-upload:hover {
-    background: #f8f9fa;
+    background: var(--branco-fosco);
   }
   
   .image-upload img {
@@ -106,7 +105,7 @@
     padding: 12px 20px;
     border: none;
     background: var(--verde_especial);
-    color: white;
+    color: var(--branco);
     border-radius: 8px;
     cursor: pointer;
     font-size: 1em;
@@ -118,12 +117,12 @@
   }
   
   .meia-btn.active {
-    background: #ffc107 !important;
-    color: #212529;
+    background: var(--laranja) !important;
+    color: var(--preto);
   }
   
   #editor-container {
-    background: white;
+    background: var(--branco);
     border-radius: 8px;
     margin-top: 10px;
     font-size: 1em;
@@ -170,7 +169,7 @@
   }
   
   table, th, td {
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--cinzaclaro);
   }
   
   th, td {
@@ -196,7 +195,7 @@
 .botao-seta {
     background-color: var(--verdenavfooter);
     border: none;
-    color: #fff;
+    color: var(--branco);
     height: 55px;
     margin-left: 30px;
     width: 55px;
@@ -212,7 +211,7 @@
 
 .botao-seta:hover {
     transform: scale(1.05);  
-    background-color: #1e7d36;
+    background-color: var(--verdenavfooter);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
 }
 
@@ -282,7 +281,7 @@
   }
   
   .container {
-    background: #fff;
+    background: var(--branco);
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     margin-bottom: 30px;
@@ -299,7 +298,7 @@
   }
   
   .subtitle {
-    color: #6c757d;
+    color: var(--cinza-escuro);
     margin-bottom: 20px;
   }
   
@@ -315,7 +314,7 @@
     padding: 14px;
     margin-top: 5px;
     border-radius: 8px;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--cinzaclaro);
     font-size: 1em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
@@ -337,7 +336,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: 100%; /* ocupa a largura do container pai */
+  width: 100%;
 }
 
 
@@ -346,14 +345,14 @@
         padding: 14px;
         margin-top: 5px;
         border-radius: 8px;
-        border: 1px solid #ced4da;
+        border: 1px solid var(--cinzaclaro);
         font-size: 1em;
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
   
   .image-upload {
-    border: 2px dashed #ced4da;
+    border: 2px dashed var(--cinzaclaro);
     padding: 20px;
     text-align: center;
     cursor: pointer;
@@ -363,7 +362,7 @@
   }
   
   .image-upload:hover {
-    background: #f8f9fa;
+    background: var(--brancofraco);
   }
   
   .image-upload img {
@@ -379,7 +378,7 @@
     padding: 12px 20px;
     border: none;
     background: var(--verde_especial);
-    color: white;
+    color: var(--branco);
     border-radius: 8px;
     cursor: pointer;
     font-size: 1em;
@@ -391,12 +390,12 @@
   }
   
   .meia-btn.active {
-    background: #ffc107 !important;
-    color: #212529;
+    background: var(--laranja) !important;
+    color: var(--preto);
   }
   
   #editor-container {
-    background: white;
+    background: var(--branco);
     border-radius: 8px;
     margin-top: 10px;
     font-size: 1em;
@@ -439,7 +438,7 @@
   }
   
   table, th, td {
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--cinzaclaro);
   }
   
   th, td {
@@ -465,7 +464,7 @@
 .botao-seta {
     background-color: var(--verdenavfooter);
     border: none;
-    color: #fff;
+    color: var(--branco);
     height: 55px;
     margin-left: 30px;
     width: 55px;
@@ -481,7 +480,7 @@
 
 .botao-seta:hover {
     transform: scale(1.05);  
-    background-color: #1e7d36;
+    background-color: var(--verdenavfooter);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
 }
 
@@ -512,10 +511,9 @@
 }
 
 .publicar-button:hover {
-  background-color: #1e7d36;
+  background-color: var(--verdenavfooter);
 }
 
-/* Spinner CEP */
 .cep-wrapper {
   position: flex;
 }
@@ -524,8 +522,8 @@
   display: none;
   width: 20px;
   height: 20px;
-  border: 3px solid #ccc;
-  border-top: 3px solid var(--verde_especial, #28a745);
+  border: 3px solid var(--cinzaclaro);
+  border-top: 3px solid var(--verde_especial);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   position: absolute;

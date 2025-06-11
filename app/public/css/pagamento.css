@@ -33,7 +33,7 @@ label {
 input {
     width: calc(100% - 22px);
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--cinzaclaro);
     border-radius: 4px;
     margin-bottom: 15px;
     font-size: 17px;
@@ -42,8 +42,8 @@ input {
 .botao {
     width: 100%;
     padding: 10px;
-    background-color: #28a745;
-    color: #fff;
+    background-color: var(--verde_especial);
+    color: var(--branco);
     border: none;
     border-radius: 4px;
     font-size: 16px;
@@ -51,15 +51,16 @@ input {
 }
 
 .botao:hover {
-    background-color: #218838;
+    background-color: var(--verdenavfooter);
 }
+
 select {
     font-size: 18px;
     width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid var(--cinzaclaro);
     border-radius: 4px;
     box-sizing: border-box;
 }  
@@ -116,7 +117,7 @@ select {
     input {
         width: calc(100% - 22px);
         padding: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid var(--cinzaclaro);
         border-radius: 4px;
         margin-bottom: 15px;
         font-size: 17px;

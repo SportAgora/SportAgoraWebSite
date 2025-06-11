@@ -24,7 +24,7 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    color: white;
+    color: var(--branco);
   }
   
   .hero-content h1 {
@@ -44,7 +44,7 @@
     width: 100px;
     height: 10px;
     border-radius: 5px;
-    background-color: #007bff; 
+    background-color: var(--verdenavfooter); 
     margin: 10px auto;
   }
 
@@ -58,29 +58,29 @@
 
   @media (max-width: 768px) {
     .hero-section {
-      height: auto; /* Adjust banner height for smaller screens */
+      height: auto; 
     }
   
     .hero-content h1 {
-      font-size: 6vw; /* Slightly larger font for smaller screens */
+      font-size: 6vw; 
     }
   
     .hero-content p {
-      font-size: 3vw; /* Adjust text size */
+      font-size: 3vw; 
     }
   
     .underline {
-      width: 20vw; /* Increase the width of the underline */
+      width: 20vw; 
     }
   }
   
   @media (max-width: 480px) {
     .hero-section {
-      height: 200px; /* Smaller height for mobile screens */
+      height: 200px; 
     }
   
     .hero-content h1 {
-      font-size: 5vw; /* Larger font for very small screens */
+      font-size: 5vw; 
     }
   
     .hero-content p {
@@ -88,7 +88,7 @@
     }
   
     .underline {
-      width: 20vw; /* Wider underline for mobile */
+      width: 20vw; 
       height: 5px;
     }
   }

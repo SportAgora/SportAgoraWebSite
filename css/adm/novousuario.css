@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--brancobg);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+h1 {
+    margin: 0;
+}
+
+form {
+    background: var(--branco);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--branco-fosco);
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 98%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--cinzaclaro);
+    border-radius: 5px;
+}
+
+form input[type="submit"] {
+    background: var(--preto);
+    color: var(--brancobg);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form input[type="submit"]:hover {
+    background: var(--verde_especial);
+}
+
+.enviar-btn{
+    background-color: var(--searchbar);
+    color: var(--branco);
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.fixarRodape {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}

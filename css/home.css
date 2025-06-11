@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css');
+
+
+.hero-banner {
+  width: 100%;
+  height: auto; /* Ajusta automaticamente conforme a tela */
+  max-height: 550px;
+  object-fit: cover;
+  background-size: cover;
+  transition: filter 0.3s ease, transform 0.3s ease, brightness 0.3s ease;
+  background-position: center;
+}
+
+.hero-banner:hover {
+  filter: brightness(80%);
+}
+
+.post-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--postcor);
+    padding: 35px;
+    margin: 30px auto 0;
+    width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
+    top: -80px;
+    z-index: 10;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.post-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); 
+}
+
+.post-left {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.user-link {
+  display: inline-block;
+}
+
+.user-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+  transition: transform 0.3s;
+}
+
+.user-photo:hover {
+  transform: scale(1.1); 
+}
+
+.post-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  color: var(--textopostinfo);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 20px;
+  margin-bottom: 5px;
+  transition: color 0.3s;
+  font-family: "Montserrat", sans-serif;
+}
+
+.user-name:hover {
+  color: var(--verdeneon);
+}
+
+.post-time {
+  color: var(--textopostinfo);
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.post-center {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.post-title {
+  font-size: 32px; 
+  font-weight: bold;
+  color: var(--textopost);
+  margin-bottom: 10px;
+  font-family: "Montserrat", sans-serif;
+  transition: font-size 0.3s ease, color 0.3s ease;
+}
+
+.post-subtitle {
+  color: var(--textopostinfo);
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.post-right {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.like-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.coracao1 {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: transform 0.3s;
+}
+
+.coracao1:hover {
+  transform: scale(1.2);
+}
+
+.coracao1::before {
+  content: '♥';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px; 
+  color: var(--verde_especial); 
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.coracao1:hover::before {
+  color: var(--verdeneon); 
+}
+
+.coracao1.clicked {
+  background-color: transparent; 
+}
+
+.coracao1.clicked::before {
+  color: var(--hoverplanos);
+  transform: scale(1.3);
+}
+
+.like-count {
+  color: var(--textopostinfo);
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.post-section { 
+  margin-left: 30px;
+  padding: 10px;
+}
+
+.post-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.post-title1 {
+  font-size: 2em;
+  color: var(--preto);
+  letter-spacing: 2px;
+  margin: 20px;
+}
+
+.post-detalhes p {
+  text-align: left;
+}
+
+
+/* Responsividade */
+
+@media (min-width: 1000px) and (max-width: 1245px)  {
+
+  .post-box {
+    padding: 20px;
+    top: -30px;
+  }
+
+
+  .post-title {
+    font-size: 22xpx; 
+  }
+
+  .post-subtitle {
+    font-size: 15px; 
+    margin-bottom: 25px;
+  }
+
+  .post-left {
+    margin-left: 0;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .user-name {
+    margin-left: 5px;
+  }
+
+  .post-time{
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  .like-count {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+}
+
+@media (max-width: 1005px) {
+
+  .post-box {
+    padding: 15px;
+    top: -30px;
+  }
+
+  .post-left {
+    margin-left: 0;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .user-photo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .user-name {
+    font-size: 15px;
+    margin-top: 5px;
+    margin-right: 20px;
+  }
+
+  .post-time {
+    display: none;
+  }
+
+  .post-center {
+    margin-top: 20px;
+  }
+
+  .post-title {
+    font-size: 20px; 
+  }
+
+  .post-subtitle {
+    font-size: 12px; 
+    margin-bottom: 25px;
+  }
+
+  .post-right {
+    margin-right: 0;
+    margin-top: 20px;
+  }
+
+  .coracao1 {
+    width: 20px;
+    height: 20px;
+  }
+
+  .coracao1::before {
+    font-size: 16px; 
+  }
+
+  .like-count {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 645px) {
+
+  .post-box {
+    padding: 10px;
+    top: -30px;
+  }
+
+  .user-photo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .post-title {
+    font-size: 18px;
+    margin-bottom: 25px;
+    margin-right: 10px;
+  }
+
+  .post-subtitle {
+    display: none;
+  }
+
+  .coracao1 {
+    width: 18px;
+    height: 18px;
+  }
+
+  .coracao1::before {
+    font-size: 14px;
+  }
+
+  .like-count {
+    font-size: 12px;
+  }
+}

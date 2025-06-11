@@ -1,0 +1,35 @@
+/* HAHAHAHAHAHAHA */
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sec {
+    background-color: var(--verde_especial);
+    box-sizing: border-box;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.35);
+    color: var(--branco);
+    text-align: center;
+    line-height: normal;
+    border-style: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+.btn_solicitacao {
+    background-color: var(--branco);
+    background-image: none;
+    color: var(--verde_especial);
+    font-weight: bold;
+}
+
+@media(max-width: 600px){ 
+    .btn_solicitacao {
+        width: 300px;
+    }
+    .sec{
+        width: 90%;
+    }
+}

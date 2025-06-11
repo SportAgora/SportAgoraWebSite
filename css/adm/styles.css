@@ -1,0 +1,193 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--brancobg);
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: var(--cinza-escuro);
+    color: var(--branco);
+    padding: 10px 20px;
+    text-align: center;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--branco-fosco);
+    padding: 10px 20px;
+    border-bottom: 2px solid var(--cinzaclaro);
+}
+
+.logo {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    color: var(--verde_especial);
+    font-weight: bold;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    margin: 0 15px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: var(--cinza-escuro);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.menu ul li a.active {
+    color: var(--searchbar);
+    background-color: var(--amarelado);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.user {
+    font-size: 14px;
+    color: var(--preto);
+    font-weight: bold;
+    cursor: pointer;
+}
+main {
+    padding: 40px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--brancobg);
+    border: 1px solid var(--cinzaclaro);
+    border-radius: 5px;
+}
+h2 {
+    color: var(--preto);
+}
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--verdenavfooter);
+    color: var(--branco);
+    bottom: 0;
+    width: 98.5%;
+}
+p {
+    margin: 5px 0;
+}
+strong {
+    color: var(--textopost);
+}
+
+/* sla */
+
+.endereco {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--brancobg);
+    border: 1px solid var(--cinzaclaro);
+    border-radius: 5px;
+}
+
+.endereco h2 {
+    color: var(--preto);
+    margin-bottom: 15px;
+}
+
+.endereco-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.endereco-tabela th, .endereco-tabela td {
+    border: 1px solid var(--cinzaclaro);
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.endereco-tabela th {
+    background-color: var(--amarelado);
+    color: var(--cinza-escuro);
+    font-weight: bold;
+}
+
+.endereco-tabela tr:nth-child(even) {
+    background-color: var(--branco-fosco);
+}
+
+.endereco-tabela tr:hover {
+    background-color: var(--brancobg);
+}
+
+.endereco-btn {
+    background-color: var(--verdenavfooter);
+    color: var(--branco);
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.endereco-btn:hover {
+    background-color: var(--searchbar);
+}
+
+/* sla dnv */
+
+.postagens {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--brancobg);
+    border: 1px solid var(--branco-fosco);
+    border-radius: 5px;
+}
+
+.postagens h2 {
+    color: var(--cinza-escuro);
+    margin-bottom: 15px;
+}
+
+.postagens-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.postagens-tabela th, .postagens-tabela td {
+    border: 1px solid var(--branco-fosco);
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.postagens-tabela th {
+    background-color: var(--amarelado);
+    color: var(--cinza-escuro);
+    font-weight: bold;
+}
+
+.postagens-tabela tr:nth-child(even) {
+    background-color: var(--branco-fosco);
+}
+
+.postagens-tabela tr:hover {
+    background-color: var(--brancobg);
+}
+
+.limite {
+    max-width: 150px; /* ajuste como quiser */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

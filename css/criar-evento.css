@@ -1,0 +1,576 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--branco);
+    font-size: 1em;
+    color: var(--preto);/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    color: var(--preto);
+  }
+  
+  .container {
+    background: var(--branco);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    padding: 30px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: var(--verde_especial);
+  }
+  
+  .subtitle {
+    color: var(--textopostinfo);
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 14px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid var(--cinzaclaro);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  input:focus, select:focus {
+    border-color: var(--verde_especial);
+    box-shadow: 0 0 5px rgba(0,123,255,0.25);
+    outline: none;
+  }
+  
+  .classification, .datetime, .location-fields {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+.location-fields {
+    flex-direction: column;
+  }
+
+  .image-upload {
+    border: 2px dashed var(--cinzaclaro);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+  
+  .image-upload:hover {
+    background: var(--branco-fosco);
+  }
+  
+  .image-upload img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+  
+  
+  button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    background: var(--verde_especial);
+    color: var(--branco);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+  }
+
+    button:hover {
+    background: var(--searchbar);
+  }
+  
+  .meia-btn.active {
+    background: var(--laranja) !important;
+    color: var(--preto);
+  }
+  
+  #editor-container {
+    background: var(--branco);
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 1em;
+  }
+  
+  .ql-toolbar.ql-snow {
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    display: flex;
+    align-content: center;
+    align-items: flex-end;
+    z-index: 1;
+  }
+  
+  .ql-formats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .ql-toolbar.ql-snow button,
+  .ql-toolbar.ql-snow select {
+    height: 36px;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .ql-container.ql-snow {
+    border-radius: 0 0 8px 8px;
+    min-height: 200px;
+  }
+  
+  /* Tabela */
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  table, th, td {
+    border: 1px solid var(--cinzaclaro);
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: center;
+  }
+  
+  .center {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  /* seta */
+
+  .container-ver-eventos {
+    display: flex;
+    margin-top: 10px;
+    align-items: center; 
+    margin-bottom: 30px; 
+}
+
+
+.botao-seta {
+    background-color: var(--verdenavfooter);
+    border: none;
+    color: var(--branco);
+    height: 55px;
+    margin-left: 30px;
+    width: 55px;
+    padding: 10px 20px;
+    border-radius: 50%; 
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+
+.botao-seta:hover {
+    transform: scale(1.05);  
+    background-color: var(--verdenavfooter);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
+}
+
+
+.botao-seta img {
+    margin-right: 30px;  
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.botao-seta:hover img {
+    transform: translateX(-5px); 
+}
+
+
+.ver-eventos {
+    color: var(--textopostinfo);
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 20px;  
+    transition: color 0.3s ease-in-out;
+}
+
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .classification, .datetime, .location-fields {
+      flex-direction: column;
+    }
+  
+    h1 {
+      font-size: 1.5em;
+    }
+  
+    button {
+      width: 100%;
+    }
+  
+    input, select {
+      padding: 12px;
+    }
+  
+    .ql-toolbar.ql-snow {
+      gap: 5px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 20px;
+    }
+  
+    .image-upload {
+      padding: 15px;
+    }
+  
+    table, th, td {
+      font-size: 0.9em;
+    }
+  }
+  }
+  
+  .container {
+    background: var(--branco);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    padding: 30px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: var(--verde_especial);
+  }
+  
+  .subtitle {
+    color: var(--cinza-escuro);
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 14px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid var(--cinzaclaro);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  input:focus, select:focus {
+    border-color: var(--verde_especial);
+    box-shadow: 0 0 5px var(--verdenavfooter);
+    outline: none;
+  }
+  
+  .classification, .datetime, .location-fields {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+
+.input-box input {
+        width: 100%;
+        padding: 14px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: 1px solid var(--cinzaclaro);
+        font-size: 1em;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+  
+  .image-upload {
+    border: 2px dashed var(--cinzaclaro);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+  
+  .image-upload:hover {
+    background: var(--brancofraco);
+  }
+  
+  .image-upload img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+  
+  
+  button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    background: var(--verde_especial);
+    color: var(--branco);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+  }
+
+ button:hover {
+    background: var(--verde_especial);
+  }
+  
+  .meia-btn.active {
+    background: var(--laranja) !important;
+    color: var(--preto);
+  }
+  
+  #editor-container {
+    background: var(--branco);
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 1em;
+  }
+  
+  .ql-toolbar.ql-snow {
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+  }
+  
+  .ql-formats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .ql-toolbar.ql-snow button,
+  .ql-toolbar.ql-snow select {
+    height: 36px;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .ql-container.ql-snow {
+    border-radius: 0 0 8px 8px;
+    min-height: 200px;
+  }
+  
+  /* Tabela */
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  table, th, td {
+    border: 1px solid var(--cinzaclaro);
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: center;
+  }
+  
+  .center {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  /* seta */
+
+  .container-ver-eventos {
+    display: flex;
+    margin-top: 10px;
+    align-items: center; 
+    margin-bottom: 30px; 
+}
+
+
+.botao-seta {
+    background-color: var(--verdenavfooter);
+    border: none;
+    color: var(--branco);
+    height: 55px;
+    margin-left: 30px;
+    width: 55px;
+    padding: 10px 20px;
+    border-radius: 50%; 
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+
+.botao-seta:hover {
+    transform: scale(1.05);  
+    background-color: var(--verdenavfooter);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
+}
+
+
+.botao-seta img {
+    margin-right: 30px;  
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.botao-seta:hover img {
+    transform: translateX(-5px); 
+}
+
+
+.ver-eventos {
+    color: var(--textopostinfo);
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 20px;  
+    transition: color 0.3s ease-in-out;
+}
+
+.publicar-button:hover {
+  background-color: var(--verdenavfooter);
+}
+
+.cep-wrapper {
+  position: flex;
+}
+
+.spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--cinzaclaro);
+  border-top: 3px solid var(--verde_especial);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes spin {
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .classification, .datetime, .location-fields {
+      flex-direction: column;
+    }
+  
+    h1 {
+      font-size: 1.5em;
+    }
+  
+    button {
+      width: 100%;
+    }
+  
+    input, select {
+      padding: 12px;
+    }
+  
+    .ql-toolbar.ql-snow {
+      gap: 5px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 20px;
+    }
+  
+    .image-upload {
+      padding: 15px;
+    }
+  
+    table, th, td {
+      font-size: 0.9em;
+    }
+  }

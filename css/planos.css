@@ -1,0 +1,271 @@
+/* SPORT+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css');
+
+
+.container {
+    /* text-align: center; */
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+h1 {
+    font-size: 2.2em;
+    color: var(--textopost);
+    font-weight: bold;
+    margin: 0;
+    animation: slideInLeft 1s ease-out;
+}
+
+.preco {
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    animation: bounceIn 1s ease-out;
+    color: var(--textopost);
+}
+/* 
+.plano:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid #397317;
+} */
+
+.plano-box .preco-month {
+    font-size: 1.2em; 
+    font-weight: bold;
+    color: var(--verde_especial); 
+    margin-top: 5px;
+    letter-spacing: 1px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.plano-box .preco-year {
+    font-size: 1.5em; 
+    font-weight: bold;
+    color: var(--searchbar);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.plano-box h2 {
+    font-size: 1.7em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--textopost);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.plano-box h2:hover {
+    color: var(--textopost);
+    transform: scale(1.05);
+}
+
+.plano-box h4 {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--textopostinfo);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.plano-box h4:hover {
+    color: var(--textopost);
+}
+
+.plano-box ul {
+    list-style-type: none;
+    padding: 5px;
+    margin: 0;
+    font-size: 1em;
+    flex-grow: 1;
+    display: flex;
+    font-weight: bold;
+    flex-direction: column;
+    justify-content: space-around;
+    animation: fadeInUp 1s ease-out;
+    line-height: 1.5; 
+    color: var(--textopost);
+    transition: color 0.3s ease; 
+}
+
+.plano-box ul li {
+    margin-bottom: 10px;
+}
+
+.plano-box ul li:hover {
+    color: var(--textopost);
+    transform: translateX(3px); 
+}
+
+.plano .preco:hover, 
+.plano .preco:hover {
+    transform: scale(1.05);
+}
+
+.plano {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 10px;
+}
+
+.plano:hover {
+    background-color:  var(--hoverplanos);
+    transform: scale(1.05);
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+/* Animações */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes bounceIn {
+    from { transform: scale(0.5); }
+    to { transform: scale(1); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* w */
+.planos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+
+
+.titulo {
+    margin-top: 20px;
+}
+
+.plano {
+    width: 350px;
+    height: 520px;
+    border-radius: 20px;
+    background-color: var(--postcor);
+    box-sizing: border-box;
+    box-shadow: 0px 8px 7px 0px rgba(0, 0, 0, 0.33);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 20px 20px 20px;
+    justify-content: space-between;
+    margin: 40px;
+}
+
+.plano ul{
+    list-style-type: none;
+    padding: 5px;
+    margin: 0;
+    font-size: 1em;
+    flex-grow: 1;
+    display: flex;
+    font-weight: bold;
+    flex-direction: column;
+    justify-content: space-evenly;
+    animation: fadeInUp 1s ease-out;
+    line-height: 1.5; 
+    color: var(--textopost);
+    transition: color 0.3s ease; 
+}
+.plano h1 {
+    font-size: 30px;
+    color: var(--branco-fosco);
+    font-weight: bold;
+    margin: 0;
+    animation: slideInLeft 1s ease-out;
+}
+
+.destaque {
+    width: 310px;
+    height: 94px;
+    border-radius: 28px;
+    background-image: linear-gradient(-232.50888118351457deg, var(--verde_especial) 0%, var(--verdeneon) 94.37005104982693%);
+    box-sizing: border-box;
+    color: var(--branco-fosco);
+    text-align: center;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    border: none;
+}
+#prosseguir {
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    margin-top: 30px;
+}
+
+#prosseguir:hover {
+    transform: scale(1.05);
+    transform: translateY(-5px);
+}
+
+
+input[type="radio"]{
+    display: none;
+}
+
+input[type=radio]:checked+label>article{
+
+    border-radius: 30px;
+    transition: 0.5s;
+
+    border: 4px solid var(--verde_especial);
+}
+
+
+
+.pratique-title {
+    font-size: 3.5rem; 
+    color: var(--verde_especial); 
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin-top: 50px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-out;
+}
+
+@media (max-width: 1490px) { 
+    .pratique-title{
+        font-size: 2em;
+    }
+}

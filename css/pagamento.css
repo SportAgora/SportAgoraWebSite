@@ -1,0 +1,125 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container {
+    background-color: var(--postcor);;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.spanerro {
+    color: var(--textopost);
+}
+h1 {
+    margin: 25px;
+    font-size: 34px;
+    text-align: center;
+    color: var(--textopost);
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 650;
+    color: var(--textopost);
+}
+
+input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid var(--cinzaclaro);
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 17px;
+}
+
+.botao {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--verde_especial);
+    color: var(--branco);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background-color: var(--verdenavfooter);
+}
+
+select {
+    font-size: 18px;
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid var(--cinzaclaro);
+    border-radius: 4px;
+    box-sizing: border-box;
+}  
+.permicao {
+    display: flex;
+    margin: 0;
+    font-weight: 400;
+}
+.expiry-security-group {
+    margin-bottom: 10px;
+}
+#permicao {
+    width: 50px;
+    margin-right: 10px;
+}
+.texte {
+    display: flex;
+    align-items: center;
+}
+/* para Data de Validade e Código de Segurança */
+.expiry-security-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.expiry-date-group,
+.security-code-group {
+    flex: 1;
+}
+
+.expiry-date-group input,
+.security-code-group input {
+    width: 50%;
+}
+
+#pagamento_form h1{
+    font-size: 20px;
+}
+.infotxt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.matrizinfotxt {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media(max-width: 600px){ 
+    .container {
+        width: 90%;
+    }
+    input {
+        width: calc(100% - 22px);
+        padding: 10px;
+        border: 1px solid var(--cinzaclaro);
+        border-radius: 4px;
+        margin-bottom: 15px;
+        font-size: 17px;
+    }
+}

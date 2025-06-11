@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css');
+
+/* Texto pratique */
+
+.pratique-title {
+    font-size: 4.5rem; 
+    color: var(--verde_especial); 
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin-top: 50px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-out;
+}
+
+
+.pratique-subtitle {
+    font-size: 1.4rem; 
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    text-align: center;
+    color: var(--cinza-escuro); 
+    margin-bottom: 50px; 
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  
+
+/* localização */
+
+.filtro-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: var(--postcor);
+    padding: 20px; 
+    padding-bottom: 10px;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    max-width: 90%; 
+    margin: 10px auto 30px auto;
+    animation: fadeIn 1.5s ease-out;
+    flex-wrap: wrap; 
+    transition: transform 0.3s ease;
+}
+
+.filtro-container:hover {
+    transform: translateY(-5px); /* Animação de hover para elevar o container */
+}
+
+.input-localizacao {
+    flex-grow: 2;
+    border: 1px solid var(--cinzaclaro);
+    padding: 25px;
+    border-radius: 15px;
+    color: var(--textopostinfo);
+    background-color: var(--postcor);
+    margin-right: 15px;
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-localizacao:focus {
+    border-color: var(--verde_especial);
+    box-shadow: 0 0 10px var(--verdenavfooter);
+}
+
+.select-container {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 15px;
+    color: var(--textopostinfo);
+    background-color: var(--postcor);
+}
+
+.select-container label {
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: var(--textopostinfo);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+select, .input-data {
+    border: 1px solid var(--cinzaclaro);
+    border-radius: 15px;
+    color: var(--textopostinfo);
+    padding: 25px;
+    margin: 10px;
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    outline: none;
+    min-width: 150px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus, .input-data:focus {
+    border-color: var(--cinzaclaro);
+    box-shadow: 0 0 10px var(--verdenavfooter);
+}
+
+
+select {
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%23666" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 10px center;
+    background-color: var(--branco);
+    background-size: 12px;
+    padding-right: 40px;
+}
+
+select:hover, .input-data:hover, .input-localizacao:hover {
+    border-color: var(--verde_especial);
+    box-shadow: 0 0 8px var(--verdenavfooter);
+}
+
+.input-data {
+    padding-right: 30px;
+    background: none;
+}
+
+@media (max-width: 900px) {
+    .filtro-container {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .input-localizacao {
+        margin-bottom: 15px;
+        width: 80%;
+    }
+
+    .select-container {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+
+/* BOX locais */
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap; 
+}
+
+.locais-box {
+    width: 28%;
+    margin-left: 50px;
+    color: var(--textopostinfo);
+    background-color: var(--postcor);
+    border: 1px solid var(--postcor);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-box {
+    width: 60%;
+    margin-right: 30px;
+    color: var(--textopostinfo);
+    background-color: var(--postcor);
+    border: 1px solid var(--postcor);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.map-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.map {
+    width: 100%;
+    height: 700px;
+    border-radius: 12px;
+}
+
+h2 {
+    font-size: 28px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: var(--textopost);
+    background-color: var(--postcor);
+}
+
+.card {
+    display: flex;
+    align-items: left;
+    border-radius: 25px;
+    color: var(--textopost);
+    background-color: var(--postcor);
+    border: 1px solid var(--postcor);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 17px;
+}
+
+.card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 300px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 30px;
+    border-radius: 25px;
+}
+
+.info {
+    flex: 1;
+}
+
+.info h3 {
+    font-size: 22px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    color: var(--textopost);
+    background-color: var(--postcor);
+}
+
+.info p {
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    color: var(--textopostinfo);
+    background-color: var(--postcor);
+}
+
+.botao {
+    padding: 12px 22px;
+    border: 2px solid var(--verde_especial);
+    color: var(--textopost);
+    background-color: var(--postcor);
+    margin-top: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: bold;
+    border-radius: 50px;
+    margin-left: 10px;
+    font-size: 16px;
+    width: 210px;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    transition: all 0.3s ease; 
+}
+
+.botao:hover {
+    background-color: var(--verdenavfooter);
+    color: var(--branco);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cards-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cards-container::-webkit-scrollbar-thumb {
+    background-color: var(--verde_especial);
+    border-radius: 10px;
+}
+
+/* responsividade */
+
+@media (max-width: 1490px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pratique-title{
+        font-size: 3em;
+    }
+
+    .pratique-subtitle{
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    }
+
+    .cards-container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 20px; 
+        padding-bottom: 20px;
+    }
+
+    .map-box {
+        width: 90%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .locais-box {
+        width: 90%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 1490px) {
+    .card img {
+        width: 250px; 
+        height: auto;
+    }
+
+    .info h3 {
+        font-size: 18px;
+    }
+
+    .info p {
+        font-size: 14px;
+    }
+
+    .botao {
+        font-size: 14px;
+        padding: 10px 20px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .card img {
+        width: 200px; 
+    }
+
+    .botao {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    .info h3 {
+        font-size: 16px;
+    }
+
+    select, .input-data {
+        padding: 15px;
+        margin: 0;
+        margin-left: 5px;
+    }
+
+    .map {
+        height: 350px;
+    }
+
+    .map-box {
+        width: 85%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .info p {
+        font-size: 12px;
+    }
+
+    .locais-box {
+        width: 85%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .pratique-subtitle{
+        font-size: 1rem;
+        margin-bottom: 30px;
+        }
+}
+
+#esporte {
+    color: var(--textopostinfo);
+    background-color: var(--postcor);
+}

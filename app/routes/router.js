@@ -101,6 +101,13 @@ router.get('/organizador', function(req,res){
     res.render('pages/organizador');  
 })
 
+router.get('/criar-evento', function(req,res){
+    res.render('pages/criar-evento');  
+})
+
+router.get('/pagamento-evento', function(req,res){
+    res.render('pages/pagamento-evento');  
+})
 
 router.get('/inscrito', function(req,res){
     res.render('pages/inscrito');  
@@ -127,6 +134,10 @@ router.post(
 
 router.get('/home', function(req,res){res.redirect('/')})
 
+
+router.get('/erro', function(req,res){
+  res.render('pages/error');  
+})
 
 
 router.post('/pagamento_selec', pagamentoController.receberPlano);

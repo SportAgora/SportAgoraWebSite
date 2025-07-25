@@ -42,17 +42,46 @@
             </a>
         </article>
         <article class="navbar-center">
-            <button class="nav-button" onclick="location.href='/'">Início</button>
             <button class="nav-button" onclick="location.href='/eventos'">Eventos</button>
             <button class="nav-button" onclick="location.href='/pratique'">Pratique</button>
-            <button class="nav-button" onclick="location.href='/organizador'">Organizador</button>
         </article>
         <article class="navbar-right">
-            <article class="search-bar" onclick="pesquisar()">
-                <img src="/imagens/search.png" alt="Search" class="search-icon" onclick="pesquisar()">
-                <input type="text" placeholder="Busque por Esportes e muito mais..." onclick="pesquisar()">
-            </article>   
-            <button class="subscribe-button" onclick="location.href='/planos'">Assine Sport+ </button>
+            
+    <article class="search-bar-container">
+    <div class="search-bar">
+        <img src="/imagens/search.png" alt="Search" class="search-icon">
+        <input 
+        type="text" 
+        id="inputPesquisa" 
+        placeholder="Busque por Esportes e muito mais..."
+        oninput="mostrarSugestoes()"
+        onkeydown="verificarEnter(event)"
+        >
+        <span class="limpar" onclick="limparPesquisa()">×</span>
+    </div>
+    <ul id="sugestoes" class="painel-sugestoes oculto"></ul>
+    </article>
+
+
+
+            <button class="subscribe-button" onclick="location.href='/organizador'">Torne-se Organizador</button>
+
+        <!-- Ícone de notificação -->
+        <div class="notificacao-container">
+        <button id="botaoNotificacao" class="botaoNotificacao">
+            <div class="icone-notificacao-wrapper">
+            <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao">
+            <span id="badgeNotificacao" class="badge-notificacao oculto">0</span>
+            </div>
+        </button>
+
+        <!-- Painel de notificações -->
+        <div id="painelNotificacoes" class="painel-notificacoes oculto">
+            <div id="listaNotificacoes"></div>
+        </div>
+        </div>
+
+
             <button class="login-button">
                 <% if (usuario) { %>
                 <img src="<%= usuario.foto %>" alt="User" class="user-icon">

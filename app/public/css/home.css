@@ -17,7 +17,6 @@
 }
 
 .post-box {
-    display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: var(--postcor);
@@ -28,7 +27,6 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1s ease-in-out;
     position: relative;
-    top: -80px;
     z-index: 10;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
@@ -333,5 +331,83 @@ a {
 
   .like-count {
     font-size: 12px;
+  }
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  max-height: 550px;
+  width: 100%;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  transition: opacity 0.5s ease;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255,255,255,0.7);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+  font-size: 30px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(255,255,255,0.9);
+}
+
+.prev {
+  left: 15px;
+}
+.next {
+  right: 15px;
+}
+
+.carousel-indicators {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.carousel-indicators div {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #bbb;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.carousel-indicators .active {
+  background: var(--verdeneon, #0f0);
+}
+
+@media (max-width: 768px) {
+  .carousel-btn {
+    font-size: 24px;
+    padding: 8px;
   }
 }

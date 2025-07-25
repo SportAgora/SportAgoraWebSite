@@ -6,49 +6,53 @@
         <title>SportAgora</title>
         <link rel="stylesheet" href="/css/home.css">
         <link rel="stylesheet" href="/css/post.css">
+            <link rel="stylesheet" href="/css/eventos.css">
         <script src="js/darkmodeswitch.js"></script>
         <link rel="icon" href="imagens/SportAgora.png">
+                <script src="js/carrossel-home.js"></script>
     </head>
 
 <body>
     <%- include('../partials/navbar'); %>
 
-    <section class="hero-container">
-        <a href="/infopost">
-            <img src="/imagens/banner.jpg" alt="Banner" class="hero-banner">
-        </a>
+    <!-- hero novo com carrosel -->
+
+<section class="hero-container">
         <article class="post-box">
-            <article class="post-left">
-                <a href="/perfilex" class="user-link">
-                    <img src="imagens/pessoa.png" alt="Foto do usuário" class="user-photo">
-                </a>
-                <article class="post-info">
-                    <a href="/perfilex" class="user-name">Danilo</a>
-                    <span class="post-time">3 horas atrás</span>
-                </article>
-            </article>
-            <article class="post-center">
-                <h1 class="post-title">As melhores jogadas de vôlei da história</h1>
-                <p class="post-subtitle">Venha ver as melhores jogadas que já aconteceram no vôlei</p>
-            </article>
-            <article class="post-right">
-                <article class="like-section">
-                    <img class="coracao1" src="/imagens/coracao.png" alt="Coração Verde">
-                    <span class="like-count">152.72k likes</span>
-                </article>
-            </article>
-        </article>
-    </section>
+  <div class="carousel">
+    <div class="carousel-inner" id="carousel-inner"></div>
+
+    <button class="carousel-btn prev" onclick="mudarSlide(-1)">&#10094;</button>
+    <button class="carousel-btn next" onclick="mudarSlide(1)">&#10095;</button>
+  </div>
+
+  <a id="carousel-link" href="/infopost">
+      <article class="post-center">
+        <div class="carousel-indicators" id="carousel-indicators"></div>
+        <h1 class="post-title" id="evento-titulo">Título do Evento</h1>
+        <p class="post-subtitle">
+          <i class="fi fi-rr-marker"></i>
+          <span id="evento-local">Cidade - UF</span>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="fi fi-rr-calendar"></i>
+          <span id="evento-data">Data completa</span>
+        </p>
+      </article>
+    </article>
+  </a>
+</section>
+
+    <!-- eventos -->
 
     <section class="post-section">
         <article class="post-header">
-            <h2 class="post-title">Postagens</h2>
+            <h2 class="post-title">Explore os eventos ativos</h2>
             
         </article>
     </section>
     
-        <%- include('../partials/post'); %>
-        <%- include('../partials/post'); %>
+        <%- include('../partials/evento'); %>
+        <%- include('../partials/evento1'); %>
 
     <%- include('../partials/footer'); %>
 </body>

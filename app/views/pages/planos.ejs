@@ -9,67 +9,53 @@
     </head>
 <body>
     <%- include('../partials/navbar'); %>
-    <form class="container" action="/pagamento_selec" method="POST">
-        <h1 class="pratique-title">Escolha o melhor plano para você.</h1>
-        <section class="planos" id="basico">
-            <input type="radio" id="sportbasico" name="plano" checked="checked" value="basico">
-            <label for="sportbasico">
-            <article class="plano" onclick="">
-                <aside>
-                <aside class="destaque">
-                    <h1>Sport Básico</h1>
-                </aside>
-                <ul>
-                    <li>Sem anúncios</li>
-                    <p>_____________________________________</p>
-                    <li>1 post com chance em destaque por mês</li>
-                    <p>_____________________________________</p>
-                </ul>
-            </aside>
-                <p class="preco">por apenas R$9,90 por mês</p>
-            </article>
-        </label>
-        <input type="radio" id="sportpremium" name="plano" value="premium">
-        <label for="sportpremium">
-            <article class="plano" id="premium">
-                <aside>
-                <aside class="destaque">
-                    <h1>Sport Premium</h1>
-                </aside>
-                <ul>
-                    <li>- Sem anúncios</li>
-                    <p>_____________________________________</p>
-                    <li>- 5 post com chance em destaque por mês</li>
-                        <p>_____________________________________</p>
-                    <li>- Permissão para criação de Eventos</li>
-                    <p>_____________________________________</p>
-                    <li>- Selo premium  ✅</li>
-                    <p>_____________________________________</p>
-                </ul>
-                </aside>
-                <p class="preco">por apenas R$29,90 por mês</p>
-            </article>
-        </label>
-        <input type="radio" id="sportplus" name="plano" value="plus">
-        <label for="sportplus">
-            <article class="plano" id="plus">
-                <aside>
-                <aside class="destaque">
-                    <h1>Sport Plus</h1>
-                </aside>
-                <ul>
-                    <li>- Sem anúncios</li>
-                    <p>_____________________________________</p>
-                    <li>- 3 post com chance em destaque por mês</li>
-                    <p>_____________________________________</p>
-                </ul>
-                </aside>
-                <p class="preco">por apenas R$19,90 por mês</p>
-            </article>
-        </label>
-        </section>
-        <button class="destaque" id="prosseguir" onclick="location.href='/pagamento'">Prosseguir</button>
-    </form>
+<form>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Organize eventos esportivos como um profissional!</h1>
+      <p>Escolha seu plano e tenha ferramentas poderosas.</p>
+    </div>
+  </section>
+<section class="planos">
+  <!-- Plano Gratuito -->
+  <div class="card plano-free">
+    <h2>Gratuito</h2>
+    <p class="preco">R$0 <span>/mês</span></p>
+    <ul>
+      <li class="ok">✅ 1 evento/mês</li>
+      <li class="ok">✅ Até 50 inscritos</li>
+      <li class="ok">✅ Suporte por e-mail</li>
+      <li class="no">❌ Branding personalizado</li>
+      <li class="no">❌ Relatórios avançados</li>
+      <li class="no">❌ Divulgação nas redes</li>
+    </ul>
+    <button class="btn-free">Começar Agora</button>
+  </div>
+
+  <!-- Plano Premium -->
+  <div class="card plano-premium">
+    <div class="selo">🏆 Recomendado</div>
+    <h2>Premium</h2>
+    <p class="preco"><del>R$49,90</del> <strong>R$29,90</strong> <span>/mês</span></p>
+    <ul>
+      <li class="ok">✅ Eventos ilimitados</li>
+      <li class="ok">✅ Inscrições ilimitadas</li>
+      <li class="ok">✅ Suporte VIP 24/7</li>
+      <li class="ok">✅ Branding personalizado</li>
+      <li class="ok">✅ Relatórios avançados</li>
+      <li class="ok">✅ Divulgação automática nas redes</li>
+    </ul>
+    <button class="btn-premium" onclick="">Quero ser Premium 💳</button>
+  </div>
+</section>
+
+  <section class="cta">
+    <h2>Pronto para elevar seu evento ao próximo nível?</h2>
+    <p>Com o Premium, você tem tudo o que precisa para um evento esportivo de sucesso!</p>
+    <button class="btn-assinar" onclick="">Assinar Agora 💳</button>
+  </section>
+
+</form>
     <%- include('../partials/footer'); %>
 </body>
 </html>

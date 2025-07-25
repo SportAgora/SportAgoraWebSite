@@ -162,6 +162,15 @@ body {
     left: 0; 
 }
 
+/* Barra de pesquisa */
+
+.search-bar-container {
+    position: relative;
+    width: auto;
+    max-width: 1000px;
+    margin-right: 15px;
+}
+
 .search-bar {
     display: flex;
     align-items: center;
@@ -217,6 +226,47 @@ body {
     margin-right: 10px;
 }
 
+.limpar {
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.painel-sugestoes {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    margin-top: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10000000000000000000000000;
+    list-style: none;
+    padding: 0;
+}
+
+.painel-sugestoes li {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    border-bottom: 1px solid #333;
+    transition: background 0.2s;
+}
+
+.painel-sugestoes li:hover {
+    background-color: #333;
+}
+
+.oculto {
+    display: none;
+}
+
+/* plano botão */
+
 .subscribe-button {
     background-color: var(--verde_especial);
     color: var(--branco);
@@ -238,6 +288,146 @@ body {
     background-color: var(--verdenavfooter); 
     transform: translateY(-2px); 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Notificação */
+.notificacao-container {
+  position: relative;
+  margin-right: 20px;
+}
+
+.botaoNotificacao {
+  border: none;
+  background: none;
+  color: white;
+}
+
+.icone-notificacao {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  filter: brightness(100%);
+  transition: transform 0.3s ease;
+}
+
+.icone-notificacao:hover {
+  transform: scale(1.1);
+}
+
+.icone-notificacao-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Badge com contador */
+.badge-notificacao {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  min-width: 16px;
+  height: 16px;
+  background-color: #006400;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 16px;
+  border-radius: 50%;
+  padding: 0 4px;
+  border: 2px solid #1e1e1e;
+  animation: pulsar 1.5s infinite;
+  z-index: 10;
+}
+
+.badge-notificacao.oculto {
+  display: none;
+}
+
+/* Painel de notificações com animação */
+.painel-notificacoes {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  width: 350px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+  padding: 15px 10px;
+  z-index: 999;
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.painel-notificacoes:not(.oculto) {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Estilo de cada notificação */
+.notificacao-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px;
+  background-color: #2a2a2a;
+  border-radius: 10px;
+  transition: background 0.3s;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.notificacao-item:hover {
+  background-color: #333;
+}
+
+.notificacao-item img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+}
+
+.notificacao-texto {
+  flex: 1;
+}
+
+.notificacao-texto strong {
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.notificacao-texto span {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+/* Bolinha de notificação individual */
+.bolinha-verde {
+  width: 10px;
+  height: 10px;
+  background-color: #00e676;
+  border-radius: 50%;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  border: 2px solid #1e1e1e;
+}
+
+/* Animação */
+.oculto {
+  display: none;
 }
 
 .login-button {
@@ -521,6 +711,10 @@ a {
 
 @media (max-width: 977px) {
 
+        .botaoNotificacao {
+        display: none;
+    }
+
     .links-home {
         display:flex;
         position: relative;
@@ -632,6 +826,8 @@ a {
         cursor: pointer;
         font-size: 1.2rem;
     }
+
+
 
     /* Mobile Menu */
     .mobile-menu {

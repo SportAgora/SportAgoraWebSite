@@ -161,32 +161,32 @@ router.get('/adm/home',verificarAdm, function(req,res){
     res.render('pages/adm/home');  
 })
 
-router.get('/adm/novousuario', function(req,res){
+router.get('/adm/novousuario', verificarAdm,function(req,res){
     res.render('pages/adm/novousuario');  
 }) 
  
 
-router.get('/adm/teste', function(req,res){
+router.get('/adm/teste', verificarAdm, function(req,res){
   res.render('pages/adm/teste');  
 }) 
 
-router.get('/adm/usuarios', function(req,res){
+router.get('/adm/usuarios', verificarAdm, function(req,res){
   res.render('pages/adm/usuarios');  
 }) 
 
-router.get('/adm/usuario_ex', function(req,res){
+router.get('/adm/usuario_ex', verificarAdm, function(req,res){
   res.render('pages/adm/usuario_ex');  
 }) 
 
-router.get('/adm/eventos', function(req,res){
+router.get('/adm/eventos', verificarAdm, function(req,res){
   res.render('pages/adm/eventos');  
 }) 
 
-router.get('/adm/descricaoEvento', function(req,res){
+router.get('/adm/descricaoEvento', verificarAdm, function(req,res){
   res.render('pages/adm/descricaoEvento');  
 }) 
 
-router.get('/adm', function(req,res){
+router.get('/adm', verificarAdm, function(req,res){
   res.redirect('/adm/home')
 })
 

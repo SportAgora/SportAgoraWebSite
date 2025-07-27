@@ -137,7 +137,6 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
         banner: usuario.usu_banner
       };
       
-      console.log(usuario.tipo)
       if (usuario.tipo === "administrador") {
        res.redirect("/adm/home");
       } else {
@@ -334,7 +333,6 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
 
     user = await UsuarioModel.findId(req.session.usuario.id)
     user = user.tipo
-    console.log(user)
 
     if (user !== "administrador") {
       return res.redirect("/");

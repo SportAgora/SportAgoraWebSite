@@ -159,3 +159,23 @@ CREATE TABLE endereco_prat (
     endereco_prat_cep CHAR(8) NOT NULL,
     FOREIGN KEY (pratica_id) REFERENCES pratica_esportivas(pratica_id)
 );
+
+INSERT INTO usuario (
+    usu_email,
+    usu_nome,
+    usu_senha,
+    usu_nasc,
+    usu_foto,
+    usu_banner,
+    tipo,
+    perf_nome
+) VALUES (
+    'admin@sportagora.com',               -- Email (único)
+    'adminMaster',                        -- Nome (único)
+    '$2b$10$z9NiJXWfm3QtLjXK3LEdu.URx7bNH9usxjjnMfUOH5pY8ItveDXaS', -- Senha: Sport@123
+    '1990-01-01',                         -- Data de nascimento
+    'imagens/usuarios/default_user.jpg',  -- Foto
+    'imagens/usuarios/default_background.jpg', -- Banner
+    'administrador',                      -- Tipo de usuário
+    'adminMaster'                         -- Nome do perfil
+);

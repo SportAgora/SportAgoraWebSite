@@ -5,6 +5,7 @@ const guestMiddleware = require('../helpers/guestMiddleware');
 const usuariosController = require("../controllers/usuariosController");
 const pagamentoController = require('../controllers/pagamentosController');
 
+
 const uploadFile = require("../helpers/uploader")("./app/public/imagens/perfil/");
 /*
 
@@ -18,6 +19,7 @@ function verificarAutenticacao(req, res, next) {
   }
   res.redirect("/login");
 }
+const verificarAdm = usuariosController.verificarAdm;
 
 router.use((req, res, next) => {
   res.locals.usuario = req.session.usuario || null;
@@ -146,13 +148,18 @@ router.post('/processar_pagamento', pagamentoController.processarPagamento);
 
 /* ADM */
 
-router.get('/adm/login', function(req,res){
-  res.render('pages/adm/login');  
-}) 
+router.get("/adm/login", (req, res) => {
+  res.render("pages/adm/login", {
+  erro: null,  erros: null,  dados: { email: "", senha: "" },  retorno: null
+});
+});
 
-router.get('/adm/home', function(req,res){
+router.post("/adm/login",  (req, res) => { usuariosController.autenticarUsuario(req, res, "administrador")});
+
+
+router.get('/adm/home',verificarAdm, function(req,res){
     res.render('pages/adm/home');  
-}) 
+})
 
 router.get('/adm/novousuario', function(req,res){
     res.render('pages/adm/novousuario');  
@@ -178,5 +185,9 @@ router.get('/adm/eventos', function(req,res){
 router.get('/adm/descricaoEvento', function(req,res){
   res.render('pages/adm/descricaoEvento');  
 }) 
+
+router.get('/adm', function(req,res){
+  res.redirect('/adm/home')
+})
 
 module.exports = router;

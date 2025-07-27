@@ -43,16 +43,15 @@
     
 }
 .erroEsquerda {
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-right: 50px;
 }
 .erroDireita {
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -91,4 +90,40 @@ h3 {
     font-size: 25px;
     color: var(--verde_especial);
     font-weight: bold;
+}
+
+@media(max-width: 925px){
+    .erroDireitaEsquerda {
+        flex-direction: column;
+        align-items: center;
+    }
+    .erroEsquerda {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .erroDireita {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    }
+    .erroDireita h1 {
+        text-align: center;
+    }
+}
+
+@media(max-width: 600px){
+    .erroDireitaEsquerda {
+        flex-direction: column;
+        align-items: center;    
+    }
+    .voltarHome{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
 }

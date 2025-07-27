@@ -71,26 +71,8 @@
                 </aside> -->
             </article>
         </section>
-        <hr size="2" width="99.8%" align="center" noshade>   
-        <section class="opicoes">
-            <article class="botoes">
-                <button id="botaoPostagens" onclick="mudarAbaPerfil('postagens')">Postagens</button>
-                <button id="botaoCurtidos" onclick="mudarAbaPerfil('curtidos')">Curtidos</button>
-                <button id="botaoTime" onclick="mudarAbaPerfil('time')">Histórico</button>
-            </article>
-            <article class="adicionarPost" onclick="adicionar()">
-                <input type="text" name="" id="adpost" placeholder="O que deseja escrever hoje?" onsubmit="adicionar()">
-                <img src="imagens/adicionarimagem.png" alt="imagem" class="adimagem">
-            </article>
-        </section>
-        <section class="postagensPerfil">
-            <%- include('../partials/post'); %>
-            <%- include('../partials/post'); %>
-        </section>
-        <section class="curtidosPerfil">
-            <%- include('../partials/post'); %>
-            <%- include('../partials/post'); %>
-        </section>
+        <hr size="2" width="99.8%" align="center" noshade>
+        
     </main>
 <%- include('../partials/footer'); %> 
 </body>

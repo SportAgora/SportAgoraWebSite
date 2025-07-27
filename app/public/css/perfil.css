@@ -345,36 +345,6 @@
     font-size: 17px;
 }
 
-.postagensPerfil {
-    display: block;
-} 
-.curtidosPerfil{
-    display: none;
-}
-.timePerfil{
-    display: none;
-}
-
-#botaoPostagens {
-    color: var(--textopost);
-    text-decoration:underline;
-}
-#botaoCurtidos {
-    color: var(--textopostinfo);
-}
-#botaoTime {
-    color: var(--textopostinfo);
-}
-
-/* Histórico */
-.timePerfil {
-
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px; 
-    padding: 30px;
-
-}
-
 .boxH {
     position: relative;
     background-color: var(--branco); 

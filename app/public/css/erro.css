@@ -30,3 +30,65 @@
     border: 2px solid var(--vermelhoerro);
     color: var(--vermelhoerro);
 }
+
+/* Página de erro */
+
+.erroDireitaEsquerda {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 8%;
+    
+}
+.erroEsquerda {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.erroDireita {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.erroDireita h1{
+    text-align: left;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+}
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    text-align: left;
+}
+
+.corErro {
+    color: var(--verde_especial);
+}
+
+.voltarHome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 75%;
+}
+.voltarHome img {
+    margin-top: 100px;
+    width: 200px;
+    height: 200px;
+}
+.voltar {
+    font-size: 25px;
+    color: var(--verde_especial);
+    font-weight: bold;
+}

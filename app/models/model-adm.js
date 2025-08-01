@@ -3,10 +3,8 @@ const pool = require("../../config/pool-conexoes");
 const moment = require("moment");
 const bcrypt = require("bcryptjs");
  
-const UsuarioModel = {
-  // Regras de validação 
-  // Buscar usuário por ID
-  findId: async (id) => {
+const AdmModel = {
+    UserFindId: async (id) => {
     try {
       const query = "SELECT * FROM usuario WHERE usu_id = ?";
       const [rows] = await pool.query(query, [id]);
@@ -18,7 +16,7 @@ const UsuarioModel = {
   },
  
   // Verificar se email já existe
-  findByEmail: async (email) => {
+  UserFindByEmail: async (email) => {
     try {
       const query = "SELECT * FROM usuario WHERE usu_email = ?";
       const [rows] = await pool.query(query, [email]);
@@ -29,7 +27,7 @@ const UsuarioModel = {
     }
   },
 
-  findByName: async (nome) => {
+  UserFindByName: async (nome) => {
     try {
       const query = "SELECT * FROM usuario WHERE usu_nome = ?";
       const [rows] = await pool.query(query, [nome]);
@@ -41,7 +39,7 @@ const UsuarioModel = {
   },
  
   // Criar novo usuário
-  create: async (userData) => {
+  UserCreate: async (userData) => {
     try {
       const { nome, email, senha, foto, banner } = userData;
  
@@ -71,7 +69,7 @@ const UsuarioModel = {
   },
  
   // Atualizar usuário
-  atualizar: async (id, userData) => {
+  UserAtualizar: async (id, userData) => {
     try {
       const { nome, arroba, email, data_nascimento, logradouro_id, cpf, telefone, plano, tipo, foto, banner, bio, senha} = userData;
  
@@ -115,7 +113,7 @@ const UsuarioModel = {
   },
  
   // Excluir usuário
-  excluir: async (id) => {
+  UserExcluir: async (id) => {
     try {
       const query = "DELETE FROM usuario WHERE id = ?";
       const [result] = await pool.query(query, [id]);
@@ -127,7 +125,7 @@ const UsuarioModel = {
   },
  
   // Alterar senha do usuário
-  alterarSenha: async (id, novaSenha) => {
+  UserAlterarSenha: async (id, novaSenha) => {
     try {
       // Hash da nova senha
       const senhaHash = await bcrypt.hash(novaSenha, 10);
@@ -140,11 +138,34 @@ const UsuarioModel = {
       console.error("Erro ao alterar senha:", error);
       throw error;
     }
-  }
-};
- 
-module.exports = UsuarioModel;
- 
+  },
+    // Listar usuários com paginação
+  UserListarComPaginacao: async (offset, limite) => {
+    try {
+      // Consulta para obter os usuários com paginação
+      const queryUsuarios = `
+        SELECT * FROM usuario
+        ORDER BY nome
+        LIMIT ? OFFSET ?
+      `;
+     
+      // Consulta para obter o total de usuários
+      const queryTotal = "SELECT COUNT(*) as total FROM usuario";
+     
+      // Executar as consultas
+      const [usuarios] = await pool.query(queryUsuarios, [limite, offset]);
+      const [totalResult] = await pool.query(queryTotal);
+     
+      return {
+        usuarios,
+        total: totalResult[0].total
+      };
+    } catch (error) {
+      console.error("Erro ao listar usuários:", error);
+      throw error;
+    }
+  },
 
- 
- 
+}
+
+module.exports = AdmModel;

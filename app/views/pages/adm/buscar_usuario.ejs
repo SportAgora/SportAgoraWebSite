@@ -6,13 +6,19 @@
     <title>ADM Sport Agora</title>
     <link rel="stylesheet" href="/css/adm/styles.css">
     <link rel="stylesheet" href="/css/adm/home.css">
+    <link rel="stylesheet" href="/css/adm/buscarUsuario.css">
 </head>
 <body>
     <%- include('../../partials/adm_navbar'); %>
     <main>
-        <section class="botoesHome">
-            <a href="/usuarios"><button class="botaohome">Pesquisar Usuarios</button></a>
-            <a href="/eventos"><button class="botaohome">Pesquisar Eventos</button></a>
+        <section>
+            <form action="" class="buscarUso">
+                <h3>Pesquisar Usuarios<h3>
+                <aside class="imputis">
+                    <input type="text" placeholder="Nome Usuario"/>
+                    <input type="text" placeholder="Identificador (@)"/>
+                </aside>
+            </form>
         </section>
     </main>
     <footer class="fixarRodape">

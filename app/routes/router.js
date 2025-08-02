@@ -164,11 +164,18 @@ router.get('/adm/home',verificarAdm, function(req,res){
 router.get('/adm/novousuario', verificarAdm,function(req,res){
     res.render('pages/adm/novousuario');  
 }) 
+
  
+router.get('/adm/buscar_usuario', verificarAdm,function(req,res){
+  res.render('pages/adm/buscar_usuario');  
+}) 
+
+
 
 router.get('/adm/teste', verificarAdm, function(req,res){
   res.render('pages/adm/teste');  
 }) 
+
 
 router.get('/adm/usuarios', verificarAdm, function(req,res){
   res.render('pages/adm/usuarios');  

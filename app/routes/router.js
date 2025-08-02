@@ -164,7 +164,7 @@ router.get('/adm/home',verificarAdm, function(req,res){
 router.get('/adm/novousuario', verificarAdm,function(req,res){
     res.render('pages/adm/novousuario');  
 }) 
-<<<<<<< HEAD
+
  
 router.get('/adm/buscar_usuario', verificarAdm,function(req,res){
   res.render('pages/adm/buscar_usuario');  
@@ -175,8 +175,7 @@ router.get('/adm/buscar_usuario', verificarAdm,function(req,res){
 router.get('/adm/teste', verificarAdm, function(req,res){
   res.render('pages/adm/teste');  
 }) 
-=======
->>>>>>> c17d3474f64aa46d4946bbd4d7d67b8c80e42c52
+
 
 router.get('/adm/usuarios', verificarAdm, function(req,res){
   res.render('pages/adm/usuarios');  

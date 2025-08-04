@@ -4,6 +4,23 @@
     justify-content: center;
     flex-direction: column;
 }
-.imputis{
-
+.imputis input[type="text"] {
+    width: auto;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid var(--preto);
+    padding-left: 10px;
+    font-size: 16px;
+    margin: 5px 0;
+}
+.btnBuscar {
+    width: 150px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--verde_especial);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
 }

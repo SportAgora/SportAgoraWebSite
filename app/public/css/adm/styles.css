@@ -9,6 +9,7 @@ header {
     color: white;
     padding: 10px 20px;
     text-align: center;
+    list-style:none;
 }
 .navbar {
     display: flex;
@@ -57,6 +58,39 @@ header {
     font-weight: bold;
     cursor: pointer;
 }
+
+.user-menu {
+    background-color: #e3e3d5;
+    border: none;
+}
+
+.user-menu li{
+    position:relative;
+    float:left;
+    text-decoration: none;
+}
+.user-menu li a{color:#333; text-decoration:none; padding:5px 10px; display:block;}
+
+.user-menu li a:hover{
+    background:#28a745;
+    color:#fff;
+    text-shadow:0px 0px 5px #fff;
+}
+.user-menu li ul{
+    position:absolute;
+    top:25px;
+    right: 0px;
+    padding: 0;
+    background-color:#fff;
+    display:none;
+}
+.user-menu li:hover ul, li.over ul{display:block;}
+.user-menu li ul li{
+    border:1px solid #c0c0c0;
+    display:block;
+    width:150px;
+}
+
 main {
     padding: 40px;
     padding-left: 80px;

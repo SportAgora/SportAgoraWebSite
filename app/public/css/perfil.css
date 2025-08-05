@@ -103,7 +103,7 @@
 }
 
 .criarpost{
-    display: flex;
+    display: none;
     flex-direction: column;
     background-color: none;
     z-index: 1;

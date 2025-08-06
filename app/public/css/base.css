@@ -92,7 +92,7 @@ body {
     letter-spacing: 1px;
     position: relative;
     text-align: center;
-    color: white;
+    color: var(--branco);
     align-items: center;
     transition: color 0.3s ease, transform 0.3s ease;
 }
@@ -238,7 +238,7 @@ body {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: #1e1e1e;
+    background-color: var(--branco-fosco);
     border-radius: 10px;
     margin-top: 5px;
     max-height: 200px;
@@ -251,14 +251,14 @@ body {
 .painel-sugestoes li {
     padding: 10px 15px;
     cursor: pointer;
-    color: white;
+    color: var(--preto);
     font-family: "Montserrat", sans-serif;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #3a3a3a;
     transition: background 0.2s;
 }
 
 .painel-sugestoes li:hover {
-    background-color: #333;
+    background-color: var(--cinzaclaro);
 }
 
 .oculto {
@@ -300,7 +300,7 @@ body {
 .botaoNotificacao {
   border: none;
   background: none;
-  color: white;
+  color: var(--branco);
 }
 
 .icone-notificacao {
@@ -350,7 +350,7 @@ body {
   right: 0;
   top: 40px;
   width: 350px;
-  background-color: #1e1e1e;
+  background-color: var(--branco-fosco);
   border-radius: 10px;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
   padding: 15px 10px;
@@ -379,15 +379,15 @@ body {
   align-items: flex-start;
   gap: 12px;
   padding: 10px;
-  background-color: #2a2a2a;
+  background-color: var(--brancofraco);
   border-radius: 10px;
   transition: background 0.3s;
-  color: white;
+  color: var(--preto);
   font-family: 'Montserrat', sans-serif;
 }
 
 .notificacao-item:hover {
-  background-color: #333;
+  background-color: var(--branco);
 }
 
 .notificacao-item img {
@@ -410,7 +410,7 @@ body {
 
 .notificacao-texto span {
   font-size: 0.8rem;
-  color: #aaa;
+  color: var(--preto);
 }
 
 /* Bolinha de notificação individual */

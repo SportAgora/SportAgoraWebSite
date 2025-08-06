@@ -6,6 +6,8 @@
     <title>ADM Sport Agora</title>
     <link rel="stylesheet" href="/css/adm/styles.css">
     <link rel="stylesheet" href="/css/adm/usuarios.css">
+    <link rel="stylesheet" href="/css/adm/buscarUsuario.css">
+    
     <script>
         function apagar() {
             alert("Em manutenção!");
@@ -15,73 +17,60 @@
 <body>
     <%- include('../../partials/adm_navbar'); %>
     <main>
+            <section>
+                <form action="" class="buscarUso">
+                    <h3>Pesquisar Usuarios</h3>
+                    <aside class="imputis">
+                        <input type="text" placeholder="Nome de usuario"/>
+                        <button type="submit" class="btnBuscar">Buscar</button>
+                    </aside>
+                </form>
+            </section>
         <section class="endereco">
             <h2>Usuarios</h2>
             <table class="endereco-tabela">
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>UserName</th>
+                        <th>E-mail</th>
                         <th>Tipo</th>
-                        <th>Postagens</th>
-                        <th>?</th>
-                        <th>?</th>
-                        <th>-</th>
-                        <th>-</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>GABRIEL</td>
-                        <td>bielzindoGrau</td>
-                        <td>1 - UsuarioComum</td>
-                        <td>207</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <!-- <td>GABRIEL</td>
+                        <td>gabriel@email.com</td>
+                        <td>Comum</td>
                         <td><button onclick="apagar()">Apagar</button></td>
-                        <td><button onclick="apagar()">Penalizar</button></td>
+                        <td><button onclick="apagar()">Penalizar</button></td> -->
                     </tr>
+                    <% if(usuarios) { %>
+                        <% usuarios.forEach(function(u) { %>
+                          <tr>
+                            <td><%= u.usu_nome %></td>
+                            <td><%= u.usu_email %></td>
+                            <td><% if (u.tipo == "comum") {%>
+                                Comum
+                                <%} else {%>
+                                Organizador
+                                <%}%></td>
+                                <td><button onclick="apagar()">Apagar</button></td>
+                                <td><button onclick="apagar()">Penalizar</button></td>
+                          </tr>
+                        <% }); %>
+                      <% } else { %>
+                        <tr>
+                          <td colspan="5">Nenhum registro encontrado.</td>
+                        </tr>
+                      <% } %>
                 </tbody>
             </table>
             <a href="novousuario"><button class="endereco-btn">+ Novo Usuario</button></a>
             </button>
         </section>
-        <section class="postagens">
-            <h2>Postagens</h2>
-            <table class="postagens-tabela">
-                <thead>
-                    <tr>
-                        <th>Usuario</th>
-                        <th>Data/hora</th>
-                        <th>Titulo</th>
-                        <th>Foto</th>
-                        <th>Descrição</th>
-                        <th>Conteudo</th>
-                        <th>Categoria</th>
-                        <th>Curtidas</th>
-                        <th>Compartilhamentos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="limite">GABRIEL</td>
-                        <td class="limite">09/05/2025 15:53</td>
-                        <td class="limite">Corrida no Parque</td>
-                        <td class="limite">https://www.sportagora.com.br/imagens/1.jpg</td>
-                        <td class="limite">Resistro de momentos</td>
-                        <td class="limite">Hoje eu sai com a minha namorada para corrermos no parque, a meta era correr 5km mas não deu 😂</td>
-                        <td class="limite">humor/passatempo</td>
-                        <td class="limite">142k</td>
-                        <td class="limite">345</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-        </section>
-        <section>
-            <h2>Painel</h2>
-            <p>N sei o q colocar aqui</p>
-        </section>
+        
     </main>
     <footer>
         <p>&copy; 2025 Sport Agora</p>

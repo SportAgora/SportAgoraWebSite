@@ -388,8 +388,9 @@ a {
   display: flex;
   position: relative;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 25px;
   gap: 8px;
+  margin: 15px;
 }
 
 .carousel-indicators div {

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@oSxT_</title>
     <link rel="stylesheet" href="/css/perfil.css">
+    <link rel="stylesheet" href="/css/eventoUsuario.css">
     <link rel="icon" href="imagens/SportAgora.png">
 </head>
 <body>
@@ -36,7 +37,6 @@
                     </h2>
                         <h3>@<%= usuario.nome %></h3>
                     </aside>
-                    <p><%= usuario.seguidores %> <b>seguidores</b> <%= usuario.seguindo %> <b>seguindo</b></p>
                 </article>
                 
             </article> 
@@ -59,7 +59,7 @@
         </section>
         <hr size="2" width="99.8%" align="center" noshade>
         <section class="eventosParticipados">
-            
+            <%- include('../partials/eventoUsuario'); %>
         </section>
     </main>
 <%- include('../partials/footer'); %> 

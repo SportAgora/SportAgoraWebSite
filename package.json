@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start":"node app",
+    "start": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -26,6 +26,7 @@
     "multer": "^2.0.0",
     "mysql2": "^3.14.1",
     "path": "^0.12.7",
+    "save": "^2.9.0",
     "simple-notify": "^1.0.6"
   }
 }

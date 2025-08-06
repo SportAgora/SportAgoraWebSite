@@ -4,6 +4,7 @@ var router = express.Router();
 const guestMiddleware = require('../helpers/guestMiddleware');
 const usuariosController = require("../controllers/usuariosController");
 const pagamentoController = require('../controllers/pagamentosController');
+const admController = require("../controllers/admController");
 
 
 const uploadFile = require("../helpers/uploader")("./app/public/imagens/perfil/");
@@ -178,7 +179,7 @@ router.get('/adm/teste', verificarAdm, function(req,res){
 
 
 router.get('/adm/usuarios', verificarAdm, function(req,res){
-  res.render('pages/adm/usuarios');  
+  admController.carregarUsuarios(req,res);
 }) 
 
 router.get('/adm/usuario_ex', verificarAdm, function(req,res){

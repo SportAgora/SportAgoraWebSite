@@ -145,7 +145,8 @@ const AdmModel = {
       // Consulta para obter os usuários com paginação
       const queryUsuarios = `
         SELECT * FROM usuario
-        ORDER BY nome
+        WHERE tipo = 'comum'
+        ORDER BY usu_nome
         LIMIT ? OFFSET ?
       `;
      

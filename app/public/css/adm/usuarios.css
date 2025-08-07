@@ -2,3 +2,13 @@ td button {
     height: 100%;
     width: 100%;
 }
+
+.excluir {
+    background-color: #c51717;
+    color: white; 
+    border: none;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer; 
+}

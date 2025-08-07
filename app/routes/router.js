@@ -182,6 +182,10 @@ router.get('/adm/usuario_ex', verificarAdm, function(req,res){
   res.render('pages/adm/usuario_ex');  
 }) 
 
+router.get('/adm/cadastro_concluido', verificarAdm, function(req,res){
+  res.render('pages/adm/cadastro_concluido');  
+}) 
+
 router.get('/adm/eventos', verificarAdm, function(req,res){
   res.render('pages/adm/eventos');  
 }) 

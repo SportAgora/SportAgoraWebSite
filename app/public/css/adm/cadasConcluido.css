@@ -1,0 +1,11 @@
+.botoesCadasConcluido{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    & h4{
+        color: green;
+        margin-top: 5px;
+        font-size: 18px
+    }
+}

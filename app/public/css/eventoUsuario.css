@@ -4,7 +4,6 @@
     justify-content: center;
 }
 .eventoInfo{
-    border: 1px solid black;
     border-radius: 10px;
     /* padding: 15px; */
     display: flex;
@@ -12,8 +11,31 @@
     flex-direction: column; 
     width: 350px;
     margin: 15px;
+    /* box-shadow: 2px 3px 10px 2px rgba(0,0,0,0.71); */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.eventoInfo:hover{
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 .evento-img{
     width: 100%;
     border-radius: 10px 10px 0px 0px;
+    margin-bottom: 10px;
+}
+.evento-nome{
+    margin: 10px;
+}
+.infoEvento {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.links{
+    margin-bottom: 20px;
+
+    & a{
+        color: var(--verde_especial);
+    }
 }

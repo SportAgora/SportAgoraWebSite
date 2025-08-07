@@ -7,22 +7,31 @@
     <title>Evento</title>
     <link rel="stylesheet" href="/css/eventoUsuario.css">
 </head>
+<script>
+    function mandarEmail(){
+        window.alert("mande um email para: email@gmail.com");
+    }
+</script>
 <body>
     <section class="evento-container">
         <article class="eventoInfo">
             <img src="/imagens/eventobanner.png" alt="Imagem do Evento" class="evento-img">
             <h2 class="evento-nome">Netshoes RUN</h2>
-            <p class="evento-detalhes">Barueri, SP<br><br>19/11/2024</p>
-            <aside>
-                <i class="fi fi-rr-marker"></i>
-            <span id="evento-local">Cidade - UF</span>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="fi fi-rr-calendar"></i>
-          <span id="evento-data">Data completa</span>
+            <aside class="infoEvento">
+                <aside>
+                    <i class="fi fi-rr-calendar"></i>
+                    <span id="evento-data">19/11/2024 - 09:00</span>
+                </aside>
+                <aside>
+                    <i class="fi fi-rr-marker"></i>
+                    <span id="evento-local">Barueri, SP</span>
+                </aside>
             </aside>
-            <h3><a href="#">Imprimir Ingresso</a></h3>
-            <h3><a href="#">Fale com o produtor</a></h3>
-            <h3><a href="#">Ver Pedido</a></h3>
+            <aside class="links">
+                <h3><a href="#">Imprimir Ingresso</a></h3>
+                <h3><a href="#" onclick="mandarEmail()">Fale com o produtor</a></h3>
+                <h3><a href="#">Ver Pedido</a></h3>
+            </aside>
         </article>
     </section>
     

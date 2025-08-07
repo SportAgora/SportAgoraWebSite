@@ -27,7 +27,6 @@ router.use((req, res, next) => {
   next();
 });
 
-// Rotas de autenticação (mantidas apenas uma vez)
 router.get('/cadastro', guestMiddleware, (req, res) => {
   res.render('pages/registro', 
   { "erros": null, "dados": {"email":"","senha":""},"retorno":null });
@@ -35,7 +34,7 @@ router.get('/cadastro', guestMiddleware, (req, res) => {
 
 router.post('/cadastrar',
   usuariosController.regrasValidacao, 
-  usuariosController.cadastrarUsuarioNormal); // Sem autologin
+  usuariosController.cadastrarUsuarioNormal);
 
 router.get("/login", (req, res) => {
   res.render("pages/login", {
@@ -162,9 +161,6 @@ router.get('/adm/home',verificarAdm, function(req,res){
     res.render('pages/adm/home');  
 })
 
-router.get('/adm/novousuario', verificarAdm,function(req,res){
-    res.render('pages/adm/novousuario');  
-}) 
 
  
 router.get('/adm/buscar_usuario', verificarAdm,function(req,res){
@@ -197,5 +193,21 @@ router.get('/adm/descricaoEvento', verificarAdm, function(req,res){
 router.get('/adm', verificarAdm, function(req,res){
   res.redirect('/adm/home')
 })
+
+router.get('/adm/novousuario', verificarAdm, (req, res) => {
+  res.render('pages/adm/novousuario', 
+  { "erros": null, "dados": {"nome":"","email":"","senha":"","repsenha":""},"retorno":null });
+});
+
+router.post('/adm/novousuario', verificarAdm,
+  admController.regrasValidacao, 
+  admController.cadastrarUsuario
+);
+
+router.post('/adm/usuarios/:id',
+  verificarAdm,
+  admController.apagarUsuario
+)
+
 
 module.exports = router;

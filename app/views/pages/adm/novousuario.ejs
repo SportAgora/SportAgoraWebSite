@@ -6,35 +6,61 @@
     <title>Novo Usuario</title>
     <link rel="stylesheet" href="/css/adm/novousuario.css">
     <link rel="stylesheet" href="/css/adm/styles.css">
+    <link rel="stylesheet" href="/css/erro.css">
+
 </head>
 <body>
     <%- include('../../partials/adm_navbar'); %>
+    <%
+    let  erroValidacao =  {"nome":"","email":"", "repsenha":"","senha":""};
+    let  msgErro =  {"nome":"","email":"","repsenha":"","senha":""};
+    if(erros) {
+        erros.errors.forEach(function(erro) {
+            if (erro.path == "nome") {
+                erroValidacao.nome = "erro",
+                msgErro.nome = erro.msg
+            }
+            if (erro.path == "email") {
+                erroValidacao.email = "erro",
+                msgErro.email = erro.msg
+            }
+            if (erro.path == "repsenha") {
+                erroValidacao.repsenha = "erro",
+                msgErro.repsenha = erro.msg
+            }
+            if (erro.path == "senha") {
+                erroValidacao.senha = "erro",
+                msgErro.senha = erro.msg
+            }
+        })
+    }; %>
     <main>
-        <form id="formulario-usuario">
+        <form id="formulario-usuario" method="post" action="/adm/novousuario">
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
-
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="nome" name="nome" value="<%=dados.nome%>" class="<%= erroValidacao.nome %>" required>
+            <span class="spanerro"><%= msgErro.nome %></span><br>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" value="<%=dados.email%>" class="<%= erroValidacao.email %>" required>
+            <span class="spanerro"><%= msgErro.email %></span><br>
 
             <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" required>
+            <input type="password" id="senha" name="senha" value="<%=dados.senha%>" class="<%= erroValidacao.senha %>" required>
+            <span class="spanerro"><%= msgErro.senha %></span><br>
 
-            <label for="confirmar-senha">Confirmar Senha:</label>
-            <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+            <label for="repsenha">Confirmar Senha:</label>
+            <input type="password" id="repsenha" name="repsenha" value="<%=dados.repsenha%>" class="<%= erroValidacao.repsenha %>" required>
+            <span class="spanerro"><%= msgErro.repsenha %></span><br>
 
-            <label for="tipoUsuario">Tipo de usuario:</label>
-            <input type="radio" id="usuario1" name="usuario" value="usuario" checked />
-            <label for="usuario1">Usuario Comum</label>
+                <label for="tipoUsuario">Tipo de usuário:</label>
+                <input type="radio" id="usuario1" name="tipo" value="comum" checked />
+                <label for="usuario1">Comum</label>
 
-            <input type="radio" id="usuario2" name="usuario" value="usuario" />
-            <label for="usuario2">Encarregado</label>
+                <input type="radio" id="usuario2" name="tipo" value="comum" />
+                <label for="usuario2">Sport+ Permanente</label>
 
-            <input type="radio" id="usuario3" name="usuario" value="usuario" />
-            <label for="usuario3">ADM</label>
+                <input type="radio" id="usuario3" name="tipo" value="adm" />
+                <label for="usuario3">Admnistrador</label>
 
             <br><br>
             <button type="submit" class="enviar-btn">Registrar</button>

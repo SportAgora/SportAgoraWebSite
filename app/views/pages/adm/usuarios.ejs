@@ -53,10 +53,17 @@
                             <td><%= u.usu_email %></td>
                             <td><% if (u.tipo == "comum") {%>
                                 Comum
+                                <%} else if (u.tipo == "administrador") {%>
+                                Administrador
                                 <%} else {%>
                                 Organizador
-                                <%}%></td>
-                                <td><button onclick="apagar()">Apagar</button></td>
+                                <%}%>
+                                </td>
+                                <td>
+                                    <form action="/adm/usuarios/<%= u.usu_id %>" method="POST" onsubmit="return confirm('Deseja realmente excluir este usuário?');">
+                                    <button type="submit">Excluir</button>
+                                  </form>
+                                </td>
                                 <td><button onclick="apagar()">Penalizar</button></td>
                           </tr>
                         <% }); %>

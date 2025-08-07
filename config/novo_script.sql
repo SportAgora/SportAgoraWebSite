@@ -53,14 +53,8 @@ CREATE TABLE usuario (
     tipo ENUM('comum', 'organizador', 'administrador') NOT NULL DEFAULT 'comum',
     perf_nome VARCHAR(100) NOT NULL ,  -- nome do perfil ou do usuário
 	contato_social_id INT UNSIGNED,
- 
-    -- Campos adicionais solicitados (perfil comum e organizador)
-    quantidade_seguidores INT UNSIGNED DEFAULT 0,
-    quantidade_seguindo INT UNSIGNED DEFAULT 0,
-    biografia VARCHAR(500),
-    link_posts VARCHAR(255),
-    curtidas INT UNSIGNED DEFAULT 0,
- 
+    usu_status BOOLEAN DEFAULT 1
+  
     FOREIGN KEY (endereco_id) REFERENCES endereco_usu(usu_id),
     FOREIGN KEY (contato_id) REFERENCES contato_org(cont_org_id),
     FOREIGN KEY (plano_id) REFERENCES planos(plano_id),

@@ -73,7 +73,7 @@ const UsuarioModel = {
   // Atualizar usuário
   atualizar: async (id, userData) => {
     try {
-      const { nome, arroba, email, data_nascimento, logradouro_id, cpf, telefone, plano, tipo, foto, banner, bio, senha} = userData;
+      const { nome, arroba, email, data_nascimento, logradouro_id, cpf, telefone, plano, tipo, foto, banner, senha} = userData;
  
       // Preparar os dados para atualização
       const data = {
@@ -89,7 +89,6 @@ const UsuarioModel = {
         tipo : tipo,
         usu_foto : foto,
         usu_banner : banner,
-        biografia : bio
       };
  
       // Construir a query dinamicamente

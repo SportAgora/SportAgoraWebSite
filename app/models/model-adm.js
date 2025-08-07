@@ -41,7 +41,7 @@ const AdmModel = {
   // Criar novo usuário
   UserCreate: async (userData) => {
     try {
-      const { nome, email, senha, foto, banner } = userData;
+      const { nome, email, senha, foto, banner, tipo } = userData;
  
       // Preparar os dados para inserção
       const data = {
@@ -50,7 +50,8 @@ const AdmModel = {
         usu_senha: senha, // Já deve estar com hash
         perf_nome: nome,
         usu_foto:foto,
-        usu_banner:banner
+        usu_banner:banner,
+        tipo:tipo
       };
  
       // Construir a query dinamicamente
@@ -115,9 +116,9 @@ const AdmModel = {
   // Excluir usuário
   UserExcluir: async (id) => {
     try {
-      const query = "DELETE FROM usuario WHERE id = ?";
+      const query = "UPDATE usuario SET usu_status = 0 WHERE usu_id = ?";
       const [result] = await pool.query(query, [id]);
-      return result.affectedRows > 0;
+      return "Apagado com sucesso"
     } catch (error) {
       console.error("Erro ao excluir usuário:", error);
       throw error;
@@ -145,9 +146,10 @@ const AdmModel = {
       // Consulta para obter os usuários com paginação
       const queryUsuarios = `
         SELECT * FROM usuario
-        WHERE tipo = 'comum'
+        WHERE usu_status = 1
         ORDER BY usu_nome
         LIMIT ? OFFSET ?
+
       `;
      
       // Consulta para obter o total de usuários

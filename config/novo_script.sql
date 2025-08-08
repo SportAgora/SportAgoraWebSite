@@ -21,31 +21,47 @@ CREATE TABLE categoria (
     categoria_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     categoria_nome VARCHAR(70) NOT NULL UNIQUE
 );
- 
+
+-- CATEGORIA
+CREATE TABLE assunto (
+    assunto_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    assunto_nome VARCHAR(70) NOT NULL UNIQUE
+);
+
 -- EVENTOS
 CREATE TABLE eventos (
     evento_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT UNSIGNED NOT NULL,
-    organizador_id INT UNSIGNED NOT NULL,
     categoria_id INT UNSIGNED NOT NULL,
-    evento_foto BLOB,
+    assunto_id INT UNSIGNED NOT NULL,
+    evento_foto VARCHAR(1500) NOT NULL,
+    evento_nome VARCHAR(150) NOT NULL,
+
+    evento_data_publicacao SMALLDATETIME NOT NULL,
+    evento_data_inicio SMALLDATETIME NOT NULL,
+    evento_data_hora SMALLDATETIME NOT NULL,
+
     evento_descricao VARCHAR(15000) NOT NULL,
-    evento_valor DECIMAL(10,2) NOT NULL,
+    evento_endereco_logradouro VARCHAR(200) NOT NULL,
+    evento_endereco_bairro VARCHAR(100) NOT NULL,
+    evento_endereco_cidade VARCHAR(50) NOT NULL,
+    evento_endereco_uf CHAR(2) NOT NULL,
+    evento_endereco_cep CHAR(8) NOT NULL,
+
+    ingresso_id INT UNSIGNED NOT NULL,
+
     FOREIGN KEY (usuario_id) REFERENCES usuario(usu_id),
-    FOREIGN KEY (organizador_id) REFERENCES organizadores(org_id),
-    FOREIGN KEY (categoria_id) REFERENCES categoria(categoria_id)
+    FOREIGN KEY (categoria_id) REFERENCES categoria(categoria_id),
+    FOREIGN KEY (assunto_id) REFERENCES assunto(assunto_id),
+    FOREIGN KEY (ingresso_id) REFERENCES ingresso(ingresso_id),
 );
- 
--- ENDEREÇO DOS EVENTOS
-CREATE TABLE endereco_eventos (
-    endereco_evento_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    evento_id INT UNSIGNED NOT NULL,
-    endereco_evento_logradouro VARCHAR(200) NOT NULL,
-    endereco_evento_bairro VARCHAR(100) NOT NULL,
-    endereco_evento_cidade VARCHAR(50) NOT NULL,
-    endereco_evento_uf CHAR(2) NOT NULL,
-    endereco_evento_cep CHAR(8) NOT NULL,
-    FOREIGN KEY (evento_id) REFERENCES eventos(evento_id)
+
+CREATE TABLE ingresso (
+    ingresso_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY_KEY,
+    ingresso_nome VARCHAR(70) NOT NULL,
+    ingresso_valor DECIMAL(6,2) NOT NULL,
+    ingresso_quantidade INT NOT NULL,
+    ingresso_meia BOOLEAN NOT NULL 0
 );
  
 -- PRÁTICAS ESPORTIVAS

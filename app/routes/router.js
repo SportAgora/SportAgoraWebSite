@@ -20,6 +20,7 @@ function verificarAutenticacao(req, res, next) {
   }
   res.redirect("/login");
 }
+
 const verificarAdm = usuariosController.verificarAdm;
 
 router.use((req, res, next) => {

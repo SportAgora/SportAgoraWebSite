@@ -28,6 +28,14 @@ CREATE TABLE assunto (
     assunto_nome VARCHAR(70) NOT NULL UNIQUE
 );
 
+CREATE TABLE ingresso (
+    ingresso_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    ingresso_nome VARCHAR(70) NOT NULL,
+    ingresso_valor DECIMAL(6,2) NOT NULL,
+    ingresso_quantidade INT NOT NULL,
+    ingresso_meia BOOLEAN NOT NULL DEFAULT 0
+);
+
 -- EVENTOS
 CREATE TABLE eventos (
     evento_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -37,11 +45,11 @@ CREATE TABLE eventos (
     evento_foto VARCHAR(1500) NOT NULL,
     evento_nome VARCHAR(150) NOT NULL,
 
-    evento_data_publicacao SMALLDATETIME NOT NULL,
-    evento_data_inicio SMALLDATETIME NOT NULL,
-    evento_data_hora SMALLDATETIME NOT NULL,
+    evento_data_publicacao DATETIME NOT NULL,
+    evento_data_inicio DATETIME NOT NULL,
+    evento_data_hora DATETIME NOT NULL,
 
-    evento_descricao VARCHAR(15000) NOT NULL,
+    evento_descricao VARCHAR(1500) NOT NULL,
     evento_endereco_logradouro VARCHAR(200) NOT NULL,
     evento_endereco_bairro VARCHAR(100) NOT NULL,
     evento_endereco_cidade VARCHAR(50) NOT NULL,
@@ -50,18 +58,12 @@ CREATE TABLE eventos (
 
     ingresso_id INT UNSIGNED NOT NULL,
 
+    evento_ativo BOOLEAN DEFAULT 1,
+
     FOREIGN KEY (usuario_id) REFERENCES usuario(usu_id),
     FOREIGN KEY (categoria_id) REFERENCES categoria(categoria_id),
     FOREIGN KEY (assunto_id) REFERENCES assunto(assunto_id),
-    FOREIGN KEY (ingresso_id) REFERENCES ingresso(ingresso_id),
-);
-
-CREATE TABLE ingresso (
-    ingresso_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY_KEY,
-    ingresso_nome VARCHAR(70) NOT NULL,
-    ingresso_valor DECIMAL(6,2) NOT NULL,
-    ingresso_quantidade INT NOT NULL,
-    ingresso_meia BOOLEAN NOT NULL 0
+    FOREIGN KEY (ingresso_id) REFERENCES ingresso(ingresso_id)
 );
  
 -- PRÁTICAS ESPORTIVAS

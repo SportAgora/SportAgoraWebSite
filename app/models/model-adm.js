@@ -168,6 +168,52 @@ const AdmModel = {
       throw error;
     }
   },
+  AssuntoCreate: async (assuntoData) => {
+    try {
+      const {nome} = assuntoData;
+ 
+      // Preparar os dados para inserção
+      const data = {
+        assunto_nome : nome
+      };
+ 
+      // Construir a query dinamicamente
+      const fields = Object.keys(data).filter(key => data[key] !== null);
+      const values = fields.map(field => data[field]);
+      const placeholders = fields.map(() => '?').join(', ');
+     
+      const query = `INSERT INTO assunto (${fields.join(', ')}) VALUES (${placeholders})`;
+     
+      const [result] = await pool.query(query, values);
+      return result.insertId;
+    } catch (error) {
+      console.error("Erro ao criar assunto:", error);
+      throw error;
+    }
+  },
+  CategoriaCreate: async (categoriaData) => {
+    try {
+      const {nome} = categoriaData;
+ 
+      // Preparar os dados para inserção
+      const data = {
+        categoria_nome : nome
+      };
+ 
+      // Construir a query dinamicamente
+      const fields = Object.keys(data).filter(key => data[key] !== null);
+      const values = fields.map(field => data[field]);
+      const placeholders = fields.map(() => '?').join(', ');
+     
+      const query = `INSERT INTO categoria (${fields.join(', ')}) VALUES (${placeholders})`;
+     
+      const [result] = await pool.query(query, values);
+      return result.insertId;
+    } catch (error) {
+      console.error("Erro ao criar categoria:", error);
+      throw error;
+    }
+  },
 
 }
 

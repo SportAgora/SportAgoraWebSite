@@ -42,8 +42,8 @@ CREATE TABLE eventos (
     usuario_id INT UNSIGNED NOT NULL,
     categoria_id INT UNSIGNED NOT NULL,
     assunto_id INT UNSIGNED NOT NULL,
-    evento_foto VARCHAR(1500) NOT NULL,
     evento_nome VARCHAR(150) NOT NULL,
+    evento_foto VARCHAR(1500) NOT NULL,
 
     evento_data_publicacao DATETIME NOT NULL,
     evento_data_inicio DATETIME NOT NULL,

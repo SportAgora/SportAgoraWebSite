@@ -4,12 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADM Sport Agora - Eventos</title>
-    <link rel="stylesheet" href="/css/adm/styles.css">
     <link rel="stylesheet" href="/css/adm/eventos.css">
 </head>
 <body>
     <%- include('../../partials/adm_navbar'); %>
     <main>
+        <section class="assuCate">
+            <section class="assunto">
+                <h2>Assunto</h2>
+                <form action="">
+                    <label class="assuntoTopico">Esporte Atlético
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="assuntoTopico">Futebol
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="assuntoTopico">Basquete
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="assuntoTopico">Corrida
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    
+                    <button class="assunto-btn-a">  Apagar - </button>
+                    <hr>
+                    <form action="">
+                        <input type="text" name="novoAssunto" id="novoAssunto" placeholder="Adicione um Assunto">
+                        <button class="assunto-btn">Adicionar +</button>
+                    </form>
+                    
+                </form> 
+            </section>
+            <section class="categoria">
+                <h2>Categoria</h2> 
+                <form action="">
+                    <label class="categoriaTopico">Grande
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="categoriaTopico">Pequeno
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="categoriaTopico">Médio
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="categoriaTopico">Talvez
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    
+                    <button class="categoria-btn-a">Apagar -</button>
+                    <hr>
+                    <form action="">
+                        <input type="text" name="novoCategoria" id="novoCategoria" placeholder="Adicione um Categoria">
+                        <button class="categoria-btn">Adicionar +</button>
+                    </form>
+                </form>
+            </section>
+        </section>
         <section class="evento">
             <h2>Eventos</h2>
             <table class="evento-tabela">

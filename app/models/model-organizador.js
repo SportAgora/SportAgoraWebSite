@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const OrganizadorModel = {
 createEvent: async (eventData, ingressoData) => {
     try {
-      const { user, categoria, assunto, nome, foto, data_inicio, data_fim, descricao, logradouro, bairro, cidade, uf, cep} = eventData;
+      const { user, categoria, assunto, nome, foto, data_inicio, data_fim, data_hora, cep, numero, complemento, descricao} = eventData;
       const { ing_nome, ing_valor, ing_quantidade, ing_meia} = ingressoData;
 
       const ingresso = {
@@ -35,11 +35,10 @@ createEvent: async (eventData, ingressoData) => {
         evento_data_publicacao: moment().format('YYYY-MM-DD HH:mm:ss'),
         evento_data_inicio: data_inicio,
         evento_data_fim: data_fim,
+        evento_data_hora: data_hora,
         evento_descricao: descricao,
-        evento_endereco_logaradouro: logradouro,
-        evento_endereco_bairro: bairro,
-        evento_endereco_cidade: cidade,
-        evento_endereco_uf: uf,
+        evento_endereco_numero: numero,
+        evento_endereco_complemento: complemento,
         evento_endereco_cep: cep,
         ingresso_id: result.insertId
       };

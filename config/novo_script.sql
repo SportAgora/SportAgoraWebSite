@@ -47,13 +47,13 @@ CREATE TABLE eventos (
 
     evento_data_publicacao DATETIME NOT NULL,
     evento_data_inicio DATETIME NOT NULL,
+    evento_data_fim DATETIME NOT NULL,
     evento_data_hora DATETIME NOT NULL,
 
     evento_descricao VARCHAR(1500) NOT NULL,
-    evento_endereco_logradouro VARCHAR(200) NOT NULL,
-    evento_endereco_bairro VARCHAR(100) NOT NULL,
-    evento_endereco_cidade VARCHAR(50) NOT NULL,
-    evento_endereco_uf CHAR(2) NOT NULL,
+
+    evento_endereco_complemento VARCHAR(50) NOT NULL,
+    evento_endereco_numero CHAR(10) NOT NULL,
     evento_endereco_cep CHAR(8) NOT NULL,
 
     ingresso_id INT UNSIGNED NOT NULL,
@@ -104,4 +104,16 @@ INSERT INTO usuario (
     'imagens/usuarios/default_background.jpg', -- Banner
     'administrador',                      -- Tipo de usuário
     'adminMaster'                         -- Nome do perfil
+);
+
+INSERT INTO categoria (
+	categoria_nome
+) VALUES (
+	'futebol'
+);
+
+INSERT INTO assunto (
+	assunto_nome
+) VALUES (
+	'campeonato'
 );

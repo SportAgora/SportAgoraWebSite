@@ -96,6 +96,11 @@ main {
     padding-left: 80px;
     padding-right: 80px;
 }
+.tituloLogo{
+    color: #2a8d3f;
+    font-size: 100px;
+    text-align: center;
+}
 section {
     margin-bottom: 20px;
     padding: 15px;

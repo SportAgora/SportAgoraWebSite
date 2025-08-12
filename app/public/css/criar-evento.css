@@ -68,7 +68,7 @@
   }
   
   .classification, .datetime, .location-fields {
-    display: flex;
+    display: inline;
     gap: 20px;
     flex-wrap: wrap;
     margin-top: 10px;

@@ -3,7 +3,7 @@ const eventos = [
     imagem: "/imagens/banner1.png",
     titulo: "VIII Congresso Internacional CBMA de Arbitragem",
     local: "Rio de Janeiro - SP",
-    data: "Quinta, 07 de Ago às 09:00",
+    data: "Quinta, 08 de Ago às 09:00",
     link: "/infopost1"
   },
   {

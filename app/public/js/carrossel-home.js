@@ -2,70 +2,70 @@ const eventos = [
   {
     imagem: "/imagens/banner1.png",
     titulo: "VIII Congresso Internacional CBMA de Arbitragem",
-    local: "Rio de Janeiro - RJ",
+    local: "Rio de Janeiro - SP",
     data: "Quinta, 07 de Ago às 09:00",
     link: "/infopost1"
   },
   {
-    imagem: "/imagens/banner2.jpg",
-    titulo: "Maratona de Desenvolvimento Web",
+    imagem: "/imagens/esporte-montanha.png",
+    titulo: "Festival na Montanha",
     local: "São Paulo - SP",
     data: "Segunda, 01 de Set às 14:00",
     link: "/infopost2"
   },
   {
-    imagem: "/imagens/banner3.jpg",
-    titulo: "Campeonato Nacional de Atletismo",
-    local: "Belo Horizonte - MG",
+    imagem: "/imagens/natação-evento.png",
+    titulo: "Campeonato Nacional de Natação",
+    local: "Belo Horizonte - SP",
     data: "Domingo, 17 de Out às 08:30",
     link: "/infopost3"
   },
   {
-    imagem: "/imagens/banner4.jpg",
-    titulo: "Feira de Startups Inovadoras",
-    local: "Florianópolis - SC",
+    imagem: "/imagens/campeonato-basquete.png",
+    titulo: "Aricadura Run 2025",
+    local: "Florianópolis - SP",
     data: "Sexta, 23 de Ago às 10:00",
     link: "/infopost4"
   },
   {
-    imagem: "/imagens/banner5.jpg",
-    titulo: "Festival de Dança Urbana",
-    local: "Salvador - BA",
+    imagem: "/imagens/campeonato-futebol.png",
+    titulo: "Campeonato de Futebol da Vazéa",
+    local: "Salvador - SP",
     data: "Sábado, 10 de Nov às 20:00",
     link: "/infopost5"
   },
   {
-    imagem: "/imagens/banner6.jpg",
-    titulo: "Oficina de Teatro e Expressão",
-    local: "Curitiba - PR",
+    imagem: "/imagens/circuito natação.png",
+    titulo: "Circuito de Natação",
+    local: "Curitiba - SP",
     data: "Quarta, 28 de Ago às 15:00",
     link: "/infopost6"
   },
   {
-    imagem: "/imagens/banner7.jpg",
-    titulo: "Semana Nacional de Robótica",
-    local: "Brasília - DF",
+    imagem: "/imagens/campeonato-atletismo.png",
+    titulo: "Em Busca Do Melhor Atleta",
+    local: "Brasília - SP",
     data: "Terça, 15 de Set às 09:00",
     link: "/infopost7"
   },
   {
-    imagem: "/imagens/banner8.jpg",
-    titulo: "Fórum de Sustentabilidade Ambiental",
-    local: "Manaus - AM",
+    imagem: "/imagens/campeonato-bmx.png",
+    titulo: "Desafio Da Subida Da Montanha ",
+    local: "Manaus - SP",
     data: "Quinta, 03 de Out às 11:00",
     link: "/infopost8"
   },
   {
-    imagem: "/imagens/banner9.jpg",
-    titulo: "Encontro de Escritores Brasileiros",
-    local: "Recife - PE",
+    imagem: "/imagens/campeonato-skate.png",
+    titulo: " Encontro dos Skatistas",
+    local: "Recife - SP",
     data: "Domingo, 24 de Nov às 16:00",
     link: "/infopost9"
   },
   {
-    imagem: "/imagens/banner10.jpg",
-    titulo: "Congresso Internacional de Psicologia",
-    local: "Porto Alegre - RS",
+    imagem: "/imagens/campeonato-ciclismo.png",
+    titulo: "Corrida Proficional De Cicilosmo",
+    local: "Porto Alegre - SP",
     data: "Sábado, 30 de Ago às 10:00",
     link: "/infopost10"
   }

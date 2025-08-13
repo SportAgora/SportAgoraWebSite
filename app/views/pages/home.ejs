@@ -15,23 +15,21 @@
 <body>
     <%- include('../partials/navbar'); %>
 
-    <!-- hero novo com carrosel -->
 
     <section class="hero-container">
       <article class="post-box">
         
-        <!-- Carousel no topo -->
-        <div class="carousel">
+        <section class="carousel">
           <a id="carousel-link" href="/infopost">
-            <div class="carousel-inner" id="carousel-inner"></div>
+            <article class="carousel-inner" id="carousel-inner"></article>
           </a>
           <button class="carousel-btn prev" onclick="mudarSlide(-1)">&#10094;</button>
           <button class="carousel-btn next" onclick="mudarSlide(1)">&#10095;</button>
-        </div>
+        </section>
     
-        <!-- Conteúdo do evento abaixo da imagem -->
+
         <article class="post-center">
-          <div class="carousel-indicators" id="carousel-indicators"></div>
+          <section class="carousel-indicators" id="carousel-indicators"></section>
           <a id="carousel-link" href="/infopost">
             <h1 class="post-title" id="evento-titulo">Título do Evento</h1>
             <p class="post-subtitle">

@@ -106,5 +106,66 @@ module.exports = {
             console.error(e);
             return true
         }      
+    },
+    carregarEventos: async (req,res) =>{
+      try{
+          // const pagina = parseInt(req.query.pagina) || 1;
+          // const limite = 10;
+          // const offset = (pagina - 1) * limite;
+          // const resultado = await AdmModel.UserListarComPaginacao(offset, limite) 
+
+          // const total_paginas = Math.ceil(resultado.total / limite);
+          res.render('pages/adm/usuarios', {
+          // usuarios: resultado.usuarios,
+          // paginador: {
+          //     pagina_atual: pagina,
+          //     total_paginas
+          // }
+          assuntos: AdmModel.CustomFindAssunto()
+          });
+      }catch(e){
+          console.error(e)
+          throw e;
+      }
+  },
+    criarAssunto: async (req, res) => {
+      const errors = validationResult(req);
+          if(!errors.isEmpty()) {
+              console.log(errors);
+              return res.render('pages/adm/eventos',{
+                  dados: req.body,
+                  erros: errors
+              })
+          }
+  
+      try {
+  
+        const {assunto} = req.body;
+  
+        if (assunto){
+        const assuntoExistente = await AdmModel.CustomFind(assunto,assunto_nome,assunto);
+        if (assuntoExistente) {
+         return res.render("pages/adm/eventos", {
+          dados: req.body,
+          erros: { errors: [{ path: 'assunto', msg: "Este assunto já existe"}] }
+        });
+      }
+
+        const assuntoReturn = await AdmModel.AssuntoCreate({assunto:assunto});
+        
+        console.log("Sucesso ao criar assunto: " + assuntoReturn)
+  
+        res.redirect("/adm/eventos");
+       
+      }
+    } catch (e) {
+        console.error(e);
+        res.render("pages/adm/eventos", {
+        dados: req.body,
+        erros: { errors: [{ path: 'assunto', msg: "Ocorreu um erro ao criar o assunto" }] }
+      });
+  
+        
+      }
     }
 }

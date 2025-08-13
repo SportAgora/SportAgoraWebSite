@@ -215,6 +215,28 @@ const AdmModel = {
     }
   },
 
+  CustomFind: async (table, line, nome) => {
+    try {
+      const query = "SELECT * FROM ? WHERE ? = ?";
+      const [rows] = await pool.query(query, [table,line,nome]);
+      return rows.length > 0 ? rows[0] : null;
+    } catch (error) {
+      console.error("Erro ao verificar nome:", error);
+      throw error;
+    }
+  },
+  CustomFindAssunto: async () => {
+    try {
+      const query = "SELECT * FROM assunto ";
+      const [rows] = await pool.query(query);
+      return rows.length > 0 ? rows[0] : null;
+    } catch (error) {
+      console.error("Erro ao verificar nome:", error);
+      throw error;
+    }
+  },
+
+
 }
 
 module.exports = AdmModel;

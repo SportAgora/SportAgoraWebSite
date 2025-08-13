@@ -13,22 +13,18 @@
             <section class="assunto">
                 <h2>Assunto</h2>
                 <form action="">
-                    <label class="assuntoTopico">Esporte Atlético
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="assuntoTopico">Futebol
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="assuntoTopico">Basquete
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="assuntoTopico">Corrida
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
+                    <% if(assuntos) { %>
+                        <% assuntos.forEach(function(a) { %>
+                            <label class="assuntoTopico"><%= a.nome %>
+                                <input type="checkbox" value="<%= a.id%>">
+                                <span class="checkmark"></span>
+                            </label>
+                        <% }); %>
+                      <% } else { %>
+                        <tr>
+                          <td colspan="5">Nenhum assunto encontrado.</td>
+                        </tr>
+                      <% } %>
                     
                     <button class="assunto-btn-a">  Apagar - </button>
                     <hr>

@@ -188,7 +188,7 @@ router.get('/adm/cadastro_concluido', verificarAdm, function(req,res){
 }) 
 
 router.get('/adm/eventos', verificarAdm, function(req,res){
-  res.render('pages/adm/eventos');  
+  admController.carregarEventos(req,res);
 }) 
 
 router.get('/adm/descricaoEvento', verificarAdm, function(req,res){

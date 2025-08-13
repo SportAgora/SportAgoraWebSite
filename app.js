@@ -7,8 +7,6 @@ const session = require('express-session');
 const flash = require('connect-flash');
 require("dotenv").config();
  
- 
- 
 app.use(helmet({
   contentSecurityPolicy: false // ⚠️ Apenas para desenvolvimento!
 }));

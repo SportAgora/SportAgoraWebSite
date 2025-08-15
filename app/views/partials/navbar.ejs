@@ -48,7 +48,7 @@
         <article class="navbar-right">
             
     <article class="search-bar-container">
-    <div class="search-bar">
+    <section class="search-bar">
         <img src="/imagens/search.png" alt="Search" class="search-icon">
         <input 
         type="text" 
@@ -58,7 +58,7 @@
         onkeydown="verificarEnter(event)"
         >
         <span class="limpar" onclick="limparPesquisa()">×</span>
-    </div>
+    </section>
     <ul id="sugestoes" class="painel-sugestoes oculto"></ul>
     </article>
 
@@ -67,19 +67,19 @@
             <button class="subscribe-button" onclick="location.href='/organizador'">Torne-se Organizador</button>
 
         <!-- Ícone de notificação -->
-        <div class="notificacao-container">
+        <section class="notificacao-container">
         <button id="botaoNotificacao" class="botaoNotificacao">
-            <div class="icone-notificacao-wrapper">
+            <article class="icone-notificacao-wrapper">
             <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao">
             <span id="badgeNotificacao" class="badge-notificacao oculto">0</span>
-            </div>
+            </article>
         </button>
 
         <!-- Painel de notificações -->
-        <div id="painelNotificacoes" class="painel-notificacoes oculto">
-            <div id="listaNotificacoes"></div>
-        </div>
-        </div>
+        <section id="painelNotificacoes" class="painel-notificacoes oculto">
+            <article id="listaNotificacoes"></article>
+        </section>
+        </section>
 
 
             <button class="login-button">
@@ -122,7 +122,7 @@
 
 
 
-<!-- mobile search bar -->
+<!-- mobile -->
 
 <section id="mobile-menu" class="mobile-menu">
     <button class="mobile-nav-button" onclick="location.href='/'">Início</button>

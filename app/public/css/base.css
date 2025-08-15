@@ -435,7 +435,6 @@ body {
     align-items: center;
     background-color: var(--verdenavfooter);
     color: var(--branco);
-    /* border: 1px solid var(--cinza); */
     border: none;
     border-radius: 20px;
     padding: 8px 15px;
@@ -471,16 +470,21 @@ body {
     position: absolute;
     top: 75px;
     right: 20px;
-    background-color: var(--verde_especial);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    background: linear-gradient(135deg, var(--verde_especial), #1e774d);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
     z-index: 1000;
-    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.4s ease-in-out;
+    min-width: 220px;
+    overflow: hidden;
 }
 
 .menu-panel.open {
+    display: block;
     opacity: 1;
-    transform: translateY(0); 
+    transform: translateY(0);
 }
 
 .menu-panel button  {
@@ -505,22 +509,52 @@ body {
 }
 
 .panel-button {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     width: 100%;
-    padding: 15px 20px;
-    background: none;
+    padding: 14px 20px;
+    background: transparent;
     border: none;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600;
     color: var(--branco);
     text-align: left;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .panel-button:hover {
     background-color: var(--verdenavfooter);
     border-radius: 10px;
+    padding-left: 25px;
+}
+
+.panel-button::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--verdenavfooter);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.panel-button:hover::before {
+    transform: scaleY(1);
+}
+
+hr.divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--verdenavfooter), transparent);
+    margin: 10px 0;
 }
 
 .panel-button::after {
@@ -863,6 +897,7 @@ a {
         display: none;
         flex-direction: column;
         background-color: var(--verdenavfooter);
+        background: linear-gradient(135deg, var(--verde_especial), #1e774d);
         padding: 20px;
         position: absolute;
         right: 0;

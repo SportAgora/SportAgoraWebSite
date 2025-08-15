@@ -6,6 +6,8 @@
         <title>SportAgora</title>
         <link rel="stylesheet" href="/css/home.css">
         <link rel="stylesheet" href="/css/post.css">
+        <link rel="stylesheet" href="/css/post.css">
+        <link rel="stylesheet" href="/css/carrosel.css">
             <link rel="stylesheet" href="/css/eventos.css">
         <script src="js/darkmodeswitch.js"></script>
         <link rel="icon" href="imagens/SportAgora.png">
@@ -45,14 +47,118 @@
       </article>
     </section>
 
+
+    
     <!-- eventos -->
 
-    <section class="post-section">
-        <article class="post-header">
-            <h2 class="post-title">Explore os eventos ativos</h2>
-            
-        </article>
-    </section>
+
+    <section class="filter-box">
+      <article class="filter-item">
+          <span class="filter-label">Filtrar</span>
+      </article>
+      <article class="separator"></article>
+      <article class="filter-item">
+          <span class="filter-text">Esporte</span>
+          <select class="filter-select">
+              <option>Futebol</option>
+              <option>Basquete</option>
+              <option>Vôlei</option>
+          </select>
+      </article>
+      <article class="filter-item">
+          <span class="filter-text">Estado</span>
+          <select class="filter-select">
+              <option>SP</option>
+              <option>RJ</option>
+              <option>BH</option>
+          </select>
+      </article>
+      <article class="filter-item">
+          <span class="filter-text">Cidade</span>
+          <select class="filter-select">
+              <option>Barueri</option>
+              <option>Jandira</option>
+              <option>Itapevi</option>
+          </select>
+      </article>
+      <article class="filter-item">
+          <span class="filter-text">Data do evento</span>
+          <input type="date" class="filter-date">
+      </article>
+  </section>
+
+  <p class="event-filtros-p">Filtros rápidos</p>
+
+  <!-- Carrosel -->
+      <article class="carousel-container">
+          <aside class="carousel">
+              <aside class="carousel-item">
+                  <a href="/item-do-carrosel">
+                  <img src="/imagens/imgcorrida.png" alt="Corrida de Rua">
+                  <p>Corrida de Rua</p>
+                  </a>
+              </aside>
+              <aside class="carousel-item">
+                  <a href="/item-do-carrosel">
+                  <img src="/imagens/imgciclista.png" alt="Ciclismo">
+                  <p>Ciclismo</p>
+                  </a>
+              </aside>
+              <aside class="carousel-item">
+                  <a href="/item-do-carrosel">
+                  <img src="/imagens/ciclismo.png" alt="Mountain Bike">
+                  <p>Mountain Bike</p>
+                  </a>
+              </aside>
+              <aside class="carousel-item">
+                  <a href="/item-do-carrosel">
+                  <img src="/imagens/triatlo.png" alt="Triathlon">
+                  <p>Triathlon</p>
+                  </a>
+              </aside>
+              <aside class="carousel-item">
+                  <a href="/item-do-carrosel">
+                  <img src="/imagens/imgnatacao.png" alt="Natação">
+                  <p>Natação</p>
+                  </a>
+              </aside>
+              <aside class="carousel-item">
+                  <a href="/item-do-carrosel">
+                  <img src="/imagens/imgfutebol.png" alt="Triathlon Brasil">
+                  <p>Futebol</p>
+                  </a>
+              </aside>
+              <aside class="carousel-item">
+                  <a href="/item-do-carrosel">
+                  <img src="/imagens/imgvolei.png" alt="Uphill">
+                  <p>Volei</p>
+                  </a>
+              </aside>
+              <aside class="carousel-item">
+                  <a href="/item-do-carrosel">
+                  <img src="/imagens/trilha.png" alt="Corrida de Aventura">
+                  <p>Trilha</p>
+                  </a>
+              </aside>
+              <aside class="carousel-item">
+                  <a href="/item-do-carrosel">
+                  <img src="/imagens/imgpingpong.png" alt="Uphill">
+                  <p>Ping pong</p>
+                  </a>
+              </aside>
+              <aside class="carousel-item">
+                  <a href="/item-do-carrosel">
+                  <img src="/imagens/imgskate.png" alt="Uphill">
+                  <p>Skate</p>
+                  </a>
+              </aside>
+          </aside>
+          <aside class="left-arrow carousel-arrow">&lt;</aside>
+          <aside class="right-arrow carousel-arrow">&gt;</aside>
+      </article>
+
+  <article class="carousel-title">Eventos Em Progresso</article>
+  <script defer src="/js/carrossel.js"></script>
     
         <%- include('../partials/evento'); %>
         <%- include('../partials/evento1'); %>

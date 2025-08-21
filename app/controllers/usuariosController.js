@@ -36,7 +36,12 @@ module.exports = {
       if (usuarioExistente) {
        return res.render("pages/registro", {
         dados: req.body,
-        erros: { errors: [{ path: 'email', msg: "Este email já está cadastrado" }] }
+        erros: { errors: [{ path: 'email', msg: "Este email já está cadastrado" }] },
+        dadosNotificacao: {
+          titulo: "Falha ao cadastrar!",
+          mensagem: "Este e-mail já está cadastrado!",
+          tipo: "error",
+        },
       });
     }
 

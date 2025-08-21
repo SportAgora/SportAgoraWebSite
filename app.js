@@ -8,17 +8,14 @@ const flash = require('connect-flash');
 require("dotenv").config();
  
 app.use(helmet({
-  contentSecurityPolicy: false // ⚠️ Apenas para desenvolvimento!
+  contentSecurityPolicy: false // apenas para desenvolvimento
 }));
  
-// Configuração de arquivos estáticos
 app.use(express.static('app/public'));
  
-// Configuração do view engine
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
  
-// Middleware para parsing de dados
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
  
@@ -26,10 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({
   secret: 'sportagoranota10',
   resave: false,
-  saveUninitialized: false, // ⚠️ Altere para FALSE!
+  saveUninitialized: false,
   cookie: {
     maxAge: 24 * 60 * 60 * 1000,
-    secure: false // ⚠️ Defina como true em produção (HTTPS)
+    secure: false 
   }
 }));
  
@@ -60,15 +57,7 @@ app.use('/cadastro', guestMiddleware);
 // Importar e usar as rotas
 const rotas = require('./app/routes/router');
 app.use('/', rotas);
- 
-// REMOVER: Esta rota está duplicada e deve estar no arquivo de rotas
-// app.get('/cadastre-se', (req, res) => {
-//   res.render('cadastre-se', {
-//     dados: {},
-//     erros: []
-//   });
-// });
- 
+  
 // Iniciar o servidor
 app.listen(port, () => {
   console.log(`Servidor ouvindo na porta ${port}\nhttp://localhost:${port}`);

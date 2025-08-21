@@ -1,3 +1,7 @@
+//REFAZER POIS MUDAMOS O PAGAMENTO
+
+
+
 // const pagamentoModel = require('../models/model-usuario');
 // const bcrypt = require('bcryptjs');
 const { body, validationResult } = require("express-validator");

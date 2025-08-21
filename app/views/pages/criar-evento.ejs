@@ -15,6 +15,8 @@
 </head>
 
 <body>
+  <%- include('../partials/navbar'); %>
+
   <header class="container-ver-eventos">
     <button class="botao-seta" onclick="location.href='/organizador'">
       <img src="/imagens/left-arrow.png" alt="Seta">
@@ -23,19 +25,19 @@
   </header>
 
   <main>
-    <form id="evento-form">
+    <form id="evento-form" method="POST" action="/criar-evento">
 
       <section class="container">
         <h1>1. Informações básicas</h1>
         <p class="subtitle">Adicione as principais informações do evento.</p>
 
         <label>Nome do evento *</label>
-        <input type="text" id="nome-evento" maxlength="100" required>
+        <input type="text" id="nome" maxlength="100" value="<%= dados.nome %>" required>
 
         <label>Imagem de divulgação</label>
         <figure class="image-upload" id="image-drop">
           <figcaption id="image-text">Clique ou arraste a imagem aqui</figcaption>
-          <input type="file" accept="image/*" id="image-input" style="display:none;">
+          <input type="file" accept="image/*" id="image-input" style="display:none;" value="<%= dados.foto %>">
           <img id="image-preview" src="" alt="Preview" style="display:none; max-width: 100%; margin-top: 10px;">
         </figure>
 

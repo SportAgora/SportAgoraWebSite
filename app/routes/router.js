@@ -5,6 +5,7 @@ const guestMiddleware = require('../helpers/guestMiddleware');
 const usuariosController = require("../controllers/usuariosController");
 const pagamentoController = require('../controllers/pagamentosController');
 const admController = require("../controllers/admController");
+const eventController = require("../controllers/eventController");
 
 
 const uploadFile = require("../helpers/uploader")("./app/public/imagens/perfil/");
@@ -104,9 +105,6 @@ router.get('/organizador', function(req,res){
     res.render('pages/organizador');  
 })
 
-router.get('/criar-evento', function(req,res){
-    res.render('pages/criar-evento');  
-})
 
 router.get('/pagamento-evento', function(req,res){
     res.render('pages/pagamento-evento');  
@@ -146,6 +144,38 @@ router.get('/erro', function(req,res){
 router.post('/pagamento_selec', pagamentoController.receberPlano);
 router.post('/processar_pagamento', pagamentoController.processarPagamento);
 
+
+/* EVENTOS */
+
+router.get('/criar-evento', function(req,res){
+    res.render('pages/criar-evento', 
+      {
+        "erros": null, 
+        "dados": {
+          nome:"",
+          categoria: "" ,
+          assunto:"", 
+          foto:"", 
+          data_inicio:"", 
+          data_fim:"", 
+          data_hora:"", 
+          descricao:"", 
+          cep:"", 
+          numero:"", 
+          complemento:"",
+          ing_nome:"", 
+          ing_valor:"", 
+          ing_quantidade:"", 
+          ing_meia:""
+          }
+      }
+    );  
+})
+
+router.post('/criar-evento',
+  eventController.criarEventoValidacao,
+  eventController.criarEvento
+);
 
 /* ADM */
 

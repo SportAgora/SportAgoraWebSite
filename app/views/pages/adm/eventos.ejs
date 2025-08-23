@@ -12,11 +12,11 @@
         <section class="assuCate">
             <section class="assunto">
                 <h2>Assunto</h2>
-                    <form action="">
-                    <% if(dados.assuntos) { %>
+                    <form action="/adm/apagar-assunto" method="POST">
+                    <% if(dados.assuntos && dados.assuntos.length > 0) { %>
                         <% dados.assuntos.forEach(function(a) { %>
                             <label class="assuntoTopico"><%= a.assunto_nome %>
-                                <input type="checkbox" value="<%= a.assunto_id%>">
+                                <input type="checkbox" name="assuntosSelecionados[]" value="<%= a.assunto_id%>">
                                 <span class="checkmark"></span>
                             </label>
                         <% }); %>
@@ -26,7 +26,7 @@
                         </tr>
                       <% } %>
                     
-                    <button class="assunto-btn-a">  Apagar - </button>
+                    <input type="submit" class="assunto-btn-a" value="Apagar - ">
                     <hr>
                     </form> 
                     <form action="/adm/criar-assunto" method="POST">
@@ -38,30 +38,28 @@
             </section>
             <section class="categoria">
                 <h2>Categoria</h2> 
-                <form action="">
-                    <label class="categoriaTopico">Grande
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="categoriaTopico">Pequeno
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="categoriaTopico">Médio
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="categoriaTopico">Talvez
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
+                <form action="/adm/apagar-categoria" method="POST">
+                    <%
+                        if(dados.categorias && dados.categorias.length > 0) { %>
+                        <% dados.categorias.forEach(function(a) { %>
+                            <label class="categoriaTopico"><%= a.categoria_nome %>
+                                <input type="checkbox" name="categoriasSelecionados[]" value="<%= a.categoria_id%>">
+                                <span class="checkmark"></span>
+                            </label>
+                        <% }); %>
+                      <% } else { %>
+                        <tr>
+                          <td colspan="5">Nenhuma categoria encontrada.</td>
+                        </tr>
+                      <% } %>
                     
-                    <button class="categoria-btn-a">Apagar -</button>
-                    <hr>
-                    <form action="">
-                        <input type="text" name="novoCategoria" id="novoCategoria" placeholder="Adicione um Categoria">
-                        <button class="categoria-btn">Adicionar +</button>
+                    <input type="submit" class="categoria-btn-a" value="Apagar -">
                     </form>
+                    <hr>
+                    <form action="/adm/criar-categoria" method="POST">
+                        <input type="text" name="novaCategoria" id="novaCategoria" placeholder="Adicione um Categoria" value="<%= dados.novaCategoria%>">
+                        <input type="submit" class="categoria-btn" value="Adicionar +">
+                    
                 </form>
             </section>
         </section>
@@ -113,8 +111,6 @@
             <button class="evento-btn">+ Novo Evento</button>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2025 Sport Agora</p>
-    </footer>
+    <%- include('../../partials/adm_footer'); %>
 </body>
 </html>

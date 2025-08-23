@@ -205,6 +205,19 @@ router.post('/adm/criar-assunto', verificarAdm,
   admController.criarAssunto
 );
 
+router.post('/adm/apagar-assunto', verificarAdm,
+  admController.apagarAssunto
+);
+
+router.post('/adm/criar-categoria', verificarAdm,
+  admController.criarCategoria
+);
+
+router.post('/adm/apagar-categoria', verificarAdm,
+  admController.apagarCategoria
+);
+
+
 router.get('/adm/descricaoEvento', verificarAdm, function(req,res){
   res.render('pages/adm/descricaoEvento');  
 }) 

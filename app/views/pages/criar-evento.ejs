@@ -47,11 +47,14 @@
 
           <section>
             <label>Assunto *</label>
-            <select required>
-              <option value="">Selecione</option>
-              <option>Futebol</option>
-              <option>Basquete</option>
-              <option>Vôlei</option>
+            <select id = " assunto"required>
+              <% if(dados.assunto) { %>
+                        <% assunto.forEach(function(a) { %>
+                            <option value="<%= a.categoria_id%>"><%= a.categoria_nome %></option>
+                        <% }); %>
+                      <% } else { %>
+                        <option value="" disabled selected>Nenhuma opção</option>
+                      <% } %>
             </select>
           </section>
 

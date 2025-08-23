@@ -76,6 +76,39 @@ module.exports = {
       console.error(e)
       throw e
     }
+  }, 
+  carregarCriarEvento: async (req, res) => {
+  try {
+    const categoria = await OrganizadorModel.CategoriasFindAll();
+    const assunto = await OrganizadorModel.AssuntosFindAll();
+
+    res.render("pages/criar-evento", {
+        "erros": null, 
+        "dados": {
+          nome:"",
+          categoria: "" ,
+          assunto:"", 
+          foto:"", 
+          data_inicio:"", 
+          data_fim:"",
+          data_hora:"", 
+          descricao:"", 
+          cep:"", 
+          numero:"", 
+          complemento:"",
+          ing_nome:"", 
+          ing_valor:"", 
+          ing_quantidade:"", 
+          ing_meia:"",
+          categoria: categoria,
+          assunto: assunto
+         }
+    });
+
+  } catch (err) {
+    console.error(err);
+    return res.redirect("/login");
   }
+},
 
 }

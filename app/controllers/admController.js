@@ -4,7 +4,28 @@ const { body, validationResult } = require("express-validator");
 
 const {removeImg }= require("../helpers/removeImg")
 
- 
+
+async function  carregarEventosErro (errors,req,res){ 
+          const pagina = parseInt(req.query.pagina) || 1;
+            const limite = 10;
+            const offset = (pagina - 1) * limite;
+            const resultado = await AdmModel.EventosListarComPaginacao(offset, limite) 
+            const total_paginas = Math.ceil(resultado.total / limite);
+            const assuntos = await AdmModel.AssuntosFindAll();
+            return res.render('pages/adm/eventos', {
+            
+            dados: {
+              eventos: resultado.eventos,
+              assuntos,
+              novoAssunto:"",
+              novaCategoria:"",
+              paginador: {
+                pagina_atual: pagina,
+                total_paginas
+            },
+            erros: errors
+            }})
+        } 
 module.exports = {
     regrasValidacao: [
         body("nome").isLength({min:3,max:30}).withMessage("Insira um nome válido."),
@@ -108,64 +129,62 @@ module.exports = {
         }      
     },
     carregarEventos: async (req,res) =>{
-      try{
-          // const pagina = parseInt(req.query.pagina) || 1;
-          // const limite = 10;
-          // const offset = (pagina - 1) * limite;
-          // const resultado = await AdmModel.UserListarComPaginacao(offset, limite) 
+        try{
+            const pagina = parseInt(req.query.pagina) || 1;
+            const limite = 10;
+            const offset = (pagina - 1) * limite;
+            const resultado = await AdmModel.EventosListarComPaginacao(offset, limite) 
 
-          // const total_paginas = Math.ceil(resultado.total / limite);
-          res.render('pages/adm/usuarios', {
-          // usuarios: resultado.usuarios,
-          // paginador: {
-          //     pagina_atual: pagina,
-          //     total_paginas
-          // }
-          assuntos: AdmModel.CustomFindAssunto()
-          });
-      }catch(e){
-          console.error(e)
-          throw e;
-      }
+            const total_paginas = Math.ceil(resultado.total / limite);
+
+            const assuntos = await AdmModel.AssuntosFindAll();
+
+            res.render('pages/adm/eventos', {
+            
+            dados: {
+              eventos: resultado.eventos,
+              assuntos,
+              novoAssunto:"",
+              novaCategoria:"",
+              paginador: {
+                pagina_atual: pagina,
+                total_paginas
+            }
+            }
+            
+            });
+        }catch(e){
+            console.error(e)
+            throw e;
+        }
   },
     criarAssunto: async (req, res) => {
       const errors = validationResult(req);
           if(!errors.isEmpty()) {
-              console.log(errors);
-              return res.render('pages/adm/eventos',{
-                  dados: req.body,
-                  erros: errors
-              })
+            return carregarEventosErro(errors,req,res);
           }
   
       try {
-  
-        const {assunto} = req.body;
-  
-        if (assunto){
-        const assuntoExistente = await AdmModel.CustomFind(assunto,assunto_nome,assunto);
+        
+        const {novoAssunto} = req.body;
+        if (novoAssunto){
+        const assuntoExistente = await AdmModel.AssuntosFindName(novoAssunto);
         if (assuntoExistente) {
-         return res.render("pages/adm/eventos", {
-          dados: req.body,
-          erros: { errors: [{ path: 'assunto', msg: "Este assunto já existe"}] }
-        });
+         return carregarEventosErro({ errors: [{ path: 'novoAssunto', msg: "Este assunto já existe"}] },req,res);
       }
 
-        const assuntoReturn = await AdmModel.AssuntoCreate({assunto:assunto});
+        const assuntoReturn = await AdmModel.AssuntoCreate({nome:novoAssunto});
         
         console.log("Sucesso ao criar assunto: " + assuntoReturn)
   
         res.redirect("/adm/eventos");
        
+      } else {
+        return carregarEventosErro({ errors: [{ path: 'assunto', msg: "Insira um nome válido." }] },req,res);
       }
     } catch (e) {
         console.error(e);
-        res.render("pages/adm/eventos", {
-        dados: req.body,
-        erros: { errors: [{ path: 'assunto', msg: "Ocorreu um erro ao criar o assunto" }] }
-      });
-  
-        
-      }
+      return carregarEventosErro({ errors: [{ path: 'assunto', msg: "Ocorreu um erro ao criar o assunto" }] },req,res);
+    }
     }
 }

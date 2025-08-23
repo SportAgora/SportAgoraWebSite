@@ -12,11 +12,11 @@
         <section class="assuCate">
             <section class="assunto">
                 <h2>Assunto</h2>
-                <form action="">
-                    <% if(assuntos) { %>
-                        <% assuntos.forEach(function(a) { %>
-                            <label class="assuntoTopico"><%= a.nome %>
-                                <input type="checkbox" value="<%= a.id%>">
+                    <form action="">
+                    <% if(dados.assuntos) { %>
+                        <% dados.assuntos.forEach(function(a) { %>
+                            <label class="assuntoTopico"><%= a.assunto_nome %>
+                                <input type="checkbox" value="<%= a.assunto_id%>">
                                 <span class="checkmark"></span>
                             </label>
                         <% }); %>
@@ -28,12 +28,13 @@
                     
                     <button class="assunto-btn-a">  Apagar - </button>
                     <hr>
-                    <form action="">
-                        <input type="text" name="novoAssunto" id="novoAssunto" placeholder="Adicione um Assunto">
-                        <button class="assunto-btn">Adicionar +</button>
+                    </form> 
+                    <form action="/adm/criar-assunto" method="POST">
+                        <input type="text" name="novoAssunto" id="novoAssunto" placeholder="Adicione um Assunto" value="<%= dados.novoAssunto%>">
+                        <input type="submit" class="assunto-btn" value="Adicionar +">
                     </form>
                     
-                </form> 
+                
             </section>
             <section class="categoria">
                 <h2>Categoria</h2> 

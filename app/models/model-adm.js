@@ -225,17 +225,74 @@ const AdmModel = {
       throw error;
     }
   },
-  CustomFindAssunto: async () => {
+  CustomFindAssunto: async (nome) => {
     try {
-      const query = "SELECT * FROM assunto ";
-      const [rows] = await pool.query(query);
+      const query = "SELECT * FROM assunto WHERE assunto_nome = ?";
+      const [rows] = await pool.query(query, [nome]);
       return rows.length > 0 ? rows[0] : null;
     } catch (error) {
       console.error("Erro ao verificar nome:", error);
       throw error;
     }
   },
+  EventosListarComPaginacao: async (offset, limite) => {
+    try {
+      // Consulta para obter os usuários com paginação
+      const queryEventos = `
+        SELECT * FROM eventos
+        WHERE evento_ativo = 1
+        ORDER BY evento_data_publicacao
+        LIMIT ? OFFSET ?
 
+      `;
+     
+      // Consulta para obter o total de usuários
+      const queryTotal = "SELECT COUNT(*) as total FROM eventos";
+     
+      // Executar as consultas
+      const [eventos] = await pool.query(queryEventos, [limite, offset]);
+      const [totalResult] = await pool.query(queryTotal);
+     
+      return {
+        eventos,
+        total: totalResult[0].total
+      };
+    } catch (error) {
+      console.error("Erro ao listar usuários:", error);
+      throw error;
+    }
+  },
+  CategoriasFindAll: async () => {
+        try {
+          const query = "SELECT * FROM categoria";
+          const [rows] = await pool.query(query);
+          return rows
+        } catch (error) {
+          console.error("Erro ao buscar categorias:", error);
+          throw error;
+        }
+      },
+  
+      AssuntosFindAll: async () => {
+        try {
+          const query = "SELECT * FROM assunto";
+          const [rows] = await pool.query(query);
+          return rows
+        } catch (error) {
+          console.error("Erro ao buscar assuntos:", error);
+          throw error;
+        }
+      },
+      AssuntosFindName: async (name) => {
+        try {
+          const query = "SELECT * FROM assunto WHERE assunto_nome = ?";
+          const [rows] = await pool.query(query, [name]);
+           return rows.length > 0 ? rows[0] : null; // retorna objeto ou null
+        } catch (error) {
+          console.error("Erro ao buscar assuntos:", error);
+          throw error;
+        }
+      },
 
 }
 

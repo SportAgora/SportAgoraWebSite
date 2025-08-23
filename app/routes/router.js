@@ -147,32 +147,12 @@ router.post('/processar_pagamento', pagamentoController.processarPagamento);
 
 /* EVENTOS */
 
-router.get('/criar-evento', function(req,res){
-    res.render('pages/criar-evento', 
-      {
-        "erros": null, 
-        "dados": {
-          nome:"",
-          categoria: "" ,
-          assunto:"", 
-          foto:"", 
-          data_inicio:"", 
-          data_fim:"", 
-          data_hora:"", 
-          descricao:"", 
-          cep:"", 
-          numero:"", 
-          complemento:"",
-          ing_nome:"", 
-          ing_valor:"", 
-          ing_quantidade:"", 
-          ing_meia:""
-          }
-      }
-    );  
+router.get('/criar-evento',  verificarAutenticacao, function(req,res){
+  eventController.carregarCriarEvento(req,res);
 })
 
 router.post('/criar-evento',
+  verificarAutenticacao,
   eventController.criarEventoValidacao,
   eventController.criarEvento
 );
@@ -220,6 +200,10 @@ router.get('/adm/cadastro_concluido', verificarAdm, function(req,res){
 router.get('/adm/eventos', verificarAdm, function(req,res){
   admController.carregarEventos(req,res);
 }) 
+
+router.post('/adm/criar-assunto', verificarAdm,
+  admController.criarAssunto
+);
 
 router.get('/adm/descricaoEvento', verificarAdm, function(req,res){
   res.render('pages/adm/descricaoEvento');  

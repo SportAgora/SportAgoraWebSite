@@ -55,7 +55,29 @@ createEvent: async (eventData, ingressoData) => {
       console.error("Erro ao criar evento: \n", error);
       throw error;
     }
-  }
+  },
+
+   CategoriasFindAll: async () => {
+      try {
+        const query = "SELECT * FROM categoria";
+        const [rows] = await pool.query(query);
+        return rows.length > 0 ? rows[0] : null;
+      } catch (error) {
+        console.error("Erro ao buscar categorias:", error);
+        throw error;
+      }
+    },
+
+    AssuntosFindAll: async () => {
+      try {
+        const query = "SELECT * FROM assunto";
+        const [rows] = await pool.query(query);
+        return rows.length > 0 ? rows[0] : null;
+      } catch (error) {
+        console.error("Erro ao buscar assuntos:", error);
+        throw error;
+      }
+    },
 };
  
 module.exports = OrganizadorModel;

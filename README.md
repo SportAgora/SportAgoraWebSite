@@ -4,12 +4,16 @@ npm install --save
 criar banco de dados (script.sql)
 criar .env
 
-DB_HOST        = 
-DB_USER        = 
-DB_PASSWORD    = 
-DB_NAME        = 
-DB_PORT        = 
-APP_PORT       = 
+DB_HOST        =
+DB_USER        =
+DB_PASSWORD    =
+DB_NAME        =
+DB_PORT        =
+APP_PORT       =
+EMAIL_USER     =
+SECRET_KEY     =
+EMAIL_SERVICE  =
+URL_BASE       =
 
 ex:
 
@@ -19,3 +23,7 @@ DB_PASSWORD    =
 DB_NAME        = sportagora
 DB_PORT        = 3306
 APP_PORT       = 3000
+EMAIL_USER     = email@email.com
+SECRET_KEY     = senhasecreta
+EMAIL_SERVICE  = outlook
+URL_BASE       = https://localhost:3000

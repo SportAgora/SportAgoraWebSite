@@ -50,6 +50,15 @@ router.post("/login",   usuariosController.regrasValidacaoLogin, usuariosControl
 router.get("/logout", usuariosController.logout);
 router.post("/logout", usuariosController.logout);
 
+
+router.get('/recuperar-senha', function(req,res){
+    res.render('pages/recuperar-senha');  
+})
+
+router.get('/resetar-senha', function(req,res){
+    res.render('pages/resetar-senha');  
+})
+
 /*
 
 PAGINAS

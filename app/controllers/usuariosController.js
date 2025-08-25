@@ -1,6 +1,10 @@
 const UsuarioModel = require('../models/model-usuario');
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require("express-validator");
+const https = require("https");
+const jwt = require("jsonwebtoken");
+const { enviarEmail } = require("../helpers/email");
+const emailAtivarConta = require("../helpers/email-ativar-conta");
 
 const {removeImg }= require("../helpers/removeImg")
 

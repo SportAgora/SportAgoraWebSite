@@ -1,25 +1,64 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <title>Redefinir Senha</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/recuperar-senha.css">
 </head>
 <body>
     <main>          
         <section class="container-reset-senha">
             <article class="header">
                 <h1>Recuperação de Senha</h1>
-                <img src="$(url)/imagens/SportAgora.png" alt="Logo" class="logo">
+                <img src="/imagens/SportAgora.png" alt="Logo" class="logo">
             </article>
             <aside class="form-reset-senha">
                 <form action="" method="post">
                     <h3>Escreva seu Email para recuperação</h3>
-                    <input type="email " name="email" placeholder="E-mail" value="" class="" /><br>
-                    <button type="submit">Enviar</button><br>
+                    <p>Para recuperar a sua senha, informe seu endereço de email que nós enviaremos um link para a alteração da senha.</p>
+                    <input type="email " name="email" placeholder="E-mail" value="" class="" id="email"/><br>
+                    <button type="submit" class="enviar-btn">Enviar</button><br>
                 </form>
             </aside>
         </section>
     </main>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- <link rel="stylesheet" href="/css/login.css"> -->
+    <link rel="stylesheet" href="/css/recuperar-senha.css">
+    <link rel="stylesheet" href="/css/erro.css">
+    <script src="/js/login.js" defer></script>
+    <link rel="icon" href="imagens/SportAgora.png">
+</head>
+<body>
+    <header>
+    <%- include('../partials/navbar'); %> 
+    </header>
+    <main class="main_login">  
+        <img src='imagens/normal_u1.png' alt="pessoa" class="pessoa1">  <!-- pq q eu fiz uma class pra main sendo q ja é main? -->
+        <section class="container5">
+            <article class="buttonsForm">
+                <h1>Recuperação de Senha</h1>
+            </article>
+            <article class="form-reset-senha">
+                <form action="" method="post">
+                    <h3>Escreva seu Email para recuperação</h3>
+                    <p>Para recuperar a sua senha, informe seu endereço de email que nós enviaremos um link para a alteração da senha.</p>
+                    <input type="email " name="email" placeholder="E-mail" value="" class="" id="email"/><br>
+                    <button type="submit" class="enviar-btn">Enviar</button><br>
+                </form>
+            </article>
+        </section>  
+        <img src='imagens/normal_u0.png' alt="pessooaaa" class="pessoa2">
+    </main>
+    <%- include('../partials/footer'); %>
 </body>
 </html>

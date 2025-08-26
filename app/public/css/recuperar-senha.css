@@ -1,0 +1,89 @@
+
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        background-color: #28a745;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .form-reset-senha{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-reset-senha form{
+        padding: 20px 50px 0px 50px;;
+    }
+    #email {
+        border-top: 1px double white;
+        border-right: 1px double white;
+        border-bottom: 2px solid gray;
+        border-left: 1px double white;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding: 8px 0 8px 15px;
+        outline: none;
+        width: 90%;
+        font-size: 18px;
+        background-color: white;
+    }
+    .enviar-btn{
+    background-color: #216F27;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+
+    .container5 {
+        background-color: var(--postcor);
+        width: 880px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 20px 0 var(--cinza-escuro);
+        margin-top: 100px;
+        font-size: 18px;
+        margin-bottom: 60px;
+        padding: 20px;
+}
+.main_login {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.buttonsForm h1 {
+    font-size: 45px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: var(--textopost);
+}
+
+@media (max-width: 925px) {
+    .main_login {
+        width: 100%;
+        margin: auto;
+    }
+    .container5{
+        width: 100%;
+        margin: 4em auto;
+    }
+    .pessoa1{
+        display: none;
+    }
+    .pessoa2{
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    
+}

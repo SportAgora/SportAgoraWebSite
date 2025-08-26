@@ -16,7 +16,24 @@
     .form-reset-senha form{
         padding: 20px 50px 0px 50px;;
     }
-    #email {
+    
+    .form-reset-senha1 form{
+        padding: 10px 50px 0px 50px;;
+    }
+    
+    .form-reset-senha p{
+        padding-bottom: 10px;
+    }
+    .ab{
+        height: 350px;
+    }
+    aside{
+        display: flex;
+    }
+    aside input{
+        margin: 10px;
+    }
+    #email, .senha {
         border-top: 1px double white;
         border-right: 1px double white;
         border-bottom: 2px solid gray;
@@ -25,7 +42,7 @@
         margin-bottom: 20px;
         padding: 8px 0 8px 15px;
         outline: none;
-        width: 90%;
+        width: 100%;
         font-size: 18px;
         background-color: white;
     }
@@ -37,8 +54,12 @@
     font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 350px;
     }
 
+    .ab{
+        height: 400px;
+    }
     .container5 {
         background-color: var(--postcor);
         width: 880px;
@@ -67,13 +88,19 @@
     color: var(--textopost);
 }
 
+footer{
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
 @media (max-width: 925px) {
     .main_login {
         width: 100%;
         margin: auto;
     }
     .container5{
-        width: 100%;
+        width:              100%;
         margin: 4em auto;
     }
     .pessoa1{

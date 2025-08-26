@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>/
 <html lang="pt-br">
 <head>
     <title>Resetar Senha</title>
@@ -19,5 +19,47 @@
             </aside>
         </section>
     </main>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resetar Senha</title>
+    <!-- <link rel="stylesheet" href="/css/login.css"> -->
+    <link rel="stylesheet" href="/css/recuperar-senha.css">
+    <link rel="stylesheet" href="/css/erro.css">
+    <script src="/js/login.js" defer></script>
+    <link rel="icon" href="imagens/SportAgora.png">
+    
+</head>
+<body>         
+    <header>
+    <%- include('../partials/navbar'); %> 
+    </header>
+    <main class="main_login">  
+        <img src='imagens/normal_u1.png' alt="pessoa" class="pessoa1">  
+        <section class="container5">
+            <article class="buttonsForm">
+                <h1>Resetar senha</h1>
+            </article>
+            <article class="form-reset-senha1">
+                <form action="/resetar-senha" method="post">
+                    <h3>Defina uma nova senha segura</h3>
+                    <p>Para redefinir sua senha, digite e confirme uma nova senha nos campos abaixo. Caso ainda não tenha solicitado a redefinição, volte e informe seu e-mail para receber o link de alteração.</p>
+                    <input type="hidden" name="usu_id" value="<%=usu_id%>">
+                    <aside>
+                        <input type="password" name="senha" id="senha" placeholder="Nova senha" value="" class="senha" /><br>
+                        <input type="password" name="rep_senha" placeholder="Repita a senha" value="" class="senha" /><br>
+                    </aside>
+                    <button type="submit" class="enviar-btn">Entrar</button><br>
+                </form>
+            </article>
+        </section>  
+        <img src='imagens/normal_u0.png' alt="pessooaaa" class="pessoa2">
+    </main>
+    <%- include('../partials/footer'); %>
 </body>
 </html>

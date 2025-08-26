@@ -50,14 +50,29 @@ router.post("/login",   usuariosController.regrasValidacaoLogin, usuariosControl
 router.get("/logout", usuariosController.logout);
 router.post("/logout", usuariosController.logout);
 
+router.get("/recuperar-senha", 
+  function(req, res){
+    res.render("pages/recuperar-senha",
+      { erros: null, dadosNotificacao: null });
+});
 
-router.get('/recuperar-senha', function(req,res){
-    res.render('pages/recuperar-senha');  
-})
+router.post("/recuperar-senha",
+  usuariosController.regrasValidacaoFormRecSenha, 
+  function(req, res){
+    usuariosController.recuperarSenha(req, res);
+});
 
-router.get('/resetar-senha', function(req,res){
-    res.render('pages/resetar-senha');  
-})
+router.get("/reset-senha", 
+  function(req, res){
+    usuariosController.validarTokenNovaSenha(req, res);
+  });
+  
+router.post("/resetar-senha", 
+    usuariosController.regrasValidacaoFormNovaSenha,
+  function(req, res){
+    usuariosController.resetarSenha(req, res);
+});
+  
 
 /*
 
@@ -114,7 +129,6 @@ router.get('/organizador', function(req,res){
     res.render('pages/organizador');  
 })
 
-
 router.get('/pagamento-evento', function(req,res){
     res.render('pages/pagamento-evento');  
 })
@@ -131,7 +145,6 @@ router.get('/criar-post', function(req,res){
   res.render('pages/criar-post');  
 })
 
-
 router.get('/infoevento-natacao.ejs', function(req,res){
   res.render('pages/infoevento-natacao.ejs');  
 })
@@ -144,11 +157,11 @@ router.post(
 
 router.get('/home', function(req,res){res.redirect('/')})
 
-
 router.get('/erro', function(req,res){
   res.render('pages/error');  
 })
 
+/* PAGAMENTOS */
 
 router.post('/pagamento_selec', pagamentoController.receberPlano);
 router.post('/processar_pagamento', pagamentoController.processarPagamento);

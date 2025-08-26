@@ -10,10 +10,10 @@
         <section class="container-reset-senha">
             <aside class="form-reset-senha">
                 <h2>Resetar senha</h2>
-                <form action="" method="post">
-                    <input type="hidden" name="id_usuario" value="">
-                    <input type="password" name="senha_usu" placeholder="Nova senha" value="" class="" /><br>
-                    <input type="password" name="csenha_usu" placeholder="Repita a senha" value="" class="" /><br>
+                <form action="/resetar-senha" method="post">
+                    <input type="hidden" name="usu_id" value="<%=usu_id%>">
+                    <input type="password" name="senha" id="senha" placeholder="Nova senha" value="" class="" /><br>
+                    <input type="password" name="rep_senha" placeholder="Repita a senha" value="" class="" /><br>
                     <button type="submit">Entrar</button><br>
                 </form>
             </aside>

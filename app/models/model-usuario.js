@@ -73,7 +73,7 @@ const UsuarioModel = {
   // Atualizar usuário
   atualizar: async (id, userData) => {
     try {
-      const { nome, arroba, email, data_nascimento, logradouro_id, cpf, telefone, plano, tipo, foto, banner, senha} = userData;
+      const { nome, arroba, email, data_nascimento, telefone, plano, tipo, foto, banner, senha} = userData;
  
       // Preparar os dados para atualização
       const data = {
@@ -82,8 +82,6 @@ const UsuarioModel = {
         usu_email: email,
         usu_senha:senha,
         usu_nasc: data_nascimento ? moment(data_nascimento).format('YYYY-MM-DD') : null,
-        endereco_id: logradouro_id || null,
-        usu_cpf: cpf ? formatCPF(cpf) : null,
         contato_id: telefone,
         plano_id : plano,
         tipo : tipo,

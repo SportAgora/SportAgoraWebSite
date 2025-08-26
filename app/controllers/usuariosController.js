@@ -94,6 +94,113 @@ module.exports = {
     }
   },
 
+  regrasValidacaoFormNovaSenha: [
+    body("senha")
+      .isStrongPassword()
+      .withMessage(
+        "A senha deve ter no mínimo 8 caracteres (mínimo 1 letra maiúscula, 1 caractere especial e 1 número)"
+      )
+      ,
+    body("rep_senha")
+      .isStrongPassword()
+      .withMessage(
+        "A senha deve ter no mínimo 8 caracteres (mínimo 1 letra maiúscula, 1 caractere especial e 1 número)"
+      ).custom(async (value, { req }) => {
+        if (value !== req.body.rep_senha) {
+          throw new Error("As senhas não são iguais!");
+        }
+      }),
+  ],
+
+  regrasValidacaoFormRecSenha: [
+    body("email")
+      .isEmail()
+      .withMessage("Digite um e-mail válido!")
+      .custom(async (value) => {
+        const nomeUsu = await UsuarioModel.findByEmail(value);
+        if (!nomeUsu) {
+          throw new Error("E-mail não encontrado");
+        }
+      }),
+  ],
+
+
+  recuperarSenha: async (req, res) => {
+    const erros = validationResult(req);
+    console.error(erros);
+    if (!erros.isEmpty()) {
+      return res.render("pages/recuperar-senha", {
+        dados: req.body,
+        erros: erros
+      });
+    }
+    try {
+      //logica do token
+      user = await UsuarioModel.findByEmail(req.body.email);
+      const token = jwt.sign(
+        { userId: user.usu_id, expiresIn: "25m" },
+        process.env.SECRET_KEY
+      );
+
+      //enviar e-mail com link usando o token
+      html = require("../helpers/email-reset-senha")(process.env.URL_BASE, token)
+      enviarEmail(req.body.email, "Pedido de recuperação de senha", null, html, ()=>{
+        return res.redirect("/login");
+      });
+
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
+  validarTokenNovaSenha: async (req, res) => {
+    //receber token da URL
+    const token = req.query.token;
+    console.log(token);
+    //validar token
+    jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+      if (err) {
+        res.render("pages/recuperar-senha", {
+          erros: null,
+          dadosNotificacao: { titulo: "Link expirado!", mensagem: "Insira seu e-mail para iniciar o reset de senha.", tipo: "error", },
+          dados: req.body
+        });
+      } else {
+        res.render("pages/resetar-senha", {
+          erros: null,
+          usuario: req.session.usuario,
+          usu_id: decoded.userId,
+          dadosNotificacao: null
+        });
+      }
+    });
+  },
+  
+  resetarSenha: async (req, res) => {
+    const erros = validationResult(req);
+    console.log(erros);
+    if (!erros.isEmpty()) {
+      return res.render("pages/resetar-senha", {
+        erros: erros,
+        dadosNotificacao: null,
+        dados: req.body,
+      });
+    }
+    try {
+      //gravar nova senha
+      senha = await bcrypt.hash(req.body.senha, 10);
+      console.log(req.body.usu_id);
+      console.log(senha);
+      console.log(req.body.senha);
+      const resetar = await UsuarioModel.atualizar(req.body.usu_id, {senha:senha} );
+      console.log(resetar);
+      res.redirect("/login");
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
+
   regrasValidacaoLogin :[
   body("email").isEmail().withMessage("Email inválido.")
 ],

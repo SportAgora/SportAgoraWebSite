@@ -33,9 +33,44 @@
     <link rel="stylesheet" href="/css/erro.css">
     <script src="/js/login.js" defer></script>
     <link rel="icon" href="imagens/SportAgora.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <script src="/js/notify.js"></script>
     
 </head>
-<body>         
+<body> 
+
+    <% 
+    let avisoErro = {"senha":"","repsenha":""};
+    let msgErro = ""
+        if(erros){
+            erros.errors.forEach(function(erro){
+                if(erro.path == "senha"){
+                    avisoErro.senha = "erro";
+                    msgErro += `* ${erro.msg} <br>`
+                }
+                if(erro.path == "rep_senha"){
+                    avisoErro.rep_senha = "erro";
+                    msgErro += `* ${erro.msg} <br>`
+                }
+            })
+
+        }
+        if(msgErro != ""){
+                    %>
+                        <script>
+                            let msgErro ="<%= msgErro %>"
+                            notify("Erro(s) no preenchimento", 
+                                   "Verifique o(s) campo(s) <br> " + msgErro.replace(/&lt;/g,"<").replace(/&gt;/g,">"), 
+                                   "error", "right bottom", 5000)                        
+                        </script>
+    <%} if (dadosNotificacao) { %>
+            <script>
+                    notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "right bottom")                    
+            </script>
+    <% } %>
+
     <header>
     <%- include('../partials/navbar'); %> 
     </header>

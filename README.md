@@ -25,5 +25,5 @@ DB_PORT        = 3306
 APP_PORT       = 3000
 EMAIL_USER     = email@email.com
 SECRET_KEY     = senhasecreta
-EMAIL_SERVICE  = outlook
+EMAIL_SERVICE  = gmail
 URL_BASE       = https://localhost:3000

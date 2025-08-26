@@ -38,6 +38,13 @@ router.post('/cadastrar',
   usuariosController.regrasValidacao, 
   usuariosController.cadastrarUsuarioNormal);
 
+router.get(
+  "/ativar-conta",
+  async function (req, res) {
+    usuariosController.ativarConta(req, res);
+  }
+);
+
 router.get("/login", (req, res) => {
   res.render("pages/login", {
   erro: null,  erros: null,  dados: { email: "", senha: "" }, dadosNotificacao:"",  retorno: null

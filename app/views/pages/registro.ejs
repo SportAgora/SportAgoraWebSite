@@ -10,36 +10,78 @@
     <link rel="stylesheet" href="css/passwordvalidator.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="icon" href="imagens/SportAgora.png">
+
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <script src="/js/notify.js"></script>
 </head>
 <body onload="testarSenha()">
     <%
     let  erroValidacao =  {"nome":"","email":"", "repsenha":"","senha":""};
-    let  msgErro =  {"nome":"","email":"","repsenha":"","senha":""};
+    let  msgErroPag =  {"nome":"","email":"","repsenha":"","senha":""};
     if(erros) {
         erros.errors.forEach(function(erro) {
             if (erro.path == "nome") {
                 erroValidacao.nome = "erro",
-                msgErro.nome = erro.msg
+                msgErroPag.nome = erro.msg
             }
             if (erro.path == "email") {
                 erroValidacao.email = "erro",
-                msgErro.email = erro.msg
+                msgErroPag.email = erro.msg
             }
             if (erro.path == "repsenha") {
                 erroValidacao.repsenha = "erro",
-                msgErro.repsenha = erro.msg
+                msgErroPag.repsenha = erro.msg
             }
             if (erro.path == "senha") {
                 erroValidacao.senha = "erro",
-                msgErro.senha = erro.msg
+                msgErroPag.senha = erro.msg
             }
         })
     }; %>
 
+    <% 
+    let avisoErro = {"nome":"","email":"", "senha":"","repsenha":""};
+    let msgErro = ""
+        if(erros){
+            erros.errors.forEach(function(erro){
+                if(erro.path == "nome"){
+                    avisoErro.nome = "erro";
+                    msgErro += `* ${erro.msg} <br>`
+                }
+                if(erro.path == "email"){
+                    avisoErro.email = "erro";
+                    msgErro += `* ${erro.msg} <br>`
+                }
+                if(erro.path == "senha"){
+                    avisoErro.senha = "erro";
+                    msgErro += `* ${erro.msg} <br>`
+                }
+                if(erro.path == "repsenha"){
+                    avisoErro.repsenha = "erro";
+                    msgErro += `* ${erro.msg} <br>`
+                }
+            })
+
+        }
+        if(msgErro != ""){
+                    %>
+                        <script>
+                            let msgErro ="<%= msgErro %>"
+                            notify("Erro(s) no preenchimento", 
+                                   "Verifique o(s) campo(s) <br> " + msgErro.replace(/&lt;/g,"<").replace(/&gt;/g,">"), 
+                                   "error", "right bottom", 5000)                        
+                        </script>
+    <%} if (dadosNotificacao) { %>
+            <script>
+                    notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "right bottom")                    
+            </script>
+    <% } %>
+
     <header>
     <%- include('../partials/navbar'); %> 
     </header>
-    <main class="main_logi">    <!-- pq q eu fiz uma class pra main sendo q ja é main? -->
+    <main class="main_logi">
         <img src='imagens/normal_u1.png' alt="pessoa" class="pessoa1">
         <section class="container6">
             <article class="buttonsForm">
@@ -49,10 +91,10 @@
         
             <form id="signup" method="post" action="/cadastrar">
                 <input type="text" placeholder="Nome de usuário" name="nome" id="nome" value="<%= dados.nome  %>" class="<%= erroValidacao.nome %>"> 
-                <span class="spanerro"><%= msgErro.nome %></span><br>
+                <span class="spanerro"><%= msgErroPag.nome %></span><br>
 
                 <input type="email" placeholder="Email" name="email" id="email" value="<%= dados.email  %>" class="<%= erroValidacao.email %>"> 
-                <span class="spanerro"><%= msgErro.email %></span><br>
+                <span class="spanerro"><%= msgErroPag.email %></span><br>
                 
                     <input type="password" placeholder="Senha" name="senha" id="senha" value="<%= dados.senha  %>" class="<%= erroValidacao.senha %>">
                     <div class="content">
@@ -82,7 +124,7 @@
                     </div>
                   
                 <input type="password" placeholder="Repita a Senha" name="repsenha" id="repsenha" value="<%= dados.repsenha  %>" class="<%= erroValidacao.repsenha %>"> 
-                <span class="spanerro"><%= msgErro.repsenha %></span><br>
+                <span class="spanerro"><%= msgErroPag.repsenha %></span><br>
                 
                 <section class="divCheck">
                 <input type="checkbox" />

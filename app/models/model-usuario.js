@@ -43,7 +43,7 @@ const UsuarioModel = {
   // Criar novo usuário
   create: async (userData) => {
     try {
-      const { nome, email, senha, foto, banner } = userData;
+      const { nome, email, senha, foto, banner, status } = userData;
  
       // Preparar os dados para inserção
       const data = {
@@ -52,7 +52,8 @@ const UsuarioModel = {
         usu_senha: senha, // Já deve estar com hash
         perf_nome: nome,
         usu_foto:foto,
-        usu_banner:banner
+        usu_banner:banner,
+        usu_status: status || 1,
       };
  
       // Construir a query dinamicamente
@@ -137,7 +138,21 @@ const UsuarioModel = {
       console.error("Erro ao alterar senha:", error);
       throw error;
     }
-  }
+  },
+
+  ativarConta: async (id) => {
+    try {
+     
+      const query = "UPDATE USUARIO SET usu_status = ? WHERE usu_id = ?";
+      const [result] = await pool.query(query, [1, id]);
+     
+      return result.affectedRows > 0;
+    } catch (error) {
+      console.error("Erro ao alterar senha:", error);
+      throw error;
+    }
+  },
+
 };
  
 module.exports = UsuarioModel;

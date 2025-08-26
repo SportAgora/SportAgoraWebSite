@@ -34,8 +34,8 @@
       <% 
             let avisoErro = {nome:"", email:"",foto:"", banner:"", senha:""}
             let msgErro = ""
-                if(listaErros){
-                    listaErros.errors.forEach(function(itemErro){
+                if(erros){
+                    erros.errors.forEach(function(itemErro){
                         if(itemErro.path == "nome"){
                             avisoErro.nome = "erro";
                             msgErro += `* ${itemErro.msg} <br>`
@@ -63,14 +63,14 @@
                             let msgErro ="<%= msgErro %>"
                             notify("Erro(s) no preenchimento", 
                                    "Verifique o(s) campo(s) <br> " + msgErro.replace(/&lt;/g,"<").replace(/&gt;/g,">"), 
-                                   "error", "center", 5000)                        
+                                   "error", "right bottom", 5000)                        
                         </script>
                     <%
                     }
                 }
                 if (dadosNotificacao) { %>
                     <script>
-                            notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")               
+                            notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "right bottom")               
                     </script>
                 <% } %>
 

@@ -27,7 +27,8 @@ module.exports = {
             console.log(errors);
             return res.render('pages/registro',{
                 dados: req.body,
-                erros: errors
+                erros: errors,
+                dadosNotificacao: ""
             })
         }
 
@@ -54,7 +55,12 @@ module.exports = {
       if (nomeExistente) {
         return res.render("pages/registro", {
         dados: req.body,
-        erros: { errors: [{ path: 'nome', msg: "Este nome já está cadastrado" }] }
+        erros: { errors: [{ path: 'nome', msg: "Este nome já está cadastrado" }] },
+        dadosNotificacao: {
+          titulo: "Falha ao cadastrar!",
+          mensagem: "Este nome já está cadastrado!",
+          tipo: "error",
+        },
       });
     }
   }
@@ -69,28 +75,68 @@ module.exports = {
         senha: senhaHash,
         foto: "imagens/usuarios/default_user.jpg",
         banner: "imagens/usuarios/default_background.jpg",
+        status: 0
+      });
+
+      const token = jwt.sign(
+        { userId: novoUsuario.usu_id },
+        process.env.SECRET_KEY
+      );
+
+      const html = require('../helpers/email-ativar-conta')(process.env.URL_BASE, token);
+      enviarEmail(email, "Cadastro no site SportAgora", null, html, ()=>{
+        return res.render("pages/registro", {
+          erros: null,
+          dadosNotificacao: {
+            titulo: "Cadastro realizado!",
+            mensagem: "Novo usuário criado com sucesso!<br>"+
+            "Enviamos um e-mail para a ativação de sua conta",
+            tipo: "success",
+          },
+          dados: req.body
+        });
       });
      
-      const usuario = await UsuarioModel.findByEmail(email);
-      
-      req.session.usuario = {
-        id: usuario.usu_id,
-        email: usuario.usu_email,
-        nome: usuario.usu_nome,
-        foto: usuario.usu_foto,
-        banner: usuario.usu_banner
-      };
-
-      res.redirect("/perfil");
+     
      
     } catch (e) {
       console.error(e);
       res.render("pages/registro", {
       dados: req.body,
-      erros: { errors: [{ path: 'email', msg: "Ocorreu um erro ao criar a conta" }] }
+      erros: { errors: [{ path: 'email', msg: "Ocorreu um erro ao criar a conta" }] },
+      dadosNotificacao: "",
     });
+    }
+  },
 
-      
+  ativarConta: async (req, res) => {
+    try {
+      const token = req.query.token;
+      jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+        console.log(decoded);
+        if (err) {
+          console.log({ message: "Token inválido ou expirado" });
+        } else {
+          const user = UsuarioModel.findId(decoded.userId);
+          if (!user) {
+            console.log({ message: "Usuário não encontrado" });
+          } else {
+           res.render("pages/login", {
+              erros: null,
+              dadosNotificacao: {
+                titulo: "Sucesso",
+                mensagem: "Conta ativada, use seu e-mail e senha para acessar o seu perfil!",
+                tipo: "success",
+              },
+              dados: { email: "", senha: "" },
+              retorno: null
+            });
+          }
+          // Ativa a conta do usuário
+        }
+      });
+    } catch (e) {
+      console.log(e);
     }
   },
 
@@ -313,7 +359,8 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
         seguindo: userinfos.quantidade_seguindo,
         foto: userinfos.usu_foto,
         banner: userinfos.usu_banner
-        }
+        },
+        dadosNotificacao:""
     });
 
   } catch (err) {
@@ -336,7 +383,7 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
         foto: userinfos.usu_foto,
         banner: userinfos.usu_banner
         },
-        listaErros:"",
+        erros:"",
         dadosNotificacao:""
     });
 
@@ -371,7 +418,8 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
                 lista.errors.push(erroMulter);
             } 
             console.log(lista)
-            return res.render("pages/editar-perfil", { listaErros: lista, valores: {
+            return res.render("pages/editar-perfil", { erros: lista, 
+              valores: {
               nome: req.body.nome,
                 email: req.body.email,
                 foto: req.session.usuario.foto,
@@ -380,10 +428,10 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
                 
               }, 
               dadosNotificacao: {
-            titulo: "Erro ao atualizar o perfil!",
-            mensagem: "Verifique se os dados foram inseridos corretamente.",
-            tipo: "error"
-        } })
+                  titulo: "Erro ao atualizar o perfil!",
+                  mensagem: "Verifique se os dados foram inseridos corretamente.",
+                  tipo: "error"
+              } })
         }
         try {
             var dadosForm = {
@@ -406,7 +454,6 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
                   const caminhoFoto = "imagens/perfil/" + req.files.foto[0].filename;
                   if (dadosForm.foto !== caminhoFoto && dadosForm.foto !== "imagens/usuarios/default_user.jpg") removeImg(dadosForm.foto);
                   dadosForm.foto = caminhoFoto;
-                  console.log(caminhoFoto)
                 }
 
                 if (req.files.banner) {
@@ -416,11 +463,8 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
                 }
               }
 
-            console.log(dadosForm)
-            console.log(req.session.usuario)
 
             let resultUpdate = await UsuarioModel.atualizar(req.session.usuario.id, dadosForm);
-            console.log(resultUpdate)
             if (resultUpdate) {
                 if (resultUpdate.changedRows == 1) {
                   var result = await UsuarioModel.findId(req.session.usuario.id);
@@ -441,25 +485,37 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
 
                   //salvo certo
                   res.render("pages/editar-perfil", {
-                    listaErros: null,
+                    erros: null,
                     valores: valores,
-                     dadosNotificacao: { titulo: "Perfil! atualizado com sucesso", mensagem: "Alterações Gravadas", tipo: "success" }
+                    dadosNotificacao: { 
+                      titulo: "Perfil! atualizado com sucesso", 
+                      mensagem: "Alterações Gravadas", 
+                      tipo: "success" 
+                  }
                   });
                 } else {
                   //salvo certo mas sem alterar nada
                   console.log("nada pra salvar")
                   res.render("pages/editar-perfil", {
-                    listaErros: null,
+                    erros: null,
                     valores: dadosForm,
-                     dadosNotificacao: { titulo: "Perfil! atualizado com sucesso", mensagem: "Sem alterações", tipo: "success" }
+                    dadosNotificacao: { 
+                      titulo: "Perfil! atualizado com sucesso", 
+                      mensagem: "Sem alterações", 
+                      tipo: "success" 
+                    }
                 });
                 }
             }
 
     } catch(e){
       console.log(e)
-      res.render("pages/editar-perfil", {valores: req.body,
-        dadosNotificacao: { listaErros: erros, titulo: "Erro ao atualizar o perfil!", mensagem: "Verifique os valores digitados!", tipo: "error" }
+      res.render("pages/editar-perfil", {valores: req.body, erros: erros,
+        dadosNotificacao: {  
+          titulo: "Erro ao atualizar o perfil!", 
+          mensagem: "Verifique os valores digitados!", 
+          tipo: "error" 
+        }
       })
 
     }

@@ -38,7 +38,7 @@
   border-radius: 25px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   max-width: 80%;
-  margin: 0 auto;
+  margin: 30px auto;
   animation: fadeIn 1.5s ease-out;
   flex-wrap: wrap; /* Adicionado para melhor responsividade */
 }
@@ -143,6 +143,7 @@
   color: var(--textopost);
   font-size: x-large;
   font-weight: bold;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 

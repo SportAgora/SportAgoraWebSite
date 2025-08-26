@@ -131,6 +131,7 @@ module.exports = {
     if (!erros.isEmpty()) {
       return res.render("pages/recuperar-senha", {
         dados: req.body,
+        dadosNotificacao: null,
         erros: erros
       });
     }
@@ -145,7 +146,15 @@ module.exports = {
       //enviar e-mail com link usando o token
       html = require("../helpers/email-reset-senha")(process.env.URL_BASE, token)
       enviarEmail(req.body.email, "Pedido de recuperação de senha", null, html, ()=>{
-        return res.redirect("/login");
+        return res.render("pages/recuperar-senha", {
+          erros: null,
+          dadosNotificacao: {
+            titulo: "Recuperação de senha",
+            mensagem: "Enviamos um e-mail com instruções para resetar sua senha",
+            tipo: "success",
+          },
+          dados: req.body
+        });
       });
 
     } catch (e) {
@@ -163,7 +172,8 @@ module.exports = {
         res.render("pages/recuperar-senha", {
           erros: null,
           dadosNotificacao: { titulo: "Link expirado!", mensagem: "Insira seu e-mail para iniciar o reset de senha.", tipo: "error", },
-          dados: req.body
+          dados: req.body,
+          
         });
       } else {
         res.render("pages/resetar-senha", {
@@ -232,7 +242,12 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
       if (!usuario) {
         return res.render(pag, {
            dados: req.body,
-          erros: { errors: [{ path: 'email', msg: "Este email não está cadastrado ou está digitado errado." }] }
+          erros: { errors: [{ path: 'email', msg: "Este email não está cadastrado ou está digitado errado." }] },
+          dadosNotificacao: {
+            titulo: "E-mail não cadastrado",
+            mensagem: "Este e-mail não está cadastrado ou está digitado errado.",
+            tipo: "error",
+          }
         });
       }
      
@@ -241,7 +256,12 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
       if (!senhaCorreta) {
         return res.render(pag, {
            dados: req.body,
-          erros: { errors: [{ path: 'senha', msg: "Senha incorreta." }] }
+          erros: { errors: [{ path: 'senha', msg: "Senha incorreta." }] },
+          dadosNotificacao: {
+            titulo: "Senha incorreta",
+            mensagem: "A senha digitada está incorreta.",
+            tipo: "error",
+          }
         });
       }
      
@@ -262,7 +282,12 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
       console.error(error);
       res.render(pag, {
         dados: req.body,
-        erros: { errors: [{ path: 'email', msg: "Erro ao logar, tente novamente mais tarde." }] }
+        erros: { errors: [{ path: 'email', msg: "Erro ao logar, tente novamente mais tarde." }] },
+        dadosNotificacao: {
+            titulo: "Algo deu errado!",
+            mensagem: "Algum erro ocorreu, tente novamente mais tarde.",
+            tipo: "error",
+          }
       });
     }
   },

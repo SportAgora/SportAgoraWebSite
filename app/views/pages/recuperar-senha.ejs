@@ -1,31 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <title>Redefinir Senha</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/recuperar-senha.css">
-</head>
-<body>
-    <main>          
-        <section class="container-reset-senha">
-            <article class="header">
-                <h1>Recuperação de Senha</h1>
-                <img src="/imagens/SportAgora.png" alt="Logo" class="logo">
-            </article>
-            <aside class="form-reset-senha">
-                <form action="" method="post">
-                    <h3>Escreva seu Email para recuperação</h3>
-                    <p>Para recuperar a sua senha, informe seu endereço de email que nós enviaremos um link para a alteração da senha.</p>
-                    <input type="email " name="email" placeholder="E-mail" value="" class="" id="email"/><br>
-                    <button type="submit" class="enviar-btn">Enviar</button><br>
-                </form>
-            </aside>
-        </section>
-    </main>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -37,8 +9,38 @@
     <link rel="stylesheet" href="/css/erro.css">
     <script src="/js/login.js" defer></script>
     <link rel="icon" href="imagens/SportAgora.png">
+    
 </head>
 <body>
+    <% 
+    let avisoErro = {"email":""}
+    let msgErro = ""
+        if(erros){
+            erros.errors.forEach(function(erro){
+                if(erro.path == "email"){
+                    avisoErro.email = "erro";
+                    msgErro += `* ${erro.msg} <br>`
+                }
+            })
+            if(msgErro != ""){
+            %>
+                <script>
+                    let msgErro ="<%= msgErro %>"
+                    notify("Erro(s) no preenchimento", 
+                           "Verifique o(s) campo(s) <br> " + msgErro.replace(/&lt;/g,"<").replace(/&gt;/g,">"), 
+                           "error", "right bottom", 5000)                        
+                </script>
+            <%
+            }
+        }
+        if (dadosNotificacao) { %>
+            <script>
+                    notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "right bottom")
+                    if("<%= dadosNotificacao.tipo %>" == "success"){
+                        setTimeout(function(){window.location="/login"}, 3000)
+                    }                        
+            </script>
+    <% } %>           
     <header>
     <%- include('../partials/navbar'); %> 
     </header>
@@ -53,7 +55,7 @@
                     <h3>Escreva seu Email para recuperação</h3>
                     <p>Para recuperar a sua senha, informe seu endereço de email que nós enviaremos um link para a alteração da senha.</p>
                     <input type="email " name="email" placeholder="E-mail" value="" class="" id="email"/><br>
-                    <button type="submit" class="enviar-btn">Enviar</button><br>
+                    <input type="submit" class="enviar-btn" value="Enviar"><br>
                 </form>
             </article>
         </section>  

@@ -31,7 +31,7 @@ router.use((req, res, next) => {
 
 router.get('/cadastro', guestMiddleware, (req, res) => {
   res.render('pages/registro', 
-  { "erros": null, "dados": {"email":"","senha":""},"retorno":null });
+  { "erros": null, "dados": {"email":"","senha":""},dadosNotificacao:"","retorno":null });
 });
 
 router.post('/cadastrar',
@@ -40,7 +40,7 @@ router.post('/cadastrar',
 
 router.get("/login", (req, res) => {
   res.render("pages/login", {
-  erro: null,  erros: null,  dados: { email: "", senha: "" },  retorno: null
+  erro: null,  erros: null,  dados: { email: "", senha: "" }, dadosNotificacao:"",  retorno: null
 });
 });
 
@@ -65,6 +65,13 @@ router.post("/recuperar-senha",
 router.get("/reset-senha", 
   function(req, res){
     usuariosController.validarTokenNovaSenha(req, res);
+  });
+
+  
+router.get("/reset-senha-teste", 
+  function(req, res){
+      res.render("pages/resetar-senha",
+      { erros: null, dadosNotificacao: null,"usu_id":"" });
   });
   
 router.post("/resetar-senha", 

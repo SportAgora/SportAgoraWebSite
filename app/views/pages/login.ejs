@@ -12,19 +12,54 @@
 <body>
     <%
     let  erroValidacao =  {"email":"", "senha":"" };
-    let  msgErro =  {"email":"", "senha":"" };
+    let  msgErroPag =  {"email":"", "senha":"" };
     if(erros) {
         erros.errors.forEach(function(erro) {
             if (erro.path == "email") {
-                erroValidacao.email = "erro",
-                msgErro.email = erro.msg
+                erroValidacao.email = "erro"
+                msgErroPag.email = erro.msg
             }
             if (erro.path == "senha") {
-                erroValidacao.senha = "erro",
-                msgErro.senha = erro.msg
+                erroValidacao.senha = "erro"
+                msgErroPag.senha = erro.msg
             }
         })
     }; %>
+
+    <% 
+    console.log(dadosNotificacao)
+    let avisoErro = {"email":"", "senha":""}
+    let msgErro = ""
+        if(erros){
+            erros.errors.forEach(function(erro){
+                if(erro.path == "email"){
+                    avisoErro.email = "erro";
+                    msgErro += `* ${erro.msg} <br>`
+                }
+                if(erro.path == "senha"){
+                    avisoErro.senha = "erro";
+                    msgErro += `* ${erro.msg} <br>`
+                }
+            })
+            if(msgErro != ""){
+            %>
+                <script>
+                    let msgErro ="<%= msgErro %>"
+                    notify("Erro(s) no preenchimento", 
+                           "Verifique o(s) campo(s) <br> " + msgErro.replace(/&lt;/g,"<").replace(/&gt;/g,">"), 
+                           "error", "right bottom", 5000)                        
+                </script>
+            <%
+            }
+        }
+        if (dadosNotificacao) { %>
+            <script>
+                    notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "right bottom")
+                    if("<%= dadosNotificacao.tipo %>" == "success"){
+                        setTimeout(function(){window.location="/login"}, 3000)
+                    }                        
+            </script>
+    <% } %>      
 
     <header>
     <%- include('../partials/navbar'); %> 
@@ -40,10 +75,10 @@
 
             <form id="signin" method="post" action="/login">
                 <input type="email" placeholder="Email" name="email" id="email" value="<%= dados.email  %>" class="<%= erroValidacao.email %>"> 
-                <span class="spanerro"><%= msgErro.email %></span><br>
+                <span class="spanerro"><%= msgErroPag.email %></span><br>
 
                 <input type="password" placeholder="Senha" name="senha" id="senha" value="<%= dados.senha  %>" class="<%= erroValidacao.senha %>"> 
-                <span class="spanerro"><%= msgErro.senha %></span><br>
+                <span class="spanerro"><%= msgErroPag.senha %></span><br>
                 <a href="/recuperar-senha">Esqueci a senha</a>
                 <article class="divCheck">
                 <input type="checkbox" />

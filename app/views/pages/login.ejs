@@ -35,7 +35,7 @@
             <article class="buttonsForm">
                 <h1>Bem-vindo de volta!</h1>
                 <a href="/cadastro">Ainda não possuo uma conta</a>
-                <a href="/recuperar-senha">Esqueci a senha</a>
+                
             </article>
 
             <form id="signin" method="post" action="/login">
@@ -44,7 +44,7 @@
 
                 <input type="password" placeholder="Senha" name="senha" id="senha" value="<%= dados.senha  %>" class="<%= erroValidacao.senha %>"> 
                 <span class="spanerro"><%= msgErro.senha %></span><br>
-
+                <a href="/recuperar-senha">Esqueci a senha</a>
                 <article class="divCheck">
                 <input type="checkbox" />
                 <span>Lembre minha senha</span>

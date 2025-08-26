@@ -77,7 +77,7 @@ return ` <!DOCTYPE html>
         </article>
         <article class="content">
             <p>Obrigado por se cadastrar no <b>SportAgora!</b> Por favor clique no botão abaixo para ativar sua conta:</p>
-            <a href="$(url)/ativar-conta?token=${token}" class="button">Ativar Conta</a>
+            <a href="${url}/ativar-conta?token=${token}" class="button">Ativar Conta</a>
         </article>
         <footer>
             <p>Se você não solicitou este email, por favro ignore-o.</p>

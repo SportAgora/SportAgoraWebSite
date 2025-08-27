@@ -73,7 +73,7 @@ return ` <!DOCTYPE html>
     <section class="container">
         <article class="header">
             <h1>Bem-vindo(a) [NOME_USUARIO]!</h1>
-            <img src="$(url)/imagens/SportAgora.png" alt="Logo" class="logo">
+            <img src="${url}/imagens/SportAgora.png" alt="Logo" class="logo">
         </article>
         <article class="content">
             <p>Obrigado por se cadastrar no <b>SportAgora!</b> Por favor clique no botão abaixo para ativar sua conta:</p>

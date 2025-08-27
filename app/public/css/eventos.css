@@ -6,7 +6,7 @@
 
 .event-container {
   text-align: center;
-  padding: 50px 0;
+  padding: 30px 0;
 }
 
 .event-title {
@@ -24,7 +24,6 @@
   font-size: 1.4rem;
   font-family: "Montserrat", sans-serif;
   color: var(--textopostinfo);
-  margin-bottom: 50px;
   animation: fadeInUp 1s ease-out;
 }
 
@@ -356,4 +355,14 @@
     .evento-detalhes {
         font-size: 16px;
     }
+}
+
+@media (max-width: 1663px) {
+ .filter-box {
+  display: none;
+ }
+
+ .event-filtros-p {
+  margin-top: 0px;
+ }
 }

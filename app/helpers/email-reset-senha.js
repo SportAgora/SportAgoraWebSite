@@ -73,7 +73,7 @@ module.exports = (url, token)=>{
     <section class="container">
         <article class="header">
             <h1>Recuperação de Senha</h1>
-            <img src="$(url)/imagens/SportAgora.png" alt="Logo" class="logo">
+            <img src="${url}/imagens/SportAgora.png" alt="Logo" class="logo">
         </article>
         <article class="content">
             <p>Recebemos uma solicitação para redefinir sua senha no <b>SportAgora!</b> Clique no botão abaixo para redefinir sua senha:</p>

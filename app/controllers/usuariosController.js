@@ -259,42 +259,7 @@ module.exports = {
         dadosNotificacao: null,
         dados: req.body,
         usu_id: req.body.usu_id
-      });<% 
-    let avisoErro = {"nome":"","email":"", "senha":"","repsenha":""};
-    let msgErro = ""
-        if(erros){
-            erros.errors.forEach(function(erro){
-                if(erro.path == "nome"){
-                    avisoErro.nome = "erro";
-                    msgErro += `* ${erro.msg} <br>`
-                }
-                if(erro.path == "email"){
-                    avisoErro.email = "erro";
-                    msgErro += `* ${erro.msg} <br>`
-                }
-                if(erro.path == "senha"){
-                    avisoErro.senha = "erro";
-                    msgErro += `* ${erro.msg} <br>`
-                }
-                if(erro.path == "repsenha"){
-                    avisoErro.repsenha = "erro";
-                    msgErro += `* ${erro.msg} <br>`
-                }
-            })
-
-        }
-        if(msgErro != ""){
-                    %>
-                        <script>
-                            let msgErro ="<%= msgErro %>"
-                            notify("Erro(s) no preenchimento", 
-                                   "Verifique o(s) campo(s) <br> " + msgErro.replace(/&lt;/g,"<").replace(/&gt;/g,">"), 
-                                   "error", "right bottom", 5000)                        
-                        </script>
-    <%} if (dadosNotificacao) { %>
-            <script>
-                    notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "right bottom")                    
-            </script>
+      });
     }
     try {
       //gravar nova senha
@@ -594,4 +559,3 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
   }
   }
 };
- 

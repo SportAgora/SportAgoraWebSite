@@ -35,7 +35,6 @@
 }
 
 .post-box:hover {
-  transform: translateY(-10px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); 
 }
 
@@ -423,7 +422,7 @@ a {
 
 
 @media (max-width: 599px) {
-  .carousel-home { height: auto; max-height: none; }
+  .carousel-home { height: auto;}
   .carousel-inner { align-items: stretch; }
   .carousel-slide { aspect-ratio: 16 / 9; }  
   .carousel-slide img {

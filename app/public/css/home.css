@@ -410,18 +410,18 @@ a {
 }
 
 @media (min-width: 600px) and (max-width: 1481px) {
-  .carousel-home { height: auto;  }
+  .carousel-home { height: auto;}
   .carousel-inner { align-items: stretch; }
-  .carousel-slide { aspect-ratio: 18 / 9; }
+  .carousel-slide { aspect-ratio: 16 / 9; }
   .carousel-slide img {
-    height: 70% !important;
+    height: 80% !important;
     object-fit: fill !important;
   }
   .carousel-btn { font-size: 26px; padding: 8px; }
 }
 
 
-@media (max-width: 599px) {
+@media (max-width: 932px) {
   .carousel-home { height: auto;}
   .carousel-inner { align-items: stretch; }
   .carousel-slide { aspect-ratio: 16 / 9; }  

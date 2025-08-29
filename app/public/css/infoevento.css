@@ -278,7 +278,7 @@ a:hover {
 
   .ingressos-container {
   margin-top: 20px;
-  background-color: var(--branco);
+  background-color: var(--postcor);
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -347,13 +347,14 @@ a:hover {
   font-weight: bold;
   min-width: 20px;
   text-align: center;
+  color: var(--textopost);
 }
 
 .total-ingressos {
   margin-top: 20px;
   font-size: 18px;
   font-weight: bold;
-  color: var(--preto);
+  color: var(--textopost);
   text-align: right;
 }
 

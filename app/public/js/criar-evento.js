@@ -1,3 +1,5 @@
+
+
 // Quill editor
 const quill = new Quill('#editor', {
     modules: { toolbar: '#toolbar' },
@@ -26,36 +28,67 @@ const quill = new Quill('#editor', {
   });
   
   // CEP auto-complete
-document.getElementById('cep').addEventListener('blur', function() {
-    const cep = this.value.replace(/\D/g, '');
-    const spinner = document.getElementById('spinner');
+document.addEventListener('DOMContentLoaded', () => {
+  const cepInput = document.getElementById('cep');
 
-    if (cep.length !== 8) {
+  if (!cepInput) {
+    console.error('Campo #cep não encontrado.');
+    return;
+  }
+
+  const get = (id) => document.getElementById(id);
+  const setVal = (id, v) => { const el = get(id); if (el) el.value = v || ''; };
+  const toggleSpinner = (show) => {
+    const sp = get('spinner');
+    if (sp) sp.style.display = show ? 'block' : 'none';
+  };
+  const limpaCampos = () => {
+    ['rua','bairro','cidade','estado'].forEach(id => setVal(id, ''));
+  };
+
+  // Máscara de CEP enquanto digita
+  cepInput.addEventListener('input', (e) => {
+    const digits = e.target.value.replace(/\D/g, '').slice(0, 8);
+    e.target.value = digits.replace(/(\d{5})(\d)/, '$1-$2');
+  });
+
+  async function buscaCEP() {
+    try {
+      const cep = cepInput.value.replace(/\D/g, '');
+      if (cep.length !== 8) {
         alert('CEP inválido!');
         return;
+      }
+
+      toggleSpinner(true);
+      console.log('Buscando CEP:', cep);
+
+      const resp = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+
+      const data = await resp.json();
+      console.log('ViaCEP:', data);
+
+      if (data.erro) {
+        alert('CEP não encontrado!');
+        limpaCampos();
+        return;
+      }
+
+      setVal('rua', data.logradouro);
+      setVal('bairro', data.bairro);
+      setVal('cidade', data.localidade);
+      setVal('estado', data.uf);
+      setVal('complemento', data.complemento);
+    } catch (err) {
+      console.error('Erro no CEP:', err);
+      alert('Erro ao buscar o CEP!');
+    } finally {
+      toggleSpinner(false);
     }
+  }
 
-    spinner.style.display = 'block';
-
-    fetch(`https://viacep.com.br/ws/${cep}/json/`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.erro) {
-                alert('CEP não encontrado!');
-            } else {
-                document.getElementById('rua').value = data.logradouro || '';
-                document.getElementById('bairro').value = data.bairro || '';
-                document.getElementById('cidade').value = data.localidade || '';
-                document.getElementById('estado').value = data.uf || '';
-                document.getElementById('complemento').value = data.complemento || '';
-            }
-        })
-        .catch(() => {
-            alert('Erro ao buscar o CEP!');
-        })
-        .finally(() => {
-            spinner.style.display = 'none';
-        });
+  cepInput.addEventListener('blur', buscaCEP);
 });
 
   
@@ -89,10 +122,4 @@ document.getElementById('cep').addEventListener('blur', function() {
     tabela.appendChild(novaLinha);
   });
   
-  // Publicar evento
-  document.getElementById('evento-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    alert('Evento publicado com sucesso!');
-    window.location.href = 'pagina-final.html';
-  });
   

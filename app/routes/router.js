@@ -112,7 +112,7 @@ router.get('/', function(req,res){
 })
 
 router.get('/eventos', function(req,res){
-    res.render('pages/eventos');  
+    res.redirect('/home');  
 })
 
 router.get('/pratique', function(req,res){
@@ -121,10 +121,6 @@ router.get('/pratique', function(req,res){
 
 router.get('/planos', function(req,res){
     res.render('pages/planos');  
-})
-
-router.get('/infopost', function(req,res){
-    res.render('pages/infopost');  
 })
 
 router.get('/infoevento', function(req,res){
@@ -155,9 +151,6 @@ router.get('/item-do-carrosel', function(req,res){
   res.render('pages/item-do-carrosel');  
 })
 
-router.get('/criar-post', function(req,res){
-  res.render('pages/criar-post');  
-})
 
 router.get('/infoevento-natacao.ejs', function(req,res){
   res.render('pages/infoevento-natacao.ejs');  
@@ -189,7 +182,7 @@ router.get('/criar-evento',  verificarAutenticacao, function(req,res){
 
 router.post('/criar-evento',
   verificarAutenticacao,
-  eventController.criarEventoValidacao,
+  // eventController.criarEventoValidacao,
   eventController.criarEvento
 );
 

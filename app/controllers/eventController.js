@@ -45,7 +45,7 @@ module.exports = {
         }
         
     try{
-      const {nome, categoria, assunto, foto, data_inicio, data_fim, data_hora, descricao, cep, numero, complemento} = req.body;
+      const {nome, categoria, assunto, foto, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
       const { ing_nome, ing_valor, ing_quantidade, ing_meia} = req.body;
 
       const evento = {
@@ -54,9 +54,9 @@ module.exports = {
         assunto: assunto,
         foto: foto,
         nome: nome,
-        data_inicio: data_inicio,
-        data_fim: data_fim,
-        data_hora: data_hora,
+        data: data + " " + hora,
+        data_inicio: data_inicio + " " + hora_inicio,
+        data_fim: data_final + " " + hora_final,
         descricao: descricao,
         cep: cep,
         numero: numero,
@@ -69,9 +69,15 @@ module.exports = {
         ing_quantidade : ing_quantidade,
         ing_meia : ing_meia
       }
+      // const criarIngresso = await OrganizadorModel.createIngresso(ingresso)
 
-      const resultado = await OrganizadorModel.createEvent(evento,ingresso)
+      // const resultado = await OrganizadorModel.createEvent(evento, criarIngresso)
 
+      // if (!resultado){
+      //   ApagarIngresso(criarIngresso)
+      // }
+      console.log(evento)
+      
     }catch(e){
       console.error(e)
       throw e

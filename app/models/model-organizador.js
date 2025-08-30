@@ -4,27 +4,9 @@ const moment = require("moment");
 const bcrypt = require("bcryptjs");
  
 const OrganizadorModel = {
-createEvent: async (eventData, ingressoData) => {
+createEvent: async (eventData, ingressoID) => {
     try {
       const { user, categoria, assunto, nome, foto, data_inicio, data_fim, data_hora, cep, numero, complemento, descricao} = eventData;
-      const { ing_nome, ing_valor, ing_quantidade, ing_meia} = ingressoData;
-
-      const ingresso = {
-        ingresso_nome: ing_nome,
-        ingresso_valor: ing_valor,
-        ingresso_quantidade: ing_quantidade,
-        ingresso_meia: ing_meia
-      };
- 
-      // Construir a query dinamicamente
-      const fields = Object.keys(ingresso).filter(key => ingresso[key] !== null);
-      const values = fields.map(field => ingresso[field]);
-      const placeholders = fields.map(() => '?').join(', ');
-     
-      const query = `INSERT INTO ingresso (${fields.join(', ')}) VALUES (${placeholders})`;
-     
-      const [result] = await pool.query(query, values);
-
       // Preparar os dados para inserção
       const event = {
         usuario_id: user,
@@ -40,7 +22,7 @@ createEvent: async (eventData, ingressoData) => {
         evento_endereco_numero: numero,
         evento_endereco_complemento: complemento,
         evento_endereco_cep: cep,
-        ingresso_id: result.insertId
+        ingresso_id: ingressoID
       };
       
       const eventFields = Object.keys(event).filter(key => event[key] !== null);
@@ -61,7 +43,7 @@ createEvent: async (eventData, ingressoData) => {
       try {
         const query = "SELECT * FROM categoria";
         const [rows] = await pool.query(query);
-        return rows.length > 0 ? rows[0] : null;
+        return rows.length > 0 ? rows : null;
       } catch (error) {
         console.error("Erro ao buscar categorias:", error);
         throw error;
@@ -72,12 +54,52 @@ createEvent: async (eventData, ingressoData) => {
       try {
         const query = "SELECT * FROM assunto";
         const [rows] = await pool.query(query);
-        return rows.length > 0 ? rows[0] : null;
+        return rows.length > 0 ? rows : null;
       } catch (error) {
         console.error("Erro ao buscar assuntos:", error);
         throw error;
       }
     },
+
+    createIngresso: async (ingressoData) => {
+    try {
+      const { ing_nome, ing_valor, ing_quantidade, ing_meia} = ingressoData;
+
+      const ingresso = {
+        ingresso_nome: ing_nome,
+        ingresso_valor: ing_valor,
+        ingresso_quantidade: ing_quantidade,
+        ingresso_meia: ing_meia
+      };
+ 
+      // Construir a query dinamicamente
+      const fields = Object.keys(ingresso).filter(key => ingresso[key] !== null);
+      const values = fields.map(field => ingresso[field]);
+      const placeholders = fields.map(() => '?').join(', ');
+     
+      const query = `INSERT INTO ingresso (${fields.join(', ')}) VALUES (${placeholders})`;
+     
+      const [result] = await pool.query(query, values);
+
+      return result.insertId;
+    } catch (error) {
+      console.error("Erro ao criar evento: \n", error);
+      throw error;
+    }
+  },
+  ApagarIngresso: async (ingressoId) => {
+    try {
+     
+      const query = `DELETE FROM ingresso WHERE ingresso_id = ?`;
+     
+      const [result] = await pool.query(query, ingressoId);
+
+      return result
+    } catch (error) {
+      console.error("Erro ao criar evento: \n", error);
+      throw error;
+    }
+  },
 };
  
 module.exports = OrganizadorModel;

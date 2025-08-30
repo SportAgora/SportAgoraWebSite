@@ -539,23 +539,4 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
 
     }
   },
-  verificarAdm: async (req, res, next) => {
-   try {
-    if (!req.session || !req.session.usuario) {
-      return res.redirect("/adm/login");
-    }
-
-    user = await UsuarioModel.findId(req.session.usuario.id)
-    user = user.tipo
-
-    if (user !== "administrador") {
-      return res.redirect("/");
-    }
-
-    next(); 
-  } catch (error) {
-    console.error("Erro no verificarNivel:", error);
-    res.redirect("/adm/login");
-  }
-  }
 };

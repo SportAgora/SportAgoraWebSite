@@ -57,6 +57,14 @@ app.use('/cadastro', guestMiddleware);
 // Importar e usar as rotas
 const rotas = require('./app/routes/router');
 app.use('/', rotas);
+
+const rotasAdm = require('./app/routes/routerAdm');
+app.use('/adm/', rotasAdm);
+
+app.use((req, res, next) => {
+  // Se nenhuma rota anterior corresponder, crie um objeto de erro ou envie diretamente a página 404
+  res.status(404).render('pages/error', { error: "404", mensagem: "Página não encontrada." }); // Passa a URL solicitada para o template
+});
   
 // Iniciar o servidor
 app.listen(port, () => {

@@ -1,7 +1,6 @@
 // models/model-organizador.js
 const pool = require("../../config/pool-conexoes");
 const moment = require("moment");
-const bcrypt = require("bcryptjs");
  
 const OrganizadorModel = {
 createEvent: async (eventData, ingressoID) => {
@@ -61,32 +60,34 @@ createEvent: async (eventData, ingressoID) => {
       }
     },
 
-    createIngresso: async (ingressoData) => {
-    try {
-      const { ing_nome, ing_valor, ing_quantidade, ing_meia} = ingressoData;
+    createIngresso: async (ingressos) => {
+  try {
+    const ingressosFormatados = ingressos.nome.map((nome, index) => ({
+      ingresso_nome: nome,
+      ingresso_valor: parseFloat(ingressos.valor[index]),
+      ingresso_quantidade: parseInt(ingressos.quantidade[index], 10),
+      ingresso_meia: ingressos.meia[index] === 'true'
+    }));
 
-      const ingresso = {
-        ingresso_nome: ing_nome,
-        ingresso_valor: ing_valor,
-        ingresso_quantidade: ing_quantidade,
-        ingresso_meia: ing_meia
-      };
- 
-      // Construir a query dinamicamente
-      const fields = Object.keys(ingresso).filter(key => ingresso[key] !== null);
-      const values = fields.map(field => ingresso[field]);
-      const placeholders = fields.map(() => '?').join(', ');
-     
-      const query = `INSERT INTO ingresso (${fields.join(', ')}) VALUES (${placeholders})`;
-     
-      const [result] = await pool.query(query, values);
+    if (ingressosFormatados.length === 0) return null;
 
-      return result.insertId;
-    } catch (error) {
-      console.error("Erro ao criar evento: \n", error);
-      throw error;
-    }
-  },
+    const fields = ['ingresso_nome', 'ingresso_valor', 'ingresso_quantidade', 'ingresso_meia'];
+    const placeholders = ingressosFormatados.map(() => '(?, ?, ?, ?)').join(', ');
+    const values = [];
+
+    ingressosFormatados.forEach(i => {
+      values.push(i.ingresso_nome, i.ingresso_valor, i.ingresso_quantidade, i.ingresso_meia);
+    });
+
+    const query = `INSERT INTO ingresso (${fields.join(', ')}) VALUES ${placeholders}`;
+    const [result] = await pool.query(query, values);
+
+    return result.insertId;
+  } catch (error) {
+    console.error("Erro ao criar ingressos: \n", error);
+    throw error;
+  }
+},
   ApagarIngresso: async (ingressoId) => {
     try {
      

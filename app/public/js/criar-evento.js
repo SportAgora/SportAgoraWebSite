@@ -104,22 +104,64 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Publicar ingresso
   document.getElementById('publicar-ingresso').addEventListener('click', () => {
-    const nome = document.getElementById('nome-ingresso').value;
-    const valor = parseFloat(document.getElementById('valor-ingresso').value);
-    const quantidade = parseInt(document.getElementById('quantidade-ingresso').value);
-    const tabela = document.querySelector('#ingresso-tabela tbody');
-    const novaLinha = document.createElement('tr');
-  
-    let valorMeia = meiaEntradaAtivo ? (valor / 2).toFixed(2) : '-';
-  
-    novaLinha.innerHTML = `
-      <td>${nome}${meiaEntradaAtivo ? ' (meia-entrada)' : ''}</td>
-      <td>${valor.toFixed(2)}</td>
-      <td>${quantidade}</td>
-      <td>${meiaEntradaAtivo ? `R$ ${valorMeia}` : 'Não'}</td>
-    `;
-  
-    tabela.appendChild(novaLinha);
-  });
-  
-  
+  const nome = document.getElementById('nome-ingresso').value;
+  const valor = parseFloat(document.getElementById('valor-ingresso').value);
+  const quantidade = parseInt(document.getElementById('quantidade-ingresso').value);
+
+   // 🔒 Validação antes de prosseguir
+  if (!nome || isNaN(valor) || valor <= 0 || isNaN(quantidade) || quantidade <= 0) {
+    alert("Preencha todos os campos corretamente!");
+    return; // não executa o resto
+  }
+
+  const tabela = document.querySelector('#ingresso-tabela tbody');
+  const novaLinha = document.createElement('tr');
+
+  let valorMeia = meiaEntradaAtivo ? (valor / 2).toFixed(2) : '-';
+
+  // 👉 cria um id único
+  const ingressoId = Date.now();
+
+  novaLinha.setAttribute("data-id", ingressoId);
+  novaLinha.innerHTML = `
+    <td>${nome}${meiaEntradaAtivo ? ' (meia-entrada)' : ''}</td>
+    <td>${valor.toFixed(2)}</td>
+    <td>${quantidade}</td>
+    <td>${meiaEntradaAtivo ? `R$ ${valorMeia}` : 'Não'}</td>
+    <td>
+      <button type="button" class="remover-ingresso">❌ Remover</button>
+    </td>
+  `;
+  tabela.appendChild(novaLinha);
+
+  // 👉 aqui usa o mesmo form que você já tem
+  const form = document.getElementById('evento-form');
+  form.insertAdjacentHTML('beforeend', `
+    <input type="hidden" data-id="${ingressoId}" name="ingressos[nome][]" value="${nome}">
+    <input type="hidden" data-id="${ingressoId}" name="ingressos[valor][]" value="${valor}">
+    <input type="hidden" data-id="${ingressoId}" name="ingressos[quantidade][]" value="${quantidade}">
+    <input type="hidden" data-id="${ingressoId}" name="ingressos[meia][]" value="${meiaEntradaAtivo}">
+  `);
+
+  // Limpar campos
+  document.getElementById('nome-ingresso').value = "";
+  document.getElementById('valor-ingresso').value = "";
+  document.getElementById('quantidade-ingresso').value = "";
+  meiaEntradaAtivo = false;
+  document.getElementById('meia-entrada').textContent = 'Adicionar meia-entrada';
+});
+
+// 👉 Evento de clique nos botões de remover
+document.querySelector('#ingresso-tabela').addEventListener('click', (e) => {
+  if (e.target.classList.contains('remover-ingresso')) {
+    const linha = e.target.closest('tr');
+    const ingressoId = linha.getAttribute("data-id");
+
+    // Remove a linha da tabela
+    linha.remove();
+
+    // Remove os inputs hidden correspondentes
+    document.querySelectorAll(`#form-ingresso input[data-id="${ingressoId}"]`)
+      .forEach(input => input.remove());
+  }
+});

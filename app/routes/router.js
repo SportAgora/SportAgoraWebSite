@@ -1,10 +1,8 @@
-const { body, validationResult} = require("express-validator")
 var express = require('express');
 var router = express.Router();
 const guestMiddleware = require('../helpers/guestMiddleware');
 const usuariosController = require("../controllers/usuariosController");
 const pagamentoController = require('../controllers/pagamentosController');
-const admController = require("../controllers/admController");
 const eventController = require("../controllers/eventController");
 
 
@@ -21,8 +19,6 @@ function verificarAutenticacao(req, res, next) {
   }
   res.redirect("/login");
 }
-
-const verificarAdm = usuariosController.verificarAdm;
 
 router.use((req, res, next) => {
   res.locals.usuario = req.session.usuario || null;
@@ -185,90 +181,5 @@ router.post('/criar-evento',
   // eventController.criarEventoValidacao,
   eventController.criarEvento
 );
-
-/* ADM */
-
-router.get("/adm/login", (req, res) => {
-  res.render("pages/adm/login", {
-  erro: null,  erros: null,  dados: { email: "", senha: "" },  retorno: null
-});
-});
-
-router.post("/adm/login",  (req, res) => { usuariosController.autenticarUsuario(req, res, "administrador")});
-
-
-router.get('/adm/home',verificarAdm, function(req,res){
-    res.render('pages/adm/home');  
-})
-
-
- 
-router.get('/adm/buscar_usuario', verificarAdm,function(req,res){
-  res.render('pages/adm/buscar_usuario');  
-}) 
-
-
-
-router.get('/adm/teste', verificarAdm, function(req,res){
-  res.render('pages/adm/teste');  
-}) 
-
-
-router.get('/adm/usuarios', verificarAdm, function(req,res){
-  admController.carregarUsuarios(req,res);
-}) 
-
-router.get('/adm/usuario_ex', verificarAdm, function(req,res){
-  res.render('pages/adm/usuario_ex');  
-}) 
-
-router.get('/adm/cadastro_concluido', verificarAdm, function(req,res){
-  res.render('pages/adm/cadastro_concluido');  
-}) 
-
-router.get('/adm/eventos', verificarAdm, function(req,res){
-  admController.carregarEventos(req,res);
-}) 
-
-router.post('/adm/criar-assunto', verificarAdm,
-  admController.criarAssunto
-);
-
-router.post('/adm/apagar-assunto', verificarAdm,
-  admController.apagarAssunto
-);
-
-router.post('/adm/criar-categoria', verificarAdm,
-  admController.criarCategoria
-);
-
-router.post('/adm/apagar-categoria', verificarAdm,
-  admController.apagarCategoria
-);
-
-
-router.get('/adm/descricaoEvento', verificarAdm, function(req,res){
-  res.render('pages/adm/descricaoEvento');  
-}) 
-
-router.get('/adm', verificarAdm, function(req,res){
-  res.redirect('/adm/home')
-})
-
-router.get('/adm/novousuario', verificarAdm, (req, res) => {
-  res.render('pages/adm/novousuario', 
-  { "erros": null, "dados": {"nome":"","email":"","senha":"","repsenha":""},"retorno":null });
-});
-
-router.post('/adm/novousuario', verificarAdm,
-  admController.regrasValidacao, 
-  admController.cadastrarUsuario
-);
-
-router.post('/adm/usuarios/:id',
-  verificarAdm,
-  admController.apagarUsuario
-)
-
 
 module.exports = router;

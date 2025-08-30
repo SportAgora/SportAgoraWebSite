@@ -20,8 +20,20 @@
             <img src="imagens/imgerro.png" alt="imagem de erro">
         </section>
         <section class="erroDireita">
-            <h1>ERRO: <a href="#"class="corErro">000</a></h1>
-            <h3>Parece que você encontrou um erro!</h3>
+            <h1>ERRO: <a href="#"class="corErro">
+                <% if (error) {%>
+                <%=error %>
+                <%} else {%>
+                    ???
+                <%}%>
+            </a></h1>
+            <h3>
+            <% if (mensagem) {%>
+                <%= mensagem %>
+                <%} else {%>
+                    Algo deu errado. Tente novamente mais tarde.
+                <%}%>
+            </h3>
             <h3>Comunique este erro em: <a href="#" class="corErro">suporte@sportagora.com</a></h3>
             <aside class="voltarHome">
                 <a href="/">

@@ -7,6 +7,9 @@ const eventController = require("../controllers/eventController");
 
 
 const uploadFile = require("../helpers/uploader")("./app/public/imagens/perfil/");
+
+const uploadFileEvent = require("../helpers/uploader")("./app/public/imagens/evento/");
+
 /*
 
 AUTENTICACAO
@@ -82,13 +85,6 @@ router.post("/resetar-senha",
   function(req, res){
     usuariosController.resetarSenha(req, res);
 });
-  
-
-/*
-
-PAGINAS
-
-*/
 
 router.get('/perfil',verificarAutenticacao, usuariosController.carregarPerfil)
 
@@ -102,6 +98,12 @@ router.post('/salvar-perfil',
     usuariosController.gravarPerfil(req,res);
   }
 )
+
+/*
+
+PAGINAS
+
+*/
 
 router.get('/', function(req,res){
     res.render('pages/home');  
@@ -166,7 +168,7 @@ router.post(
 router.get('/home', function(req,res){res.redirect('/')})
 
 router.get('/erro', function(req,res){
-  res.render('pages/error');  
+  res.render('pages/error', {error:500, mensagem:"Algo deu errado no servidor."});  
 })
 
 /* PAGAMENTOS */
@@ -184,6 +186,7 @@ router.get('/criar-evento',  verificarAutenticacao, function(req,res){
 router.post('/criar-evento',
   verificarAutenticacao,
   // eventController.criarEventoValidacao,
+  uploadFileEvent(["foto"]),
   eventController.criarEvento
 );
 

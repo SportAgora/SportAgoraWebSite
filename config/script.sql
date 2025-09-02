@@ -31,7 +31,7 @@ CREATE TABLE assunto (
 CREATE TABLE ingresso (
     ingresso_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     ingresso_nome VARCHAR(70) NOT NULL,
-    ingresso_valor DECIMAL(6,2) NOT NULL,
+    ingresso_valor DECIMAL(12,2) NOT NULL,
     ingresso_quantidade INT NOT NULL,
     ingresso_meia BOOLEAN NOT NULL DEFAULT 0
 );
@@ -47,14 +47,14 @@ CREATE TABLE eventos (
 
     evento_data_publicacao DATETIME NOT NULL,
     evento_data_inicio DATETIME NOT NULL,
+    evento_data_fim DATETIME NOT NULL,
     evento_data_hora DATETIME NOT NULL,
 
     evento_descricao VARCHAR(1500) NOT NULL,
-    evento_endereco_logradouro VARCHAR(200) NOT NULL,
-    evento_endereco_bairro VARCHAR(100) NOT NULL,
-    evento_endereco_cidade VARCHAR(50) NOT NULL,
-    evento_endereco_uf CHAR(2) NOT NULL,
+
     evento_endereco_cep CHAR(8) NOT NULL,
+    evento_endereco_numero CHAR(8) NOT NULL,
+    evento_endereco_complemento VARCHAR(100) NOT NULL,
 
     ingresso_id INT UNSIGNED NOT NULL,
 

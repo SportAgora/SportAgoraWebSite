@@ -36,55 +36,66 @@ module.exports = {
 
   criarEvento: async (req, res) => {
     const errors = validationResult(req);
-        if(!errors.isEmpty()) {
-            console.log(errors);
+    const erroMulter = req.session.erroMulter;
+        if(!errors.isEmpty() || erroMulter != null) {
+              lista =  !erros.isEmpty() ? erros : {formatter:null, errors:[]};
+                if(erroMulter != null ){
+                    lista.errors.push(erroMulter);
+              } 
+            console.log(lista);
             return res.render('pages/criar-evento',{
                 dados: req.body,
-                erros: errors
+                erros: lista
             })
         }
         
     try{
-      const {nome, categoria, assunto, foto, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
+      const {nome, categoria, assunto, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
       const { ingressos } = req.body;
       
-      await OrganizadorModel.createIngresso(ingressos)
-      res.send( "Evento criado com sucesso!" )
-      
+      const ingresso = await OrganizadorModel.createIngresso(ingressos)
 
-      // const evento = {
-      //   user : req.session.usuario.id,
-      //   categoria: categoria,
-      //   assunto: assunto,
-      //   foto: foto,
-      //   nome: nome,
-      //   data: data + " " + hora,
-      //   data_inicio: data_inicio + " " + hora_inicio,
-      //   data_fim: data_final + " " + hora_final,
-      //   descricao: descricao,
-      //   cep: cep,
-      //   numero: numero,
-      //   complemento: complemento
-      // }
+      if (!req.files || !req.files.foto) {
+              console.log("ERRO NO CARAI DA PORRA DA IMAGEM: " + req.files)
+              return res.render('pages/criar-evento',{
+                dados: req.body,
+                erros: null
+      }) //colocar msg que precisa mandar foto
 
-      // const ingresso = {
-      //   ing_nome : ing_nome,
-      //   ing_valor: ing_valor,
-      //   ing_quantidade : ing_quantidade,
-      //   ing_meia : ing_meia
-      // }
-      // const criarIngresso = await OrganizadorModel.createIngresso(ingresso)
+      } else {
+      var caminhoFoto = "imagens/evento/" + req.files.foto[0].filename;
+      }
 
-      // const resultado = await OrganizadorModel.createEvent(evento, criarIngresso)
+      const evento = {
+        user : req.session.usuario.id,
+        categoria: categoria,
+        assunto: assunto,
+        foto: caminhoFoto,
+        nome: nome,
+        data: data + " " + hora,
+        data_inicio: data_inicio + " " + hora_inicio,
+        data_fim: data_final + " " + hora_final,
+        descricao: descricao,
+        cep: cep,
+        numero: numero,
+        complemento: complemento,
+        ingresso: ingresso
+      }
 
-      // if (!resultado){
-      //   ApagarIngresso(criarIngresso)
-      // }
-      // console.log(evento)
-      
+      console.log(evento)
+      const resultado = await OrganizadorModel.createEvent(evento, ingresso)
+      console.log(resultado)
+
+      if (!resultado){
+        OrganizadorModel.ApagarIngresso(ingresso)
+        removeImg(caminhoFoto);
+      }
+
+      return res.send( "Evento criado com sucesso!" )
     }catch(e){
       console.error(e)
-      throw e
+
+      return res.redirect("/erro")
     }
   }, 
   carregarCriarEvento: async (req, res) => {
@@ -96,8 +107,6 @@ module.exports = {
         "erros": null, 
         "dados": {
           nome:"",
-          categoria: "" ,
-          assunto:"", 
           foto:"", 
           data_inicio:"", 
           data_fim:"",

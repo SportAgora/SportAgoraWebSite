@@ -85,13 +85,6 @@ router.post("/resetar-senha",
   function(req, res){
     usuariosController.resetarSenha(req, res);
 });
-  
-
-/*
-
-PAGINAS
-
-*/
 
 router.get('/perfil',verificarAutenticacao, usuariosController.carregarPerfil)
 
@@ -105,6 +98,12 @@ router.post('/salvar-perfil',
     usuariosController.gravarPerfil(req,res);
   }
 )
+
+/*
+
+PAGINAS
+
+*/
 
 router.get('/', function(req,res){
     res.render('pages/home');  
@@ -182,6 +181,7 @@ router.get('/criar-evento',  verificarAutenticacao, function(req,res){
 router.post('/criar-evento',
   verificarAutenticacao,
   // eventController.criarEventoValidacao,
+  uploadFileEvent(["foto"]),
   eventController.criarEvento
 );
 

@@ -36,25 +36,41 @@ module.exports = {
 
   criarEvento: async (req, res) => {
     const errors = validationResult(req);
-        if(!errors.isEmpty()) {
-            console.log(errors);
+    const erroMulter = req.session.erroMulter;
+        if(!errors.isEmpty() || erroMulter != null) {
+              lista =  !erros.isEmpty() ? erros : {formatter:null, errors:[]};
+                if(erroMulter != null ){
+                    lista.errors.push(erroMulter);
+              } 
+            console.log(lista);
             return res.render('pages/criar-evento',{
                 dados: req.body,
-                erros: errors
+                erros: lista
             })
         }
         
     try{
-      const {nome, categoria, assunto, foto, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
+      const {nome, categoria, assunto, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
       const { ingressos } = req.body;
       
-      await OrganizadorModel.createIngresso(ingressos)
+      const ingresso = await OrganizadorModel.createIngresso(ingressos)
+
+      if (!req.files || !req.files.foto) {
+              console.log("ERRO NO CARAI DA PORRA DA IMAGEM: " + req.files)
+              return res.render('pages/criar-evento',{
+                dados: req.body,
+                erros: null
+      }) //colocar msg que precisa mandar foto
+
+      } else {
+      var caminhoFoto = "imagens/evento/" + req.files.foto[0].filename;
+      }
 
       const evento = {
         user : req.session.usuario.id,
         categoria: categoria,
         assunto: assunto,
-        foto: foto,
+        foto: caminhoFoto,
         nome: nome,
         data: data + " " + hora,
         data_inicio: data_inicio + " " + hora_inicio,
@@ -62,20 +78,20 @@ module.exports = {
         descricao: descricao,
         cep: cep,
         numero: numero,
-        complemento: complemento
+        complemento: complemento,
+        ingresso: ingresso
       }
 
       console.log(evento)
+      const resultado = await OrganizadorModel.createEvent(evento, ingresso)
+      console.log(resultado)
+
+      if (!resultado){
+        OrganizadorModel.ApagarIngresso(ingresso)
+        removeImg(caminhoFoto);
+      }
 
       return res.send( "Evento criado com sucesso!" )
-
-      // const resultado = await OrganizadorModel.createEvent(evento, criarIngresso)
-
-      // if (!resultado){
-      //   ApagarIngresso(criarIngresso)
-      // }
-      // console.log(evento)
-      
     }catch(e){
       console.error(e)
 
@@ -91,8 +107,6 @@ module.exports = {
         "erros": null, 
         "dados": {
           nome:"",
-          categoria: "" ,
-          assunto:"", 
           foto:"", 
           data_inicio:"", 
           data_fim:"",

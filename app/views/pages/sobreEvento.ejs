@@ -6,6 +6,11 @@
     <title>Sobre Evento</title>
     <link rel="stylesheet" href="/css/organizador.css">
     <link rel="stylesheet" href="/css/sobreEvento.css">
+    <link rel="stylesheet" href="/css/criar-evento.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
     <link rel="icon" href="imagens/SportAgora.png">
 </head>
 <body>
@@ -18,12 +23,75 @@
 
     <main class="main_sobreEvento">  
         <section class="box-esquerda">
-            <h2>Sobre o Evento</h2>
+            <h1>Sobre o Evento</h1>
+            <aside>
+                <section class="enventoimg-container">
+                    <figure class="enventoimg-overlay">
+                          <img src="imagens/eventobanner.png" alt="imagem Evento" id="">
+                        <figcaption class="icon-overlay" id="editevento">
+                            <img src="imagens/Logoz-_3_ (1).png" alt="Editar Evento">
+                        </figcaption>
+                    </figure>
+            </aside>
+
+            <!-- PRO CERRI!!!
+            quando for fazer o back dessa pag, c arruma os placeholder q tem q ser value puxando do BD -->
+            <section id="form-evento" class="form active">
+                <section class="infodadosEvento">
+                    <label>Nome do evento *</label>
+                    <input type="text" name="nome" id="nome" maxlength="100" value="" placeholder="Netshoes RUN São Paulo" >
+                </section>
+
+                <section class="container">
+                <label>Descrição do evento *</label>
+                <p class="subtitle">Conte todos os detalhes do seu evento, como a programação e os diferenciais da sua produção!</p>
+        
+                <section id="editor-container">
+                  <section id="toolbar">
+                    <span class="ql-formats">
+                      <select class="ql-font"></select>
+                      <select class="ql-size"></select>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-bold"></button>
+                      <button class="ql-italic"></button>
+                      <button class="ql-underline"></button>
+                      <button class="ql-strike"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <select class="ql-color"></select>
+                      <select class="ql-background"></select>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-list" value="ordered"></button>
+                      <button class="ql-list" value="bullet"></button>
+                      <button class="ql-indent" value="-1"></button>
+                      <button class="ql-indent" value="+1"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-link"></button>
+                      <button class="ql-image"></button>
+                      <button class="ql-video"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-clean"></button>
+                    </span>
+                  </section>
+        
+                  <section id="editor" style="height: 300px;"></section>
+                </section>
+              </section>
+
+                <button type="submit" class="btn-salvar">Salvar Alterações</button>
+            </section>
+
+            
             
         </section>
 
-        
     </main>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script defer src="/js/criar-evento.js"></script>
     <%- include('../partials/footer'); %>
 </body>
 </html>

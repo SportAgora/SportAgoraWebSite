@@ -680,6 +680,17 @@ a {
     position: relative;
   }
 
+    /*dark mode mobile  */
+
+  .dark-mode-button-mobile {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
   .dark-mode-button:hover,
   .dark-mode-button:active {
     background-color: green;
@@ -1085,6 +1096,11 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+
+        .dark-mode-button {
+        display: none;
+    }
+
 
     .footer-secao {
         flex-direction: column;

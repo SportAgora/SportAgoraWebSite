@@ -45,7 +45,7 @@
         <article class="classification">
           <section>
             <label>Assunto *</label>
-            <select id = "assunto" >
+            <select name = "assunto" id = "assunto" >
               <% if(dados.assunto) { %>
                         <% dados.assunto.forEach(function(a) { %>
                             <option value="<%= a.assunto_id%>"><%= a.assunto_nome %></option>
@@ -57,7 +57,7 @@
           </section>
           <section>
           <label>Categoria *</label>
-          <select id = "categoria" >
+          <select name="categoria" id = "categoria" >
               <% if(dados.categoria) { %>
                         <% dados.categoria.forEach(function(a) { %>
                             <option value="<%= a.categoria_id%>"><%= a.categoria_nome %></option>

@@ -49,31 +49,25 @@ module.exports = {
       const { ingressos } = req.body;
       
       await OrganizadorModel.createIngresso(ingressos)
-      res.send( "Evento criado com sucesso!" )
-      
 
-      // const evento = {
-      //   user : req.session.usuario.id,
-      //   categoria: categoria,
-      //   assunto: assunto,
-      //   foto: foto,
-      //   nome: nome,
-      //   data: data + " " + hora,
-      //   data_inicio: data_inicio + " " + hora_inicio,
-      //   data_fim: data_final + " " + hora_final,
-      //   descricao: descricao,
-      //   cep: cep,
-      //   numero: numero,
-      //   complemento: complemento
-      // }
+      const evento = {
+        user : req.session.usuario.id,
+        categoria: categoria,
+        assunto: assunto,
+        foto: foto,
+        nome: nome,
+        data: data + " " + hora,
+        data_inicio: data_inicio + " " + hora_inicio,
+        data_fim: data_final + " " + hora_final,
+        descricao: descricao,
+        cep: cep,
+        numero: numero,
+        complemento: complemento
+      }
 
-      // const ingresso = {
-      //   ing_nome : ing_nome,
-      //   ing_valor: ing_valor,
-      //   ing_quantidade : ing_quantidade,
-      //   ing_meia : ing_meia
-      // }
-      // const criarIngresso = await OrganizadorModel.createIngresso(ingresso)
+      console.log(evento)
+
+      return res.send( "Evento criado com sucesso!" )
 
       // const resultado = await OrganizadorModel.createEvent(evento, criarIngresso)
 
@@ -84,7 +78,8 @@ module.exports = {
       
     }catch(e){
       console.error(e)
-      throw e
+
+      return res.redirect("/erro")
     }
   }, 
   carregarCriarEvento: async (req, res) => {

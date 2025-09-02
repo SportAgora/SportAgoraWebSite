@@ -7,6 +7,9 @@ const eventController = require("../controllers/eventController");
 
 
 const uploadFile = require("../helpers/uploader")("./app/public/imagens/perfil/");
+
+const uploadFileEvent = require("../helpers/uploader")("./app/public/imagens/evento/");
+
 /*
 
 AUTENTICACAO
@@ -161,7 +164,7 @@ router.post(
 router.get('/home', function(req,res){res.redirect('/')})
 
 router.get('/erro', function(req,res){
-  res.render('pages/error');  
+  res.render('pages/error', {error:500, mensagem:"Algo deu errado no servidor."});  
 })
 
 /* PAGAMENTOS */

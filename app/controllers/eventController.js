@@ -35,17 +35,21 @@ module.exports = {
   
 
   criarEvento: async (req, res) => {
+    const dadocategoria = await OrganizadorModel.CategoriasFindAll();
+    const dadoassunto = await OrganizadorModel.AssuntosFindAll();
     const errors = validationResult(req);
     const erroMulter = req.session.erroMulter;
         if(!errors.isEmpty() || erroMulter != null) {
-              lista =  !erros.isEmpty() ? erros : {formatter:null, errors:[]};
+              lista =  !errors.isEmpty() ? errors : {formatter:null, errors:[]};
                 if(erroMulter != null ){
                     lista.errors.push(erroMulter);
               } 
             console.log(lista);
             return res.render('pages/criar-evento',{
                 dados: req.body,
-                erros: lista
+                erros: lista,
+                categoria:dadocategoria,
+                assunto: dadoassunto
             })
         }
         
@@ -59,11 +63,14 @@ module.exports = {
               console.log("ERRO NO CARAI DA PORRA DA IMAGEM: " + req.files)
               return res.render('pages/criar-evento',{
                 dados: req.body,
-                erros: null
+                erros: null,
+                categoria:dadocategoria,
+                assunto: dadoassunto
       }) //colocar msg que precisa mandar foto
 
       } else {
-      var caminhoFoto = "imagens/evento/" + req.files.foto[0].filename;
+        var caminhoFoto = "imagens/evento/" + req.files.foto[0].filename;
+        console.log(caminhoFoto)
       }
 
       const evento = {
@@ -72,11 +79,11 @@ module.exports = {
         assunto: assunto,
         foto: caminhoFoto,
         nome: nome,
-        data: data + " " + hora,
+        data_hora: data + " " + hora,
         data_inicio: data_inicio + " " + hora_inicio,
         data_fim: data_final + " " + hora_final,
-        descricao: descricao,
-        cep: cep,
+        descricao: "testeee de mensagemmm",
+        cep: cep.replace(/\D/g, ''),
         numero: numero,
         complemento: complemento,
         ingresso: ingresso

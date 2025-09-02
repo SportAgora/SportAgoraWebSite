@@ -135,6 +135,11 @@ router.get('/organizador', function(req,res){
     res.render('pages/organizador');  
 })
 
+// TESTE
+router.get('/sobreEvento', function(req,res){
+    res.render('pages/sobreEvento');  
+})
+
 router.get('/pagamento-evento', function(req,res){
     res.render('pages/pagamento-evento');  
 })

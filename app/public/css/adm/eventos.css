@@ -245,7 +245,7 @@
 
 .categoria-btn:hover {
     background-color: #184d1b;
-}
+} 
 .categoria form{
     display: flex;
     flex-direction: column;

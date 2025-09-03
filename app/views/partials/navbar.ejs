@@ -47,6 +47,8 @@
             <button class="nav-button" onclick="location.href='/pratique'">Pratique</button>
         </article>
         <article class="navbar-right">
+
+            <!-- BARRA DE PESQUISA -->
             
     <article class="search-bar-container">
     <section class="search-bar">
@@ -67,7 +69,8 @@
 
             <button class="subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>
 
-        <!-- Ícone de notificação -->
+        <!-- PARTE NOTIFICAÇÃO -->
+
         <section class="notificacao-container">
         <button id="botaoNotificacao" class="botaoNotificacao">
             <article class="icone-notificacao-wrapper">
@@ -76,7 +79,6 @@
             </article>
         </button>
 
-        <!-- Painel de notificações -->
         <section id="painelNotificacoes" class="painel-notificacoes oculto">
             <article id="listaNotificacoes"></article>
         </section>
@@ -133,11 +135,14 @@
     <button class="mobile-nav-button" onclick="location.href='/organizador'">Organizador</button>
     <hr>
     <button class="mobile-nav-button" onclick="location.href='/login'">Anuncie seu evento</button>
-    <hr>
-            <button id="toggleDarkMode" class="dark-mode-button-mobile" onclick="toggleMode()" title="Alternar modo claro/escuro">
-                <img src="/imagens/sol-brilho.png" alt="modo claro" class="brilho-icon">
-                <img src="/imagens/lua-brilho.png" alt="modo escuro" class="brilho-icon">
-              </button>
+    <hr>    
+    <button id="toggleDarkMode" class="dark-mode-button-mobile" onclick="toggleMode()" title="Alternar modo claro/escuro">
+        <div class="icon-wrapper">
+          <img src="/imagens/sol-brilho.png" alt="modo claro" class="brilho-icon light-icon">
+          <img src="/imagens/lua-brilho.png" alt="modo escuro" class="brilho-icon dark-icon">
+        </div>
+        <span class="texto-claro-escuro" id="modoTexto">Claro/Escuro</span>
+      </button>
     <hr>
     <% if (usuario) { %>
         <button class="mobile-nav-button" onclick="location.href='/perfil'">Perfil</button>
@@ -150,11 +155,19 @@
 </section>
 
 <article class="mobile-search-bar">
-    <article class="search-bar-mobile">
-        <img src="/imagens/search.png" alt="Search" class="search-icon">
-        <input type="text" placeholder="Busque por Esportes e muito mais...">
-    </article>   
-</article>
+    <section class="search-bar-mobile">
+      <img src="/imagens/search.png" alt="Search" class="search-icon">
+      <input 
+        type="text" 
+        id="inputPesquisaMobile" 
+        placeholder="Busque por Esportes e muito mais..."
+        oninput="mostrarSugestoesMobile()"
+        onkeydown="verificarEnterMobile(event)"
+      >
+      <span class="limpar" onclick="limparPesquisaMobile()">×</span>
+    </section>
+    <ul id="sugestoesMobile" class="painel-sugestoes oculto"></ul>
+  </article>
 
 <section class="mobile-assinatura">
     <button class="mobile-subscribe-button" onclick="location.href='/planos'">Assine Sport+</button>

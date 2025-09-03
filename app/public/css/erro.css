@@ -97,6 +97,7 @@ h3 {
         flex-direction: column;
         align-items: center;
     }
+    
     .erroEsquerda {
         width: 100%;
         height: 100%;
@@ -105,6 +106,8 @@ h3 {
         align-items: center;
         justify-content: center;
     }
+
+
     .erroDireita {
         display: flex;
         flex-direction: column;
@@ -113,17 +116,37 @@ h3 {
     .erroDireita h1 {
         text-align: center;
     }
+    .erroDireita h3{
+        text-align: center;
+        font-size: 1.5rem;
+    }
 }
 
 @media(max-width: 600px){
     .erroDireitaEsquerda {
         flex-direction: column;
-        align-items: center;    
+        align-items: center;
     }
     .voltarHome{
         display: flex;
         align-items: center;
         justify-content: center;
         width: 100%;
+    }
+    .voltarHome img {
+        width: 90%;
+    }
+    .erroEsquerda img{
+        width: 90%;
+    }
+    .erroEsquerda {
+        margin-right: 0;
+    }
+
+    .erroDireita h1{
+        text-align: center;
+    }
+    .erroDireita h3{
+        text-align: center;
     }
 }

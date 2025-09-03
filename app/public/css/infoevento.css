@@ -71,11 +71,12 @@
 
 
 .banner-evento img {
-    width: 100%;
+    width: 97%;
     max-width: 1900px;
     border-radius: 25px;
     display: block;
-    margin: 0 auto;
+    margin: 0 30px 0 30px;
+    margin-right: 10px;
     object-fit: cover;
     height: auto;
 }
@@ -241,6 +242,28 @@ a:hover {
 .btn-fale-conosco:hover, .btn-inscrever-se:hover {
     opacity: 0.9;
     transform: scale(1.05);
+}
+
+.abadicima{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-denunciar{
+    background-color: var(--vermelhoerro);
+    color: var(--branco);
+    text-align: center;
+    margin-bottom: 15px;
+    width: 100px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    border: 1px solid var(--cinzaclaro);
 }
 
 .evento-status {

@@ -20,7 +20,7 @@ const UsuarioModel = {
   // Verificar se email já existe
   findByEmail: async (email) => {
     try {
-      const query = "SELECT * FROM usuario WHERE usu_email = ?";
+      const query = "SELECT * FROM usuario WHERE usu_email = ? AND usu_status = 1";
       const [rows] = await pool.query(query, [email]);
       return rows.length > 0 ? rows[0] : null;
     } catch (error) {

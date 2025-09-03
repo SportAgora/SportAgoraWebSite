@@ -13,7 +13,7 @@ CREATE TABLE usuario (
     usu_banner VARCHAR(255) DEFAULT NULL,
     tipo ENUM('comum', 'organizador', 'administrador') NOT NULL DEFAULT 'comum',
     perf_nome VARCHAR(100) NOT NULL ,  -- nome do perfil ou do usuário
-    usu_status BOOLEAN DEFAULT 1
+    usu_status BOOLEAN DEFAULT 0
 );
   
 -- CATEGORIA
@@ -65,6 +65,14 @@ CREATE TABLE eventos (
     FOREIGN KEY (assunto_id) REFERENCES assunto(assunto_id),
     FOREIGN KEY (ingresso_id) REFERENCES ingresso(ingresso_id)
 );
+
+CREATE TABLE evento_ingresso (
+  evento_id INT NOT NULL,
+  ingresso_id INT NOT NULL,
+  PRIMARY KEY (evento_id, ingresso_id),
+  FOREIGN KEY (evento_id) REFERENCES eventos(id) ON DELETE CASCADE,
+  FOREIGN KEY (ingresso_id) REFERENCES ingresso(ingresso_id) ON DELETE CASCADE
+);
  
 -- PRÁTICAS ESPORTIVAS
 CREATE TABLE pratica_esportivas (
@@ -94,7 +102,8 @@ INSERT INTO usuario (
     usu_foto,
     usu_banner,
     tipo,
-    perf_nome
+    perf_nome,
+    usu_status
 ) VALUES (
     'admin@sportagora.com',               -- Email (único)
     'adminMaster',                        -- Nome (único)
@@ -103,5 +112,6 @@ INSERT INTO usuario (
     'imagens/usuarios/default_user.jpg',  -- Foto
     'imagens/usuarios/default_background.jpg', -- Banner
     'administrador',                      -- Tipo de usuário
-    'adminMaster'                         -- Nome do perfil
+    'adminMaster',                         -- Nome do perfil
+    1
 );

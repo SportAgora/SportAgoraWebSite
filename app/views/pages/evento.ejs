@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações sobre o Evento</title>
+    <link rel="stylesheet" href="/css/infoevento.css">
+    <script src="js/ingressos-evento.js"></script>
+    <link rel="stylesheet" href="/css/evento.css">
+    <link rel="icon" href="imagens/SportAgora.png">
+</head>
+<body>
+    <%- include('../partials/navbar'); %>
+
+ <main class="aba-evento">
+    <section class="aba-evento">
+        <article class="container-ver-eventos">
+            <button class="botao-seta" onclick="location.href='/eventos'">
+                <img src="/imagens/left-arrow.png" alt="Seta"> </button>
+            <span class="ver-eventos">Ver todos os eventos</span>
+        </article>
+
+    <article class="banner-evento">
+        <img src="/imagens/eventobanner.png" alt="Banner do evento">
+    </article>
+
+    <section class="info-container">
+        <section class="box-esquerda">
+            // inserir descricao
+        </section>
+
+        <section class="box-direita">
+            <article class="evento-status gratis">tags</article>
+            <h2 class="nome-evento">Titulo</h2>
+            <hr class="linha-separadora">
+            <section class="detalhes-evento">
+                <article class="data-evento">
+                    <img src="/imagens/calendario.png" alt="Calendário">
+                    <span>19/11/2024</span>
+                </article>
+                <article class="local-evento">
+                    <img src="/imagens/local.png" alt="Local">
+                    <span>Parque do Povo, São Paulo, SP</span>
+                </article>
+            </section>
+            <hr class="linha-separadora">
+            <p class="data-limite">Inscrições até: 20/08/2024 23:59 ou até o limite de vagas.</p>
+            <section class="ingressos-container">
+  <section class="ingresso-linha">
+    <section class="info-ingresso">
+      <p class="nome-ingresso">Ingresso Pista</p>
+      <p class="tipo-ingresso">Inteira</p>
+    </section>
+    <section class="preco-ingresso">R$ 40,00</section>
+    <section class="controle-quantidade">
+      <button class="botao-controle" onclick="alterarQuantidade('pista', -1)">-</button>
+      <span id="quantidade-pista">0</span>
+      <button class="botao-controle" onclick="alterarQuantidade('pista', 1)">+</button>
+    </section>
+  </section>
+  <hr class="linha-separadora-ingresso">
+
+  <section class="ingresso-linha">
+    <section class="info-ingresso">
+      <p class="nome-ingresso">Ingresso Pista</p>
+      <p class="tipo-ingresso">Meia Entrada</p>
+    </section>
+    <section class="preco-ingresso">R$ 20,00</section>
+    <section class="controle-quantidade">
+      <button class="botao-controle" onclick="alterarQuantidade('meia', -1)">-</button>
+      <span id="quantidade-meia">0</span>
+      <button class="botao-controle" onclick="alterarQuantidade('meia', 1)">+</button>
+    </section>
+  </section>
+  <section class="total-ingressos">
+    Total: <span id="valor-total">R$ 00,00</span>
+  </section>
+</section>
+
+            <article class="botoes-inscricao">
+                <button class="btn-fale-conosco">Fale conosco</button>
+                <button class="btn-inscrever-se" onclick="location.href='/pagamento-evento'">Inscrever-se</button>
+            </article>
+        </section>
+    </section>
+</section>
+    
+    <section class="relacionado-eventos">
+        <article class="relacionado-evento">
+            <a href="/infoevento2" class="invisible-button1"></a>
+            <img src="/imagens/bannerevento2.png" alt="Evento 1">
+            <p><strong>Nome do Evento 2 </strong></p>
+            <p><strong>Data do Evento 2 </strong></p>
+            <p><strong>Data do Evento 2 </strong> </p>
+        </article>
+        <article class="relacionado-evento">
+            <a href="/infoevento2" class="invisible-button1"></a>
+            <img src="/imagens/bannerevento2.png" alt="Evento 2">
+            <p><strong>Nome do Evento 2 </strong></p>
+            <p><strong>Data do Evento 2 </strong></p>
+            <p><strong>Data do Evento 2 </strong> </p>
+        </article>
+    </section>
+</main>
+
+
+<!-- responsividade da box direita -->
+
+<section class="mobile-fixed-bottom-bar">
+    <p>Inscrições até: 20/08/2024 23:59 ou até o limite de vagas.</p>
+    <button class="inscrever-btn" onclick="location.href='/inscrito'">Inscrever-se</button>
+  </section>
+
+<%- include('../partials/footer'); %>
+</body>
+</html>

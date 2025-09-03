@@ -134,6 +134,6 @@ module.exports = {
     console.error(err);
     return res.redirect("/login");
   }
-},
+  }
 
 }

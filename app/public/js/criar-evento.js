@@ -165,3 +165,9 @@ document.querySelector('#ingresso-tabela').addEventListener('click', (e) => {
       .forEach(input => input.remove());
   }
 });
+
+
+  const formulario = document.querySelector('#evento-form');
+  formulario.addEventListener('submit', function () {
+    document.getElementById('descricao').value = quill.root.innerHTML;
+  });

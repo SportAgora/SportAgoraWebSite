@@ -57,7 +57,7 @@ module.exports = {
       const {nome, categoria, assunto, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
       const { ingressos } = req.body;
       
-      const ingresso = await OrganizadorModel.createIngresso(ingressos)
+      const ingressoIDs = await OrganizadorModel.createIngresso(ingressos)
 
       if (!req.files || !req.files.foto) {
               console.log("ERRO NO CARAI DA PORRA DA IMAGEM: " + req.files)
@@ -75,25 +75,24 @@ module.exports = {
 
       const evento = {
         user : req.session.usuario.id,
-        categoria: categoria,
-        assunto: assunto,
+        categoria,
+        assunto,
         foto: caminhoFoto,
-        nome: nome,
+        nome,
         data_hora: data + " " + hora,
         data_inicio: data_inicio + " " + hora_inicio,
         data_fim: data_final + " " + hora_final,
-        descricao: "testeee de mensagemmm",
+        descricao,
         cep: cep.replace(/\D/g, ''),
-        numero: numero,
-        complemento: complemento,
-        ingresso: ingresso
+        numero,
+        complemento,
       }
-
       console.log(evento)
-      const resultado = await OrganizadorModel.createEvent(evento, ingresso)
+
+      const resultado = await OrganizadorModel.createEvent(evento, ingressoIDs)
       console.log(resultado)
 
-      if (!resultado){
+      if (resultado == false){
         OrganizadorModel.ApagarIngresso(ingresso)
         removeImg(caminhoFoto);
       }
@@ -135,6 +134,6 @@ module.exports = {
     console.error(err);
     return res.redirect("/login");
   }
-},
+  }
 
 }

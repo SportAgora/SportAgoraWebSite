@@ -137,7 +137,7 @@ module.exports = {
           
         }
       },
-      apagarUsuario: async (req,res) => {
+    apagarUsuario: async (req,res) => {
         try{
             const id = req.params.id
             console.log(id)
@@ -235,7 +235,7 @@ module.exports = {
 
         const categoriaReturn = await AdmModel.CategoriaCreate({nome:novaCategoria});
         
-        console.log("Sucesso ao criar assunto: " + categoriaReturn)
+        console.log("Sucesso ao criar categoria: " + categoriaReturn)
   
         res.redirect("/adm/eventos");
        

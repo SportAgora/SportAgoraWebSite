@@ -602,7 +602,9 @@ a {
     color: var(--branco);
 }
 
-
+.mobile-search-bar {
+    position: relative;
+  }
 
 .mobile-search-bar input::placeholder {
     color: var(--branco);
@@ -612,6 +614,21 @@ a {
     background-color: var(--verdenavfooter);
     padding: 12px;
 }
+
+#sugestoesMobile {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--branco-fosco);
+    border-radius: 10px;
+    margin-top: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10000;
+    list-style: none;
+    padding: 0;
+  }
 
 .mobile-subscribe-button {
     width: 100%;
@@ -682,14 +699,29 @@ a {
 
     /*dark mode mobile  */
 
-  .dark-mode-button-mobile {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    transition: all 0.3s ease;
-    position: relative;
-  }
+    .dark-mode-button-mobile {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px; /* espaço entre ícone e texto */
+        font-size: 14px;
+      }
+      
+      .icon-wrapper {
+        position: relative;
+        width: 24px;
+        height: 24px;
+      }
+
+      .texto-claro-escuro {
+        color: var(--branco);
+      }
+
+
 
   .dark-mode-button:hover,
   .dark-mode-button:active {

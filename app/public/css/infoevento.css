@@ -71,8 +71,12 @@
 
 
 .banner-evento img {
+<<<<<<< HEAD
     width: 97%;
     max-width: 1900px;
+=======
+    width: 95%;
+>>>>>>> 01f890906b0c1b9e3c7c64afdb9e510e78c477db
     border-radius: 25px;
     display: block;
     margin: 0 30px 0 30px;

@@ -384,7 +384,7 @@
 .event-container {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .event-title {
     font-size: 3.5rem;

@@ -14,9 +14,9 @@
 </head>
 <body>
     <%if (dadosNotificacao) { %>
-            <script>
-                    notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "right top")                    
-            </script>
+        <script>
+            notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "right top")                    
+        </script>
     <% } %>
     <header>
         <%- include('../partials/navbar'); %> 
@@ -25,39 +25,49 @@
         <section class="bioPadrão">
             <article class="planoFundo">
                 <% if (usuario.banner) { %>
-                <img src="<%= usuario.banner %>" alt="planodefundo" class="planodefundo">
+                    <img src="<%= usuario.banner %>" alt="planodefundo" class="planodefundo">
                 <% }else{%>
-                <img src="imagens/usuarios/default_background.jpg" alt="planodefundo" class="planodefundo">
+                    <img src="imagens/usuarios/default_background.jpg" alt="planodefundo" class="planodefundo">
                 <%}%>
                 <article class="perfilo">
-                    <div class="perfil-container">
-                    <% if (usuario.foto) { %>
-                    <img src="<%= usuario.foto %>" alt="ftdePerfil" class="ftdePerfil">
-                    <% }else{%>
-                    <img src="imagens/usuarios/default_user.jpg" alt="ftdePerfil" class="ftdePerfil">
-                    <%}%>
-                    <a href="/editar-perfil" class="icone-editar" title="Editar perfil">
-                    <img src="imagens/lapis-verde.png" alt="Editar">
-                     </a>
-                     </div>
+                    <aside class="perfil-container">
+                        <% if (usuario.foto) { %>
+                            <img src="<%= usuario.foto %>" alt="ftdePerfil" class="ftdePerfil">
+                        <% }else{%>
+                            <img src="imagens/usuarios/default_user.jpg" alt="ftdePerfil" class="ftdePerfil">
+                        <%}%>
+                        <a href="/editar-perfil" class="icone-editar" title="Editar perfil">
+                            <img src="imagens/lapis-verde.png" alt="Editar">
+                        </a>
+                    </aside>
                     <aside class="nomes">
                         <h2>    
-                    <%= usuario.nome %></p>
-                    </h2>
+                            <%= usuario.nome %>
+                        </h2>
                         <h3>@<%= usuario.nome %></h3>
                     </aside>
-                </article>
-                
+                </article>  
             </article> 
             <article class="biografia">
                 &nbsp;
             </article>
         </section>
+
         <hr size="2" width="99.8%" align="center" noshade>
+        
         <section class="eventosParticipados">
-            <%- include('../partials/eventoUsuario'); %>
+            <article class="event-container">
+                <section class="text-event">
+                    <h1 class="event-title">Meus ingressos</h1>
+                    <p class="event-subtitle">Acompanhe seus eventos e acessos</p>  
+                </section>
+                <button class="btn-criarevento" onclick="location.href='/planos'">Criar evento</button>
+            </article>
+            <article class="ingressos-event">
+                <%- include('../partials/eventoUsuario'); %>
+            </article>
         </section>
     </main>
-<%- include('../partials/footer'); %> 
+    <%- include('../partials/footer'); %> 
 </body>
 </html>

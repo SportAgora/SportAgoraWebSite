@@ -381,6 +381,52 @@
     margin-top: 15px;
 }
 
+.event-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.event-title {
+    font-size: 3.5rem;
+    color: var(--verde_especial);
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-out;
+}
+.event-subtitle {
+    font-size: 1.4rem;
+    font-family: "Montserrat", sans-serif;
+    color: var(--textopostinfo);
+    animation: fadeInUp 1s ease-out;
+}
+
+.btn-criarevento{
+    background-color: var(--verde_especial);
+    border: none;
+    font-size: large;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: var(--branco);
+    padding: 15px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-criarevento:hover{
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+.text-event{
+    text-align: center;
+    padding: 30px 0;
+}
+
+
 @media(max-width: 925px){
     .planodefundo{
         height: 359x;

@@ -30,9 +30,13 @@
     font-size: 18px;
     margin-bottom: 60px;
 }
+.container5 a {
+    color: var(--verde_especial);
+}
+
 .container6 {
     background-color: var(--postcor);  
-    height: 1080px;
+    height: 950px;
     width: 880px;
     display: flex;
     flex-direction: column;
@@ -125,7 +129,7 @@ form {
     background: var(--verde_especial);
     color: var(--branco);
     border-radius: 15px;
-    width: 200%;
+    width: 215%;
     border: none;
     outline: none;
     padding: 13px 0 13px 4px; /* top right bottom left */
@@ -193,7 +197,8 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 450px;
+    margin-top: 300px;
+    z-index: -1;
 }
 .outras button {
     height: 70px;
@@ -210,6 +215,7 @@ form {
     justify-content: center;
     align-items: center;
     margin-top: 750px;
+    z-index: -1;
 }
 .outros button {
     height: 70px;

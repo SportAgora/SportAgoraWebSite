@@ -4,6 +4,7 @@ const guestMiddleware = require('../helpers/guestMiddleware');
 const usuariosController = require("../controllers/usuariosController");
 const pagamentoController = require('../controllers/pagamentosController');
 const eventController = require("../controllers/eventController");
+const pagsController = require("../controllers/pagsController");
 
 
 const uploadFile = require("../helpers/uploader")("./app/public/imagens/perfil/");
@@ -106,7 +107,7 @@ PAGINAS
 */
 
 router.get('/', function(req,res){
-    res.render('pages/home');  
+    pagsController.carregarHome(req,res);
 })
 
 router.get('/eventos', function(req,res){

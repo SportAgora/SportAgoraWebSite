@@ -96,10 +96,25 @@
 
 
   <article class="carousel-title">Eventos Em Progresso</article>
+  <section class="container-eventos">
+    <% if(eventos) { %>
+    <% eventos.forEach(function(e) { %>
+      <section class="evento-box">
+        <img src="<%=e.evento_foto%>" alt="Imagem do Evento" class="evento-img">
+        <article class="evento-status gratis">Grátis</article>
+        <h2 class="evento-nome"><%=e.evento_nome%></h2>
+        <p class="evento-detalhes">Barueri, SP<br><br><%=e.evento_data_hora%></p>
+        <button class="evento-btn" onclick="location.href='/infoevento'">Participar</button>
+      </section>
 
-    
-        <%- include('../partials/evento'); %>
-        <%- include('../partials/evento1'); %>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="5">Nenhum registro encontrado.</td>
+      </tr>
+    <% } %>
+</section>
+
 
     <%- include('../partials/footer'); %>
 </body>

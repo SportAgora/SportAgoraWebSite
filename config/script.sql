@@ -56,21 +56,19 @@ CREATE TABLE eventos (
     evento_endereco_numero CHAR(8) NOT NULL,
     evento_endereco_complemento VARCHAR(100) NOT NULL,
 
-    ingresso_id INT UNSIGNED NOT NULL,
 
     evento_ativo BOOLEAN DEFAULT 1,
 
     FOREIGN KEY (usuario_id) REFERENCES usuario(usu_id),
     FOREIGN KEY (categoria_id) REFERENCES categoria(categoria_id),
-    FOREIGN KEY (assunto_id) REFERENCES assunto(assunto_id),
-    FOREIGN KEY (ingresso_id) REFERENCES ingresso(ingresso_id)
+    FOREIGN KEY (assunto_id) REFERENCES assunto(assunto_id)
 );
 
 CREATE TABLE evento_ingresso (
-  evento_id INT NOT NULL,
-  ingresso_id INT NOT NULL,
+  evento_id INT UNSIGNED NOT NULL,
+  ingresso_id INT UNSIGNED NOT NULL,
   PRIMARY KEY (evento_id, ingresso_id),
-  FOREIGN KEY (evento_id) REFERENCES eventos(id) ON DELETE CASCADE,
+  FOREIGN KEY (evento_id) REFERENCES eventos(evento_id) ON DELETE CASCADE,
   FOREIGN KEY (ingresso_id) REFERENCES ingresso(ingresso_id) ON DELETE CASCADE
 );
  

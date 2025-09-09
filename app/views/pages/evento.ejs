@@ -21,57 +21,85 @@
         </article>
 
     <article class="banner-evento">
-        <img src="/imagens/eventobanner.png" alt="Banner do evento">
+        <img src="<%= evento.evento_foto %>" alt="Banner do evento">
     </article>
 
     <section class="info-container">
         <section class="box-esquerda">
-            // inserir descricao
+            <%-evento.evento_descricao%>
         </section>
 
         <section class="box-direita">
             <article class="evento-status gratis">tags</article>
-            <h2 class="nome-evento">Titulo</h2>
+            <h2 class="nome-evento"><%=evento.evento_nome%></h2>
             <hr class="linha-separadora">
+            <%
+            let data = new Date(evento.evento_data_hora);
+            let dia = String(data.getDate()).padStart(2, '0');
+            let mes = String(data.getMonth() + 1).padStart(2, '0'); 
+            let ano = data.getFullYear();
+            let dataFormatada = `${dia}/${mes}/${ano}`; 
+
+            let datainscricao = new Date(evento.evento_data_fim);
+            let diainscricao = String(data.getDate()).padStart(2, '0');
+            let mesinscricao = String(data.getMonth() + 1).padStart(2, '0'); 
+            let anoinscricao = data.getFullYear();
+            let dataFormatadainscricao = `${dia}/${mes}/${ano}`; 
+            let horainscricao = String(data.getHours()).padStart(2, '0');
+            let minutosinscricao = String(data.getMinutes()).padStart(2, '0');
+            let horaMinutoinscricao = `${horainscricao}:${minutosinscricao}`;
+            %>
             <section class="detalhes-evento">
                 <article class="data-evento">
                     <img src="/imagens/calendario.png" alt="Calendário">
-                    <span>19/11/2024</span>
+                    <span><%=dataFormatada%></span>
                 </article>
                 <article class="local-evento">
                     <img src="/imagens/local.png" alt="Local">
-                    <span>Parque do Povo, São Paulo, SP</span>
+                    <span><%=evento.logradouro%>, <%=evento.cidade%>, <%=evento.estado%></span>
                 </article>
             </section>
             <hr class="linha-separadora">
-            <p class="data-limite">Inscrições até: 20/08/2024 23:59 ou até o limite de vagas.</p>
+            <p class="data-limite">Inscrições até: <%=dataFormatadainscricao%> <%=horaMinutoinscricao%> ou até o limite de vagas.</p>
             <section class="ingressos-container">
-  <section class="ingresso-linha">
-    <section class="info-ingresso">
-      <p class="nome-ingresso">Ingresso Pista</p>
-      <p class="tipo-ingresso">Inteira</p>
-    </section>
-    <section class="preco-ingresso">R$ 40,00</section>
-    <section class="controle-quantidade">
-      <button class="botao-controle" onclick="alterarQuantidade('pista', -1)">-</button>
-      <span id="quantidade-pista">0</span>
-      <button class="botao-controle" onclick="alterarQuantidade('pista', 1)">+</button>
-    </section>
-  </section>
-  <hr class="linha-separadora-ingresso">
+  <section class="ingressos">
+  <% if (evento.ingressos && evento.ingressos.length > 0) { %>
+    <% evento.ingressos.forEach(ingresso => { %>
+      <section class="ingresso-linha">
+        <section class="info-ingresso">
+          <p class="nome-ingresso"><%= ingresso.ingresso_nome %></p>
+          <p class="tipo-ingresso">Inteira</p>
+        </section>
+        <section class="preco-ingresso">R$ <%= ingresso.ingresso_valor %></section>
+        <section class="controle-quantidade">
+          <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_inteira', -1)">-</button>
+          <span id="quantidade-<%= ingresso.ingresso_id %>_inteira">0</span>
+          <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_inteira', 1)">+</button>
+        </section>
+      </section>
 
-  <section class="ingresso-linha">
-    <section class="info-ingresso">
-      <p class="nome-ingresso">Ingresso Pista</p>
-      <p class="tipo-ingresso">Meia Entrada</p>
-    </section>
-    <section class="preco-ingresso">R$ 20,00</section>
-    <section class="controle-quantidade">
-      <button class="botao-controle" onclick="alterarQuantidade('meia', -1)">-</button>
-      <span id="quantidade-meia">0</span>
-      <button class="botao-controle" onclick="alterarQuantidade('meia', 1)">+</button>
-    </section>
-  </section>
+      <hr class="linha-separadora-ingresso">
+      <% if (ingresso.ingresso_meia) { %>
+        <section class="ingresso-linha">
+          <section class="info-ingresso">
+            <p class="nome-ingresso"><%= ingresso.ingresso_nome %></p>
+            <p class="tipo-ingresso">Meia</p>
+          </section>
+          <section class="preco-ingresso">R$ <%= (ingresso.ingresso_valor / 2) %></section>
+          <section class="controle-quantidade">
+            <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_meia', -1)">-</button>
+            <span id="quantidade-<%= ingresso.ingresso_id %>_meia">0</span>
+            <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_meia', 1)">+</button>
+          </section>
+        </section>
+        <hr class="linha-separadora-ingresso">
+      <% } %>
+    <% }) %>
+  <% } else { %>
+    <p>Nenhum ingresso disponível para este evento.</p>
+  <% } %>
+</section>
+
   <section class="total-ingressos">
     Total: <span id="valor-total">R$ 00,00</span>
   </section>

@@ -1,5 +1,6 @@
 const PagsModel = require('../models/model-pags');
 const { body, validationResult } = require("express-validator");
+const axios = require('axios'); 
 
 module.exports = {
     carregarHome: async (req,res) =>{
@@ -10,6 +11,23 @@ module.exports = {
             const resultado = await PagsModel.EventosListarComPaginacao(offset, limite) 
 
             const total_paginas = Math.ceil(resultado.total / limite);
+
+            for (let e of resultado.eventos) {
+                if (e.evento_endereco_cep) {
+                    try {
+                        const resposta = await axios.get(`https://viacep.com.br/ws/${e.evento_endereco_cep}/json/`);
+                        e.cidade = resposta.data.localidade || '';
+                        e.estado = resposta.data.uf || '';
+                    } catch (error) {
+                        e.cidade = '';
+                        e.estado = '';
+                    }
+                } else {
+                    e.cidade = '';
+                    e.estado = '';
+                }
+            }
+
             res.render('pages/home', {
             eventos: resultado.eventos,
             paginador: {
@@ -22,4 +40,50 @@ module.exports = {
             throw e;
         }
     },
+    visualizarEvento: async (req, res) => {
+    try {
+      const id = req.query.id;
+      const evento = await PagsModel.buscarPagPorId(id);
+
+      if (!evento) {
+        return res.render('pages/erro',
+            {
+            error: 404,
+            mensagem: "Página não encontrada"
+        }
+        );
+      }
+
+      if (evento.evento_endereco_cep) {
+      try {
+        const resposta = await axios.get(`https://viacep.com.br/ws/${evento.evento_endereco_cep}/json/`);
+        evento.logradouro = resposta.data.logradouro || '';
+        evento.cidade = resposta.data.localidade || '';
+        evento.estado = resposta.data.uf || '';
+      } catch (error) {
+        evento.logradouro = '';
+        evento.cidade = '';
+        evento.estado = '';
+      }
+    } else {
+      evento.logradouro = '';
+      evento.cidade = '';
+      evento.estado = '';
+    }
+
+    const ingresso = await PagsModel.buscarIngressosPorEvento(id);
+    evento.ingressos = ingresso;
+    console.log(evento)
+    res.render('pages/evento', {evento});
+    } catch (error) {
+      console.error(error);
+      res.render('pages/error',
+        {
+            error: 404,
+            mensagem: "Página não encontrada"
+        }
+      );
+    }
+    }
+    
 }

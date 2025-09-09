@@ -53,7 +53,7 @@ const UsuarioModel = {
         perf_nome: nome,
         usu_foto:foto,
         usu_banner:banner,
-        usu_status: status || 1,
+        usu_status: status || 0, // Padrão para inativo
       };
  
       // Construir a query dinamicamente

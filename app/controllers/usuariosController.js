@@ -79,7 +79,7 @@ module.exports = {
       });
 
       const token = jwt.sign(
-        { userId: novoUsuario.usu_id },
+        { userId: novoUsuario },
         process.env.SECRET_KEY
       );
 
@@ -110,35 +110,54 @@ module.exports = {
   },
 
   ativarConta: async (req, res) => {
-    try {
-      const token = req.query.token;
-      jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
-        console.log(decoded);
-        if (err) {
-          console.log({ message: "Token inválido ou expirado" });
-        } else {
-          const user = UsuarioModel.findId(decoded.userId);
-          if (!user) {
-            console.log({ message: "Usuário não encontrado" });
-          } else {
-           res.render("pages/login", {
-              erros: null,
-              dadosNotificacao: {
-                titulo: "Sucesso",
-                mensagem: "Conta ativada, use seu e-mail e senha para acessar o seu perfil!",
-                tipo: "success",
-              },
-              dados: { email: "", senha: "" },
-              retorno: null
-            });
-          }
-          // Ativa a conta do usuário
-        }
+  try {
+    const token = req.query.token;
+
+    // Verifica o token de forma síncrona
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+
+    // Busca o usuário
+    const user = await UsuarioModel.findId(decoded.userId);
+    if (!user) {
+      console.log({ message: "Usuário não encontrado" });
+      return res.render("pages/login", {
+        erros: null,
+        dadosNotificacao: {
+        titulo: "Algo deu errado!",
+        mensagem: "Conta não encontrada, verifique o link de ativação.",
+        tipo: "error",
+        },
+        dados: { email: "", senha: "" },
+        retorno: null
       });
-    } catch (e) {
-      console.log(e);
     }
-  },
+
+    // Ativa a conta
+    await UsuarioModel.ativarConta(decoded.userId);
+
+    // Renderiza página de login com notificação
+    res.render("pages/login", {
+      erros: null,
+      dadosNotificacao: {
+        titulo: "Sucesso",
+        mensagem: "Conta ativada, use seu e-mail e senha para acessar o seu perfil!",
+        tipo: "success",
+      },
+      dados: { email: "", senha: "" },
+      retorno: null
+    });
+
+  } catch (err) {
+    console.log({ message: "Token inválido ou expirado", err });
+    res.render("pages/login", {
+      erros: ["Token inválido ou expirado"],
+      dadosNotificacao: null,
+      dados: { email: "", senha: "" },
+      retorno: null
+    });
+  }
+}
+,
 
   regrasValidacaoFormNovaSenha: [
     body("senha")

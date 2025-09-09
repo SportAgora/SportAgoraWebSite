@@ -195,4 +195,8 @@ router.post('/criar-evento',
   eventController.criarEvento
 );
 
+router.get('/evento', (req, res) => {
+  pagsController.visualizarEvento(req, res);
+});
+
 module.exports = router;

@@ -13,6 +13,7 @@
     <%- include('../partials/navbar'); %>
 
  <main class="aba-evento">
+    <!-- box esquerda -->
     <section class="aba-evento">
         <article class="container-ver-eventos">
             <button class="botao-seta" onclick="location.href='/eventos'">
@@ -93,64 +94,73 @@
                     Não serão entregues kits após o período da retirada de kits, determinado previamente pela organização.</p>
         </section>
 
-        <section class="box-direita">
-            <section class="abadicima">
-                <article class="evento-status gratis">Grátis</article>
-                <button class="btn-denunciar">Denunciar</button>
-            </section>
-            <h2 class="nome-evento">Netshoes RUN São Paulo</h2>
-            <hr class="linha-separadora">
-            <section class="detalhes-evento">
-                <article class="data-evento">
-                    <img src="/imagens/calendario.png" alt="Calendário">
-                    <span>19/11/2024</span>
-                </article>
-                <article class="local-evento">
-                    <img src="/imagens/local.png" alt="Local">
-                    <span>Parque do Povo, São Paulo, SP</span>
-                </article>
-            </section>
+      <section class="box-direita" id="box-direita">
+        <section class="abadicima">
+          <article class="evento-status gratis">Grátis</article>
+          <button class="btn-denunciar">Denunciar</button>
+        </section>
+        <h2 class="nome-evento">Netshoes RUN São Paulo</h2>
+        <hr class="linha-separadora">
+
+        <section class="detalhes-evento">
+          <article class="data-evento">
+            <img src="/imagens/calendario.png" alt="Calendário">
+            <span>19/11/2024</span>
+          </article>
+          <article class="local-evento">
+            <img src="/imagens/local.png" alt="Local">
+            <span>Parque do Povo, São Paulo, SP</span>
+          </article>
+        </section>
+
             <hr class="linha-separadora">
             <p class="data-limite">Inscrições até: 20/08/2024 23:59 ou até o limite de vagas.</p>
-            <section class="ingressos-container">
-  <section class="ingresso-linha">
-    <section class="info-ingresso">
-      <p class="nome-ingresso">Ingresso Pista</p>
-      <p class="tipo-ingresso">Inteira</p>
-    </section>
-    <section class="preco-ingresso">R$ 40,00</section>
-    <section class="controle-quantidade">
-      <button class="botao-controle" onclick="alterarQuantidade('pista', -1)">-</button>
-      <span id="quantidade-pista">0</span>
-      <button class="botao-controle" onclick="alterarQuantidade('pista', 1)">+</button>
-    </section>
-  </section>
-  <hr class="linha-separadora-ingresso">
 
-  <section class="ingresso-linha">
-    <section class="info-ingresso">
-      <p class="nome-ingresso">Ingresso Pista</p>
-      <p class="tipo-ingresso">Meia Entrada</p>
-    </section>
-    <section class="preco-ingresso">R$ 20,00</section>
-    <section class="controle-quantidade">
-      <button class="botao-controle" onclick="alterarQuantidade('meia', -1)">-</button>
-      <span id="quantidade-meia">0</span>
-      <button class="botao-controle" onclick="alterarQuantidade('meia', 1)">+</button>
-    </section>
-  </section>
-  <section class="total-ingressos">
-    Total: <span id="valor-total">R$ 00,00</span>
-  </section>
-</section>
+        <section class="ingressos-container">
+          <section class="ingresso-linha">
+            <section class="info-ingresso">
+              <p class="nome-ingresso">Ingresso Pista</p>
+              <p class="tipo-ingresso">Inteira</p>
+            </section>
+            <section class="preco-ingresso">R$ 40,00</section>
+            <section class="controle-quantidade">
+              <button class="botao-controle" onclick="alterarQuantidade('pista', -1)">-</button>
+              <span id="quantidade-pista">0</span>
+              <button class="botao-controle" onclick="alterarQuantidade('pista', 1)">+</button>
+            </section>
+          </section>
+  
+         <hr class="linha-separadora-ingresso">
 
-            <article class="botoes-inscricao">
-                <button class="btn-fale-conosco">Fale conosco</button>
-                <button class="btn-inscrever-se" onclick="location.href='/pagamento-evento'">Inscrever-se</button>
-            </article>
+          <section class="ingresso-linha">
+            <section class="info-ingresso">
+              <p class="nome-ingresso">Ingresso Pista</p>
+              <p class="tipo-ingresso">Meia Entrada</p>
+            </section>
+            <section class="preco-ingresso">R$ 20,00</section>
+            <section class="controle-quantidade">
+              <button class="botao-controle" onclick="alterarQuantidade('meia', -1)">-</button>
+              <span id="quantidade-meia">0</span>
+              <button class="botao-controle" onclick="alterarQuantidade('meia', 1)">+</button>
+            </section>
+          </section>
+
+          <section class="total-ingressos">
+            Total: <span id="valor-total">R$ 00,00</span>
+          </section>
         </section>
+
+        <article class="botoes-inscricao">
+          <button class="btn-fale-conosco">Fale conosco</button>
+          <button class="btn-inscrever-se" onclick="location.href='/pagamento-evento'">Inscrever-se</button>
+        </article>
+      </section>
     </section>
-</section>
+  </main>
+
+<!-- BOTÃO FIXO MOBILE -->
+<button class="btn-ingressos-mobile" id="btn-ingressos-mobile">Ver Ingressos</button>
+
     
     <section class="relacionado-eventos">
         <article class="relacionado-evento">
@@ -170,13 +180,6 @@
     </section>
 </main>
 
-
-<!-- responsividade da box direita -->
-
-<section class="mobile-fixed-bottom-bar">
-    <p>Inscrições até: 20/08/2024 23:59 ou até o limite de vagas.</p>
-    <button class="inscrever-btn" onclick="location.href='/inscrito'">Inscrever-se</button>
-  </section>
 
 <%- include('../partials/footer'); %>
 </body>

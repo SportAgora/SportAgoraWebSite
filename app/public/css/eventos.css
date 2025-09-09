@@ -358,9 +358,6 @@
 }
 
 @media (max-width: 1663px) {
- .filter-box {
-  display: none;
- }
 
  .event-filtros-p {
   margin-top: 0px;

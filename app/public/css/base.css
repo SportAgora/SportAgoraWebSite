@@ -461,8 +461,11 @@ body {
 }
 
 .user-icon {
+    width: auto;
     height: 50px;
     border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
 .menu-panel {
@@ -759,6 +762,11 @@ a {
     animation: rotateSun 1s ease-in-out;
   }
 
+  .navbar-left, .navbar-right {
+    flex-wrap: nowrap;
+    min-width: 0;
+}
+
 /* Responsividade */
 
 @media (min-width: 978px)  and (max-width:1700px) {
@@ -899,6 +907,11 @@ a {
         display: block;
     }
 
+    .user-icon {
+        width: 35px;
+        height: 35px;
+    }
+
     .login-button-mobile {
         display: flex;
         align-items: center;
@@ -906,7 +919,6 @@ a {
         color: var(--branco);
         border: none;
         border-radius: 20px;
-        padding: 8px 15px;
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
         font-style: normal;

@@ -209,7 +209,7 @@ module.exports = {
 
       const ids = Array.isArray(esportesSelecionados) ? esportesSelecionados : [esportesSelecionados];
 
-      await AdmModel.EsportesDelete(ids);
+      await AdmModel.EsportDelete(ids);
       return res.redirect('/adm/eventos');
 
       } catch(e) {

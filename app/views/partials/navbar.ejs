@@ -50,20 +50,19 @@
 
             <!-- BARRA DE PESQUISA -->
             
-    <article class="search-bar-container">
-    <section class="search-bar">
-        <img src="/imagens/search.png" alt="Search" class="search-icon">
-        <input 
-        type="text" 
-        id="inputPesquisa" 
-        placeholder="Busque por Esportes e muito mais..."
-        oninput="mostrarSugestoes()"
-        onkeydown="verificarEnter(event)"
-        >
-        <span class="limpar" onclick="limparPesquisa()">×</span>
-    </section>
-    <ul id="sugestoes" class="painel-sugestoes oculto"></ul>
-    </article>
+            <article class="search-bar-container">
+                <section class="search-bar">
+                    <img src="/imagens/search.png" alt="Search" class="search-icon">
+                    <input 
+                        type="text" 
+                        id="inputPesquisa" 
+                        placeholder="Busque por Esportes e muito mais..."
+                        oninput="mostrarSugestoes()"
+                        onkeydown="verificarEnter(event)">
+                    <span class="limpar" onclick="limparPesquisa()">×</span>
+                </section>
+                <ul id="sugestoes" class="painel-sugestoes oculto"></ul>
+            </article>
 
 
 
@@ -94,6 +93,8 @@
                 </span>
                 <img src="/imagens/menu-burger.png" alt="Menu" class="menu-icon">
             </button>
+
+            <!-- mobile foto perfil -->
             <article class="login-button-mobile">
                 <a onclick="location.href='/perfil'">
                 <% if (usuario) { %>
@@ -160,18 +161,17 @@
 
 <article class="mobile-search-bar">
     <section class="search-bar-mobile">
-      <img src="/imagens/search.png" alt="Search" class="search-icon">
-      <input 
-        type="text" 
-        id="inputPesquisaMobile" 
-        placeholder="Busque por Esportes e muito mais..."
-        oninput="mostrarSugestoesMobile()"
-        onkeydown="verificarEnterMobile(event)"
-      >
-      <span class="limpar" onclick="limparPesquisaMobile()">×</span>
+        <img src="/imagens/search.png" alt="Search" class="search-icon">
+        <input 
+            type="text" 
+            id="inputPesquisaMobile" 
+            placeholder="Busque por Esportes e muito mais..."
+            oninput="mostrarSugestoesMobile()"
+            onkeydown="verificarEnterMobile(event)">
+        <span class="limpar-mobile" onclick="limparPesquisaMobile()">×</span>
     </section>
     <ul id="sugestoesMobile" class="painel-sugestoes oculto"></ul>
-  </article>
+</article>
 
 <section class="mobile-assinatura">
     <button class="mobile-subscribe-button" onclick="location.href='/planos'">Assine Sport+</button>

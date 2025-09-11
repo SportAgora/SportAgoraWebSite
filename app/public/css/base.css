@@ -166,7 +166,7 @@ body {
 
 .search-bar-container {
     position: relative;
-    width: auto;
+    width: 100%;
     max-width: 1000px;
     margin-right: 15px;
 }
@@ -179,6 +179,8 @@ body {
     margin-left: 50px;
     padding: 10px 15px;
     margin-right: 50px;  
+    position: relative;
+    width: 100%; 
 }
 
 .search-bar-mobile input::placeholder {
@@ -186,19 +188,15 @@ body {
     opacity: 1; 
 }
 
-.search-bar-mobile input {
+.search-bar input {
     border: none;
     background: none;
     outline: none;
     font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-size: 0.85rem;
+    font-size: 1rem;
     padding: 10px;
-    width: 75%;
-    background-color: var(--searchbar);
-    border-radius: 25px;
     color: var(--branco);
+    width: 100%;
 }
 
 .search-bar input::placeholder {
@@ -217,6 +215,13 @@ body {
     padding: 10px;
     width: 450px;
     color: var(--branco);
+}
+
+.search-bar .limpar {
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+    margin-left: auto; /* Faz o ícone de limpar ir para a direita */
 }
 
 
@@ -243,7 +248,7 @@ body {
     margin-top: 5px;
     max-height: 200px;
     overflow-y: auto;
-    z-index: 10000000000000000000000000;
+    z-index: 1000;
     list-style: none;
     padding: 0;
 }
@@ -589,21 +594,50 @@ a {
 /* Mobile Search Bar */
 
 .search-bar-mobile {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    background-color: var(--searchbar);
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.search-bar-mobile input {
     border: none;
     background: none;
     outline: none;
     font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
     font-size: 1rem;
-    padding: 5px;
-    margin-left: 10px;
-    width: 95%;
-    margin-right: 5px;
-    background-color: var(--verde_especial);
-    border-radius: 25px;
+    padding: 10px;
+    width: calc(100% - 35px); /* Subtrai o espaço para o ícone e o botão de limpar */
     color: var(--branco);
 }
+
+.search-bar-mobile .limpar-mobile {
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+    margin-left: auto; /* Garante que o ícone de limpar fique à direita */
+}
+
+.limpar-mobile {
+    align-items: center;
+    position: absolute; /* Fixa o span à direita */
+    right: 30px; /* Ajuste o espaço da borda direita */
+    font-size: 20px;
+    bottom: 10px;
+    justify-content: center;
+    text-align: center;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.search-icon {
+    height: 20px;
+    margin-right: 10px;
+}
+
 
 .mobile-search-bar {
     position: relative;
@@ -872,9 +906,23 @@ a {
         background-color: var(--searchbar);
     }
 
-    .mobile-subscribe-button{
-        display: block;
-    }    
+    .search-bar {
+        display: none; /* Barra de pesquisa desktop esconde no mobile */
+    }
+    
+    .search-bar-mobile {
+        display: flex;
+        background-color: var(--searchbar);
+        padding: 10px;
+    } 
+
+    .search-bar-mobile input {
+        width: 85%;
+    }
+    
+    .search-bar-mobile .limpar-mobile {
+        margin-left: auto; /* Garante que o ícone de limpar vai à direita */
+    }
 
     .search-icon {
         height: 15px;

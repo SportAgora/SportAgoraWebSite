@@ -853,6 +853,8 @@ a {
         align-items: center;
     }
 
+    
+
     .mobile-subscribe-button{
         display: block;
     }    
@@ -1003,6 +1005,10 @@ a {
         width: 100%;
     }
 
+    .dark-mode-button {
+        display: none;
+    }
+
     .mobile-nav-button {
         background: none;
         border: none;
@@ -1026,6 +1032,10 @@ a {
     .nome-post {
         font-size: 16px;
     }
+
+    /* foto de perfil com notificação */
+
+    
 }
 
 /*FOOTER*/
@@ -1140,11 +1150,6 @@ footer {
         flex-direction: column;
         align-items: center;
     }
-
-        .dark-mode-button {
-        display: none;
-    }
-
 
     .footer-secao {
         flex-direction: column;

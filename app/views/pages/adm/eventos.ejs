@@ -10,58 +10,30 @@
 <body>
     <%- include('../../partials/adm_navbar'); %>
     <main>
-        <section class="assuCate">
-            <section class="assunto">
-                <h2>Assunto</h2>
-                    <form action="/adm/apagar-assunto" method="POST">
-                    <% if(dados.assuntos && dados.assuntos.length > 0) { %>
-                        <% dados.assuntos.forEach(function(a) { %>
-                            <label class="assuntoTopico"><%= a.assunto_nome %>
-                                <input type="checkbox" name="assuntosSelecionados[]" value="<%= a.assunto_id%>">
+        <section class="insertTable">
+            <section class="esporte">
+                <h2>Esporte</h2>
+                    <form action="/adm/apagar-esporte" method="POST">
+                    <% if(dados.esportes && dados.esportes.length > 0) { %>
+                        <% dados.esportes.forEach(function(a) { %>
+                            <label class="esporteTopico"><%= a.esporte_nome %>
+                                <input type="checkbox" name="esportesSelecionados[]" value="<%= a.esporte_id%>">
                                 <span class="checkmark"></span>
                             </label>
                         <% }); %>
                       <% } else { %>
                         <tr>
-                          <td colspan="5">Nenhum assunto encontrado.</td>
+                          <td colspan="5">Nenhum esporte encontrado.</td>
                         </tr>
                       <% } %>
                     
-                    <input type="submit" class="assunto-btn-a" value="Apagar - ">
+                    <input type="submit" class="esporte-btn-a" value="Apagar - ">
                     <hr>
                     </form> 
-                    <form action="/adm/criar-assunto" method="POST">
-                        <input type="text" name="novoAssunto" id="novoAssunto" placeholder="Adicione um Assunto" value="<%= dados.novoAssunto%>">
-                        <input type="submit" class="assunto-btn" value="Adicionar +">
+                    <form action="/adm/criar-esporte" method="POST">
+                        <input type="text" name="novoEsporte" id="novoEsporte" placeholder="Adicione um Esporte" value="<%= dados.novoEsporte%>">
+                        <input type="submit" class="esporte-btn" value="Adicionar +">
                     </form>
-                    
-                
-            </section>
-            <section class="categoria">
-                <h2>Categoria</h2> 
-                <form action="/adm/apagar-categoria" method="POST">
-                    <%
-                        if(dados.categorias && dados.categorias.length > 0) { %>
-                        <% dados.categorias.forEach(function(a) { %>
-                            <label class="categoriaTopico"><%= a.categoria_nome %>
-                                <input type="checkbox" name="categoriasSelecionados[]" value="<%= a.categoria_id%>">
-                                <span class="checkmark"></span>
-                            </label>
-                        <% }); %>
-                      <% } else { %>
-                        <tr>
-                          <td colspan="5">Nenhuma categoria encontrada.</td>
-                        </tr>
-                      <% } %>
-                    
-                    <input type="submit" class="categoria-btn-a" value="Apagar -">
-                    </form>
-                    <hr>
-                    <form action="/adm/criar-categoria" method="POST">
-                        <input type="text" name="novaCategoria" id="novaCategoria" placeholder="Adicione um Categoria" value="<%= dados.novaCategoria%>">
-                        <input type="submit" class="categoria-btn" value="Adicionar +">
-                    
-                </form>
             </section>
         </section>
         <section class="evento">

@@ -44,23 +44,11 @@
         <label>Classifique seu evento</label>
         <article class="classification">
           <section>
-            <label>Assunto *</label>
-            <select name = "assunto" id = "assunto" >
-              <% if(dados.assunto) { %>
-                        <% dados.assunto.forEach(function(a) { %>
-                            <option value="<%= a.assunto_id%>"><%= a.assunto_nome %></option>
-                        <% }); %>
-                      <% } else { %>
-                        <option value="" disabled selected>Nenhuma opção</option>
-                      <% } %>
-            </select>
-          </section>
-          <section>
-          <label>Categoria *</label>
-          <select name="categoria" id = "categoria" >
-              <% if(dados.categoria) { %>
-                        <% dados.categoria.forEach(function(a) { %>
-                            <option value="<%= a.categoria_id%>"><%= a.categoria_nome %></option>
+            <label>Esporte *</label>
+            <select name = "esporte" id = "esporte" >
+              <% if(dados.esporte) { %>
+                        <% dados.esporte.forEach(function(a) { %>
+                            <option value="<%= a.esporte_id%>"><%= a.esporte_nome %></option>
                         <% }); %>
                       <% } else { %>
                         <option value="" disabled selected>Nenhuma opção</option>

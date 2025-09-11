@@ -11,16 +11,13 @@ async function  carregarEventosErro (errors,req,res){
             const offset = (pagina - 1) * limite;
             const resultado = await AdmModel.EventosListarComPaginacao(offset, limite) 
             const total_paginas = Math.ceil(resultado.total / limite);
-            const assuntos = await AdmModel.AssuntosFindAll();
-            const categorias = await AdmModel.CategoriasFindAll();
+            const esportes = await AdmModel.EsportFindAll();
             return res.render('pages/adm/eventos', {
             
             dados: {
               eventos: resultado.eventos,
-              assuntos,
-              categorias,
-              novoAssunto:"",
-              novaCategoria:"",
+              esportes,
+              novoEsporte:"",
               paginador: {
                 pagina_atual: pagina,
                 total_paginas
@@ -158,18 +155,15 @@ module.exports = {
 
             const total_paginas = Math.ceil(resultado.total / limite);
 
-            const assuntos = await AdmModel.AssuntosFindAll();
-            const categorias = await AdmModel.CategoriasFindAll();
+            const esportes = await AdmModel.EsportFindAll();
 
 
             res.render('pages/adm/eventos', {
             
             dados: {
               eventos: resultado.eventos,
-              assuntos,
-              categorias,
-              novoAssunto:"",
-              novaCategoria:"",
+              esportes,
+              novoEsporte:"",
               paginador: {
                 pagina_atual: pagina,
                 total_paginas
@@ -182,86 +176,45 @@ module.exports = {
             throw e;
         }
   },
-    criarAssunto: async (req, res) => {
+    criarEsporte: async (req, res) => {
       try {
         
-        const {novoAssunto} = req.body;
-        if (novoAssunto){
-        const assuntoExistente = await AdmModel.AssuntosFindName(novoAssunto);
-        if (assuntoExistente) {
-         return carregarEventosErro({ errors: [{ path: 'novoAssunto', msg: "Este assunto já existe"}] },req,res);
+        const {novoEsporte} = req.body;
+        if (novoEsporte){
+        const esporteExistente = await AdmModel.EsportFindName(novoEsporte);
+        if (esporteExistente) {
+         return carregarEventosErro({ errors: [{ path: 'novoEsporte', msg: "Este esporte já existe"}] },req,res);
       }
 
-        const assuntoReturn = await AdmModel.AssuntoCreate({nome:novoAssunto});
+        const esporteReturn = await AdmModel.EsportCreate({nome:novoEsporte});
         
-        console.log("Sucesso ao criar assunto: " + assuntoReturn)
+        console.log("Sucesso ao criar esporte: " + esporteReturn)
   
         res.redirect("/adm/eventos");
        
       } else {
-        return carregarEventosErro({ errors: [{ path: 'assunto', msg: "Insira um nome válido." }] },req,res);
+        return carregarEventosErro({ errors: [{ path: 'esporte', msg: "Insira um nome válido." }] },req,res);
       }
     } catch (e) {
         console.error(e);
-      return carregarEventosErro({ errors: [{ path: 'assunto', msg: "Ocorreu um erro ao criar o assunto" }] },req,res);
+      return carregarEventosErro({ errors: [{ path: 'esporte', msg: "Ocorreu um erro ao criar o esporte" }] },req,res);
     }
     },
-    apagarAssunto: async (req, res) => {
+    apagarEsporte: async (req, res) => {
       try{
-      const { assuntosSelecionados } = req.body;
-      if (!assuntosSelecionados || assuntosSelecionados.length === 0) {
-        return carregarEventosErro({ errors: [{ path: 'assunto', msg: "Nenhum assunto selecionado para exclusão" }] },req,res)
+      const { esportesSelecionados } = req.body;
+      if (!esportesSelecionados || esportesSelecionados.length === 0) {
+        return carregarEventosErro({ errors: [{ path: 'esporte', msg: "Nenhum esporte selecionado para exclusão" }] },req,res)
       }
 
-      const ids = Array.isArray(assuntosSelecionados) ? assuntosSelecionados : [assuntosSelecionados];
+      const ids = Array.isArray(esportesSelecionados) ? esportesSelecionados : [esportesSelecionados];
 
-      await AdmModel.AssuntosDelete(ids);
+      await AdmModel.EsportesDelete(ids);
       return res.redirect('/adm/eventos');
 
       } catch(e) {
         console.error(e);
-        return carregarEventosErro({ errors: [{ path: 'assunto', msg: "Ocorreu um erro ao apagar o assunto" }] },req,res);
+        return carregarEventosErro({ errors: [{ path: 'esporte', msg: "Ocorreu um erro ao apagar o esporte" }] },req,res);
       }
     },
-
-    criarCategoria: async (req, res) => {
-      try {
-        const {novaCategoria} = req.body;
-        if (novaCategoria){
-        const categoriaExistente = await AdmModel.CategoriasFindName(novaCategoria);
-        if (categoriaExistente) {
-         return carregarEventosErro({ errors: [{ path: 'novaCategoria', msg: "Esta categoria já existe"}] },req,res);
-      }
-
-        const categoriaReturn = await AdmModel.CategoriaCreate({nome:novaCategoria});
-        
-        console.log("Sucesso ao criar categoria: " + categoriaReturn)
-  
-        res.redirect("/adm/eventos");
-       
-      } else {
-        return carregarEventosErro({ errors: [{ path: 'categoria', msg: "Insira um nome válido." }] },req,res);
-      }
-    } catch (e) {
-        console.error(e);
-      return carregarEventosErro({ errors: [{ path: 'categoria', msg: "Ocorreu um erro ao criar a categoria" }] },req,res);
-    }
-    },
-    apagarCategoria: async (req, res) => {
-      try{
-      const { categoriasSelecionados } = req.body;
-      if (!categoriasSelecionados || categoriasSelecionados.length === 0) {
-        return carregarEventosErro({ errors: [{ path: 'categoria', msg: "Nenhuma categoria selecionada para exclusão" }] },req,res)
-      }
-
-      const ids = Array.isArray(categoriasSelecionados) ? categoriasSelecionados : [categoriasSelecionados];
-
-      await AdmModel.CategoriasDelete(ids);
-      return res.redirect('/adm/eventos');
-
-      } catch(e) {
-        console.error(e);
-        return carregarEventosErro({ errors: [{ path: 'categoria', msg: "Ocorreu um erro ao apagar a categoria" }] },req,res);
-      }
-    }
 }

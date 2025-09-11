@@ -18,19 +18,14 @@ router.post("/login",  (req, res) => { usuariosController.autenticarUsuario(req,
 router.get('/home',verificarAdm, function(req,res){
     res.render('pages/adm/home');  
 })
-
-
  
 router.get('/buscar_usuario', verificarAdm,function(req,res){
   res.render('pages/adm/buscar_usuario');  
 }) 
 
-
-
 router.get('/teste', verificarAdm, function(req,res){
   res.render('pages/adm/teste');  
 }) 
-
 
 router.get('/usuarios', verificarAdm, function(req,res){
   admController.carregarUsuarios(req,res);
@@ -48,21 +43,14 @@ router.get('/eventos', verificarAdm, function(req,res){
   admController.carregarEventos(req,res);
 }) 
 
-router.post('/criar-assunto', verificarAdm,
-  admController.criarAssunto
+router.post('/criar-esporte', verificarAdm,
+  admController.criarEsporte
 );
 
-router.post('/apagar-assunto', verificarAdm,
-  admController.apagarAssunto
+router.post('/apagar-esporte', verificarAdm,
+  admController.apagarEsporte
 );
 
-router.post('/criar-categoria', verificarAdm,
-  admController.criarCategoria
-);
-
-router.post('/apagar-categoria', verificarAdm,
-  admController.apagarCategoria
-);
 
 
 router.get('/descricaoEvento', verificarAdm, function(req,res){

@@ -50,40 +50,24 @@
 
             <!-- BARRA DE PESQUISA -->
             
-            <article class="search-bar-container">
-                <section class="search-bar">
-                    <img src="/imagens/search.png" alt="Search" class="search-icon">
-                    <input 
-                        type="text" 
-                        id="inputPesquisa" 
-                        placeholder="Busque por Esportes e muito mais..."
-                        oninput="mostrarSugestoes()"
-                        onkeydown="verificarEnter(event)">
-                    <span class="limpar" onclick="limparPesquisa()">×</span>
-                </section>
-                <ul id="sugestoes" class="painel-sugestoes oculto"></ul>
-            </article>
+    <article class="search-bar-container">
+    <section class="search-bar">
+        <img src="/imagens/search.png" alt="Search" class="search-icon">
+        <input 
+        type="text" 
+        id="inputPesquisa" 
+        placeholder="Busque por Esportes e muito mais..."
+        oninput="mostrarSugestoes()"
+        onkeydown="verificarEnter(event)"
+        >
+        <span class="limpar" onclick="limparPesquisa()">×</span>
+    </section>
+    <ul id="sugestoes" class="painel-sugestoes oculto"></ul>
+    </article>
 
 
 
             <button class="subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>
-
-        <!-- PARTE NOTIFICAÇÃO -->
-
-        <section class="notificacao-container">
-        <button id="botaoNotificacao" class="botaoNotificacao">
-            <article class="icone-notificacao-wrapper">
-            <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao">
-            <span id="badgeNotificacao" class="badge-notificacao oculto">0</span>
-            </article>
-        </button>
-
-        <section id="painelNotificacoes" class="painel-notificacoes oculto">
-            <article id="listaNotificacoes"></article>
-        </section>
-        </section>
-
-
             <button class="login-button">
                 <% if (usuario) { %>
                 <img src="<%= usuario.foto %>" alt="User" class="user-icon">
@@ -93,8 +77,6 @@
                 </span>
                 <img src="/imagens/menu-burger.png" alt="Menu" class="menu-icon">
             </button>
-
-            <!-- mobile foto perfil -->
             <article class="login-button-mobile">
                 <a onclick="location.href='/perfil'">
                 <% if (usuario) { %>
@@ -129,10 +111,6 @@
     <button class="panel-button" onclick="location.href='/login'">Anuncie seu evento</button>   
 </aside>
 
-
-
-
-
 <!-- mobile -->
 
 <section id="mobile-menu" class="mobile-menu">
@@ -161,17 +139,18 @@
 
 <article class="mobile-search-bar">
     <section class="search-bar-mobile">
-        <img src="/imagens/search.png" alt="Search" class="search-icon">
-        <input 
-            type="text" 
-            id="inputPesquisaMobile" 
-            placeholder="Busque por Esportes e muito mais..."
-            oninput="mostrarSugestoesMobile()"
-            onkeydown="verificarEnterMobile(event)">
-        <span class="limpar-mobile" onclick="limparPesquisaMobile()">×</span>
+      <img src="/imagens/search.png" alt="Search" class="search-icon">
+      <input 
+        type="text" 
+        id="inputPesquisaMobile" 
+        placeholder="Busque por Esportes e muito mais..."
+        oninput="mostrarSugestoesMobile()"
+        onkeydown="verificarEnterMobile(event)"
+      >
+      <span class="limpar" onclick="limparPesquisaMobile()">×</span>
     </section>
     <ul id="sugestoesMobile" class="painel-sugestoes oculto"></ul>
-</article>
+  </article>
 
 <section class="mobile-assinatura">
     <button class="mobile-subscribe-button" onclick="location.href='/planos'">Assine Sport+</button>

@@ -46,89 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// notificação
-const painel = document.getElementById("painelNotificacoes");
-const botao = document.getElementById("botaoNotificacao");
-const lista = document.getElementById("listaNotificacoes");
-const badge = document.getElementById("badgeNotificacao");
+// notificação fazer ainda
 
-const notificacoes = [
-  {
-    id: 1,
-    imagem: "/imagens/perfil1.png",
-    texto: "João comentou em seu post.",
-    tempo: "2m",
-    lida: false
-  },
-  {
-    id: 2,
-    imagem: "/imagens/perfil2.png",
-    texto: "Maria curtiu sua publicação.",
-    tempo: "10m",
-    lida: false
-  },
-  {
-    id: 3,
-    imagem: "/imagens/perfil3.png",
-    texto: "Carlos começou a te seguir.",
-    tempo: "1h",
-    lida: true
-  }
-];
 
-function renderizarNotificacoes() {
-  lista.innerHTML = "";
-  notificacoes.forEach(n => {
-    const item = document.createElement("div");
-    item.classList.add("notificacao-item");
-
-    item.innerHTML = `
-      <div style="position: relative;">
-        <img src="${n.imagem}" alt="Usuário">
-        ${!n.lida ? '<span class="bolinha-verde"></span>' : ''}
-      </div>
-      <div class="notificacao-texto">
-        <strong>${n.texto}</strong>
-        <span>${n.tempo}</span>
-      </div>
-    `;
-    lista.appendChild(item);
-  });
-}
-
-function atualizarBadge() {
-  const naoLidas = notificacoes.filter(n => !n.lida);
-  if (naoLidas.length > 0) {
-    badge.textContent = naoLidas.length;
-    badge.classList.remove("oculto");
-  } else {
-    badge.classList.add("oculto");
-  }
-}
-
-function marcarTodasComoLidas() {
-  notificacoes.forEach(n => n.lida = true);
-}
-
-botao.addEventListener("click", (e) => {
-  e.stopPropagation();
-  painel.classList.toggle("oculto");
-
-  if (!painel.classList.contains("oculto")) {
-    marcarTodasComoLidas();
-    renderizarNotificacoes();
-    atualizarBadge();
-  }
-});
-
-document.addEventListener("click", (e) => {
-  if (!painel.contains(e.target) && !botao.contains(e.target)) {
-    painel.classList.add("oculto");
-  }
-});
-
-renderizarNotificacoes();
-atualizarBadge();
 
 //search bar
 

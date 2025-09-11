@@ -88,15 +88,15 @@ module.exports = {
       console.log(resultado)
 
       if (resultado == false){
-        OrganizadorModel.ApagarIngresso(ingresso)
+        OrganizadorModel.ApagarIngresso(ingressoIDs)
         removeImg(caminhoFoto);
       }
 
-      return res.send( "Evento criado com sucesso!" )
+      return res.redirect("/evento?id="+resultado)
     }catch(e){
       console.error(e)
 
-      return res.redirect("/erro")
+      return res.redirect("/error")
     }
   }, 
   carregarCriarEvento: async (req, res) => {

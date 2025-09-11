@@ -107,37 +107,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="limite"><a href="descricaoEvento.html">-</a></td>
-                        <td class="limite"><a href="descricaoEvento.html">-</a></td>
-                        <td class="limite"><a href="descricaoEvento.html">-</a></td>
-                        <td class="limite"><a href="descricaoEvento.html">-</a></td>
-                        <td class="limite"><a href="descricaoEvento.html">-</a></td>
-                        <td class="limite"><a href="descricaoEvento.html">-</a></td>
-                        <td class="limite"><a href="descricaoEvento.html">-</a></td>
-                    </tr>
-                    <tr>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly onclick="console.log(`gay`)"></td>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly onclick="window.location.href='descricaoEvento.html'"></td>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly></td>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly></td>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly></td>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly></td>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly></td>
-                    </tr>
-                    <tr>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly></td>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly></td>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly></td>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly></td>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly></td>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly></td>
-                        <td class="limite"><input type="text" name="" id="" value="-" readonly></td>
-                    </tr>
-                </tbody>
+                    <% if (dados.eventos && dados.eventos.length > 0) { %>
+                      <% dados.eventos.forEach(function(evento) { %>
+                        <tr>
+                          <td class="limite">
+                            <a href="/evento?id=<%= evento.evento_id %>"><%= evento.evento_nome %></a>
+                          </td>
+                          <td class="limite"><%= evento.evento_nome %></td>
+                          <td class="limite"><%= evento.esporte_id %></td>
+                          <td class="limite"><%= new Date(evento.evento_data_inicio).toLocaleDateString("pt-BR") %></td>
+                          <td class="limite"><%= new Date(evento.evento_data_hora).toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' }) %></td>
+                          <td class="limite"><%= new Date(evento.evento_data_fim).toLocaleDateString("pt-BR") %></td>
+                          <td class="limite"><%= evento.evento_descricao.length > 80 ? evento.evento_descricao.substring(0, 80) + '...' : evento.evento_descricao %></td>
+                        </tr>
+                      <% }); %>
+                    <% } else { %>
+                      <tr><td colspan="7">Nenhum evento encontrado.</td></tr>
+                    <% } %>
+                  </tbody>
+                  
                 
             </table>
-            <button class="evento-btn">+ Novo Evento</button>
         </section>
     </main>
     <%- include('../../partials/adm_footer'); %>

@@ -217,4 +217,5 @@ module.exports = {
         return carregarEventosErro({ errors: [{ path: 'esporte', msg: "Ocorreu um erro ao apagar o esporte" }] },req,res);
       }
     },
+    
 }

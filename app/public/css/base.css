@@ -180,7 +180,7 @@ body {
     padding: 10px 15px;
     margin-right: 50px;  
     position: relative;
-    width: 100%; 
+    width: 90%; 
 }
 
 .search-bar-mobile input::placeholder {
@@ -601,32 +601,35 @@ a {
     background-color: var(--searchbar);
     border-radius: 25px;
     padding: 10px;
-}
+  }
 
-.search-bar-mobile input {
+  .search-bar-mobile input {
     border: none;
     background: none;
     outline: none;
     font-family: "Montserrat", sans-serif;
     font-size: 1rem;
     padding: 10px;
-    width: calc(100% - 35px); /* Subtrai o espaço para o ícone e o botão de limpar */
+    flex: 1; /* Faz o input ocupar todo espaço */
     color: var(--branco);
-}
+  }
 
-.search-bar-mobile .limpar-mobile {
+  .search-bar-mobile .limpar {
+    position: absolute;   /* fixa na direita */
+    right: 15px;          /* distância da borda */
+    top: 50%;             /* centraliza verticalmente */
+    transform: translateY(-50%);
     font-size: 20px;
     color: #ccc;
     cursor: pointer;
-    margin-left: auto; /* Garante que o ícone de limpar fique à direita */
-}
+  }
 
 .limpar-mobile {
     align-items: center;
     position: absolute; /* Fixa o span à direita */
     right: 30px; /* Ajuste o espaço da borda direita */
     font-size: 20px;
-    bottom: 10px;
+    bottom: 12px;
     justify-content: center;
     text-align: center;
     color: #ccc;
@@ -878,6 +881,10 @@ a {
         display: none;
     }
 
+    .limpar-mobile {
+        bottom:12px; 
+    }
+
     .links-home {
         display:flex;
         position: relative;
@@ -912,12 +919,13 @@ a {
     
     .search-bar-mobile {
         display: flex;
+        width: auto;
         background-color: var(--searchbar);
         padding: 10px;
     } 
 
     .search-bar-mobile input {
-        width: 85%;
+        width: auto;
     }
     
     .search-bar-mobile .limpar-mobile {
@@ -930,7 +938,7 @@ a {
         text-align: center;
         align-items: center;
         position: relative;
-        top: 2px;
+        bottom: 5px;
         display:inline-block;
         margin: 5px 0px 0px 15px;
     }

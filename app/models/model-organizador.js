@@ -6,7 +6,7 @@ const OrganizadorModel = {
     createEvent: async (eventData, ingressoIDs) => {
       try {
         const { 
-          user, categoria, assunto, nome, foto, 
+          user, esporte,  nome, foto, 
           data_inicio, data_fim, data_hora, 
           cep, numero, complemento, descricao
         } = eventData;
@@ -14,8 +14,7 @@ const OrganizadorModel = {
         // 1. Monta objeto do evento (sem ingresso_id)
         const event = {
           usuario_id: user,
-          categoria_id: categoria,
-          assunto_id: assunto,
+          esporte_id: esporte,
           evento_nome: nome,
           evento_foto: foto,
           evento_data_publicacao: moment().format('YYYY-MM-DD HH:mm:ss'),
@@ -67,24 +66,13 @@ const OrganizadorModel = {
       }
     },
 
-   CategoriasFindAll: async () => {
+   EsportFindAll: async () => {
       try {
-        const query = "SELECT * FROM categoria";
+        const query = "SELECT * FROM esporte";
         const [rows] = await pool.query(query);
         return rows.length > 0 ? rows : null;
       } catch (error) {
-        console.error("Erro ao buscar categorias:", error);
-        throw error;
-      }
-    },
-
-    AssuntosFindAll: async () => {
-      try {
-        const query = "SELECT * FROM assunto";
-        const [rows] = await pool.query(query);
-        return rows.length > 0 ? rows : null;
-      } catch (error) {
-        console.error("Erro ao buscar assuntos:", error);
+        console.error("Erro ao buscar esportes:", error);
         throw error;
       }
     },

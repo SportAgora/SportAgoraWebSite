@@ -35,8 +35,7 @@ module.exports = {
   
 
   criarEvento: async (req, res) => {
-    const dadocategoria = await OrganizadorModel.CategoriasFindAll();
-    const dadoassunto = await OrganizadorModel.AssuntosFindAll();
+    const dadoesporte = await OrganizadorModel.EsportFindAll();
     const errors = validationResult(req);
     const erroMulter = req.session.erroMulter;
         if(!errors.isEmpty() || erroMulter != null) {
@@ -48,24 +47,21 @@ module.exports = {
             return res.render('pages/criar-evento',{
                 dados: req.body,
                 erros: lista,
-                categoria:dadocategoria,
-                assunto: dadoassunto
+                esporte:dadoesporte,
             })
         }
         
     try{
-      const {nome, categoria, assunto, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
+      const {nome, esporte, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
       const { ingressos } = req.body;
       
       const ingressoIDs = await OrganizadorModel.createIngresso(ingressos)
 
       if (!req.files || !req.files.foto) {
-              console.log("ERRO NO CARAI DA PORRA DA IMAGEM: " + req.files)
               return res.render('pages/criar-evento',{
                 dados: req.body,
                 erros: null,
-                categoria:dadocategoria,
-                assunto: dadoassunto
+                esporte:dadoesporte
       }) //colocar msg que precisa mandar foto
 
       } else {
@@ -75,8 +71,7 @@ module.exports = {
 
       const evento = {
         user : req.session.usuario.id,
-        categoria,
-        assunto,
+        esporte,
         foto: caminhoFoto,
         nome,
         data_hora: data + " " + hora,
@@ -106,8 +101,7 @@ module.exports = {
   }, 
   carregarCriarEvento: async (req, res) => {
   try {
-    const categoria = await OrganizadorModel.CategoriasFindAll();
-    const assunto = await OrganizadorModel.AssuntosFindAll();
+    const esporte = await OrganizadorModel.EsportFindAll();
 
     res.render("pages/criar-evento", {
         "erros": null, 
@@ -125,9 +119,8 @@ module.exports = {
           ing_valor:"", 
           ing_quantidade:"", 
           ing_meia:"",
-          categoria: categoria,
-          assunto: assunto
-         }
+          esporte
+        }
     });
 
   } catch (err) {

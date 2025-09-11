@@ -16,16 +16,9 @@ CREATE TABLE usuario (
     usu_status BOOLEAN DEFAULT 0
 );
   
--- CATEGORIA
-CREATE TABLE categoria (
-    categoria_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    categoria_nome VARCHAR(70) NOT NULL UNIQUE
-);
-
--- CATEGORIA
-CREATE TABLE assunto (
-    assunto_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    assunto_nome VARCHAR(70) NOT NULL UNIQUE
+CREATE TABLE esporte (
+    esporte_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    esporte_nome VARCHAR(70) NOT NULL UNIQUE
 );
 
 CREATE TABLE ingresso (
@@ -40,8 +33,7 @@ CREATE TABLE ingresso (
 CREATE TABLE eventos (
     evento_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT UNSIGNED NOT NULL,
-    categoria_id INT UNSIGNED NOT NULL,
-    assunto_id INT UNSIGNED NOT NULL,
+    esporte_id INT UNSIGNED NOT NULL,
     evento_nome VARCHAR(150) NOT NULL,
     evento_foto VARCHAR(1500) NOT NULL,
 
@@ -60,8 +52,7 @@ CREATE TABLE eventos (
     evento_ativo BOOLEAN DEFAULT 1,
 
     FOREIGN KEY (usuario_id) REFERENCES usuario(usu_id),
-    FOREIGN KEY (categoria_id) REFERENCES categoria(categoria_id),
-    FOREIGN KEY (assunto_id) REFERENCES assunto(assunto_id)
+    FOREIGN KEY (esporte_id) REFERENCES esporte(esporte_id)
 );
 
 CREATE TABLE evento_ingresso (

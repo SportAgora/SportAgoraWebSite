@@ -205,13 +205,13 @@ const AdmModel = {
       throw error;
     }
   },
-  AssuntoCreate: async (assuntoData) => {
+  EsportCreate: async (esporteData) => {
     try {
-      const {nome} = assuntoData;
+      const {nome} = esporteData;
  
       // Preparar os dados para inserção
       const data = {
-        assunto_nome : nome
+        esporte_nome : nome
       };
  
       // Construir a query dinamicamente
@@ -219,107 +219,49 @@ const AdmModel = {
       const values = fields.map(field => data[field]);
       const placeholders = fields.map(() => '?').join(', ');
      
-      const query = `INSERT INTO assunto (${fields.join(', ')}) VALUES (${placeholders})`;
+      const query = `INSERT INTO esporte (${fields.join(', ')}) VALUES (${placeholders})`;
      
       const [result] = await pool.query(query, values);
       return result.insertId;
     } catch (error) {
-      console.error("Erro ao criar assunto:", error);
+      console.error("Erro ao criar esporte:", error);
       throw error;
     }
   },
-      AssuntosFindAll: async () => {
+      EsportFindAll: async () => {
         try {
-          const query = "SELECT * FROM assunto";
+          const query = "SELECT * FROM esporte";
           const [rows] = await pool.query(query);
           return rows
         } catch (error) {
-          console.error("Erro ao buscar assuntos:", error);
+          console.error("Erro ao buscar esporte:", error);
           throw error;
         }
       },
-      AssuntosFindName: async (name) => {
+      EsportFindName: async (name) => {
         try {
-          const query = "SELECT * FROM assunto WHERE assunto_nome = ?";
+          const query = "SELECT * FROM esporte WHERE esporte_nome = ?";
           const [rows] = await pool.query(query, [name]);
            return rows.length > 0 ? rows[0] : null; // retorna objeto ou null
         } catch (error) {
-          console.error("Erro ao buscar assuntos:", error);
+          console.error("Erro ao buscar esporte:", error);
           throw error;
         }
       },
-      AssuntosDelete: async (ids) => {
+      EsportDelete: async (ids) => {
         try {
           if (!Array.isArray(ids) || ids.length === 0) {
             throw new Error("IDs inválidos para exclusão");
           }
           const placeholders = ids.map(() => '?').join(', ');
-          const query = `DELETE FROM assunto WHERE assunto_id IN (${placeholders})`;
+          const query = `DELETE FROM esporte WHERE esporte_id IN (${placeholders})`;
           const [result] = await pool.query(query, ids);
           return result;
         } catch (error) {
-          console.error("Erro ao excluir assuntos:", error);
+          console.error("Erro ao excluir esportes:", error);
           throw error;
         }
-      },
-       CategoriasFindAll: async () => {
-        try {
-          const query = "SELECT * FROM categoria";
-          const [rows] = await pool.query(query);
-          return rows
-        } catch (error) {
-          console.error("Erro ao buscar categorias:", error);
-          throw error;
-        }
-      },
-      CategoriasFindName: async (name) => {
-        try {
-          const query = "SELECT * FROM categoria WHERE categoria_nome = ?";
-          const [rows] = await pool.query(query, [name]);
-           return rows.length > 0 ? rows[0] : null; // retorna objeto ou null
-        } catch (error) {
-          console.error("Erro ao buscar categorias:", error);
-          throw error;
-        }
-      },
-      CategoriasDelete: async (ids) => {
-        try {
-          if (!Array.isArray(ids) || ids.length === 0) {
-            throw new Error("IDs inválidos para exclusão");
-          }
-          const placeholders = ids.map(() => '?').join(', ');
-          const query = `DELETE FROM categoria WHERE categoria_id IN (${placeholders})`;
-          const [result] = await pool.query(query, ids);
-          return result;
-        } catch (error) {
-          console.error("Erro ao excluir categorias:", error);
-          throw error;
-        }
-      },
-      CategoriaCreate: async (categoriaData) => {
-    try {
-      const {nome} = categoriaData;
- 
-      // Preparar os dados para inserção
-      const data = {
-        categoria_nome : nome
-      };
- 
-      // Construir a query dinamicamente
-      const fields = Object.keys(data).filter(key => data[key] !== null);
-      const values = fields.map(field => data[field]);
-      const placeholders = fields.map(() => '?').join(', ');
-     
-      const query = `INSERT INTO categoria (${fields.join(', ')}) VALUES (${placeholders})`;
-     
-      const [result] = await pool.query(query, values);
-      return result.insertId;
-    } catch (error) {
-      console.error("Erro ao criar categoria:", error);
-      throw error;
-    }
-  },
-  
+      }
 
 }
 

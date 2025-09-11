@@ -68,6 +68,22 @@
 
 
             <button class="subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>
+
+        <!-- PARTE NOTIFICAÇÃO -->
+
+        <section class="notificacao-container">
+        <button id="botaoNotificacao" class="botaoNotificacao">
+            <article class="icone-notificacao-wrapper">
+            <span id="badgeNotificacao" class="badge-notificacao oculto">0</span>
+            </article>
+        </button>
+
+        <section id="painelNotificacoes" class="painel-notificacoes oculto">
+            <article id="listaNotificacoes"></article>
+        </section>
+        </section>
+
+
             <button class="login-button">
                 <% if (usuario) { %>
                 <img src="<%= usuario.foto %>" alt="User" class="user-icon">
@@ -106,6 +122,12 @@
     <% } else { %>
     <button class="panel-button" onclick="location.href='/cadastro'">Cadastre-se</button>
     <button class="panel-button" onclick="location.href='/login'">Login</button>
+    <button class="dark-mode-button-mobile" title="Notificações">
+        <div class="icon-wrapper">
+    <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao">
+    </div>
+    <span class="texto-claro-escuro" id="modoTexto">Notificações</span>
+    </button>
     <% } %>
     <hr>
     <button class="panel-button" onclick="location.href='/login'">Anuncie seu evento</button>   

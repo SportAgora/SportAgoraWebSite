@@ -283,6 +283,7 @@ body {
     font-size: 1rem; 
     font-weight: 600;
     margin-right: 20px;
+    margin-left: 20px;
     padding: 18px 20px; 
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -894,8 +895,6 @@ a {
         align-items: center;
     }
 
-    
-
     .mobile-subscribe-button{
         display: block;
     }    
@@ -914,7 +913,7 @@ a {
     }
 
     .search-bar {
-        display: none; /* Barra de pesquisa desktop esconde no mobile */
+        display: none;
     }
     
     .search-bar-mobile {
@@ -925,11 +924,12 @@ a {
     } 
 
     .search-bar-mobile input {
+        font-size: 0.9rem;
         width: auto;
     }
     
     .search-bar-mobile .limpar-mobile {
-        margin-left: auto; /* Garante que o ícone de limpar vai à direita */
+        margin-left: auto; 
     }
 
     .search-icon {
@@ -1157,7 +1157,6 @@ footer {
 
 .footer-conecte {
     text-align: center;
-    margin: 20px 0 0;
     flex: 1 1 200px;
 }
 

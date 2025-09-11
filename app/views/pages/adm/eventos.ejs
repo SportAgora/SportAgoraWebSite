@@ -6,6 +6,34 @@
     <title>ADM Sport Agora - Eventos</title>
     <link rel="stylesheet" href="/css/adm/eventos.css">
     <link rel="icon" href="imagens/SportAgora.png">
+    <!-- <script>
+        function readImage() {
+            const preview = document.getElementById("preview");
+
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById("preview").src = e.target.result;
+                };
+                reader.readAsDataURL(this.files[0]);
+            }
+            
+        }
+        
+
+        document.getElementById("img-input").addEventListener("change", readImage, false);
+    </script> -->
+    <style>
+        .hidden {
+          display: none;
+        }
+        #preview {
+          max-width: 300px;
+          max-height: 300px;
+          margin-top: 10px;
+        }
+      </style>
+    
 </head>
 <body>
     <%- include('../../partials/adm_navbar'); %>
@@ -32,6 +60,34 @@
                     </form> 
                     <form action="/adm/criar-esporte" method="POST">
                         <input type="text" name="novoEsporte" id="novoEsporte" placeholder="Adicione um Esporte" value="<%= dados.novoEsporte%>">
+                    
+                        <!-- botar imagem -->
+                        <input type="file" id="img-input" accept="image/*" />
+                        <br />
+                        <!-- Preview da imagem -->
+                        <img id="preview" class="hidden" src="" alt="preview" />
+                        <script>
+                            const input = document.getElementById('img-input');
+                            const preview = document.getElementById('preview');
+                        
+                            input.addEventListener('change', () => {
+                              const file = input.files[0];
+                              if (file) {
+                                const reader = new FileReader();
+                        
+                                reader.onload = function(e) {
+                                  preview.src = e.target.result;
+                                  preview.classList.remove('hidden');
+                                }
+                        
+                                reader.readAsDataURL(file);
+                              } else {
+                                preview.src = '';
+                                preview.classList.add('hidden');
+                              }
+                            });
+                          </script>
+
                         <input type="submit" class="esporte-btn" value="Adicionar +">
                     </form>
             </section>

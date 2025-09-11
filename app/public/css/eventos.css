@@ -39,7 +39,7 @@
   max-width: 80%;
   margin: 30px auto;
   animation: fadeIn 1.5s ease-out;
-  flex-wrap: wrap; /* Adicionado para melhor responsividade */
+  flex-wrap: nowrap; 
 }
 
 /* Itens de filtro */
@@ -148,7 +148,7 @@
 
 /* Responsividade */
 
-@media (max-width: 768px) {
+@media (max-width: 1542px) {
   .event-title {
       font-size: 3rem;
   }
@@ -179,29 +179,7 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1105px) {
-  .event-title {
-      font-size: 3.8rem;
-  }
 
-  .event-subtitle {
-      font-size: 1.3rem;
-  }
-
-  .filter-box {
-      flex-wrap: wrap;
-      max-width: 85%;
-  }
-
-  .filter-item {
-      margin-bottom: 10px;
-      width: calc(50% - 20px); /* Cada item ocupa 50% do espaço */
-  }
-
-  .filter-select, .filter-date {
-      width: 100%;
-  }
-}
 
 /* EVENTOS PARTIALS*/
 

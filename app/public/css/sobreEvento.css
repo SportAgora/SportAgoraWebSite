@@ -111,3 +111,40 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .main_sobreEvento{
+    display: flex;
+  }
+
+  .box-direita {
+    width: 550px;
+    background-color: var(--postcor);
+    padding: 20px;
+    height: auto;
+    top: 20px; 
+    border-radius: 25px;
+    z-index: 1000;
+    margin-right: 30px;
+    transition: all 0.5s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.container{
+  width: 100%;
+}
+
+  @media (max-width: 1024px) {
+    .box-esquerda, .box-direita {
+        max-width: 100%;
+        margin: 0;
+        padding: 20px;
+        height: auto;
+        box-shadow: none;
+    }
+
+    .box-direita {
+        position: relative;
+        top: auto;
+        margin-top: 30px;
+        width: 100%;
+    }
+  }

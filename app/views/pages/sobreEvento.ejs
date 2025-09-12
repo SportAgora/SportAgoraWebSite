@@ -18,7 +18,7 @@
     <%- include('../partials/navbar'); %> 
     </header> 
 
-    <h1 class="pratique-title">Netshoes RUN São Paulo</h1>
+    <h1 class="pratique-title">Edite seu Evento</h1>
     <p class="pratique-subtitle">Gerencie seu evento de forma prática!</p>
 
     <main class="main_sobreEvento">  
@@ -37,12 +37,8 @@
             <!-- PRO CERRI!!!
             quando for fazer o back dessa pag, c arruma os placeholder q tem q ser value puxando do BD -->
             <section id="form-evento" class="form active">
-                <section class="infodadosEvento">
-                    <label>Nome do evento *</label>
-                    <input type="text" name="nome" id="nome" maxlength="100" value="" placeholder="Netshoes RUN São Paulo" >
-                </section>
-
                 <section class="container">
+                <h1>Editar Descrição</h1>
                 <label>Descrição do evento *</label>
                 <p class="subtitle">Conte todos os detalhes do seu evento, como a programação e os diferenciais da sua produção!</p>
         
@@ -81,14 +77,115 @@
                   <section id="editor" style="height: 300px;"></section>
                 </section>
               </section>
+              <section class="container">
+                <h1>Editar Ingressos</h1>
+        <p>Que tipo de ingresso você deseja criar?</p>
+
+        <label>Nome do ingresso</label>
+        <input type="text" id="nome-ingresso">
+
+        <label>Valor</label>
+        <input type="number" id="valor-ingresso" step="0.01">
+
+        <label>Quantidade</label>
+        <input type="number" id="quantidade-ingresso" step="1" min="1"> 
+
+        <button type="button" id="meia-entrada" class="meia-btn">Adicionar meia-entrada</button>
+        <button type="button" id="publicar-ingresso">Publicar ingresso</button>
+
+        <table id="ingresso-tabela">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Valor</th>
+              <th>Quantidade</th>
+              <th>Meia-entrada</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <section class="center">
+          <input type="submit" id="publicar-evento" value="Publicar evento">
+        </section>
+      </section>
 
                 <button type="submit" class="btn-salvar">Salvar Alterações</button>
             </section>
-
-            
-            
         </section>
+        <section class="box-direita" id="box-direita">
+                <section class="infodadosEvento">
+                    <h1>Editar Nome</h1>
+                    <label>Nome do evento *</label>
+                    <input type="text" name="nome" id="nome" maxlength="100" value="" placeholder="Netshoes RUN São Paulo" >
+                </section>
+                <section class="container">
+                  <article class="datetime">
+                    <h1>Editar Data</h1>
+                    <legend class="visually-hidden">Data e horário do evento</legend>
 
+                    <section>
+                      <label>Data de início *</label>
+                      <input name="data" type="date" >
+                    </section>
+
+                    <section>
+                      <label>Horário de início *</label>
+                      <input name="hora" type="time" >
+                    </section>
+
+                    <section>
+                      <label>Início do periodo de inscrição*</label>
+                      <input name="data_inicio" type="date" >
+                    </section>
+
+                    <section>
+                      <label>Hora inicial do periodo de inscrição*</label>
+                      <input name="hora_inicio" type="time" >
+                    </section>
+
+                    <section>
+                      <label>Final do periodo de inscrição*</label>
+                      <input name="data_final" type="date" >
+                    </section>
+
+                    <section>
+                      <label>Hora final do periodo de inscrição*</label>
+                      <input name="hora_final" type="time" >
+                    </section>
+                  </article>
+                </section>
+                <article class="location-fields">
+
+                  <section class="container">
+                    <h1>Editar Localização</h1>
+          <legend class="visually-hidden">Localização do evento</legend>
+
+          <label>CEP</label>
+            <input type="text" id="cep" name="cep" placeholder="00000-000">
+
+            <div id="spinner" style="display:none; font-size:.9rem;">Buscando CEP…</div>
+
+            <label>Rua</label>
+            <input type="text" id="rua" name="rua" readonly>
+
+            <label>Número</label>
+            <input type="text" id="numero" name="numero">
+
+            <label>Complemento</label>
+            <input type="text" id="complemento" name="complemento">
+
+            <label>Bairro</label>
+            <input type="text" id="bairro" name="bairro" readonly>
+
+            <label>Cidade</label>
+            <input type="text" id="cidade" name="cidade" readonly>
+
+            <label>Estado</label>
+            <input type="text" id="estado" name="estado" readonly>
+        </article>
+        </section>
+        </section>
     </main>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   <script defer src="/js/criar-evento.js"></script>

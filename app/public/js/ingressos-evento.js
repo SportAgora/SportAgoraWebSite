@@ -42,3 +42,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+//  Denunciar
+  function abrirModalDenuncia() {
+    document.getElementById('modal-denuncia').style.display = 'flex';
+  }
+
+  function fecharModalDenuncia() {
+    document.getElementById('modal-denuncia').style.display = 'none';
+  }
+
+  function confirmarModalDenuncia() {
+    document.getElementById('modal-denuncia').style.display = 'none';
+    window.alert('Denúncia enviada para nossa equipe. O evento será analizado!');
+  }
+
+  // Fechar ao clicar fora do conteúdo
+  window.addEventListener('click', function(event) {
+    const modal = document.getElementById('modal-denuncia');
+    if (event.target === modal) {
+      fecharModalDenuncia();
+    }
+  });

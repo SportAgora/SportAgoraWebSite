@@ -97,7 +97,7 @@
       <section class="box-direita" id="box-direita">
         <section class="abadicima">
           <article class="evento-status gratis">Grátis</article>
-          <button class="btn-denunciar">Denunciar</button>
+          <button class="btn-denunciar" onclick="abrirModalDenuncia()">Denunciar</button>
         </section>
         <h2 class="nome-evento">Netshoes RUN São Paulo</h2>
         <hr class="linha-separadora">
@@ -155,6 +155,16 @@
           <button class="btn-inscrever-se" onclick="location.href='/pagamento-evento'">Inscrever-se</button>
         </article>
       </section>
+    </section>
+    <section id="modal-denuncia" class="modal-denuncia">
+      <aside class="modal-content-denuncia">
+        <h2>Denunciar Evento</h2>
+        <p>Tem certeza de que deseja denunciar este evento? Esta ação será analisada por nossa equipe.</p>
+        <section class="modal-buttons">
+          <button onclick="fecharModalDenuncia()" class="btn-cancelar">Cancelar</button>
+          <button onclick="confirmarModalDenuncia() " class="btn-confirmar">Confirmar denúncia</button>
+        </section>
+      </aside>
     </section>
   </main>
 

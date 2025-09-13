@@ -254,6 +254,15 @@ form {
         width: 100%;
         margin: 4em auto;
     }
+    .toggle-senha-btn {
+        left: 260%;
+    }
+    .toggle-senha-btn2 {
+        top: 68%;
+    }
+    .toggle-senha-btn3 {
+        top: 162%;
+    }
     .pessoa1{
         display: none;
     }
@@ -299,4 +308,35 @@ form {
     .google {
         width: 60px;
     }
+}
+
+.toggle-senha-btn1 {
+    position: absolute;
+    left: 240% ;
+    top: 42%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+.toggle-senha-btn2 {
+    position: absolute;
+    left: 240% ;
+    top: 69%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+.toggle-senha-btn3 {
+    position: absolute;
+    left: 240% ;
+    top: 147%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
 }

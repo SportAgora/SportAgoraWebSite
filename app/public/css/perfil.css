@@ -427,6 +427,19 @@
 }
 
 
+.ingressos-event {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 20px;
+    justify-content: start;
+}
+
+@media (min-width: 750px) {
+    .ingressos-event {
+        justify-content: center;
+    }
+}
+
 @media(max-width: 925px){
     .planodefundo{
         height: 359x;
@@ -488,6 +501,16 @@
     }
     .planodefundoedit{
         width: 500px;
+    }
+    .event-container {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    .btn-criarevento {
+        padding: 15px 60px;
+    }
+    .ingressos-event {
+        justify-content: center;
     }
 }
 
@@ -587,10 +610,16 @@
     .bibi{
         margin-top: 20px;
     }
+    .ingressos-event {
+        justify-content: center;
+    }
 }
 @media (max-width: 1292px) {
     .timePerfil {
         grid-template-columns: repeat(2, 1fr); 
+    }
+    .ingressos-event {
+        justify-content: center;
     }
 }
 
@@ -598,4 +627,64 @@
     .timePerfil {
         grid-template-columns: 1fr;
     }
+    .ingressos-event {
+        justify-content: center;
+    }
 }
+
+/* .ingressos-event {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+
+.ingressos-event > * {
+    flex: 1 1 calc(100%); 
+    max-width: 100%;
+}
+
+
+.ingressos-event > *:nth-child(1),
+.ingressos-event > *:nth-child(2) {
+    flex: 1 1 calc(48%);
+    max-width: 48%;
+}
+
+
+.ingressos-event > *:nth-child(3) {
+    flex: 1 1 calc(30%);
+    max-width: 30%;
+}
+
+
+.ingressos-event > *:nth-child(n+1):nth-child(-n+4),
+.ingressos-event > *:nth-child(n+5) {
+    flex: 1 1 calc(22%);
+    max-width: 22%;
+}
+
+@media (max-width: 1024px) {
+    .ingressos-event > * {
+        flex: 1 1 calc(45%);
+        max-width: 45%;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .ingressos-event > * {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+} */
+ 
+
+/* .ingressos-event > * {
+    
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 8px;
+} */

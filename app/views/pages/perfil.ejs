@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@oSxT_</title>
+    <title><%= usuario.nome %></title>
     <link rel="stylesheet" href="/css/perfil.css">
     <link rel="stylesheet" href="/css/eventoUsuario.css">
     <link rel="icon" href="imagens/SportAgora.png">
@@ -63,9 +63,9 @@
                 </section>
                 <button class="btn-criarevento" onclick="location.href='/planos'">Criar evento</button>
             </article>
-            <article class="ingressos-event">
+            <section class="ingressos-event">
                 <%- include('../partials/eventoUsuario'); %>
-            </article>
+            </section>
         </section>
     </main>
     <%- include('../partials/footer'); %> 

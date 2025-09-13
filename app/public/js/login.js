@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleBtn.addEventListener("click", function () {
         const isPassword = senhaInput.type === "password";
         senhaInput.type = isPassword ? "text" : "password";
-        toggleBtn.textContent = isPassword ? "🙈" : "👁️"; // Alterna o ícone
+        toggleBtn.textContent = isPassword ? "🙈" : "👁️"; 
     });
     ctoggleBtn.addEventListener("click", function () {
         const isPassword = repsenhaInput.type === "password";
         repsenhaInput.type = isPassword ? "text" : "password";
-        ctoggleBtn.textContent = isPassword ? "🙈" : "👁️"; // Alterna o ícone
+        ctoggleBtn.textContent = isPassword ? "🙈" : "👁️"; 
     });
 });

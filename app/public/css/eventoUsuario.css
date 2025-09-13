@@ -46,12 +46,12 @@
         transform: scale(1.05);
     }
 }
-.ingressos-event {
+/* .ingressos-event {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
 }
 
 .ingressos-event > * {
-  flex: 1 1 calc(25% - 16px); /* 4 por linha */
-}
+  flex: 1 1 calc(25% - 16px);
+} */

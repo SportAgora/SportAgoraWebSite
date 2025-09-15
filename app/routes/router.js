@@ -190,8 +190,8 @@ router.get('/criar-evento',  verificarAutenticacao, function(req,res){
 
 router.post('/criar-evento',
   verificarAutenticacao,
-  // eventController.criarEventoValidacao,
   uploadFileEvent(["foto"]),
+    eventController.criarEventoValidacao,
   eventController.criarEvento
 );
 

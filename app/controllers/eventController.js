@@ -6,32 +6,50 @@ const {removeImg}= require("../helpers/removeImg")
  
 module.exports = {
   criarEventoValidacao: [
-    body("nome").isLength({min:10}).withMessage("O nome do evento está muito curto."),
-    body("nome").isLength({max:150}).withMessage("O nome do evento está muito longo."),
+  body("nome")
+    .isLength({ min: 10 }).withMessage("O nome do evento está muito curto.")
+    .isLength({ max: 150 }).withMessage("O nome do evento está muito longo."),
 
-    body("data_inicio").custom((value) => {
-        return value.getTime() > new Date().getTime() .getTime()
-      }).withMessage("A data de início das vendas precisa ser posterior a data atual."),
-    body("data_fim").custom((value, { req }) => {
-      return value.getTime() > req.body("data_inicio")
-    }).withMessage("A data de fim das vendas precisa ser posterior a data de início das vendas."),
-    body("data_hora").custom((value, { req }) => {
-      return value.getTime() > req.body("data_fim")
-    }).withMessage("A data de ínício do evento precisa ser posterior a data do fim das vendas."),
+ body("data_inicio").custom((value, { req }) => {
+    const horaInicio = req.body.hora_inicio || "00:00";
+    const inicio = new Date(`${value}T${horaInicio}`);
+    if (isNaN(inicio)) throw new Error("Data de início inválida.");
 
-    body("descricao").isLength({min:100}).withMessage("O texto está  muito curto."),
-    body("descricao").isLength({max:1500}).withMessage("O texto está  muito longo."),
+    if (inicio.getTime() <= Date.now()) {
+      throw new Error("O início das vendas precisa ser posterior à data e hora atual.");
+    }
+    return true;
+  }),
 
-    body("ing_nome").isLength({min:5}).withMessage("O nome do ingresso precisa ser maior"),
-    body("ing_nome").isLength({max:70}).withMessage("O nome do ingresso precisa ser menor"),
+  body("data_final").custom((value, { req }) => {
+    const horaFinal = req.body.hora_final || "00:00";
+    const inicio = new Date(`${req.body.data_inicio}T${req.body.hora_inicio || "00:00"}`);
+    const fim = new Date(`${value}T${horaFinal}`);
 
-    body("ing_valor").custom((value) => {
-      return ing_valor >= 0;
-    }),
-    body("ing_quantidade").custom((value) => {
-      return ing_valor >= 1;
-    }),
-   ],
+    if (isNaN(fim) || isNaN(inicio)) throw new Error("Data final inválida.");
+
+    if (fim.getTime() <= inicio.getTime()) {
+      throw new Error("A data final precisa ser posterior à data de início das vendas.");
+    }
+    return true;
+  }),
+
+  body("data").custom((value, { req }) => {
+    const horaEvento = req.body.hora_evento || "00:00";
+    const evento = new Date(`${value}T${horaEvento}`);
+    const fim = new Date(`${req.body.data_final}T${req.body.hora_final || "00:00"}`);
+
+    if (isNaN(evento) || isNaN(fim)) throw new Error("Data do evento inválida.");
+
+    if (evento.getTime() <= fim.getTime()) {
+      throw new Error("A data do evento precisa ser posterior ao fim das vendas.");
+    }
+    return true;
+  }),
+  body("descricao")
+    .isLength({ min: 100 }).withMessage("O texto está muito curto.")
+    .isLength({ max: 1500 }).withMessage("O texto está muito longo.")
+],
   
 
   criarEvento: async (req, res) => {
@@ -44,10 +62,12 @@ module.exports = {
                     lista.errors.push(erroMulter);
               } 
             console.log(lista);
+            console.log(dadoesporte)
             return res.render('pages/criar-evento',{
                 dados: req.body,
                 erros: lista,
-                esporte:dadoesporte,
+                esporte: dadoesporte,
+                dadosNotificacao: null
             })
         }
         
@@ -61,8 +81,13 @@ module.exports = {
               return res.render('pages/criar-evento',{
                 dados: req.body,
                 erros: null,
-                esporte:dadoesporte
-      }) //colocar msg que precisa mandar foto
+                esporte:dadoesporte,
+                dadosNotificacao: { 
+                      titulo: "Foto não enviada", 
+                      mensagem: "É obrigatório o envio de uma foto para o evento.", 
+                      tipo: "error" 
+                }
+      })
 
       } else {
         var caminhoFoto = "imagens/evento/" + req.files.foto[0].filename;
@@ -82,10 +107,8 @@ module.exports = {
         numero,
         complemento,
       }
-      console.log(evento)
 
       const resultado = await OrganizadorModel.createEvent(evento, ingressoIDs)
-      console.log(resultado)
 
       if (resultado == false){
         OrganizadorModel.ApagarIngresso(ingressoIDs)
@@ -119,8 +142,9 @@ module.exports = {
           ing_valor:"", 
           ing_quantidade:"", 
           ing_meia:"",
-          esporte
-        }
+        },
+        esporte,
+        dadosNotificacao: null
     });
 
   } catch (err) {

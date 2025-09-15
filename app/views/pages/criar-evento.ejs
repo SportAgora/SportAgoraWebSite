@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
   <link rel="icon" href="imagens/SportAgora.png">
   <script defer src="/js/script.js"></script>
+
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <script src="/js/notify.js"></script>
 </head>
 
 <body>
@@ -25,6 +29,102 @@
   </header>
 
   <main>
+
+    <% 
+    let avisoErro = {
+        nome:"", 
+        foto:"", 
+        data_inicio:"", 
+        data_fim:"",
+        data_hora:"", 
+        descricao:"", 
+        cep:"", 
+        numero:"", 
+        complemento:""
+    };
+
+    let msgErro = "";
+    if(erros){
+        erros.errors.forEach(function(erro){
+            switch(erro.path){
+                case "nome":
+                    avisoErro.nome = "erro";
+                    msgErro += `* ${erro.msg} <br>`;
+                    break;
+                case "foto":
+                    avisoErro.foto = "erro";
+                    msgErro += `* ${erro.msg} <br>`;
+                    break;
+                case "data_inicio":
+                    avisoErro.data_inicio = "erro";
+                    msgErro += `* ${erro.msg} <br>`;
+                    break;
+                case "hora_inicio":
+                    avisoErro.data_inicio = "erro"; 
+                    msgErro += `* ${erro.msg} <br>`;
+                    break;
+                case "data_final":
+                    avisoErro.data_fim = "erro";
+                    msgErro += `* ${erro.msg} <br>`;
+                    break;
+                case "hora_final":
+                    avisoErro.data_fim = "erro"; 
+                    msgErro += `* ${erro.msg} <br>`;
+                    break;
+                case "data":
+                    avisoErro.data_hora = "erro";
+                    msgErro += `* ${erro.msg} <br>`;
+                    break;
+                case "hora":
+                    avisoErro.data_hora = "erro";
+                    msgErro += `* ${erro.msg} <br>`;
+                    break;
+                case "descricao":
+                    avisoErro.descricao = "erro";
+                    msgErro += `* ${erro.msg} <br>`;
+                    break;
+                case "cep":
+                    avisoErro.cep = "erro";
+                    msgErro += `* ${erro.msg} <br>`;
+                    break;
+                case "numero":
+                    avisoErro.numero = "erro";
+                    msgErro += `* ${erro.msg} <br>`;
+                    break;
+                case "complemento":
+                    avisoErro.complemento = "erro";
+                    msgErro += `* ${erro.msg} <br>`;
+                    break;
+            }
+        });
+    }
+
+    if(msgErro != ""){
+    %>
+    <script>
+        let msgErro = "<%= msgErro %>";
+        notify(
+            "Erro(s) no preenchimento", 
+            "Verifique o(s) campo(s) <br> " + msgErro.replace(/&lt;/g,"<").replace(/&gt;/g,">"), 
+            "error", 
+            "right bottom", 
+            5000
+        );                        
+    </script>
+    <% } %>
+
+    <% if (dadosNotificacao) { %>
+    <script>
+        notify(
+            "<%= dadosNotificacao.titulo %>",
+            "<%= dadosNotificacao.mensagem %>",
+            "<%= dadosNotificacao.tipo %>",
+            "right bottom"
+        );                    
+    </script>
+    <% } %>
+
+
     <form id="evento-form" method="POST"  enctype="multipart/form-data" action="/criar-evento">
 
       <section class="container">
@@ -46,8 +146,8 @@
           <section>
             <label>Esporte *</label>
             <select name = "esporte" id = "esporte" >
-              <% if(dados.esporte) { %>
-                        <% dados.esporte.forEach(function(a) { %>
+              <% if(esporte) { %>
+                        <% esporte.forEach(function(a) { %>
                             <option value="<%= a.esporte_id%>"><%= a.esporte_nome %></option>
                         <% }); %>
                       <% } else { %>
@@ -67,32 +167,32 @@
 
           <section>
             <label>Data de início *</label>
-            <input name="data" type="date" >
+            <input name="data" type="date" value="<%= dados.data || '' %>">
           </section>
 
           <section>
             <label>Horário de início *</label>
-            <input name="hora" type="time" >
+            <input name="hora" type="time" value="<%= dados.hora || '' %>">
           </section>
 
           <section>
             <label>Início do periodo de inscrição*</label>
-            <input name="data_inicio" type="date" >
+            <input name="data_inicio" type="date" value="<%= dados.data_inicio || '' %>">
           </section>
 
           <section>
             <label>Hora inicial do periodo de inscrição*</label>
-            <input name="hora_inicio" type="time" >
+            <input name="hora_inicio" type="time" value="<%= dados.hora_inicio || '' %>">
           </section>
 
           <section>
             <label>Final do periodo de inscrição*</label>
-            <input name="data_final" type="date" >
+            <input name="data_final" type="date" value="<%= dados.data_final || '' %>">
           </section>
 
           <section>
             <label>Hora final do periodo de inscrição*</label>
-            <input name="hora_final" type="time" >
+            <input name="hora_final" type="time" value="<%= dados.hora_final || '' %>">
           </section>
         </article>
       </section>
@@ -134,12 +234,12 @@
 
       <section class="container">
         <h1>4. Onde o seu evento vai acontecer?</h1>
-        <input type="hidden" name="descricao" id="descricao">
+        <input type="hidden" name="descricao" id="descricao" value="<%= dados.descricao || '' %>">
         <article class="location-fields">
           <legend class="visually-hidden">Localização do evento</legend>
 
           <label>CEP</label>
-            <input type="text" id="cep" name="cep" placeholder="00000-000">
+            <input type="text" id="cep" name="cep" placeholder="00000-000" value="<%= dados.cep || '' %>">
 
             <div id="spinner" style="display:none; font-size:.9rem;">Buscando CEP…</div>
 
@@ -147,10 +247,10 @@
             <input type="text" id="rua" name="rua" readonly>
 
             <label>Número</label>
-            <input type="text" id="numero" name="numero">
+            <input type="text" id="numero" name="numero" value="<%= dados.numero || '' %>">
 
             <label>Complemento</label>
-            <input type="text" id="complemento" name="complemento">
+            <input type="text" id="complemento" name="complemento" value="<%= dados.complemento || '' %>">
 
             <label>Bairro</label>
             <input type="text" id="bairro" name="bairro" readonly>

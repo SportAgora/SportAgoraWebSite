@@ -354,7 +354,8 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
         email: usuario.usu_email,
         nome: usuario.usu_nome,
         foto: usuario.usu_foto,
-        banner: usuario.usu_banner
+        banner: usuario.usu_banner,
+        tipo: usuario.tipo
       };
       
       if (usuario.tipo === "administrador") {

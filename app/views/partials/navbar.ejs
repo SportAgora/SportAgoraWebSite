@@ -118,7 +118,11 @@
     <% if (usuario) { %>
     <button class="panel-button" onclick="location.href='/perfil'">Perfil</button>
     <button class="panel-button" onclick="location.href='/editar-perfil'">Editar Perfil</button>
+    <% if (usuario.tipo == "administrador") {%>
+        <button class="panel-button" onclick="location.href='/adm'">Admin</button>
+    <%}%>
     <button class="panel-button" onclick="location.href='/logout'">Sair</button>
+
     <% } else { %>
     <button class="panel-button" onclick="location.href='/cadastro'">Cadastre-se</button>
     <button class="panel-button" onclick="location.href='/login'">Login</button>

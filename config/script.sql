@@ -18,7 +18,8 @@ CREATE TABLE usuario (
   
 CREATE TABLE esporte (
     esporte_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    esporte_nome VARCHAR(70) NOT NULL UNIQUE
+    esporte_nome VARCHAR(70) NOT NULL UNIQUE,
+    esporte_foto VARCHAR(1500) NOT NULL
 );
 
 CREATE TABLE ingresso (

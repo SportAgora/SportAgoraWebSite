@@ -12,8 +12,8 @@ async function  carregarEventosErro (errors,req,res){
             const resultado = await AdmModel.EventosListarComPaginacao(offset, limite) 
             const total_paginas = Math.ceil(resultado.total / limite);
             const esportes = await AdmModel.EsportFindAll();
-            return res.render('pages/adm/eventos', {
-            
+            console.log(errors)
+            return res.render('pages/adm/eventos', {  
             dados: {
               eventos: resultado.eventos,
               esportes,
@@ -22,8 +22,13 @@ async function  carregarEventosErro (errors,req,res){
                 pagina_atual: pagina,
                 total_paginas
             },
-            erros: errors
-            }})
+            },
+            dadosNotificacao: { 
+                      titulo: errors.titulo || "Erro", 
+                      mensagem: errors.mensagem || "Ocorreu um erro", 
+                      tipo: "error", 
+            }
+          })
         } 
 module.exports = {
     regrasValidacao: [
@@ -168,9 +173,11 @@ module.exports = {
                 pagina_atual: pagina,
                 total_paginas
             }
-            }
-            
+            },
+            erros: null,
+            dadosNotificacao: null
             });
+            
         }catch(e){
             console.error(e)
             throw e;
@@ -178,33 +185,52 @@ module.exports = {
   },
     criarEsporte: async (req, res) => {
       try {
-        
         const {novoEsporte} = req.body;
+        var foto;
+        console.log(req.file)
+
+        if (req.session.erroMulter) {
+          return carregarEventosErro(
+            { titulo: "Erro ao enviar foto", mensagem: req.session.erroMulter.msg },
+            req, res
+          );
+        }
+
+        if (!req.file) {
+              console.log("Nenhuma foto enviada");
+                return carregarEventosErro({titulo:"Erro ao enviar foto", mensagem: "O envio da foto do esporte é obrigatório."} ,req,res);
+              } else {
+                if (req.file) {
+                  const caminhoFoto = "imagens/esportes/" + req.file.filename;
+                  foto = caminhoFoto;
+                }
+              }
+
         if (novoEsporte){
         const esporteExistente = await AdmModel.EsportFindName(novoEsporte);
         if (esporteExistente) {
-         return carregarEventosErro({ errors: [{ path: 'novoEsporte', msg: "Este esporte já existe"}] },req,res);
+         return carregarEventosErro({titulo:"Esporte existe", mensagem: "Este esporte já existe, verifique se o nome foi inserido corretamente."} ,req,res);
       }
 
-        const esporteReturn = await AdmModel.EsportCreate({nome:novoEsporte});
+        const esporteReturn = await AdmModel.EsportCreate({nome:novoEsporte, foto:foto});
         
         console.log("Sucesso ao criar esporte: " + esporteReturn)
   
         res.redirect("/adm/eventos");
        
       } else {
-        return carregarEventosErro({ errors: [{ path: 'esporte', msg: "Insira um nome válido." }] },req,res);
+        return carregarEventosErro({titulo:"Esporte", mensagem: "Verifique se tudo foi incluso corretamente."},req,res);
       }
     } catch (e) {
         console.error(e);
-      return carregarEventosErro({ errors: [{ path: 'esporte', msg: "Ocorreu um erro ao criar o esporte" }] },req,res);
+      return carregarEventosErro({titulo:"Esporte", mensagem: "Ocorreu um erro desconhecido ao tentar criar um esporte."},req,res);
     }
     },
     apagarEsporte: async (req, res) => {
       try{
       const { esportesSelecionados } = req.body;
       if (!esportesSelecionados || esportesSelecionados.length === 0) {
-        return carregarEventosErro({ errors: [{ path: 'esporte', msg: "Nenhum esporte selecionado para exclusão" }] },req,res)
+        return carregarEventosErro({titulo:"Esporte", mensagem: "Nenhum esporte selecionado."},req,res)
       }
 
       const ids = Array.isArray(esportesSelecionados) ? esportesSelecionados : [esportesSelecionados];
@@ -214,7 +240,7 @@ module.exports = {
 
       } catch(e) {
         console.error(e);
-        return carregarEventosErro({ errors: [{ path: 'esporte', msg: "Ocorreu um erro ao apagar o esporte" }] },req,res);
+        return carregarEventosErro({titulo:"Esporte", mensagem: "Ocorreu um erro desconhecido ao apagar o esporte."},req,res);
       }
     },
     

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const admController = require("../controllers/admController");
 const usuariosController = require("../controllers/usuariosController");
-const uploadFile = require("../helpers/uploader")("./app/public/imagens/perfil/");
+const uploadFile = require("../helpers/uploader")("./app/public/imagens/esportes");
 
 const verificarAdm = admController.verificarAdm;
 
@@ -43,15 +43,13 @@ router.get('/eventos', verificarAdm, function(req,res){
   admController.carregarEventos(req,res);
 }) 
 
-router.post('/criar-esporte', verificarAdm,
+router.post('/criar-esporte', verificarAdm, uploadFile('foto'),
   admController.criarEsporte
 );
 
 router.post('/apagar-esporte', verificarAdm,
   admController.apagarEsporte
 );
-
-
 
 router.get('/descricaoEvento', verificarAdm, function(req,res){
   res.render('pages/adm/descricaoEvento');  

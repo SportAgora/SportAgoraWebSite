@@ -36,11 +36,11 @@
   h1 {
     font-size: 1.8em;
     margin-bottom: 10px;
-    color: var(--verde_especial);
+    color: var(--principal_escura);
   }
   
   .subtitle {
-    color: var(--textopostinfo);
+    color: var(--cinza_escuro);
     margin-bottom: 20px;
   }
   
@@ -52,13 +52,26 @@
   }
   
   input, select {
+    color: var(--preto);
+    background-color: var(--background);
     width: 100%;
     padding: 14px;
     margin-top: 5px;
     border-radius: 8px;
-    border: 1px solid var(--cinzaclaro);
+    border: 1px solid var(--cinza_claro);
     font-size: 1em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  input[type=submit]{
+    background-color: var(--principal);
+    color: var(--branco);
+    transition: 0.3s ease;
+  }
+
+  
+  input[type=submit]:hover{
+    background-color: var(--principal_escura);
   }
   
   input:focus, select:focus {
@@ -79,7 +92,7 @@
   }
 
   .image-upload {
-    border: 2px dashed var(--cinzaclaro);
+    border: 2px dashed var(--cinza_claro);
     padding: 20px;
     text-align: center;
     cursor: pointer;
@@ -89,7 +102,7 @@
   }
   
   .image-upload:hover {
-    background: var(--branco-fosco);
+    background: var(--branco);
   }
   
   .image-upload img {
@@ -104,7 +117,7 @@
     margin-top: 20px;
     padding: 12px 20px;
     border: none;
-    background: var(--verde_especial);
+    background: var(--principal);
     color: var(--branco);
     border-radius: 8px;
     cursor: pointer;
@@ -113,11 +126,11 @@
   }
 
     button:hover {
-    background: var(--searchbar);
+    background: var(--principal_escura);
   }
   
   .meia-btn.active {
-    background: var(--laranja) !important;
+    background: var(--complementar) !important;
     color: var(--preto);
   }
   
@@ -127,9 +140,10 @@
     margin-top: 10px;
     font-size: 1em;
   }
-  
+
+   
   .ql-toolbar.ql-snow {
-    border-radius: 8px 8px 0 0;
+    border-radius: 8px 8px 0 0 ;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -139,6 +153,7 @@
     align-content: center;
     align-items: flex-end;
     z-index: 1;
+    color: var(--preto);
   }
   
   .ql-formats {
@@ -169,7 +184,7 @@
   }
   
   table, th, td {
-    border: 1px solid var(--cinzaclaro);
+    border: 1px solid var(--cinza_claro);
   }
   
   th, td {
@@ -193,7 +208,7 @@
 
 
 .botao-seta {
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal);
     border: none;
     color: var(--branco);
     height: 55px;
@@ -211,7 +226,7 @@
 
 .botao-seta:hover {
     transform: scale(1.05);  
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal_escura);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
 }
 
@@ -230,7 +245,7 @@
 
 
 .ver-eventos {
-    color: var(--textopostinfo);
+    color: var(--cinza_escuro);
     font-size: 20px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -294,11 +309,11 @@
   h1 {
     font-size: 1.8em;
     margin-bottom: 10px;
-    color: var(--verde_especial);
+    color: var(--principal_escura);
   }
   
   .subtitle {
-    color: var(--cinza-escuro);
+    color: var(--cinza_escuro);
     margin-bottom: 20px;
   }
   
@@ -314,14 +329,14 @@
     padding: 14px;
     margin-top: 5px;
     border-radius: 8px;
-    border: 1px solid var(--cinzaclaro);
+    border: 1px solid var(--cinza_claro);
     font-size: 1em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
   
   input:focus, select:focus {
-    border-color: var(--verde_especial);
-    box-shadow: 0 0 5px var(--verdenavfooter);
+    border-color: var(--principal);
+    box-shadow: 0 0 5px var(--principal_escura);
     outline: none;
   }
   
@@ -345,14 +360,14 @@
         padding: 14px;
         margin-top: 5px;
         border-radius: 8px;
-        border: 1px solid var(--cinzaclaro);
+        border: 1px solid var(--cinza_claro);
         font-size: 1em;
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
   
   .image-upload {
-    border: 2px dashed var(--cinzaclaro);
+    border: 2px dashed var(--cinza_claro);
     padding: 20px;
     text-align: center;
     cursor: pointer;
@@ -362,7 +377,7 @@
   }
   
   .image-upload:hover {
-    background: var(--brancofraco);
+    background: var(--branco);
   }
   
   .image-upload img {
@@ -377,7 +392,7 @@
     margin-top: 20px;
     padding: 12px 20px;
     border: none;
-    background: var(--verde_especial);
+    background: var(--principal);
     color: var(--branco);
     border-radius: 8px;
     cursor: pointer;
@@ -386,11 +401,11 @@
   }
 
  button:hover {
-    background: var(--verde_especial);
+    background: var(--principal);
   }
   
   .meia-btn.active {
-    background: var(--laranja) !important;
+    background: var(--complementar) !important;
     color: var(--preto);
   }
   
@@ -438,7 +453,7 @@
   }
   
   table, th, td {
-    border: 1px solid var(--cinzaclaro);
+    border: 1px solid var(--cinza_claro);
   }
   
   th, td {
@@ -462,7 +477,7 @@
 
 
 .botao-seta {
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal);
     border: none;
     color: var(--branco);
     height: 55px;
@@ -480,7 +495,7 @@
 
 .botao-seta:hover {
     transform: scale(1.05);  
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal_escura);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
 }
 
@@ -499,7 +514,7 @@
 
 
 .ver-eventos {
-    color: var(--textopostinfo);
+    color: var(--cinza_escuro);
     font-size: 20px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -511,7 +526,7 @@
 }
 
 .publicar-button:hover {
-  background-color: var(--verdenavfooter);
+  background-color: var(--principal_escura);
 }
 
 .cep-wrapper {
@@ -522,8 +537,8 @@
   display: none;
   width: 20px;
   height: 20px;
-  border: 3px solid var(--cinzaclaro);
-  border-top: 3px solid var(--verde_especial);
+  border: 3px solid var(--cinza_claro);
+  border-top: 3px solid var(--principal);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   position: absolute;

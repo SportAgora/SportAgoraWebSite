@@ -1,90 +1,74 @@
-var cores_claro = [
-    ["--verde_especial","#339933"],
-    ["--preto", "#1b1b1b"],
-    ["--branco", "white"],
-    ["--brancobg", "#ffffff"],
-    ["--cinza","gray"],
-    ["--cinzaclaro","#ccc"],
-    ["--cordefundopadrao","#f0f0f0"],
-    ["--verdenavfooter","#2a8d3f"],
-    ["--verdeneon","#42ff21"],
-    ["--brancofraco","#f1f1f1"],
-    ["--postcor", "white"],
-    ["--textopost", "#333"],
-    ["--textopostinfo", "#777"],
-    ["--hoverplanos", "#cdf7cf"],
-    ["--searchbar", "#216F27"]
-  ];
-  
-  var cores_escuro = [
-    ["--verde_especial","#339933"],
-    ["--preto", "#1b1b1b"],
-    ["--branco", "white"],
-    ["--brancobg", "#ffffff"],
-    ["--cinza","gray"],
-    ["--cinzaclaro","#ccc"],
-    ["--cordefundopadrao","#0d0d0d"],
-    ["--verdenavfooter","#216F27"],
-    ["--verdeneon","#42ff21"],
-    ["--brancofraco","#f1f1f1"],
-    ["--postcor", "#373434"],
-    ["--textopost", "white"],
-    ["--textopostinfo", "#ccc"],
-    ["--hoverplanos", "#1f2e20"],
-    ["--searchbar", "#2a8d3f"]
-  ];
-  
-  function setDarkMode() {
-    for (let i = 0; i < cores_escuro.length; i++) {
-      document.documentElement.style.setProperty(cores_escuro[i][0], cores_escuro[i][1]);
-    }
-    document.body.classList.remove('light-mode');
-    document.body.classList.add('dark-mode');
-    localStorage.setItem('mode', 'dark');
-  
-    const moonIcon = document.querySelector('.brilho-icon:last-child');
-    moonIcon.style.animation = 'none';
-    void moonIcon.offsetWidth;
-    moonIcon.style.animation = '';
-  }
-  
-  function setLightMode() {
-    for (let i = 0; i < cores_claro.length; i++) {
-      document.documentElement.style.setProperty(cores_claro[i][0], cores_claro[i][1]);
-    }
-    document.body.classList.remove('dark-mode');
-    document.body.classList.add('light-mode');
-    localStorage.setItem('mode', 'light');
-    const sunIcon = document.querySelector('.brilho-icon:first-child');
-    sunIcon.classList.add('sun-animate');
-    setTimeout(() => {
-      sunIcon.classList.remove('sun-animate');
-    }, 1000);
-  }
-  
-  function toggleMode() {
-    const isDarkMode = localStorage.getItem('mode') === 'dark';
-    if (isDarkMode) {
-      setLightMode();
-    } else {
-      setDarkMode();
-    }
-  }
-  
-  function loadMode() {
-    const mode = localStorage.getItem('mode');
-    if (mode === 'dark') {
-      setDarkMode();
-    } else {
-      setLightMode();
-    }
-  }
-  
-  window.onload = loadMode;
+const cores_claro = {
+  erro: "#812222",
+  principal: "#8D5EFF",
+  principal_escura: "#5730B3",
+  principal_claro: "#A078FF",
+  complementar: "#B3A82A",
+  complementar2: "#FFF426",
+  branco: "#F1F1F1",
+  preto: "#1B1B1B",
+  cinza: "#6C757D",
+  cinza_escuro:"#333",
+  cinza_claro:"#929292",
+  background: "#E6ECF0"
+};
 
-  window.onload = () => {
-    const sunIcon = document.querySelector('.brilho-icon:first-child');
-    sunIcon.style.animationDelay = '0s';
-    loadMode();
-  };
-  
+const cores_escuro = {
+  erro: "#812222",
+  principal: "#8D5EFF",
+  principal_escura: "#5730B3",
+  principal_claro: "#A078FF",
+  complementar: "#FFF426",
+  complementar2: "#B3A82A",
+  branco: "#1B1B1B",
+  preto: "#F1F1F1",
+  cinza: "#6C757D",
+  cinza_escuro:"#929292",
+  cinza_claro:"#333",
+  background: "#0D0D0D"
+};
+
+function aplicarCores(cores) {
+  for (const chave in cores) {
+    document.documentElement.style.setProperty(`--${chave}`, cores[chave]);
+  }
+}
+
+function setDarkMode() {
+  aplicarCores(cores_escuro);
+  document.body.classList.remove('light-mode');
+  document.body.classList.add('dark-mode');
+  localStorage.setItem('mode', 'dark');
+  // animações específicas do dark mode aqui, se quiser
+}
+
+function setLightMode() {
+  aplicarCores(cores_claro);
+  document.body.classList.remove('dark-mode');
+  document.body.classList.add('light-mode');
+  localStorage.setItem('mode', 'light');
+  // animações específicas do light mode aqui, se quiser
+}
+
+function toggleMode() {
+  const mode = localStorage.getItem('mode');
+  if (mode === 'dark') {
+    setLightMode();
+  } else {
+    setDarkMode();
+  }
+}
+
+function loadMode() {
+  const mode = localStorage.getItem('mode');
+  if (mode === 'dark') {
+    setDarkMode();
+  } else {
+    setLightMode();
+  }
+}
+
+window.onload = () => {
+  loadMode();
+  // animação inicial do sol, lua, etc.
+};

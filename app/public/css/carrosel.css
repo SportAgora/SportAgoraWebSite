@@ -53,7 +53,7 @@
 }
 
 .carousel-item:hover img {
-    border: 3px solid var(--verde_especial); /* Borda verde ao passar o mouse */
+    border: 3px solid var(--principal); /* Borda verde ao passar o mouse */
     height: auto;
     transform: scale(1.1); /* Aumenta o tamanho da imagem */
 }
@@ -63,7 +63,7 @@
     font-size: 16px;
     margin-top: 8px;
     font-weight: bold;
-    color: var(--textopost);
+    color: var(--cinza_escuro);
 }
 
 .carousel-item:hover img {
@@ -71,7 +71,7 @@
 }
 
 .carousel-item:hover p {
-  color:  var(--verde_especial);
+  color:  var(--principal);
 }
 
 .carousel-arrow {
@@ -83,7 +83,7 @@
     top: 50%;
     width: 50px;
     height: 60px;
-    background-color: var(--verde_especial); /* Cor verde */
+    background-color: var(--principal); /* Cor verde */
     color: white;
     font-size: 24px;
     border-radius: 50%;
@@ -96,10 +96,6 @@
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.carousel-arrow:hover {
-    background-color:  var(--verdenavfooter); 
-    transform: translateY(-50%) scale(1.1);
-}
 
 .left-arrow {
     left: 2%;
@@ -111,7 +107,7 @@
 
 .carousel-arrow:hover {
     transform: translateY(-50%) scale(1.2);
-    background-color: var(--searchbar); 
+    background-color: var(--principal_escuro); 
 }
 
 .carousel-arrow {

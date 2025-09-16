@@ -9,28 +9,7 @@
 }
 
 :root {
-    /* --verde_especial: #28a745;
-    --preto: #1b1b1b;
-    --branco: white;
-    --brancobg:#ffffff;
-    --branco-fosco: #e6ecf0;
-    --cinza: gray;
-    --cinza-escuro: #6c757d;
-    --cinzaclaro: #ccc;
-    --cordefundopadrao: #f0f0f0;
-    --verdenavfooter: #2a8d3f;
-    --verdeneon: #42ff21;
-    --brancofraco: #f1f1f1;
-    --amarelado: #d0d0b5;
-    --postcor: white;
-    --laranja: #ffc107;
-    --textopost: #333;
-    --textopostinfo: #777;
-    --hoverplanos: #cdf7cf;
-    --searchbar: #216F27; */
-
-
-    --erro:rgb(129, 34, 34);
+    --erro:#812222;
     --principal: #8D5EFF;
     --principal_escura: #5730B3;
     --principal_claro: #A078FF;
@@ -519,7 +498,7 @@ body {
 
 .menu-panel .divider {
     height: 1px;
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal_escura);
     margin: 10px 0;
 }
 
@@ -545,7 +524,7 @@ body {
 }
 
 .panel-button:hover {
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal_escura);
     border-radius: 10px;
     padding-left: 25px;
 }
@@ -557,7 +536,7 @@ body {
     top: 0;
     width: 5px;
     height: 100%;
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal_escura);
     transform: scaleY(0);
     transform-origin: top;
     transition: transform 0.3s ease;
@@ -572,12 +551,12 @@ body {
 hr.divider {
     border: none;
     height: 1px;
-    background: linear-gradient(to right, transparent, var(--verdenavfooter), transparent);
+    background: linear-gradient(to right, transparent, var(--principal_escura), transparent);
     margin: 10px 0;
 }
 
 .panel-button::after {
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal_escura);
     border-radius: 10px;
 }
 
@@ -599,7 +578,7 @@ a {
   }
   
   .mobile-subscribe-button:hover {
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal_escura);
   }
 
 /* Mobile Search Bar */
@@ -609,7 +588,7 @@ a {
     align-items: center;
     position: relative;
     width: 100%;
-    background-color: var(--searchbar);
+    background-color: var(--principal);
     border-radius: 25px;
     padding: 10px;
   }
@@ -662,7 +641,7 @@ a {
 }
 
 .mobile-search-bar {
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal_escura);
     padding: 12px;
 }
 
@@ -671,7 +650,7 @@ a {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--branco-fosco);
+    background-color: var(--branco);
     border-radius: 10px;
     margin-top: 5px;
     max-height: 200px;
@@ -687,14 +666,14 @@ a {
     border: none;
     border-radius: 25px;
     font-size: 1rem;
-    background-color: var(--verde_claro);
+    background-color: var(--principal_claro);
     color: var(--branco);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .mobile-subscribe-button:active {
-    background-color: var(--verdenavfooter); 
+    background-color: var(--principal_escura); 
     transform: scale(1.1); 
 }
 
@@ -725,7 +704,7 @@ a {
 
 
 .mobile-subscribe-button {
-    background-color: var(--verde_especial);
+    background-color: var(--principal);
     border-radius: 0%;
     width: 100%;
     height: 50px;
@@ -776,7 +755,7 @@ a {
 
   .dark-mode-button:hover,
   .dark-mode-button:active {
-    background-color: green;
+    background-color: var(--principal);
     border-radius: 10px;
   }
 
@@ -840,7 +819,7 @@ a {
         margin-left: 10px;
         width: 98%;
         margin-right: 5px;
-        background-color: var(--searchbar);
+        background-color: var(--principal);
         border-radius: 25px;
         color: var(--branco);
     }
@@ -866,7 +845,7 @@ a {
         font-size: 1rem;
         padding: 10px;
         width: 75%;
-        background-color: var(--searchbar);
+        background-color: var(--principal);
         border-radius: 25px;
         color: var(--branco);
     }
@@ -919,7 +898,7 @@ a {
 
     .search-bar-mobile {
         display: block;
-        background-color: var(--searchbar);
+        background-color: var(--principal);
     }
 
     .search-bar {
@@ -929,7 +908,7 @@ a {
     .search-bar-mobile {
         display: flex;
         width: auto;
-        background-color: var(--searchbar);
+        background-color: var(--principal);
         padding: 10px;
     } 
 
@@ -983,7 +962,7 @@ a {
     .login-button-mobile {
         display: flex;
         align-items: center;
-        background-color: var(--verdenavfooter);
+        background-color: var(--principal_escura);
         color: var(--branco);
         border: none;
         border-radius: 20px;
@@ -1039,7 +1018,7 @@ a {
         display: flex;
         text-align: left;
         align-items: left;
-        background-color: var(--verde_especial);
+        background-color: var(--principal);
         color: var(--branco);
         border: none;
         width: auto;
@@ -1063,8 +1042,8 @@ a {
     .mobile-menu {
         display: none;
         flex-direction: column;
-        background-color: var(--verdenavfooter);
-        background: linear-gradient(135deg, var(--verde_especial), #1e774d);
+        background-color: var(--principal_escura);
+        background: linear-gradient(135deg, var(--principal), var(--principal_escura));
         padding: 20px;
         position: absolute;
         right: 0;
@@ -1107,7 +1086,7 @@ a {
 /*FOOTER*/
 
 footer {
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal_escura);
     color: var(--branco);
     padding: 40px 0 20px;
     margin-top: 30px;
@@ -1140,7 +1119,7 @@ footer {
 .footer-bloco h4 {
     font-size: 18px;
     margin-bottom: 20px;
-    color: var(--brancofraco);
+    color: var(--branco);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -1173,7 +1152,7 @@ footer {
 .footer-conecte h4 {
     font-size: 18px;
     margin-bottom: 20px;
-    color: var(--brancofraco);
+    color: var(--branco);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -1200,7 +1179,7 @@ footer {
 .copyright {
     text-align: center;
     font-size: 14px;
-    color: var(--cinzaclaro);
+    color: var(--cinza_claro);
     margin-top: 20px;
     margin-right: 150px;
     white-space: nowrap;

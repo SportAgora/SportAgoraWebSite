@@ -12,7 +12,7 @@
   --dourado: #ffd700;
 }
 
-.logo {
+/* .logo {
   font-size: 24px;
   font-weight: bold;
   color: var(--verde-escuro);
@@ -31,7 +31,7 @@
   cursor: pointer;
   font-weight: bold;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+} */
 
 .hero {
   background: url('https://images.unsplash.com/photo-1517649763962-0c623066013b') center/cover no-repeat;
@@ -44,14 +44,14 @@
 
 .hero::after {
   content: "";
-  background-color: rgba(46, 204, 113, 0.5);
+  background-color: var(--principal_claro_transparente);
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
 }
 
 .hero-text {
-  color: white;
+  color: var(--preto);
   text-align: center;
   position: relative;
   z-index: 1;
@@ -74,7 +74,7 @@
 
 .card {
   flex: 1 1 400px;
-  background: white;
+  background: var(--branco);
   padding: 48px;
   border-radius: 24px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.05);
@@ -91,20 +91,20 @@
 .card h2 {
   font-size: 32px;
   margin-bottom: 10px;
-  color: #111;
+  color: var(--preto);
 }
 
 .card .preco {
   font-size: 36px;
   font-weight: 700;
-  color: var(--verde-escuro);
+  color: var(--principal_escura);
   margin-bottom: 24px;
 }
 
 .card .preco span {
   font-size: 18px;
   font-weight: 400;
-  color: #555;
+  color: var(--cinza);
 }
 
 .card ul {
@@ -119,12 +119,12 @@
 }
 
 li.ok {
-  color: var(--verde-escuro);
+  color: var(--principal_escura);
   font-weight: 500;
 }
 
 li.no {
-  color: #aaa;
+  color: var(--cinza_claro);
   text-decoration: line-through;
 }
 
@@ -141,30 +141,30 @@ li.no {
 }
 
 .btn-free {
-  background: #f3f3f3;
-  color: #222;
+  background: var(--cinza_claro);
+  color: var(--cinza_escuro);
 }
 
 .btn-free:hover {
-  background: #ddd;
+  background: var(--cinza);
   transform: scale(1.02);
 }
 
 .btn-premium {
-  background: linear-gradient(135deg, var(--verde-escuro), var(--verde-claro));
+  background: linear-gradient(135deg, var(--principal_escura), var(--principal_claro));
   color: white;
 }
 
 .btn-premium:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
+  box-shadow: 0 6px 20px var(--principal);
 }
 
 .selo {
   position: absolute;
   top: -20px;
   right: -20px;
-  background: var(--dourado);
+  background: var(--complementar2);
   color: #000;
   padding: 10px 18px;
   border-radius: 30px;
@@ -179,7 +179,7 @@ li.no {
 .card .preco {
   font-size: 26px;
   font-weight: bold;
-  color: var(--verde-escuro);
+  color: var(--principal_escura);
   margin-bottom: 15px;
 }
 
@@ -190,7 +190,7 @@ li.no {
 
 .card ul li {
   padding: 5px 0;
-  color: #555;
+  color: var(--cinza);
 }
 
 .btn-free, .btn-premium {
@@ -202,13 +202,8 @@ li.no {
   width: 100%;
 }
 
-.btn-free {
-  background: #ccc;
-  color: #333;
-}
-
 .btn-premium {
-  background: var(--verde-claro);
+  background: var(--principal_claro);
   color: white;
   transition: transform 0.3s;
 }
@@ -219,12 +214,13 @@ li.no {
 
 .cta {
   text-align: center;
+  color: var(--preto);
   padding: 60px 20px;
-  background: #f9f9f9;
+  background: var(--branco);
 }
 
 .btn-assinar {
-  background: linear-gradient(to right, var(--verde-escuro), var(--verde-claro));
+  background: linear-gradient(to right, var(--principal_escura), var(--principal_claro));
   border: none;
   color: white;
   padding: 14px 30px;
@@ -241,7 +237,7 @@ li.no {
   50% { transform: scale(1.03); }
   100% { transform: scale(1); }
 }
-
+/* 
 .modal {
   display: none;
   position: fixed;
@@ -253,7 +249,7 @@ li.no {
 }
 
 .modal-content {
-  background: white;
+  background: var(--branco);
   padding: 30px;
   border-radius: 12px;
   width: 90%;
@@ -289,22 +285,22 @@ li.no {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-}
+} */
 
-footer {
+/* footer {
   padding: 30px;
   background: #f5f5f5;
   text-align: center;
   color: #777;
-}
+} */
 
-.newsletter {
+/* .newsletter {
   margin-top: 10px;
 }
 
 .newsletter input {
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--cinza_claro);
   border-radius: 6px;
 }
 
@@ -316,4 +312,4 @@ footer {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-}
+} */

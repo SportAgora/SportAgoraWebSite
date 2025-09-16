@@ -4,31 +4,31 @@
 
 #signin .erro{
     background-color: rgb(255, 202, 202);
-    border: 2px solid var(--vermelhoerro);
-    color: var(--vermelhoerro);
+    border: 2px solid var(--erro);
+    color: var(--erro);
 }
 #signup .erro{
     background-color: rgb(255, 202, 202);
-    border: 2px solid var(--vermelhoerro);
-    color: var(--vermelhoerro);
+    border: 2px solid var(--erro);
+    color: var(--erro);
 }
 .erro #email {
-    border: 2px solid var(--vermelhoerro);
+    border: 2px solid var(--erro);
 }
 .erro #senha {
-    border: 2px solid var(--vermelhoerro); 
+    border: 2px solid var(--erro); 
 }
 .erro #nome {
-    border: 2px solid var(--vermelhoerro);
+    border: 2px solid var(--erro);
 }
 .erro #repsenha {
-    border: 2px solid var(--vermelhoerro);
+    border: 2px solid var(--erro);
 }
 
 .erro{
     background-color: rgb(255, 202, 202);
-    border: 2px solid var(--vermelhoerro);
-    color: var(--vermelhoerro);
+    border: 2px solid var(--erro);
+    color: var(--erro);
 }
 
 /* Página de erro */
@@ -71,7 +71,7 @@ h3 {
 }
 
 .corErro {
-    color: var(--verde_especial);
+    color: var(--principal);
 }
 
 .voltarHome {
@@ -88,7 +88,7 @@ h3 {
 }
 .voltar {
     font-size: 25px;
-    color: var(--verde_especial);
+    color: var(--principal);
     font-weight: bold;
 }
 

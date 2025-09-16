@@ -2,8 +2,8 @@
         display: inline-block;
         padding: 10px 20px;
         margin-top: 20px;
-        background-color: #28a745;
-        color: white;
+        background-color: var(--principal_escura);
+        color: var(--branco);
         text-decoration: none;
         border-radius: 5px;
     }
@@ -21,7 +21,7 @@
     }
     .form-reset-senha form{
         padding: 20px 50px 0px 50px;
-        color: var(--textopost);
+        color: var(--preto);
     }
     
     .form-reset-senha1 form{
@@ -41,21 +41,21 @@
         margin: 10px;
     }
     #email, .senha {
-        border-top: 1px double white;
-        border-right: 1px double white;
-        border-bottom: 2px solid gray;
-        border-left: 1px double white;
+        border-top: 1px double var(--branco);
+        border-right: 1px double var(--branco);
+        border-bottom: 2px solid var(--cinza_escuro);
+        border-left: 1px double var(--branco);
         margin-top: 10px;
         margin-bottom: 20px;
         padding: 8px 0 8px 15px;
         outline: none;
         width: 98%;
         font-size: 18px;
-        background-color: white;
+        background-color: var(--background);
     }
     .enviar-btn{
-    background-color: var(--verde_especial);
-    color: white;
+    background-color: var(--principal);
+    color: var(--branco);
     border: none;
     padding: 10px 15px;
     font-size: 14px;
@@ -68,7 +68,7 @@
         height: 400px;
     }
     .container5 {
-        background-color: var(--postcor);
+        background-color: var(--branco);
         width: 880px;
         height: 320px;
         display: flex;
@@ -77,7 +77,7 @@
         position: relative;
         overflow: hidden;
         border-radius: 10px;
-        box-shadow: 0 0 20px 0 var(--cinza-escuro);
+        box-shadow: 0 0 20px 0 var(--cinza_escuro);
         margin-top: 100px;
         font-size: 18px;
         margin-bottom: 60px;
@@ -92,11 +92,11 @@
     font-size: 45px;
     margin-bottom: 10px;
     margin-top: 10px;
-    color: var(--textopost);
+    color: var(--preto);
 }
 .buttonsForm a {
     font-size: 18px;
-    color: var(--verde_especial);
+    color: var(--principal_escura);
 }
 
 footer{

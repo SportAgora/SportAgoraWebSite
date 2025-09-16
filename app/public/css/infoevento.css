@@ -22,7 +22,7 @@
 
 
 .botao-seta {
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal);
     border: none;
     color: var(--branco);
     height: 55px;
@@ -40,7 +40,7 @@
 
 .botao-seta:hover {
     transform: scale(1.05);  
-    background-color: var(--searchbar);
+    background-color: var(--principal_escura);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
 }
 
@@ -59,7 +59,7 @@
 
 
 .ver-eventos {
-    color: var(--textopostinfo);
+    color: var(--preto);
     font-size: 20px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -92,7 +92,7 @@
     flex: 1;
     margin-right: 20px;
     margin-left: 30px;
-    background-color: var(--postcor);
+    background-color: var(--branco);
     padding: 20px;
     border-radius: 25px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -102,7 +102,7 @@
 
 .box-esquerda h2 {
     font-size: 22px;
-    color: var(--textopost);
+    color: var(--preto);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -117,11 +117,11 @@
     font-optical-sizing: auto;
     font-style: normal;
     margin: 10px;
-    color: var(--textopostinfo);
+    color: var(--preto);
 }
 
 .box-esquerda a {
-    color: var(--verde_especial);
+    color: var(--principal);
     text-decoration: underline;
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
@@ -132,7 +132,7 @@
 }
 
 a:hover {
-    color: var(--searchbar);
+    color: var(--principal_escura);
 }
 
 
@@ -140,7 +140,7 @@ a:hover {
 
 .box-direita {
     width: 550px;
-    background-color: var(--postcor);
+    background-color: var(--branco);
     padding: 20px;
     height: 650px;
     position: sticky;
@@ -154,13 +154,13 @@ a:hover {
 
 .linha-separadora {
     border: none;
-    border-top: 1px solid var(--cinzaclaro);  
+    border-top: 1px solid var(--cinza_claro);  
     margin: 20px 0;
 }
 
 .nome-evento {
     font-size: 34px;  
-    color: var(--textopost);
+    color: var(--preto);
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -184,7 +184,7 @@ a:hover {
     align-items: center;
     margin-bottom: 15px; 
     font-weight: bold;
-    color: var(--textopostinfo);
+    color: var(--preto);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -193,7 +193,7 @@ a:hover {
 
 .data-limite {
     font-size: 18px;  
-    color: var(--textopostinfo);
+    color: var(--preto);
     margin: 10px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -209,9 +209,9 @@ a:hover {
 }
 
 .btn-fale-conosco {
-    background-color: var(--postcor);
-    border: 2px solid var(--verde_especial);
-    color: var(--verde_especial);
+    background-color: var(--branco);
+    border: 2px solid var(--principal_escura);
+    color: var(--principal_escura);
     padding: 15px 25px;
     border-radius: 25px;
     font-size: large;
@@ -225,7 +225,7 @@ a:hover {
 }
 
 .btn-inscrever-se {
-    background-color: var(--verde_especial);
+    background-color: var(--principal_escura);
     border: none;
     font-size: large;
     font-family: "Montserrat", sans-serif;
@@ -251,7 +251,7 @@ a:hover {
 }
 
 .btn-denunciar{
-    background-color: var(--vermelhoerro);
+    background-color: var(--erro);
     color: var(--branco);
     text-align: center;
     margin-bottom: 15px;
@@ -274,12 +274,12 @@ a:hover {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    border: 1px solid var(--cinzaclaro);
+    border: 1px solid var(--cinza_claro);
     color: var(--preto);
 }
 
 .evento-status.gratis {
-    background-color: var(--verde_especial);
+    background-color: var(--complementar);
     color: var(--branco);
     text-align: center;
     margin-bottom: 15px;
@@ -290,18 +290,18 @@ a:hover {
     color: var(--branco);
     margin-bottom: 15px;
     text-align: center;
-    background-color: var(--verdenavfooter);
+    background-color: var(--complementar);
     width: 60px;
     padding: 10px;
   }
 
   .linha-separadora {
-    color: var(--cinzaclaro);
+    color: var(--cinza_claro);
   }
 
   .ingressos-container {
   margin-top: 20px;
-  background-color: var(--postcor);
+  background-color: var(--branco);
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -323,13 +323,13 @@ a:hover {
 .nome-ingresso {
   font-size: 18px;
   font-weight: bold;
-  color: var(--textopost);
+  color: var(--preto);
   margin: 0;
 }
 
 .tipo-ingresso {
   font-size: 14px;
-  color: var(--textopostinfo);
+  color: var(--cinza_escuro);
   margin-top: 5px;
 }
 
@@ -337,7 +337,7 @@ a:hover {
   flex: 1;
   font-weight: bold;
   font-size: 18px;
-  color: var(--verde_especial);
+  color: var(--principal_escura);
   text-align: center;
 }
 
@@ -350,7 +350,7 @@ a:hover {
 }
 
 .botao-controle {
-  background-color: var(--verde_especial);
+  background-color: var(--principal);
   color: var(--branco);
   border: none;
   padding: 8px 14px;
@@ -361,7 +361,7 @@ a:hover {
 }
 
 .botao-controle:hover {
-  background-color: var(--verdenavfooter);
+  background-color: var(--principal_escura);
 }
 
 #quantidade-pista,
@@ -370,20 +370,20 @@ a:hover {
   font-weight: bold;
   min-width: 20px;
   text-align: center;
-  color: var(--textopost);
+  color: var(--preto);
 }
 
 .total-ingressos {
   margin-top: 20px;
   font-size: 18px;
   font-weight: bold;
-  color: var(--textopost);
+  color: var(--preto);
   text-align: right;
 }
 
 .linha-separadora-ingresso {
   border: none;
-  border-top: 1px solid var(--cinzaclaro);
+  border-top: 1px solid var(--cinza_claro);
   margin: 15px 0;
 }
 
@@ -394,7 +394,7 @@ a:hover {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: var(--verde_especial);
+  background: var(--principal_escura);
   color: var(--branco);
   border: none;
   padding: 15px 25px;
@@ -408,7 +408,7 @@ a:hover {
 }
 
 .btn-ingressos-mobile:hover {
-  background: var(--verdenavfooter);
+  background: var(--principal);
 }
 
   /* responsividade */
@@ -513,7 +513,7 @@ a:hover {
 
 .relacionado-evento {
     width: 32%;
-    background-color: var(--postcor);
+    background-color: var(--branco);
     padding: 20px;
     border-radius: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -541,7 +541,7 @@ a:hover {
 
 .relacionado-evento p strong {
     font-size: 16px;
-    color: var(--textopost);
+    color: var(--preto);
     line-height: 2;
     margin: 10px 0;
     font-family: "Montserrat", sans-serif;
@@ -552,12 +552,12 @@ a:hover {
 }
 
 .relacionado-evento p strong:hover {
-    color: var(--verde_especial);
+    color: var(--principal_escura);
     transform: scale(1.1);
 }
 
 a {
-    color: var(--verdenavfooter);
+    color: var(--principal);
     transition: color 0.3s ease;
 }
 
@@ -573,7 +573,7 @@ a {
 }
 
 strong {
-    color: var(--textopost);
+    color: var(--preto);
 }
 
 /* responsividade */
@@ -607,8 +607,8 @@ strong {
 
 /* Caixa do modal */
 .modal-content-denuncia {
-  background-color: var( --cordefundopadrao);
-  color: var(--textopost);
+  background-color: var( --branco);
+  color: var(--preto);
   border-radius: 12px;
   padding: 30px;
   width: 90%;
@@ -645,10 +645,10 @@ strong {
 
 /* Estilo do botão "Confirmar denúncia" */
 .btn-confirmar {
-  background-color: #e74c3c;
+  background-color:var(--erro);
   color: #fff;
 }
 
 .btn-confirmar:hover {
-  background-color: #c0392b;
+  background-color: var(--erro);
 }

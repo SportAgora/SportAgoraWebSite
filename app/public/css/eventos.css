@@ -11,7 +11,7 @@
 
 .event-title {
   font-size: 4.5rem;
-  color: var(--verde_especial);
+  color: var(--principal_escura);
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   margin-bottom: 10px;
@@ -23,7 +23,7 @@
 .event-subtitle {
   font-size: 1.4rem;
   font-family: "Montserrat", sans-serif;
-  color: var(--textopostinfo);
+  color: var(--preto);
   animation: fadeInUp 1s ease-out;
 }
 
@@ -32,7 +32,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--postcor); 
+  background-color: var(--branco); 
   padding: 20px;
   border-radius: 25px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -51,7 +51,7 @@
 
 .filter-label {
   font-size: 1.8rem;
-  color: var(--verde_especial);
+  color: var(--principal_escura);
   margin-left: 15px;
   font-weight: bold;
 }
@@ -59,23 +59,23 @@
 .separator {
   height: 40px;
   width: 1px;
-  background-color: var(--postcor); 
+  background-color: var(--preto); 
   margin-right: 25px;
 }
 
 .filter-text {
   font-size: 1.2rem;
-  color: var(--textopost);
+  color: var(--preto);
   margin-right: 15px;
   font-weight: bold;
 }
 
 .filter-select {
   padding: 15px 30px;
-  border: 2px solid var(--cinzaclaro);
+  border: 2px solid var(--cinza_claro);
   border-radius: 10px;
-  background-color: var(--postcor); 
-  color: var(--textopost);
+  background-color: var(--background); 
+  color: var(--preto);
   font-size: 1.2rem;
   cursor: pointer;
   appearance: none;
@@ -94,10 +94,10 @@
 
 .filter-date {
   padding: 15px 20px;
-  border: 2px solid var(--cinzaclaro);
+  border: 2px solid var(--cinza_claro);
   border-radius: 10px;
-  background-color: var(--postcor); 
-  color: var(--textopost);
+  background-color: var(--background); 
+  color: var(--preto);
   font-size: 1.2rem;
   cursor: pointer;
   transition: border-color 0.3s, box-shadow 0.3s;
@@ -139,7 +139,7 @@
 
 .event-filtros-p {
   text-align: center;
-  color: var(--textopost);
+  color: var(--principal);
   font-size: x-large;
   font-weight: bold;
   margin-top: 20px;
@@ -193,7 +193,7 @@
   }
   
   .evento-box {
-    background-color: var(--postcor); 
+    background-color: var(--branco); 
     border-radius: 20px; /* Deixa a box mais arredondada */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 15px;
@@ -222,12 +222,12 @@
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    border: 1px solid var(--cinzaclaro);
+    border: 1px solid var(--cinza_claro);
     color: var(--preto);
   }
   
   .evento-status.gratis {
-    background-color: var(--verde_especial); 
+    background-color: var(--complementar); 
     color: var(--branco);
     text-align: center;
     width: 50px;
@@ -237,13 +237,13 @@
   .evento-status.pago {
     color: var(--branco);
     text-align: center;
-    background-color: var(--verdenavfooter);
+    background-color: var(--complementar);
     width: 50px;
     padding: 10px;
   }
   
   .evento-nome {
-    color: var(--textopost);
+    color: var(--preto);
     font-size: 24px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -253,7 +253,7 @@
   }
   
   .evento-detalhes {
-    color: var(--textopostinfo);
+    color: var(--cinza_escuro);
     font-size: 18px; 
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -261,7 +261,7 @@
   }
   
   .evento-btn {
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal);
     color: var(--branco);
     border: none;
     padding: 15px 25px;
@@ -281,7 +281,7 @@
 
 
   .evento-btn:hover {
-    background-color: var(--searchbar); 
+    background-color: var(--principal_escura); 
     transform: scale(1.05); 
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
   }

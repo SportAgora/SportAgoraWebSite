@@ -97,7 +97,7 @@
 .card .preco {
   font-size: 36px;
   font-weight: 700;
-  color: var(--principal_escura);
+  color: var(--complementar);
   margin-bottom: 24px;
 }
 
@@ -179,7 +179,7 @@ li.no {
 .card .preco {
   font-size: 26px;
   font-weight: bold;
-  color: var(--principal_escura);
+  color: var(--complementar);
   margin-bottom: 15px;
 }
 

@@ -15,17 +15,17 @@ const cores_claro = {
 
 const cores_escuro = {
   erro: "#812222",
-  principal: "#8D5EFF",
-  principal_escura: "#5730B3",
-  principal_claro: "#A078FF",
-  complementar: "#FFF426",
-  complementar2: "#B3A82A",
-  branco: "#1B1B1B",
+  principal: "#A31C29",
+  principal_escura: "#D72638",
+  principal_claro: "#F0545E",
+  complementar: "#FFC300",
+  complementar2: "#B8860B",
+  branco: "#272727",
   preto: "#F1F1F1",
   cinza: "#6C757D",
   cinza_escuro:"#929292",
   cinza_claro:"#333",
-  background: "#0D0D0D"
+  background: "#111010"
 };
 
 function aplicarCores(cores) {

@@ -10,19 +10,20 @@
 
 :root {
     --erro:#812222;
-    --principal: #FFF567;
-    --principal_escura: #B3AA36;
-    --principal_claro: #FFF88F;
-    --complementar: #5024B3;
-    --complementar2: #996BFF;
+    --principal: #D72638;
+    --principal_escura: #A31C29;
+    --principal_claro: #F0545E;
+    --complementar: #FFC300;
+    --complementar2: #B8860B;
     --branco: #f1f1f1;
     --preto: #1b1b1b; 
     --cinza: #6C757D;
     --cinza_escuro: #333;
     --cinza_claro: #929292;
     --background: #E6ECF0;
+    --a: #272727;
 
-    --principal_claro_transparente: #a178ffdc;
+    --principal_claro_transparente: #b8343d93;
 }   
 
 .link-post {
@@ -84,7 +85,7 @@ body {
     letter-spacing: 1px;
     position: relative;
     text-align: center;
-    color: var(--branco);
+    color: white;
     align-items: center;
     transition: color 0.3s ease, transform 0.3s ease;
 }
@@ -105,7 +106,7 @@ body {
     position: absolute;
     width: 0;
     height: 3px;
-    background-color: var(--branco);
+    background-color: white;
     bottom: 10;
     margin-top: 30px;
     left: 50%;
@@ -120,7 +121,7 @@ body {
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 1.2rem;
-    color: var(--branco);
+    color: white;
     margin: 0 25px;
     cursor: pointer;
     padding: 5px 0;
@@ -176,7 +177,7 @@ body {
 }
 
 .search-bar-mobile input::placeholder {
-    color: var(--branco);
+    color: white;
     opacity: 1; 
 }
 
@@ -187,12 +188,12 @@ body {
     font-family: "Montserrat", sans-serif;
     font-size: 1rem;
     padding: 10px;
-    color: var(--branco);
+    color: white;
     width: 100%;
 }
 
 .search-bar input::placeholder {
-    color: var(--branco);
+    color: white;
     opacity: 1; 
 }
 
@@ -206,12 +207,12 @@ body {
     font-size: 1rem;
     padding: 10px;
     width: 450px;
-    color: var(--branco);
+    color: white;
 }
 
 .search-bar .limpar {
     font-size: 20px;
-    color: var(--branco);
+    color: white;
     cursor: pointer;
     margin-left: auto; /* Faz o ícone de limpar ir para a direita */
 }
@@ -266,7 +267,7 @@ body {
 
 .subscribe-button {
     background-color: var(--principal);
-    color: var(--branco);
+    color: white;
     border: none;
     border-radius: 25px; 
     font-family: "Montserrat", sans-serif;
@@ -298,7 +299,7 @@ body {
 .botaoNotificacao {
   border: none;
   background: none;
-  color: var(--branco);
+  color: white;
 }
 
 .icone-notificacao {
@@ -441,7 +442,7 @@ body {
     display: flex;
     align-items: center;
     background-color: var(--principal_escura);
-    color: var(--branco);
+    color: white;
     border: none;
     border-radius: 20px;
     padding: 8px 15px;
@@ -457,7 +458,7 @@ body {
 }
 
 .login-button:hover {
-    color: var(--branco);
+    color: white;
     transform: scale(1.02);
 }
 
@@ -527,7 +528,7 @@ body {
     border: none;
     font-size: 1rem;
     font-weight: 600;
-    color: var(--branco);
+    color: white;
     text-align: left;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -541,7 +542,7 @@ body {
 }
 
 .panel-button:hover {
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal_escura);
     border-radius: 10px;
     padding-left: 25px;
 }
@@ -618,7 +619,7 @@ a {
     font-size: 1rem;
     padding: 10px;
     flex: 1; /* Faz o input ocupar todo espaço */
-    color: var(--branco);
+    color: white;
   }
 
   .search-bar-mobile .limpar {
@@ -654,7 +655,7 @@ a {
   }
 
 .mobile-search-bar input::placeholder {
-    color: var(--branco);
+    color: white;
 }
 
 .mobile-search-bar {
@@ -684,7 +685,7 @@ a {
     border-radius: 25px;
     font-size: 1rem;
     background-color: var(--principal_claro);
-    color: var(--branco);
+    color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -770,7 +771,7 @@ a {
         display: flex;
         font-family: "Montserrat", sans-serif;
         font-size: 1.2rem;
-        color: var(--branco);
+        color: white;
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.3s ease;
         text-align: left;
@@ -801,7 +802,7 @@ a {
       }
 
       .texto-claro-escuro {
-        color: var(--branco);
+        color: white;
         font-family: "Montserrat", sans-serif;
         font-size: 1rem;
         font-weight: 600;
@@ -1144,7 +1145,7 @@ a {
 
 footer {
     background-color: var(--principal_escura);
-    color: var(--branco);
+    color: white;
     padding: 40px 0 20px;
     margin-top: 30px;
     font-family: "Montserrat", sans-serif;
@@ -1176,7 +1177,7 @@ footer {
 .footer-bloco h4 {
     font-size: 18px;
     margin-bottom: 20px;
-    color: var(--branco);
+    color: white;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -1209,7 +1210,7 @@ footer {
 .footer-conecte h4 {
     font-size: 18px;
     margin-bottom: 20px;
-    color: var(--branco);
+    color: white;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -1236,7 +1237,7 @@ footer {
 .copyright {
     text-align: center;
     font-size: 14px;
-    color: var(--cinza_claro);
+    color: white;
     margin-top: 20px;
     margin-right: 150px;
     white-space: nowrap;

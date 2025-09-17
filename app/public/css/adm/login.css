@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5e9;
+    background-color: var(--branco);
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,7 +11,7 @@ body {
 
 .login-container {
     text-align: center;
-    background-color: #ffffff;
+    background-color: var(--branco);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -20,7 +20,7 @@ body {
 .login-container h1 {
     font-family: 'Arial', sans-serif;
     font-size: 36px;
-    color: #2a8d3f;
+    color: var(--principal);
     margin-bottom: 20px;
 }
 
@@ -32,7 +32,7 @@ body {
 .login-container label {
     display: block;
     font-size: 14px;
-    color: #2a8d3f;
+    color: var(--principal);
     margin-bottom: 5px;
     text-align: left;
 }
@@ -42,14 +42,14 @@ body {
     width: 90%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--branco);
     border-radius: 5px;
     font-size: 14px;
 }
 
 .login-container button {
-    background-color: #216F27;
-    color: white;
+    background-color: var(--principal);
+    color: var(--branco);
     border: none;
     padding: 10px 20px;
     font-size: 14px;
@@ -58,11 +58,11 @@ body {
 }
 
 .login-container button:hover {
-    background-color: #184d1b;
+    background-color: var(--principal_escuro);
 }
 
 .banner {
     font-size: 18px;
-    color: #4a4a4a;
+    color: var(--cinza_escuro);
     margin-bottom: 20px;
 }

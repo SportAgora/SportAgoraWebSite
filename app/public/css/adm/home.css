@@ -1,6 +1,6 @@
 .botaohome {
-    background-color: #216F27;
-    color: white; 
+    background-color: var(--principal);
+    color: var(--branco); 
     border: none;
     padding: 40px 20px 40px 20px;
     margin: 5px;
@@ -9,7 +9,7 @@
     cursor: pointer; 
 }
 .botaohome:hover {
-    background-color: #184d1b;
+    background-color: var(--principal_escura);
 }
 
 .fixarRodape {

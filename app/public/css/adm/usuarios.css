@@ -4,7 +4,7 @@ td button {
 }
 
 .excluir {
-    background-color: #c51717;
+    background-color: var(--principal_escura);
     color: white; 
     border: none;
     padding: 4px;

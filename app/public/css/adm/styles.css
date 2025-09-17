@@ -1,12 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css');
+
+
+*{
+    margin:0px;
+    padding:0px;
+    font-family: "Montserrat", sans-serif;
+}
+
+:root {
+    --erro:#812222;
+    --principal: #D72638;
+    --principal_escura: #A31C29;
+    --principal_claro: #F0545E;
+    --complementar: #FFC300;
+    --complementar2: #B8860B;
+    --branco: #f1f1f1;
+    --preto: #1b1b1b; 
+    --cinza: #6C757D;
+    --cinza_escuro: #333;
+    --cinza_claro: #929292;
+    --background: #E6ECF0;
+    --a: #272727;
+
+    --principal_claro_transparente: #b8343d93;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5e9;
+    background-color: var(--background);
     margin: 0;
     padding: 0;
 }
 header {
     background-color: #4a4a4a;
-    color: white;
+    color: var(--branco);
     padding: 10px 20px;
     text-align: center;
     list-style:none;
@@ -15,15 +43,15 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #e3e3d5;
+    background-color: var(--principal);
     padding: 10px 20px;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid var(--branco);
 }
 
 .logo {
     font-family: 'Arial', sans-serif;
     font-size: 24px;
-    color: #2a8d3f;
+    color: var(--principal);
     font-weight: bold;
 }
 
@@ -40,27 +68,25 @@ header {
 
 .menu ul li a {
     text-decoration: none;
-    color: #4a4a4a;
+    color: var(--branco);
     font-weight: bold;
     font-size: 14px;
 }
 
-.menu ul li a.active {
-    color: #216F27;
-    background-color: #d0d0b5;
-    padding: 5px 10px;
-    border-radius: 5px;
+.menu ul li a:hover {
+    color: var(--complementar2);
+    font-weight: bolder;
 }
 
 .user {
     font-size: 14px;
-    color: #4a4a4a;
+    color: var(--branco);
     font-weight: bold;
     cursor: pointer;
 }
 
 .user-menu {
-    background-color: #e3e3d5;
+    background-color: var(--principal);
     border: none;
 }
 
@@ -69,24 +95,24 @@ header {
     float:left;
     text-decoration: none;
 }
-.user-menu li a{color:#333; text-decoration:none; padding:5px 10px; display:block;}
+.user-menu li a{color:var(--cinza_escuro); text-decoration:none; padding:5px 10px; display:block;}
 
 .user-menu li a:hover{
-    background:#28a745;
-    color:#fff;
-    text-shadow:0px 0px 5px #fff;
+    background: var(--principal);
+    color: var(--branco);
+    text-shadow:0px 0px 5px var(--branco);
 }
 .user-menu li ul{
     position:absolute;
     top:25px;
     right: 0px;
     padding: 0;
-    background-color:#fff;
+    background-color:var(--branco);
     display:none;
 }
 .user-menu li:hover ul, li.over ul{display:block;}
 .user-menu li ul li{
-    border:1px solid #c0c0c0;
+    border:1px solid var(--cinza_claro);
     display:block;
     width:150px;
 }
@@ -97,24 +123,24 @@ main {
     padding-right: 80px;
 }
 .tituloLogo{
-    color: #2a8d3f;
+    color: var(--principal);
     font-size: 100px;
     text-align: center;
 }
 section {
     margin-bottom: 20px;
     padding: 15px;
-    background-color: #ffffff;
+    background-color: var(--branco);
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 h2 {
-    color: #4a4a4a;
+    color: var(--cinza_escuro);
 }
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #2a8d3f;
+    background-color: var(--principal_escura);
     color: white;
     bottom: 0;
     width: 98.5%;
@@ -131,13 +157,13 @@ strong {
 .endereco {
     margin-top: 20px;
     padding: 15px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza_claro);
     border-radius: 5px;
 }
 
 .endereco h2 {
-    color: #4a4a4a;
+    color: var(--cinza_escuro);
     margin-bottom: 15px;
 }
 
@@ -148,28 +174,28 @@ strong {
 }
 
 .endereco-tabela th, .endereco-tabela td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--preto);
     padding: 8px;
     text-align: left;
     font-size: 14px;
 }
 
 .endereco-tabela th {
-    background-color: #e3e3d5;
-    color: #4a4a4a;
+    background-color: var(--background);
+    color: var(--cinza_escuro);
     font-weight: bold;
 }
 
 .endereco-tabela tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: var(--cinza_claro);
 }
 
 .endereco-tabela tr:hover {
-    background-color: #f1f1f1;
+    background-color: var(--cinza_claro);
 }
 
 .endereco-btn {
-    background-color: #216F27;
+    background-color: var(--principal);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -179,7 +205,7 @@ strong {
 }
 
 .endereco-btn:hover {
-    background-color: #184d1b;
+    background-color: var(--principal_escura);
 }
 
 /* sla dnv */
@@ -187,13 +213,13 @@ strong {
 .postagens {
     margin-top: 20px;
     padding: 15px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza_claro);
     border-radius: 5px;
 }
 
 .postagens h2 {
-    color: #4a4a4a;
+    color: var(--cinza_escuro);
     margin-bottom: 15px;
 }
 
@@ -204,24 +230,24 @@ strong {
 }
 
 .postagens-tabela th, .postagens-tabela td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--branco);
     padding: 8px;
     text-align: left;
     font-size: 14px;
 }
 
 .postagens-tabela th {
-    background-color: #e3e3d5;
-    color: #4a4a4a;
+    background-color: var(--branco);
+    color: var(--cinza_escuro);
     font-weight: bold;
 }
 
 .postagens-tabela tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: var(--branco);
 }
 
 .postagens-tabela tr:hover {
-    background-color: #f1f1f1;
+    background-color: var(--branco);
 }
 
 .limite {

@@ -6,8 +6,8 @@ article{
     border: 0;
 }
 .editarevento{
-    background-color: #216F27;
-    color: white;
+    background-color: var(--principal);
+    color: var(--branco);
     border: none;
     padding: 10px 15px;
     font-size: 14px;
@@ -15,10 +15,10 @@ article{
     cursor: pointer;
 }
 .editarevento:hover {
-    background-color: #184d1b;
+    background-color: var(--principal_escuro);
 }
 .excluirevento{
-    background-color: #6f3c21;
+    background-color: var(--principal_claro_transparente);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -27,11 +27,11 @@ article{
     cursor: pointer;
 }
 .excluirevento:hover {
-    background-color: #4d1818;
+    background-color: var(--erro);
 }
 
 .voltar-btn {
-    background-color: #216F27;
+    background-color: var(--principal);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -40,5 +40,5 @@ article{
     cursor: pointer;
 }
 .voltar-btn:hover {
-    background-color: #184d1b;
+    background-color: var(--principal_escuro);
 }

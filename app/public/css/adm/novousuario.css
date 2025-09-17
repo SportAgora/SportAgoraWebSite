@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5e9;
+    background-color: var(--branco);
     margin: 0;
     padding: 0;
 }
@@ -16,11 +16,11 @@ h1 {
 }
 
 form {
-    background: #ffffff;
+    background: var(--branco);
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
+    border: 1px solid var(--branco);
 }
 
 form input[type="text"],
@@ -29,13 +29,13 @@ form input[type="password"] {
     width: 98%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid var(--branco);
     border-radius: 5px;
 }
 
 form input[type="submit"] {
-    background: #35424a;
-    color: #ffffff;
+    background: var(--cinza_escuro);
+    color: var(--branco);
     border: none;
     padding: 10px 15px;
     cursor: pointer;
@@ -43,12 +43,12 @@ form input[type="submit"] {
 }
 
 form input[type="submit"]:hover {
-    background: #45a049;
+    background: var(--principal);
 }
 
 .enviar-btn{
-    background-color: #216F27;
-    color: white;
+    background-color: var(--principal);
+    color: var(--branco);
     border: none;
     padding: 10px 15px;
     font-size: 14px;

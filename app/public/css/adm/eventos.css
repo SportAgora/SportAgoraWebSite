@@ -1,13 +1,13 @@
 .evento {
     margin-top: 20px;
     padding: 15px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza_claro);
     border-radius: 5px;
 }
 
 .evento h2 {
-    color: #4a4a4a;
+    color: var(--cinza_escuro);
     margin-bottom: 15px;
 }
 
@@ -18,14 +18,15 @@
 }
 
 .evento-tabela th {
-    border: 1px solid #ddd;
+    border: 1px solid var(--preto);
+    background-color: var(--cinza_claro);
     padding: 8px;
     text-align: left;
     font-size: 14px;
 }
 
 .evento-tabela td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--preto);
     text-align: left;
     font-size: 14px;
 }
@@ -40,8 +41,8 @@
 .evento-tabela td input[type="text"]:focus {
     border: 0;
     outline: none;
-    border: 1px solid #fff; /* Cor verde */
-    box-shadow: 0 0 1px rgba(76, 175, 80, 0.5); /* Sombra suave */
+    border: 1px solid var(--branco); /* Cor verde */
+    box-shadow: 0 0 1px rgba(192, 40, 40, 0.5); /* Sombra suave */
 }
 
 .evento-tabela td a {
@@ -49,22 +50,22 @@
 }
 
 .evento-tabela th {
-    background-color: #e3e3d5;
-    color: #4a4a4a;
+    background-color: var(--branco);
+    color: var(--cinza_escuro);
     font-weight: bold;
 }
 
 .evento-tabela tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: var(--branco);
 }
 
 .evento-tabela tr:hover {
-    background-color: #f1f1f1;
+    background-color: var(--branco);
 }
 
 .evento-btn {
-    background-color: #216F27;
-    color: white;
+    background-color: var(--principal);
+    color: var(--branco);
     border: none;
     padding: 10px 15px;
     font-size: 14px;
@@ -73,13 +74,13 @@
 }
 
 .evento-btn:hover {
-    background-color: #184d1b;
+    background-color: var(--principal_escura);
 }
 
 /* aaaaa */
 
 .insertTable{
-    background-color: #f5f5e9;
+    background-color: var(--branco);
     border: none;
     padding: 0;
     display: flex;
@@ -88,9 +89,9 @@
 }
 .esporte {
     & hr {
-        border: 1px solid #ddd;
+        border: 1px solid var(--branco);
         height: 1px; 
-        background-color: black; 
+        background-color: var(--preto); 
         margin: 10px 0 10px 0; 
     }
 
@@ -106,8 +107,8 @@
 }
 
 .esporte-btn {
-    background-color: #216F27;
-    color: white;
+    background-color: var(--principal);
+    color: var(--branco);
     border: none;
     padding: 5px 15px;
     font-size: 14px;
@@ -116,8 +117,8 @@
 }
 
 .esporte-btn-a{
-    background-color: #c51717;
-    color: white;
+    background-color: var(--complementar);
+    color: var(--branco);
     border: none;
     padding: 5px 15px;
     font-size: 14px;
@@ -127,7 +128,7 @@
 
 
 .esporte-btn:hover {
-    background-color: #184d1b;
+    background-color: var(--principal_escura);
 }
 .esporte form{
     display: flex;
@@ -163,17 +164,17 @@
     left: 0;
     height: 20px;
     width: 20px;
-    background-color: #eee;
+    background-color: var(--branco);
   }
   
   /* On mouse-over, add a grey background color */
   .esporteTopico:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: var(--branco);
   }
   
   /* When the checkbox is checked, add a blue background */
   .esporteTopico input:checked ~ .checkmark {
-    background-color: #216F27;
+    background-color: var(--principal);
   }
   
   /* Create the checkmark/indicator (hidden when not checked) */
@@ -194,7 +195,7 @@
     top: 2px;
     width: 5px;
     height: 9px;
-    border: solid white;
+    border: solid var(--branco);
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);

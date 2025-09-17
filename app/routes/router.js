@@ -151,6 +151,10 @@ router.get('/sobreEvento', function(req,res){
     res.render('pages/sobreEvento');  
 })
 
+router.get('/meus-eventos', function(req,res){
+    res.render('pages/meus-eventos');  
+})
+
 router.get('/pagamento-evento', function(req,res){
     res.render('pages/pagamento-evento');  
 })

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Eventos</title>
+    <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="stylesheet" href="/css/meus-eventos.css">
+    <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" href="/css/eventoUsuario.css">
+    <script src="js/darkmodeswitch.js"></script>
+</head>
+<body>
+    <%- include('../partials/navbar'); %>
+    <main>
+        <section class="event-container">
+            <h1 class="event-title">Meus Eventos</h1>
+            <p class="event-subtitle">Acompanhe os eventos esportivos que você está participando ou organizando</p>
+        </section>
+        <h3 class="title-subs">Eventos Em Progresso</h3>
+        <section class="ingressos-event">
+            <%- include('../partials/eventoUsuario'); %>
+            <%- include('../partials/eventoUsuario'); %>
+        </section>
+        <h3 class="title-subs">Eventos em Participação</h3>
+        <section class="ingressos-event">
+            <%- include('../partials/eventoUsuario'); %>
+            <%- include('../partials/eventoUsuario'); %>
+            <%- include('../partials/eventoUsuario'); %>
+            <%- include('../partials/eventoUsuario'); %>
+        </section>
+        <h3 class="title-subs">Eventos Futuros</h3>
+        <section class="ingressos-event">
+            <%- include('../partials/eventoUsuario'); %>
+            <%- include('../partials/eventoUsuario'); %>
+            <%- include('../partials/eventoUsuario'); %>
+        </section>
+    </main>
+    <%- include('../partials/footer'); %>
+</body>
+</html>

@@ -126,7 +126,7 @@
     <% } else { %>
     <button class="panel-button" onclick="location.href='/cadastro'">Cadastre-se</button>
     <button class="panel-button" onclick="location.href='/login'">Login</button>
-    <button class="dark-mode-button-mobile"onclick="location.href='/notificacoes'" title="Notificações">
+    <button class="panel-button"onclick="location.href='/notificacoes'" title="Notificações">
         <div class="icon-wrapper">
     <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao">
     </div>
@@ -141,12 +141,14 @@
 
 <section id="mobile-menu" class="mobile-menu">
     <button class="mobile-nav-button" onclick="location.href='/eventos'">Eventos</button>
-    <button class="dark-mode-button-mobile"onclick="location.href='/notificacoes'" title="Notificações">
+<!-- notificação mobile -->
+    <button class="mobile-nav-button"onclick="location.href='/notificacoes'" title="Notificações">
         <div class="icon-wrapper">
     <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao-mobile">
     </div>
     <span class="texto-claro-escuro" id="modoTexto">Notificações</span>
     </button>
+
     <button class="mobile-nav-button" onclick="location.href='/pratique'">Pratique</button>
     <hr>
     <button class="mobile-nav-button" onclick="location.href='/login'">Anuncie seu evento</button>

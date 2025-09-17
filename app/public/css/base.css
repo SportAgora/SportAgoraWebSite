@@ -744,6 +744,20 @@ a {
     position: relative;
   }
 
+  .dark-mode-button::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--principal_escura);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
 
     /*dark mode mobile  */
 
@@ -764,6 +778,21 @@ a {
         gap: 8px;
         font-size: 14px;
       }
+
+      .dark-mode-button-mobile::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 5px;
+        height: 100%;
+        background-color: var(--principal_escura);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.3s ease;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
       
       .icon-wrapper {
         position: relative;
@@ -775,13 +804,15 @@ a {
         color: var(--branco);
         font-family: "Montserrat", sans-serif;
         font-size: 1rem;
+        font-weight: 600;
+        margin-left: 1px;
       }
 
 
 
   .dark-mode-button:hover,
   .dark-mode-button:active {
-    background-color: var(--principal);
+    background-color: var(--principal_escura);
     border-radius: 10px;
   }
 
@@ -1085,6 +1116,7 @@ a {
         border: none;
         font-family: "Montserrat", sans-serif;
         font-size: 1.2rem;
+        display: flex;
         color: var(--branco);
         padding: 10px;
         cursor: pointer;

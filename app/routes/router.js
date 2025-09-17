@@ -142,6 +142,10 @@ router.get('/organizador', function(req,res){
     res.render('pages/organizador');  
 })
 
+router.get('/notificacoes', function(req,res){
+  res.render('pages/notificacoes');  
+})
+
 // TESTE
 router.get('/sobreEvento', function(req,res){
     res.render('pages/sobreEvento');  

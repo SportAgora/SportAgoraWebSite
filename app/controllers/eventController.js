@@ -157,33 +157,37 @@ module.exports = {
         const pagina = parseInt(req.query.pagina) || 1;
         const limite = 18;
         const offset = (pagina - 1) * limite;
-        const resultado = await OrganizadorModel.visualizarEventosUsuarioPaginacao(req.session.usuario, offset, limite) 
+        const resultado = await OrganizadorModel.visualizarEventosUsuarioPaginacao(req.session.usuario.id, offset, limite) 
 
         const total_paginas = Math.ceil(resultado.total / limite);
 
-        for (let e of resultado.eventos) {
-            if (e.evento_endereco_cep) {
-                try {
-                    const resposta = await axios.get(`https://viacep.com.br/ws/${e.evento_endereco_cep}/json/`);
-                    e.cidade = resposta.data.localidade || '';
-                    e.estado = resposta.data.uf || '';
-                } catch (error) {
-                    e.cidade = '';
-                    e.estado = '';
-                }
-            } else {
-                e.cidade = '';
-                e.estado = '';
+        for (const evento of resultado.eventos) {
+          if (evento.evento_endereco_cep) {
+            try {
+              const resposta = await axios.get(`https://viacep.com.br/ws/${evento.evento_endereco_cep}/json/`);
+              evento.logradouro = resposta.data.logradouro || '';
+              evento.cidade = resposta.data.localidade || '';
+              evento.estado = resposta.data.uf || '';
+            } catch (error) {
+              evento.logradouro = '';
+              evento.cidade = '';
+              evento.estado = '';
             }
+          } else {
+            evento.logradouro = '';
+            evento.cidade = '';
+            evento.estado = '';
+          }
         }
 
-        res.render('pages/home', {
+        return res.render('pages/meus-eventos', {
         eventos: resultado.eventos,
         paginador: {
             pagina_atual: pagina,
             total_paginas
         }
         });
+
     }catch(e){
         console.error(e)
         throw e;

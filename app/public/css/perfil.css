@@ -42,7 +42,7 @@
 .nomes {
     margin-left: 15px;
     margin-right: 15px;
-    color: var(--textopost);
+    color: var(--preto);
 }
 
 .perfilo {
@@ -52,8 +52,8 @@
     position: absolute;
     top: 200px;
     width: 100%;
-    background-image: linear-gradient(-180deg, rgba(242, 242, 242, 0) 0%, var(--cordefundopadrao) 50%);
-    color: var(--textopostinfo);
+    background-image: linear-gradient(-180deg, rgba(242, 242, 242, 0) 0%, var(--background) 50%);
+    color: var(--preto);
 }
 
 .planoFundo{
@@ -73,8 +73,8 @@
     position: absolute;
     right: 50px;
     top: 120px;
-    background-color: var(--textopost);
-    color: var(--postcor);
+    background-color: var(--preto);
+    color: var(--branco);
     border-radius: 15px;
     cursor: pointer;
     padding-left: 20px;
@@ -93,12 +93,12 @@
 }
 .biografia h2 {
     margin: 10px;
-    color: var(--textopost);
+    color: var(--preto);
 }
 .biografia p {
     font-size: 17px;
     font-weight: bold;
-    color: var(--textopostinfo);
+    color: var(--preto);
     margin-left: 10px;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .criarpost-btn {
-    background-color: var(--verde_especial);
+    background-color: var(--principal);
     color: white;
     border: none;
     padding: 12px 20px;
@@ -126,7 +126,7 @@
 }
 
 .criarpost-btn:hover {
-    background-color: var(--verdenavfooter);
+    background-color: var(--principal_escura);
     transform: translateY(-3px);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
@@ -153,12 +153,12 @@
 .social {
     display: flex;
     flex-direction: row;
-    background-color: var(--cordefundopadrao);
+    background-color: var(--branco);
     
 } 
 
 .twitter {
-    background-color: var(--cordefundopadrao);
+    background-color: var(--branco);
 }
 
 .twitter img {
@@ -169,7 +169,7 @@
 .instagram {
     margin-left: 10px;
     margin-right: 10px;
-    background-color: var(--cordefundopadrao);
+    background-color: var(--branco);
 }
 
 .instagram img {
@@ -178,7 +178,7 @@
 }
 
 .youtube {
-    background-color: var(--cordefundopadrao);
+    background-color: var(--branco);
 }
 
 .youtube img {
@@ -322,20 +322,20 @@
     display: none;
     flex-direction: row;
     align-items: center;
-    background-color:  var(--postcor);
+    background-color:  var(--branco);
     border-radius: 15px;
     width: 400px;
     justify-content: space-around;
 }
 
 .adicionarPost input[type="text"]{
-    background-color: var(--postcor);
+    background-color: var(--branco);
     border: none;
     width: 300px;
     height: 50px;
 }
 .adicionarPost input::placeholder{
-    color: var(--textopost);
+    color: var(--preto);
 }
 .adicionarPost img {
     height: 30px;
@@ -388,7 +388,7 @@
 }
 .event-title {
     font-size: 3.5rem;
-    color: var(--verde_especial);
+    color: var(--principal);
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
     margin-bottom: 10px;
@@ -399,12 +399,12 @@
 .event-subtitle {
     font-size: 1.4rem;
     font-family: "Montserrat", sans-serif;
-    color: var(--textopostinfo);
+    color: var(--preto);
     animation: fadeInUp 1s ease-out;
 }
 
 .btn-criarevento{
-    background-color: var(--verde_especial);
+    background-color: var(--principal);
     border: none;
     font-size: large;
     font-family: "Montserrat", sans-serif;

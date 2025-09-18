@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Notificações</title>
+        <link rel="stylesheet" href="/css/base.css">
+        <link rel="stylesheet" href="/css/notificacao.css">
+        <script src="js/darkmodeswitch.js"></script>
+        <link rel="icon" href="imagens/SportAgora.png">
+    </head>
+
+<body>
+    <%- include('../partials/navbar'); %>
+
+    <main class="container">
+        <header class="topbar">
+          <h1>Notificações</h1>
+          <div class="settings">
+          </div>
+        </header>
+    
+        <section class="selector">
+          <div class="tabs" role="tablist">
+            <button id="tab-unread" class="tab active" data-filter="unread" aria-pressed="true">
+              <img src="assets/envelope-closed.svg" alt="" class="tab-icon" />
+              Não lidas
+            </button>
+            <button id="tab-previous" class="tab" data-filter="previous" aria-pressed="false">
+              <img src="assets/envelope-open.svg" alt="" class="tab-icon" />
+              Anteriores
+            </button>
+          </div>
+          <div class="controls">
+            <button id="markAllRead" class="small-btn">Marcar tudo como lido</button>
+          </div>
+        </section>
+    
+        <section id="list" class="notifications-list" aria-live="polite">
+          <!-- JS popula as notificações aqui -->
+        </section>
+    
+        <template id="notification-template">
+          <article class="notification-card" draggable="false">
+            <img class="avatar" src="" alt="Avatar" />
+            <div class="content">
+              <div class="row">
+                <h3 class="title">Título</h3>
+                <button class="delete" aria-label="Excluir notificação">✕</button>
+              </div>
+              <time class="date">4 de julho, 2025, 6:00</time>
+              <p class="snippet visually-hidden">Detalhe</p>
+            </div>
+            <div class="actions">
+              <button class="mark-btn small-btn" title="Marcar como não lida">●</button>
+            </div>
+          </article>
+        </template>
+    
+        <!-- modal simples para detalhe (opcional) -->
+        <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+          <div class="modal-card">
+            <button id="closeModal" class="close-modal">✕</button>
+            <h2 id="modalTitle">Notificação</h2>
+            <p id="modalBody">Detalhes da notificação</p>
+          </div>
+        </div>
+      </main>
+
+      <script src="js/notificacao.js"></script>
+      <script src="js/script.js"></script>
+
+      <%- include('../partials/footer'); %>
+
+
+</body>
+</html>

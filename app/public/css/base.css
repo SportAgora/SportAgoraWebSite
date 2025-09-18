@@ -1144,13 +1144,14 @@ a {
 /*FOOTER*/
 
 footer {
-    background-color: var(--principal_escura);
-    color: white;
-    padding: 40px 0 20px;
-    margin-top: 30px;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+    background-color: var(--principal_escura) !important;
+    color: white !important;
+    padding: 40px 0 20px !important;
+    font-family: "Montserrat", sans-serif !important;
+    margin-top: auto !important;
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 .footer-conteudo {

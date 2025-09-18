@@ -46,10 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// notificação fazer ainda
-
-
-
 //search bar
 
 // Usar a mesma lista de sugestões

@@ -151,6 +151,43 @@ module.exports = {
     console.error(err);
     return res.redirect("/login");
   }
-  }
+  },
+  carregarMeusEventos: async (req,res) =>{
+    try{
+        const pagina = parseInt(req.query.pagina) || 1;
+        const limite = 18;
+        const offset = (pagina - 1) * limite;
+        const resultado = await OrganizadorModel.visualizarEventosUsuarioPaginacao(req.session.usuario, offset, limite) 
+
+        const total_paginas = Math.ceil(resultado.total / limite);
+
+        for (let e of resultado.eventos) {
+            if (e.evento_endereco_cep) {
+                try {
+                    const resposta = await axios.get(`https://viacep.com.br/ws/${e.evento_endereco_cep}/json/`);
+                    e.cidade = resposta.data.localidade || '';
+                    e.estado = resposta.data.uf || '';
+                } catch (error) {
+                    e.cidade = '';
+                    e.estado = '';
+                }
+            } else {
+                e.cidade = '';
+                e.estado = '';
+            }
+        }
+
+        res.render('pages/home', {
+        eventos: resultado.eventos,
+        paginador: {
+            pagina_atual: pagina,
+            total_paginas
+        }
+        });
+    }catch(e){
+        console.error(e)
+        throw e;
+    }
+  },
 
 }

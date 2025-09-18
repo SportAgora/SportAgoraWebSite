@@ -123,6 +123,53 @@ const OrganizadorModel = {
       throw error;
     }
   },
+  visualizarEventosUsuarioPaginacao: async (usuarioId, offset, limite) => {
+    try {
+      // 1. Busca eventos do usuário com paginação
+      const queryEventos = `
+        SELECT * FROM eventos
+        WHERE usuario_id = ?
+        ORDER BY evento_data_publicacao DESC
+        LIMIT ? OFFSET ?
+      `;
+  
+      // 2. Consulta para obter o total de eventos do usuário
+      const queryTotal = `
+        SELECT COUNT(*) as total FROM eventos WHERE usuario_id = ?
+      `;
+  
+      // Executar as consultas
+      const [eventos] = await pool.query(queryEventos, [usuarioId, limite, offset]);
+      const [totalResult] = await pool.query(queryTotal, [usuarioId]);
+  
+      if (eventos.length === 0) return { eventos: [], total: 0 };
+  
+      // 3. Para cada evento, buscar ingressos associados
+      const eventosComIngressos = await Promise.all(eventos.map(async (evento) => {
+        const queryIngressos = `
+          SELECT i.* FROM ingresso i
+          INNER JOIN evento_ingresso ei ON i.ingresso_id = ei.ingresso_id
+          WHERE ei.evento_id = ?
+        `;
+        const [ingressos] = await pool.query(queryIngressos, [evento.evento_id]);
+  
+        return {
+          ...evento,
+          ingressos
+        };
+      }));
+  
+      return {
+        eventos: eventosComIngressos,
+        total: totalResult[0].total
+      };
+  
+    } catch (error) {
+      console.error("Erro ao buscar eventos do usuário com paginação: \n", error);
+      throw error;
+    }
+  }
+  
 };
  
 module.exports = OrganizadorModel;

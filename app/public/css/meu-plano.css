@@ -1,0 +1,192 @@
+.event-container {
+  text-align: center;
+  padding: 30px 0;
+  margin: 30px;
+}
+
+.event-title {
+  font-size: 4.5rem;
+  color: var(--principal_escura);
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInDown 1s ease-out;
+}
+
+.event-subtitle {
+  font-size: 1.4rem;
+  font-family: "Montserrat", sans-serif;
+  color: var(--preto);
+  animation: fadeInUp 1s ease-out;
+}
+
+.centro{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-plano {
+    width: 500px;
+    background-color: var(--branco);
+    padding: 20px;
+    margin: 25px;
+    height: 800px; 
+    border-radius: 25px;
+    z-index: 1000;
+    transition: all 0.5s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 650px;  
+    height: max-content;          
+    overflow: hidden; 
+}
+.box-premium {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.title-subs{
+    text-align: start;
+    color: var(--principal);
+    font-size: x-large;
+    font-weight: bold;
+    margin: 10px 10px 20px 30px;
+}
+.titleP{
+    font-size: 3.5rem;
+    color: var(--complementar2);
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-out;
+    text-align: center;
+}
+.sobreP{
+    padding: 20px;
+}
+.sobreP li{
+    list-style: none;
+    color: var(--preto);
+}
+.ok {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 20px;
+}
+.btn-premium{
+    background: var(--principal_claro);
+    color: white;
+    transition: transform 0.3s;
+    border: none;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 90%;
+}
+.btn-premium a{
+    color: var(--branco);
+}
+.btn-premium:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px var(--principal);
+}
+
+.box-pagamento{
+    width: 500px;
+    background-color: var(--branco);
+    padding: 20px;
+    margin: 25px;
+    height: 800px; 
+    border-radius: 25px;
+    z-index: 1000;
+    transition: all 0.5s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    
+
+    min-height: 650px;  
+    height: max-content;          
+    overflow: hidden;  
+}
+.box-pagamento p {
+    color: var(--preto);
+    font-size: 22px;
+    font-weight: 500;
+    padding: 20px;
+    margin: 20px;
+}
+
+.box-sobrePagamento{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.forma-title{
+    text-align: center;
+    color: var(--complementar2);
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+.forma-subtitle{
+    font-size: 3.5rem;
+    color: var(--principal);
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-out;
+    text-align: center;
+}
+
+
+.btn-pagamento1{
+    background: var(--complementar2);
+    color: white;
+    transition: transform 0.3s;
+    border: none;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 90%;
+    margin-bottom: 15px;
+}
+.btn-pagamento1 a{
+    color: var(--branco);
+}
+.btn-pagamento1:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px var(--principal);
+}
+
+
+.btn-pagamento2{
+    background: var(--complementar2);
+    color: white;
+    transition: transform 0.3s;
+    border: none;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 90%;
+}
+.btn-pagamento2 a{
+    color: var(--branco);
+}
+.btn-pagamento2:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px var(--principal);
+}

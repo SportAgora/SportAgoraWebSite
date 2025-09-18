@@ -132,6 +132,29 @@
   width: 100%;
 }
 
+.event-container {
+  text-align: center;
+  padding: 30px 0;
+  margin: 30px;
+}
+.event-title {
+  font-size: 4.5rem;
+  color: var(--principal_escura);
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInDown 1s ease-out;
+}
+
+.event-subtitle {
+  font-size: 1.4rem;
+  font-family: "Montserrat", sans-serif;
+  color: var(--preto);
+  animation: fadeInUp 1s ease-out;
+}
+
   @media (max-width: 1024px) {
     .box-esquerda, .box-direita {
         max-width: 100%;

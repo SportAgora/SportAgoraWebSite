@@ -97,7 +97,7 @@
 }
 .btn-premium:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 20px var(--principal);
+  box-shadow: 0 6px 20px var(--principal_claro_transparente);
 }
 
 .box-pagamento{
@@ -168,7 +168,7 @@
 }
 .btn-pagamento1:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 20px var(--principal);
+  box-shadow: 0 6px 20px var(--principal_claro_transparente);
 }
 
 
@@ -188,5 +188,5 @@
 }
 .btn-pagamento2:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 20px var(--principal);
+  box-shadow: 0 6px 20px var(--principal_claro_transparente);
 }

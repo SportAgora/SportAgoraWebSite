@@ -104,6 +104,11 @@ router.get('/meus-eventos', verificarAutenticacao, function(req,res){
   eventController.carregarMeusEventos(req,res);
 })
 
+router.get('/editar-evento', (req, res) => {
+  eventController.carregarEditarEvento(req, res);
+});
+
+
 /*
 
 PAGINAS
@@ -145,15 +150,6 @@ router.get('/organizador', function(req,res){
 
 router.get('/notificacoes', function(req,res){
   res.render('pages/notificacoes');  
-})
-
-// TESTE
-router.get('/sobreEvento', function(req,res){
-    res.render('pages/sobreEvento');  
-})
-
-router.get('/meus-eventos', function(req,res){
-    res.render('pages/meus-eventos');  
 })
 
 router.get('/pagamento-evento', function(req,res){

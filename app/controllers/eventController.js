@@ -1,5 +1,6 @@
 const OrganizadorModel = require('../models/model-organizador');
 const { body, validationResult } = require("express-validator");
+const axios = require('axios')
 
 const {removeImg}= require("../helpers/removeImg")
 
@@ -193,5 +194,50 @@ module.exports = {
         throw e;
     }
   },
+  carregarEditarEvento: async (req, res) => {
+    try {
+      const id = req.query.id;
+      const evento = await OrganizadorModel.buscarEventoPorId(id);
+
+      if (!evento) {
+        return res.render('pages/erro',
+            {
+            error: 404,
+            mensagem: "Página não encontrada"
+        }
+        );
+      }
+
+      if (evento.evento_endereco_cep) {
+      try {
+        const resposta = await axios.get(`https://viacep.com.br/ws/${evento.evento_endereco_cep}/json/`);
+        evento.logradouro = resposta.data.logradouro || '';
+        evento.cidade = resposta.data.localidade || '';
+        evento.estado = resposta.data.uf || '';
+      } catch (error) {
+        evento.logradouro = '';
+        evento.cidade = '';
+        evento.estado = '';
+      }
+    } else {
+      evento.logradouro = '';
+      evento.cidade = '';
+      evento.estado = '';
+    }
+
+    const ingresso = await OrganizadorModel.buscarIngressosPorEvento(id);
+    evento.ingressos = ingresso;
+    console.log(evento)
+    res.render('pages/editar-evento', {evento});
+    } catch (error) {
+      console.error(error);
+      res.render('pages/error',
+        {
+            error: 404,
+            mensagem: "Página não encontrada"
+        }
+      );
+    }
+    }
 
 }

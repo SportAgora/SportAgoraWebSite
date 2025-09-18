@@ -168,7 +168,33 @@ const OrganizadorModel = {
       console.error("Erro ao buscar eventos do usuário com paginação: \n", error);
       throw error;
     }
-  }
+  },
+  buscarEventoPorId: async (id) => {
+            try {
+              const query = "SELECT * FROM eventos WHERE evento_id = ?";
+              const [rows] = await pool.query(query, [id]);
+              return rows.length > 0 ? rows[0] : null;
+            } catch (error) {
+              console.error("Erro ao buscar evento por ID:", error);
+              throw error;
+            }
+          },
+  buscarIngressosPorEvento: async (eventoId) => {
+      try {
+        const query = `
+          SELECT *
+          FROM ingresso
+          INNER JOIN evento_ingresso 
+            ON evento_ingresso.ingresso_id = ingresso.ingresso_id
+          WHERE evento_ingresso.evento_id = ?
+        `;
+        const [rows] = await pool.query(query, [eventoId]);
+        return rows;
+      } catch (error) {
+        console.error("Erro ao buscar ingressos do evento:", error);
+        throw error;
+      }
+    }
   
 };
  

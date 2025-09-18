@@ -478,7 +478,7 @@ body {
 .menu-panel {
     display: none;
     position: absolute;
-    top: 75px;
+    top: 95px;
     right: 20px;
     background: linear-gradient(135deg, var(--principal), var(--principal_escura));
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);

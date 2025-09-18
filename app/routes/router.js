@@ -100,6 +100,10 @@ router.post('/salvar-perfil',
   }
 )
 
+router.get('/meus-eventos', verificarAutenticacao, function(req,res){
+  eventController.carregarMeusEventos(req,res);
+})
+
 /*
 
 PAGINAS
@@ -126,9 +130,6 @@ router.get('/infoevento', function(req,res){
     res.render('pages/infoevento');  
 })
 
-router.get('/meus-eventos', function(req,res){
-    res.render('pages/meus-eventos');  
-})
 
 router.get('/infoevento2', function(req,res){
     res.render('pages/infoevento2');  

@@ -19,22 +19,51 @@
         </section>
         <h3 class="title-subs">Eventos Em Progresso</h3>
         <section class="ingressos-event">
-            <%- include('../partials/eventoUsuario'); %>
-            <%- include('../partials/eventoUsuario'); %>
+            <section class="evento-container">
+                <% if(eventos) { %>
+                    <% eventos.forEach(function(e) { 
+                      let data = new Date(e.evento_data_hora);
+                      let dia = String(data.getDate()).padStart(2, '0');
+                      let mes = String(data.getMonth() + 1).padStart(2, '0'); 
+                      let ano = data.getFullYear();
+                      let dataFormatada = `${dia}/${mes}/${ano}`;
+                      let hora = String(data.getHours()).padStart(2, '0');
+                      let minutos = String(data.getMinutes()).padStart(2, '0');
+                      let horaMinuto = `${hora}:${minutos}`;
+                    %>      
+                    <article class="eventoInfo">
+                        <img src="<%= e.evento_foto %>" alt="Imagem do Evento" class="evento-img">
+                        <h2 class="evento-nome"><%= e.evento_nome %></h2>
+                        <aside class="infoEvento">
+                            <aside>
+                                <i class="fi fi-rr-calendar"></i>
+                                <span id="evento-data"><%= dataFormatada %> - <%= horaMinuto %> </span>
+                            </aside>
+                            <aside>
+                                <i class="fi fi-rr-marker"></i>
+                                <span id="evento-local"><%=e.cidade%>, <%=e.estado%></span>
+                            </aside>
+                        </aside>
+                        <aside class="links">
+                            <h3><a href="#">Editar Evento</a></h3>
+                        </aside>
+                    </article>
+                
+                    <% }); %>
+                    <% } else { %>
+                      <tr>
+                        <td colspan="5">Nenhum registro encontrado.</td>
+                      </tr>
+                    <% } %>
+                
+            </section>
         </section>
-        <h3 class="title-subs">Eventos em Participação</h3>
+        <!-- <h3 class="title-subs">Eventos Finalizados</h3>
         <section class="ingressos-event">
             <%- include('../partials/eventoUsuario'); %>
             <%- include('../partials/eventoUsuario'); %>
-            <%- include('../partials/eventoUsuario'); %>
-            <%- include('../partials/eventoUsuario'); %>
-        </section>
-        <h3 class="title-subs">Eventos Futuros</h3>
-        <section class="ingressos-event">
-            <%- include('../partials/eventoUsuario'); %>
-            <%- include('../partials/eventoUsuario'); %>
-            <%- include('../partials/eventoUsuario'); %>
-        </section>
+            <%- include('../partials/eventoUsuario'); %> 
+        </section>-->
     </main>
     <%- include('../partials/footer'); %>
 </body>

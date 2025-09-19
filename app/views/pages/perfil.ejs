@@ -30,6 +30,7 @@
                     <img src="imagens/usuarios/default_background.jpg" alt="planodefundo" class="planodefundo">
                 <%}%>
                 <article class="perfilo">
+                    
                     <aside class="perfil-container">
                         <% if (usuario.foto) { %>
                             <img src="<%= usuario.foto %>" alt="ftdePerfil" class="ftdePerfil">
@@ -46,6 +47,7 @@
                         </h2>
                         <h3>@<%= usuario.nome %></h3>
                     </aside>
+                    <button class="btn-meuplano" onclick="location.href='/meu-plano'">Meu Plano</button>
                 </article>  
             </article> 
             <article class="biografia">

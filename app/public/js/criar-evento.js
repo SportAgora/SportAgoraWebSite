@@ -1,3 +1,7 @@
+function teste(){
+  console.log("teste")
+}
+
 document.addEventListener("DOMContentLoaded", function() {
 
   // Quill editor

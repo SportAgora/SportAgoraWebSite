@@ -1,7 +1,8 @@
 const OrganizadorModel = require('../models/model-organizador');
 const { body, validationResult } = require("express-validator");
 
-const {removeImg}= require("../helpers/removeImg")
+const {removeImg}= require("../helpers/removeImg");
+const { carregarEditarPerfil } = require('./usuariosController');
 
  
 module.exports = {
@@ -193,5 +194,26 @@ module.exports = {
         throw e;
     }
   },
+  carregarEditarEvento: async (req,res) =>{
+    try {
+      const esporte = await OrganizadorModel.EsportFindAll();
+      const dados = await OrganizadorModel.visualizarEventoId(req.query.id)
+
+      if (dados.usuario_id == req.session.usuario.id) {
+  
+      res.render("pages/editar-evento", {
+          "erros": null, 
+          dados,
+          esporte,
+          dadosNotificacao: null
+      });
+      } else {
+        return res.render("pages/error", {error:"403", mensagem:"Você não tem permissão de acessar esta página."})
+      }
+    } catch (err) {
+      console.error(err);
+      return res.redirect("/login");
+    }
+  }
 
 }

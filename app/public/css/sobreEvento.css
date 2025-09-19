@@ -85,7 +85,7 @@
   }
   
   .btn-salvar {
-    background: var(--verde_especial);
+    background: var(--principal);
     color: var(--branco);
     padding: 12px 20px;
     border: none;
@@ -97,7 +97,7 @@
   }
   
   .btn-salvar:hover {
-    background: var(--verdenavfooter);
+    background: var(--principal_escura);
     transform: scale(1.01);
   }
 

@@ -168,6 +168,16 @@ const OrganizadorModel = {
       console.error("Erro ao buscar eventos do usuário com paginação: \n", error);
       throw error;
     }
+  },
+  visualizarEventoId: async (id) => {
+    try {
+      const query = "SELECT * FROM eventos WHERE evento_id = ?";
+      const [rows] = await pool.query(query, [id]);
+      return rows.length > 0 ? rows[0] : null;
+    } catch (error) {
+      console.error("Erro ao buscar eventos:", error);
+      throw error;
+    }
   }
   
 };

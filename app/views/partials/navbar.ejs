@@ -51,17 +51,17 @@
             <!-- BARRA DE PESQUISA -->
             
     <article class="search-bar-container">
-    <section class="search-bar">
+    <form action="/pesquisar" method="GET" class="search-bar">
         <img src="/imagens/search.png" alt="Search" class="search-icon">
         <input 
         type="text" 
         id="inputPesquisa" 
         placeholder="Busque por Esportes e muito mais..."
-        oninput="mostrarSugestoes()"
-        onkeydown="verificarEnter(event)"
+        oninput="mostrarSugestoes('inputPesquisa', 'sugestoes')"
+        onkeydown="verificarEnter(event,'inputPesquisa')"
         >
         <span class="limpar" onclick="limparPesquisa()">×</span>
-    </section>
+    </form>
     <ul id="sugestoes" class="painel-sugestoes oculto"></ul>
     </article>
 
@@ -172,17 +172,17 @@
 </section>
 
 <article class="mobile-search-bar">
-    <section class="search-bar-mobile">
+    <form action="/pesquisar" type="GET" class="search-bar-mobile">
       <img src="/imagens/search.png" alt="Search" class="search-icon">
       <input 
         type="text" 
         id="inputPesquisaMobile" 
         placeholder="Busque por Esportes e muito mais..."
-        oninput="mostrarSugestoesMobile()"
-        onkeydown="verificarEnterMobile(event)"
+        oninput="mostrarSugestoes('inputPesquisa', 'sugestoes')"
+        onkeydown="verificarEnter(event,'inputPesquisa')"
       >
       <span class="limpar" onclick="limparPesquisaMobile()">×</span>
-    </section>
+    </form>
     <ul id="sugestoesMobile" class="painel-sugestoes oculto"></ul>
   </article>
 

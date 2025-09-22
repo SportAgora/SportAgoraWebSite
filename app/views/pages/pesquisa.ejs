@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    ESSA PAGINA É DE TESTE, RECRIA ELA USANDO AS INFOS DAQUI!!!!
+    <%
+    eventos.forEach(evento => {
+        %>
+        <p><a href="/evento?id=<%=evento.evento_id%>"><%=evento.evento_nome%></a></p>
+        <%
+    });
+    %>
+</body>
+</html>

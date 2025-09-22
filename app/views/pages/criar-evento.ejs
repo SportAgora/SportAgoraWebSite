@@ -22,7 +22,7 @@
   <%- include('../partials/navbar'); %>
 
   <header class="container-ver-eventos">
-    <button class="botao-seta" onclick="location.href='/organizador'">
+    <button class="botao-seta" onclick="window.history.back()">
       <img src="/imagens/left-arrow.png" alt="Seta">
     </button>
     <span class="ver-eventos">Voltar</span>
@@ -31,6 +31,8 @@
   <main>
 
     <% 
+    console.log(dados.foto)
+
     let avisoErro = {
         nome:"", 
         foto:"", 
@@ -136,10 +138,11 @@
 
         <label>Imagem de divulgação</label>
         <figure class="image-upload" id="image-drop">
-          <figcaption id="image-text">Clique ou arraste a imagem aqui</figcaption>
+          <figcaption id="image-text" style="<%= dados.foto ? 'display:none;' : 'display:block;' %>">Clique ou arraste a imagem aqui</figcaption>
           <input type="file" name="foto" accept="image/*" id="image-input" style="display:none;" value="<%= dados.foto %>">
-          <img id="image-preview" src="" alt="Preview" style="display:none; max-width: 100%; margin-top: 10px;">
+          <img id="image-preview" src="<%= dados.foto %>" alt="Preview" style="<%= dados.foto ? 'display:block;' : 'display:none;' %> max-width: 100%; margin-top: 10px;">
         </figure>
+
 
         <label>Classifique seu evento</label>
         <article class="classification">
@@ -241,7 +244,7 @@
           <label>CEP</label>
             <input type="text" id="cep" name="cep" placeholder="00000-000" value="<%= dados.cep || '' %>">
 
-            <div id="spinner" style="display:none; font-size:.9rem;">Buscando CEP…</div>
+            <section id="spinner" style="display:none; font-size:.9rem;">Buscando CEP…</section>
 
             <label>Rua</label>
             <input type="text" id="rua" name="rua" readonly>

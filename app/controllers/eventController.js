@@ -56,29 +56,8 @@ module.exports = {
   criarEvento: async (req, res) => {
     const dadoesporte = await OrganizadorModel.EsportFindAll();
     const errors = validationResult(req);
-    const erroMulter = req.session.erroMulter;
-        if(!errors.isEmpty() || erroMulter != null) {
-              lista =  !errors.isEmpty() ? errors : {formatter:null, errors:[]};
-                if(erroMulter != null ){
-                    lista.errors.push(erroMulter);
-              } 
-            console.log(lista);
-            console.log(dadoesporte)
-            return res.render('pages/criar-evento',{
-                dados: req.body,
-                erros: lista,
-                esporte: dadoesporte,
-                dadosNotificacao: null
-            })
-        }
-        
-    try{
-      const {nome, esporte, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
-      const { ingressos } = req.body;
-      
-      const ingressoIDs = await OrganizadorModel.createIngresso(ingressos)
 
-      if (!req.files || !req.files.foto) {
+    if (!req.files || !req.files.foto) {
               return res.render('pages/criar-evento',{
                 dados: req.body,
                 erros: null,
@@ -94,6 +73,31 @@ module.exports = {
         var caminhoFoto = "imagens/evento/" + req.files.foto[0].filename;
         console.log(caminhoFoto)
       }
+
+    const erroMulter = req.session.erroMulter;
+        if(!errors.isEmpty() || erroMulter != null) {
+              lista =  !errors.isEmpty() ? errors : {formatter:null, errors:[]};
+                if(erroMulter != null ){
+                    lista.errors.push(erroMulter);
+              } 
+            console.log(lista);
+            console.log(dadoesporte)
+            
+            let dados = req.body;
+            dados.foto = caminhoFoto;
+            return res.render('pages/criar-evento',{
+                dados,
+                erros: lista,
+                esporte: dadoesporte,
+                dadosNotificacao: null
+            })
+        }
+        
+    try{
+      const {nome, esporte, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
+      const { ingressos } = req.body;
+      
+      const ingressoIDs = await OrganizadorModel.createIngresso(ingressos)
 
       const evento = {
         user : req.session.usuario.id,

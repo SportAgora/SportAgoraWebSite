@@ -84,6 +84,25 @@ module.exports = {
         }
       );
     }
+    },
+    carregarFiltrosRapidos: async (req,res, next) =>{
+        try{
+            const esporte = await PagsModel.EsportFindAll();
+            res.locals.filtro_rapido = esporte;
+            next();
+        }catch(e){
+            console.error(e)
+            throw e;
+        }
+      },
+    pesquisarEventos: async (req, res) => {
+        try {
+            const termo = req.query.q; // pega ?q= do form
+            const eventos = await PagsModel.buscarEventos(termo);
+            res.render('pages/pesquisa', { eventos, termo });
+        } catch (e) {
+            console.error(e);
+            res.status(500).send("Erro ao pesquisar eventos");
+        }
     }
-    
 }

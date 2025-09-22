@@ -114,7 +114,9 @@ PAGINAS
 
 */
 
-router.get('/', function(req,res){
+router.get('/pesquisar', pagsController.pesquisarEventos);
+
+router.get('/', pagsController.carregarFiltrosRapidos, function(req,res){
     pagsController.carregarHome(req,res);
 })
 
@@ -165,7 +167,7 @@ router.get('/inscrito', function(req,res){
     res.render('pages/inscrito');  
 })
 
-router.get('/item-do-carrosel', function(req,res){
+router.get('/item-do-carrosel', pagsController.carregarFiltrosRapidos, function(req,res){
   res.render('pages/item-do-carrosel');  
 })
 

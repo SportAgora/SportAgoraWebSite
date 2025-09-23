@@ -104,16 +104,9 @@ router.get('/meus-eventos', verificarAutenticacao, function(req,res){
   eventController.carregarMeusEventos(req,res);
 })
 
-<<<<<<< HEAD
-router.get('/editar-evento', (req, res) => {
-  eventController.carregarEditarEvento(req, res);
-});
-
-=======
 router.get('/editar-evento', verificarAutenticacao, function(req,res){
   eventController.carregarEditarEvento(req,res);
 })
->>>>>>> 0f01337c5c58942233318c82b2b10bb49caafe05
 
 /*
 
@@ -160,15 +153,12 @@ router.get('/notificacoes', function(req,res){
   res.render('pages/notificacoes');  
 })
 
-<<<<<<< HEAD
-=======
 
 router.get('/meu-plano', function(req,res){
     res.render('pages/meu-plano');  
 })
 
 
->>>>>>> 0f01337c5c58942233318c82b2b10bb49caafe05
 router.get('/pagamento-evento', function(req,res){
     res.render('pages/pagamento-evento');  
 })

@@ -116,8 +116,16 @@ PAGINAS
 
 router.get('/pesquisar', pagsController.pesquisarEventos);
 
-router.get('/', pagsController.carregarFiltrosRapidos, function(req,res){
+router.get('/', 
+  pagsController.carregarFiltrosRapidos, 
+  function(req,res){
     pagsController.carregarHome(req,res);
+})
+
+router.get('/filtros-rapidos',
+  pagsController.carregarFiltrosRapidos,
+  function(req,res){
+    pagsController.paginaFiltroRapido(req,res);
 })
 
 router.get('/eventos', function(req,res){

@@ -29,6 +29,32 @@ const PaginaModel = {
             throw error;
           }
         },
+    EventosListarComPaginacaoFiltroRapido: async (offset, limite, id) => {
+          try {
+            const queryEventos = `
+                    SELECT * FROM eventos
+                    WHERE esporte_id = ?
+                    ORDER BY evento_data_publicacao
+                    LIMIT ? OFFSET ?
+            
+                  `;
+                 
+                  // Consulta para obter o total de usuários
+                  const queryTotal = "SELECT COUNT(*) as total FROM usuario";
+                 
+                  // Executar as consultas
+                  const [eventos] = await pool.query(queryEventos, [id,limite, offset]);
+                  const [totalResult] = await pool.query(queryTotal);
+                 
+                  return {
+                    eventos,
+                    total: totalResult[0].total
+                  };
+          } catch (error) {
+            console.error("Erro ao buscar eventos:", error);
+            throw error;
+          }
+        },
     buscarPagPorId: async (id) => {
           try {
             const query = "SELECT * FROM eventos WHERE evento_id = ?";
@@ -60,6 +86,16 @@ const PaginaModel = {
       const query = "SELECT * FROM esporte";
       const [rows] = await pool.query(query);
       return rows;
+    } catch (error) {
+      console.error("Erro ao buscar esportes:", error);
+      throw error;
+    }
+  },
+  buscarEsporteId: async (id) => {
+    try {
+      const query = "SELECT * FROM esporte WHERE esporte_id = ?";
+      const [rows] = await pool.query(query, [id]);
+      return rows[0];
     } catch (error) {
       console.error("Erro ao buscar esportes:", error);
       throw error;

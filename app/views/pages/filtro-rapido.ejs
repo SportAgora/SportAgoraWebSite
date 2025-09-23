@@ -75,7 +75,28 @@
 <script defer src="/js/carrossel.js"></script>
 
 
-<%- include('../partials/evento1'); %>
+<% if(eventos_qtd > 0) { %>
+    <% eventos.forEach(function(e) { 
+      let data = new Date(e.evento_data_hora);
+      let dia = String(data.getDate()).padStart(2, '0');
+      let mes = String(data.getMonth() + 1).padStart(2, '0'); 
+      let ano = data.getFullYear();
+      let dataFormatada = `${dia}/${mes}/${ano}`;  
+    %>
+      <section class="evento-box">
+      <img src="<%= e.evento_foto %>" alt="Imagem do Evento" class="evento-img">
+      <article class="evento-status gratis">Grátis</article>
+      <h2 class="evento-nome"><%= e.evento_nome %></h2>
+      <p class="evento-detalhes">  <%= e.cidade %>, <%= e.estado %><br><br><%= dataFormatada %></p>
+      <button class="evento-btn" onclick="location.href='/evento?id=<%= e.evento_id %>'">Participar</button>
+    </section>
+
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="5">Nenhum registro encontrado.</td>
+      </tr>
+    <% } %>
 
 <%- include('../partials/footer'); %>
 

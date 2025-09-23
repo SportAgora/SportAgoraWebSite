@@ -97,7 +97,7 @@
 
   <article class="carousel-title">Eventos Em Progresso</article>
   <section class="container-eventos">
-    <% if(eventos) { %>
+    <% if(eventos_qtd > 0) { %>
     <% eventos.forEach(function(e) { 
       let data = new Date(e.evento_data_hora);
       let dia = String(data.getDate()).padStart(2, '0');

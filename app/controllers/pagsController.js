@@ -30,6 +30,7 @@ module.exports = {
 
             res.render('pages/home', {
             eventos: resultado.eventos,
+            eventos_qtd: resultado.total,
             paginador: {
                 pagina_atual: pagina,
                 total_paginas
@@ -129,11 +130,11 @@ module.exports = {
                     e.estado = '';
                 }
             }
-
             const filtro_usado = await PagsModel.buscarEsporteId(req.query.id);
 
             res.render('pages/filtro-rapido', {
             filtro_usado,
+            eventos_qtd: resultado.total,
             eventos: resultado.eventos,
             paginador: {
                 pagina_atual: pagina,

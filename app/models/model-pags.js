@@ -13,8 +13,8 @@ const PaginaModel = {
             
                   `;
                  
-                  // Consulta para obter o total de usuários
-                  const queryTotal = "SELECT COUNT(*) as total FROM usuario";
+                  // Consulta para obter o total
+                  const queryTotal = "SELECT COUNT(*) as total FROM eventos";
                  
                   // Executar as consultas
                   const [eventos] = await pool.query(queryEventos, [limite, offset]);
@@ -39,12 +39,12 @@ const PaginaModel = {
             
                   `;
                  
-                  // Consulta para obter o total de usuários
-                  const queryTotal = "SELECT COUNT(*) as total FROM usuario";
+                  // Consulta para obter o total de eventos
+                  const queryTotal = "SELECT COUNT(*) as total FROM eventos WHERE esporte_id = ?";
                  
                   // Executar as consultas
                   const [eventos] = await pool.query(queryEventos, [id,limite, offset]);
-                  const [totalResult] = await pool.query(queryTotal);
+                  const [totalResult] = await pool.query(queryTotal, [id]);
                  
                   return {
                     eventos,

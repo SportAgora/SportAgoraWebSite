@@ -154,6 +154,17 @@ INSERT INTO esporte (
     
 );
 
+INSERT INTO esporte (
+	esporte_nome,
+    esporte_foto,
+    esporte_banner
+) VALUES (
+    'Natação', -- Nome (único)
+    'imagens/esportes/natacao_foto.png',
+    'imagens/esportes/natacao_banner.png'
+    
+);
+
 INSERT INTO ingresso (
 	ingresso_nome,
     ingresso_valor,
@@ -200,7 +211,7 @@ INSERT INTO eventos (
     '2025-09-23 12:00:00',
     '2025-09-23 13:00:00',
     '2030-12-31 12:00:00',
-    '2025-10-12 16:00:00',
+    '2031-10-12 16:00:00',
     '<h1>Grande Clássico de Futebol 2025</h1>
     <p class="meta"><strong>Data:</strong> 12/10/2025 · <strong>Horário:</strong> 16h · <strong>Local:</strong> Estádio Central</p>
     <p>Um duelo imperdível entre duas equipes tradicionais que prometem muita emoção, jogadas rápidas e clima vibrante nas arquibancadas. Uma ótima opção de lazer para amigos e famílias.</p>

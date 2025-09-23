@@ -207,12 +207,13 @@ const AdmModel = {
   },
   EsportCreate: async (esporteData) => {
     try {
-      const {nome, foto} = esporteData;
+      const {nome, foto, banner} = esporteData;
  
       // Preparar os dados para inserção
       const data = {
         esporte_nome : nome,
-        esporte_foto : foto
+        esporte_foto : foto,
+        esporte_banner: banner
       };
  
       // Construir a query dinamicamente

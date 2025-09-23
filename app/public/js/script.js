@@ -97,6 +97,7 @@ function limparPesquisa(inputId, painelId) {
   document.getElementById(painelId).classList.add("oculto");
 }
 
+
 // Selecionar sugestão → envia para pesquisa real
 function selecionarSugestao(texto, inputId) {
   document.getElementById(inputId).value = texto;

@@ -60,7 +60,7 @@
         oninput="mostrarSugestoes('inputPesquisa', 'sugestoes')"
         onkeydown="verificarEnter(event,'inputPesquisa')"
         >
-        <span class="limpar" onclick="limparPesquisa()">×</span>
+        <span class="limpar" onclick="limparPesquisa('inputPesquisa', 'sugestoes')">×</span>
     </form>
     <ul id="sugestoes" class="painel-sugestoes oculto"></ul>
     </article>
@@ -178,10 +178,10 @@
         type="text" 
         id="inputPesquisaMobile" 
         placeholder="Busque por Esportes e muito mais..."
-        oninput="mostrarSugestoes('inputPesquisa', 'sugestoes')"
-        onkeydown="verificarEnter(event,'inputPesquisa')"
+        oninput="mostrarSugestoes('inputPesquisaMobile', 'sugestoesMobile')"
+        onkeydown="verificarEnter(event,'inputPesquisaMobile')"
       >
-      <span class="limpar" onclick="limparPesquisaMobile()">×</span>
+      <span class="limpar" onclick="limparPesquisa('inputPesquisaMobile', 'sugestoesMobile')">×</span>
     </form>
     <ul id="sugestoesMobile" class="painel-sugestoes oculto"></ul>
   </article>

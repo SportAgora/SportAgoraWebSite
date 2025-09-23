@@ -1,10 +1,9 @@
 .event-container {
-    text-align: center;
-    padding: 30px 0;
-    margin: 30px;
-  }
-  
-  .event-title {
+  text-align: center;
+  padding: 30px 0;
+  margin: 30px;
+
+  &.event-title {
     font-size: 4.5rem;
     color: var(--principal_escura);
     font-family: "Montserrat", sans-serif;
@@ -15,10 +14,27 @@
     animation: fadeInDown 1s ease-out;
   }
   
-  .event-subtitle {
+  &.event-subtitle {
     font-size: 1.4rem;
     font-family: "Montserrat", sans-serif;
     color: var(--preto);
     animation: fadeInUp 1s ease-out;
   }
-  
+}
+
+.msg-erro{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sem-resultados{
+  font-size: 1.5rem;
+  color: var(--preto);
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInDown 1s ease-out;
+}

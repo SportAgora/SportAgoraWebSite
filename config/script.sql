@@ -19,7 +19,8 @@ CREATE TABLE usuario (
 CREATE TABLE esporte (
     esporte_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     esporte_nome VARCHAR(70) NOT NULL UNIQUE,
-    esporte_foto VARCHAR(1500) NOT NULL
+    esporte_foto VARCHAR(1500) NOT NULL,
+    esporte_banner VARCHAR(1500) NOT NULL
 );
 
 CREATE TABLE ingresso (
@@ -118,4 +119,115 @@ INSERT INTO usuario (
     'administrador',                      -- Tipo de usuário
     'adminMaster',                         -- Nome do perfil
     1
+);
+
+INSERT INTO usuario (
+    usu_email,
+    usu_nome,
+    usu_senha,
+    usu_nasc,
+    usu_foto,
+    usu_banner,
+    tipo,
+    perf_nome,
+    usu_status
+) VALUES (
+    'user@sportagora.com',               -- Email (único)
+    'Usuario',                        -- Nome (único)
+    '$2b$10$z9NiJXWfm3QtLjXK3LEdu.URx7bNH9usxjjnMfUOH5pY8ItveDXaS', -- Senha: Sport@123
+    '1990-01-01',                         -- Data de nascimento
+    'imagens/usuarios/default_user.jpg',  -- Foto
+    'imagens/usuarios/default_background.jpg', -- Banner
+    'comum',                      -- Tipo de usuário
+    'Usuario',                         -- Nome do perfil
+    1
+);
+
+INSERT INTO esporte (
+	esporte_nome,
+    esporte_foto,
+    esporte_banner
+) VALUES (
+    'Futebol', -- Nome (único)
+    'imagens/esportes/futebol_foto.png',
+    'imagens/esportes/futebol_banner.png'
+    
+);
+
+INSERT INTO ingresso (
+	ingresso_nome,
+    ingresso_valor,
+    ingresso_quantidade,
+    ingresso_meia
+) VALUES (
+    'Ingresso Vip', -- Nome
+    350, -- Valor
+    300, -- Quantidade
+    0 -- Meia (falso)
+);
+
+INSERT INTO ingresso (
+	ingresso_nome,
+    ingresso_valor,
+    ingresso_quantidade,
+    ingresso_meia
+) VALUES (
+    'Ingresso Padrão', -- Nome
+    100, -- Valor
+    300, -- Quantidade
+    '1' -- Meia (verdadeiro)
+);
+
+INSERT INTO eventos (
+    usuario_id,
+    esporte_id,
+    evento_nome,
+    evento_foto,
+    evento_data_publicacao,
+    evento_data_inicio,
+    evento_data_fim,
+    evento_data_hora,
+    evento_descricao,
+    evento_endereco_cep,
+    evento_endereco_numero,
+    evento_endereco_complemento,
+    evento_ativo
+) VALUES (
+    1, -- user id
+    1, -- esporte id
+    'Campeonato de Futebol', -- nome
+    'imagens/esportes/futebol_banner.png', -- foto
+    '2025-09-23 12:00:00',
+    '2025-09-23 13:00:00',
+    '2030-12-31 12:00:00',
+    '2025-10-12 16:00:00',
+    '<h1>Grande Clássico de Futebol 2025</h1>
+    <p class="meta"><strong>Data:</strong> 12/10/2025 · <strong>Horário:</strong> 16h · <strong>Local:</strong> Estádio Central</p>
+    <p>Um duelo imperdível entre duas equipes tradicionais que prometem muita emoção, jogadas rápidas e clima vibrante nas arquibancadas. Uma ótima opção de lazer para amigos e famílias.</p>
+    <ul>
+        <li><strong>Times:</strong> Falcões Vermelhos x Leões Azuis</li>
+        <li><strong>Competição:</strong> Copa Regional</li>
+    </ul>
+    <p><strong>Ingressos:</strong> disponíveis online e na bilheteria do estádio. Crianças até 12 anos têm entrada gratuita acompanhadas de um adulto.</p>
+    <p><em>Os portões serão abertos 1h antes do início. Chegue cedo para garantir estacionamento e evitar filas. Documento de identificação obrigatório.</em></p>',
+    '06412090',
+    '110',
+    'Quadra',
+    1 -- ativo
+);
+
+INSERT INTO evento_ingresso (
+	evento_id,
+    ingresso_id
+) VALUES (
+	1,
+	1
+);
+
+INSERT INTO evento_ingresso (
+	evento_id,
+    ingresso_id
+) VALUES (
+	1,
+	2
 );

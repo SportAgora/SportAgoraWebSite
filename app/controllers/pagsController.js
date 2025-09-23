@@ -104,5 +104,45 @@ module.exports = {
             console.error(e);
             res.status(500).send("Erro ao pesquisar eventos");
         }
-    }
+    },
+    paginaFiltroRapido: async (req,res) =>{
+        try{
+            const pagina = parseInt(req.query.pagina) || 1;
+            const limite = 18;
+            const offset = (pagina - 1) * limite;
+            const resultado = await PagsModel.EventosListarComPaginacaoFiltroRapido(offset, limite, req.query.id) 
+
+            const total_paginas = Math.ceil(resultado.total / limite);
+
+            for (let e of resultado.eventos) {
+                if (e.evento_endereco_cep) {
+                    try {
+                        const resposta = await axios.get(`https://viacep.com.br/ws/${e.evento_endereco_cep}/json/`);
+                        e.cidade = resposta.data.localidade || '';
+                        e.estado = resposta.data.uf || '';
+                    } catch (error) {
+                        e.cidade = '';
+                        e.estado = '';
+                    }
+                } else {
+                    e.cidade = '';
+                    e.estado = '';
+                }
+            }
+
+            const filtro_usado = await PagsModel.buscarEsporteId(req.query.id);
+
+            res.render('pages/filtro-rapido', {
+            filtro_usado,
+            eventos: resultado.eventos,
+            paginador: {
+                pagina_atual: pagina,
+                total_paginas
+            }
+            });
+        }catch(e){
+            console.error(e)
+            throw e;
+        }
+    },
 }

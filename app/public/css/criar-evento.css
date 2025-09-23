@@ -302,12 +302,12 @@
     outline: none;
   }
   
-  .classification, .datetime, .location-fields {
+  /* .classification, .datetime, .location-fields {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     margin-top: 10px;
-  }
+  } */
 
   .input-box {
   display: flex;

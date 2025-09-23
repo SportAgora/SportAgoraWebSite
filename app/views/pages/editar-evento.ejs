@@ -30,11 +30,7 @@
             <aside>
                 <section class="enventoimg-container">
                     <figure class="enventoimg-overlay">
-<<<<<<< HEAD
-                          <img src="<%=evento.evento_foto%>" alt="imagem Evento" id="">
-=======
                           <img src="<%=dados.evento_foto%>" alt="imagem Evento" id="">
->>>>>>> 0f01337c5c58942233318c82b2b10bb49caafe05
                         <figcaption class="icon-overlay" id="editevento">
                             <img src="imagens/Logoz-_3_ (1).png" alt="Editar Evento">
                         </figcaption>
@@ -124,11 +120,7 @@
                 <section class="infodadosEvento">
                     <h1>Editar Nome</h1>
                     <label>Nome do evento *</label>
-<<<<<<< HEAD
-                    <input type="text" name="nome" id="nome" maxlength="100" value="" placeholder="<%=evento.evento_nome%>" >
-=======
                     <input type="text" name="nome" id="nome" maxlength="100" value="" placeholder="<%=dados.evento_nome%>" >
->>>>>>> 0f01337c5c58942233318c82b2b10bb49caafe05
                     <label>Classifique seu evento</label>
                     <article class="classification">
                       <section>
@@ -188,7 +180,7 @@
           <legend class="visually-hidden">Localização do evento</legend>
 
           <label>CEP</label>
-            <input type="text" id="cep" name="cep" placeholder="<%=evento.evento_endereco_cep%>">
+            <input type="text" id="cep" name="cep" placeholder="<%=dados.evento_endereco_cep%>">
 
             <div id="spinner" style="display:none; font-size:.9rem;">Buscando CEP…</div>
 
@@ -196,10 +188,10 @@
             <input type="text" id="rua" name="rua" readonly>
 
             <label>Número</label>
-            <input type="text" id="numero" name="numero" placeholder="<%=evento.evento_endereco_numero%>">
+            <input type="text" id="numero" name="numero" placeholder="<%=dados.evento_endereco_numero%>">
 
             <label>Complemento</label>
-            <input type="text" id="complemento" name="complemento" placeholder="<%=evento.evento_endereco_complemento%>">
+            <input type="text" id="complemento" name="complemento" placeholder="<%=dados.evento_endereco_complemento%>">
 
             <label>Bairro</label>
             <input type="text" id="bairro" name="bairro" readonly>

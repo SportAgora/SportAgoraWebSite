@@ -51,7 +51,7 @@
 }
 
 .hero-text {
-  color: var(--preto);
+  color: white;
   text-align: center;
   position: relative;
   z-index: 1;

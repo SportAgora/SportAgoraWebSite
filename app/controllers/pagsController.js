@@ -99,7 +99,24 @@ module.exports = {
     pesquisarEventos: async (req, res) => {
         try {
             const termo = req.query.q; // pega ?q= do form
-            const eventos = await PagsModel.buscarEventos(termo);
+            var eventos = await PagsModel.buscarEventos(termo);
+
+             for (let e of eventos) {
+                if (e.evento_endereco_cep) {
+                    try {
+                        const resposta = await axios.get(`https://viacep.com.br/ws/${e.evento_endereco_cep}/json/`);
+                        e.cidade = resposta.data.localidade || '';
+                        e.estado = resposta.data.uf || '';
+                    } catch (error) {
+                        e.cidade = '';
+                        e.estado = '';
+                    }
+                } else {
+                    e.cidade = '';
+                    e.estado = '';
+                }
+            }
+
             res.render('pages/pesquisa', { eventos, termo });
         } catch (e) {
             console.error(e);

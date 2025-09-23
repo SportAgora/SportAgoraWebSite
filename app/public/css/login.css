@@ -54,7 +54,15 @@
     color: var(--principal);
 }
 
-form {
+.container5 form {
+    position: absolute;
+    margin-top: 80px;
+    transition: .5s;
+    width: 300px;
+    height: 400px;
+    font-size: 18px;
+}
+.container6 form {
     position: absolute;
     margin-top: 80px;
     transition: .5s;

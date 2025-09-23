@@ -1,6 +1,7 @@
 const pool = require("../../config/pool-conexoes");
 const moment = require("moment");
 const bcrypt = require("bcryptjs");
+const { EsportFindAll } = require("./model-organizador");
 
 const PaginaModel = {
     EventosListarComPaginacao: async (offset, limite) => {
@@ -53,7 +54,35 @@ const PaginaModel = {
       console.error("Erro ao buscar ingressos do evento:", error);
       throw error;
     }
+  },
+  EsportFindAll: async () => {
+    try {
+      const query = "SELECT * FROM esporte";
+      const [rows] = await pool.query(query);
+      return rows;
+    } catch (error) {
+      console.error("Erro ao buscar esportes:", error);
+      throw error;
+    }
+  },
+  buscarEventos: async (termo) => {
+  try {
+    const query = `
+      SELECT * 
+      FROM eventos
+      WHERE evento_nome LIKE ? 
+      OR evento_descricao LIKE ?
+      ORDER BY evento_data_publicacao DESC
+    `;
+    const likeTermo = `%${termo}%`;
+    const [rows] = await pool.query(query, [likeTermo, likeTermo]);
+    return rows;
+  } catch (error) {
+    console.error("Erro ao buscar eventos:", error);
+    throw error;
   }
+}
+  
 }
 
 module.exports = PaginaModel;

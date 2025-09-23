@@ -169,6 +169,7 @@ const OrganizadorModel = {
       throw error;
     }
   },
+<<<<<<< HEAD
   buscarEventoPorId: async (id) => {
             try {
               const query = "SELECT * FROM eventos WHERE evento_id = ?";
@@ -195,6 +196,18 @@ const OrganizadorModel = {
         throw error;
       }
     }
+=======
+  visualizarEventoId: async (id) => {
+    try {
+      const query = "SELECT * FROM eventos WHERE evento_id = ?";
+      const [rows] = await pool.query(query, [id]);
+      return rows.length > 0 ? rows[0] : null;
+    } catch (error) {
+      console.error("Erro ao buscar eventos:", error);
+      throw error;
+    }
+  }
+>>>>>>> 0f01337c5c58942233318c82b2b10bb49caafe05
   
 };
  

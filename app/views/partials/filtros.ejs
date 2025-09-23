@@ -2,7 +2,23 @@
 <script defer src="/js/carrossel.js"></script>
 <article class="carousel-container">
     <aside class="carousel">
-        <aside class="carousel-item">
+        <% if(filtro_rapido) { %>
+            <% filtro_rapido.forEach(function(f) { %>
+
+            <aside class="carousel-item">
+            <a href="/filtros_rapidos?id="<%=f.esporte_id%>>
+            <img src="<%=f.esporte_foto%>" alt="<%=f.esporte_nome%>">
+            <p><%=f.esporte_nome%></p>
+            </a>
+            </aside>
+
+            <% }); %>
+            <% } else { %>
+            <p>Nenhum filtro rápido disponível.</p>
+        <% } %>
+
+
+        <!-- <aside class="carousel-item">
             <a href="/item-do-carrosel">
             <img src="/imagens/imgcorrida.png" alt="Corrida de Rua">
             <p>Corrida de Rua</p>
@@ -61,7 +77,7 @@
             <img src="/imagens/imgskate.png" alt="Skate">
             <p>Skate</p>
             </a>
-        </aside>
+        </aside> -->
     </aside>
     <aside class="left-arrow carousel-arrow">&lt;</aside>
     <aside class="right-arrow carousel-arrow">&gt;</aside>

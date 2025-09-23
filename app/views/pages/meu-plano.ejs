@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Eventos</title>
+    <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="stylesheet" href="/css/meu-plano.css">
+    <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" href="/css/eventoUsuario.css">
+    <script src="js/darkmodeswitch.js"></script>
+</head>
+<body>
+    <%- include('../partials/navbar'); %>
+    <main>
+        <section class="event-container">
+            <h1 class="event-title">Minha Assinatura</h1>
+            <p class="event-subtitle">Acompanhe e gerencie os detalhes da sua assinatura, planos ativos e formas de pagamento.</p>
+        </section>
+
+        <section class="centro">
+            <section class="box-plano">
+                <h2 class="title-subs">Plano Atual</h2>
+                <section class="box-premium">
+                    <h1 class="titleP">Premium</h1>
+                    <ul class="sobreP">
+                        <li class="ok">✅ Eventos ilimitados</li>
+                        <li class="ok">✅ Inscrições ilimitadas</li>
+                        <li class="ok">✅ Suporte VIP 24/7</li>
+                        <li class="ok">✅ Branding personalizado</li>
+                        <li class="ok">✅ Relatórios avançados</li>
+                        <li class="ok">✅ Divulgação automática nas redes</li>
+                    </ul>
+                    <button class="btn-premium"><a href="/planos">Alterar Plano</a></button>
+                </section>
+            </section>
+            <section class="box-pagamento">
+                <h2 class="title-subs">Pagamento</h2>
+                <section class="box-sobrePagamento">
+                    <section class="forma">
+                        <h2 class="forma-title">Forma de Pagamento Atual:</h2>
+                        <h2 class="forma-subtitle">Cartão de crédito</h2>
+                    </section>
+                    <p>Seu plano será renovado automaticamente em 04/10/2025. A cobraça será de R$29,90 por mês.</p>
+                    <button class="btn-pagamento1"><a href="/">Editar Pagamento</a></button>
+                    <button class="btn-pagamento2"><a href="/">Cancelar Pagamento</a></button>
+                </section>
+            </section>
+        </section>
+        
+    </main>
+    <%- include('../partials/footer'); %>
+</body>

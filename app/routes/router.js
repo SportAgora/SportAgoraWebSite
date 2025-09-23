@@ -104,10 +104,16 @@ router.get('/meus-eventos', verificarAutenticacao, function(req,res){
   eventController.carregarMeusEventos(req,res);
 })
 
+<<<<<<< HEAD
 router.get('/editar-evento', (req, res) => {
   eventController.carregarEditarEvento(req, res);
 });
 
+=======
+router.get('/editar-evento', verificarAutenticacao, function(req,res){
+  eventController.carregarEditarEvento(req,res);
+})
+>>>>>>> 0f01337c5c58942233318c82b2b10bb49caafe05
 
 /*
 
@@ -115,7 +121,9 @@ PAGINAS
 
 */
 
-router.get('/', function(req,res){
+router.get('/pesquisar', pagsController.pesquisarEventos);
+
+router.get('/', pagsController.carregarFiltrosRapidos, function(req,res){
     pagsController.carregarHome(req,res);
 })
 
@@ -152,6 +160,15 @@ router.get('/notificacoes', function(req,res){
   res.render('pages/notificacoes');  
 })
 
+<<<<<<< HEAD
+=======
+
+router.get('/meu-plano', function(req,res){
+    res.render('pages/meu-plano');  
+})
+
+
+>>>>>>> 0f01337c5c58942233318c82b2b10bb49caafe05
 router.get('/pagamento-evento', function(req,res){
     res.render('pages/pagamento-evento');  
 })
@@ -160,7 +177,7 @@ router.get('/inscrito', function(req,res){
     res.render('pages/inscrito');  
 })
 
-router.get('/item-do-carrosel', function(req,res){
+router.get('/item-do-carrosel', pagsController.carregarFiltrosRapidos, function(req,res){
   res.render('pages/item-do-carrosel');  
 })
 

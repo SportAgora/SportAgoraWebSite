@@ -2,7 +2,8 @@ const OrganizadorModel = require('../models/model-organizador');
 const { body, validationResult } = require("express-validator");
 const axios = require('axios')
 
-const {removeImg}= require("../helpers/removeImg")
+const {removeImg}= require("../helpers/removeImg");
+const { carregarEditarPerfil } = require('./usuariosController');
 
  
 module.exports = {
@@ -56,29 +57,8 @@ module.exports = {
   criarEvento: async (req, res) => {
     const dadoesporte = await OrganizadorModel.EsportFindAll();
     const errors = validationResult(req);
-    const erroMulter = req.session.erroMulter;
-        if(!errors.isEmpty() || erroMulter != null) {
-              lista =  !errors.isEmpty() ? errors : {formatter:null, errors:[]};
-                if(erroMulter != null ){
-                    lista.errors.push(erroMulter);
-              } 
-            console.log(lista);
-            console.log(dadoesporte)
-            return res.render('pages/criar-evento',{
-                dados: req.body,
-                erros: lista,
-                esporte: dadoesporte,
-                dadosNotificacao: null
-            })
-        }
-        
-    try{
-      const {nome, esporte, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
-      const { ingressos } = req.body;
-      
-      const ingressoIDs = await OrganizadorModel.createIngresso(ingressos)
 
-      if (!req.files || !req.files.foto) {
+    if (!req.files || !req.files.foto) {
               return res.render('pages/criar-evento',{
                 dados: req.body,
                 erros: null,
@@ -94,6 +74,31 @@ module.exports = {
         var caminhoFoto = "imagens/evento/" + req.files.foto[0].filename;
         console.log(caminhoFoto)
       }
+
+    const erroMulter = req.session.erroMulter;
+        if(!errors.isEmpty() || erroMulter != null) {
+              lista =  !errors.isEmpty() ? errors : {formatter:null, errors:[]};
+                if(erroMulter != null ){
+                    lista.errors.push(erroMulter);
+              } 
+            console.log(lista);
+            console.log(dadoesporte)
+            
+            let dados = req.body;
+            dados.foto = caminhoFoto;
+            return res.render('pages/criar-evento',{
+                dados,
+                erros: lista,
+                esporte: dadoesporte,
+                dadosNotificacao: null
+            })
+        }
+        
+    try{
+      const {nome, esporte, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
+      const { ingressos } = req.body;
+      
+      const ingressoIDs = await OrganizadorModel.createIngresso(ingressos)
 
       const evento = {
         user : req.session.usuario.id,
@@ -194,6 +199,7 @@ module.exports = {
         throw e;
     }
   },
+<<<<<<< HEAD
   carregarEditarEvento: async (req, res) => {
     try {
       const id = req.query.id;
@@ -239,5 +245,28 @@ module.exports = {
       );
     }
     }
+=======
+  carregarEditarEvento: async (req,res) =>{
+    try {
+      const esporte = await OrganizadorModel.EsportFindAll();
+      const dados = await OrganizadorModel.visualizarEventoId(req.query.id)
+
+      if (dados.usuario_id == req.session.usuario.id) {
+  
+      res.render("pages/editar-evento", {
+          "erros": null, 
+          dados,
+          esporte,
+          dadosNotificacao: null
+      });
+      } else {
+        return res.render("pages/error", {error:"403", mensagem:"Você não tem permissão de acessar esta página."})
+      }
+    } catch (err) {
+      console.error(err);
+      return res.redirect("/login");
+    }
+  }
+>>>>>>> 0f01337c5c58942233318c82b2b10bb49caafe05
 
 }

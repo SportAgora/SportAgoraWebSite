@@ -6,6 +6,7 @@
     <link rel="icon" href="imagens/SportAgora.png">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/pesquisa.css">
+    <link rel="stylesheet" href="/css/eventos.css">
     <title>Pesaquisa: <%=termo%></title>
 </head>
 <body>
@@ -16,8 +17,29 @@
             <p class="event-subtitle">Exibindo resultado da sua pesquisa: <b>"<%=termo%>"</b></p>
         </section>
         <section class="container-eventos">
-           
-            <% if(eventos !== []) { %>
+          <% if (Array.isArray(eventos) && eventos.length > 0) { %>
+            <% eventos.forEach(function(e) { 
+              let data = new Date(e.evento_data_hora);
+              let dia = String(data.getDate()).padStart(2, '0');
+              let mes = String(data.getMonth() + 1).padStart(2, '0'); 
+              let ano = data.getFullYear();
+              let dataFormatada = `${dia}/${mes}/${ano}`;  
+            %>
+            <section class="evento-box">
+              <img src="<%= e.evento_foto %>" alt="Imagem do Evento" class="evento-img">
+              <article class="evento-status gratis">Grátis</article>
+              <h2 class="evento-nome"><%= e.evento_nome %></h2>
+              <p class="evento-detalhes"><%= e.cidade %>, <%= e.estado %><br><br><%= dataFormatada %></p>
+              <button class="evento-btn" onclick="location.href='/evento?id=<%= e.evento_id %>'">Participar</button>
+            </section>
+          <% }); %>
+          <% } else { %>
+            <p class="sem-resultados">Nenhum registro encontrado para "<%= termo %>".</p>
+          <% } %>
+
+
+            <!-- PARTE COM ERRO
+           <% if(eventos !== []) { %>
             <% eventos.forEach(function(e) { 
               let data = new Date(e.evento_data_hora);
               let dia = String(data.getDate()).padStart(2, '0');
@@ -38,7 +60,7 @@
               <tr>
                 <td colspan="5">Nenhum registro encontrado.</td>
               </tr>
-            <% } %>
+            <% } %> -->
         </section>
     </main>
     <!-- ESSA PAGINA É DE TESTE, RECRIA ELA USANDO AS INFOS DAQUI!!!!

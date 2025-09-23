@@ -74,6 +74,14 @@
                         <br />
                         <!-- Preview da imagem -->
                         <img id="preview" class="hidden" src="" alt="preview" />
+
+                        <hr>
+
+                        <!-- botar imagem -->
+                        <input type="file" id="img-input2" accept="image/*"  name="foto"/>
+                        <br />
+                        <!-- Preview da imagem -->
+                        <img id="preview2" class="hidden" src="" alt="preview2" />
                         <script>
                             const input = document.getElementById('img-input');
                             const preview = document.getElementById('preview');
@@ -92,6 +100,26 @@
                               } else {
                                 preview.src = '';
                                 preview.classList.add('hidden');
+                              }
+                            });
+
+                            const input2 = document.getElementById('img-input2');
+                            const preview2 = document.getElementById('preview2');
+                        
+                            input2.addEventListener('change', () => {
+                              const file = input2.files[0];
+                              if (file) {
+                                const reader = new FileReader();
+                        
+                                reader.onload = function(e) {
+                                  preview2.src = e.target.result;
+                                  preview2.classList.remove('hidden');
+                                }
+                        
+                                reader.readAsDataURL(file);
+                              } else {
+                                preview2.src = '';
+                                preview2.classList.add('hidden');
                               }
                             });
                           </script>

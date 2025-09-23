@@ -104,13 +104,19 @@ router.get('/meus-eventos', verificarAutenticacao, function(req,res){
   eventController.carregarMeusEventos(req,res);
 })
 
+router.get('/editar-evento', verificarAutenticacao, function(req,res){
+  eventController.carregarEditarEvento(req,res);
+})
+
 /*
 
 PAGINAS
 
 */
 
-router.get('/', function(req,res){
+router.get('/pesquisar', pagsController.pesquisarEventos);
+
+router.get('/', pagsController.carregarFiltrosRapidos, function(req,res){
     pagsController.carregarHome(req,res);
 })
 
@@ -147,14 +153,7 @@ router.get('/notificacoes', function(req,res){
   res.render('pages/notificacoes');  
 })
 
-// TESTE
-router.get('/sobreEvento', function(req,res){
-    res.render('pages/sobreEvento');  
-})
 
-router.get('/meus-eventos', function(req,res){
-    res.render('pages/meus-eventos');  
-})
 router.get('/meu-plano', function(req,res){
     res.render('pages/meu-plano');  
 })
@@ -168,7 +167,7 @@ router.get('/inscrito', function(req,res){
     res.render('pages/inscrito');  
 })
 
-router.get('/item-do-carrosel', function(req,res){
+router.get('/item-do-carrosel', pagsController.carregarFiltrosRapidos, function(req,res){
   res.render('pages/item-do-carrosel');  
 })
 

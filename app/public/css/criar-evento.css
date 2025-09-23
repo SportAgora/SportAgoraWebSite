@@ -1,26 +1,5 @@
 /* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background: var(--branco);
-    font-size: 1em;
-    color: var(--preto);/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1em;
-    color: var(--preto);
-  }
+
   
   .container {
     background: var(--branco);
@@ -111,24 +90,7 @@
     margin-top: 10px;
     border-radius: 8px;
   }
-  
-  
-  button {
-    margin-top: 20px;
-    padding: 12px 20px;
-    border: none;
-    background: var(--principal);
-    color: var(--branco);
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background 0.3s ease;
-  }
 
-    button:hover {
-    background: var(--principal_escura);
-  }
-  
   .meia-btn.active {
     background: var(--complementar) !important;
     color: var(--preto);
@@ -293,7 +255,7 @@
       font-size: 0.9em;
     }
   }
-  }
+  
   
   .container {
     background: var(--branco);
@@ -340,12 +302,12 @@
     outline: none;
   }
   
-  .classification, .datetime, .location-fields {
+  /* .classification, .datetime, .location-fields {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     margin-top: 10px;
-  }
+  } */
 
   .input-box {
   display: flex;
@@ -386,9 +348,8 @@
     margin-top: 10px;
     border-radius: 8px;
   }
-  
-  
-  button {
+
+  .meia-btn {
     margin-top: 20px;
     padding: 12px 20px;
     border: none;
@@ -400,15 +361,44 @@
     transition: background 0.3s ease;
   }
 
- button:hover {
+  .public-btn {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
     background: var(--principal);
+    color: var(--branco);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
   }
-  
-  .meia-btn.active {
+
+ .public-btn:active {
+    background: var(--principal_escura);
+  }  
+
+  .meia-btn:active {
     background: var(--complementar) !important;
     color: var(--preto);
   }
   
+  table button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    background: var(--principal_escura);
+    color: var(--branco);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+  }
+
+  table button:active {
+    background: var(--complementar) !important;
+    color: var(--preto);
+  }
+
   #editor-container {
     background: var(--branco);
     border-radius: 8px;
@@ -588,4 +578,8 @@
     table, th, td {
       font-size: 0.9em;
     }
+
+    input, select {
+      width: 90%;
+  }
   }

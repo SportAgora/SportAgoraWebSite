@@ -47,8 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //search bar
-
-// Usar a mesma lista de sugestões
 const sugestoesFixas = [
   "evento de futebol",
   "esportes de bola",
@@ -62,66 +60,14 @@ const sugestoesFixas = [
   "evento de basquete"
 ];
 
-// Funções para PC (já existentes)
-function mostrarSugestoes() {
-  const input = document.getElementById("inputPesquisa");
-  const painel = document.getElementById("sugestoes");
-  mostrarSugestoesGenerico(input, painel);
-}
-
-function selecionarSugestao(texto, inputId, painelId) {
-  document.getElementById(inputId).value = texto;
-  document.getElementById(painelId).classList.add("oculto");
-  alert(`Redirecionando para: ${texto}`);
-}
-
-function limparPesquisa() {
-  document.getElementById("inputPesquisa").value = "";
-  document.getElementById("sugestoes").classList.add("oculto");
-}
-
-function verificarEnter(event) {
-  if (event.key === "Enter") {
-    const valor = document.getElementById("inputPesquisa").value.trim().toLowerCase();
-    const encontrado = sugestoesFixas.some(item => item.toLowerCase().includes(valor));
-    if (!encontrado) {
-      window.location.href = "/erro";
-    } else {
-      selecionarSugestao(valor, "inputPesquisa", "sugestoes");
-    }
-  }
-}
-
-// Funções para Mobile (novas)
-function mostrarSugestoesMobile() {
-  const input = document.getElementById("inputPesquisaMobile");
-  const painel = document.getElementById("sugestoesMobile");
-  mostrarSugestoesGenerico(input, painel);
-}
-
-function limparPesquisaMobile() {
-  document.getElementById("inputPesquisaMobile").value = "";
-  document.getElementById("sugestoesMobile").classList.add("oculto");
-}
-
-function verificarEnterMobile(event) {
-  if (event.key === "Enter") {
-    const valor = document.getElementById("inputPesquisaMobile").value.trim().toLowerCase();
-    const encontrado = sugestoesFixas.some(item => item.toLowerCase().includes(valor));
-    if (!encontrado) {
-      window.location.href = "/erro";
-    } else {
-      selecionarSugestao(valor, "inputPesquisaMobile", "sugestoesMobile");
-    }
-  }
-}
-
-// Função genérica para mostrar sugestões (evita repetir código)
-function mostrarSugestoesGenerico(input, painel) {
+// Mostra sugestões enquanto digita
+function mostrarSugestoes(inputId, painelId) {
+  const input = document.getElementById(inputId);
+  const painel = document.getElementById(painelId);
   const valor = input.value.trim().toLowerCase();
   painel.innerHTML = "";
 
-  if (valor === "") {
+  if (!valor) {
     painel.classList.add("oculto");
     return;
   }
@@ -137,7 +83,7 @@ function mostrarSugestoesGenerico(input, painel) {
     resultados.forEach(item => {
       const li = document.createElement("li");
       li.textContent = item;
-      li.onclick = () => selecionarSugestao(item, input.id, painel.id);
+      li.onclick = () => selecionarSugestao(item, inputId);
       painel.appendChild(li);
     });
   }
@@ -145,26 +91,24 @@ function mostrarSugestoesGenerico(input, painel) {
   painel.classList.remove("oculto");
 }
 
-
-function selecionarSugestao(texto) {
-  document.getElementById("inputPesquisa").value = texto;
-  document.getElementById("sugestoes").classList.add("oculto");
-  alert(`Redirecionando para: ${texto}`);
+// Limpar campo
+function limparPesquisa(inputId, painelId) {
+  document.getElementById(inputId).value = "";
+  document.getElementById(painelId).classList.add("oculto");
 }
 
-function limparPesquisa() {
-  document.getElementById("inputPesquisa").value = "";
-  document.getElementById("sugestoes").classList.add("oculto");
+// Selecionar sugestão → envia para pesquisa real
+function selecionarSugestao(texto, inputId) {
+  document.getElementById(inputId).value = texto;
+  window.location.href = `/pesquisar?q=${encodeURIComponent(texto)}`;
 }
 
-function verificarEnter(event) {
+// Enter no teclado → envia para pesquisa real
+function verificarEnter(event, inputId) {
   if (event.key === "Enter") {
-    const valor = document.getElementById("inputPesquisa").value.trim().toLowerCase();
-    const encontrado = sugestoesFixas.some(item => item.toLowerCase().includes(valor));
-    if (!encontrado) {
-      window.location.href = "/erro"; 
-    } else {
-      selecionarSugestao(valor);
-    }
+    event.preventDefault();
+    const valor = document.getElementById(inputId).value.trim();
+    if (!valor) return;
+    window.location.href = `/pesquisar?q=${encodeURIComponent(valor)}`;
   }
 }

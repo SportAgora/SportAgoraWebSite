@@ -63,6 +63,20 @@ CREATE TABLE evento_ingresso (
   FOREIGN KEY (evento_id) REFERENCES eventos(evento_id) ON DELETE CASCADE,
   FOREIGN KEY (ingresso_id) REFERENCES ingresso(ingresso_id) ON DELETE CASCADE
 );
+
+CREATE TABLE inscricao_evento (
+    inscricao_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT UNSIGNED NOT NULL,
+    evento_id INT UNSIGNED NOT NULL,
+    ingresso_id INT UNSIGNED NOT NULL,
+    data_compra DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    -- caso queira validar se já entrou no evento
+    -- status ENUM('pendente', 'confirmado', 'cancelado') DEFAULT 'pendente',
+    FOREIGN KEY (usuario_id) REFERENCES usuario(usu_id) ON DELETE CASCADE,
+    FOREIGN KEY (evento_id) REFERENCES eventos(evento_id) ON DELETE CASCADE,
+    FOREIGN KEY (ingresso_id) REFERENCES ingresso(ingresso_id) ON DELETE CASCADE
+);
  
 -- PRÁTICAS ESPORTIVAS
 CREATE TABLE pratica_esportivas (

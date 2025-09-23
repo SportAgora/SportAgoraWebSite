@@ -85,7 +85,7 @@
   }
   
   .btn-salvar {
-    background: var(--verde_especial);
+    background: var(--principal);
     color: var(--branco);
     padding: 12px 20px;
     border: none;
@@ -97,7 +97,7 @@
   }
   
   .btn-salvar:hover {
-    background: var(--verdenavfooter);
+    background: var(--principal_escura);
     transform: scale(1.01);
   }
 
@@ -130,6 +130,29 @@
 }
 .container{
   width: 100%;
+}
+
+.event-container {
+  text-align: center;
+  padding: 30px 0;
+  margin: 30px;
+}
+.event-title {
+  font-size: 4.5rem;
+  color: var(--principal_escura);
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInDown 1s ease-out;
+}
+
+.event-subtitle {
+  font-size: 1.4rem;
+  font-family: "Montserrat", sans-serif;
+  color: var(--preto);
+  animation: fadeInUp 1s ease-out;
 }
 
   @media (max-width: 1024px) {

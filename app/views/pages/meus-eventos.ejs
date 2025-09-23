@@ -8,16 +8,27 @@
     <link rel="stylesheet" href="/css/meus-eventos.css">
     <link rel="stylesheet" href="/css/post.css">
     <link rel="stylesheet" href="/css/eventoUsuario.css">
+    <link rel="stylesheet" href="/css/base.css">
+
     <script src="js/darkmodeswitch.js"></script>
 </head>
 <body>
     <%- include('../partials/navbar'); %>
     <main>
+        <section class="container-ver-eventos">
+            <button class="botao-seta" onclick="window.history.back()">
+              <img src="/imagens/left-arrow.png" alt="Seta">
+            </button>
+            <span class="ver-eventos">Voltar</span>
+          </section>
         <section class="event-container">
             <h1 class="event-title">Meus Eventos</h1>
             <p class="event-subtitle">Acompanhe os eventos esportivos que você está participando ou organizando</p>
         </section>
-        <h3 class="title-subs">Eventos Em Progresso</h3>
+        <section class="meio">
+            <h3 class="title-subs">Eventos Em Progresso</h3>
+            <button class="btn-criarevento" onclick="location.href='/planos'">Criar Evento</button>
+        </section>
         <section class="ingressos-event">
             <section class="evento-container">
                 <% if(eventos) { %>

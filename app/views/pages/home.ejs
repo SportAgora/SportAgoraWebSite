@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
+
+        <script>
+          // Pega os 5 primeiros eventos
+          const eventos_js = <%- JSON.stringify(eventos.slice(0, 5).map(e => ({
+            imagem: e.evento_foto,
+            titulo: e.evento_nome,
+            local: `${e.cidade} - ${e.estado}`,
+            data: new Date(e.evento_data_hora).toLocaleString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+            link: `/evento?id=${e.evento_id}`
+          }))) %>;
+
+          // Remove esses eventos do array principal
+          <% eventos.splice(0,5) %>
+        </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SportAgora</title>
@@ -15,7 +29,6 @@
 
 <body>
     <%- include('../partials/navbar'); %>
-
 
     <section class="hero-container">
       <article class="post-box">

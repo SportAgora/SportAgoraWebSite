@@ -43,7 +43,7 @@ router.get('/eventos', verificarAdm, function(req,res){
   admController.carregarEventos(req,res);
 }) 
 
-router.post('/criar-esporte', verificarAdm, uploadFile('foto'),
+router.post('/criar-esporte', verificarAdm, uploadFile(['foto','foto2']),
   admController.criarEsporte
 );
 

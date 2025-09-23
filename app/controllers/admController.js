@@ -186,8 +186,8 @@ module.exports = {
     criarEsporte: async (req, res) => {
       try {
         const {novoEsporte} = req.body;
-        var foto;
-        console.log(req.file)
+        var foto, foto2;
+        console.log(req.files)
 
         if (req.session.erroMulter) {
           return carregarEventosErro(
@@ -196,13 +196,23 @@ module.exports = {
           );
         }
 
-        if (!req.file) {
+        if (!req.files) {
               console.log("Nenhuma foto enviada");
                 return carregarEventosErro({titulo:"Erro ao enviar foto", mensagem: "O envio da foto do esporte é obrigatório."} ,req,res);
               } else {
-                if (req.file) {
-                  const caminhoFoto = "imagens/esportes/" + req.file.filename;
+
+                if (req.files['foto']) {
+                  const caminhoFoto = "imagens/esportes/" + req.files['foto'][0].filename;
                   foto = caminhoFoto;
+                } else {
+                  return carregarEventosErro({titulo:"Erro ao enviar foto", mensagem: "O envio da foto do esporte é obrigatório."} ,req,res);
+                }
+
+                if (req.files['foto2']) {
+                  const caminhoFoto2 = "imagens/esportes/" + req.files['foto2'][0].filename;
+                  foto2 = caminhoFoto2;
+                } else {
+                  return carregarEventosErro({titulo:"Erro ao enviar banner", mensagem: "O envio do banner do esporte é obrigatório."} ,req,res);
                 }
               }
 
@@ -212,7 +222,7 @@ module.exports = {
          return carregarEventosErro({titulo:"Esporte existe", mensagem: "Este esporte já existe, verifique se o nome foi inserido corretamente."} ,req,res);
       }
 
-        const esporteReturn = await AdmModel.EsportCreate({nome:novoEsporte, foto:foto});
+        const esporteReturn = await AdmModel.EsportCreate({nome:novoEsporte, foto:foto, banner:foto2});
         
         console.log("Sucesso ao criar esporte: " + esporteReturn)
   

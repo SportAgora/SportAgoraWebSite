@@ -129,6 +129,7 @@ const OrganizadorModel = {
       const queryEventos = `
         SELECT * FROM eventos
         WHERE usuario_id = ?
+        and evento_ativo = 1
         ORDER BY evento_data_publicacao DESC
         LIMIT ? OFFSET ?
       `;
@@ -171,7 +172,7 @@ const OrganizadorModel = {
   },
   visualizarEventoId: async (id) => {
     try {
-      const query = "SELECT * FROM eventos WHERE evento_id = ?";
+      const query = "SELECT * FROM eventos WHERE evento_id = ? and evento_ativo = 1";
       const [rows] = await pool.query(query, [id]);
       return rows.length > 0 ? rows[0] : null;
     } catch (error) {

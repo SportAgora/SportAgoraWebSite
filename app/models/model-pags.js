@@ -8,6 +8,7 @@ const PaginaModel = {
           try {
             const queryEventos = `
                     SELECT * FROM eventos
+                    WHERE evento_ativo = 1
                     ORDER BY evento_data_publicacao
                     LIMIT ? OFFSET ?
             
@@ -33,14 +34,14 @@ const PaginaModel = {
           try {
             const queryEventos = `
                     SELECT * FROM eventos
-                    WHERE esporte_id = ?
+                    WHERE esporte_id = ? and evento_ativo = 1
                     ORDER BY evento_data_publicacao
                     LIMIT ? OFFSET ?
             
                   `;
                  
                   // Consulta para obter o total de eventos
-                  const queryTotal = "SELECT COUNT(*) as total FROM eventos WHERE esporte_id = ?";
+                  const queryTotal = "SELECT COUNT(*) as total FROM eventos WHERE esporte_id = ? and evento_ativo = 1";
                  
                   // Executar as consultas
                   const [eventos] = await pool.query(queryEventos, [id,limite, offset]);
@@ -57,7 +58,7 @@ const PaginaModel = {
         },
     buscarPagPorId: async (id) => {
           try {
-            const query = "SELECT * FROM eventos WHERE evento_id = ?";
+            const query = "SELECT * FROM eventos WHERE evento_id = ? and evento_ativo = 1";
             const [rows] = await pool.query(query, [id]);
             return rows.length > 0 ? rows[0] : null;
           } catch (error) {
@@ -108,6 +109,7 @@ const PaginaModel = {
       FROM eventos
       WHERE evento_nome LIKE ? 
       OR evento_descricao LIKE ?
+      AND evento_ativo = 1
       ORDER BY evento_data_publicacao DESC
     `;
     const likeTermo = `%${termo}%`;

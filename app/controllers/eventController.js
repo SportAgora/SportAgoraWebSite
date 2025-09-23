@@ -217,7 +217,7 @@ module.exports = {
       }
     } catch (err) {
       console.error(err);
-      return res.redirect("/login");
+      return res.redirect("/error");
     }
   }
 

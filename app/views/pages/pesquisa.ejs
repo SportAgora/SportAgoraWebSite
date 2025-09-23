@@ -3,16 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/pesquisa.css">
+    <title>Pesaquisa: <%=termo%></title>
 </head>
 <body>
-    ESSA PAGINA É DE TESTE, RECRIA ELA USANDO AS INFOS DAQUI!!!!
+    <%- include('../partials/navbar'); %>
+    <main>
+        <section class="event-container">
+            <h1 class="event-title">Resultados da sua pesquisa</h1>
+            <p class="event-subtitle">Exibindo resultado da sua pesquisa: "<%=termo%>"</p>
+        </section>
+        <section class="container-eventos">
+           
+            <% if(eventos !== []) { %>
+            <% eventos.forEach(function(e) { 
+              let data = new Date(e.evento_data_hora);
+              let dia = String(data.getDate()).padStart(2, '0');
+              let mes = String(data.getMonth() + 1).padStart(2, '0'); 
+              let ano = data.getFullYear();
+              let dataFormatada = `${dia}/${mes}/${ano}`;  
+            %>
+              <section class="evento-box">
+              <img src="<%= e.evento_foto %>" alt="Imagem do Evento" class="evento-img">
+              <article class="evento-status gratis">Grátis</article>
+              <h2 class="evento-nome"><%= e.evento_nome %></h2>
+              <p class="evento-detalhes">  <%= e.cidade %>, <%= e.estado %><br><br><%= dataFormatada %></p>
+              <button class="evento-btn" onclick="location.href='/evento?id=<%= e.evento_id %>'">Participar</button>
+            </section>
+        
+            <% }); %>
+            <% } else { %>
+              <tr>
+                <td colspan="5">Nenhum registro encontrado.</td>
+              </tr>
+            <% } %>
+        </section>
+    </main>
+    <!-- ESSA PAGINA É DE TESTE, RECRIA ELA USANDO AS INFOS DAQUI!!!!
     <%
     eventos.forEach(evento => {
         %>
         <p><a href="/evento?id=<%=evento.evento_id%>"><%=evento.evento_nome%></a></p>
         <%
     });
-    %>
+    %>-->
+    <%- include('../partials/footer'); %> 
 </body>
 </html>

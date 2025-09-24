@@ -113,3 +113,27 @@ function verificarEnter(event, inputId) {
     window.location.href = `/pesquisar?q=${encodeURIComponent(valor)}`;
   }
 }
+
+//notificação-icone
+
+let temNotificacoes = true;
+
+// Mostra ou esconde o badge com base no estado
+function atualizarBadge() {
+    const badge = document.getElementById('notificacao-badge');
+    if (temNotificacoes) {
+        badge.style.display = 'block';
+    } else {
+        badge.style.display = 'none';
+    }
+}
+
+// Função chamada ao clicar no botão
+function verNotificacoes() {
+    temNotificacoes = false; // Marca como lido
+    atualizarBadge();        // Esconde o badge
+    window.location.href = '/notificacoes'; // Redireciona
+}
+
+// Chamada inicial ao carregar a página
+document.addEventListener('DOMContentLoaded', atualizarBadge);

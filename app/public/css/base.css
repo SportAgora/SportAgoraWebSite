@@ -352,6 +352,23 @@ body {
   display: none;
 }
 
+.user-icon-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+#notificacao-badge-login {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: none; /* oculto por padrão */
+}
+
+
 /* Painel de notificações com animação */
 .painel-notificacoes {
   position: absolute;
@@ -798,8 +815,20 @@ a {
       .icon-wrapper {
         position: relative;
         width: 24px;
+        display: inline-block;
         height: 24px;
       }
+
+      #notificacao-badge {
+        position: absolute;
+        top: -1px;
+        right: 2px;
+        width: 10px;
+        height: 10px;
+        background-color: var(--complementar);
+        border-radius: 50%;
+        display: none; 
+    }
 
       .texto-claro-escuro {
         color: white;

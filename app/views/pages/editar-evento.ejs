@@ -19,7 +19,7 @@
     <%- include('../partials/navbar'); %> 
     </header> 
 
-<section class="event-container">
+<section class="event-co  ntainer">
             <h1 class="event-title">Meus Eventos</h1>
             <p class="event-subtitle">Acompanhe os eventos esportivos que você está participando ou organizando</p>
         </section>
@@ -39,6 +39,7 @@
 
             <!-- PRO CERRI!!!
             quando for fazer o back dessa pag, c arruma os placeholder q tem q ser value puxando do BD -->
+            <input type="hidden" name="descricao" id="descricao" value="<%= dados.evento_descricao || '' %>">
             <section id="form-evento" class="form active">
                 <section class="container">
                 <h1>Editar Descrição</h1>

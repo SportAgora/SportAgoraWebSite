@@ -69,21 +69,6 @@
 
             <button class="subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>
 
-        <!-- PARTE NOTIFICAÇÃO -->
-
-        <section class="notificacao-container">
-        <button id="botaoNotificacao" class="botaoNotificacao">
-            <article class="icone-notificacao-wrapper">
-            <span id="badgeNotificacao" class="badge-notificacao oculto">0</span>
-            </article>
-        </button>
-
-        <section id="painelNotificacoes" class="painel-notificacoes oculto">
-            <article id="listaNotificacoes"></article>
-        </section>
-        </section>
-
-
             <button class="login-button">
                 <% if (usuario) { %>
                 <img src="<%= usuario.foto %>" alt="User" class="user-icon">
@@ -93,6 +78,7 @@
                 </span>
                 <img src="/imagens/menu-burger.png" alt="Menu" class="menu-icon">
             </button>
+            
             <article class="login-button-mobile">
                 <a onclick="location.href='/perfil'">
                 <% if (usuario) { %>
@@ -126,12 +112,15 @@
     <% } else { %>
     <button class="panel-button" onclick="location.href='/cadastro'">Cadastre-se</button>
     <button class="panel-button" onclick="location.href='/login'">Login</button>
-    <button class="panel-button"onclick="location.href='/notificacoes'" title="Notificações">
+
+    <button class="panel-button" onclick="verNotificacoes()" title="Notificações">
         <div class="icon-wrapper">
-    <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao">
-    </div>
-    <span class="texto-claro-escuro" id="modoTexto">Notificações</span>
+            <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao">
+            <span id="notificacao-badge"></span>
+        </div>
+        <span class="texto-claro-escuro" id="modoTexto">Notificações</span>
     </button>
+
     <% } %>
     <hr>
     <button class="panel-button" onclick="location.href='/login'">Anuncie seu evento</button>   
@@ -142,12 +131,14 @@
 <section id="mobile-menu" class="mobile-menu">
     <button class="mobile-nav-button" onclick="location.href='/eventos'">Eventos</button>
 <!-- notificação mobile -->
-    <button class="mobile-nav-button"onclick="location.href='/notificacoes'" title="Notificações">
-        <div class="icon-wrapper">
-    <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao-mobile">
-    </div>
+
+<button class="mobile-nav-button" onclick="verNotificacoes()" title="Notificações">
+    <article class="icon-wrapper">
+        <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao-mobile">
+        <span id="notificacao-badge"></span>
+    </article>
     <span class="texto-claro-escuro" id="modoTexto">Notificações</span>
-    </button>
+</button>
 
     <button class="mobile-nav-button" onclick="location.href='/pratique'">Pratique</button>
     <hr>

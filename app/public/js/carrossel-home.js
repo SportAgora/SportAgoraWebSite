@@ -112,6 +112,7 @@ function atualizarSlide() {
   document.getElementById("evento-local").textContent = evento.local;
   document.getElementById("evento-data").textContent = evento.data;
   document.getElementById("carousel-link").href = evento.link;
+  document.getElementById("carousel-link2").href = evento.link;
 }
 
 function mudarSlide(direcao) {

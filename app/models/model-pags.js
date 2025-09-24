@@ -15,7 +15,7 @@ const PaginaModel = {
                   `;
                  
                   // Consulta para obter o total
-                  const queryTotal = "SELECT COUNT(*) as total FROM eventos";
+                  const queryTotal = "SELECT COUNT(*) as total FROM eventos WHERE evento_ativo = 1";
                  
                   // Executar as consultas
                   const [eventos] = await pool.query(queryEventos, [limite, offset]);

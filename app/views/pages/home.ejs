@@ -34,7 +34,7 @@
       <article class="post-box">
         
         <section class="carousel-home">
-          <a id="carousel-link" href="/infopost">
+          <a id="carousel-link" href="/infoevento">
             <article class="carousel-inner" id="carousel-inner"></article>
           </a>
           <button class="carousel-btn prev" onclick="mudarSlide(-1)">&#10094;</button>
@@ -44,7 +44,7 @@
 
         <article class="post-center">
           <section class="carousel-indicators" id="carousel-indicators"></section>
-          <a id="carousel-link" href="/infoevento">
+          <a id="carousel-link2" href="/infoevento">
             <h1 class="post-title" id="evento-titulo">Título do Evento</h1>
             <p class="post-subtitle">
               <i class="fi fi-rr-marker"></i>
@@ -110,7 +110,7 @@
 
   <article class="carousel-title">Eventos Em Progresso</article>
   <section class="container-eventos">
-    <% if(eventos_qtd > 0) { %>
+    <% if(eventos_qtd > 5) { %>
     <% eventos.forEach(function(e) { 
       let data = new Date(e.evento_data_hora);
       let dia = String(data.getDate()).padStart(2, '0');

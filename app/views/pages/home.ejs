@@ -4,6 +4,8 @@
 
         <script>
           // Pega os 5 primeiros eventos
+
+          //ESSA PÁGINA NÃO TEM ERROS! O VS CODE QUE ESTÁ BUGADO APENAS
           const eventos_js = <%- JSON.stringify(eventos.slice(0, 5).map(e => ({
             imagem: e.evento_foto,
             titulo: e.evento_nome,
@@ -67,19 +69,17 @@
     <!-- eventos -->
 
 <!--  -->
+    <p class="event-filtros-p">Filtros rápidos</p>
+
+    <!-- Carrosel -->
+   <%- include('../partials/filtros') %>
+
+    <form method="POST" action=>
     <section class="filter-box">
       <article class="filter-item">
-          <span class="filter-label">Filtrar</span>
+          <span class="filter-label">Filtros</span>
       </article>
       <article class="separator"></article>
-      <article class="filter-item">
-          <span class="filter-text">Esporte</span>
-          <select class="filter-select">
-              <option>Futebol</option>
-              <option>Basquete</option>
-              <option>Vôlei</option>
-          </select>
-      </article>
       <article class="filter-item">
           <span class="filter-text">Estado</span>
           <select class="filter-select">
@@ -100,12 +100,13 @@
           <span class="filter-text">Data</span>
           <input type="date" class="filter-date">
       </article>
+      <article class="filter-item">
+        <input type="submit" value="Filtrar" class="filter-button">
+      </article>
   </section>
+  </form>
 
-  <p class="event-filtros-p">Filtros rápidos</p>
-
-  <!-- Carrosel -->
-   <%- include('../partials/filtros') %>
+  
 
 
   <article class="carousel-title">Eventos Em Progresso</article>

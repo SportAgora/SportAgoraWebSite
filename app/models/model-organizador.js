@@ -8,7 +8,7 @@ const OrganizadorModel = {
         const { 
           user, esporte,  nome, foto, 
           data_inicio, data_fim, data_hora, 
-          cep, numero, complemento, descricao
+          cep, numero, complemento, uf, cidade, descricao
         } = eventData;
 
         // 1. Monta objeto do evento (sem ingresso_id)
@@ -24,6 +24,8 @@ const OrganizadorModel = {
           evento_descricao: descricao,
           evento_endereco_numero: numero,
           evento_endereco_complemento: complemento,
+          evento_endereco_uf: uf,
+          evento_endereco_cidade: cidade,
           evento_endereco_cep: cep
         };
 

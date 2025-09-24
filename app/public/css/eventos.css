@@ -101,7 +101,21 @@
   font-size: 1.2rem;
   cursor: pointer;
   transition: border-color 0.3s, box-shadow 0.3s;
-  width: 230px;
+  width: 160px;
+  margin-left: auto;
+}
+
+
+.filter-button {
+  padding: 15px 20px;
+  border: 2px solid var(--principal_escura);
+  border-radius: 10px;
+  background-color: var(--principal); 
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 150px;
   margin-left: auto;
 }
 
@@ -169,7 +183,7 @@
       width: 100%;
   }
 
-  .filter-select, .filter-date {
+  .filter-select, .filter-date, .filter-button {
       width: 100%;
       padding: 10px 15px;
   }

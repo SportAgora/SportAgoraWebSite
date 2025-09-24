@@ -259,10 +259,10 @@
             <input type="text" id="bairro" name="bairro" readonly>
 
             <label>Cidade</label>
-            <input type="text" id="cidade" name="cidade" readonly>
+            <input type="text" id="cidade" name="cidade" value="<%= dados.cidade || '' %>" readonly>
 
             <label>Estado</label>
-            <input type="text" id="estado" name="estado" readonly>
+            <input type="text" id="estado" name="uf" value="<%= dados.uf || '' %>"readonly>
         </article>
       </section>
 

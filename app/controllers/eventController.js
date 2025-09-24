@@ -95,10 +95,10 @@ module.exports = {
         }
         
     try{
-      const {nome, esporte, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento} = req.body;
+      const {nome, esporte, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento, uf, cidade} = req.body;
       const { ingressos } = req.body;
       
-      const ingressoIDs = await OrganizadorModel.createIngresso(ingressos)
+      const ingressoIDs = await OrganizadorModel.createIngresso(ingressos)       
 
       const evento = {
         user : req.session.usuario.id,
@@ -112,6 +112,8 @@ module.exports = {
         cep: cep.replace(/\D/g, ''),
         numero,
         complemento,
+        uf,
+        cidade
       }
 
       const resultado = await OrganizadorModel.createEvent(evento, ingressoIDs)
@@ -144,6 +146,8 @@ module.exports = {
           cep:"", 
           numero:"", 
           complemento:"",
+          uf:"",
+          cidade:"",
           ing_nome:"", 
           ing_valor:"", 
           ing_quantidade:"", 

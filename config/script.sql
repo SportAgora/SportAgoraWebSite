@@ -49,6 +49,8 @@ CREATE TABLE eventos (
     evento_endereco_cep CHAR(8) NOT NULL,
     evento_endereco_numero CHAR(8) NOT NULL,
     evento_endereco_complemento VARCHAR(100) NOT NULL,
+    evento_endereco_uf CHAR(2) NOT NULL,
+    evento_endereco_cidade VARCHAR(100) NOT NULL,
 
 
     evento_ativo BOOLEAN DEFAULT 1,
@@ -202,6 +204,8 @@ INSERT INTO eventos (
     evento_endereco_cep,
     evento_endereco_numero,
     evento_endereco_complemento,
+    evento_endereco_uf,
+    evento_endereco_cidade,
     evento_ativo
 ) VALUES (
     1, -- user id
@@ -215,15 +219,15 @@ INSERT INTO eventos (
     '<h1>Grande Clássico de Futebol 2025</h1>
     <p class="meta"><strong>Data:</strong> 12/10/2025 · <strong>Horário:</strong> 16h · <strong>Local:</strong> Estádio Central</p>
     <p>Um duelo imperdível entre duas equipes tradicionais que prometem muita emoção, jogadas rápidas e clima vibrante nas arquibancadas. Uma ótima opção de lazer para amigos e famílias.</p>
-    <ul>
-        <li><strong>Times:</strong> Falcões Vermelhos x Leões Azuis</li>
-        <li><strong>Competição:</strong> Copa Regional</li>
-    </ul>
+    <p><strong>Times:</strong> Falcões Vermelhos x Leões Azuis</p>
+    <p><strong>Competição:</strong> Copa Regional</p>
     <p><strong>Ingressos:</strong> disponíveis online e na bilheteria do estádio. Crianças até 12 anos têm entrada gratuita acompanhadas de um adulto.</p>
     <p><em>Os portões serão abertos 1h antes do início. Chegue cedo para garantir estacionamento e evitar filas. Documento de identificação obrigatório.</em></p>',
     '06412090',
     '110',
     'Quadra',
+    'SP',
+    'Barueri',
     1 -- ativo
 );
 
@@ -241,4 +245,305 @@ INSERT INTO evento_ingresso (
 ) VALUES (
 	1,
 	2
+);
+
+
+INSERT INTO ingresso (
+	ingresso_nome,
+    ingresso_valor,
+    ingresso_quantidade,
+    ingresso_meia
+) VALUES (
+    'Ingresso Padrão', -- Nome
+    100, -- Valor
+    300, -- Quantidade
+    '1' -- Meia (verdadeiro)
+);
+
+INSERT INTO eventos (
+    usuario_id,
+    esporte_id,
+    evento_nome,
+    evento_foto,
+    evento_data_publicacao,
+    evento_data_inicio,
+    evento_data_fim,
+    evento_data_hora,
+    evento_descricao,
+    evento_endereco_cep,
+    evento_endereco_numero,
+    evento_endereco_complemento,
+    evento_endereco_uf,
+    evento_endereco_cidade,
+    evento_ativo
+) VALUES (
+    1, -- user id
+    1, -- esporte id
+    'Campeonato de Futebol', -- nome
+    'imagens/esportes/futebol_banner.png', -- foto
+    '2025-09-23 12:00:00',
+    '2025-09-23 13:00:00',
+    '2030-12-31 12:00:00',
+    '2031-10-12 16:00:00',
+    '<h1>Grande Clássico de Futebol 2025</h1>
+    <p class="meta"><strong>Data:</strong> 12/10/2025 · <strong>Horário:</strong> 16h · <strong>Local:</strong> Estádio Central</p>
+    <p>Um duelo imperdível entre duas equipes tradicionais que prometem muita emoção, jogadas rápidas e clima vibrante nas arquibancadas. Uma ótima opção de lazer para amigos e famílias.</p>
+    <p><strong>Times:</strong> Falcões Vermelhos x Leões Azuis</p>
+    <p><strong>Competição:</strong> Copa Regional</p>
+    <p><strong>Ingressos:</strong> disponíveis online e na bilheteria do estádio. Crianças até 12 anos têm entrada gratuita acompanhadas de um adulto.</p>
+    <p><em>Os portões serão abertos 1h antes do início. Chegue cedo para garantir estacionamento e evitar filas. Documento de identificação obrigatório.</em></p>',
+    '06412090',
+    '110',
+    'Quadra',
+    'SP',
+    'Barueri',
+    1 -- ativo
+);
+
+INSERT INTO evento_ingresso (
+	evento_id,
+    ingresso_id
+) VALUES (
+	2,
+	3
+);
+
+INSERT INTO ingresso (
+	ingresso_nome,
+    ingresso_valor,
+    ingresso_quantidade,
+    ingresso_meia
+) VALUES (
+    'Ingresso Padrão', -- Nome
+    100, -- Valor
+    300, -- Quantidade
+    '1' -- Meia (verdadeiro)
+);
+
+INSERT INTO eventos (
+    usuario_id,
+    esporte_id,
+    evento_nome,
+    evento_foto,
+    evento_data_publicacao,
+    evento_data_inicio,
+    evento_data_fim,
+    evento_data_hora,
+    evento_descricao,
+    evento_endereco_cep,
+    evento_endereco_numero,
+    evento_endereco_complemento,
+    evento_endereco_uf,
+    evento_endereco_cidade,
+    evento_ativo
+) VALUES (
+    1, -- user id
+    1, -- esporte id
+    'Campeonato de Futebol', -- nome
+    'imagens/esportes/futebol_banner.png', -- foto
+    '2025-09-23 12:00:00',
+    '2025-09-23 13:00:00',
+    '2030-12-31 12:00:00',
+    '2031-10-12 16:00:00',
+    '<h1>Grande Clássico de Futebol 2025</h1>
+    <p class="meta"><strong>Data:</strong> 12/10/2025 · <strong>Horário:</strong> 16h · <strong>Local:</strong> Estádio Central</p>
+    <p>Um duelo imperdível entre duas equipes tradicionais que prometem muita emoção, jogadas rápidas e clima vibrante nas arquibancadas. Uma ótima opção de lazer para amigos e famílias.</p>
+    <p><strong>Times:</strong> Falcões Vermelhos x Leões Azuis</p>
+    <p><strong>Competição:</strong> Copa Regional</p>
+    <p><strong>Ingressos:</strong> disponíveis online e na bilheteria do estádio. Crianças até 12 anos têm entrada gratuita acompanhadas de um adulto.</p>
+    <p><em>Os portões serão abertos 1h antes do início. Chegue cedo para garantir estacionamento e evitar filas. Documento de identificação obrigatório.</em></p>',
+    '06412090',
+    '110',
+    'Quadra',
+    'SP',
+    'Barueri',
+    1 -- ativo
+);
+
+INSERT INTO evento_ingresso (
+	evento_id,
+    ingresso_id
+) VALUES (
+	3,
+	4
+);
+
+INSERT INTO ingresso (
+	ingresso_nome,
+    ingresso_valor,
+    ingresso_quantidade,
+    ingresso_meia
+) VALUES (
+    'Ingresso Padrão', -- Nome
+    100, -- Valor
+    300, -- Quantidade
+    '1' -- Meia (verdadeiro)
+);
+
+INSERT INTO eventos (
+    usuario_id,
+    esporte_id,
+    evento_nome,
+    evento_foto,
+    evento_data_publicacao,
+    evento_data_inicio,
+    evento_data_fim,
+    evento_data_hora,
+    evento_descricao,
+    evento_endereco_cep,
+    evento_endereco_numero,
+    evento_endereco_complemento,
+    evento_endereco_uf,
+    evento_endereco_cidade,
+    evento_ativo
+) VALUES (
+    1, -- user id
+    1, -- esporte id
+    'Campeonato de Futebol', -- nome
+    'imagens/esportes/futebol_banner.png', -- foto
+    '2025-09-23 12:00:00',
+    '2025-09-23 13:00:00',
+    '2030-12-31 12:00:00',
+    '2031-10-12 16:00:00',
+    '<h1>Grande Clássico de Futebol 2025</h1>
+    <p class="meta"><strong>Data:</strong> 12/10/2025 · <strong>Horário:</strong> 16h · <strong>Local:</strong> Estádio Central</p>
+    <p>Um duelo imperdível entre duas equipes tradicionais que prometem muita emoção, jogadas rápidas e clima vibrante nas arquibancadas. Uma ótima opção de lazer para amigos e famílias.</p>
+    <p><strong>Times:</strong> Falcões Vermelhos x Leões Azuis</p>
+    <p><strong>Competição:</strong> Copa Regional</p>
+    <p><strong>Ingressos:</strong> disponíveis online e na bilheteria do estádio. Crianças até 12 anos têm entrada gratuita acompanhadas de um adulto.</p>
+    <p><em>Os portões serão abertos 1h antes do início. Chegue cedo para garantir estacionamento e evitar filas. Documento de identificação obrigatório.</em></p>',
+    '06412090',
+    '110',
+    'Quadra',
+    'SP',
+    'Barueri',
+    1 -- ativo
+);
+
+INSERT INTO evento_ingresso (
+	evento_id,
+    ingresso_id
+) VALUES (
+	4,
+	5
+);
+
+INSERT INTO ingresso (
+	ingresso_nome,
+    ingresso_valor,
+    ingresso_quantidade,
+    ingresso_meia
+) VALUES (
+    'Ingresso Padrão', -- Nome
+    100, -- Valor
+    300, -- Quantidade
+    '1' -- Meia (verdadeiro)
+);
+
+INSERT INTO eventos (
+    usuario_id,
+    esporte_id,
+    evento_nome,
+    evento_foto,
+    evento_data_publicacao,
+    evento_data_inicio,
+    evento_data_fim,
+    evento_data_hora,
+    evento_descricao,
+    evento_endereco_cep,
+    evento_endereco_numero,
+    evento_endereco_complemento,
+    evento_endereco_uf,
+    evento_endereco_cidade,
+    evento_ativo
+) VALUES (
+    1, -- user id
+    1, -- esporte id
+    'Campeonato de Futebol', -- nome
+    'imagens/esportes/futebol_banner.png', -- foto
+    '2025-09-23 12:00:00',
+    '2025-09-23 13:00:00',
+    '2030-12-31 12:00:00',
+    '2031-10-12 16:00:00',
+    '<h1>Grande Clássico de Futebol 2025</h1>
+    <p class="meta"><strong>Data:</strong> 12/10/2025 · <strong>Horário:</strong> 16h · <strong>Local:</strong> Estádio Central</p>
+    <p>Um duelo imperdível entre duas equipes tradicionais que prometem muita emoção, jogadas rápidas e clima vibrante nas arquibancadas. Uma ótima opção de lazer para amigos e famílias.</p>
+    <p><strong>Times:</strong> Falcões Vermelhos x Leões Azuis</p>
+    <p><strong>Competição:</strong> Copa Regional</p>
+    <p><strong>Ingressos:</strong> disponíveis online e na bilheteria do estádio. Crianças até 12 anos têm entrada gratuita acompanhadas de um adulto.</p>
+    <p><em>Os portões serão abertos 1h antes do início. Chegue cedo para garantir estacionamento e evitar filas. Documento de identificação obrigatório.</em></p>',
+    '06412090',
+    '110',
+    'Quadra',
+    'SP',
+    'Barueri',
+    1 -- ativo
+);
+
+INSERT INTO evento_ingresso (
+	evento_id,
+    ingresso_id
+) VALUES (
+	5,
+	6
+);
+
+INSERT INTO ingresso (
+	ingresso_nome,
+    ingresso_valor,
+    ingresso_quantidade,
+    ingresso_meia
+) VALUES (
+    'Ingresso Padrão', -- Nome
+    100, -- Valor
+    300, -- Quantidade
+    '1' -- Meia (verdadeiro)
+);
+
+INSERT INTO eventos (
+    usuario_id,
+    esporte_id,
+    evento_nome,
+    evento_foto,
+    evento_data_publicacao,
+    evento_data_inicio,
+    evento_data_fim,
+    evento_data_hora,
+    evento_descricao,
+    evento_endereco_cep,
+    evento_endereco_numero,
+    evento_endereco_complemento,
+    evento_endereco_uf,
+    evento_endereco_cidade,
+    evento_ativo
+) VALUES (
+    1, -- user id
+    1, -- esporte id
+    'Campeonato de Futebol', -- nome
+    'imagens/esportes/futebol_banner.png', -- foto
+    '2025-09-23 12:00:00',
+    '2025-09-23 13:00:00',
+    '2030-12-31 12:00:00',
+    '2031-10-12 16:00:00',
+    '<h1>Grande Clássico de Futebol 2025</h1>
+    <p class="meta"><strong>Data:</strong> 12/10/2025 · <strong>Horário:</strong> 16h · <strong>Local:</strong> Estádio Central</p>
+    <p>Um duelo imperdível entre duas equipes tradicionais que prometem muita emoção, jogadas rápidas e clima vibrante nas arquibancadas. Uma ótima opção de lazer para amigos e famílias.</p>
+    <p><strong>Times:</strong> Falcões Vermelhos x Leões Azuis</p>
+    <p><strong>Competição:</strong> Copa Regional</p>
+    <p><strong>Ingressos:</strong> disponíveis online e na bilheteria do estádio. Crianças até 12 anos têm entrada gratuita acompanhadas de um adulto.</p>
+    <p><em>Os portões serão abertos 1h antes do início. Chegue cedo para garantir estacionamento e evitar filas. Documento de identificação obrigatório.</em></p>',
+    '06412090',
+    '110',
+    'Quadra',
+    'SP',
+    'Barueri',
+    1 -- ativo
+);
+
+INSERT INTO evento_ingresso (
+	evento_id,
+    ingresso_id
+) VALUES (
+	6,
+	7
 );

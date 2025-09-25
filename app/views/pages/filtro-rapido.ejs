@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/eventos.css">
     <link rel="stylesheet" href="/css/item-do-carrosel.css">
     <link rel="stylesheet" href="/css/carrosel.css">
+    <link rel="stylesheet" href="/css/filtro-rapido.css">
     <script defer src="/js/carrossel.js"></script>
     <link rel="icon" href="imagens/SportAgora.png">
 </head>
@@ -74,8 +75,8 @@
 <article class="carousel-title">Eventos Em Progresso</article>
 <script defer src="/js/carrossel.js"></script>
 
-
-<% if(eventos_qtd > 0) { %>
+<section class="evento-container">
+    <% if(eventos_qtd > 0) { %>
     <% eventos.forEach(function(e) { 
       let data = new Date(e.evento_data_hora);
       let dia = String(data.getDate()).padStart(2, '0');
@@ -97,6 +98,8 @@
         <td colspan="5">Nenhum registro encontrado.</td>
       </tr>
     <% } %>
+</section>
+
 
 <%- include('../partials/footer'); %>
 

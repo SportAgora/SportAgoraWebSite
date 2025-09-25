@@ -142,35 +142,62 @@
                   <article class="datetime">
                     <h1>Editar Data</h1>
                     <legend class="visually-hidden">Data e horário do evento</legend>
-
+                    <%
+                      let data = new Date(dados.evento_data_hora);
+                      let dia = String(data.getDate()).padStart(2, '0');
+                      let mes = String(data.getMonth() + 1).padStart(2, '0'); 
+                      let ano = data.getFullYear();
+                      let dataFormatada = `${ano}-${mes}-${dia}`;
+                      let hora = String(data.getHours()).padStart(2, '0');
+                      let minutos = String(data.getMinutes()).padStart(2, '0');
+                      let horaMinuto = `${hora}:${minutos}`; 
+                      %>
                     <section>
                       <label>Data de início *</label>
-                      <input name="data" type="date" >
+                      <input name="data" type="date" value="<%=dataFormatada%>" >
                     </section>
 
                     <section>
                       <label>Horário de início *</label>
-                      <input name="hora" type="time" >
+                      <input name="hora" type="time" value="<%=horaMinuto%>">
                     </section>
-
+                    <%
+                      let inscdata = new Date(dados.evento_data_inicio);
+                      let inscdia = String(inscdata.getDate()).padStart(2, '0');
+                      let inscmes = String(inscdata.getMonth() + 1).padStart(2, '0'); 
+                      let inscano = inscdata.getFullYear();
+                      let inscdataFormatada = `${inscano}-${inscmes}-${inscdia}`;
+                      let inschora = String(inscdata.getHours()).padStart(2, '0');
+                      let inscminutos = String(inscdata.getMinutes()).padStart(2, '0');
+                      let inschoraMinuto = `${inschora}:${inscminutos}`; 
+                      %>
                     <section>
                       <label>Início do periodo de inscrição*</label>
-                      <input name="data_inicio" type="date" >
+                      <input name="data_inicio" type="date" value="<%=inscdataFormatada%>" >
                     </section>
 
                     <section>
                       <label>Hora inicial do periodo de inscrição*</label>
-                      <input name="hora_inicio" type="time" >
+                      <input name="hora_inicio" type="time" value="<%=inschoraMinuto%>" >
                     </section>
-
+                    <%
+                      let fimdata = new Date(dados.evento_data_fim);
+                      let fimdia = String(fimdata.getDate()).padStart(2, '0');
+                      let fimmes = String(fimdata.getMonth() + 1).padStart(2, '0'); 
+                      let fimano = fimdata.getFullYear();
+                      let fimdataFormatada = `${fimano}-${fimmes}-${fimdia}`;
+                      let fimhora = String(fimdata.getHours()).padStart(2, '0');
+                      let fimminutos = String(fimdata.getMinutes()).padStart(2, '0');
+                      let fimhoraMinuto = `${fimhora}:${fimminutos}`; 
+                      %>
                     <section>
                       <label>Final do periodo de inscrição*</label>
-                      <input name="data_final" type="date" >
+                      <input name="data_final" type="date" value="<%=fimdataFormatada%>" >
                     </section>
 
                     <section>
                       <label>Hora final do periodo de inscrição*</label>
-                      <input name="hora_final" type="time" >
+                      <input name="hora_final" type="time" value="<%=fimhoraMinuto%>" >
                     </section>
                   </article>
                 </section>

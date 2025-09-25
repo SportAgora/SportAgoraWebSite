@@ -181,27 +181,27 @@
           <legend class="visually-hidden">Localização do evento</legend>
 
           <label>CEP</label>
-            <input type="text" id="cep" name="cep" placeholder="<%=dados.evento_endereco_cep%>">
+            <input type="text" id="cep" name="cep" value="<%=dados.evento_endereco_cep%>" placeholder="<%=dados.evento_endereco_cep%>">
 
             <div id="spinner" style="display:none; font-size:.9rem;">Buscando CEP…</div>
 
             <label>Rua</label>
-            <input type="text" id="rua" name="rua" readonly>
+            <input type="text" id="rua" name="rua" value="<%=dados.logradouro%>" readonly>
 
             <label>Número</label>
-            <input type="text" id="numero" name="numero" placeholder="<%=dados.evento_endereco_numero%>">
+            <input type="text" id="numero" name="numero" value="<%=dados.evento_endereco_numero%>" placeholder="<%=dados.evento_endereco_numero%>">
 
             <label>Complemento</label>
-            <input type="text" id="complemento" name="complemento" placeholder="<%=dados.evento_endereco_complemento%>">
+            <input type="text" id="complemento" name="complemento" value="<%=dados.evento_endereco_complemento%>" placeholder="<%=dados.evento_endereco_complemento%>">
 
             <label>Bairro</label>
-            <input type="text" id="bairro" name="bairro" readonly>
+            <input type="text" id="bairro" name="bairro" value="<%=dados.bairro%>" readonly>
 
             <label>Cidade</label>
-            <input type="text" id="cidade" name="cidade" readonly>
+            <input type="text" id="cidade" name="cidade" value="<%=dados.cidade%>" readonly>
 
             <label>Estado</label>
-            <input type="text" id="estado" name="estado" readonly>
+            <input type="text" id="estado" name="estado" value="<%=dados.estado%>" readonly>
         </article>
         </section>
         </section>

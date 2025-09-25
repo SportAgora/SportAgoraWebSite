@@ -209,6 +209,27 @@ module.exports = {
       const dados = await OrganizadorModel.visualizarEventoId(req.query.id)
 
       if (dados.usuario_id == req.session.usuario.id) {
+        
+          if (dados.evento_endereco_cep) {
+            try {
+              const resposta = await axios.get(`https://viacep.com.br/ws/${evento.evento_endereco_cep}/json/`);
+              dados.logradouro = resposta.data.logradouro || '';
+              dados.cidade = resposta.data.localidade || '';
+              dados.estado = resposta.data.uf || '';
+              dados.bairro = resposta.data.uf || '';
+            } catch (error) {
+              dados.logradouro = '';
+              dados.cidade = '';
+              dados.estado = '';
+              dados.bairro = '';
+            }
+          } else {
+            dados.logradouro = '';
+            dados.cidade = '';
+            dados.estado = '';
+            dados.bairro = '';
+          }
+        
   
       res.render("pages/editar-evento", {
           "erros": null, 

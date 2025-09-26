@@ -1,0 +1,536 @@
+.event-container {
+  text-align: center;
+  padding: 30px 0;
+  margin: 30px;
+}
+.event-title {
+  font-size: 4.5rem;
+  color: var(--principal_escura);
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInDown 1s ease-out;
+}
+.event-subtitle {
+  font-size: 1.4rem;
+  font-family: "Montserrat", sans-serif;
+  color: var(--preto);
+  animation: fadeInUp 1s ease-out;
+}
+.limite {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main_sobreEvento{
+    display: flex;
+}
+.box-esquerda {
+  flex: 1;
+  margin-right: 20px;
+  margin-left: 30px;
+  background-color: var(--postcor);
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 65%;
+}
+.enventoimg-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin: 20px 0;
+}
+  
+.enventoimg-overlay {
+  position: relative;
+  height: 100%;
+}
+  
+.enventoimg-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+  
+.enventoimg-overlay:hover img {
+  filter: brightness(0.5);
+}
+  
+.icon-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+  
+.enventoimg-overlay:hover .icon-overlay{
+  display: block;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-salvar {
+  background: var(--principal);
+  color: var(--branco);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+} 
+  
+.btn-salvar:hover {
+  background: var(--principal_escura);
+  transform: scale(1.01);
+}
+.fim{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.infodadosEvento{
+  background: var(--branco);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  padding: 30px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.main_sobreEvento input {
+    padding: 12px;
+    border: 1px solid var(--branco-fosco);
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.box-direita {
+  width: 550px;
+  background-color: var(--postcor);
+  padding: 20px;
+  height: auto;
+  top: 20px; 
+  border-radius: 25px;
+  z-index: 1000;
+  margin-right: 30px;
+  transition: all 0.5s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.container {
+  background: var(--branco);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  padding: 30px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.main_sobreEvento label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.main_sobreEvento input, select {
+  color: var(--preto);
+  padding: 14px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid var(--cinza_claro);
+  font-size: 1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.main_sobreEvento input[type=submit]{
+  background-color: var(--principal);
+  color: var(--branco);
+  transition: 0.3s ease;
+}
+.main_sobreEvento input[type=submit]:hover{
+  background-color: var(--principal_escura);
+}
+.main_sobreEvento input:focus, select:focus {
+  border-color: var(--verde_especial);
+  box-shadow: 0 0 5px rgba(0,123,255,0.25);
+  outline: none;
+}
+.classification, .datetime, .location-fields {
+  display: inline;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.location-fields {
+  flex-direction: column;
+}
+
+.image-upload {
+  border: 2px dashed var(--cinza_claro);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+  
+.image-upload:hover {
+  background: var(--branco);
+}
+  
+.image-upload img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+.meia-btn.active {
+  background: var(--complementar) !important;
+  color: var(--preto);
+}
+  
+#editor-container {
+  background: var(--branco);
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 1em;
+}
+
+.ql-toolbar.ql-snow {
+  border-radius: 8px 8px 0 0 ;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  display: flex;
+  align-content: center;
+  align-items: flex-end;
+  z-index: 1;
+  color: var(--preto);
+}
+  
+.ql-formats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+  
+.ql-toolbar.ql-snow button,
+.ql-toolbar.ql-snow select {
+  height: 36px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+  
+.ql-container.ql-snow {
+  border-radius: 0 0 8px 8px;
+  min-height: 200px;
+}
+
+/* Tabela */
+ table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+ table, th, td {
+  border: 1px solid var(--cinza_claro);
+}
+  th, td {
+  padding: 12px;
+  text-align: center;
+}
+  
+.center {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.container-ver-eventos {
+  display: flex;
+  margin-top: 10px;
+  align-items: center; 
+  margin-bottom: 30px; 
+}
+
+.botao-seta {
+  background-color: var(--principal);
+  border: none;
+  color: var(--branco);
+  height: 55px;
+  margin-left: 30px;
+  width: 55px;
+  padding: 10px 20px;
+  border-radius: 50%; 
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+
+.botao-seta:hover {
+  transform: scale(1.05);  
+  background-color: var(--principal_escura);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
+}
+
+
+.botao-seta img {
+  margin-right: 30px;  
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+.botao-seta:hover img {
+  transform: translateX(-5px); 
+}
+
+.public-btn {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    background: var(--principal);
+    color: var(--branco);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+  }
+
+ .public-btn:active {
+    background: var(--principal_escura);
+  } 
+
+
+.ver-eventos {
+  color: var(--cinza_escuro);
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 20px;  
+  transition: color 0.3s ease-in-out;
+}
+@media (max-width: 768px) {
+    .classification, .datetime, .location-fields {
+      flex-direction: column;
+    }
+  
+    h1 {
+      font-size: 1.5em;
+    }
+  
+    button {
+      width: 100%;
+    }
+  
+    input, select {
+      padding: 12px;
+    }
+  
+    .ql-toolbar.ql-snow {
+      gap: 5px;
+    }
+    
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 20px;
+    }
+  
+    .image-upload {
+      padding: 15px;
+    }
+  
+    table, th, td {
+      font-size: 0.9em;
+    }
+  }
+
+  .input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+
+.input-box input {
+  width: 100%;
+  padding: 14px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid var(--cinza_claro);
+  font-size: 1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.event-container {
+  text-align: center;
+  padding: 30px 0;
+  margin: 30px;
+}
+.event-title {
+  font-size: 4.5rem;
+  color: var(--principal_escura);
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInDown 1s ease-out;
+}
+
+.event-subtitle {
+  font-size: 1.4rem;
+  font-family: "Montserrat", sans-serif;
+  color: var(--preto);
+  animation: fadeInUp 1s ease-out;
+}
+
+@media (max-width: 1024px) {
+  .box-esquerda, .box-direita {
+      max-width: 100%;
+      margin: 0;
+      padding: 20px;
+      height: auto;
+      box-shadow: none;
+  }
+
+  .box-direita {
+    position: relative;
+    top: auto;
+    margin-top: 30px;
+    width: 100%;
+  }
+.main_sobreEvento{
+      display: flex;
+      flex-direction: column;
+    }
+}
+
+.classification, .datetime, .location-fields {
+  display: inline;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+@media (max-width: 768px) {
+  .classification, .datetime, .location-fields {
+    flex-direction: column;
+  }
+}
+
+.meia-btn {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    background: var(--principal);
+    color: var(--branco);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+  }
+
+  .public-btn {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    background: var(--principal);
+    color: var(--branco);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+  }
+
+ .public-btn:active {
+    background: var(--principal_escura);
+  }  
+
+  .meia-btn:active {
+    background: var(--complementar) !important;
+    color: var(--preto);
+  }
+  
+.ingresso-tabela  table button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    background: var(--principal_escura);
+    color: var(--branco);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+  }
+
+.ingresso-tabela  table button:active {
+    background: var(--complementar) !important;
+    color: var(--preto);
+  }
+
+  #editor-container {
+    background: var(--branco);
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 1em;
+  }
+
+  .ql-toolbar.ql-snow {
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+  }
+  
+  .ql-formats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .ql-toolbar.ql-snow button,
+  .ql-toolbar.ql-snow select {
+    height: 36px;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .ql-container.ql-snow {
+    border-radius: 0 0 8px 8px;
+    min-height: 200px;
+  }
+  

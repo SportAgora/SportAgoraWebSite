@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Evento</title>
     <link rel="stylesheet" href="/css/organizador.css">
-    <link rel="stylesheet" href="/css/sobreEvento.css">
-    <link rel="stylesheet" href="/css/criar-evento.css">
+    <!-- <link rel="stylesheet" href="/css/sobreEvento.css"> -->
+    <!-- <link rel="stylesheet" href="/css/criar-evento.css"> -->
+    <link rel="stylesheet" href="/css/editar-evento.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -18,11 +19,10 @@
  <header>
     <%- include('../partials/navbar'); %> 
     </header> 
-
-<section class="event-co  ntainer">
-            <h1 class="event-title">Meus Eventos</h1>
-            <p class="event-subtitle">Acompanhe os eventos esportivos que você está participando ou organizando</p>
-        </section>
+      <section class="event-container">
+        <h1 class="event-title">Meus Eventos</h1>
+        <p class="event-subtitle">Acompanhe os eventos esportivos que você está participando ou organizando</p>
+      </section>
     <main class="main_sobreEvento"> 
        
         <section class="box-esquerda">
@@ -95,7 +95,7 @@
         <input type="number" id="quantidade-ingresso" step="1" min="1"> 
 
         <button type="button" id="meia-entrada" class="meia-btn">Adicionar meia-entrada</button>
-        <button type="button" id="publicar-ingresso">Publicar ingresso</button>
+        <button type="button" id="publicar-ingresso" class="public-btn">Publicar ingresso</button>
 
         <table id="ingresso-tabela">
           <thead>
@@ -114,7 +114,6 @@
         </section>
       </section>
 
-                <input type="submit" class="btn-salvar" value="Salvar Alterações">
             </section>
         </section>
         <section class="box-direita" id="box-direita">
@@ -230,9 +229,12 @@
             <label>Estado</label>
             <input type="text" id="estado" name="estado" value="<%=dados.estado%>" readonly>
         </article>
-        </section>
-        </section>
+      </section>                  
     </main>
+    <section class="fim">
+      <input type="submit" class="btn-salvar" value="Salvar Alterações">
+    </section>
+    
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script defer src="/js/criar-evento.js"></script>
     <%- include('../partials/footer'); %>

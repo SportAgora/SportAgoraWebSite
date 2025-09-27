@@ -14,6 +14,7 @@ EMAIL_USER     =
 SECRET_KEY     =
 EMAIL_SERVICE  =
 URL_BASE       =
+MP_ACCESS_TOKEN =
 
 ex:
 
@@ -27,3 +28,4 @@ EMAIL_USER     = email@email.com
 SECRET_KEY     = senhasecreta
 EMAIL_SERVICE  = gmail
 URL_BASE       = https://localhost:3000
+MP_ACCESS_TOKEN =

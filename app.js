@@ -5,6 +5,7 @@ const axios = require('axios');
 const helmet = require('helmet');
 const session = require('express-session');
 const flash = require('connect-flash');
+const mercadopago = require('mercadopago');
 require("dotenv").config();
  
 app.use(helmet({
@@ -19,6 +20,7 @@ app.set('views', './app/views');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
  
+mercadopago.configurations.setAccessToken(process.env.MP_ACCESS_TOKEN);
  
 app.use(session({
   secret: 'sportagoranota10',

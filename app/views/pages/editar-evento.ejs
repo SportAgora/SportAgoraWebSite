@@ -13,18 +13,20 @@
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
     <link rel="icon" href="imagens/SportAgora.png">
-
+    <script>
+      //não é erro, é só o leitor ejs que tá bugado
+      const ingressos = <%- JSON.stringify(dados.ingressos) %>;
+    </script>
 </head>
 <body>
  <header>
     <%- include('../partials/navbar'); %> 
     </header> 
       <section class="event-container">
-        <h1 class="event-title">Meus Eventos</h1>
-        <p class="event-subtitle">Acompanhe os eventos esportivos que você está participando ou organizando</p>
+        <h1 class="event-title">Editar Evento</h1>
       </section>
     <main class="main_sobreEvento"> 
-       
+        <form id="evento-form" method="POST" action="#">
         <section class="box-esquerda">
             <h1>Sobre o Evento</h1>
             <aside>
@@ -109,9 +111,7 @@
           <tbody></tbody>
         </table>
 
-        <section class="center">
-          <input type="submit" id="publicar-evento" value="Publicar evento">
-        </section>
+        
       </section>
 
             </section>
@@ -232,11 +232,12 @@
       </section>                  
     </main>
     <section class="fim">
-      <input type="submit" class="btn-salvar" value="Salvar Alterações">
+      <input type="submit" class="publicar-evento" value="Salvar Alterações">
     </section>
+  </form>
     
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script defer src="/js/criar-evento.js"></script>
+    <script defer src="/js/editar-evento.js"></script>
     <%- include('../partials/footer'); %>
 </body>
 </html>

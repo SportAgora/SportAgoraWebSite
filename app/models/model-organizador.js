@@ -181,7 +181,19 @@ const OrganizadorModel = {
       console.error("Erro ao buscar eventos:", error);
       throw error;
     }
-  }
+  },
+  
+  visualizarIngressoEventoId: async (id) => {
+    try {
+      const query = "SELECT * FROM ingresso i INNER JOIN evento_ingresso ei ON i.ingresso_id = ei.ingresso_id WHERE ei.evento_id = ?";
+      const [rows] = await pool.query(query, [id]);
+      return rows.length > 0 ? rows : null;
+    } catch (error) {
+      console.error("Erro ao buscar eventos:", error);
+      throw error;
+    }
+  },
+  
   
 };
  

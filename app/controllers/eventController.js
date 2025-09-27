@@ -207,6 +207,7 @@ module.exports = {
     try {
       const esporte = await OrganizadorModel.EsportFindAll();
       const dados = await OrganizadorModel.visualizarEventoId(req.query.id)
+      dados.ingressos= await OrganizadorModel.visualizarIngressoEventoId(req.query.id)
 
       if (dados.usuario_id == req.session.usuario.id) {
         

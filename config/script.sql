@@ -28,7 +28,8 @@ CREATE TABLE ingresso (
     ingresso_nome VARCHAR(70) NOT NULL,
     ingresso_valor DECIMAL(12,2) NOT NULL,
     ingresso_quantidade INT NOT NULL,
-    ingresso_meia BOOLEAN NOT NULL DEFAULT 0
+    ingresso_meia BOOLEAN NOT NULL DEFAULT 0,
+    ingresso_vendido INT DEFAULT 0
 );
 
 -- EVENTOS

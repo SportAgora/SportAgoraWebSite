@@ -113,9 +113,8 @@
             5000
         );                        
     </script>
-    <% } %>
-
-    <% if (dadosNotificacao) { %>
+    <% }
+      if (dadosNotificacao) { %>
     <script>
         notify(
             "<%= dadosNotificacao.titulo %>",
@@ -135,7 +134,7 @@
 
         <label>Nome do evento *</label>
         <input type="text" name="nome" id="nome" maxlength="100" value="<%= dados.nome %>" >
-
+        
         <label>Imagem de divulgação</label>
         <figure class="image-upload" id="image-drop">
           <figcaption id="image-text" style="<%= dados.foto ? 'display:none;' : 'display:block;' %>">Clique ou arraste a imagem aqui</figcaption>

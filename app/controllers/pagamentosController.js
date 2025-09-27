@@ -1,117 +1,71 @@
-//REFAZER POIS MUDAMOS O PAGAMENTO
+const PagamentoModel = require('../models/model-pagamento');
+const mercadopago = require('mercadopago');
 
-
-
-// const pagamentoModel = require('../models/model-usuario');
-// const bcrypt = require('bcryptjs');
-const { body, validationResult } = require("express-validator");
-const {validarCPF, validarCartao, validarData} = require("../helpers/validar_pagamento")
- 
 module.exports = {
-    regrasValidacaoPagamento: [
-    body('nome')
-      .isLength({ min: 2 }).withMessage('Nome deve ter ao menos 2 caracteres.')
-      .trim().escape(),
 
-    body('sobrenome')
-      .isLength({ min: 2 }).withMessage('Sobrenome deve ter ao menos 2 caracteres.')
-      .trim().escape(),
+  criarPagamentoEvento: async (req, res) => {
+    const { usuario_id, evento_id, ingresso_id } = req.body;
 
-     body("cpf")
-    .custom((value) => {
-        if (validarCPF(value)) {
-          return true;
-        } else {
-          throw new Error('CPF inválido!');
-        }
-        }),
-    body("cartao_numero")
-    .custom((value) => {
-      if (validarCartao(value)){
-        return true
-      } else {
-        throw new Error("Cartão Inválido")
-      }
-    }),
-    body("cartao_validade")
-    .custom((value) => {
-      if (validarData(value)){
-        return true
-      } else {
-        throw new Error("Data Inválido")
-      }
-    }),
-    body("cartao_cvv").isLength({min:3,max:3}).withMessage("Código Inválido")
-  ],
-
-  receberPlano: (req, res) => {
     try {
-      const planoSelecionado = req.body.plano; // vem do form POST
-      const planos = {
-        basico: 'Sport Básico',
-        premium: 'Sport Premium',
-        plus: 'Sport Plus'
+      const [ingressoRows] = await db.query(
+        'SELECT * FROM ingresso WHERE ingresso_id = ?',
+        [ingresso_id]
+      );
+      const ingresso = ingressoRows[0];
+      if (!ingresso) return res.status(404).send('Ingresso não encontrado');
+
+      const preference = {
+        items: [
+          {
+            title: ingresso.ingresso_nome,
+            quantity: 1,
+            currency_id: 'BRL',
+            unit_price: ingresso.ingresso_valor
+          }
+        ],
+        back_urls: {
+          success: `http://localhost:3000/success-pagamento-evento?usuario_id=${usuario_id}&evento_id=${evento_id}&ingresso_id=${ingresso_id}`,
+          failure: 'http://localhost:3000/erro',
+          pending: 'http://localhost:3000/pagamento-evento'
+        },
+        auto_return: 'approved'
       };
 
-      const nomePlano = planos[planoSelecionado] || 'Plano desconhecido';
+      const response = await mercadopago.preferences.create(preference);
+      res.json({ init_point: response.body.init_point });
 
-      switch(planoSelecionado){
-            case "basico" :  var price = "R$9,90"; break;
-            case "premium" :  var price = "R$29,90"; break;
-            case "plus" : var price = "R$19,90"; break;
-            default: var price = "R$9,90;"; break;
-        }
-
-      // Renderiza a view de pagamento passando o nome do plano
-      res.render('pages/pagamento', { erros: null, valores: {
-    nome: req.body.nome,
-    sobrenome: req.body.sobrenome,
-    cpf: req.body.cpf,
-    cartao_numero: req.body.cartao_numero ,
-    cartao_validade: req.body.cartao_validade ,
-    cartao_cvv: req.body.cartao_cvv,
-    plano: nomePlano,  
-    preco: price
-  },});
-
-    } catch (error) {
-      console.error(error);
-      // Em caso de erro, pode redirecionar ou renderizar uma página de erro
-      res.render('pages/planos', {
-        erros: { errors: [{ msg: "Erro ao processar o plano selecionado." }] }
-      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Erro ao criar pagamento');
     }
   },
 
+  confirmarInscricao: async (req, res) => {
+    const { usuario_id, evento_id, ingresso_id } = req.query;
 
-  processarPagamento: (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.render('pages/pagamento', {
-        erros: errors,
-        valores: req.body
-      });
-    }
-
-    // Se passou na validação, pode continuar o processamento do pagamento
-    const {
-      nome, sobrenome, cpf,
-      cartao_numero, cartao_validade,
-      cartao_cvv, permicao, plano, preco
-    } = req.body;
-
-    // Aqui você faz o processamento real do pagamento (exemplo fictício)
-    // Depois redireciona ou mostra confirmação
     try {
-      // TODO: Implementar lógica de pagamento
+      const [ingressoRows] = await db.query(
+        'SELECT ingresso_quantidade, IFNULL(ingresso_vendido,0) as vendido FROM ingresso WHERE ingresso_id = ?',
+        [ingresso_id]
+      );
+      const ingresso = ingressoRows[0];
+      if (ingresso.ingresso_quantidade - ingresso.vendido <= 0) return res.send('Ingressos esgotados');
 
-      res.redirect('/perfilex');
-    } catch (error) {
-      console.error(error);
-      res.render('pages/pagamento', {
-        erros: { errors: [{ msg: 'Erro ao processar o pagamento. Tente novamente.' }] },
-        valores: req.body
-      });
+      await db.query(
+        'INSERT INTO inscricao_evento (usuario_id, evento_id, ingresso_id) VALUES (?, ?, ?)',
+        [usuario_id, evento_id, ingresso_id]
+      );
+
+      await db.query(
+        'UPDATE ingresso SET ingresso_vendido = ingresso_vendido + 1 WHERE ingresso_id = ?',
+        [ingresso_id]
+      );
+
+      res.render('pages/inscrito', { mensagem: 'Inscrição confirmada!' });
+
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Erro ao confirmar inscrição');
     }
   }
 

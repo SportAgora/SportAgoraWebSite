@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const guestMiddleware = require('../helpers/guestMiddleware');
 const usuariosController = require("../controllers/usuariosController");
-const pagamentoController = require('../controllers/pagamentosController');
+const pagamentosController = require('../controllers/pagamentosController');
 const eventController = require("../controllers/eventController");
 const pagsController = require("../controllers/pagsController");
 
@@ -198,8 +198,11 @@ router.get('/erro', function(req,res){
 
 /* PAGAMENTOS */
 
-router.post('/pagamento_selec', pagamentoController.receberPlano);
-router.post('/processar_pagamento', pagamentoController.processarPagamento);
+router.post(
+  '/criar-pagamento-plano', 
+  verificarAutenticacao, 
+  pagamentosController.criarPagamentoEvento
+);
 
 
 /* EVENTOS */

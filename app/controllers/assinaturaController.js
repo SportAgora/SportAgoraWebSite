@@ -1,4 +1,4 @@
-const {MercadoPagoConfig, PreApproval} = require('mercadopago');
+const {MercadoPagoConfig, Preference} = require('mercadopago');
 
 const mp = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN,
@@ -7,13 +7,12 @@ const mp = new MercadoPagoConfig({
 module.exports = {
   criar: async (req, res) => {
         try {
-            const preapproval = new PreApproval(mp);
-            console.log(`${process.env.URL_BASE}/assinatura/sucesso`)
-            const assinatura = await preapproval.create({
+            const preference = new Preference(mp);
+            const assinatura = await preference.create({
             body: {
                 items: [
                     {
-                    title: descricao || "Produto/Evento",
+                    title: 'SportAgora - Assinatura Premium',
                     unit_price: parseFloat(valor) || 29.9,
                     quantity: 1,
                     }

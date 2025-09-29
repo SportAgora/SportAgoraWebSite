@@ -19,9 +19,9 @@ module.exports = {
                     }
                 ],
                 back_urls: {
-                    success: `${process.env.URL_BASE}/pagamento/sucesso`,
-                    failure: `${process.env.URL_BASE}/pagamento/erro`,
-                    pending: `${process.env.URL_BASE}/pagamento/pending`
+                    success: `${process.env.URL_BASE}/assinatura/sucesso`,
+                    failure: `${process.env.URL_BASE}/assinatura/erro`,
+                    pending: `${process.env.URL_BASE}/assinatura/pending`
                 },
                 auto_return: "approved", // volta automaticamente ao site quando aprovado
                 // NÃO PASSAMOS payer_email → o MP vai pedir na hora do checkout
@@ -50,7 +50,7 @@ module.exports = {
         }
 
         // se não aprovado
-        res.redirect('/pagamento/erro');
+        res.redirect('/assinatura/erro');
     },
 
     erro: (req, res) => {

@@ -1,4 +1,5 @@
 const {MercadoPagoConfig, Preference} = require('mercadopago');
+const UsuarioModel = require('../models/model-usuario');
 
 const mp = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN,
@@ -34,8 +35,22 @@ module.exports = {
         }
     },
 
-    sucesso: (req, res) => {
-        return res.redirect('/perfil')
+    sucesso: async (req, res) => {
+        const { payment_id } = req.query;
+
+        // buscar pagamento no Mercado Pago pra confirmar
+        const payment = await mp.payment.get(payment_id);
+
+        if(payment.status === 'approved') {
+            // atualizar o usuário no banco
+            const userId = req.session.usuario.id;
+            await UsuarioModel.ativarPlano(userId);
+
+            return res.redirect('/perfil');
+        }
+
+        // se não aprovado
+        res.redirect('/pagamento/erro');
     },
 
     erro: (req, res) => {
@@ -43,21 +58,25 @@ module.exports = {
     },
 
     webhook: async (req, res) => {
-        try {
-            const evento = req.body;
+   try {
+          const notification = req.body; // aqui é a notificação do MP
 
-            if (evento.type === "preapproval") {
-                const data = evento.data;
-                // Aqui você pega o email ou ID do usuário e atualiza no banco
-                // Exemplo:
-                // await Usuario.update({ usu_tipo: "organizador" }, { where: { usu_email: data.payer_email } });
+        if(notification.type === "payment") {
+            const paymentId = notification.data.id;
+            const payment = await mp.payment.get(paymentId);
+
+            if(payment.status === "approved") {
+                const email = payment.payer.email;
+                const usuario = await UsuarioModel.buscarPorEmail(email);
+                if(usuario) await UsuarioModel.ativarPlano(usuario.id);
             }
-
-            res.sendStatus(200);
-        } catch (err) {
-            console.error(err);
-            res.sendStatus(500);
         }
+
+        res.sendStatus(200);
+    } catch(err) {
+        console.error(err);
+        res.sendStatus(500);
     }
+}
 
 };

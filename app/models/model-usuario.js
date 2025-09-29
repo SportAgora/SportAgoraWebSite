@@ -152,6 +152,19 @@ const UsuarioModel = {
       throw error;
     }
   },
+  ativarPlano: async (id) => {
+    try {
+     
+      const query = "UPDATE USUARIO SET tipo = ? WHERE usu_id = ?";
+      const [result] = await pool.query(query, ['organizador', id]);
+     
+      return result.affectedRows > 0;
+    } catch (error) {
+      console.error("Erro ao alterar senha:", error);
+      throw error;
+    }
+  },
+
 
 };
  

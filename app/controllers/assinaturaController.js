@@ -11,18 +11,21 @@ module.exports = {
             console.log(`${process.env.URL_BASE}/assinatura/sucesso`)
             const assinatura = await preapproval.create({
             body: {
-                reason: "Assinatura Premium",
-                auto_recurring: {
-                    frequency: 1,
-                    frequency_type: "months", // cobra todo mês
-                    transaction_amount: 29.90,
-                    currency_id: "BRL",
-                    start_date: new Date(),
-                    end_date: new Date(new Date().setFullYear(new Date().getFullYear() + 1)) // 1 ano
+                items: [
+                    {
+                    title: descricao || "Produto/Evento",
+                    unit_price: parseFloat(valor) || 29.9,
+                    quantity: 1,
+                    }
+                ],
+                back_urls: {
+                    success: `${process.env.URL_BASE}/pagamento/sucesso`,
+                    failure: `${process.env.URL_BASE}/pagamento/erro`,
+                    pending: `${process.env.URL_BASE}/pagamento/pending`
                 },
-                back_url: `${process.env.URL_BASE}/assinatura/sucesso`, 
-                payer_email: req.session.usuario.email
-            },
+                auto_return: "approved", // volta automaticamente ao site quando aprovado
+                // NÃO PASSAMOS payer_email → o MP vai pedir na hora do checkout
+                },
             });
 
             res.redirect(assinatura.init_point);

@@ -13,7 +13,7 @@ module.exports = {
                 items: [
                     {
                     title: 'SportAgora - Assinatura Premium',
-                    unit_price: parseFloat(valor) || 29.9,
+                    unit_price: 29.9,
                     quantity: 1,
                     }
                 ],

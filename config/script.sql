@@ -82,6 +82,16 @@ CREATE TABLE inscricao_evento (
     FOREIGN KEY (ingresso_id) REFERENCES ingresso(ingresso_id) ON DELETE CASCADE
 );
  
+CREATE TABLE assinatura (
+    assinatura_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT UNSIGNED NOT NULL,
+    assinatura_plano VARCHAR(50) NOT NULL, -- Ex: Básico, Premium
+    assinatura_status ENUM('ativo', 'inativo', 'cancelado') DEFAULT 'inativo',
+    assinatura_inicio DATE,
+    assinatura_fim DATE,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(usu_id)
+);
+
 -- PRÁTICAS ESPORTIVAS
 CREATE TABLE pratica_esportivas (
     pratica_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -123,6 +133,8 @@ INSERT INTO usuario (
     'adminMaster',                         -- Nome do perfil
     1
 );
+
+    
 
 INSERT INTO usuario (
     usu_email,

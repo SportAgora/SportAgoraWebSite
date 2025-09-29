@@ -20,7 +20,9 @@ app.set('views', './app/views');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
  
-mercadopago.configurations.setAccessToken(process.env.MP_ACCESS_TOKEN);
+const mp = new mercadopago.MercadoPagoConfig({
+  accessToken: process.env.MP_ACCESS_TOKEN,
+});
  
 app.use(session({
   secret: 'sportagoranota10',

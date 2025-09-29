@@ -10,7 +10,7 @@
     </head>
 <body>
     <%- include('../partials/navbar'); %>
-<form>
+<form action="/assinatura/criar" method="POST">
   <section class="hero">
     <div class="hero-text">
       <h1>Organize eventos esportivos como um profissional!</h1>
@@ -34,6 +34,7 @@
   </div>
 
   <!-- Plano Premium -->
+
   <div class="card plano-premium">
     <div class="selo">🏆 Recomendado</div>
     <h2>Premium</h2>
@@ -46,9 +47,10 @@
       <li class="ok">✅ Relatórios avançados</li>
       <li class="ok">✅ Divulgação automática nas redes</li>
     </ul>
-    <button class="btn-premium"><a href="/criar-evento">Quero ser Premium 💳</a></button>
+    <input type="submit" class="btn-premium" value="Quero ser Premium 💳">
   </div>
 </section>
+
 
   <section class="cta">
     <h2>Pronto para elevar seu evento ao próximo nível?</h2>

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const guestMiddleware = require('../helpers/guestMiddleware');
 const usuariosController = require("../controllers/usuariosController");
-const pagamentosController = require('../controllers/pagamentosController');
+const assinaturaController = require('../controllers/assinaturaController');
 const eventController = require("../controllers/eventController");
 const pagsController = require("../controllers/pagsController");
 
@@ -184,12 +184,6 @@ router.get('/infoevento-natacao.ejs', function(req,res){
   res.render('pages/infoevento-natacao.ejs');  
 })
 
-router.post(
-  '/processar_pagamento',
-  pagamentoController.regrasValidacaoPagamento,
-  pagamentoController.processarPagamento
-);
-
 router.get('/home', function(req,res){res.redirect('/')})
 
 router.get('/erro', function(req,res){
@@ -198,11 +192,10 @@ router.get('/erro', function(req,res){
 
 /* PAGAMENTOS */
 
-router.post(
-  '/criar-pagamento-plano', 
-  verificarAutenticacao, 
-  pagamentosController.criarPagamentoEvento
-);
+router.post("/assinatura/criar", assinaturaController.criar);
+router.get("/assinatura/sucesso", assinaturaController.sucesso);
+router.get("/assinatura/erro", assinaturaController.erro);
+router.post("/assinatura/webhook", assinaturaController.webhook);
 
 
 /* EVENTOS */

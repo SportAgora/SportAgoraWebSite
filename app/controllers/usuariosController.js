@@ -386,8 +386,8 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
   carregarPerfil: async (req, res) => {
   try {
     const user = req.session.usuario;
-    const userinfos = await UsuarioModel.findByEmail(user.email);
-    
+    var userinfos = await UsuarioModel.findByEmail(user.email);
+    userinfos.tipo = userinfos.tipo[0].toUpperCase() + userinfos.tipo.substring(1);
     res.render("pages/perfil", {
         usuario: {
         id: userinfos.usu_id,
@@ -397,7 +397,8 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
         seguidores: userinfos.quantidade_seguidores,
         seguindo: userinfos.quantidade_seguindo,
         foto: userinfos.usu_foto,
-        banner: userinfos.usu_banner
+        banner: userinfos.usu_banner,
+        tipo: userinfos.tipo
         },
         dadosNotificacao:""
     });

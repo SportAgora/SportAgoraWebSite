@@ -192,8 +192,8 @@ router.get('/erro', function(req,res){
 
 /* PAGAMENTOS */
 
-router.post("/assinatura/criar", assinaturaController.criar);
-router.get("/assinatura/sucesso", assinaturaController.sucesso);
+router.post("/assinatura/criar", verificarAutenticacao, assinaturaController.criar);
+router.get("/assinatura/sucesso", verificarAutenticacao, assinaturaController.sucesso);
 router.get("/assinatura/erro", assinaturaController.erro);
 router.post("/assinatura/webhook", assinaturaController.webhook);
 

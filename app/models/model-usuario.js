@@ -155,7 +155,7 @@ const UsuarioModel = {
   ativarPlano: async (id) => {
     try {
      
-      const query = "UPDATE USUARIO SET tipo = ? WHERE usu_id = ?";
+      const query = "UPDATE usuarios SET tipo = ? WHERE usu_id = ?";
       const [result] = await pool.query(query, ['organizador', id]);
      
       return result.affectedRows > 0;

@@ -39,7 +39,7 @@ module.exports = {
         const { payment_id } = req.query;
 
         // buscar pagamento no Mercado Pago pra confirmar
-        const payment = await mp.payment.get(payment_id);
+        const payment = await mp.payment.findById(payment_id);
 
         if(payment.status === 'approved') {
             // atualizar o usuário no banco

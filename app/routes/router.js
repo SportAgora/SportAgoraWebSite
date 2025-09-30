@@ -190,6 +190,10 @@ router.get('/erro', function(req,res){
   res.render('pages/error', {error:500, mensagem:"Algo deu errado no servidor."});  
 })
 
+router.get('/erroAssinatura', function(req,res){
+  res.render('pages/erroAssinatura.ejs');  
+})
+
 /* PAGAMENTOS */
 
 router.post("/assinatura/criar", assinaturaController.criar);

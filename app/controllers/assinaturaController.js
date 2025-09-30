@@ -45,6 +45,7 @@ module.exports = {
             // atualizar o usuário no banco
             const userId = req.session.usuario.id;
             await UsuarioModel.ativarPlano(userId);
+            usuario.tipo = 'organizador'
 
             return res.redirect('/perfil');
         }
@@ -63,7 +64,7 @@ module.exports = {
 
         if(notification.type === "payment") {
             const paymentId = notification.data.id;
-            const payment = await mp.payment.get(paymentId);
+            const payment = await mp.payment.findById(paymentId);
 
             if(payment.status === "approved") {
                 const email = payment.payer.email;

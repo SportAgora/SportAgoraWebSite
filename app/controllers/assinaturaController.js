@@ -64,7 +64,7 @@ module.exports = {
 
         if(notification.type === "payment") {
             const paymentId = notification.data.id;
-            const payment = await mp.payment.get(paymentId);
+            const payment = await mp.payment.findById(paymentId);
 
             if(payment.status === "approved") {
                 const email = payment.payer.email;

@@ -1,4 +1,4 @@
-const {MercadoPagoConfig, Preference} = require('mercadopago');
+const {MercadoPagoConfig, Preference, Payment} = require('mercadopago');
 const UsuarioModel = require('../models/model-usuario');
 
 const mp = new MercadoPagoConfig({
@@ -38,8 +38,11 @@ module.exports = {
     sucesso: async (req, res) => {
         const { payment_id } = req.query;
 
+        // Create a Payment instance using the existing mp configuration
+        const paymentClient = new Payment(mp);
+
         // buscar pagamento no Mercado Pago pra confirmar
-        const payment = await mp.payment.findById(payment_id);
+        const payment = await paymentClient.get({id: payment_id}); // Use the correct method: get
 
         if(payment.status === 'approved') {
             // atualizar o usuário no banco
@@ -60,11 +63,14 @@ module.exports = {
 
     webhook: async (req, res) => {
    try {
-          const notification = req.body; // aqui é a notificação do MP
+    const notification = req.body; // aqui é a notificação do MP
+    const paymentClient = new Payment(mp); // Instantiate here or outside module.exports
 
-        if(notification.type === "payment") {
-            const paymentId = notification.data.id;
-            const payment = await mp.payment.findById(paymentId);
+  if(notification.type === "payment") {
+      const paymentId = notification.data.id;
+      
+      // Corrected line
+      const payment = await paymentClient.get({id: paymentId}); 
 
             if(payment.status === "approved") {
                 const email = payment.payer.email;

@@ -82,7 +82,7 @@ label {
   flex-direction: column;
 }
 
-.btn-salvar {
+.publicar-evento {
   background: var(--principal);
   color: var(--branco);
   padding: 12px 20px;
@@ -94,8 +94,8 @@ label {
   transition: background 0.3s, transform 0.2s;
 } 
   
-.btn-salvar:hover {
-  background: var(--principal_escura);
+.publicar-evento:hover  {
+  background: var(--principal);
   transform: scale(1.01);
 }
 .fim{
@@ -534,3 +534,6 @@ label {
     min-height: 200px;
   }
   
+  #evento-form{
+    display: flex;
+  }

@@ -24,6 +24,7 @@
 
 .msg-erro{
   display: flex;
+  padding-bottom: 250px;
   align-items: center;
   justify-content: center;
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assinatura Falhou</title>
+    <link rel="stylesheet" href="/css/assinatura-falhou.css">
+    <link rel="icon" href="imagens/SportAgora.png">
+</head>
+
+<body>
+ <header>
+    <%- include('../partials/navbar'); %> 
+    </header>
+
+
+    <main class="main_assinatura">
+        <section class="sec">
+          <div class="info_assinatura">
+            <div class="icon_check" aria-hidden="true">❌</div>
+            <h1>Assinatura falhou!</h1>
+            <p>
+              Ocorreu um problema ao processar sua assinatura.<br>
+              Por favor, tente novamente mais tarde ou entre em contato com o suporte.<br>
+              Agradecemos a sua compreensão.
+            </p>
+            <div class="btn_group">
+              <button class="btn_solicitacao btn_primary" onclick="location.href='/home'">Voltar para o Início</button>
+              <button class="btn_solicitacao btn_secondary" onclick="location.href='/contato'">Contato</button>
+            </div>
+          </div>
+        </section>
+      </main>
+      
+    <%- include('../partials/footer'); %>   
+</body>
+</html>

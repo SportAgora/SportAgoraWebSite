@@ -114,10 +114,10 @@
     <button class="panel-button" onclick="location.href='/login'">Login</button>
 
     <button class="panel-button" onclick="verNotificacoes()" title="Notificações">
-        <div class="icon-wrapper">
+        <article class="icon-wrapper">
             <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao">
             <span id="notificacao-badge"></span>
-        </div>
+        </article>
         <span class="texto-claro-escuro" id="modoTexto">Notificações</span>
     </button>
 
@@ -129,20 +129,17 @@
 <!-- mobile -->
 
 <section id="mobile-menu" class="mobile-menu">
-    <button class="mobile-nav-button" onclick="location.href='/eventos'">Eventos</button>
-<!-- notificação mobile -->
+    <button class="mobile-nav-button" onclick="location.href='/eventos'">       
+         <span class="texto-claro-escuro" id="modoTexto">Eventos</span>
+        </button>
 
-<button class="mobile-nav-button" onclick="verNotificacoes()" title="Notificações">
-    <article class="icon-wrapper">
-        <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao-mobile">
-        <span id="notificacao-badge"></span>
-    </article>
-    <span class="texto-claro-escuro" id="modoTexto">Notificações</span>
-</button>
-
-    <button class="mobile-nav-button" onclick="location.href='/pratique'">Pratique</button>
+    <button class="mobile-nav-button" onclick="location.href='/pratique'">
+        <span class="texto-claro-escuro" id="modoTexto">Pratique</span>
+    </button>
     <hr>
-    <button class="mobile-nav-button" onclick="location.href='/login'">Anuncie seu evento</button>
+    <button class="mobile-nav-button" onclick="location.href='/login'">
+        <span class="texto-claro-escuro" id="modoTexto">Anuncie Seu Evento</span>
+    </button>
     <hr>    
     <button id="toggleDarkMode" class="dark-mode-button-mobile" onclick="toggleMode()" title="Alternar modo claro/escuro">
         <div class="icon-wrapper">
@@ -153,12 +150,31 @@
       </button>
     <hr>
     <% if (usuario) { %>
-        <button class="mobile-nav-button" onclick="location.href='/perfil'">Perfil</button>
-        <button class="mobile-nav-button" onclick="location.href='/editar-perfil'">Editar Perfil</button>
-        <button class="mobile-nav-button" onclick="location.href='/logout'">Sair</button>
+        <button class="mobile-nav-button" onclick="location.href='/perfil'">
+            <span class="texto-claro-escuro" id="modoTexto">Perfil</span>
+        </button>
+
+        <button class="mobile-nav-button" onclick="verNotificacoes()" title="Notificações">
+            <article class="icon-wrapper">
+                <img src="/imagens/botao-de-notificacoes.png" alt="Notificações" class="icone-notificacao-mobile">
+                <span id="notificacao-badge1" class="badge-notificacao-bolinha"></span> <!-- Ícone de notificação -->
+            </article>
+            <span class="texto-claro-escuro" id="modoTexto">Notificações</span>
+        </button>
+
+        <button class="mobile-nav-button" onclick="location.href='/editar-perfil'">
+            <span class="texto-claro-escuro" id="modoTexto">Editar Perfil</span>
+        </button>
+        <button class="mobile-nav-button" onclick="location.href='/logout'">
+            <span class="texto-claro-escuro" id="modoTexto">Sair</span>
+        </button>
         <% } else { %>
-        <button class="mobile-nav-button" onclick="location.href='/cadastro'">Cadastre-se</button>
-        <button class="mobile-nav-button" onclick="location.href='/login'">Login</button>
+        <button class="mobile-nav-button" onclick="location.href='/cadastro'">
+            <span class="texto-claro-escuro" id="modoTexto">Cadastre-se</span>
+        </button>
+        <button class="mobile-nav-button" onclick="location.href='/login'">
+            <span class="texto-claro-escuro" id="modoTexto">Login</span>
+        </button>
         <% } %>
 </section>
 

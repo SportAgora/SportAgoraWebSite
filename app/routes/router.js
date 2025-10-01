@@ -132,6 +132,14 @@ router.get('/eventos', function(req,res){
     res.redirect('/home');  
 })
 
+router.get('/assinatura-concluida', function(req,res){
+  res.render('pages/assinatura-concluida.ejs');
+})
+
+router.get('/assinatura-rejeitada', function(req,res){
+  res.render('pages/assinatura-rejeitada.ejs');
+})
+
 router.get('/pratique', function(req,res){
     res.render('pages/pratique');  
 })

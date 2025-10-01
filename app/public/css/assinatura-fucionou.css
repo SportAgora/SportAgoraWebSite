@@ -1,4 +1,5 @@
-.main_inscrito {
+  /* Container principal centralizado */
+  .main_assinatura {
     min-height: 100vh;
     background: linear-gradient(135deg, var(--background), var(--principal_claro_transparente));
     display: flex;
@@ -7,6 +8,45 @@
     padding: 20px;
 }
 
+/* Card */
+.sec {
+    background: var(--principal);
+    border-radius: 20px;
+    padding: 30px 40px 40px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 12px 30px rgba(215, 38, 56, 0.45);
+    color: var(--branco);
+    text-align: center;
+    animation: fadeInUp 0.7s ease forwards;
+    border: 3px solid var(--principal_escura);
+}
+
+/* Ícone check animado */
+.icon_check {
+    font-size: 6rem;
+    color: var(--complementar);
+    margin-bottom: 20px;
+    animation: popIn 0.6s ease forwards;
+    filter: drop-shadow(0 0 6px var(--complementar));
+}
+
+/* Título */
+.info_assinatura h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.25);
+}
+
+/* Parágrafo */
+.info_assinatura p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: var(--branco);
+}
+
+/* Botões - container para alinhamento responsivo */
 .btn_group {
     display: flex;
     gap: 20px;
@@ -14,6 +54,7 @@
     flex-wrap: wrap;
 }
 
+/* Botões */
 .btn_solicitacao {
     padding: 14px 40px;
     font-size: 1.15rem;
@@ -30,12 +71,12 @@
     overflow: hidden;
 }
 
+/* Botão Primário */
 .btn_primary {
     background: var(--complementar);
     color: var(--preto);
     box-shadow: 0 6px 20px var(--complementar2);
 }
-
 
 .btn_primary:hover {
     background: var(--complementar2);
@@ -43,6 +84,7 @@
     transform: translateY(-4px);
 }
 
+/* Botão Secundário */
 .btn_secondary {
     background: var(--principal_claro);
     color: var(--branco);
@@ -55,59 +97,7 @@
     transform: translateY(-4px);
 }
 
-.btn_solicitacao:hover{
-    transform: translateY(-2px);
-    transition: 0.2s ease;
-}
-
-.sec {
-    background: var(--principal);
-    border-radius: 20px;
-    padding: 30px 40px 40px;
-    max-width: 700px;
-    width: 100%;
-    box-shadow: 0 12px 30px rgba(215, 38, 56, 0.45);
-    color: var(--branco);
-    text-align: center;
-    animation: fadeInUp 0.7s ease forwards;
-    border: 3px solid var(--principal_escura);
-}
-
-.info_organizador p {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    color: var(--branco);
-}
-
-.info_organizador h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.25);
-}
-
-.info_organizador {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 20px;
-    text-align: center;
-    
-}
-
-.banner {
-    width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-    margin-bottom: 25px;
-    transition: transform 0.4s ease;
-}
-
-.banner:hover {
-    transform: scale(1.03);
-}
-
+/* Animações */
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -116,6 +106,17 @@
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -130,17 +131,5 @@
     .btn_group {
         flex-direction: column;
         gap: 15px;
-    }
-}
-
-@media(max-width: 600px){ 
-    .btn_solicitacao {
-        width: 300px;
-    }
-    .sec{
-        width: 90%;
-    }
-    .banner {
-        width: 100%;
     }
 }

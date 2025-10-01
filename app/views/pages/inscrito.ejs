@@ -11,21 +11,26 @@
  <header>
     <%- include('../partials/navbar'); %> 
     </header>
+
     <main class="main_inscrito">  
         <section class="sec">
-            <img src="/imagens/eventobanner.png" alt="Banner do evento" class="banner">
+            <img src="/imagens/eventobanner.png" alt="Banner do evento" class="banner" />
             <article class="info_organizador">
                 <h1>Sua inscrição foi bem sucedida!</h1>
-                <p>Parabéns! Sua inscrição para o evento foi realizada com sucesso.
-                <br><!--<br>-->
-                Estamos empolgados em tê-lo(a) conosco!
-                <br><!--<br> -->
-                Você conseguirá acompanhar em tempo real as estatísticas do seu evento.</p>
-                <button class="btn_solicitacao" onclick="location.href='/home'">Votar para o Início</button>
-                <button class="btn_solicitacao" onclick="location.href='https://www.netshoes.com.br/netshoes-run?gad_source=1&gclid=EAIaIQobChMI6sfmirXNiAMVdUBIAB1bKC4LEAAYASAAEgJyA_D_BwE&gclsrc=aw.ds'" target="_blank">Informações do evento</button>
+                <p>
+                    Parabéns! Sua inscrição para o evento foi realizada com sucesso.<br>
+                    Estamos empolgados em tê-lo(a) conosco!<br>
+                    Você conseguirá acompanhar em tempo real as estatísticas do seu evento.
+                </p>
+                <div class="btn_group">
+                    <button class="btn_solicitacao btn_primary" onclick="location.href='/home'">Voltar para o Início</button>
+                    <button class="btn_solicitacao btn_secondary" onclick="window.open('https://www.netshoes.com.br/netshoes-run?gad_source=1&gclid=EAIaIQobChMI6sfmirXNiAMVdUBIAB1bKC4LEAAYASAAEgJyA_D_BwE&gclsrc=aw.ds', '_blank')">Informações do evento</button>
+                </div>
             </article>
         </section>
     </main>
+    
+
     <%- include('../partials/footer'); %>   
 </body>
 </html>

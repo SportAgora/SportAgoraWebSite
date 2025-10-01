@@ -1,0 +1,135 @@
+  /* Container principal centralizado */
+  .main_assinatura {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--background), var(--erro_claro));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+  }
+
+  /* Card */
+  .sec {
+      background: var(--erro);
+      border-radius: 20px;
+      padding: 30px 40px 40px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 12px 30px rgba(129, 34, 34, 0.7);
+      color: var(--branco);
+      text-align: center;
+      animation: fadeInUp 0.7s ease forwards;
+      border: 3px solid var(--erro_escuro);
+  }
+
+  /* Ícone X animado */
+  .icon_check {
+      font-size: 6rem;
+      color: var(--complementar);
+      margin-bottom: 20px;
+      animation: popIn 0.6s ease forwards;
+      filter: drop-shadow(0 0 6px var(--complementar));
+  }
+
+  /* Título */
+  .info_assinatura h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.35);
+  }
+
+  /* Parágrafo */
+  .info_assinatura p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: var(--branco);
+  }
+
+  /* Botões - container para alinhamento responsivo */
+  .btn_group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+  }
+
+  /* Botões */
+  .btn_solicitacao {
+      padding: 14px 40px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      user-select: none;
+      min-width: 220px;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+  }
+
+  /* Botão Primário */
+  .btn_primary {
+      background: var(--complementar);
+      color: var(--preto);
+      box-shadow: 0 6px 20px var(--complementar2);
+  }
+
+  .btn_primary:hover {
+      background: var(--complementar2);
+      box-shadow: 0 8px 25px var(--complementar2);
+      transform: translateY(-4px);
+  }
+
+  /* Botão Secundário */
+  .btn_secondary {
+      background: var(--principal_claro);
+      color: var(--branco);
+      box-shadow: 0 6px 20px var(--principal_escura);
+  }
+
+  .btn_secondary:hover {
+      background: var(--principal_escura);
+      box-shadow: 0 8px 25px var(--principal_escura);
+      transform: translateY(-4px);
+  }
+
+  /* Animações */
+  @keyframes fadeInUp {
+      0% {
+          opacity: 0;
+          transform: translateY(30px);
+      }
+      100% {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+
+  @keyframes popIn {
+      0% {
+          opacity: 0;
+          transform: scale(0.5);
+      }
+      100% {
+          opacity: 1;
+          transform: scale(1);
+      }
+  }
+
+  /* Responsividade */
+  @media (max-width: 700px) {
+      .sec {
+          padding: 25px 20px 30px;
+      }
+      .btn_solicitacao {
+          min-width: 100%;
+      }
+      .btn_group {
+          flex-direction: column;
+          gap: 15px;
+      }
+  }

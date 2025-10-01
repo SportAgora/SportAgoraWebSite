@@ -24,6 +24,8 @@
     --a: #272727;
 
     --principal_claro_transparente: #b8343d93;
+    --erro_claro: #f28b82;
+    --erro_escuro: #b33939;
 }   
 
 .link-post {
@@ -830,15 +832,26 @@ a {
         display: none; 
     }
 
+    .badge-notificacao-bolinha {
+        position: absolute;
+        top: -3px;
+        right: -2px;
+        width: 10px;
+        height: 10px;
+        background-color: var(--complementar);
+        border-radius: 50%;
+        display: none; /* Oculto por padrão */
+        z-index: 20;
+    }
+    
+
       .texto-claro-escuro {
         color: white;
         font-family: "Montserrat", sans-serif;
         font-size: 1rem;
         font-weight: 600;
-        margin-left: 1px;
+        margin-left: 5px;
       }
-
-
 
   .dark-mode-button:hover,
   .dark-mode-button:active {

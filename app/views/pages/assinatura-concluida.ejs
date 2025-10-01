@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assinatura Concluída</title>
+    <link rel="stylesheet" href="/css/assinatura-fucionou.css">
+    <link rel="icon" href="imagens/SportAgora.png">
+</head>
+
+<body>
+ <header>
+    <%- include('../partials/navbar'); %> 
+    </header>
+
+
+    <main class="main_assinatura">
+        <section class="sec">
+          <div class="info_assinatura">
+            <div class="icon_check" aria-hidden="true">✔️</div>
+            <h1>Assinatura concluída com sucesso!</h1>
+            <p>
+              Obrigado por assinar nosso serviço.<br>
+              Agora você tem acesso a todos os benefícios exclusivos.<br>
+              Aproveite ao máximo sua experiência!
+            </p>
+            <div class="btn_group">
+              <button class="btn_solicitacao btn_primary" onclick="location.href='/home'">Voltar para o Início</button>
+              <button class="btn_solicitacao btn_secondary" onclick="location.href='/minha-conta'">Minha Conta</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+    <%- include('../partials/footer'); %>   
+</body>
+</html>

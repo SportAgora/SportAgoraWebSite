@@ -137,3 +137,18 @@ function verNotificacoes() {
 
 // Chamada inicial ao carregar a página
 document.addEventListener('DOMContentLoaded', atualizarBadge);
+
+function mostrarBadgeNotificacao(temNotificacoesNovas) {
+  const badge = document.getElementById("notificacao-badge1");
+  if (temNotificacoesNovas) {
+      badge.style.display = "block";
+  } else {
+      badge.style.display = "none";
+  }
+}
+
+// Exemplo: há notificações novas
+mostrarBadgeNotificacao(true);
+
+// Exemplo: notificações lidas
+// mostrarBadgeNotificacao(false);

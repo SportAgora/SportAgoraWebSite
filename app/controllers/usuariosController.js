@@ -83,7 +83,10 @@ module.exports = {
         process.env.SECRET_KEY
       );
 
+      console.log("criou o token")
+
       const html = require('../helpers/email-ativar-conta')(process.env.URL_BASE, token);
+      console.log("vonfigurou o email")
       enviarEmail(email, "Cadastro no site SportAgora", null, html, ()=>{
         return res.render("pages/registro", {
           erros: null,
@@ -96,8 +99,8 @@ module.exports = {
           dados: req.body
         });
       });
-     
-     
+      console.log("mandou o email")
+      return res.redirect('/login')
      
     } catch (e) {
       console.error(e);

@@ -47,7 +47,8 @@ module.exports = {
     try {
       const id = req.query.id;
       const evento = await PagsModel.buscarPagPorId(id);
-
+      const categoria = await PagsModel.buscarEsporteId(evento.esporte_id)
+        evento.esporte = categoria.esporte_nome
       if (!evento) {
         return res.render('pages/erro',
             {

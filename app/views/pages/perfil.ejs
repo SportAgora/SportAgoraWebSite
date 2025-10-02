@@ -47,7 +47,9 @@
                         </h2>
                         <h3>Plano - <%= usuario.tipo %></h3>
                     </aside>
+                    <% if(usuario.tipo.toLowerCase() == "organizador") {%>
                     <button class="btn-meuplano" onclick="location.href='/meu-plano'">Meu Plano</button>
+                    <%}%>
                 </article>  
             </article> 
             <article class="biografia">

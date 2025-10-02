@@ -30,7 +30,10 @@
         </section>
 
         <section class="box-direita">
-            <article class="evento-status gratis">tags</article>
+          <section class="abadicima">
+            <article class="evento-status gratis"><%= evento.esporte %></article>
+            <button class="btn-denunciar" onclick="abrirModalDenuncia()">Denunciar</button>
+            </section>
             <h2 class="nome-evento"><%=evento.evento_nome%></h2>
             <hr class="linha-separadora">
             <%
@@ -70,7 +73,11 @@
           <p class="nome-ingresso"><%= ingresso.ingresso_nome %></p>
           <p class="tipo-ingresso">Inteira</p>
         </section>
-        <section class="preco-ingresso">R$ <%= ingresso.ingresso_valor %></section>
+        <section class="preco-ingresso">
+          <%= Number(ingresso.ingresso_valor).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          }) %></section>
         <section class="controle-quantidade">
           <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_inteira', -1)">-</button>
           <span id="quantidade-<%= ingresso.ingresso_id %>_inteira">0</span>
@@ -85,7 +92,11 @@
             <p class="nome-ingresso"><%= ingresso.ingresso_nome %></p>
             <p class="tipo-ingresso">Meia</p>
           </section>
-          <section class="preco-ingresso">R$ <%= (ingresso.ingresso_valor / 2) %></section>
+          <%ingresso.ingresso_valor /= 2%>
+          <section class="preco-ingresso"><%= ingresso.ingresso_valor.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          }) %></section>
           <section class="controle-quantidade">
             <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_meia', -1)">-</button>
             <span id="quantidade-<%= ingresso.ingresso_id %>_meia">0</span>
@@ -128,6 +139,16 @@
             <p><strong>Data do Evento 2 </strong></p>
             <p><strong>Data do Evento 2 </strong> </p>
         </article>
+    </section>
+    <section id="modal-denuncia" class="modal-denuncia">
+      <aside class="modal-content-denuncia">
+        <h2>Denunciar Evento</h2>
+        <p>Tem certeza de que deseja denunciar este evento? Esta ação será analisada por nossa equipe.</p>
+        <section class="modal-buttons">
+          <button onclick="fecharModalDenuncia()" class="btn-cancelar">Cancelar</button>
+          <button onclick="confirmarModalDenuncia() " class="btn-confirmar">Confirmar denúncia</button>
+        </section>
+      </aside>
     </section>
 </main>
 

@@ -170,11 +170,6 @@ router.get('/notificacoes', function(req,res){
 })
 
 
-router.get('/meu-plano', function(req,res){
-    res.render('pages/meu-plano');  
-})
-
-
 router.get('/pagamento-evento', function(req,res){
     res.render('pages/pagamento-evento');  
 })
@@ -209,6 +204,11 @@ router.get("/assinatura/sucesso", verificarAutenticacao, assinaturaController.su
 router.get("/assinatura/erro", assinaturaController.erro);
 router.post("/assinatura/webhook", assinaturaController.webhook);
 
+router.get('/meu-plano', verificarAutenticacao,  function(req,res){
+    if (req.session.usuario.tipo == "organizador"){
+    res.render('pages/meu-plano');
+  } else res.redirect('/planos')
+})
 
 /* EVENTOS */
 

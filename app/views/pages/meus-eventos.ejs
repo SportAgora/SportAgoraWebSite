@@ -26,12 +26,12 @@
             <p class="event-subtitle">Acompanhe os eventos esportivos que você está organizando</p>
         </section>
         <section class="meio">
-            <h3 class="title-subs">Eventos Em Progresso</h3>
+            <h3 class="title-subs">Eventos</h3>
             <button class="btn-criarevento" onclick="location.href='/planos'">Criar Evento</button>
         </section>
         <section class="ingressos-event">
             <section class="evento-container">
-                <% if(eventos) { %>
+                <% if(eventos[0]) { %>
                     <% eventos.forEach(function(e) { 
                       let data = new Date(e.evento_data_hora);
                       let dia = String(data.getDate()).padStart(2, '0');
@@ -62,10 +62,10 @@
                 
                     <% }); %>
                     <% } else { %>
-                      <tr>
-                        <td colspan="5">Nenhum registro encontrado.</td>
-                      </tr>
-                    <% } %>
+                        <script type="text/javascript">
+                            window.location.href = "/criar-evento"
+                        </script>
+                   <% } %>
                 
             </section>
         </section>

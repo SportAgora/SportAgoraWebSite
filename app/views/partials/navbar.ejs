@@ -66,7 +66,7 @@
     </article>
 
 
-         <% if (usuario && usuario.tipo.toLowerCase() == "organizador") { %>
+         <% if (usuario && (usuario.tipo.toLowerCase() == "organizador" || usuario.tipo.toLowerCase() == "administrador")) { %>
             <button class="subscribe-button" onclick="location.href='/meus-eventos'"> Meus eventos</button>
             <% } else {%>
                 <button class="subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>
@@ -190,7 +190,7 @@
     <ul id="sugestoesMobile" class="painel-sugestoes oculto"></ul>
   </article>
 
-     <% if (usuario && usuario.tipo.toLowerCase() == "organizador") { %>
+     <% if (usuario && (usuario.tipo.toLowerCase() == "organizador" || usuario.tipo.toLowerCase() == "administrador")) { %>
         <button class="mobile-subscribe-button" onclick="location.href='/meus-eventos'"> Meus eventos</button>
     <% } else {%>
         <button class="mobile-subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>

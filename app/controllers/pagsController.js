@@ -26,6 +26,8 @@ module.exports = {
                     e.cidade = '';
                     e.estado = '';
                 }
+                let esporte = await PagsModel.buscarEsporteId(e.esporte_id)
+                e.esporte = esporte.esporte_nome
             }
 
             res.render('pages/home', {

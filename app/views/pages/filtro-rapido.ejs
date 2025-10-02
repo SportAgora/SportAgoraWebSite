@@ -30,7 +30,7 @@
   
     <!-- filtros -->
 
-    <main class="filter-box">
+    <!-- <main class="filter-box">
         <section class="filter-item">
             <span class="filter-label">Filtrar</span>
         </section>
@@ -64,7 +64,7 @@
             <input type="date" class="filter-date">
         </article>
     </article>
-</main>
+</main> -->
 
 <p class="event-filtros-p">Filtros rápidos</p>
 
@@ -86,7 +86,7 @@
     %>
       <section class="evento-box">
       <img src="<%= e.evento_foto %>" alt="Imagem do Evento" class="evento-img">
-      <article class="evento-status gratis">Grátis</article>
+      <article class="evento-status gratis"><%= filtro_usado.esporte_nome %></article>
       <h2 class="evento-nome"><%= e.evento_nome %></h2>
       <p class="evento-detalhes">  <%= e.cidade %>, <%= e.estado %><br><br><%= dataFormatada %></p>
       <button class="evento-btn" onclick="location.href='/evento?id=<%= e.evento_id %>'">Participar</button>

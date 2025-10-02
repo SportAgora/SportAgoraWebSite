@@ -66,10 +66,10 @@
     </article>
 
 
-         <% if (usuario && usuario.tipo.toLowerCase() == "comum") { %>
-            <button class="subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>
+         <% if (usuario && usuario.tipo.toLowerCase() == "organizador") { %>
+            <button class="subscribe-button" onclick="location.href='/meus-eventos'"> Meus eventos</button>
             <% } else {%>
-                <button class="subscribe-button" onclick="location.href='/meus-eventos'"> Meus eventos</button>
+                <button class="subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>
         <% }%>
 
             <button class="login-button">
@@ -190,10 +190,10 @@
     <ul id="sugestoesMobile" class="painel-sugestoes oculto"></ul>
   </article>
 
-     <% if (usuario && usuario.tipo.toLowerCase() == "comum") { %>
-    <button class="subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>
+     <% if (usuario && usuario.tipo.toLowerCase() == "organizador") { %>
+        <button class="mobile-subscribe-button" onclick="location.href='/meus-eventos'"> Meus eventos</button>
     <% } else {%>
-        <button class="subscribe-button" onclick="location.href='/meus-eventos'"> Meus eventos</button>
+        <button class="mobile-subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>
     <% }%>
 
 <script src="script.js"></script>

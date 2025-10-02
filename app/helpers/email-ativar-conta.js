@@ -1,4 +1,4 @@
-module.exports = (url, token)=>{
+module.exports = (url, token, nome)=>{
 
 return ` <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +72,7 @@ return ` <!DOCTYPE html>
 <body>
     <section class="container">
         <article class="header">
-            <h1>Bem-vindo(a) [NOME_USUARIO]!</h1>
+            <h1>Bem-vindo(a) ${nome}!</h1>
             <img src="${url}/imagens/SportAgora.png" alt="Logo" class="logo">
         </article>
         <article class="content">

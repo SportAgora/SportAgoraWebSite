@@ -74,7 +74,7 @@
     <!-- Carrosel -->
    <%- include('../partials/filtros') %>
 
-    <form method="POST" action=>
+    <!-- <form method="POST" action=>
     <section class="filter-box">
       <article class="filter-item">
           <span class="filter-label">Filtros</span>
@@ -104,7 +104,7 @@
         <input type="submit" value="Filtrar" class="filter-button">
       </article>
   </section>
-  </form>
+  </form> -->
 
   
 
@@ -121,7 +121,7 @@
     %>
       <section class="evento-box">
       <img src="<%= e.evento_foto %>" alt="Imagem do Evento" class="evento-img">
-      <article class="evento-status gratis">Grátis</article>
+      <article class="evento-status gratis"><%= e.esporte%></article>
       <h2 class="evento-nome"><%= e.evento_nome %></h2>
       <p class="evento-detalhes">  <%= e.cidade %>, <%= e.estado %><br><br><%= dataFormatada %></p>
       <button class="evento-btn" onclick="location.href='/evento?id=<%= e.evento_id %>'">Participar</button>

@@ -83,7 +83,10 @@ module.exports = {
         process.env.SECRET_KEY
       );
 
-      const html = require('../helpers/email-ativar-conta')(process.env.URL_BASE, token);
+      console.log("criou o token")
+
+      const html = require('../helpers/email-ativar-conta')(process.env.URL_BASE, token, nome);
+      console.log("configurou o email")
       enviarEmail(email, "Cadastro no site SportAgora", null, html, ()=>{
         return res.render("pages/registro", {
           erros: null,
@@ -96,8 +99,8 @@ module.exports = {
           dados: req.body
         });
       });
-     
-     
+      console.log("mandou o email")
+      return res.redirect('/login')
      
     } catch (e) {
       console.error(e);
@@ -209,7 +212,7 @@ module.exports = {
       );
 
       //enviar e-mail com link usando o token
-      html = require("../helpers/email-reset-senha")(process.env.URL_BASE, token)
+      html = require("../helpers/email-reset-senha")(process.env.URL_BASE, token, user.usu_nome)
       enviarEmail(req.body.email, "Pedido de recuperação de senha", null, html, ()=>{
         return res.render("pages/recuperar-senha", {
           erros: null,

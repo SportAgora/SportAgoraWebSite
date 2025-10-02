@@ -166,4 +166,14 @@ module.exports = {
             throw e;
         }
     },
+    denunciarEvento: async (req,res) =>{
+        try{
+            const evento_id = req.query.id
+            
+
+        }catch(e){
+            console.error(e)
+            throw e;
+        }
+    }
 }

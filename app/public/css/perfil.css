@@ -410,7 +410,7 @@
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    color: var(--branco);
+    color: white;
     padding: 15px 30px;
     border-radius: 25px;
     cursor: pointer;
@@ -433,7 +433,7 @@
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    color: var(--branco);
+    color: white;
     padding: 15px 30px;
     border-radius: 25px;
     cursor: pointer;

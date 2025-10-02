@@ -31,7 +31,7 @@
     margin-bottom: 60px;
 }
 .container5 a {
-    color: var(--principal);
+    color: var(--principal_claro);
 }
 
 .container6 {
@@ -51,7 +51,7 @@
     margin-bottom: 60px;
 }
 .container6 a {
-    color: var(--principal);
+    color: var(--principal_claro);
 }
 
 .container5 form {
@@ -106,6 +106,7 @@
     width: 210%;
     font-size: 20px;
     background-color: var(--background);
+    color: var(--preto);
     margin-left: 80px;
     border-radius: 7px 7px 0px 0px;
 }
@@ -136,7 +137,7 @@
 
 #enviar_login {
     background: var(--principal);
-    color: var(--branco);
+    color: white;
     border-radius: 15px;
     width: 215%;
     border: none;
@@ -149,7 +150,7 @@
 }
 #enviar_registrar {
     background: var(--principal);
-    color: var(--branco);
+    color: white;
     border-radius: 30px;
     width: 150%;
     border: none;

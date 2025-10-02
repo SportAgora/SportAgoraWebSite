@@ -5,13 +5,7 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: process.env.EMAIL_USER, // Seu e-mail
         pass: process.env.SECRET_KEY  // Sua senha, ou preferencialmente o senha configurada para App password
-    },
-    tls: {
-        secure: false,
-        ignoreTLS: true,
-        rejectUnauthorized: false, // ignorar certificado digital - APENAS EM DESENVOLVIMENTO
     }
-
 });
 
 function enviarEmail(to, subject, text=null, html = null, callback) {

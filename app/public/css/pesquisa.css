@@ -27,6 +27,13 @@
   padding-bottom: 250px;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.msg-erroimg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sem-resultados{

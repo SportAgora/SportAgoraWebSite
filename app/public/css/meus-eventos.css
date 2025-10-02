@@ -105,34 +105,34 @@
     transform: scale(1.05);
 }
 
-.ingressos-event {
+.evento-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
     gap: 20px;
     justify-content: start;
 }
 @media (min-width: 750px) {
-    .ingressos-event {
+    .evento-container {
         justify-content: center;
     }
 }
 @media(max-width: 925px){
-    .ingressos-event {
+    .evento-container {
         justify-content: center;
     }
 }
 @media(max-width: 600px){
-    .ingressos-event {
+    .evento-container {
         justify-content: center;
     }
 }
 @media (max-width: 1292px) {
-    .ingressos-event {
+    .evento-container {
         justify-content: center;
     }
 }
 @media (max-width: 768px) {
-    .ingressos-event {
+    .evento-container {
         justify-content: center;
     }
 }

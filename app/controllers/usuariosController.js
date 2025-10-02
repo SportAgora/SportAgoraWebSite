@@ -99,8 +99,17 @@ module.exports = {
           dados: req.body
         });
       });
-      console.log("mandou o email")
-      return res.redirect('/login')
+      console.log("não mandou o email")
+      return res.render("pages/registro", {
+          erros: null,
+          dadosNotificacao: {
+            titulo: "Ops!",
+            mensagem: "Os servidores do email estão fora do ar!<br>"+
+            "Tente novamente mais tarde",
+            tipo: "error",
+          },
+          dados: req.body
+        });
      
     } catch (e) {
       console.error(e);

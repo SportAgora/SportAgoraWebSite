@@ -125,8 +125,6 @@
     </button>
 
     <% } %>
-    <hr>
-    <button class="panel-button" onclick="location.href='/login'">Anuncie seu evento</button>   
 </aside>
 
 <!-- mobile -->
@@ -139,11 +137,7 @@
     <button class="mobile-nav-button" onclick="location.href='/pratique'">
         <span class="texto-claro-escuro" id="modoTexto">Pratique</span>
     </button>
-    <hr>
-    <button class="mobile-nav-button" onclick="location.href='/login'">
-        <span class="texto-claro-escuro" id="modoTexto">Anuncie Seu Evento</span>
-    </button>
-    <hr>    
+    <hr>  
     <button id="toggleDarkMode" class="dark-mode-button-mobile" onclick="toggleMode()" title="Alternar modo claro/escuro">
         <div class="icon-wrapper">
           <img src="/imagens/sol-brilho.png" alt="modo claro" class="brilho-icon light-icon">
@@ -196,9 +190,11 @@
     <ul id="sugestoesMobile" class="painel-sugestoes oculto"></ul>
   </article>
 
-<section class="mobile-assinatura">
-    <button class="mobile-subscribe-button" onclick="location.href='/planos'">Assine Sport+</button>
-</section>
+     <% if (usuario && usuario.tipo.toLowerCase() == "comum") { %>
+    <button class="subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>
+    <% } else {%>
+        <button class="subscribe-button" onclick="location.href='/meus-eventos'"> Meus eventos</button>
+    <% }%>
 
 <script src="script.js"></script>
 

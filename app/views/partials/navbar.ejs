@@ -66,8 +66,11 @@
     </article>
 
 
-
+         <% if (usuario && usuario.tipo.toLowerCase() == "comum") { %>
             <button class="subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>
+            <% } else {%>
+                <button class="subscribe-button" onclick="location.href='/meus-eventos'"> Meus eventos</button>
+        <% }%>
 
             <button class="login-button">
                 <% if (usuario) { %>

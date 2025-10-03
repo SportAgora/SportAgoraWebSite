@@ -142,12 +142,15 @@
     </section>
     <section id="modal-denuncia" class="modal-denuncia">
       <aside class="modal-content-denuncia">
+        <form method="POST" action="/denunciar-evento?id=<%=evento.evento_id%>" id="denuncia-form">
         <h2>Denunciar Evento</h2>
         <p>Tem certeza de que deseja denunciar este evento? Esta ação será analisada por nossa equipe.</p>
+        <input type='text' id="denuncia_desc" name="denuncia_desc" value="" placeholder="Descreva o motivo da denúncia">
         <section class="modal-buttons">
           <button onclick="fecharModalDenuncia()" class="btn-cancelar">Cancelar</button>
           <button onclick="confirmarModalDenuncia() " class="btn-confirmar">Confirmar denúncia</button>
         </section>
+        </form>
       </aside>
     </section>
 </main>

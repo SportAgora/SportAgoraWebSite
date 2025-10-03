@@ -181,19 +181,27 @@ const AdmModel = {
   EventosListarComPaginacao: async (offset, limite) => {
     try {
       // Consulta para obter os usuários com paginação
-      const queryEventos = `
-        SELECT * FROM eventos
-        WHERE evento_ativo = 1
-        ORDER BY evento_data_publicacao
-        LIMIT ? OFFSET ?
-
-      `;
+      const queryEventos = 
+        `SELECT 
+            e.evento_id,
+            e.evento_nome,
+            e.evento_descricao,
+            e.evento_data_inicio,
+            e.evento_data_fim,
+            e.evento_data_hora,
+            s.esporte_nome,
+            COUNT(d.den_id) AS denuncias_count
+        FROM eventos e
+        LEFT JOIN esporte s ON e.esporte_id = s.esporte_id
+        LEFT JOIN denuncia d ON e.evento_id = d.den_evento_id
+        GROUP BY e.evento_id
+        LIMIT ?, ?`;
      
-      // Consulta para obter o total de usuários
+      // Consulta para obter o total de eventos
       const queryTotal = "SELECT COUNT(*) as total FROM eventos";
      
       // Executar as consultas
-      const [eventos] = await pool.query(queryEventos, [limite, offset]);
+      const [eventos] = await pool.query(queryEventos, [offset, limite]);
       const [totalResult] = await pool.query(queryTotal);
      
       return {

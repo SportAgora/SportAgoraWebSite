@@ -1,7 +1,4 @@
 const pool = require("../../config/pool-conexoes");
-const moment = require("moment");
-const bcrypt = require("bcryptjs");
-const { EsportFindAll } = require("./model-organizador");
 
 const PaginaModel = {
     EventosListarComPaginacao: async (offset, limite) => {
@@ -119,8 +116,33 @@ const PaginaModel = {
     console.error("Erro ao buscar eventos:", error);
     throw error;
   }
-}
-  
+},
+  verificarDenuncia: async (evento, user) => {
+    try{
+      const query = `
+        SELECT * FROM denuncia
+        WHERE den_evento_id = ? AND den_usuario_id = ?
+      `;
+      const [rows] = await pool.query(query, [evento, user]);
+      return rows.length > 0;
+    } catch(error){
+      console.error("Erro ao verificar denúncia:", error);
+      throw error;
+    }
+  },
+  criarDenuncia: async (evento, user, desc) => {
+    try{
+      const query = `
+        INSERT INTO denuncia (den_usuario_id, den_evento_id, den_descricao)
+        VALUES (?, ?, ?)
+      `;
+      const [result] = await pool.query(query, [user, evento, desc]);
+      return result.insertId;
+    } catch(error){
+      console.error("Erro ao registrar denúncia:", error);
+      throw error;
+    }
+  }
 }
 
 module.exports = PaginaModel;

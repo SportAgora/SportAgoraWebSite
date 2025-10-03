@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function confirmarModalDenuncia() {
     document.getElementById('modal-denuncia').style.display = 'none';
-    window.alert('Denúncia enviada para nossa equipe. O evento será analizado!');
+    document.getElementById('denuncia-form').submit();
   }
 
   // Fechar ao clicar fora do conteúdo

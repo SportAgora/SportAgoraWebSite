@@ -134,12 +134,12 @@
                 <thead>
                     <tr>
                         <th>Nome do Evento</th>
-                        <th>Assunto</th>
                         <th>Categoria</th>
                         <th>Data incio</th>
                         <th>Horario</th>
                         <th>Data término</th>
-                        <th>Descrição</th>            
+                        <th>Descrição</th>     
+                        <th>Denúncias</th>       
                     </tr>
                 </thead>
                 <tbody>
@@ -149,12 +149,12 @@
                           <td class="limite">
                             <a href="/evento?id=<%= evento.evento_id %>"><%= evento.evento_nome %></a>
                           </td>
-                          <td class="limite"><%= evento.evento_nome %></td>
-                          <td class="limite"><%= evento.esporte_id %></td>
+                          <td class="limite"><%= evento.esporte_nome %></td>
                           <td class="limite"><%= new Date(evento.evento_data_inicio).toLocaleDateString("pt-BR") %></td>
                           <td class="limite"><%= new Date(evento.evento_data_hora).toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' }) %></td>
                           <td class="limite"><%= new Date(evento.evento_data_fim).toLocaleDateString("pt-BR") %></td>
                           <td class="limite"><%= evento.evento_descricao.length > 80 ? evento.evento_descricao.substring(0, 80) + '...' : evento.evento_descricao %></td>
+                          <td class="limite"><%= evento.denuncias_count %></td>
                         </tr>
                       <% }); %>
                     <% } else { %>

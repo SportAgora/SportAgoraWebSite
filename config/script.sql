@@ -112,6 +112,17 @@ CREATE TABLE endereco_prat (
     FOREIGN KEY (pratica_id) REFERENCES pratica_esportivas(pratica_id)
 );
 
+CREATE TABLE denuncia (
+    den_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    den_usuario_id INT UNSIGNED NOT NULL,         -- usuário que fez a denúncia
+    den_evento_id INT UNSIGNED NOT NULL,          -- evento relacionado
+    den_descricao TEXT NOT NULL,         -- descrição escrita pelo usuário
+    den_status ENUM('pendente','análise','resolvido') DEFAULT 'pendente',
+    den_data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (den_usuario_id) REFERENCES usuario(usu_id),
+    FOREIGN KEY (den_evento_id) REFERENCES eventos(evento_id)
+);
+
 INSERT INTO usuario (
     usu_email,
     usu_nome,

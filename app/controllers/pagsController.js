@@ -169,9 +169,23 @@ module.exports = {
     denunciarEvento: async (req,res) =>{
         try{
             const evento_id = req.query.id
-            
+            const user = req.session.usuario.id;
+            const desc = req.body.denuncia_desc;
+            const evento = await PagsModel.buscarPagPorId(evento_id);
+
+            if (user === evento.usuario_id){
+                return res.redirect(`/evento?id=${evento_id}`);
+            }
+
+            const ja_denunciou = await PagsModel.verificarDenuncia(evento_id, user);
+            if(ja_denunciou){
+                return res.redirect(`/evento?id=${evento_id}`);
+            }
+            await PagsModel.criarDenuncia(evento_id,user, desc);
+            return res.redirect(`/evento?id=${evento_id}`);
 
         }catch(e){
+            res.redirect('pages/erro')
             console.error(e)
             throw e;
         }

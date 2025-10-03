@@ -227,4 +227,8 @@ router.get('/evento', (req, res) => {
   pagsController.visualizarEvento(req, res);
 });
 
+router.post('/denunciar-evento', verificarAutenticacao, (req,res) => {
+   pagsController.denunciarEvento(req,res);
+});
+
 module.exports = router;

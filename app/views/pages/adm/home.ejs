@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADM Sport Agora</title>
+    <title>ADM Sport Agora </title>
     <link rel="stylesheet" href="/css/adm/styles.css">
     <link rel="stylesheet" href="/css/adm/home.css">
     <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="icon" href="/imagens/SportAgora.png">
 </head>
 <body>
     <%- include('../../partials/adm_navbar'); %>
     <main>
-        <h1 class="tituloLogo">SportAgora</h1>
+        <section class="logo-area">
+            <img src="/imagens/SportAgora.png" alt="Logo Sport Agora" class="home-logo">
+            <h1 class="tituloLogo">SportAgora</h1>
+        </section>
         <section class="botoesHome">
-            <a href="/adm/buscar_usuario"><button class="botaohome">Pesquisar Usuarios</button></a>
+            <a href="/adm/usuarios"><button class="botaohome">Pesquisar Usuarios</button></a>
             <a href="/adm/eventos"><button class="botaohome">Pesquisar Eventos</button></a>
         </section>
     </main>

@@ -26,7 +26,7 @@
     --principal_claro_transparente: #b8343d93;
 }
 
-body {
+/* body {
     font-family: Arial, sans-serif;
     background-color: var(--background);
     margin: 0;
@@ -153,7 +153,7 @@ strong {
 }
 
 /* sla */
-
+/*
 .endereco {
     margin-top: 20px;
     padding: 15px;
@@ -208,7 +208,7 @@ strong {
     background-color: var(--principal_escura);
 }
 
-/* sla dnv */
+
 
 .postagens {
     margin-top: 20px;
@@ -251,8 +251,200 @@ strong {
 }
 
 .limite {
-    max-width: 150px; /* ajuste como quiser */
+    max-width: 150px; 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+  } */
+
+  .navbar {
+    background-color: var(--principal);
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo a {
+    color: var(--branco);
+    font-size: 1.8em;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: var(--complementar);
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-right: 25px;
+}
+
+.menu li a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.menu li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--complementar);
+    transition: width 0.3s ease;
+}
+
+.menu li a:hover,
+.menu li a.active {
+    color: var(--complementar);
+}
+
+.menu li a:hover::after,
+.menu li a.active::after {
+    width: 100%;
+}
+
+.user-menu {
+    list-style: none;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.user-menu > li {
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    list-style: none;
+}
+
+.user-menu > li:hover {
+    background-color: var(--principal_escura);
+}
+
+.user {
+    color: var(--branco);
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.user span {
+    margin-left: 5px;
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.user-menu ul {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza_claro);
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    min-width: 180px;
+    padding: 5px 0;
+    margin-top: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+
+.user-menu > li:hover > ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-menu li a {
+    text-decoration: none;
+    color: var(--preto);
+    padding: 10px 15px;
+    display: block;
+    font-weight: 400;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.user-menu li a:hover {
+    background-color: var(--background);
+    color: var(--principal_escura);
+}
+
+.user-menu > li:hover .user span {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 850px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+
+    .menu {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .menu ul {
+        justify-content: space-around;
+    }
+
+    .menu li {
+        margin-right: 0;
+    }
+
+    .user-menu {
+        position: absolute;
+        top: 5px;
+        right: 20px;
+    }
+
+    .user-menu ul {
+        right: 0;
+        left: auto;
+    }
+}
+
+.fixarRodape {
+    width: 100%;
+    background-color: var(--principal_escura);
+    color: var(--branco);
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.85em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.fixarRodape p {
+    margin: 0;
+    padding: 0;
+}

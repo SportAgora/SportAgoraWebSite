@@ -1,4 +1,4 @@
-.evento {
+/* .evento {
     margin-top: 20px;
     padding: 15px;
     background-color: var(--branco);
@@ -41,8 +41,8 @@
 .evento-tabela td input[type="text"]:focus {
     border: 0;
     outline: none;
-    border: 1px solid var(--branco); /* Cor verde */
-    box-shadow: 0 0 1px rgba(192, 40, 40, 0.5); /* Sombra suave */
+    border: 1px solid var(--branco);
+    box-shadow: 0 0 1px rgba(192, 40, 40, 0.5); 
 }
 
 .evento-tabela td a {
@@ -77,7 +77,7 @@
     background-color: var(--principal_escura);
 }
 
-/* aaaaa */
+
 
 .insertTable{
     background-color: var(--branco);
@@ -148,7 +148,7 @@
     user-select: none;
   }
   
-  /* Hide the browser's default checkbox */
+
   .esporteTopico input {
     position: absolute;
     opacity: 0;
@@ -157,7 +157,7 @@
     width: 0;
   }
   
-  /* Create a custom checkbox */
+
   .checkmark {
     position: absolute;
     top: 0;
@@ -167,29 +167,29 @@
     background-color: var(--branco);
   }
   
-  /* On mouse-over, add a grey background color */
+
   .esporteTopico:hover input ~ .checkmark {
     background-color: var(--branco);
   }
   
-  /* When the checkbox is checked, add a blue background */
+
   .esporteTopico input:checked ~ .checkmark {
     background-color: var(--principal);
   }
   
-  /* Create the checkmark/indicator (hidden when not checked) */
+
   .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
   
-  /* Show the checkmark when checked */
+
   .esporteTopico input:checked ~ .checkmark:after {
     display: block;
   }
   
-  /* Style the checkmark/indicator */
+
   .esporteTopico .checkmark:after {
     left: 6px;
     top: 2px;
@@ -202,5 +202,253 @@
     transform: rotate(45deg);
   }
 
+ *//* Estilos para a página ADM Eventos */
+/* Estilos para a página ADM Eventos */
+main {
+    padding: 30px;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    min-height: calc(100vh - 120px);
+    background-color: var(--background);
+}
 
-/* eita */
+.insertTable {
+    flex-basis: 300px;
+    flex-shrink: 0;
+    padding: 20px;
+    background-color: var(--branco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.evento {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: var(--branco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.esporte h2, .evento h2 {
+    color: var(--principal_escura);
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--cinza_claro);
+    padding-bottom: 5px;
+    font-weight: 700;
+}
+
+.esporte form {
+    margin-bottom: 20px;
+}
+
+.esporte input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--cinza_claro);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.esporte input[type="text"]:focus {
+    border-color: var(--principal);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--principal_claro_transparente);
+}
+
+.esporte input[type="file"] {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.esporte-btn, .esporte-btn-a {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+
+.esporte-btn {
+    background-color: var(--principal);
+    color: var(--branco);
+}
+
+.esporte-btn:hover {
+    background-color: var(--principal_escura);
+}
+
+.esporte-btn-a {
+    background-color: var(--erro);
+    color: var(--branco);
+}
+
+.esporte-btn-a:hover {
+    background-color: #6a1a1a;
+}
+
+.esporte hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--cinza_claro);
+    margin: 20px 0;
+}
+
+.esporteTopico {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.esporteTopico input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--background);
+    border: 1px solid var(--cinza_claro);
+    border-radius: 3px;
+}
+
+.esporteTopico:hover input ~ .checkmark {
+    background-color: var(--cinza_claro);
+}
+
+.esporteTopico input:checked ~ .checkmark {
+    background-color: var(--principal);
+    border-color: var(--principal);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.esporteTopico input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.esporteTopico .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.evento-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    table-layout: auto;
+}
+
+.evento-tabela th, .evento-tabela td {
+    border: 1px solid var(--cinza_claro);
+    padding: 10px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.evento-tabela th {
+    background-color: var(--principal_claro);
+    color: var(--branco);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85em;
+}
+
+.evento-tabela tbody tr:nth-child(even) {
+    background-color: var(--background);
+}
+
+.evento-tabela tbody tr:hover {
+    background-color: #d8dee3;
+}
+
+.evento-tabela a {
+    color: var(--principal_escura);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.evento-tabela a:hover {
+    text-decoration: underline;
+    color: var(--principal);
+}
+
+.limite {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#preview, #preview2 {
+    border: 1px solid var(--cinza_claro);
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.teste{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 30px;
+}
+@media (max-width: 1000px) {
+    main {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .insertTable {
+        flex-basis: auto;
+        width: 100%;
+    }
+
+    .evento {
+        width: 100%;
+        overflow-x: auto;
+        margin-bottom: 10%;
+    }
+
+    .evento-tabela {
+        min-width: 800px;
+    }
+}

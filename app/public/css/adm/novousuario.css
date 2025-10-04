@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     background-color: var(--branco);
     margin: 0;
@@ -61,4 +61,110 @@ form input[type="submit"]:hover {
     position: fixed;
     width: 100%;
     text-align: center;
+} */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); 
+    padding: 30px;
+    background-color: var(--background);
+}
+
+#formulario-usuario {
+    background-color: var(--branco);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+#formulario-usuario label:not([for^="usuario"]) {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--cinza_escuro);
+}
+
+#formulario-usuario input[type="text"],
+#formulario-usuario input[type="email"],
+#formulario-usuario input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cinza_claro);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    margin-bottom: 5px; /* Espaço antes do spanerro */
+    transition: border-color 0.3s ease;
+}
+
+#formulario-usuario input:focus {
+    border-color: var(--principal);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--principal_claro_transparente);
+}
+
+/* Estilo para a seção de Rádios */
+#formulario-usuario label[for="tipoUsuario"] {
+    font-size: 1.1em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--cinza_claro);
+    padding-bottom: 5px;
+}
+
+/* Estilo dos Rádios e seus Labels */
+#formulario-usuario input[type="radio"] {
+    margin-left: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+#formulario-usuario label[for^="usuario"] {
+    display: inline-block;
+    font-weight: 500;
+    color: var(--preto);
+    cursor: pointer;
+}
+
+/* Botão de Envio/Registro */
+.enviar-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    background-color: var(--principal);
+    color: var(--branco);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+
+.enviar-btn:hover {
+    background-color: var(--principal_escura);
+    transform: translateY(-1px);
+}
+
+/* Responsividade */
+@media (max-width: 550px) {
+    #formulario-usuario {
+        padding: 25px;
+        margin: 15px;
+    }
+
+    #formulario-usuario label[for^="usuario"] {
+        display: block;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    #formulario-usuario input[type="radio"] {
+        margin-left: 0;
+    }
 }

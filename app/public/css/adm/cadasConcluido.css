@@ -1,4 +1,4 @@
-.botoesCadasConcluido{
+/* .botoesCadasConcluido{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -7,5 +7,72 @@
         color: var(--principal);
         margin-top: 5px;
         font-size: 18px
+    }
+} */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); /* Ajusta a altura entre navbar e footer */
+    padding: 30px;
+    background-color: var(--background);
+    text-align: center;
+}
+
+.botoesCadasConcluido {
+    background-color: var(--branco);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Título de Sucesso */
+.botoesCadasConcluido h2 {
+    color: var(--principal); /* Vermelho para destaque */
+    font-size: 2.2em;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* Nome do Usuário */
+.botoesCadasConcluido h4 {
+    color: var(--preto);
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--cinza_claro);
+}
+
+/* Container dos botões */
+.botoesCadasConcluido aside {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.botoesCadasConcluido aside a {
+    text-decoration: none;
+    width: 100%;
+}
+
+/* Aproveita o estilo .botaohome de home.css */
+.botoesCadasConcluido .botaohome {
+    width: 100%;
+    /* Estilos adicionais ou de sobrescrita se necessário */
+    min-height: 50px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .botoesCadasConcluido {
+        padding: 30px 20px;
+    }
+
+    .botoesCadasConcluido h2 {
+        font-size: 1.8em;
     }
 }

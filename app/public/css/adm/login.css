@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     background-color: var(--branco);
     margin: 0;
@@ -65,4 +65,107 @@ body {
     font-size: 18px;
     color: var(--cinza_escuro);
     margin-bottom: 20px;
+} */
+
+/* Estilos específicos para a página de Login Administrativo */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--background);
+    margin: 0;
+}
+
+.login-container {
+    background-color: var(--branco);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Título superior (Banner) */
+.banner {
+    background-color: var(--principal_escura);
+    color: var(--branco);
+    padding: 10px 0;
+    margin: -40px -40px 30px -40px; /* Estende a cor sobre as bordas do container */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+/* Título principal (SportAgora) */
+.login-container h1:nth-of-type(2) {
+    color: var(--principal);
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--cinza_escuro);
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--cinza_claro);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: var(--principal);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--principal_claro_transparente);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: var(--principal);
+    color: var(--branco);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--principal_escura);
+    transform: translateY(-1px);
+}
+
+/* Link Voltar */
+.login-container a {
+    color: var(--cinza);
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.login-container a:hover {
+    color: var(--principal);
+    text-decoration: underline;
 }

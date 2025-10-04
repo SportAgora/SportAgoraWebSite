@@ -1,28 +1,95 @@
-a{
-    color: var(--complementar);
-}
-.botaohome {
-    background-color: var(--principal);
-    color: var(--branco); 
-    border: none;
-    padding: 40px 20px 40px 20px;
-    margin: 5px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer; 
-}
-.botaohome:hover {
-    background-color: var(--principal_escura);
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+    padding: 20px;
+    background-color: var(--background);
 }
 
-.fixarRodape {
-    bottom: 0;
-    position: fixed;
-    width: 100%;
-    text-align: center;
-}
-.botoesHome{
+.logo-area {
     display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+
+.home-logo {
+    width: 300px; 
+    height: auto;
+    margin-bottom: 10px; 
+}
+
+.tituloLogo {
+    font-size: 4em;
+    color: var(--principal);
+    margin-bottom: 0; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 700;
+}
+
+
+.botoesHome {
+    display: flex;
+    gap: 30px;
     justify-content: center;
-    
+    width: 100%;
+    max-width: 600px;
+}
+
+.botoesHome a {
+    text-decoration: none;
+    flex-grow: 1;
+}
+
+
+.botaohome {
+    width: 100%;
+    padding: 18px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--branco);
+    background-color: var(--principal);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+}
+
+.botaohome:hover {
+    background-color: var(--principal_escura);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.botaohome:active {
+    background-color: var(--principal_escura);
+    transform: translateY(0);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (max-width: 600px) {
+    .tituloLogo {
+        font-size: 3.5em;
+    }
+
+    .home-logo {
+        width: 230px;
+    }
+
+    .botoesHome {
+        flex-direction: column;
+        gap: 15px;
+        max-width: 90%;
+    }
+
+    .botaohome {
+        padding: 15px 20px;
+        font-size: 1em;
+    }
 }

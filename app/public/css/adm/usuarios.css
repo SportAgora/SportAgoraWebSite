@@ -1,4 +1,4 @@
-td button {
+/* td button {
     height: 100%;
     width: 100%;
 }
@@ -11,4 +11,201 @@ td button {
     font-size: 14px;
     border-radius: 5px;
     cursor: pointer; 
+} */
+
+/* BUSCAR  USUARIOS */
+ .buscarUso {
+    background-color: var(--branco);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.buscarUso h3 {
+    color: var(--principal_escura);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.imputis {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.imputis input[type="text"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid var(--cinza_claro);
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.imputis input[type="text"]:focus {
+    border-color: var(--principal);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--principal_claro_transparente);
+}
+
+.btnBuscar {
+    padding: 12px 25px;
+    background-color: var(--complementar);
+    color: var(--preto);
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnBuscar:hover {
+    background-color: var(--complementar2);
+    color: var(--branco);
+}
+
+@media (max-width: 600px) {
+    .imputis {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .imputis input[type="text"], .btnBuscar {
+        width: 100%;
+    }
+}
+
+main {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 120px);
+    background-color: var(--background);
+}
+
+/* Seção da Tabela de Usuários */
+.endereco {
+    background-color: var(--branco);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.endereco h2 {
+    color: var(--principal_escura);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--cinza_claro);
+    padding-bottom: 5px;
+    font-weight: 700;
+}
+
+/* Estilo da Tabela */
+.endereco-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: fixed; /* Ajuda a manter a largura das colunas consistente */
+}
+
+.endereco-tabela th, .endereco-tabela td {
+    border: 1px solid var(--cinza_claro);
+    padding: 12px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.endereco-tabela th {
+    background-color: var(--principal_claro);
+    color: var(--branco);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.endereco-tabela tbody tr:nth-child(even) {
+    background-color: var(--background);
+}
+
+.endereco-tabela tbody tr:hover {
+    background-color: #d8dee3;
+}
+
+/* Ações (Botões) */
+.endereco-tabela form {
+    margin: 0;
+    display: inline;
+}
+
+.endereco-tabela button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-width: 90px;
+}
+
+/* Botão Excluir */
+.endereco-tabela .excluir {
+    background-color: var(--erro);
+    color: var(--branco);
+}
+
+.endereco-tabela .excluir:hover {
+    background-color: #6a1a1a;
+}
+
+/* Botão Penalizar (simulando um alerta ou ação secundária) */
+.endereco-tabela button:not(.excluir) {
+    background-color: var(--cinza);
+    color: var(--branco);
+}
+
+.endereco-tabela button:not(.excluir):hover {
+    background-color: var(--cinza_escuro);
+}
+
+/* Botão Novo Usuário no rodapé da seção */
+.endereco-btn {
+    padding: 12px 20px;
+    background-color: var(--principal);
+    color: var(--branco);
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.endereco-btn:hover {
+    background-color: var(--principal_escura);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 800px) {
+    main {
+        padding: 15px;
+    }
+    
+    .endereco {
+        overflow-x: auto; /* Permite rolagem horizontal na tabela em telas menores */
+    }
+
+    .endereco-tabela {
+        min-width: 600px; /* Garante que o conteúdo da tabela seja legível */
+    }
 }

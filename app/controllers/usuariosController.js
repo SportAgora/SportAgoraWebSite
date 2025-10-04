@@ -525,7 +525,8 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
                     id: result.usu_id,
                     foto: result.usu_foto,
                     email: result.usu_email,
-                    banner: result.usu_banner
+                    banner: result.usu_banner,
+                    tipo: result.tipo
                   }
                 
                   

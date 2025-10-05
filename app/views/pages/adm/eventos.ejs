@@ -144,6 +144,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                  
                     <% if (dados.eventos && dados.eventos.length > 0) { %>
                       <% dados.eventos.forEach(function(evento) { %>
                         <tr>
@@ -155,7 +156,7 @@
                           <td class="limite"><%= new Date(evento.evento_data_hora).toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' }) %></td>
                           <td class="limite"><%= new Date(evento.evento_data_fim).toLocaleDateString("pt-BR") %></td>
                           <td class="limite"><%= evento.evento_descricao.length > 80 ? evento.evento_descricao.substring(0, 80) + '...' : evento.evento_descricao %></td>
-                          <td class="limite"><%= evento.denuncias_count %></td>
+                          <td class="limite"><a href="/adm/eventos/denuncias?id=<%=evento.evento_id%>"><%= evento.denuncias_count %></a></td>
                         </tr>
                       <% }); %>
                     <% } else { %>

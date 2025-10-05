@@ -19,12 +19,8 @@ router.get('/home',verificarAdm, function(req,res){
     res.render('pages/adm/home');  
 })
  
-router.get('/buscar_usuario', verificarAdm,function(req,res){
-  res.render('pages/adm/buscar_usuario');  
-}) 
-
-router.get('/teste', verificarAdm, function(req,res){
-  res.render('pages/adm/teste');  
+router.post('/buscar_usuario', verificarAdm,function(req,res){
+  admController.pesquisarUsuarios(req,res);
 }) 
 
 router.get('/usuarios', verificarAdm, function(req,res){
@@ -51,9 +47,13 @@ router.post('/apagar-esporte', verificarAdm,
   admController.apagarEsporte
 );
 
-router.get('/descricaoEvento', verificarAdm, function(req,res){
-  res.render('pages/adm/descricaoEvento');  
-}) 
+router.post('/eventos/denuncias/apagar', verificarAdm, function(req,res){
+  admController.apagarDenuncia(req,res);
+})
+
+router.get('/eventos/denuncias', verificarAdm, function(req,res){
+  admController.carregarDenuncias(req,res);
+})
 
 router.get('/', verificarAdm, function(req,res){
   res.redirect('/adm/home')

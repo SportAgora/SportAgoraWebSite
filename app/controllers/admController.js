@@ -71,7 +71,29 @@ module.exports = {
             paginador: {
                 pagina_atual: pagina,
                 total_paginas
-            }
+            },
+            pesquisa : ""
+            });
+        }catch(e){
+            console.error(e)
+            throw e;
+        }
+    },
+    pesquisarUsuarios: async (req,res) =>{
+        try{
+            const pagina = parseInt(req.query.pagina) || 1;
+            const limite = 10;
+            const offset = (pagina - 1) * limite;
+            const resultado = await AdmModel.UserListarComPaginacaoNome(req.body.pesquisa, offset, limite) 
+
+            const total_paginas = Math.ceil(resultado.total / limite);
+            res.render('pages/adm/usuarios', {
+            usuarios: resultado.usuarios,
+            paginador: {
+                pagina_atual: pagina,
+                total_paginas
+            },
+            pesquisa : req.body.pesquisa
             });
         }catch(e){
             console.error(e)
@@ -120,7 +142,7 @@ module.exports = {
             senha: senhaHash,
             foto: "imagens/usuarios/default_user.jpg",
             banner: "imagens/usuarios/default_background.jpg",
-            tipo: tipo == "adm" ? "administrador" : "comum"
+            tipo: tipo
           });
          
           const usuario = await AdmModel.UserFindByEmail(email);
@@ -253,5 +275,47 @@ module.exports = {
         return carregarEventosErro({titulo:"Esporte", mensagem: "Ocorreu um erro desconhecido ao apagar o esporte."},req,res);
       }
     },
-    
+    carregarDenuncias: async (req,res) =>{
+      try{
+          const evento_id = req.query.id || null;
+          const evento = evento_id ? await AdmModel.EventoFindId(evento_id) : null;
+          if (evento_id && !evento) {
+            return carregarEventosErro({titulo:"Denúncias", mensagem: "Evento não encontrado."},req,res);
+          }
+          const resultado = await AdmModel.DenunciasFindEventoId(evento_id)
+          console.log(resultado)
+          res.render('pages/adm/denuncias', {
+            evento,
+            denuncias: resultado,
+          });
+      } catch (e){
+        console.error(e)
+        return carregarEventosErro({titulo:"Denúncias", mensagem: "Ocorreu um erro desconhecido ao carregar as denúncias."},req,res);
+      }
+
+    },
+    apagarDenuncia: async (req,res) => {
+      console.log("chegou")
+      try{
+          
+          const den_id = req.query.den_id || null;
+          const apagar = await AdmModel.DenunciaFindId(den_id)
+          if (!apagar) {
+            return res.redirect('error')
+          }
+
+          const deletar = await AdmModel.DenunciaDelete(den_id)
+
+          const resultado = await AdmModel.DenunciasFindEventoId(req.query.id)
+          if (resultado != null) {
+            return res.redirect('/adm/eventos/denuncias?id=' + req.query.id)
+          } else {
+            return res.redirect('/adm/eventos')
+          }
+
+      } catch(e){
+        console.error(e)
+        return carregarEventosErro({titulo:"Denúncias", mensagem: "Ocorreu um erro desconhecido ao apagar a denúncia."},req,res);
+      }
+    }
 }

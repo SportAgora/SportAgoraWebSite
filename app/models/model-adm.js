@@ -51,7 +51,8 @@ const AdmModel = {
         perf_nome: nome,
         usu_foto:foto,
         usu_banner:banner,
-        tipo:tipo
+        tipo:tipo,
+        usu_status: 1 // Ativo por padrão
       };
  
       // Construir a query dinamicamente
@@ -153,10 +154,38 @@ const AdmModel = {
       `;
      
       // Consulta para obter o total de usuários
-      const queryTotal = "SELECT COUNT(*) as total FROM usuario";
+      const queryTotal = "SELECT COUNT(*) as total FROM usuario WHERE usu_status = 1";
      
       // Executar as consultas
       const [usuarios] = await pool.query(queryUsuarios, [limite, offset]);
+      const [totalResult] = await pool.query(queryTotal);
+     
+      return {
+        usuarios,
+        total: totalResult[0].total
+      };
+    } catch (error) {
+      console.error("Erro ao listar usuários:", error);
+      throw error;
+    }
+  },
+  UserListarComPaginacaoNome: async (nome,offset, limite) => {
+    try {
+      // Consulta para obter os usuários com paginação
+      const queryUsuarios = `
+        SELECT * FROM usuario
+        WHERE usu_status = 1 AND usu_nome LIKE ?
+        ORDER BY usu_nome
+        LIMIT ? OFFSET ?
+
+      `;
+     
+      // Consulta para obter o total de usuários
+      const queryTotal = "SELECT COUNT(*) as total FROM usuario WHERE usu_status = 1";
+
+      nome = `%${nome}%`
+      // Executar as consultas
+      const [usuarios] = await pool.query(queryUsuarios, [nome,limite, offset]);
       const [totalResult] = await pool.query(queryTotal);
      
       return {
@@ -238,40 +267,80 @@ const AdmModel = {
       throw error;
     }
   },
-      EsportFindAll: async () => {
-        try {
-          const query = "SELECT * FROM esporte";
-          const [rows] = await pool.query(query);
-          return rows
-        } catch (error) {
-          console.error("Erro ao buscar esporte:", error);
-          throw error;
-        }
-      },
-      EsportFindName: async (name) => {
-        try {
-          const query = "SELECT * FROM esporte WHERE esporte_nome = ?";
-          const [rows] = await pool.query(query, [name]);
-           return rows.length > 0 ? rows[0] : null; // retorna objeto ou null
-        } catch (error) {
-          console.error("Erro ao buscar esporte:", error);
-          throw error;
-        }
-      },
-      EsportDelete: async (ids) => {
-        try {
-          if (!Array.isArray(ids) || ids.length === 0) {
-            throw new Error("IDs inválidos para exclusão");
-          }
-          const placeholders = ids.map(() => '?').join(', ');
-          const query = `DELETE FROM esporte WHERE esporte_id IN (${placeholders})`;
-          const [result] = await pool.query(query, ids);
-          return result;
-        } catch (error) {
-          console.error("Erro ao excluir esportes:", error);
-          throw error;
-        }
+    EsportFindAll: async () => {
+      try {
+        const query = "SELECT * FROM esporte";
+        const [rows] = await pool.query(query);
+        return rows
+      } catch (error) {
+        console.error("Erro ao buscar esporte:", error);
+        throw error;
       }
+    },
+    EsportFindName: async (name) => {
+      try {
+        const query = "SELECT * FROM esporte WHERE esporte_nome = ?";
+        const [rows] = await pool.query(query, [name]);
+         return rows.length > 0 ? rows[0] : null; // retorna objeto ou null
+      } catch (error) {
+        console.error("Erro ao buscar esporte:", error);
+        throw error;
+      }
+    },
+    EsportDelete: async (ids) => {
+      try {
+        if (!Array.isArray(ids) || ids.length === 0) {
+          throw new Error("IDs inválidos para exclusão");
+        }
+        const placeholders = ids.map(() => '?').join(', ');
+        const query = `DELETE FROM esporte WHERE esporte_id IN (${placeholders})`;
+        const [result] = await pool.query(query, ids);
+        return result;
+      } catch (error) {
+        console.error("Erro ao excluir esportes:", error);
+        throw error;
+      }
+    },
+    EventoFindId: async (id) => {
+    try {
+      const query = "SELECT * FROM eventos WHERE evento_id = ?";
+      const [rows] = await pool.query(query, [id]);
+      return rows.length > 0 ? rows[0] : null;
+    } catch (error) {
+      console.error("Erro ao buscar evento por ID:", error);
+      throw error;
+    }
+    },
+    DenunciasFindEventoId: async (id) => {
+    try {
+      const query = "SELECT * FROM denuncia WHERE den_evento_id = ?";
+      const [rows] = await pool.query(query, [id]);
+      return rows.length > 0 ? rows : null;
+    } catch (error) {
+      console.error("Erro ao buscar denuncia por ID:", error);
+      throw error;
+    }
+    },
+    DenunciaFindId: async (id) => {
+    try {
+      const query = "SELECT * FROM denuncia WHERE den_id = ?";
+      const [rows] = await pool.query(query, [id]);
+      return rows.length > 0 ? rows : null;
+    } catch (error) {
+      console.error("Erro ao buscar denuncia por ID:", error);
+      throw error;
+    }
+    },
+    DenunciaDelete: async (id) => {
+      try {
+        const query = `DELETE FROM denuncia WHERE den_id = ?`;
+        const [result] = await pool.query(query, id);
+        return result;
+      } catch (error) {
+        console.error("Erro ao excluir denúncia:", error);
+        throw error;
+      }
+    }
 
 }
 

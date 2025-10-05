@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADM Sport Agora </title>
+    <link rel="stylesheet" href="/css/adm/styles.css">
+    <link rel="stylesheet" href="/css/adm/home.css">
+    <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="icon" href="/imagens/SportAgora.png">
+</head>
+<body>
+    <%- include('../../partials/adm_navbar'); %>
+    <main>
+        <p><%=evento.evento_nome%></p>
+        <section class="botoesHome">
+            <table class="endereco-tabela">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Descrição</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(denuncias) { %>
+                        <% denuncias.forEach(function(d) { %>
+                          <tr>
+                            <td><%= d.den_data %></td>
+                            <td><%= d.den_descricao %></td>
+                            <td><form action="/adm/eventos/denuncias/apagar?id=<%=evento.evento_id%>&den_id=<%=d.den_id%>" method="post">
+                                <input type="hidden" name="denuncia_id" value="<%= d.den_id %>">
+                                <button type="submit" class="btnApagar">Apagar</button>
+                            </form></td>
+                          </tr>
+                        <% }) %>
+                    <% } %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <%- include('../../partials/adm_footer'); %>
+</body>
+</html>

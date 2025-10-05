@@ -18,10 +18,10 @@
     <%- include('../../partials/adm_navbar'); %>
     <main>
             <section>
-                <form action="" class="buscarUso">
+                <form action="/adm/buscar_usuario" method="post" class="buscarUso">
                     <h3>Pesquisar Usuarios</h3>
                     <aside class="imputis">
-                        <input type="text" placeholder="Nome de usuario"/>
+                        <input type="text" name="pesquisa" value="<%=pesquisa%>" placeholder="Nome de usuario"/>
                         <button type="submit" class="btnBuscar">Buscar</button>
                     </aside>
                 </form>

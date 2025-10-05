@@ -10,7 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const id = span.id.replace('quantidade-', '');
     quantidades[id] = 0;
-    let preco = parseFloat(precoEl.innerText.replace('R$ ', '').replace(',', '.'));
+    let precoTexto = precoEl.textContent.trim()
+      .replace(/\s/g, '')        // remove espaços
+      .replace('R$', '')         // remove o símbolo
+      .replace('.', '')          // remove separador de milhar
+      .replace(',', '.');        // converte vírgula em ponto
+    let preco = parseFloat(precoTexto) || 0;
     precos[id] = preco;
   });
 

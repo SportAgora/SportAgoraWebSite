@@ -421,6 +421,9 @@ main {
     border-radius: 5px;
     display: block;
     margin-bottom: 15px;
+    max-width: 300px;
+    max-height: 300px;
+    margin-top: 10px;
 }
 
 .teste{

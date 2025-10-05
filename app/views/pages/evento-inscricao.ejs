@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Do Evento</title>
+    <link rel="stylesheet" href="/css/pagamento-evento.css">
+    <script defer src="/js/validacao-pagamento.js"></script>
+    <link rel="icon" href="imagens/SportAgora.png">
+</head>
+
+<body>
+        <%- include('../partials/navbar'); %> 
+
+    <main>
+        <section class="container">
+
+            <section class="box-esquerda">
+                <article class="box-dados">
+                    <h2>1. Informações dos Participantes</h2>
+                    
+                    <section class="usuario-info">
+                        <img src="<%=usuario.foto%>" alt="Foto do Usuário">
+                        <address>
+                            <p class="nome"><%=usuario.nome%></p>
+                            <p class="email"><%=usuario.email%></p>
+                        </address>
+                    </section>
+
+                    <form class="formulario" method="POST" action="/inscricao?id=<%=evento.evento_id%>">
+                        <input type="hidden" name="evento" value="<%= JSON.stringify(evento) %>">
+                        <input type="hidden" name="ingressos" value="<%= JSON.stringify(ingressos) %>">
+
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" value="<%=dados.telefone%>" required>
+
+                        <label for="cpf">CPF:</label>
+                        <input type="text" id="cpf" maxlength="14" name="cpf" value="<%=dados.cpf%>" required>
+
+                        <label for="nascimento">Data de Nascimento:</label>
+                        <input type="date" id="nascimento" name="nascimento" value="<%=dados.nascimento%>" required>
+
+                        <label for="genero">Gênero:</label>
+                        <select id="genero" name="genero" required>
+                            <option value="naoIdentificar"<%= dados.genero === 'naoIdentificar' ? 'selected' : '' %>>Não identificar</option>         
+                            <option value="feminino" <%= dados.genero === 'feminino' ? 'selected' : '' %>>Feminino</option>
+                            <option value="masculino" <%= dados.genero === 'masculino' ? 'selected' : '' %>>Masculino</option>
+
+                        </select>
+
+                        <input id="btnProximo" type="submit" value="Próximo">
+                    </form>
+                    <script>
+                        const form = document.querySelector('.formulario');
+                        const telefoneInput = document.getElementById('telefone');
+
+                        form.addEventListener('submit', function(e) {
+                        // Pega o valor do telefone e remove tudo que não for número
+                        let telefone = telefoneInput.value.replace(/\D/g, '');
+                        
+                        // Limita para os últimos 11 dígitos (DDD + número)
+                        if (telefone.length > 11) {
+                            telefone = telefone.slice(-11);
+                        }
+
+                        telefoneInput.value = telefone;
+                        });
+                    </script>
+                </article>
+
+                <!-- <article id="pagamento" class="box-dados hidden">
+                    <h2>Dados do Pagamento</h2>
+
+                    <label for="nomeCartao">Nome impresso no cartão:</label>
+                    <input type="text" id="nomeCartao" required>
+
+                    <article class="cartao-info">
+                        <input type="text" id="numeroCartao" placeholder="Número do cartão" required>
+                        <input type="text" id="validadeCartao" placeholder="MM/AA" required>
+                        <input type="text" id="codigoSeguranca" placeholder="CVV" required>
+                    </article>
+
+                    <button id="btnConfirmar" type="button" onclick="location.href='/inscrito'">Confirmar Pagamento</button>
+                </article> -->
+            </section>
+
+            <aside class="box-direita">
+                <section class="evento box-resumo">
+                    <img src="/imagens/eventobanner.png" alt="Foto do Evento">
+                    <header>
+                        <h3><%=evento.evento_nome%></h3>
+                        <p class="subtexto">
+                        <% 
+                        const data = new Date(evento.evento_data_hora);
+                        const dias = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+                        const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+                        const diaSemana = dias[data.getDay()];
+                        const dia = String(data.getDate()).padStart(2, "0");
+                        const mes = meses[data.getMonth()];
+                        const horas = String(data.getHours()).padStart(2, "0");
+                        const minutos = String(data.getMinutes()).padStart(2, "0");
+                        const formatada = `${diaSemana}, ${dia} de ${mes} - ${horas}:${minutos}`;
+                        %>
+                        <%= formatada %>
+                        </p>
+                    </header>
+                </section>
+
+                <section class="resumo-pedido box-resumo">
+                <% 
+                    let total = 0; 
+                    ingressos.forEach(ingresso => {
+                    const valorUnit = parseFloat(ingresso.ingresso_valor);
+                    const subtotal = valorUnit * ingresso.qtd;
+                    total += subtotal;
+                %>
+                    <article class="item">
+                    <span><%= ingresso.qtd %> <%= ingresso.ingresso_nome %></span>
+                    <span>R$ <%= subtotal.toFixed(2).replace('.', ',') %></span>
+                    </article>
+                    <p class="subtexto">(R$ <%= valorUnit.toFixed(2).replace('.', ',') %> cada)</p>
+                <% }) %>
+
+                <hr>
+
+                <div class="total">
+                    <strong>Total:</strong>
+                    <strong>R$ <%= total.toFixed(2).replace('.', ',') %></strong>
+                </div>
+                <p class="subtexto">(<%= ingressos.reduce((acc, i) => acc + i.qtd, 0) %> item<%= ingressos.reduce((acc, i) => acc + i.qtd, 0) > 1 ? 's' : '' %>)</p>
+                </section>
+            </aside>
+
+        </section>
+    </main>
+
+        <%- include('../partials/footer'); %>
+
+</body>
+</html>

@@ -81,12 +81,31 @@ const OrganizadorModel = {
 
     createIngresso: async (ingressos) => {
   try {
-    const ingressosFormatados = ingressos.nome.map((nome, index) => ({
-      ingresso_nome: nome,
-      ingresso_valor: parseFloat(ingressos.valor[index]),
-      ingresso_quantidade: parseInt(ingressos.quantidade[index], 10),
-      ingresso_meia: ingressos.meia[index] === 'true'
-    }));
+    const ingressosFormatados = [];
+
+    ingressos.nome.forEach((nome, index) => {
+      const valor = parseFloat(ingressos.valor[index]);
+      const quantidade = parseInt(ingressos.quantidade[index], 10);
+      const meia = ingressos.meia[index] === 'true';
+
+      // Sempre cria o ingresso inteiro
+      ingressosFormatados.push({
+        ingresso_nome: nome,
+        ingresso_valor: valor,
+        ingresso_quantidade: quantidade,
+        ingresso_meia: 0 // inteiro
+      });
+
+      // Se for meia, cria também o ingresso meia
+      if (meia) {
+        ingressosFormatados.push({
+          ingresso_nome: nome,
+          ingresso_valor: valor / 2,
+          ingresso_quantidade: quantidade,
+          ingresso_meia: 1 // meia
+        });
+      }
+    });
 
     if (ingressosFormatados.length === 0) return null;
 

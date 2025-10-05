@@ -148,13 +148,14 @@ if (cepInput) {
 
   // Remover ingresso
   document.querySelector('#ingresso-tabela').addEventListener('click', (e) => {
-    if (e.target.classList.contains('remover-ingresso')) {
-      const linha = e.target.closest('tr');
-      const ingressoId = linha.getAttribute("data-id");
-      linha.remove();
-      document.querySelectorAll(`#form-ingresso input[data-id="${ingressoId}"]`)
-        .forEach(input => input.remove());
-    }
+  if (e.target.classList.contains('remover-ingresso')) {
+    const linha = e.target.closest('tr');
+    const ingressoId = linha.getAttribute("data-id");
+    linha.remove();
+    // Corrigido: pegar os inputs dentro do form correto
+    document.querySelectorAll(`#evento-form input[data-id="${ingressoId}"]`)
+      .forEach(input => input.remove());
+  }
   });
 
 });

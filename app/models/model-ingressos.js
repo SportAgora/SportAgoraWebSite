@@ -43,5 +43,56 @@ module.exports= {
             console.error("Erro ao buscar ingressos:", error);
             throw error;
           }
-        }
+        },
+      criarInscricaoEvento: async (dados, ingressos) => {
+    try {
+      if (!ingressos || ingressos.length === 0) return [];
+
+      const query = `
+        INSERT INTO inscricao_evento 
+        (usuario_id, evento_id, ingresso_id, telefone, cpf, data_nasc, genero, pagamento_feito)
+        VALUES (?, ?, ?, ?, ?, ?, ?, false)
+      `;
+
+      const results = [];
+
+      for (const ing of ingressos) {
+        const qtd = ing.qtd || 1; // se não tiver qtd, assume 1
+      for (let i = 0; i < qtd; i++) {
+        const [result] = await pool.query(query, [
+          dados.usuario_id,
+          dados.evento_id,
+          ing.ingresso_id,
+          dados.telefone,
+          dados.cpf.replace(/\D/g, ""),
+          dados.nascimento,
+          dados.genero,
+        ]);
+        results.push(result.insertId);
+      }
+      }
+
+      return results;
+    } catch (error) {
+      console.error("Erro ao criar inscrições:", error);
+      throw error;
+    }
+  },
+  ativarInscricaoPagamento: async (inscricaoIds) => { 
+  try {
+    if (!inscricaoIds || inscricaoIds.length === 0) return;
+    const placeholders = inscricaoIds.map(() => '?').join(',');
+    const query = `
+      UPDATE inscricao_evento 
+      SET pagamento_feito = true 
+      WHERE inscricao_id IN (${placeholders})
+    `;
+    await pool.query(query, inscricaoIds);
+    return true;
+  } catch (error) {
+    console.error("Erro ao ativar inscrições:", error);
+    throw error;
+  }
+}
+
 }

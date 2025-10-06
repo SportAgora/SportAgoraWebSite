@@ -68,7 +68,38 @@
                 <button class="btn-criarevento" onclick="location.href='/meus-eventos'">Meus Eventos</button>
             </article>
             <section class="ingressos-event">
-                <%- include('../partials/eventoUsuario'); %>
+               <section class="eventos-container">
+                <% if (ingressos.length === 0) { %>
+                    <p>Você ainda não possui ingressos.</p>
+                <% } else { %>
+                    <% ingressos.forEach(ingresso => { %>
+                    <section class="evento-container">
+                        <article class="eventoInfo">
+                        <img src="<%= ingresso.evento_foto %>" alt="Imagem do Evento" class="evento-img">
+                        <h2 class="evento-nome"><%= ingresso.evento_nome %></h2>
+                        <p class="ingresso-tipo">
+                            Tipo de ingresso: <strong><%= ingresso.ingresso_meia ? 'Meia' : 'Inteira' %></strong>
+                        </p>
+                        <aside class="infoEvento">
+                            <aside>
+                            <i class="fi fi-rr-calendar"></i>
+                            <span id="evento-data"><%= new Date(ingresso.evento_data_hora).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' }) %></span>
+                            </aside>
+                            <aside>
+                            <i class="fi fi-rr-marker"></i>
+                            <span id="evento-local">Barueri, SP</span>
+                            </aside>
+                        </aside>
+                        <aside class="links">
+                            <h3><a href="#">Imprimir Ingresso</a></h3>
+                            <h3><a href="#" onclick="mandarEmail()">Fale com o produtor</a></h3>
+                            <h3><a href="#">Ver Pedido</a></h3>
+                        </aside>
+                        </article>
+                    </section>
+                    <% }) %>
+                <% } %>
+                </section>
             </section>
         </section>
     </main>

@@ -240,6 +240,5 @@ router.post('/inscricao', verificarAutenticacao, ingressoController.regrasValida
 
 router.get("/ingresso/sucesso", verificarAutenticacao, ingressoController.sucesso);
 router.get("/ingresso/erro", ingressoController.erro);
-router.post("/ingresso/webhook", ingressoController.webhook);
 
 module.exports = router;

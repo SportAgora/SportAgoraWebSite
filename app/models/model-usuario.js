@@ -164,6 +164,34 @@ const UsuarioModel = {
       throw error;
     }
   },
+  findIngressosInscritos: async (usuarioId) => {
+    try {
+  const query = `
+    SELECT 
+      i.ingresso_id,
+      i.ingresso_nome,
+      i.ingresso_valor,
+      i.ingresso_meia,        
+      e.evento_nome,
+      e.evento_foto,
+      e.evento_data_hora
+    FROM inscricao_evento ie
+    JOIN ingresso i ON ie.ingresso_id = i.ingresso_id
+    JOIN eventos e ON ie.evento_id = e.evento_id
+    WHERE ie.usuario_id = ?
+      AND ie.pagamento_feito = true
+  `;
+
+  const [rows] = await pool.query(query, [usuarioId]);
+
+  return rows;
+
+} catch(error){
+  console.error("Erro ao buscar ingressos inscritos:", error);
+  throw error;
+}
+  }
+
 
 
 };

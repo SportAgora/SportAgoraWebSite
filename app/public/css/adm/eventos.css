@@ -455,3 +455,68 @@ main {
         min-width: 800px;
     }
 }
+
+ .buscarEven {
+    background-color: var(--branco);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    width: 65%;
+    box-sizing: border-box;
+}
+
+.buscarEven h3 {
+    color: var(--principal_escura);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.imputis {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.imputis input[type="text"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid var(--cinza_claro);
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.imputis input[type="text"]:focus {
+    border-color: var(--principal);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--principal_claro_transparente);
+}
+
+.btnBuscar {
+    padding: 12px 25px;
+    background-color: var(--complementar);
+    color: var(--preto);
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnBuscar:hover {
+    background-color: var(--complementar2);
+    color: var(--branco);
+}
+
+@media (max-width: 600px) {
+    .imputis {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .imputis input[type="text"], .btnBuscar {
+        width: 100%;
+    }
+}

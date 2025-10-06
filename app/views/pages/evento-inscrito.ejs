@@ -14,7 +14,7 @@
 
     <main class="main_inscrito">  
         <section class="sec">
-            <img src="/imagens/eventobanner.png" alt="Banner do evento" class="banner" />
+            <img src="/<%=evento.evento_foto%>" alt="Banner do evento" class="banner" />
             <article class="info_organizador">
                 <h1>Sua inscrição foi bem sucedida!</h1>
                 <p>
@@ -24,7 +24,7 @@
                 </p>
                 <div class="btn_group">
                     <button class="btn_solicitacao btn_primary" onclick="location.href='/home'">Voltar para o Início</button>
-                    <button class="btn_solicitacao btn_secondary" onclick="window.open('https://www.netshoes.com.br/netshoes-run?gad_source=1&gclid=EAIaIQobChMI6sfmirXNiAMVdUBIAB1bKC4LEAAYASAAEgJyA_D_BwE&gclsrc=aw.ds', '_blank')">Informações do evento</button>
+                    <button class="btn_solicitacao btn_secondary" onclick="location.href='/evento?id=<%= evento.evento_id %>'">Informações do evento</button>
                 </div>
             </article>
         </section>

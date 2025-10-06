@@ -1,7 +1,7 @@
 const pool = require("../../config/pool-conexoes");
 
 module.exports= {
-    buscarPagPorId: async (id) => {
+        buscarPagPorId: async (id) => {
               try {
                 const query = "SELECT * FROM eventos WHERE evento_id = ? and evento_ativo = 1";
                 const [rows] = await pool.query(query, [id]);

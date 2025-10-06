@@ -33,7 +33,11 @@
         <section class="box-direita">
           <section class="abadicima">
             <article class="evento-status gratis"><%= evento.esporte %></article>
+            <% if (usuario_dono == false) {  %>
             <button class="btn-denunciar" onclick="abrirModalDenuncia()">Denunciar</button>
+            <% } else { %>
+            <button class="btn-editar" onclick="location.href='/editar-evento?id=<%=evento.evento_id%>'">Editar</button>
+            <%}%>
             </section>
             <h2 class="nome-evento"><%=evento.evento_nome%></h2>
             <hr class="linha-separadora">
@@ -65,45 +69,46 @@
             </section>
             <hr class="linha-separadora">
             <p class="data-limite">Inscrições até: <%=dataFormatadainscricao%> <%=horaMinutoinscricao%> ou até o limite de vagas.</p>
+            <% if (usuario_dono == false) {  %>
             <section class="ingressos-container">
-  <section class="ingressos">
-    <form method="POST" action="/inscricao-evento?id=<%=evento.evento_id%>" id="ingressos-form">
-      <input type="hidden" name="ingressosSelecionados" id="ingressosSelecionados">
-  <% if (evento.ingressos && evento.ingressos.length > 0) { %>
-    <% evento.ingressos.forEach(ingresso => { %>
-      <section class="ingresso-linha">
-        <section class="info-ingresso">
-          <p class="nome-ingresso"><%= ingresso.ingresso_nome %></p>
-          <p class="tipo-ingresso"><%= ingresso.ingresso_meia == 0 ? "Inteira" : "Meia"%></p>
-        </section>
-        <section class="preco-ingresso">
-          <%= Number(ingresso.ingresso_valor).toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-          }) %></section>
-        <section class="controle-quantidade">
-          <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_inteira', -1, event)">-</button>
-          <span id="quantidade-<%= ingresso.ingresso_id %>_inteira">0</span>
-          <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_inteira', 1, event)">+</button>
-        </section>
-      </section>
+            <section class="ingressos">
+            <form method="POST" action="/inscricao-evento?id=<%=evento.evento_id%>" id="ingressos-form">
+            <input type="hidden" name="ingressosSelecionados" id="ingressosSelecionados">
+            <% if (evento.ingressos && evento.ingressos.length > 0) { %>
+            <% evento.ingressos.forEach(ingresso => { %>
+              <section class="ingresso-linha">
+                <section class="info-ingresso">
+                  <p class="nome-ingresso"><%= ingresso.ingresso_nome %></p>
+                  <p class="tipo-ingresso"><%= ingresso.ingresso_meia == 0 ? "Inteira" : "Meia"%></p>
+                </section>
+                <section class="preco-ingresso">
+                  <%= Number(ingresso.ingresso_valor).toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                  }) %></section>
+                <section class="controle-quantidade">
+                  <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_inteira', -1, event)">-</button>
+                  <span id="quantidade-<%= ingresso.ingresso_id %>_inteira">0</span>
+                  <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_inteira', 1, event)">+</button>
+                </section>
+              </section>
 
-      <hr class="linha-separadora-ingresso">
-    <% }) %>
-  <% } else { %>
-    <p>Nenhum ingresso disponível para este evento.</p>
-  <% } %>
-</section>
+                  <hr class="linha-separadora-ingresso">
+                <% }) %>
+              <% } else { %>
+                <p>Nenhum ingresso disponível para este evento.</p>
+              <% } %>
+            </section>
 
-  <section class="total-ingressos">
-    Total: <span id="valor-total">R$ 00,00</span>
-  </section>
-</section>
-
+              <section class="total-ingressos">
+                Total: <span id="valor-total">R$ 00,00</span>
+              </section>
+            </section>
             <article class="botoes-inscricao">
                 <button class="btn-fale-conosco">Fale conosco</button>
-                <button id="btnInscrever" class="btn-inscrever-se">Inscrever-se</button>
+                <button id="btnInscrever" class="btn-inscrever-se" >Inscrever-se</button>
             </article>
+            <% } %>
         </section>
     </section>
     </form>
@@ -111,6 +116,19 @@
     
     <section class="relacionado-eventos">
         
+    </section>
+    <section id="modal-denuncia" class="modal-denuncia">
+      <aside class="modal-content-denuncia">
+        <form method="POST" action="/denunciar-evento?id=<%=evento.evento_id%>" id="denuncia-form">
+        <h2>Denunciar Evento</h2>
+        <p>Tem certeza de que deseja denunciar este evento? Esta ação será analisada por nossa equipe.</p>
+        <input type='text' id="denuncia_desc" name="denuncia_desc" value="" placeholder="Descreva o motivo da denúncia">
+        <section class="modal-buttons">
+          <button onclick="fecharModalDenuncia()" class="btn-cancelar">Cancelar</button>
+          <button onclick="confirmarModalDenuncia() " class="btn-confirmar">Confirmar denúncia</button>
+        </section>
+        </form>
+      </aside>
     </section>
 </main>
 

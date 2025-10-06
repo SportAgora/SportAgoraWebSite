@@ -7,11 +7,31 @@
     <link rel="stylesheet" href="/css/pagamento-evento.css">
     <script defer src="/js/validacao-pagamento.js"></script>
     <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="stylesheet" href="css/erro.css">
 </head>
 
 <body>
-        <%- include('../partials/navbar'); %> 
+    <%
+    let  erroValidacao =  {"telefone":"", "cpf":"", "nascimento":"" };
+    let  msgErro =  {"telefone":"", "cpf":"", "nascimento":"" };
+    if(erros) {
+        erros.errors.forEach(function(erro) {
+            if (erro.path == "telefone") {
+                erroValidacao.telefone = "erro"
+                msgErro.telefone = erro.msg
+            }
+            if (erro.path == "cpf") {
+                erroValidacao.cpf = "erro"
+                msgErro.cpf = erro.msg
+            }
+            if (erro.path == "nascimento") {
+                erroValidacao.nascimento = "erro"
+                msgErro.nascimento = erro.msg
+            }
+        })
+    }; %>
 
+    <%- include('../partials/navbar'); %> 
     <main>
         <section class="container">
 
@@ -32,14 +52,14 @@
                         <input type="hidden" name="ingressos" value="<%= JSON.stringify(ingressos) %>">
 
                         <label for="telefone">Telefone:</label>
-                        <input type="tel" id="telefone" name="telefone" value="<%=dados.telefone%>" required>
-
+                        <input type="tel" id="telefone" name="telefone" value="<%=dados.telefone%>" class="<%= erroValidacao.telefone || ''%>"required>
+                        <span class="spanerro"><%= msgErro.telefone %></span><br>
                         <label for="cpf">CPF:</label>
-                        <input type="text" id="cpf" maxlength="14" name="cpf" value="<%=dados.cpf%>" required>
-
+                        <input type="text" id="cpf" maxlength="14" name="cpf" value="<%=dados.cpf%>" class="<%= erroValidacao.cpf|| ''%>"required>
+                        <span class="spanerro"><%= msgErro.cpf %></span><br>
                         <label for="nascimento">Data de Nascimento:</label>
-                        <input type="date" id="nascimento" name="nascimento" value="<%=dados.nascimento%>" required>
-
+                        <input type="date" id="nascimento" name="nascimento" value="<%=dados.nascimento%>" class="<%= erroValidacao.nascimento || ''%>" required>
+                        <span class="spanerro"><%= msgErro.nascimento %></span><br>
                         <label for="genero">Gênero:</label>
                         <select id="genero" name="genero" required>
                             <option value="naoIdentificar"<%= dados.genero === 'naoIdentificar' ? 'selected' : '' %>>Não identificar</option>         

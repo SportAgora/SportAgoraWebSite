@@ -79,4 +79,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Inicializa botão desativado
   atualizarBotaoInscrever();
+ 
 });
+
+ //  Denunciar
+  function abrirModalDenuncia() {
+    document.getElementById('modal-denuncia').style.display = 'flex';
+  }
+
+  function fecharModalDenuncia() {
+    document.getElementById('modal-denuncia').style.display = 'none';
+  }
+
+  function confirmarModalDenuncia() {
+    document.getElementById('modal-denuncia').style.display = 'none';
+    document.getElementById('denuncia-form').submit();
+  }
+
+  // Fechar ao clicar fora do conteúdo
+  window.addEventListener('click', function(event) {
+    const modal = document.getElementById('modal-denuncia');
+    if (event.target === modal) {
+      fecharModalDenuncia();
+    }})

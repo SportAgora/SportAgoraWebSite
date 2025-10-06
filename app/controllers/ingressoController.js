@@ -13,6 +13,13 @@ carregarInscricaoEvento: async (req, res) => {
     const eventoId = req.query.id;
     const evento = await ingressosModel.buscarPagPorId(eventoId);
 
+    if (evento.usuario_id == req.session.usuario.id) {
+        return res.render('pages/erro', {
+            error: 403,
+            mensagem: "Você não pode se inscrever no seu próprio evento."
+        });
+    }
+
     let ingressos = JSON.parse(req.body.ingressosSelecionados);
 
      ingressos = ingressos.map(i => {
@@ -30,7 +37,8 @@ carregarInscricaoEvento: async (req, res) => {
             cpf:"",
             nascimento:"",
             genero:""
-        }
+        },
+        erros:""
     });
 
     } catch (e) {
@@ -123,6 +131,7 @@ carregarInscricaoEvento: async (req, res) => {
             }, ingressos);
 
             req.session.inscricoesCriadas = inscricoesIds;
+            req.session.eventoId = evento.evento_id;
 
         return res.redirect(ingressosPag.init_point)    
     } catch (e) {
@@ -143,8 +152,11 @@ carregarInscricaoEvento: async (req, res) => {
             console.log(req.session.inscricoesCriadas);
             await ingressosModel.ativarInscricaoPagamento(req.session.inscricoesCriadas);
             console.log("Pagamento aprovado:", payment);
+            let evento = await ingressosModel.buscarPagPorId(req.session.eventoId);
 
-            return res.redirect('/inscrito');
+            return res.render('pages/evento-inscrito', {
+                evento
+            })
         }
 
         // se não aprovado

@@ -145,7 +145,9 @@ router.get('/pratique', function(req,res){
 })
 
 router.get('/planos', function(req,res){
-    res.render('pages/planos');  
+    if (req.session.usuario.tipo !== "organizador"){
+    res.render('pages/planos');
+  } else res.redirect('/meu-plano')
 })
 
 router.get('/infoevento', function(req,res){
@@ -159,10 +161,6 @@ router.get('/infoevento2', function(req,res){
 
 router.get('/perfilex', function(req,res){
     res.render('pages/perfilex');  
-})
-
-router.get('/organizador', function(req,res){
-    res.render('pages/organizador');  
 })
 
 router.get('/notificacoes', function(req,res){
@@ -229,6 +227,14 @@ router.get('/evento', (req, res) => {
 
 router.post('/denunciar-evento', verificarAutenticacao, (req,res) => {
    pagsController.denunciarEvento(req,res);
+});
+
+router.post('/inscricao-evento', verificarAutenticacao, (req, res) => {
+  pagsController.carregarInscricaoEvento(req, res);
+});
+
+router.post('/inscricao', verificarAutenticacao, pagsController.regrasValidacaoPagamento, (req,res) => {
+  pagsController.pagamentoEvento(req,res);
 });
 
 module.exports = router;

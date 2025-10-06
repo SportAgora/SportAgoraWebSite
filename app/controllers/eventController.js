@@ -76,23 +76,23 @@ module.exports = {
       }
 
     const erroMulter = req.session.erroMulter;
-        if(!errors.isEmpty() || erroMulter != null) {
-              lista =  !errors.isEmpty() ? errors : {formatter:null, errors:[]};
-                if(erroMulter != null ){
-                    lista.errors.push(erroMulter);
-              } 
-            console.log(lista);
-            console.log(dadoesporte)
-            
-            let dados = req.body;
-            dados.foto = caminhoFoto;
-            return res.render('pages/criar-evento',{
-                dados,
-                erros: lista,
-                esporte: dadoesporte,
-                dadosNotificacao: null
-            })
-        }
+    if(!errors.isEmpty() || erroMulter != null) {
+        lista =  !errors.isEmpty() ? errors : {formatter:null, errors:[]};
+          if(erroMulter != null ){
+              lista.errors.push(erroMulter);
+        } 
+      console.log(lista);
+      console.log(dadoesporte)
+      
+      let dados = req.body;
+      dados.foto = caminhoFoto;
+      return res.render('pages/criar-evento',{
+          dados,
+          erros: lista,
+          esporte: dadoesporte,
+          dadosNotificacao: null
+      })
+    }
         
     try{
       const {nome, esporte, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento, uf, cidade} = req.body;

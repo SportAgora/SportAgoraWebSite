@@ -142,6 +142,23 @@ const PaginaModel = {
       console.error("Erro ao registrar denúncia:", error);
       throw error;
     }
+  },
+  buscarIngressos: async (ids) => {
+    try {
+      if (!ids || ids.length === 0) return [];
+
+      const idsNumericos = ids.map(i => i.id);
+      const placeholders = ids.map(() => '?').join(',');
+      const query = `SELECT * FROM ingresso WHERE ingresso_id IN (${placeholders})`;
+      const [rows] = await pool.query(query, idsNumericos);
+      return rows.map(r => {
+      const info = ids.find(i => i.id == r.ingresso_id);
+      return { ...r, tipo: info?.tipo, qtd: info?.qtd };
+      });
+    } catch (error) {
+      console.error("Erro ao buscar ingressos:", error);
+      throw error;
+    }
   }
 }
 

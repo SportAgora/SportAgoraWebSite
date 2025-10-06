@@ -66,12 +66,14 @@
             <p class="data-limite">Inscrições até: <%=dataFormatadainscricao%> <%=horaMinutoinscricao%> ou até o limite de vagas.</p>
             <section class="ingressos-container">
   <section class="ingressos">
+    <form method="POST" action="/inscricao-evento?id=<%=evento.evento_id%>" id="ingressos-form">
+      <input type="hidden" name="ingressosSelecionados" id="ingressosSelecionados">
   <% if (evento.ingressos && evento.ingressos.length > 0) { %>
     <% evento.ingressos.forEach(ingresso => { %>
       <section class="ingresso-linha">
         <section class="info-ingresso">
           <p class="nome-ingresso"><%= ingresso.ingresso_nome %></p>
-          <p class="tipo-ingresso">Inteira</p>
+          <p class="tipo-ingresso"><%= ingresso.ingresso_meia == 0 ? "Inteira" : "Meia"%></p>
         </section>
         <section class="preco-ingresso">
           <%= Number(ingresso.ingresso_valor).toLocaleString('pt-BR', {
@@ -79,32 +81,13 @@
             currency: 'BRL'
           }) %></section>
         <section class="controle-quantidade">
-          <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_inteira', -1)">-</button>
+          <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_inteira', -1, event)">-</button>
           <span id="quantidade-<%= ingresso.ingresso_id %>_inteira">0</span>
-          <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_inteira', 1)">+</button>
+          <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_inteira', 1, event)">+</button>
         </section>
       </section>
 
       <hr class="linha-separadora-ingresso">
-      <% if (ingresso.ingresso_meia) { %>
-        <section class="ingresso-linha">
-          <section class="info-ingresso">
-            <p class="nome-ingresso"><%= ingresso.ingresso_nome %></p>
-            <p class="tipo-ingresso">Meia</p>
-          </section>
-          <%ingresso.ingresso_valor /= 2%>
-          <section class="preco-ingresso"><%= ingresso.ingresso_valor.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-          }) %></section>
-          <section class="controle-quantidade">
-            <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_meia', -1)">-</button>
-            <span id="quantidade-<%= ingresso.ingresso_id %>_meia">0</span>
-            <button class="botao-controle" onclick="alterarQuantidade('<%= ingresso.ingresso_id %>_meia', 1)">+</button>
-          </section>
-        </section>
-        <hr class="linha-separadora-ingresso">
-      <% } %>
     <% }) %>
   <% } else { %>
     <p>Nenhum ingresso disponível para este evento.</p>
@@ -122,6 +105,7 @@
             </article>
         </section>
     </section>
+    </form>
 </section>
     
     <section class="relacionado-eventos">

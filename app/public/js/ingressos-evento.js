@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const precos = {};
   const quantidades = {};
+  const ingressosSelecionados = {};
 
   // Pega todas as linhas de ingresso
   document.querySelectorAll('.ingresso-linha').forEach(linha => {
@@ -19,14 +20,25 @@ document.addEventListener("DOMContentLoaded", () => {
     precos[id] = preco;
   });
 
-  window.alterarQuantidade = function(id, delta) {
+  window.alterarQuantidade = function(id, delta, event) {
+    if (event) event.preventDefault();
     const novaQuantidade = quantidades[id] + delta;
     if (novaQuantidade >= 0 && novaQuantidade <= 3) {
       quantidades[id] = novaQuantidade;
       document.getElementById(`quantidade-${id}`).innerText = novaQuantidade;
+      ingressosSelecionados[id] = novaQuantidade;
+      atualizarHidden();
       atualizarTotal();
     }
+
   };
+
+  function atualizarHidden() {
+  const filtrados = Object.entries(ingressosSelecionados)
+    .filter(([_, qtd]) => qtd > 0)
+    .map(([id, qtd]) => ({ id, qtd }));
+  document.getElementById('ingressosSelecionados').value = JSON.stringify(filtrados);
+}
 
   function atualizarTotal() {
     let total = 0;

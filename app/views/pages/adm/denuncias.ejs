@@ -5,16 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADM Sport Agora </title>
     <link rel="stylesheet" href="/css/adm/styles.css">
-    <link rel="stylesheet" href="/css/adm/home.css">
+    <link rel="stylesheet" href="/css/adm/denuncias.css">
     <link rel="icon" href="imagens/SportAgora.png">
     <link rel="icon" href="/imagens/SportAgora.png">
 </head>
 <body>
     <%- include('../../partials/adm_navbar'); %>
-    <main>
-        <p><%=evento.evento_nome%></p>
+    <%console.log(evento)%>
+    <main class="maindenunciar">
+        <section class="infoEvento">
+            <p><%=evento.evento_nome%></p>
+            <img src="/<%=evento.evento_foto%>" alt="Imagem do evento">
+            <h2>Descrição do Evento:</h2>
+            <section class="descricao">
+                <p><%-evento.evento_descricao%></p>
+            </section>
+        </section>
         <section class="botoesHome">
+            <section class="aaaaa">
+                <h2>Denuncias</h2> 
+                <a href="/evento?id=1<" id="aaa"><button class="btnver">Vizualizar Evento</button></a>
+            </section>
             <table class="endereco-tabela">
+                
                 <thead>
                     <tr>
                         <th>Data</th>

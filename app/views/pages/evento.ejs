@@ -8,6 +8,7 @@
     <script src="js/ingressos-evento.js"></script>
     <link rel="stylesheet" href="/css/evento.css">
     <link rel="icon" href="imagens/SportAgora.png">
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 </head>
 <body>
     <%- include('../partials/navbar'); %>
@@ -101,7 +102,7 @@
 
             <article class="botoes-inscricao">
                 <button class="btn-fale-conosco">Fale conosco</button>
-                <button class="btn-inscrever-se" onclick="location.href='/pagamento-evento'">Inscrever-se</button>
+                <button id="btnInscrever" class="btn-inscrever-se">Inscrever-se</button>
             </article>
         </section>
     </section>
@@ -109,33 +110,7 @@
 </section>
     
     <section class="relacionado-eventos">
-        <article class="relacionado-evento">
-            <a href="/infoevento2" class="invisible-button1"></a>
-            <img src="/imagens/bannerevento2.png" alt="Evento 1">
-            <p><strong>Nome do Evento 2 </strong></p>
-            <p><strong>Data do Evento 2 </strong></p>
-            <p><strong>Data do Evento 2 </strong> </p>
-        </article>
-        <article class="relacionado-evento">
-            <a href="/infoevento2" class="invisible-button1"></a>
-            <img src="/imagens/bannerevento2.png" alt="Evento 2">
-            <p><strong>Nome do Evento 2 </strong></p>
-            <p><strong>Data do Evento 2 </strong></p>
-            <p><strong>Data do Evento 2 </strong> </p>
-        </article>
-    </section>
-    <section id="modal-denuncia" class="modal-denuncia">
-      <aside class="modal-content-denuncia">
-        <form method="POST" action="/denunciar-evento?id=<%=evento.evento_id%>" id="denuncia-form">
-        <h2>Denunciar Evento</h2>
-        <p>Tem certeza de que deseja denunciar este evento? Esta ação será analisada por nossa equipe.</p>
-        <input type='text' id="denuncia_desc" name="denuncia_desc" value="" placeholder="Descreva o motivo da denúncia">
-        <section class="modal-buttons">
-          <button onclick="fecharModalDenuncia()" class="btn-cancelar">Cancelar</button>
-          <button onclick="confirmarModalDenuncia() " class="btn-confirmar">Confirmar denúncia</button>
-        </section>
-        </form>
-      </aside>
+        
     </section>
 </main>
 

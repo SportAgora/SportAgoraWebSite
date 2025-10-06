@@ -5,6 +5,7 @@ const usuariosController = require("../controllers/usuariosController");
 const assinaturaController = require('../controllers/assinaturaController');
 const eventController = require("../controllers/eventController");
 const pagsController = require("../controllers/pagsController");
+const ingressoController = require("../controllers/ingressoController");
 
 
 const uploadFile = require("../helpers/uploader")("./app/public/imagens/perfil/");
@@ -230,11 +231,15 @@ router.post('/denunciar-evento', verificarAutenticacao, (req,res) => {
 });
 
 router.post('/inscricao-evento', verificarAutenticacao, (req, res) => {
-  pagsController.carregarInscricaoEvento(req, res);
+  ingressoController.carregarInscricaoEvento(req, res);
 });
 
-router.post('/inscricao', verificarAutenticacao, pagsController.regrasValidacaoPagamento, (req,res) => {
-  pagsController.pagamentoEvento(req,res);
+router.post('/inscricao', verificarAutenticacao, ingressoController.regrasValidacaoPagamento, (req,res) => {
+  ingressoController.pagamentoEvento(req,res);
 });
+
+router.get("/ingresso/sucesso", verificarAutenticacao, ingressoController.sucesso);
+router.get("/ingresso/erro", ingressoController.erro);
+router.post("/ingresso/webhook", ingressoController.webhook);
 
 module.exports = router;

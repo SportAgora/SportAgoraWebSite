@@ -1,6 +1,5 @@
 const PagsModel = require('../models/model-pags');
 const { body, validationResult } = require("express-validator");
-const {validarCPF} = require("../helpers/validar_pagamento");
 const axios = require('axios'); 
 
 module.exports = {

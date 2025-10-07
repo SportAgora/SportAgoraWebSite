@@ -96,13 +96,17 @@ if (cepInput) {
 
   // Meia entrada toggle
   let meiaEntradaAtivo = false;
-  document.getElementById('meia-entrada').addEventListener('click', () => {
+  const meiaEntradaBtn = document.getElementById('meia-entrada');
+
+  meiaEntradaBtn.addEventListener('click', () => {
     meiaEntradaAtivo = !meiaEntradaAtivo;
-    document.getElementById('meia-entrada').textContent = meiaEntradaAtivo
+    
+    meiaEntradaBtn.classList.toggle('active');
+    meiaEntradaBtn.textContent = meiaEntradaAtivo
       ? 'Meia-entrada ativada'
       : 'Adicionar meia-entrada';
   });
-
+  
   // Publicar ingresso
   document.getElementById('publicar-ingresso').addEventListener('click', () => {
     const nome = document.getElementById('nome-ingresso').value;

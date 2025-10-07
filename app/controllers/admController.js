@@ -297,7 +297,7 @@ module.exports = {
     apagarDenuncia: async (req,res) => {
       console.log("chegou")
       try{
-          
+
           const den_id = req.query.den_id || null;
           const apagar = await AdmModel.DenunciaFindId(den_id)
           if (!apagar) {
@@ -317,5 +317,21 @@ module.exports = {
         console.error(e)
         return carregarEventosErro({titulo:"Denúncias", mensagem: "Ocorreu um erro desconhecido ao apagar a denúncia."},req,res);
       }
+    },
+    carregarUsuario: async (req, res) => {
+        try {
+            const id = req.query.id;
+            if (!id) {
+                return res.status(400).send('ID do usuário não fornecido');
+            }
+            const usuario = await AdmModel.UserFindId(id);
+            if (!usuario) {
+                return res.status(404).send('Usuário não encontrado');
+            }
+            res.render('pages/adm/sobre_usuario', { usuario });
+        } catch (e) {
+            console.error(e);
+            res.status(500).send('Erro interno do servidor');
+        }
     }
 }

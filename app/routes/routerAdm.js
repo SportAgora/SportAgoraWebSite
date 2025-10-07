@@ -27,9 +27,9 @@ router.get('/usuarios', verificarAdm, function(req,res){
   admController.carregarUsuarios(req,res);
 })
 
-router.get('/sobre_usuario', verificarAdm, function(req,res){
-  admController.carregarUsuarios(req,res); 
-}) 
+router.get('/usuarios/sobre_usuario', verificarAdm, function(req,res){
+  admController.carregarUsuario(req,res);
+})
 
 router.get('/usuario_ex', verificarAdm, function(req,res){
   res.render('pages/adm/usuario_ex');  

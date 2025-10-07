@@ -151,14 +151,6 @@ router.get('/planos', function(req,res){
   } else res.redirect('/meu-plano')
 })
 
-router.get('/infoevento', function(req,res){
-    res.render('pages/infoevento');  
-})
-
-
-router.get('/infoevento2', function(req,res){
-    res.render('pages/infoevento2');  
-})
 
 router.get('/perfilex', function(req,res){
     res.render('pages/perfilex');  

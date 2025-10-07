@@ -1,0 +1,58 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADM Sport Agora </title>
+    <link rel="stylesheet" href="/css/adm/styles.css">
+    <link rel="stylesheet" href="/css/adm/denuncias.css">
+    <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="icon" href="/imagens/SportAgora.png">
+</head>
+<body>
+    <%- include('../../partials/adm_navbar'); %>
+    <%console.log(usuario)%>
+    <main class="maindenunciar">
+        <section class="infoEvento">
+            <p><%=usuario.usu_nome%></p>
+            <img src="/<%=usuario.usu_foto%>" alt="Imagem do evento">
+            <h2>Descrição do Evento:</h2>
+            <section class="descricao">
+                <p><%-evento.evento_descricao%></p>
+            </section>
+        </section>
+        <section class="botoesHome">
+            <section class="aaaaa">
+                <h2>Denuncias</h2> 
+                <a href="/evento?id=1<" id="aaa"><button class="btnver">Vizualizar Evento</button></a>
+            </section>
+            <table class="endereco-tabela">
+                
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Descrição</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                aaaaaaaaaaaaaaaaaaaaaaaaaa
+                <tbody>
+                    <% if(denuncias) { %>
+                        <% denuncias.forEach(function(d) { %>
+                          <tr>
+                            <td><%= d.den_data %></td>
+                            <td><%= d.den_descricao %></td>
+                            <td><form action="/adm/eventos/denuncias/apagar?id=<%=evento.evento_id%>&den_id=<%=d.den_id%>" method="post">
+                                <input type="hidden" name="denuncia_id" value="<%= d.den_id %>">
+                                <button type="submit" class="btnApagar">Apagar</button>
+                            </form></td>
+                          </tr>
+                        <% }) %>
+                    <% } %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <%- include('../../partials/adm_footer'); %>
+</body>
+</html> -->

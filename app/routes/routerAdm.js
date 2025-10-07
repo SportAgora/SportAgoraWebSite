@@ -25,6 +25,10 @@ router.post('/buscar_usuario', verificarAdm,function(req,res){
 
 router.get('/usuarios', verificarAdm, function(req,res){
   admController.carregarUsuarios(req,res);
+})
+
+router.get('/sobre_usuario', verificarAdm, function(req,res){
+  res.render('pages/adm/sobre_usuario'); 
 }) 
 
 router.get('/usuario_ex', verificarAdm, function(req,res){

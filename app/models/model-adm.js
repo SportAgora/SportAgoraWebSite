@@ -340,6 +340,36 @@ const AdmModel = {
         console.error("Erro ao excluir denúncia:", error);
         throw error;
       }
+    },
+    UserCountEventos: async (id) => {
+      try {
+        const query = "SELECT COUNT(*) as count FROM eventos WHERE usuario_id = ?";
+        const [rows] = await pool.query(query, [id]);
+        return rows[0].count;
+      } catch (error) {
+        console.error("Erro ao contar eventos do usuário:", error);
+        throw error;
+      }
+    },
+    UserCountIngressos: async (id) => {
+      try {
+        const query = "SELECT COUNT(*) as count FROM inscricao_evento WHERE usuario_id = ?";
+        const [rows] = await pool.query(query, [id]);
+        return rows[0].count;
+      } catch (error) {
+        console.error("Erro ao contar ingressos do usuário:", error);
+        throw error;
+      }
+    },
+    UserCountPostagens: async (id) => {
+      try {
+        const query = "SELECT COUNT(*) as count FROM pratica_esportivas WHERE usuario_id = ?";
+        const [rows] = await pool.query(query, [id]);
+        return rows[0].count;
+      } catch (error) {
+        console.error("Erro ao contar postagens do usuário:", error);
+        throw error;
+      }
     }
 
 }

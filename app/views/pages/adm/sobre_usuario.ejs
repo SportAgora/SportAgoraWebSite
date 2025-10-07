@@ -12,12 +12,19 @@
 <body>
     <%- include('../../partials/adm_navbar'); %>
     <%console.log(usuario)%>
+    <section class="container-ver-eventos">
+            <button class="botao-seta" onclick="window.history.back()">
+              <img src="/imagens/left-arrow.png" alt="Seta">
+              <span class="ver-eventos">Voltar</span>
+            </button>
+    </section>
     <main class="mainsobreuso">
         <section class="infoUSO">
             <p><%=usuario.usu_nome%></p>
             <img src="/<%=usuario.usu_foto%>" alt="Perfil Usuario">
             <h2>Sobre</h2>
             <section class="descricao">
+<<<<<<< HEAD
                 <h3>Tipo de Usuario</h3>
                 <p><%
                 switch(usuario.tipo) {
@@ -37,6 +44,11 @@
                 <%-tipoUsuario%>
                 </p>
                 
+=======
+                <h3>Plano do Usuario</h3>
+                <p><%-usuario.tipo%></p>
+
+>>>>>>> e144cdea2d27823b48900823e2961b717f086c30
                 <h3>Email do Usuario</h3>
                 <p><%-usuario.usu_email%></p>
             </section>
@@ -44,19 +56,26 @@
         <section class="botoesHome">
             <section class="aaaaa">
                 <h2>Informações</h2> 
+<<<<<<< HEAD
                 <!-- <a href="/perfil?id=<%=usuario.usu_id%>" id="aaa"><button class="btnver">Visualizar Perfil</button></a> -->
+=======
+                <a href="/evento?id=1<" id="aaa"><button class="btnver">Visualizar Perfil</button></a>
+>>>>>>> e144cdea2d27823b48900823e2961b717f086c30
             </section>
             <table class="endereco-tabela">
-                
                 <thead>
                     <tr>
-                        <th>Data</th>
-                        <th>Descrição</th>
-                        <th></th>
+                        <th>Postagens</th>
+                        <th>Ingressos</th>
+                        <th>Eventos</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <tr>
+                        <td><%= usuario.countPostagens %></td>
+                        <td><%= usuario.countIngressos %></td>
+                        <td><%= usuario.countEventos %></td>
+                    </tr>
                 </tbody>
             </table>
         </section>

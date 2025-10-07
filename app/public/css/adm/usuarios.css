@@ -154,6 +154,11 @@ main {
     transition: background-color 0.3s ease;
     min-width: 90px;
 }
+.endereco-tabela a {
+    color: var(--principal_escura);
+    text-decoration: none;
+    font-weight: 500;
+}
 
 /* Botão Excluir */
 .endereco-tabela .excluir {

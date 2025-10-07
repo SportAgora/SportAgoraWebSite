@@ -400,6 +400,10 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
     const user = req.session.usuario;
     var userinfos = await UsuarioModel.findByEmail(user.email);
     userinfos.tipo = userinfos.tipo[0].toUpperCase() + userinfos.tipo.substring(1);
+
+    let ingressos = await UsuarioModel.findIngressosInscritos(userinfos.usu_id);
+    
+    
     res.render("pages/perfil", {
         usuario: {
         id: userinfos.usu_id,
@@ -410,8 +414,9 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
         seguindo: userinfos.quantidade_seguindo,
         foto: userinfos.usu_foto,
         banner: userinfos.usu_banner,
-        tipo: userinfos.tipo
+        tipo: userinfos.tipo,
         },
+        ingressos: ingressos,
         dadosNotificacao:""
     });
 

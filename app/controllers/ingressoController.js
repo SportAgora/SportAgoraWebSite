@@ -13,6 +13,13 @@ carregarInscricaoEvento: async (req, res) => {
     const eventoId = req.query.id;
     const evento = await ingressosModel.buscarPagPorId(eventoId);
 
+    if (evento.usuario_id == req.session.usuario.id) {
+        return res.render('pages/erro', {
+            error: 403,
+            mensagem: "Você não pode se inscrever no seu próprio evento."
+        });
+    }
+
     let ingressos = JSON.parse(req.body.ingressosSelecionados);
 
      ingressos = ingressos.map(i => {
@@ -30,7 +37,8 @@ carregarInscricaoEvento: async (req, res) => {
             cpf:"",
             nascimento:"",
             genero:""
-        }
+        },
+        erros:""
     });
 
     } catch (e) {
@@ -112,7 +120,20 @@ carregarInscricaoEvento: async (req, res) => {
                 },
             });
 
-    return res.redirect(ingressosPag.init_point)    
+            // criar a inscrição no evento com pagamento_feito = false
+            const inscricoesIds = await ingressosModel.criarInscricaoEvento({
+                usuario_id: req.session.usuario.id,
+                evento_id: evento.evento_id,
+                telefone,
+                cpf,
+                nascimento,
+                genero
+            }, ingressos);
+
+            req.session.inscricoesCriadas = inscricoesIds;
+            req.session.eventoId = evento.evento_id;
+
+        return res.redirect(ingressosPag.init_point)    
     } catch (e) {
     console.error(e);
     res.redirect('/erro')
@@ -128,14 +149,14 @@ carregarInscricaoEvento: async (req, res) => {
         const payment = await paymentClient.get({id: payment_id}); // Use the correct method: get
 
         if(payment.status === 'approved') {
-            // atualizar o usuário no banco
-            // const userId = req.session.usuario.id;
-            // await UsuarioModel.ativarPlano(userId);
-            // req.session.usuario.tipo = 'organizador'
-
+            console.log(req.session.inscricoesCriadas);
+            await ingressosModel.ativarInscricaoPagamento(req.session.inscricoesCriadas);
             console.log("Pagamento aprovado:", payment);
+            let evento = await ingressosModel.buscarPagPorId(req.session.eventoId);
 
-            return res.redirect('/confpagamento');
+            return res.render('pages/evento-inscrito', {
+                evento
+            })
         }
 
         // se não aprovado
@@ -144,31 +165,5 @@ carregarInscricaoEvento: async (req, res) => {
 
     erro: (req, res) => {
         res.redirect("/erro");
-    },
-
-    webhook: async (req, res) => {
-   try {
-    const notification = req.body; // aqui é a notificação do MP
-    const paymentClient = new Payment(mp); // Instantiate here or outside module.exports
-
-  if(notification.type === "payment") {
-      const paymentId = notification.data.id;
-      
-      // Corrected line
-      const payment = await paymentClient.get({id: paymentId}); 
-
-            if(payment.status === "approved") {
-                // const email = payment.payer.email;
-                // const usuario = await UsuarioModel.buscarPorEmail(email);
-                // if(usuario) await UsuarioModel.ativarPlano(usuario.id);
-                console.log("Pagamento aprovado via webhook:", payment);
-            }
-        }
-
-        res.sendStatus(200);
-    } catch(err) {
-        console.error(err);
-        res.sendStatus(500);
     }
-}   
 }

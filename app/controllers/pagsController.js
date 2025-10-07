@@ -77,7 +77,9 @@ module.exports = {
 
     const ingresso = await PagsModel.buscarIngressosPorEvento(id);
     evento.ingressos = ingresso;
-    res.render('pages/evento', {evento});
+
+    var usuario_dono = req.session.usuario.id == evento.usuario_id ? true : false;
+    res.render('pages/evento', {evento, usuario_dono});
     } catch (error) {
       console.error(error);
       res.render('pages/error',

@@ -8,7 +8,7 @@ const UsuarioModel = {
   // Buscar usuário por ID
   findId: async (id) => {
     try {
-      const query = "SELECT * FROM usuario WHERE usu_id = ?";
+      const query = "SELECT * FROM usuarios WHERE usu_id = ?";
       const [rows] = await pool.query(query, [id]);
       return rows.length > 0 ? rows[0] : null;
     } catch (error) {
@@ -20,7 +20,7 @@ const UsuarioModel = {
   // Verificar se email já existe
   findByEmail: async (email) => {
     try {
-      const query = "SELECT * FROM usuario WHERE usu_email = ? AND usu_status = 1";
+      const query = "SELECT * FROM usuarios WHERE usu_email = ? AND usu_status = 1";
       const [rows] = await pool.query(query, [email]);
       return rows.length > 0 ? rows[0] : null;
     } catch (error) {
@@ -31,7 +31,7 @@ const UsuarioModel = {
 
   findByName: async (nome) => {
     try {
-      const query = "SELECT * FROM usuario WHERE usu_nome = ?";
+      const query = "SELECT * FROM usuarios WHERE usu_nome = ?";
       const [rows] = await pool.query(query, [nome]);
       return rows.length > 0 ? rows[0] : null;
     } catch (error) {
@@ -61,7 +61,7 @@ const UsuarioModel = {
       const values = fields.map(field => data[field]);
       const placeholders = fields.map(() => '?').join(', ');
      
-      const query = `INSERT INTO usuario (${fields.join(', ')}) VALUES (${placeholders})`;
+      const query = `INSERT INTO usuarios (${fields.join(', ')}) VALUES (${placeholders})`;
      
       const [result] = await pool.query(query, values);
       return result.insertId;
@@ -102,7 +102,7 @@ const UsuarioModel = {
       // Adicionar o ID no final dos valores
       values.push(id);
      
-      const query = `UPDATE usuario SET ${updates.join(', ')} WHERE usu_id= ?`;
+      const query = `UPDATE usuarios SET ${updates.join(', ')} WHERE usu_id= ?`;
      
       const [result] = await pool.query(query, values);
       return result;
@@ -115,7 +115,7 @@ const UsuarioModel = {
   // Excluir usuário
   excluir: async (id) => {
     try {
-      const query = "DELETE FROM usuario WHERE id = ?";
+      const query = "DELETE FROM usuarios WHERE id = ?";
       const [result] = await pool.query(query, [id]);
       return result.affectedRows > 0;
     } catch (error) {
@@ -130,7 +130,7 @@ const UsuarioModel = {
       // Hash da nova senha
       const senhaHash = await bcrypt.hash(novaSenha, 10);
      
-      const query = "UPDATE USUARIO SET senha = ? WHERE id = ?";
+      const query = "UPDATE usuarios SET senha = ? WHERE id = ?";
       const [result] = await pool.query(query, [senhaHash, id]);
      
       return result.affectedRows > 0;
@@ -143,7 +143,7 @@ const UsuarioModel = {
   ativarConta: async (id) => {
     try {
      
-      const query = "UPDATE USUARIO SET usu_status = ? WHERE usu_id = ?";
+      const query = "UPDATE usuarios SET usu_status = ? WHERE usu_id = ?";
       const [result] = await pool.query(query, [1, id]);
      
       return result.affectedRows > 0;
@@ -155,8 +155,8 @@ const UsuarioModel = {
   ativarPlano: async (id) => {
     try {
      
-      const query = "UPDATE usuario SET tipo = ? WHERE usu_id = ?";
-      const [result] = await pool.query(query, ['organizador', id]);
+      const query = "UPDATE usuarios SET tipo = ? WHERE usu_id = ?";
+      const [result] = await pool.query(query, ['o', id]);
      
       return result.affectedRows > 0;
     } catch (error) {
@@ -176,7 +176,7 @@ const UsuarioModel = {
       e.evento_foto,
       e.evento_data_hora
     FROM inscricao_evento ie
-    JOIN ingresso i ON ie.ingresso_id = i.ingresso_id
+    JOIN ingressos i ON ie.ingresso_id = i.ingresso_id
     JOIN eventos e ON ie.evento_id = e.evento_id
     WHERE ie.usuario_id = ?
       AND ie.pagamento_feito = true

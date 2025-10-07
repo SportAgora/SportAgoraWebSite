@@ -19,7 +19,23 @@
             <h2>Sobre</h2>
             <section class="descricao">
                 <h3>Tipo de Usuario</h3>
-                <p><%-usuario.tipo%></p>
+                <p><%
+                switch(usuario.tipo) {
+                    case "c":
+                        tipoUsuario = "Comum";
+                        break;
+                    case "o":
+                        tipoUsuario = "Organizador";
+                        break;
+                    case "a":
+                        tipoUsuario = "Administrador";
+                        break;
+                    default:
+                        tipoUsuario = "Tipo desconhecido";
+                }
+                %>
+                <%-tipoUsuario%>
+                </p>
                 
                 <h3>Email do Usuario</h3>
                 <p><%-usuario.usu_email%></p>
@@ -28,7 +44,7 @@
         <section class="botoesHome">
             <section class="aaaaa">
                 <h2>Informações</h2> 
-                <a href="/evento?id=1<" id="aaa"><button class="btnver">Vizualizar Perfil</button></a>
+                <!-- <a href="/perfil?id=<%=usuario.usu_id%>" id="aaa"><button class="btnver">Visualizar Perfil</button></a> -->
             </section>
             <table class="endereco-tabela">
                 

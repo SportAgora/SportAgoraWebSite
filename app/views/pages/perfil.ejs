@@ -45,7 +45,22 @@
                         <h2>    
                             <%= usuario.nome %>
                         </h2>
-                        <h3>Plano - <%= usuario.tipo %></h3>
+                        <h3>Plano - <%
+                switch(usuario.tipo.toLowerCase()) {
+                    case "c":
+                        tipoUsuario = "Comum";
+                        break;
+                    case "o":
+                        tipoUsuario = "Organizador";
+                        break;
+                    case "a":
+                        tipoUsuario = "Administrador";
+                        break;
+                    default:
+                        tipoUsuario = "Tipo desconhecido";
+                }
+                %>
+                <%-tipoUsuario%></h3>
                     </aside>
                     <% if(usuario.tipo.toLowerCase() == "organizador") {%>
                     <button class="btn-meuplano" onclick="location.href='/meu-plano'">Meu Plano</button>

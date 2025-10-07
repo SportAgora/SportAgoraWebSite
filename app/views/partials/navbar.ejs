@@ -65,7 +65,7 @@
     </article>
 
 
-         <% if (usuario && (usuario.tipo.toLowerCase() == "organizador" || usuario.tipo.toLowerCase() == "administrador")) { %>
+         <% if (usuario && (usuario.tipo.toLowerCase() == "o" || usuario.tipo.toLowerCase() == "a")) { %>
             <button class="subscribe-button" onclick="location.href='/meus-eventos'"> Meus eventos</button>
             <% } else {%>
                 <button class="subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>
@@ -189,7 +189,7 @@
     <ul id="sugestoesMobile" class="painel-sugestoes oculto"></ul>
   </article>
 
-     <% if (usuario && (usuario.tipo.toLowerCase() == "organizador" || usuario.tipo.toLowerCase() == "administrador")) { %>
+     <% if (usuario && (usuario.tipo.toLowerCase() == "o" || usuario.tipo.toLowerCase() == "a")) { %>
         <button class="mobile-subscribe-button" onclick="location.href='/meus-eventos'"> Meus eventos</button>
     <% } else {%>
         <button class="mobile-subscribe-button" onclick="location.href='/planos'">Torne-se Organizador</button>

@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const AdmModel = {
     UserFindId: async (id) => {
     try {
-      const query = "SELECT * FROM usuario WHERE usu_id = ?";
+      const query = "SELECT * FROM usuarios WHERE usu_id = ?";
       const [rows] = await pool.query(query, [id]);
       return rows.length > 0 ? rows[0] : null;
     } catch (error) {
@@ -18,7 +18,7 @@ const AdmModel = {
   // Verificar se email já existe
   UserFindByEmail: async (email) => {
     try {
-      const query = "SELECT * FROM usuario WHERE usu_email = ?";
+      const query = "SELECT * FROM usuarios WHERE usu_email = ?";
       const [rows] = await pool.query(query, [email]);
       return rows.length > 0 ? rows[0] : null;
     } catch (error) {
@@ -29,7 +29,7 @@ const AdmModel = {
 
   UserFindByName: async (nome) => {
     try {
-      const query = "SELECT * FROM usuario WHERE usu_nome = ?";
+      const query = "SELECT * FROM usuarios WHERE usu_nome = ?";
       const [rows] = await pool.query(query, [nome]);
       return rows.length > 0 ? rows[0] : null;
     } catch (error) {
@@ -60,7 +60,7 @@ const AdmModel = {
       const values = fields.map(field => data[field]);
       const placeholders = fields.map(() => '?').join(', ');
      
-      const query = `INSERT INTO usuario (${fields.join(', ')}) VALUES (${placeholders})`;
+      const query = `INSERT INTO usuarios (${fields.join(', ')}) VALUES (${placeholders})`;
      
       const [result] = await pool.query(query, values);
       return result.insertId;
@@ -104,7 +104,7 @@ const AdmModel = {
       // Adicionar o ID no final dos valores
       values.push(id);
      
-      const query = `UPDATE usuario SET ${updates.join(', ')} WHERE usu_id= ?`;
+      const query = `UPDATE usuarios SET ${updates.join(', ')} WHERE usu_id= ?`;
      
       const [result] = await pool.query(query, values);
       return result;
@@ -117,7 +117,7 @@ const AdmModel = {
   // Excluir usuário
   UserExcluir: async (id) => {
     try {
-      const query = "UPDATE usuario SET usu_status = 0 WHERE usu_id = ?";
+      const query = "UPDATE usuarios SET usu_status = 0 WHERE usu_id = ?";
       const [result] = await pool.query(query, [id]);
       return "Apagado com sucesso"
     } catch (error) {
@@ -132,7 +132,7 @@ const AdmModel = {
       // Hash da nova senha
       const senhaHash = await bcrypt.hash(novaSenha, 10);
      
-      const query = "UPDATE USUARIO SET senha = ? WHERE id = ?";
+      const query = "UPDATE usuarios SET senha = ? WHERE id = ?";
       const [result] = await pool.query(query, [senhaHash, id]);
      
       return result.affectedRows > 0;
@@ -146,7 +146,7 @@ const AdmModel = {
     try {
       // Consulta para obter os usuários com paginação
       const queryUsuarios = `
-        SELECT * FROM usuario
+        SELECT * FROM usuarios
         WHERE usu_status = 1
         ORDER BY usu_nome
         LIMIT ? OFFSET ?
@@ -154,7 +154,7 @@ const AdmModel = {
       `;
      
       // Consulta para obter o total de usuários
-      const queryTotal = "SELECT COUNT(*) as total FROM usuario WHERE usu_status = 1";
+      const queryTotal = "SELECT COUNT(*) as total FROM usuarios WHERE usu_status = 1";
      
       // Executar as consultas
       const [usuarios] = await pool.query(queryUsuarios, [limite, offset]);
@@ -173,7 +173,7 @@ const AdmModel = {
     try {
       // Consulta para obter os usuários com paginação
       const queryUsuarios = `
-        SELECT * FROM usuario
+        SELECT * FROM usuarios
         WHERE usu_status = 1 AND usu_nome LIKE ?
         ORDER BY usu_nome
         LIMIT ? OFFSET ?
@@ -181,7 +181,7 @@ const AdmModel = {
       `;
      
       // Consulta para obter o total de usuários
-      const queryTotal = "SELECT COUNT(*) as total FROM usuario WHERE usu_status = 1";
+      const queryTotal = "SELECT COUNT(*) as total FROM usuarios WHERE usu_status = 1";
 
       nome = `%${nome}%`
       // Executar as consultas
@@ -221,8 +221,8 @@ const AdmModel = {
             s.esporte_nome,
             COUNT(d.den_id) AS denuncias_count
         FROM eventos e
-        LEFT JOIN esporte s ON e.esporte_id = s.esporte_id
-        LEFT JOIN denuncia d ON e.evento_id = d.den_evento_id
+        LEFT JOIN esportes s ON e.esporte_id = s.esporte_id
+        LEFT JOIN denuncias d ON e.evento_id = d.den_evento_id
         GROUP BY e.evento_id
         LIMIT ?, ?`;
      
@@ -258,7 +258,7 @@ const AdmModel = {
       const values = fields.map(field => data[field]);
       const placeholders = fields.map(() => '?').join(', ');
      
-      const query = `INSERT INTO esporte (${fields.join(', ')}) VALUES (${placeholders})`;
+      const query = `INSERT INTO esportes (${fields.join(', ')}) VALUES (${placeholders})`;
      
       const [result] = await pool.query(query, values);
       return result.insertId;
@@ -269,7 +269,7 @@ const AdmModel = {
   },
     EsportFindAll: async () => {
       try {
-        const query = "SELECT * FROM esporte";
+        const query = "SELECT * FROM esportes";
         const [rows] = await pool.query(query);
         return rows
       } catch (error) {
@@ -279,7 +279,7 @@ const AdmModel = {
     },
     EsportFindName: async (name) => {
       try {
-        const query = "SELECT * FROM esporte WHERE esporte_nome = ?";
+        const query = "SELECT * FROM esportes WHERE esporte_nome = ?";
         const [rows] = await pool.query(query, [name]);
          return rows.length > 0 ? rows[0] : null; // retorna objeto ou null
       } catch (error) {
@@ -293,7 +293,7 @@ const AdmModel = {
           throw new Error("IDs inválidos para exclusão");
         }
         const placeholders = ids.map(() => '?').join(', ');
-        const query = `DELETE FROM esporte WHERE esporte_id IN (${placeholders})`;
+        const query = `DELETE FROM esportes WHERE esporte_id IN (${placeholders})`;
         const [result] = await pool.query(query, ids);
         return result;
       } catch (error) {
@@ -313,7 +313,7 @@ const AdmModel = {
     },
     DenunciasFindEventoId: async (id) => {
     try {
-      const query = "SELECT * FROM denuncia WHERE den_evento_id = ?";
+      const query = "SELECT * FROM denuncias WHERE den_evento_id = ?";
       const [rows] = await pool.query(query, [id]);
       return rows.length > 0 ? rows : null;
     } catch (error) {
@@ -323,7 +323,7 @@ const AdmModel = {
     },
     DenunciaFindId: async (id) => {
     try {
-      const query = "SELECT * FROM denuncia WHERE den_id = ?";
+      const query = "SELECT * FROM denuncias WHERE den_id = ?";
       const [rows] = await pool.query(query, [id]);
       return rows.length > 0 ? rows : null;
     } catch (error) {
@@ -333,7 +333,7 @@ const AdmModel = {
     },
     DenunciaDelete: async (id) => {
       try {
-        const query = `DELETE FROM denuncia WHERE den_id = ?`;
+        const query = `DELETE FROM denuncias WHERE den_id = ?`;
         const [result] = await pool.query(query, id);
         return result;
       } catch (error) {

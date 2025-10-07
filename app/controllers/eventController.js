@@ -98,8 +98,6 @@ module.exports = {
       const {nome, esporte, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento, uf, cidade} = req.body;
       const { ingressos } = req.body;
       
-      const ingressoIDs = await OrganizadorModel.createIngresso(ingressos)       
-
       const evento = {
         user : req.session.usuario.id,
         esporte,
@@ -116,7 +114,9 @@ module.exports = {
         cidade
       }
 
-      const resultado = await OrganizadorModel.createEvent(evento, ingressoIDs)
+      const resultado = await OrganizadorModel.createEvent(evento)
+
+      const ingressoIDs = await OrganizadorModel.createIngresso(ingressos, resultado)   
 
       if (resultado == false){
         OrganizadorModel.ApagarIngresso(ingressoIDs)

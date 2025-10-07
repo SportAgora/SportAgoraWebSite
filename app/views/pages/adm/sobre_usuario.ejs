@@ -12,6 +12,12 @@
 <body>
     <%- include('../../partials/adm_navbar'); %>
     <%console.log(usuario)%>
+    <section class="container-ver-eventos">
+            <button class="botao-seta" onclick="window.history.back()">
+              <img src="/imagens/left-arrow.png" alt="Seta">
+              <span class="ver-eventos">Voltar</span>
+            </button>
+    </section>
     <main class="mainsobreuso">
         <section class="infoUSO">
             <p><%=usuario.usu_nome%></p>

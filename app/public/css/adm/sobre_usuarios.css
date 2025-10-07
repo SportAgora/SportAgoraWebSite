@@ -1,13 +1,12 @@
 .mainsobreuso {
     padding: 30px;
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     gap: 30px;
     align-items: flex-start;
     min-height: calc(100vh - 120px);
     background-color: var(--background);
 }
-
 
 .infoUSO {
     flex-basis: 350px;
@@ -47,7 +46,6 @@
     text-align: left;
 }
 
-
 .descricao {
     text-align: left;
     padding: 15px;
@@ -57,9 +55,27 @@
     color: var(--cinza_escuro);
 }
 
+.descricao h3 {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--principal_escura);
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
 
+.descricao p {
+    font-size: 1em;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    border-left: 3px solid var(--complementar);
+}
+
+/* Correção de Layout para a Seção de Tabela/Dados (a antiga .botoesHome) */
 .botoesHome {
-    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     background-color: var(--branco);
     padding: 25px;
     border-radius: 8px;
@@ -67,6 +83,7 @@
     overflow-x: auto;
 }
 
+/* Cabeçalho da Seção de Dados (Informações + Botão) */
 .aaaaa {
     display: flex;
     justify-content: space-between;
@@ -74,6 +91,9 @@
     margin-bottom: 20px;
     border-bottom: 2px solid var(--cinza_claro);
     padding-bottom: 10px;
+}
+#aaa{
+    flex-grow: 0;
 }
 
 .aaaaa h2 {
@@ -83,7 +103,7 @@
     margin: 0;
 }
 
-
+/* Botão de Ação (Vizualizar Perfil) */
 .btnver {
     padding: 10px 15px;
     background-color: var(--complementar);
@@ -94,6 +114,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-transform: uppercase;
 }
 
 .btnver:hover {
@@ -101,19 +122,27 @@
     color: var(--branco);
 }
 
-
+/* Tabela (Estilos genéricos para tabelas ADM) */
 .endereco-tabela {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    min-width: 500px; 
-    display: none;
+    min-width: 500px;
+}
+
+.endereco-tabela thead th {
+    /* Ajuste para garantir que o texto não se quebre no cabeçalho */
+    text-align: center;
+}
+
+.endereco-tabela tbody tr {
+    /* Ajuste de largura das colunas para os 3 itens */
+    text-align: center;
 }
 
 .endereco-tabela th, .endereco-tabela td {
     border: 1px solid var(--cinza_claro);
     padding: 12px;
-    text-align: left;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

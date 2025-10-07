@@ -328,6 +328,10 @@ module.exports = {
             if (!usuario) {
                 return res.status(404).send('Usuário não encontrado');
             }
+            // Adicionar contagens
+            usuario.countPostagens = await AdmModel.UserCountPostagens(id);
+            usuario.countIngressos = await AdmModel.UserCountIngressos(id);
+            usuario.countEventos = await AdmModel.UserCountEventos(id);
             res.render('pages/adm/sobre_usuario', { usuario });
         } catch (e) {
             console.error(e);

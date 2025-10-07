@@ -383,7 +383,6 @@
   }
   
   table button {
-    margin-top: 20px;
     padding: 12px 20px;
     border: none;
     background: var(--principal_escura);

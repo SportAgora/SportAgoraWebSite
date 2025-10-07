@@ -28,6 +28,16 @@
     --erro_escuro: #b33939;
 }   
 
+/* Tirar fundo barra de pesquisa da palavras recomendadas do input */
+.barra-texto-pesquisa:-webkit-autofill,
+.barra-texto-pesquisa:-webkit-autofill:hover,
+.barra-texto-pesquisa:-webkit-autofill:focus,
+.barra-texto-pesquisa:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* coloca fundo branco */
+    -webkit-text-fill-color: var(--marrom) !important; /* cor do texto */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 .link-post {
     text-decoration: none;
 }

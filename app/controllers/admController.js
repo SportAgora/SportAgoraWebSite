@@ -337,5 +337,14 @@ module.exports = {
             console.error(e);
             res.status(500).send('Erro interno do servidor');
         }
+    },
+    carregarSolicitacoes: async (req, res) => {
+      try {
+          const solicitacoes = await AdmModel.SolicitacoesFindAll();
+          res.render('pages/adm/solicitacao_local', { solicitacoes });
+      } catch (e) {
+          console.error(e);
+          res.status(500).send('Erro interno do servidor');
+      }
     }
 }

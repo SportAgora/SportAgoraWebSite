@@ -361,6 +361,39 @@ const AdmModel = {
         throw error;
       }
     },
+    SolicitacoesFindAll: async () => {
+  try {
+    const query = `
+      SELECT 
+        s.*,
+        se.esporte_id,
+        e.esporte_nome
+      FROM solicitacoes s
+      LEFT JOIN solicitacoes_esportes se ON s.solicitacao_id = se.solicitacao_id
+      LEFT JOIN esportes e ON se.esporte_id = e.esporte_id
+      WHERE s.solicitacao_status = 0
+    `;
+    const [rows] = await pool.query(query);
+
+    // Agrupar esportes por solicitacao_id
+    const grouped = {};
+    rows.forEach(row => {
+      const id = row.solicitacao_id;
+      if (!grouped[id]) {
+        grouped[id] = { ...row, esportes: [] };
+      }
+      if (row.esporte_id && row.esporte_nome) {
+        grouped[id].esportes.push({ id: row.esporte_id, nome: row.esporte_nome });
+      }
+    });
+
+    return Object.values(grouped);
+  } catch (error) {
+    console.error("Erro ao buscar solicitações:", error);
+    throw error;
+  }
+}
+
     
 }
 

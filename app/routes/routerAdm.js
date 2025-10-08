@@ -39,9 +39,6 @@ router.get('/cadastro_concluido', verificarAdm, function(req,res){
   res.render('pages/adm/cadastro_concluido');  
 }) 
 
-router.get('/solicitacao_local', verificarAdm, function(req,res){
-  res.render('pages/adm/solicitacao_local');  
-}) 
 
 router.get('/eventos', verificarAdm, function(req,res){
   admController.carregarEventos(req,res);
@@ -81,5 +78,9 @@ router.post('/usuarios/:id',
   verificarAdm,
   admController.apagarUsuario
 )
+
+router.get('/solicitacoes', verificarAdm, function(req,res){
+  admController.carregarSolicitacoes(req,res);
+}) 
 
 module.exports = router;

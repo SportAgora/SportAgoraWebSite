@@ -119,6 +119,10 @@
     font-style: normal;
     margin: 10px;
     color: var(--preto);
+    overflow-wrap: break-word; /* Quebra palavras longas para evitar estouro */
+    word-wrap: break-word;     /* Compatibilidade */
+    hyphens: auto;             /* Hifenização automática para textos em pt-br */
+    white-space: normal;       /* Permite quebra de linha normal */
 }
 
 .box-esquerda a {

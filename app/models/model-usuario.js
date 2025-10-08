@@ -115,7 +115,7 @@ const UsuarioModel = {
   // Excluir usuário
   excluir: async (id) => {
     try {
-      const query = "DELETE FROM usuarios WHERE id = ?";
+      const query = "DELETE FROM usuarios WHERE usu_id = ?";
       const [result] = await pool.query(query, [id]);
       return result.affectedRows > 0;
     } catch (error) {
@@ -130,7 +130,7 @@ const UsuarioModel = {
       // Hash da nova senha
       const senhaHash = await bcrypt.hash(novaSenha, 10);
      
-      const query = "UPDATE usuarios SET senha = ? WHERE id = ?";
+      const query = "UPDATE usuarios SET usu_senha = ? WHERE usu_id = ?";
       const [result] = await pool.query(query, [senhaHash, id]);
      
       return result.affectedRows > 0;

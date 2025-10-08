@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de novo local</title>
+</head>
+<body>
+    <p>Erros: <%=erros%></p>
+    <p>dadosNotificacao: <%=dadosNotificacao%></p>
+
+    <form action="/pratique/solicitacao" method="POST" enctype="multipart/form-data">
+        <label for="nome">Nome do Local:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" required><br><br>
+
+        <label for="foto">Insira uma foto do local</label>
+        <input type="file" id="foto" name="foto" accept="image/*"><br><br>
+
+        <% esportes.forEach(function(esporte) { %>
+    <div>
+      <input
+        type="checkbox"
+        id="esporte-<%= esporte.esporte_id %>"
+        name="esportes[]"
+        value="<%= esporte.esporte_id %>"
+      >
+      <label for="esporte-<%= esporte.esporte_id %>">
+        <%= esporte.esporte_nome %>
+      </label>
+    </div>
+  <% }) %>
+
+        <label for="link">Insira o link do google maps do local:</label><br>
+        <input type="text" id="link" name="link" rows="4" cols="50"><br><br>
+
+        <button type="submit">Enviar Solicitação</button>
+</body>
+</html>

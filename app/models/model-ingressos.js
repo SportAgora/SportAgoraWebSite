@@ -15,7 +15,7 @@ module.exports= {
         try {
           const query = `
             SELECT *
-            FROM ingresso
+            FROM ingressos
             WHERE evento_id = ?
           `;
           const [rows] = await pool.query(query, [eventoId]);

@@ -11,6 +11,8 @@ const pratiqueController = require("../controllers/pratiqueController");
 
 const uploadFile = require("../helpers/uploader")("./app/public/imagens/perfil/");
 
+const uploadFilePratique = require("../helpers/uploader")("./app/public/imagens/pratique/");
+
 const uploadFileEvent = require("../helpers/uploader")("./app/public/imagens/evento/");
 
 /*
@@ -202,5 +204,16 @@ router.get("/ingresso/erro", ingressoController.erro);
 /* MAPA */
 
 router.get('/pratique', pratiqueController.carregarMapa);
+
+router.get('/pratique/solicitacao', verificarAutenticacao, pratiqueController.carregarSolicitacao);
+
+router.post('/pratique/solicitacao',
+  verificarAutenticacao,
+  uploadFilePratique(["foto"]),
+  pratiqueController.regrasValidacaoSolicitacao,
+  function(req,res){
+    pratiqueController.gravarSolicitacao(req,res);
+  }
+);
 
 module.exports = router;

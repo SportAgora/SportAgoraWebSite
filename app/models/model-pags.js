@@ -91,7 +91,7 @@ const PaginaModel = {
     try {
       const query = "SELECT * FROM esportes WHERE esporte_id = ?";
       const [rows] = await pool.query(query, [id]);
-      return rows[0];
+      return rows.length > 0 ? rows[0] : null;
     } catch (error) {
       console.error("Erro ao buscar esportes:", error);
       throw error;

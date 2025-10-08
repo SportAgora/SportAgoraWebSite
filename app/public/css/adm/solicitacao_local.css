@@ -1,0 +1,190 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background-color: var(--background);
+    min-height: calc(100vh - 80px);
+}
+
+.logo-area {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.tituloLogo {
+    font-size: 2.5em;
+    color: var(--principal_escura);
+    font-weight: 700;
+    margin: 0;
+}
+
+/* --- Estilo da Busca --- */
+.buscarUso {
+    width: 100%;
+    max-width: 700px;
+    background-color: var(--branco);
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.buscarUso h3 {
+    font-size: 1.2em;
+    color: var(--principal);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.imputis {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.imputis input[type="text"] {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--cinza_claro);
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.imputis input[type="text"]:focus {
+    border-color: var(--principal);
+    outline: none;
+}
+
+.btnBuscar {
+    padding: 12px 20px;
+    background-color: var(--principal);
+    color: var(--branco);
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    flex-shrink: 0;
+}
+
+.btnBuscar:hover {
+    background-color: var(--principal_escura);
+}
+
+/* --- Estilo da Seção de Locais e Tabela --- */
+.locais {
+    width: 100%;
+    max-width: 1000px;
+    background-color: var(--branco);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow-x: auto;
+}
+
+.locais h2 {
+    font-size: 1.5em;
+    color: var(--principal_escura);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--cinza_claro);
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+.locais-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    min-width: 650px;
+}
+
+.locais-tabela th, .locais-tabela td {
+    border: 1px solid var(--cinza_claro);
+    padding: 12px;
+    text-align: left;
+    font-size: 0.95em;
+}
+
+.locais-tabela th {
+    background-color: var(--principal_claro);
+    color: var(--branco);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.locais-tabela tbody tr:nth-child(even) {
+    background-color: var(--background);
+}
+
+.locais-tabela tbody tr:hover {
+    background-color: #d8dee3;
+}
+
+/* Limitação de Conteúdo nas Células */
+.locais-tabela .limite {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Botão Novo Local */
+.locais-btn {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto 0;
+    padding: 12px 20px;
+    background-color: var(--complementar);
+    color: var(--preto);
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+}
+
+.locais a{
+    text-decoration: none;
+}
+
+.locais-btn:hover {
+    background-color: var(--complementar2);
+    color: var(--branco);
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    main {
+        padding: 15px;
+    }
+
+    .tituloLogo {
+        font-size: 2em;
+    }
+
+    .buscarUso {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .imputis {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .imputis input[type="text"], .btnBuscar {
+        width: 100%;
+    }
+
+    .locais {
+        padding: 15px;
+    }
+}

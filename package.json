@@ -39,7 +39,7 @@
     "moment": "^2.30.1",
     "multer": "^2.0.0",
     "mysql2": "^3.14.1",
-    "nodemailer": "^7.0.5",
+    "nodemailer": "^7.0.9",
     "path": "^0.12.7",
     "save": "^2.9.0",
     "simple-notify": "^1.0.6"

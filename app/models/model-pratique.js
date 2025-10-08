@@ -45,45 +45,46 @@ gravarSolicitacao: async (dados, userid) => {
       ? [dados.esporte]
       : [];
 
-    // Insere a solicitação principal
+    // Insere a solicitação principal na tabela 'locais'
     const querySolicitacao = `
-      INSERT INTO solicitacoes_pratique 
-      (usuario_id, local_nome, local_endereco, local_foto, local_link)
+      INSERT INTO locais
+      (local_nome, local_endereco, local_foto, local_latitude, local_longitude)
       VALUES (?, ?, ?, ?, ?)
     `;
-
+    
+    // Assegura que as coordenadas sejam passadas (latitude e longitude)
     const valuesSolicitacao = [
-      userid,
       dados.nome,
       dados.endereco,
       dados.foto,
-      dados.link,
+      dados.latitude,  // precisa vir nos dados
+      dados.longitude, // precisa vir nos dados
     ];
 
     const [resultadoSolicitacao] = await conexao.query(querySolicitacao, valuesSolicitacao);
     const solicitacaoId = resultadoSolicitacao.insertId;
 
-    // Se houver esportes selecionados, insere na tabela de ligação
+    // Se houver esportes selecionados, insere na tabela de ligação 'local_esporte'
     if (esportesSelecionados.length > 0) {
       const valuesEsportes = esportesSelecionados.map((id) => [solicitacaoId, id]);
 
       await conexao.query(
-        `
-        INSERT INTO solicitacao_esporte (solicitacao_id, esporte_id)
-        VALUES ?
-        `,
+        `INSERT INTO local_esporte (local_id, esporte_id) VALUES ?`,
         [valuesEsportes]
       );
     }
 
+    // Comita a transação
     await conexao.commit();
     console.log("Solicitação gravada com sucesso!");
     return { sucesso: true, solicitacaoId };
   } catch (e) {
+    // Em caso de erro, faz rollback da transação
     await conexao.rollback();
     console.error("Erro ao gravar solicitação:", e);
     throw e;
   } finally {
+    // Libera a conexão
     conexao.release();
   }
 }

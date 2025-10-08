@@ -1,11 +1,20 @@
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-    service: "gmail", // Ex: 'Gmail'
+    host: 'smtp.gmail.com',
+    port: 587, // Porta recomendada para envio de e-mails com STARTTLS
+    secure: false, // Não usa SSL/TLS direto
     auth: {
         user: process.env.EMAIL_USER, // Seu e-mail
         pass: process.env.SECRET_KEY  // Sua senha, ou preferencialmente o senha configurada para App password
-    }
+    },
+    tls:{
+        secure: false,
+        ignoreTLS: true,
+        rejectUnauthorized: false, // ignorar certificado digital - APENAS EM DESENVOLVIMENTO
+    },
+    connectionTimeout: 60000,
+    socketTimeout: 60000,
 });
 
 function enviarEmail(to, subject, text=null, html = null, callback) {

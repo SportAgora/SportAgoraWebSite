@@ -361,17 +361,7 @@ const AdmModel = {
         throw error;
       }
     },
-    UserCountPostagens: async (id) => {
-      try {
-        const query = "SELECT COUNT(*) as count FROM pratica_esportivas WHERE usuario_id = ?";
-        const [rows] = await pool.query(query, [id]);
-        return rows[0].count;
-      } catch (error) {
-        console.error("Erro ao contar postagens do usuário:", error);
-        throw error;
-      }
-    }
-
+    
 }
 
 module.exports = AdmModel;

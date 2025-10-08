@@ -237,3 +237,11 @@
     margin-left: 10px;  
     transition: color 0.3s ease-in-out;
 }
+
+#logo-area {
+    background-color: var(--background);
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -87,7 +87,8 @@ module.exports = {
 
       const html = require('../helpers/email-ativar-conta')(process.env.URL_BASE, token, nome);
       console.log("configurou o email")
-      enviarEmail(email, "Cadastro no site SportAgora", null, html, ()=>{
+      enviarEmail(email, "Cadastro no site SportAgora", null, html, (error)=>{
+        console.log(error)
         return res.render("pages/registro", {
           erros: null,
           dadosNotificacao: {

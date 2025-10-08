@@ -18,6 +18,9 @@
               <span class="ver-eventos">Voltar</span>
             </button>
     </section>
+    <section id="logo-area">
+            <h1 class="tituloLogo">Sobre Usuario</h1>
+        </section>
     <main class="mainsobreuso">
         <section class="infoUSO">
             <p><%=usuario.usu_nome%></p>
@@ -55,14 +58,12 @@
             <table class="endereco-tabela">
                 <thead>
                     <tr>
-                        <th>Postagens</th>
                         <th>Ingressos</th>
-                        <th>Eventos</th>
+                        <th>Eventos Postados</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><%= usuario.countPostagens %></td>
                         <td><%= usuario.countIngressos %></td>
                         <td><%= usuario.countEventos %></td>
                     </tr>

@@ -201,6 +201,10 @@ router.post('/inscricao', verificarAutenticacao, ingressoController.regrasValida
 router.get("/ingresso/sucesso", verificarAutenticacao, ingressoController.sucesso);
 router.get("/ingresso/erro", ingressoController.erro);
 
+router.get('/visualizar_ingresso', function(req,res){
+  res.render('pages/visualizar_ingresso');  
+})
+
 /* MAPA */
 
 router.get('/pratique', pratiqueController.carregarMapa);

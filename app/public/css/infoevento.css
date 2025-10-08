@@ -1,6 +1,6 @@
 /* INFORMAÇÔES DO EVENTO */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css');
+@import url('/apis/fontsMontserrat.css');
+@import url('/apis/uiconsregularrounded.css');
 
 
 
@@ -597,21 +597,10 @@ strong {
 }
 
 
-/* Denunciar */
-.modal-denuncia {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10000;
-  justify-content: center;
-  align-items: center;
-}
+/* Denunciar
 
-/* Caixa do modal */
+
+
 .modal-content-denuncia {
   background-color: var( --branco);
   color: var(--preto);
@@ -624,7 +613,6 @@ strong {
   font-family: 'Arial', sans-serif;
 }
 
-/* Botões dentro do modal */
 .modal-buttons {
   margin-top: 20px;
   display: flex;
@@ -643,13 +631,13 @@ strong {
   font-size: 15px;
 }
 
-/* Estilo do botão "Cancelar" */
+
 .btn-cancelar {
   background-color: #ccc;
   color: #333;
 }
 
-/* Estilo do botão "Confirmar denúncia" */
+
 .btn-confirmar {
   background-color:var(--erro);
   color: #fff;
@@ -657,4 +645,111 @@ strong {
 
 .btn-confirmar:hover {
   background-color: var(--erro);
+}
+
+#denuncia_desc{
+    margin: 10px;
+    width: 80%;
+    
+} */
+
+.modal-denuncia {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modal-content-denuncia {
+    background-color: #fefefe;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 450px; 
+    text-align: center;
+}
+
+.modal-content-denuncia h2 {
+    color: var(--erro, #d9534f); 
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.modal-content-denuncia p {
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+
+#denuncia-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#denuncia-form input[type='text'] {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    min-height: 80px; 
+    resize: vertical; 
+}
+
+#denuncia-form input[type='text']::placeholder {
+    color: #999;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.modal-buttons button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-grow: 1;
+}
+
+.btn-cancelar {
+    background-color: #ccc;
+    color: #333;
+}
+
+.btn-cancelar:hover {
+    background-color: #bbb;
+}
+
+.btn-confirmar {
+    background-color: var(--erro, #d9534f);
+    color: white;
+}
+
+.btn-confirmar:hover {
+    background-color: #c9302c;
+}
+
+.modal-denuncia.mostrar-modal {
+    display: flex;
 }

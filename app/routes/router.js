@@ -173,7 +173,7 @@ router.get('/meu-plano', verificarAutenticacao,  function(req,res){
 
 router.get('/criar-evento',  verificarAutenticacao, function(req,res){
   eventController.carregarCriarEvento(req,res);
-})
+});
 
 router.post('/criar-evento',
   verificarAutenticacao,
@@ -203,7 +203,11 @@ router.get("/ingresso/erro", ingressoController.erro);
 
 router.get('/visualizar_ingresso', function(req,res){
   res.render('pages/visualizar_ingresso');  
-})
+});
+
+router.get('/sobre_ingresso', function(req,res){
+  res.render('pages/sobre_ingresso');  
+});
 
 /* MAPA */
 

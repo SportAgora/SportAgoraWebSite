@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do seu Ingresso</title>
+    <link rel="stylesheet" href="/css/sobre_ingresso.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="icon" href="/imagens/SportAgora.png">
+    
+</head>
+<body>
+    <%- include('../partials/navbar'); %>
+    <section class="container-ver-eventos">
+        <button class="botao-seta" onclick="window.history.back()">
+            <img src="/imagens/left-arrow.png" alt="Seta">
+        </button>
+        <span class="ver-eventos">Voltar</span>
+    </section>
+    <main>
+    <section class="container">
+        <article class="header">
+            <h1>Ingresso Confirmado!</h1>
+            <p>Seus detalhes para o evento.</p>
+        </article>
+
+        <article class="content">
+            <article class="detail-group">                
+                <img src="/imagens/natação-evento.png" alt=".evento_foto">
+            </article>
+            <article class="detail-group">
+                <label>Evento  .evento_id </label>
+                <p>
+                    .evento_nome 
+                </p>
+            </article>
+            <article class="detail-group">
+                <label>Data e Local</label>
+                <p>
+                    .evento_data  
+                </p>
+            </article>
+
+            <article class="detail-group">
+                <label>Nome do Ingresso</label>
+                <p>
+                    .ingresso_nome 
+                </p>
+            </article>
+
+            <article class="detail-group">
+                <label>Tipo de Entrada</label>
+                <p>
+                    .ingresso_meia
+                </p>
+            </article>
+
+            <article class="detail-group">
+                <label>Quantidade</label>
+                <p>
+                    .ingresso_quantidade  
+                </p>
+            </article>
+
+            <article class="detail-group">
+                <label>Valor Unitário</label>
+                <p>
+                    R$ .ingresso_valor
+                </p>
+            </article>
+
+            <article class="total">
+                <button class="botao-validar" id="btnValidarIngresso">
+                    Validar Ingresso
+                </button>
+                <section>
+                    <label>Total Pago</label>
+                    <p> R$  total</p>
+                </section>
+            </article>
+
+        </article>
+        
+        <section id="qrCodeModal" class="modal">
+            <article class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>QR Code do seu Ingresso</h2>
+                <p>Apresente este código para validação.</p>
+                <article class="qr-code-container">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=SeuIngressoID:XYZ123Evento:Futebol4" alt="QR Code do Ingresso" class="qr-code-image">
+                </article>
+                <p class="warning-text">Não compartilhe este QR Code com outras pessoas.</p>
+            </article>
+        </section>
+        <script defer>
+            const btnValidar = document.getElementById('btnValidarIngresso');
+            const qrCodeModal = document.getElementById('qrCodeModal');
+            const closeButton = document.querySelector('.close-button');
+
+            btnValidar.onclick = function() {
+                qrCodeModal.style.display = 'flex'; 
+            }
+
+            closeButton.onclick = function() {
+                qrCodeModal.style.display = 'none';
+            }
+
+            window.onclick = function(event) {
+                if (event.target == qrCodeModal) {
+                    qrCodeModal.style.display = 'none';
+                }
+            }
+        </script>
+    </section>
+    </main>
+    <%- include('../partials/footer'); %>
+</body>
+</html>

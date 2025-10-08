@@ -1,0 +1,237 @@
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: var(-background);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.header {
+    background-color: var(--principal); /* Cor principal inspirada no SportAgora */
+    color: var(--branco);
+    padding: 25px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.header p {
+    margin-top: 5px;
+    font-size: 1em;
+    opacity: 0.9;
+    }
+
+.content {
+    padding: 30px;
+}
+
+.detail-group {
+    margin-bottom: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--branco);
+}
+
+.detail-group:last-child {
+    border-bottom: none;
+}
+
+.detail-group label {
+    display: block;
+    font-size: 0.9em;
+    color: var(--cinza);
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.detail-group p {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--cinza);
+}
+.detail-group img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.total {
+    text-align: right;
+    padding-top: 20px;
+    border-top: 2px solid var(--principal);
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.total p {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--principal);
+}
+
+.container-ver-eventos {
+    display: flex;
+    margin-top: 10px;
+    align-items: center; 
+    margin-bottom: 30px; 
+}
+.botao-seta {
+    background-color: var(--principal);
+    border: none;
+    color: var(--branco);
+    height: 55px;
+    margin-left: 30px;
+    width: 55px;
+    padding: 10px 20px;
+    border-radius: 50%; 
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+
+.botao-seta:hover {
+    transform: scale(1.05);  
+    background-color: var(--principal_escura);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
+}
+
+
+.botao-seta img {
+    margin-right: 30px;  
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.botao-seta:hover img {
+    transform: translateX(-5px); 
+}
+
+.botao-validar{
+    background-color: var(--principal);
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .botao-validar:hover {
+    background-color: var(--principal_escura); 
+    transform: scale(1.05); 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
+  }
+  
+  .botao-validar:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  }
+
+
+.ver-eventos {
+    color: var(--cinza_escuro);
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    cursor: pointer;
+    margin-left: 10px;  
+    transition: color 0.3s ease-in-out;
+}
+
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.6); 
+}
+
+.modal-content {
+    background-color: var(--background);
+    margin: auto; 
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%; 
+    max-width: 400px; 
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.3s ease-out; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.close-button {
+    color: var(--cinza);
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--cinza_escuro);
+    text-decoration: none;
+}
+
+.modal-content h2 {
+    color: var(--principal);
+    margin-top: 0;
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    color: var(--cinza);
+    font-size: 0.95em;
+    margin-bottom: 20px;
+}
+
+.qr-code-container {
+    padding: 15px;
+    background-color: var(--background);
+    border-radius: 8px;
+    display: inline-block; 
+    margin-bottom: 20px;
+}
+
+.qr-code-image {
+    width: 200px;
+    height: 200px;
+    display: block; 
+}
+
+.warning-text {
+    font-size: 0.85em;
+    color: var(--principal); 
+    font-weight: 500;
+}

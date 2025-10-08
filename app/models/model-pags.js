@@ -64,24 +64,22 @@ const PaginaModel = {
           }
         },
     buscarIngressosPorEvento: async (eventoId) => {
-    try {
-      const query = `
-        SELECT *
-        FROM ingresso
-        INNER JOIN evento_ingresso 
-          ON evento_ingresso.ingresso_id = ingresso.ingresso_id
-        WHERE evento_ingresso.evento_id = ?
-      `;
-      const [rows] = await pool.query(query, [eventoId]);
-      return rows;
-    } catch (error) {
-      console.error("Erro ao buscar ingressos do evento:", error);
-      throw error;
-    }
-  },
+  try {
+    const query = `
+      SELECT *
+      FROM ingressos
+      WHERE evento_id = ?
+    `;
+    const [rows] = await pool.query(query, [eventoId]);
+    return rows;
+  } catch (error) {
+    console.error("Erro ao buscar ingressos do evento:", error);
+    throw error;
+  }
+},
   EsportFindAll: async () => {
     try {
-      const query = "SELECT * FROM esporte";
+      const query = "SELECT * FROM esportes";
       const [rows] = await pool.query(query);
       return rows;
     } catch (error) {
@@ -91,9 +89,9 @@ const PaginaModel = {
   },
   buscarEsporteId: async (id) => {
     try {
-      const query = "SELECT * FROM esporte WHERE esporte_id = ?";
+      const query = "SELECT * FROM esportes WHERE esporte_id = ?";
       const [rows] = await pool.query(query, [id]);
-      return rows[0];
+      return rows.length > 0 ? rows[0] : null;
     } catch (error) {
       console.error("Erro ao buscar esportes:", error);
       throw error;
@@ -120,7 +118,7 @@ const PaginaModel = {
   verificarDenuncia: async (evento, user) => {
     try{
       const query = `
-        SELECT * FROM denuncia
+        SELECT * FROM denuncias
         WHERE den_evento_id = ? AND den_usuario_id = ?
       `;
       const [rows] = await pool.query(query, [evento, user]);
@@ -133,7 +131,7 @@ const PaginaModel = {
   criarDenuncia: async (evento, user, desc) => {
     try{
       const query = `
-        INSERT INTO denuncia (den_usuario_id, den_evento_id, den_descricao)
+        INSERT INTO denuncias (den_usuario_id, den_evento_id, den_descricao)
         VALUES (?, ?, ?)
       `;
       const [result] = await pool.query(query, [user, evento, desc]);
@@ -149,7 +147,7 @@ const PaginaModel = {
 
       const idsNumericos = ids.map(i => i.id);
       const placeholders = ids.map(() => '?').join(',');
-      const query = `SELECT * FROM ingresso WHERE ingresso_id IN (${placeholders})`;
+      const query = `SELECT * FROM ingressos WHERE ingresso_id IN (${placeholders})`;
       const [rows] = await pool.query(query, idsNumericos);
       return rows.map(r => {
       const info = ids.find(i => i.id == r.ingresso_id);

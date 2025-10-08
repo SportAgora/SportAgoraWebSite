@@ -1,17 +1,20 @@
-const mysql = require('mysql2')
+const mysql = require('mysql2/promise');
 
 try {
-    var pool = mysql.createConnection({
+    var pool = mysql.createPool({
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME,
-        port: process.env.DB_PORT
+        port: process.env.DB_PORT,
+        waitForConnections: true,
+        connectionLimit: 10, // número máximo de conexões simultâneas
+        queueLimit: 0
     });
-    console.log("Conexão estabelecida!");
+    console.log("Pool de conexões estabelecida!");
 } catch (e) {
-    console.log("Falha ao estabelecer a conexão!");
+    console.log("Falha ao estabelecer pool de conexões!");
     console.log(e);
 }
- 
-module.exports = pool.promise();
+
+module.exports = pool;

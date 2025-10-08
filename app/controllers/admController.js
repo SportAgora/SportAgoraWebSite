@@ -40,24 +40,25 @@ module.exports = {
         }).withMessage("Senhas estão diferentes")
      ],
       verificarAdm: async (req, res, next) => {
-   try {
-    if (!req.session || !req.session.usuario) {
-      return res.redirect("/adm/login");
-    }
+      try {
+        if (!req.session || !req.session.usuario) {
+          return res.redirect("/adm/login");
+        }
 
-    user = await AdmModel.UserFindId(req.session.usuario.id)
-    user = user.tipo
+        user = await AdmModel.UserFindId(req.session.usuario.id)
+        user = user.tipo
 
-    if (user !== "administrador") {
-      return res.redirect("/");
-    }
+        if (user !== "a") {
+          return res.redirect("/");
+        }
 
-    next(); 
-  } catch (error) {
-    console.error("Erro no verificarNivel:", error);
-    res.redirect("/adm/login");
-  }
-  },
+        next(); 
+      } catch (error) {
+        console.error("Erro no verificar nivel:", error);
+        res.redirect("/adm/login");
+      }
+      },
+    
     carregarUsuarios: async (req,res) =>{
         try{
             const pagina = parseInt(req.query.pagina) || 1;
@@ -328,6 +329,10 @@ module.exports = {
             if (!usuario) {
                 return res.status(404).send('Usuário não encontrado');
             }
+            // Adicionar contagens
+            usuario.countPostagens = await AdmModel.UserCountPostagens(id);
+            usuario.countIngressos = await AdmModel.UserCountIngressos(id);
+            usuario.countEventos = await AdmModel.UserCountEventos(id);
             res.render('pages/adm/sobre_usuario', { usuario });
         } catch (e) {
             console.error(e);

@@ -6,9 +6,12 @@ const assinaturaController = require('../controllers/assinaturaController');
 const eventController = require("../controllers/eventController");
 const pagsController = require("../controllers/pagsController");
 const ingressoController = require("../controllers/ingressoController");
+const pratiqueController = require("../controllers/pratiqueController");
 
 
 const uploadFile = require("../helpers/uploader")("./app/public/imagens/perfil/");
+
+const uploadFilePratique = require("../helpers/uploader")("./app/public/imagens/pratique/");
 
 const uploadFileEvent = require("../helpers/uploader")("./app/public/imagens/evento/");
 
@@ -133,59 +136,24 @@ router.get('/eventos', function(req,res){
     res.redirect('/home');  
 })
 
-router.get('/assinatura-concluida', function(req,res){
-  res.render('pages/assinatura-concluida.ejs');
-})
-
-router.get('/assinatura-rejeitada', function(req,res){
-  res.render('pages/assinatura-rejeitada.ejs');
-})
-
-router.get('/pratique', function(req,res){
-    res.render('pages/pratique');  
-})
-
 router.get('/planos', function(req,res){
-    if (req.session.usuario.tipo !== "organizador"){
+    if (req.session.usuario.tipo !== "o"){
     res.render('pages/planos');
   } else res.redirect('/meu-plano')
-})
-
-
-router.get('/perfilex', function(req,res){
-    res.render('pages/perfilex');  
 })
 
 router.get('/notificacoes', function(req,res){
   res.render('pages/notificacoes');  
 })
 
-
 router.get('/pagamento-evento', function(req,res){
     res.render('pages/pagamento-evento');  
-})
-
-router.get('/inscrito', function(req,res){
-    res.render('pages/inscrito');  
-})
-
-router.get('/item-do-carrosel', pagsController.carregarFiltrosRapidos, function(req,res){
-  res.render('pages/item-do-carrosel');  
-})
-
-
-router.get('/infoevento-natacao.ejs', function(req,res){
-  res.render('pages/infoevento-natacao.ejs');  
 })
 
 router.get('/home', function(req,res){res.redirect('/')})
 
 router.get('/erro', function(req,res){
   res.render('pages/error', {error:500, mensagem:"Algo deu errado no servidor."});  
-})
-
-router.get('/erroAssinatura', function(req,res){
-  res.render('pages/erroAssinatura.ejs');  
 })
 
 /* PAGAMENTOS */
@@ -196,7 +164,7 @@ router.get("/assinatura/erro", assinaturaController.erro);
 router.post("/assinatura/webhook", assinaturaController.webhook);
 
 router.get('/meu-plano', verificarAutenticacao,  function(req,res){
-    if (req.session.usuario.tipo == "organizador"){
+    if (req.session.usuario.tipo == "o"){
     res.render('pages/meu-plano');
   } else res.redirect('/planos')
 })
@@ -232,5 +200,20 @@ router.post('/inscricao', verificarAutenticacao, ingressoController.regrasValida
 
 router.get("/ingresso/sucesso", verificarAutenticacao, ingressoController.sucesso);
 router.get("/ingresso/erro", ingressoController.erro);
+
+/* MAPA */
+
+router.get('/pratique', pratiqueController.carregarMapa);
+
+router.get('/pratique/solicitacao', verificarAutenticacao, pratiqueController.carregarSolicitacao);
+
+router.post('/pratique/solicitacao',
+  verificarAutenticacao,
+  uploadFilePratique(["foto"]),
+  pratiqueController.regrasValidacaoSolicitacao,
+  function(req,res){
+    pratiqueController.gravarSolicitacao(req,res);
+  }
+);
 
 module.exports = router;

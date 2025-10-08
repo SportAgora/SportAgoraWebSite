@@ -15,10 +15,8 @@ module.exports= {
         try {
           const query = `
             SELECT *
-            FROM ingresso
-            INNER JOIN evento_ingresso 
-              ON evento_ingresso.ingresso_id = ingresso.ingresso_id
-            WHERE evento_ingresso.evento_id = ?
+            FROM ingressos
+            WHERE evento_id = ?
           `;
           const [rows] = await pool.query(query, [eventoId]);
           return rows;
@@ -33,7 +31,7 @@ module.exports= {
       
             const idsNumericos = ids.map(i => i.id);
             const placeholders = ids.map(() => '?').join(',');
-            const query = `SELECT * FROM ingresso WHERE ingresso_id IN (${placeholders})`;
+            const query = `SELECT * FROM ingressos WHERE ingresso_id IN (${placeholders})`;
             const [rows] = await pool.query(query, idsNumericos);
             return rows.map(r => {
             const info = ids.find(i => i.id == r.ingresso_id);
@@ -45,7 +43,7 @@ module.exports= {
           }
         },
       criarInscricaoEvento: async (dados, ingressos) => {
-    try {
+      try {
       if (!ingressos || ingressos.length === 0) return [];
 
       const query = `

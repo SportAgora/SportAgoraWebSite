@@ -312,12 +312,12 @@ module.exports = {
 ],
  
 
-autenticarUsuario: async (req, res, tipo = "comum") => {
+autenticarUsuario: async (req, res, tipo = "c") => {
     let pag = "pages/login";
       switch(tipo){
-        case "comum": pag = 'pages/login'; break;
-        case "organizador": pag = 'pages/login'; break;
-        case "administrador": pag = 'pages/adm/login'; break;
+        case "c": pag = 'pages/login'; break;
+        case "o": pag = 'pages/login'; break;
+        case "a": pag = 'pages/adm/login'; break;
         default : pag = 'pages/login'; break;
       }
     try {
@@ -370,7 +370,7 @@ autenticarUsuario: async (req, res, tipo = "comum") => {
         tipo: usuario.tipo
       };
       
-      if (usuario.tipo === "administrador") {
+      if (usuario.tipo === "a") {
        res.redirect("/adm/home");
       } else {
         res.redirect("/perfil");

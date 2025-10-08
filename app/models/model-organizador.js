@@ -3,74 +3,52 @@ const pool = require("../../config/pool-conexoes");
 const moment = require("moment");
  
 const OrganizadorModel = {
-    createEvent: async (eventData, ingressoIDs) => {
-      try {
-        const { 
-          user, esporte,  nome, foto, 
-          data_inicio, data_fim, data_hora, 
-          cep, numero, complemento, uf, cidade, descricao
-        } = eventData;
+    createEvent: async (eventData) => {
+  try {
+    const { 
+      user, esporte, nome, foto, 
+      data_inicio, data_fim, data_hora, 
+      cep, numero, complemento, uf, cidade, descricao
+    } = eventData;
 
-        // 1. Monta objeto do evento (sem ingresso_id)
-        const event = {
-          usuario_id: user,
-          esporte_id: esporte,
-          evento_nome: nome,
-          evento_foto: foto,
-          evento_data_publicacao: moment().format('YYYY-MM-DD HH:mm:ss'),
-          evento_data_inicio: data_inicio,
-          evento_data_fim: data_fim,
-          evento_data_hora: data_hora,
-          evento_descricao: descricao,
-          evento_endereco_numero: numero,
-          evento_endereco_complemento: complemento,
-          evento_endereco_uf: uf,
-          evento_endereco_cidade: cidade,
-          evento_endereco_cep: cep
-        };
+    const event = {
+      usuario_id: user,
+      esporte_id: esporte,
+      evento_nome: nome,
+      evento_foto: foto,
+      evento_data_publicacao: moment().format('YYYY-MM-DD HH:mm:ss'),
+      evento_data_inicio: data_inicio,
+      evento_data_fim: data_fim,
+      evento_data_hora: data_hora,
+      evento_descricao: descricao,
+      evento_endereco_numero: numero,
+      evento_endereco_complemento: complemento,
+      evento_endereco_uf: uf,
+      evento_endereco_cidade: cidade,
+      evento_endereco_cep: cep
+    };
 
-        // 2. Prepara query dinâmica
-        const eventFields = Object.keys(event).filter(key => event[key] !== null);
-        const eventValues = eventFields.map(field => event[field]);
-        const eventPlaceholders = eventFields.map(() => '?').join(', ');
+    const fields = Object.keys(event).filter(k => event[k] !== null);
+    const values = fields.map(k => event[k]);
+    const placeholders = fields.map(() => '?').join(', ');
 
-        const eventQuery = `
-          INSERT INTO eventos (${eventFields.join(', ')}) 
-          VALUES (${eventPlaceholders})
-        `;
+    const query = `
+      INSERT INTO eventos (${fields.join(', ')})
+      VALUES (${placeholders})
+    `;
 
-        // 3. Insere evento na tabela
-        const [eventResult] = await pool.query(eventQuery, eventValues);
-        const eventId = eventResult.insertId;
+    const [result] = await pool.query(query, values);
+    return result.insertId;
 
-        // 4. Relaciona ingressos (se existirem)
-        if (ingressoIDs && ingressoIDs.length > 0) {
-          const placeholders = ingressoIDs.map(() => '(?, ?)').join(', ');
-          const values = [];
-          
-          ingressoIDs.forEach(ingId => {
-            values.push(eventId, ingId);
-          });
-
-          const relQuery = `
-            INSERT INTO evento_ingresso (evento_id, ingresso_id) 
-            VALUES ${placeholders}
-          `;
-          await pool.query(relQuery, values);
-        }
-
-        // 5. Retorna ID do evento criado
-        return eventId;
-
-      } catch (error) {
-        console.error("Erro ao criar evento: \n", error);
-        return false;
-      }
-    },
+  } catch (error) {
+    console.error("Erro ao criar evento:\n", error);
+    return false;
+  }
+},
 
    EsportFindAll: async () => {
       try {
-        const query = "SELECT * FROM esporte";
+        const query = "SELECT * FROM esportes";
         const [rows] = await pool.query(query);
         return rows.length > 0 ? rows : null;
       } catch (error) {
@@ -79,7 +57,7 @@ const OrganizadorModel = {
       }
     },
 
-    createIngresso: async (ingressos) => {
+    createIngresso: async (ingressos, eventoId) => {
   try {
     const ingressosFormatados = [];
 
@@ -93,7 +71,8 @@ const OrganizadorModel = {
         ingresso_nome: nome,
         ingresso_valor: valor,
         ingresso_quantidade: quantidade,
-        ingresso_meia: 0 // inteiro
+        ingresso_meia: 0, // inteiro
+        evento_id: eventoId
       });
 
       // Se for meia, cria também o ingresso meia
@@ -102,22 +81,23 @@ const OrganizadorModel = {
           ingresso_nome: nome,
           ingresso_valor: valor / 2,
           ingresso_quantidade: quantidade,
-          ingresso_meia: 1 // meia
+          ingresso_meia: 1, // meia
+          evento_id: eventoId
         });
       }
     });
 
     if (ingressosFormatados.length === 0) return null;
 
-    const fields = ['ingresso_nome', 'ingresso_valor', 'ingresso_quantidade', 'ingresso_meia'];
-    const placeholders = ingressosFormatados.map(() => '(?, ?, ?, ?)').join(', ');
+    const fields = ['ingresso_nome', 'ingresso_valor', 'ingresso_quantidade', 'ingresso_meia', 'evento_id'];
+    const placeholders = ingressosFormatados.map(() => '(?, ?, ?, ?, ?)').join(', ');
     const values = [];
 
     ingressosFormatados.forEach(i => {
-      values.push(i.ingresso_nome, i.ingresso_valor, i.ingresso_quantidade, i.ingresso_meia);
+      values.push(i.ingresso_nome, i.ingresso_valor, i.ingresso_quantidade, i.ingresso_meia, i.evento_id);
     });
 
-    const query = `INSERT INTO ingresso (${fields.join(', ')}) VALUES ${placeholders}`;
+    const query = `INSERT INTO ingressos (${fields.join(', ')}) VALUES ${placeholders}`;
     const [result] = await pool.query(query, values);
 
     // pegar todos os IDs gerados
@@ -134,7 +114,7 @@ const OrganizadorModel = {
   ApagarIngresso: async (ingressoId) => {
     try {
      
-      const query = `DELETE FROM ingresso WHERE ingresso_id = ?`;
+      const query = `DELETE FROM ingressos WHERE ingresso_id = ?`;
      
       const [result] = await pool.query(query, ingressoId);
 
@@ -145,52 +125,49 @@ const OrganizadorModel = {
     }
   },
   visualizarEventosUsuarioPaginacao: async (usuarioId, offset, limite) => {
-    try {
-      // 1. Busca eventos do usuário com paginação
-      const queryEventos = `
-        SELECT * FROM eventos
-        WHERE usuario_id = ?
-        and evento_ativo = 1
-        ORDER BY evento_data_publicacao DESC
-        LIMIT ? OFFSET ?
+  try {
+    // 1. Busca eventos do usuário com paginação
+    const queryEventos = `
+      SELECT * FROM eventos
+      WHERE usuario_id = ?
+      AND evento_ativo = 1
+      ORDER BY evento_data_publicacao DESC
+      LIMIT ? OFFSET ?
+    `;
+
+    // 2. Conta total de eventos do usuário
+    const queryTotal = `
+      SELECT COUNT(*) AS total 
+      FROM eventos 
+      WHERE usuario_id = ? AND evento_ativo = 1
+    `;
+
+    const [eventos] = await pool.query(queryEventos, [usuarioId, limite, offset]);
+    const [totalResult] = await pool.query(queryTotal, [usuarioId]);
+
+    if (eventos.length === 0) return { eventos: [], total: 0 };
+
+    // 3. Busca ingressos de cada evento (sem tabela intermediária)
+    const eventosComIngressos = await Promise.all(eventos.map(async (evento) => {
+      const queryIngressos = `
+        SELECT * FROM ingressos
+        WHERE evento_id = ?
       `;
-  
-      // 2. Consulta para obter o total de eventos do usuário
-      const queryTotal = `
-        SELECT COUNT(*) as total FROM eventos WHERE usuario_id = ?
-      `;
-  
-      // Executar as consultas
-      const [eventos] = await pool.query(queryEventos, [usuarioId, limite, offset]);
-      const [totalResult] = await pool.query(queryTotal, [usuarioId]);
-  
-      if (eventos.length === 0) return { eventos: [], total: 0 };
-  
-      // 3. Para cada evento, buscar ingressos associados
-      const eventosComIngressos = await Promise.all(eventos.map(async (evento) => {
-        const queryIngressos = `
-          SELECT i.* FROM ingresso i
-          INNER JOIN evento_ingresso ei ON i.ingresso_id = ei.ingresso_id
-          WHERE ei.evento_id = ?
-        `;
-        const [ingressos] = await pool.query(queryIngressos, [evento.evento_id]);
-  
-        return {
-          ...evento,
-          ingressos
-        };
-      }));
-  
-      return {
-        eventos: eventosComIngressos,
-        total: totalResult[0].total
-      };
-  
-    } catch (error) {
-      console.error("Erro ao buscar eventos do usuário com paginação: \n", error);
-      throw error;
-    }
-  },
+      const [ingressos] = await pool.query(queryIngressos, [evento.evento_id]);
+
+      return { ...evento, ingressos };
+    }));
+
+    return {
+      eventos: eventosComIngressos,
+      total: totalResult[0].total
+    };
+
+  } catch (error) {
+    console.error("Erro ao buscar eventos do usuário com paginação:\n", error);
+    throw error;
+  }
+},
   visualizarEventoId: async (id) => {
     try {
       const query = "SELECT * FROM eventos WHERE evento_id = ? and evento_ativo = 1";
@@ -203,15 +180,18 @@ const OrganizadorModel = {
   },
   
   visualizarIngressoEventoId: async (id) => {
-    try {
-      const query = "SELECT * FROM ingresso i INNER JOIN evento_ingresso ei ON i.ingresso_id = ei.ingresso_id WHERE ei.evento_id = ?";
-      const [rows] = await pool.query(query, [id]);
-      return rows.length > 0 ? rows : null;
-    } catch (error) {
-      console.error("Erro ao buscar eventos:", error);
-      throw error;
-    }
-  },
+  try {
+    const query = `
+      SELECT * FROM ingressos
+      WHERE evento_id = ?
+    `;
+    const [rows] = await pool.query(query, [id]);
+    return rows.length > 0 ? rows : null;
+  } catch (error) {
+    console.error("Erro ao buscar ingressos do evento:", error);
+    throw error;
+  }
+}
   
   
 };

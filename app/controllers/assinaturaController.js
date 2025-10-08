@@ -48,7 +48,7 @@ module.exports = {
             // atualizar o usuário no banco
             const userId = req.session.usuario.id;
             await UsuarioModel.ativarPlano(userId);
-            req.session.usuario.tipo = 'organizador'
+            req.session.usuario.tipo = 'o'
 
             return res.redirect('/perfil');
         }

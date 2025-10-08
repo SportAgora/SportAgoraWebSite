@@ -51,11 +51,10 @@
                             <td class="limite">
                             <a href="/adm/usuarios/sobre_usuario?id=<%= u.usu_id %>"><%= u.usu_nome %></a>
                           </td>
-                            <td><%= u.usu_nome %></td>
                             <td><%= u.usu_email %></td>
-                            <td><% if (u.tipo == "comum") {%>
+                            <td><% if (u.tipo == "c") {%>
                                 Comum
-                                <%} else if (u.tipo == "administrador") {%>
+                                <%} else if (u.tipo == "a") {%>
                                 Administrador
                                 <%} else {%>
                                 Organizador

@@ -77,12 +77,13 @@ CREATE TABLE IF NOT EXISTS inscricao_evento (
 
 -- PRÁTICAS ESPORTIVAS
 CREATE TABLE IF NOT EXISTS locais (
-  local_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  local_nome VARCHAR(100) NOT NULL,
-  local_foto VARCHAR(255) NOT NULL,
-  local_endereco VARCHAR(255) NOT NULL,
-  local_latitude DECIMAL(10,6) NOT NULL,
-  local_longitude DECIMAL(10,6) NOT NULL
+    local_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    local_nome VARCHAR(100) NOT NULL,
+    local_foto VARCHAR(255) NOT NULL,
+    local_endereco VARCHAR(255) NOT NULL,
+    local_latitude DECIMAL(10,6) NOT NULL,
+    local_longitude DECIMAL(10,6) NOT NULL,
+	local_aprovado BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE IF NOT EXISTS local_esporte (

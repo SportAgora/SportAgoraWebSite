@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css');
+@import url('/apis/fontsMontserrat.css');
+@import url('/apis/uiconsregularrounded.css');
 
 /* Texto pratique */
 
@@ -225,8 +225,6 @@ h2 {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    margin-top: 10px;
-    margin-bottom: 30px;
     color: var(--preto);
     background-color: var(--branco);
 }
@@ -249,8 +247,8 @@ h2 {
 }
 
 .card img {
-    width: 300px;
-    height: 150px;
+    max-width: 45%;
+    max-height: 100%;
     object-fit: cover;
     margin-bottom: 30px;
     border-radius: 25px;
@@ -268,7 +266,6 @@ h2 {
     margin-bottom: 15px;
     margin-left: 10px;
     color: var(--preto);
-    background-color: var(--branco);
 }
 
 .info p {
@@ -279,7 +276,7 @@ h2 {
     margin-left: 10px;
     margin-bottom: 10px;
     color: var(--preto);
-    background-color: var(--branco);
+
 }
 
 .botao {
@@ -425,4 +422,30 @@ h2 {
 #esporte {
     color: var(--textopostinfo);
     background-color: var(--branco);
+}
+
+.locais-title{
+    display: flex;
+    justify-content: space-between;
+    align-items:  center;
+    font-size: 24px;
+    margin-bottom: 0px;
+}
+.adicionarLocal{
+    background-color: var(--principal);
+    border: none;
+    font-size: large;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.adicionarLocal:hover{
+    opacity: 0.9;
+    transform: scale(1.05);
 }

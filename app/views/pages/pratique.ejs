@@ -33,7 +33,11 @@
 
     <main class="container">
         <section class="locais-box">
-            <h2>Locais</h2>
+            <section class="locais-title">
+                <h2>Locais</h2> 
+                <button class="adicionarLocal" onclick="location.href='pratique/solicitacao'">Sugerir Local</button>
+            </section>
+
             <section class="cards-container">
                 <% locais.forEach(local => { %>
                 <section class="card local-item" 

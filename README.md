@@ -32,7 +32,7 @@ SportAgora é um sistema web para gerenciamento de eventos esportivos, inscriç�
 1. Clone o repositório:
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/SportAgora/SportAgoraWebSite
 cd sportagora
 ```
 

@@ -38,53 +38,50 @@ gravarSolicitacao: async (dados, userid) => {
   try {
     await conexao.beginTransaction();
 
-    // Normaliza o campo de esportes
-    const esportesSelecionados = Array.isArray(dados.esporte)
-      ? dados.esporte
-      : dados.esporte
-      ? [dados.esporte]
-      : [];
+    // Normaliza o campo de esportes (string ou array)
+    const esportesSelecionados = Array.isArray(dados.esportes)
+  ? dados.esportes
+  : dados.esportes
+  ? [dados.esportes]
+  : [];
 
-    // Insere a solicitação principal na tabela 'locais'
+    // Inserção na tabela 'solicitacoes'
     const querySolicitacao = `
-      INSERT INTO locais
-      (local_nome, local_endereco, local_foto, local_latitude, local_longitude)
+      INSERT INTO solicitacoes 
+      (solicitacao_nome, solicitacao_endereco, solicitacao_foto, solicitacao_link, usuario_id)
       VALUES (?, ?, ?, ?, ?)
     `;
-    
-    // Assegura que as coordenadas sejam passadas (latitude e longitude)
+
     const valuesSolicitacao = [
-      dados.nome,
-      dados.endereco,
-      dados.foto,
-      dados.latitude,  // precisa vir nos dados
-      dados.longitude, // precisa vir nos dados
+      dados.nome,         // solicitacao_nome
+      dados.endereco,     // solicitacao_endereco
+      dados.foto,         // solicitacao_foto
+      dados.link,         // solicitacao_link
+      userid              // usuario_id (usu_id)
     ];
 
     const [resultadoSolicitacao] = await conexao.query(querySolicitacao, valuesSolicitacao);
     const solicitacaoId = resultadoSolicitacao.insertId;
 
-    // Se houver esportes selecionados, insere na tabela de ligação 'local_esporte'
+    // Inserção na tabela 'solicitacoes_esportes'
     if (esportesSelecionados.length > 0) {
-      const valuesEsportes = esportesSelecionados.map((id) => [solicitacaoId, id]);
+      const valuesEsportes = esportesSelecionados.map(id => [solicitacaoId, parseInt(id)]);
 
       await conexao.query(
-        `INSERT INTO local_esporte (local_id, esporte_id) VALUES ?`,
+        `INSERT INTO solicitacoes_esportes (solicitacao_id, esporte_id) VALUES ?`,
         [valuesEsportes]
       );
     }
 
-    // Comita a transação
     await conexao.commit();
     console.log("Solicitação gravada com sucesso!");
     return { sucesso: true, solicitacaoId };
+
   } catch (e) {
-    // Em caso de erro, faz rollback da transação
     await conexao.rollback();
     console.error("Erro ao gravar solicitação:", e);
     throw e;
   } finally {
-    // Libera a conexão
     conexao.release();
   }
 }

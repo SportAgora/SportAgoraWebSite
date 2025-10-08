@@ -7,12 +7,39 @@
     <link rel="stylesheet" href="/css/base.css">
     <title>Solicitação de novo local</title>
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="/apis/simple-notify.min.css" />
+    <script src="/apis/simple-notify.min.js"></script>
 </head>
 
 <body>
+  <%- include('../partials/navbar'); %>
 
-  <p>Erros: <%= erros %></p>
-  <p>dadosNotificacao: <%= dadosNotificacao %></p>
+  
+    <% if (erros && erros.length > 0) { 
+        let msgErro = "";
+        erros.forEach(e => { msgErro += "* " + e.msg + "<br>"; });
+    %>
+    <script>
+      notify(
+        "Erro(s) no preenchimento",
+        "Verifique o(s) campo(s) <br> <%= msgErro.replace(/&lt;/g,'<').replace(/&gt;/g,'>') %>",
+        "error",
+        "right bottom",
+        5000
+      );
+      </script>
+    <% } %>
+
+    <% if (dadosNotificacao) { %>
+      <script>
+      notify(
+        "<%= dadosNotificacao.titulo %>",
+        "<%= dadosNotificacao.mensagem %>",
+        "<%= dadosNotificacao.tipo %>",
+        "right bottom"
+      );
+      </script>
+    <% } %>
 
   <header class="container-ver-eventos">
     <button class="botao-seta" onclick="window.history.back()">
@@ -28,25 +55,35 @@
         <p class="subtitle">Preencha as informações do local que deseja sugerir.</p>
 
         <label for="nome">Nome do Local *</label>
-        <input type="text" id="nome" name="nome" required>
+        <input type="text" id="nome" name="nome" value="<%=dados.nome%>" required>
 
         <label for="foto">Foto do Local</label>
         <figure class="image-upload" id="image-drop">
-          <figcaption id="image-text">Clique ou arraste a imagem aqui</figcaption>
+          <figcaption id="image-text">
+            Clique ou arraste a imagem aqui
+          </figcaption>
+
+          <!-- input do upload -->
           <input type="file" id="foto" name="foto" accept="image/*" style="display: none;">
-          <img id="image-preview" alt="Preview" style="display: none;">
+
+          <!-- mostra a imagem anterior se existir -->
+          <!-- É BUG DO EJS QUE NAO RECONHECE DENTRO DE STYLE -->
+          <img 
+            id="image-preview" 
+            alt="Preview"
+            src="<%= dados && dados.foto ? '/' + dados.foto : '' %>" 
+            style="<%= dados && dados.foto ? 'display:block;' : 'display:none;' %>"
+          >
+
+          <!-- guarda a foto anterior -->
+          <input type="hidden" name="fotoAntiga" value="<%= dados && dados.foto ? dados.foto : '' %>">
         </figure>
 
         <label for="endereco">Endereço *</label>
-        <input type="text" id="endereco" name="endereco" required>
+        <input type="text" id="endereco" name="endereco" value="<%=dados.endereco%>" required>
 
-        <label for="link">Link do Google Maps</label>
-        <input type="text" id="link" name="link" placeholder="https://maps.google.com/...">
-
-        <label for="descricao">Descrição do Local</label>
-        <div id="toolbar"></div>
-        <div id="editor"></div>
-        <input type="hidden" name="descricao" id="descricao">
+        <label for="link">Link do Google Maps *</label>
+        <input type="text" id="link" name="link" value="<%=dados.link%>" placeholder="https://maps.google.com/...">
 
         <label>Esportes praticados</label>
         <section class="checkbox-container">
@@ -57,7 +94,7 @@
                 id="esporte-<%= esporte.esporte_id %>"
                 name="esportes[]"
                 value="<%= esporte.esporte_id %>"
-              >
+                <%= (dados.esportes && (Array.isArray(dados.esportes) ? dados.esportes.includes(esporte.esporte_id.toString()) : dados.esportes === esporte.esporte_id.toString())) ? 'checked' : '' %>
               <label for="esporte-<%= esporte.esporte_id %>"><%= esporte.esporte_nome %></label>
             </article>
           <% }) %>
@@ -71,6 +108,6 @@
 
   <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
   <script defer src="/js/criar-local.js"></script>
-
+  <%- include('../partials/footer'); %>
 </body>
 </html>

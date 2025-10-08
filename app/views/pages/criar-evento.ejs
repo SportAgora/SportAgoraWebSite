@@ -137,10 +137,25 @@
         
         <label>Imagem de divulgação</label>
         <figure class="image-upload" id="image-drop">
-          <figcaption id="image-text" style="<%= dados.foto ? 'display:none;' : 'display:block;' %>">Clique ou arraste a imagem aqui</figcaption>
-          <input type="file" name="foto" accept="image/*" id="image-input" style="display:none;" value="<%= dados.foto %>">
-          <img id="image-preview" src="<%= dados.foto %>" alt="Preview" style="<%= dados.foto ? 'display:block;' : 'display:none;' %> max-width: 100%; margin-top: 10px;">
-        </figure>
+        <!-- texto aparece só se não houver imagem -->
+        <figcaption id="image-text" style="<%= dados && dados.foto ? 'display:none;' : 'display:block;' %>">
+          Clique ou arraste a imagem aqui
+        </figcaption>
+
+        <!-- input de upload -->
+        <input type="file" name="foto" accept="image/*" id="image-input" style="display:none;">
+
+        <!-- preview da imagem -->
+        <img 
+          id="image-preview" 
+          src="<%= dados && dados.foto ? '/' + dados.foto : '' %>" 
+          alt="Preview" 
+          style="<%= dados && dados.foto ? 'display:block;' : 'display:none;' %>; max-width: 100%; margin-top: 10px;"
+        >
+        <!-- campo escondido pra manter a foto antiga -->
+        <input type="hidden" name="fotoAntiga" value="<%= dados && dados.foto ? dados.foto : '' %>">
+      </figure>
+
 
 
         <label>Classifique seu evento</label>

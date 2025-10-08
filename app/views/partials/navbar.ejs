@@ -72,7 +72,7 @@
 
             <button class="login-button">
                 <% if (usuario) { %>
-                <img src="<%= usuario.foto %>" alt="User" class="user-icon">
+                <img src="/<%= usuario.foto %>" alt="User" class="user-icon">
                     <% } else {%>
                 <img src="/imagens/Icon.png" alt="User" class="user-icon">
                 <% }%>
@@ -83,7 +83,7 @@
             <article class="login-button-mobile">
                 <a onclick="location.href='/perfil'">
                 <% if (usuario) { %>
-                    <img src="<%= usuario.foto %>" alt="User" class="user-icon">
+                    <img src="/<%= usuario.foto %>" alt="User" class="user-icon">
                         <% } else {%>
                     <img src="/imagens/Icon.png" alt="User" class="user-icon">
                     <% }%>
@@ -105,7 +105,7 @@
     <% if (usuario) { %>
     <button class="panel-button" onclick="location.href='/perfil'">Perfil</button>
     <button class="panel-button" onclick="location.href='/editar-perfil'">Editar Perfil</button>
-    <% if (usuario.tipo == "administrador") {%>
+    <% if (usuario.tipo.toLowerCase() == "a") {%>
         <button class="panel-button" onclick="location.href='/adm'">Admin</button>
     <%}%>
     <button class="panel-button" onclick="location.href='/logout'">Sair</button>

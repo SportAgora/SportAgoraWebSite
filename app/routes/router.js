@@ -136,7 +136,7 @@ router.get('/eventos', function(req,res){
     res.redirect('/home');  
 })
 
-router.get('/planos', function(req,res){
+router.get('/planos', verificarAutenticacao, function(req,res){
     if (req.session.usuario.tipo !== "o"){
     res.render('pages/planos');
   } else res.redirect('/meu-plano')

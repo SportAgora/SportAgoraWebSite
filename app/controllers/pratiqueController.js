@@ -4,6 +4,7 @@ const multer = require('multer');
 
 module.exports = {
     carregarMapa: async (req, res) => {
+
         try {
             const locais = await PratiqueModel.listarLocais();
             res.render('pages/pratique', { locais });
@@ -31,58 +32,67 @@ module.exports = {
     regrasValidacaoSolicitacao: [
     body('nome').isLength({min:5,max:50}).withMessage('O nome do local é obrigatório.'),
     body('endereco').isLength({min:5,max:100}).withMessage('O endereço do local é obrigatório.'),
-    body('link').isLength({min:10,max:150}).withMessage('O link do local é muito grande.'),
+    body('link').isLength({min:10,max:150}).withMessage('O link do local é incompatível.'),
+     body('esportes')
+    .custom(value => {
+      if (!value || (Array.isArray(value) && value.length === 0)) {
+        throw new Error('Selecione pelo menos um esporte.');
+      }
+      return true;
+    })
     ],
     gravarSolicitacao: async (req, res) => {
   try {
     const esportes = await PratiqueModel.listarEsportes();
     const errors = validationResult(req);
     const erroMulter = req.session.erroMulter;
-    delete req.session.erroMulter; // limpa a sessão pra não ficar persistindo
+    delete req.session.erroMulter;
 
-    // Se não enviou a foto
-    console.log(req.files);
-    if (!req.files || !req.files.foto || req.files.foto.length === 0) {
-      return res.render('pages/solicitacao-pratique', {
+    // Se enviou nova foto, atualiza o caminho; senão mantém a antiga
+    let caminhoFoto = req.body.fotoAntiga || null;
+
+    if (req.files && req.files.foto && req.files.foto.length > 0) {
+      caminhoFoto = "imagens/pratique/" + req.files.foto[0].filename;
+    }
+
+    // Se ainda não tem foto nenhuma, erro
+    if (!caminhoFoto) {
+      return res.render("pages/solicitacao-pratique", {
         dados: req.body,
         erros: null,
         esportes,
-        dadosNotificacao: { 
-          titulo: "Foto não enviada", 
-          mensagem: "É obrigatório o envio de uma foto para o evento.", 
-          tipo: "error" 
-        }
+        dadosNotificacao: {
+          titulo: "Foto não enviada",
+          mensagem: "É obrigatório o envio de uma foto para o evento.",
+          tipo: "error",
+        },
       });
     }
-
-    // Caminho salvo da imagem
-    const caminhoFoto = "imagens/pratique/" + req.files.foto[0].filename;
 
     // Verifica erros de validação
     if (!errors.isEmpty() || erroMulter) {
       const listaErros = errors.array();
       if (erroMulter) listaErros.push(erroMulter);
 
-      return res.render('pages/solicitacao-pratique', {
+      return res.render("pages/solicitacao-pratique", {
         erros: listaErros,
-        dados: req.body,
+        dados: { ...req.body, foto: caminhoFoto },
         esportes,
-        dadosNotificacao: null
+        dadosNotificacao: null,
       });
     }
 
     // Monta dados para gravação
     const dados = {
       ...req.body,
-      foto: caminhoFoto
+      foto: caminhoFoto,
     };
 
     await PratiqueModel.gravarSolicitacao(dados, req.session.usuario.id);
-    return res.render('pages/solicitacao-enviada', { dados: req.body.nome });
-
+    return res.render("pages/solicitacao-enviada", { dados: req.body.nome });
   } catch (error) {
     console.error("Erro ao gravar solicitação:", error);
-    return res.redirect('/erro');
+    return res.redirect("/erro");
   }
 }
 }

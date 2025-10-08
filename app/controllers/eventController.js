@@ -55,81 +55,84 @@ module.exports = {
   
 
   criarEvento: async (req, res) => {
-    const dadoesporte = await OrganizadorModel.EsportFindAll();
-    const errors = validationResult(req);
+  const dadoesporte = await OrganizadorModel.EsportFindAll();
+  const errors = validationResult(req);
+  const erroMulter = req.session.erroMulter;
+  delete req.session.erroMulter;
 
-    if (!req.files || !req.files.foto) {
-              return res.render('pages/criar-evento',{
-                dados: req.body,
-                erros: null,
-                esporte:dadoesporte,
-                dadosNotificacao: { 
-                      titulo: "Foto não enviada", 
-                      mensagem: "É obrigatório o envio de uma foto para o evento.", 
-                      tipo: "error" 
-                }
-      })
+  let caminhoFoto = null;
 
-      } else {
-        var caminhoFoto = "imagens/evento/" + req.files.foto[0].filename;
-        console.log(caminhoFoto)
+  // Se o usuário enviou uma nova foto
+  if (req.files && req.files.foto && req.files.foto.length > 0) {
+    caminhoFoto = "imagens/evento/" + req.files.foto[0].filename;
+  }
+
+  // Se não enviou foto nem tinha anterior
+  if (!caminhoFoto && !req.body.fotoAntiga) {
+    return res.render('pages/criar-evento', {
+      dados: req.body,
+      erros: null,
+      esporte: dadoesporte,
+      dadosNotificacao: { 
+        titulo: "Foto não enviada", 
+        mensagem: "É obrigatório o envio de uma foto para o evento.", 
+        tipo: "error" 
       }
+    });
+  }
 
-    const erroMulter = req.session.erroMulter;
-    if(!errors.isEmpty() || erroMulter != null) {
-        lista =  !errors.isEmpty() ? errors : {formatter:null, errors:[]};
-          if(erroMulter != null ){
-              lista.errors.push(erroMulter);
-        } 
-      console.log(lista);
-      console.log(dadoesporte)
-      
-      let dados = req.body;
-      dados.foto = caminhoFoto;
-      return res.render('pages/criar-evento',{
-          dados,
-          erros: lista,
-          esporte: dadoesporte,
-          dadosNotificacao: null
-      })
+  // Usa a foto anterior caso o form tenha erro
+  if (!errors.isEmpty() || erroMulter) {
+    const lista = !errors.isEmpty() ? errors : { formatter: null, errors: [] };
+    if (erroMulter) lista.errors.push(erroMulter);
+
+    const dados = {
+      ...req.body,
+      foto: caminhoFoto || req.body.fotoAntiga // mantém a antiga se não tiver nova
+    };
+
+    return res.render('pages/criar-evento', {
+      dados,
+      erros: lista,
+      esporte: dadoesporte,
+      dadosNotificacao: null
+    });
+  }
+
+  try {
+    const { nome, esporte, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento, uf, cidade, ingressos } = req.body;
+
+    const evento = {
+      user: req.session.usuario.id,
+      esporte,
+      foto: caminhoFoto || req.body.fotoAntiga,
+      nome,
+      data_hora: data + " " + hora,
+      data_inicio: data_inicio + " " + hora_inicio,
+      data_fim: data_final + " " + hora_final,
+      descricao,
+      cep: cep.replace(/\D/g, ''),
+      numero,
+      complemento,
+      uf,
+      cidade
+    };
+
+    const resultado = await OrganizadorModel.createEvent(evento);
+    const ingressoIDs = await OrganizadorModel.createIngresso(ingressos, resultado);
+
+    if (!resultado) {
+      OrganizadorModel.ApagarIngresso(ingressoIDs);
+      removeImg(caminhoFoto);
     }
-        
-    try{
-      const {nome, esporte, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento, uf, cidade} = req.body;
-      const { ingressos } = req.body;
-      
-      const evento = {
-        user : req.session.usuario.id,
-        esporte,
-        foto: caminhoFoto,
-        nome,
-        data_hora: data + " " + hora,
-        data_inicio: data_inicio + " " + hora_inicio,
-        data_fim: data_final + " " + hora_final,
-        descricao,
-        cep: cep.replace(/\D/g, ''),
-        numero,
-        complemento,
-        uf,
-        cidade
-      }
 
-      const resultado = await OrganizadorModel.createEvent(evento)
+    return res.redirect("/evento?id=" + resultado);
+  } catch (e) {
+    console.error(e);
+    return res.redirect("/error");
+  }
+},
 
-      const ingressoIDs = await OrganizadorModel.createIngresso(ingressos, resultado)   
-
-      if (resultado == false){
-        OrganizadorModel.ApagarIngresso(ingressoIDs)
-        removeImg(caminhoFoto);
-      }
-
-      return res.redirect("/evento?id="+resultado)
-    }catch(e){
-      console.error(e)
-
-      return res.redirect("/error")
-    }
-  }, 
   carregarCriarEvento: async (req, res) => {
   try {
     const esporte = await OrganizadorModel.EsportFindAll();

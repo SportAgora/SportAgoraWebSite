@@ -363,7 +363,7 @@ const AdmModel = {
     },
     UserCountPostagens: async (id) => {
       try {
-        const query = "SELECT COUNT(*) as count FROM pratica_esportivas WHERE usuario_id = ?";
+        const query = "SELECT COUNT(*) as count FROM eventos WHERE usuario_id = ?";
         const [rows] = await pool.query(query, [id]);
         return rows[0].count;
       } catch (error) {

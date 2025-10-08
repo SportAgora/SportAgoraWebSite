@@ -39,6 +39,10 @@ router.get('/cadastro_concluido', verificarAdm, function(req,res){
   res.render('pages/adm/cadastro_concluido');  
 }) 
 
+router.get('/solicitacao_local', verificarAdm, function(req,res){
+  res.render('pages/adm/solicitacao_local');  
+}) 
+
 router.get('/eventos', verificarAdm, function(req,res){
   admController.carregarEventos(req,res);
 }) 

@@ -10,58 +10,46 @@
 </head>
 <body>
     <%- include('../partials/navbar'); %>
+    <section class="container-ver-eventos">
+        <button class="botao-seta" onclick="window.history.back()">
+            <img src="/imagens/left-arrow.png" alt="Seta">
+        </button>
+        <span class="ver-eventos">Voltar</span>
+    </section>
     <main class="ingresso-main">
-        <section class="container-voltar">
-            <button class="botao-seta" onclick="window.history.back()">
-              <img src="/imagens/left-arrow.png" alt="Seta">
-              <span class="texto-voltar">Voltar</span>
-            </button>
-        </section>
+        <section class="box-ingresso">
+            <section class="infoheader">
+                <h1 class="titulo-ingresso">ingresso_nome</h1>
+                <a href="" class="btn-evento">Ver Evento Relacionado</a>
+            </section>
+            <section class="dados-ingresso">
+                <h2>Detalhes e Estatísticas</h2>
+                <article class="card-info">
+                    <h3>Valor (Inteira)</h3>
+                    <p>R$ ingresso_valor</p>
+                </article>
 
-        <section class="cabecalho-ingresso">
-            <h1 class="titulo-ingresso">ingresso_nome</h1>
+                <article class="card-info">
+                    <h3>Meia Entrada</h3>
+                    <p>R$ ingresso_meia</p>
+                </article>
+
+                <article class="card-info destaque-principal">
+                    <h3>Quantidade Total Disponível</h3>
+                    <p>ingresso_quantidade</p>
+                </article>
             
-                Ver Evento Relacionado
-            </a>
-        </section>
-        
-        <section class="dados-ingresso">
-            <h2>Detalhes e Estatísticas</h2>
+                <article class="card-info destaque-sucesso">
+                    <h3>Total Vendido</h3>
+                    <p>ingresso_vendido</p>
+                </article>
             
-            <div class="card-info">
-                <h3>Valor (Inteira)</h3>
-                <p>R$ ingresso_valor</p>
-            </div>
-
-            <div class="card-info">
-                <h3>Meia Entrada</h3>
-                <p>R$ ingresso_meia</p>
-            </div>
-
-            <div class="card-info destaque-principal">
-                <h3>Quantidade Total Disponível</h3>
-                <p>ingresso_quantidade</p>
-            </div>
-            
-            <div class="card-info destaque-sucesso">
-                <h3>Total Vendido</h3>
-                <p>ingresso_vendido</p>
-            </div>
-            
-            <div class="card-info">
-                <h3>Ingressos Restantes</h3>
-                <p> restante</p>
-            </div>
+                <article class="card-info">
+                    <h3>Ingressos Restantes</h3>
+                    <p> restante</p>
+                </article>
+            </section>
         </section>
-
-        <section class="acoes-ingresso">
-                Editar Ingresso
-            </a>
-            <button class="btn-acao btn-excluir" onclick="confirmarExclusao()">
-                Excluir Ingresso
-            </button>
-        </section>
-
     </main>
     <%- include('../partials/footer'); %>
 </body>

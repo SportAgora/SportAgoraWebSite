@@ -6,39 +6,74 @@ main {
     background-color: var(--background);
     min-height: calc(100vh - 120px);
     width: 100%;
-    max-width: 1000px;
+    max-width: 80%;
     margin: 0 auto;
 }
 
-.container-voltar {
-    width: 100%;
-    margin-bottom: 20px;
+.container-ver-eventos {
+    display: flex;
+    margin-top: 10px;
+    align-items: center; 
+    margin-bottom: 30px; 
+}
+.botao-seta {
+    background-color: var(--principal);
+    border: none;
+    color: var(--branco);
+    height: 55px;
+    margin-left: 30px;
+    width: 55px;
+    padding: 10px 20px;
+    border-radius: 50%; 
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
-.botao-seta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 15px;
-    background: none;
-    border: 1px solid var(--cinza_claro);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    color: var(--cinza_escuro);
-    font-weight: 500;
-}
 
 .botao-seta:hover {
-    background-color: var(--principal_claro_transparente);
+    transform: scale(1.05);  
+    background-color: var(--principal_escura);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
 }
+
 
 .botao-seta img {
-    width: 18px;
-    height: 18px;
+    margin-right: 30px;  
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease-in-out;
 }
 
-.cabecalho-ingresso {
+
+.botao-seta:hover img {
+    transform: translateX(-5px); 
+}
+
+.ver-eventos {
+    color: var(--cinza_escuro);
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    cursor: pointer;
+    margin-left: 10px;  
+    transition: color 0.3s ease-in-out;
+}
+
+.infoheader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 2px solid var(--cinza_claro);
+    margin: 0 0 20px 0;
+    padding: 0 0 10px 0;
+}
+
+.box-ingresso {
     width: 100%;
     background-color: var(--branco);
     padding: 25px;
@@ -48,6 +83,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
 }
 
 .titulo-ingresso {
@@ -75,7 +111,7 @@ main {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 30px;
     margin-bottom: 30px;
 }
 
@@ -83,7 +119,6 @@ main {
     grid-column: 1 / -1; 
     font-size: 1.5em;
     color: var(--principal);
-    border-bottom: 2px solid var(--cinza_claro);
     padding-bottom: 10px;
     margin-bottom: 10px;
 }

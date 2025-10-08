@@ -1,5 +1,6 @@
 @import url('../apis/fontsMontserrat.css');
 @import url('../apis/uiconsregularrounded.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 
 *{
@@ -22,11 +23,15 @@
     --cinza_claro: #929292;
     --background: #E6ECF0;
     --a: #272727;
-
     --principal_claro_transparente: #b8343d93;
     --erro_claro: #f28b82;
     --erro_escuro: #b33939;
-}   
+    --fundo-claro: #f7f9fa; 
+    --fundo-secundario: #ededed; 
+    --texto-secundario: #555; 
+    --sombra-suave: rgba(0,0,0,0.05);
+    --sombra-moderada: rgba(0,0,0,0.1);
+}
 
 /* Tirar fundo barra de pesquisa da palavras recomendadas do input */
 #inputPesquisa:-webkit-autofill,

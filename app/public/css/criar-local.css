@@ -1,0 +1,257 @@
+/* ===== Container principal ===== */
+.container {
+    background: var(--branco);
+    border-radius: 14px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    padding: 40px 50px;
+    max-width: 1300px;
+    margin: 60px auto;
+    font-family: "Montserrat", sans-serif;
+    color: var(--preto);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Efeito sutil ao pairar */
+  .container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+  }
+  
+  /* ===== Títulos ===== */
+  h1 {
+    font-size: 2rem;
+    color: var(--principal_escura);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+    color: var(--cinza_escuro);
+    margin-bottom: 30px;
+  }
+  
+  /* ===== Labels ===== */
+  label {
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--preto);
+  }
+  
+  /* ===== Inputs e Textareas ===== */
+  input[type="text"],
+  input[type="url"],
+  input[type="file"],
+  select,
+  #descricao,
+  #editor {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1.5px solid var(--cinza_claro);
+    background-color: var(--background);
+    font-size: 1rem;
+    color: var(--preto);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    resize: vertical;
+  }
+  
+  input:focus,
+  select:focus,
+  #descricao:focus,
+  #editor:focus {
+    border-color: var(--principal);
+    box-shadow: 0 0 8px var(--principal_claro_transparente);
+    outline: none;
+  }
+  
+  /* ===== Upload de imagem ===== */
+  .image-upload {
+    border: 2px dashed var(--cinza_claro);
+    padding: 30px 20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: var(--branco);
+    transition: all 0.3s ease;
+    color: var(--cinza_escuro);
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  
+  .image-upload:hover {
+    background-color: var(--background);
+    border-color: var(--principal);
+    color: var(--principal_escura);
+  }
+  
+  .image-upload img#image-preview {
+    max-width: 100%;
+    max-height: 240px;
+    margin-top: 15px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  /* ===== Checkbox estilizado ===== */
+
+  .checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 18px;
+  }
+  
+.checkbox-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 18px;
+  border-radius: 10px;
+  border: 1.5px solid #d1d1d1;
+  background: #f9f9f9;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+  
+  .checkbox-item:hover {
+    border-color: var(--principal);
+    background-color: var(--principal_claro_transparente);
+  }
+  
+  /* ===== Botão principal ===== */
+  .public-btn {
+    margin-top: 40px;
+    padding: 14px 28px;
+    background-color: var(--principal);
+    color: var(--branco);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(215, 38, 56, 0.4);
+    transition: all 0.3s ease;
+  }
+  
+  .public-btn:hover {
+    background-color: var(--principal_escura);
+    box-shadow: 0 8px 22px rgba(163, 28, 41, 0.5);
+    transform: translateY(-2px);
+  }
+  
+  .public-btn:active {
+    transform: translateY(0);
+  }
+  
+  /* ===== Cabeçalho (Voltar) ===== */
+  .container-ver-eventos {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 1300px;
+    margin: 30px auto 0 auto;
+    padding: 0 10px;
+  }
+  
+  .botao-seta {
+    background: var(--principal);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+  
+  .botao-seta:hover {
+    background-color: var(--principal_escura);
+    transform: scale(1.05);
+  }
+  
+  .botao-seta img {
+    height: 22px;
+    width: 22px;
+    transition: transform 0.3s ease;
+  }
+  
+  .botao-seta:hover img {
+    transform: translateX(-5px);
+  }
+  
+  .ver-eventos {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--cinza_escuro);
+    cursor: pointer;
+  }
+  
+  /* ===== Animações suaves ===== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .container {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  /* ===== Responsividade ===== */
+  @media (max-width: 1024px) {
+    .container {
+      max-width: 95%;
+      padding: 35px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      margin: 30px 15px;
+      padding: 25px 20px;
+    }
+  
+    .checkbox-container {
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    h1 {
+      font-size: 1.6rem;
+    }
+  
+    .public-btn {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 20px;
+      border-radius: 10px;
+    }
+  
+    input, select {
+      font-size: 0.95rem;
+    }
+  
+    .public-btn {
+      font-size: 1rem;
+    }
+  }
+  

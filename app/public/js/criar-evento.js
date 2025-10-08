@@ -147,7 +147,8 @@ if (cepInput) {
     document.getElementById('valor-ingresso').value = "";
     document.getElementById('quantidade-ingresso').value = "";
     meiaEntradaAtivo = false;
-    document.getElementById('meia-entrada').textContent = 'Adicionar meia-entrada';
+    meiaEntradaBtn.classList.remove('active');
+    meiaEntradaBtn.textContent = 'Adicionar meia-entrada';
   });
 
   // Remover ingresso

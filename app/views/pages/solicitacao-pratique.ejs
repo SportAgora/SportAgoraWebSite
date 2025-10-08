@@ -3,39 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/criar-local.css">
+    <link rel="stylesheet" href="/css/base.css">
     <title>Solicitação de novo local</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
+
 <body>
-    <p>Erros: <%=erros%></p>
-    <p>dadosNotificacao: <%=dadosNotificacao%></p>
 
+  <p>Erros: <%= erros %></p>
+  <p>dadosNotificacao: <%= dadosNotificacao %></p>
+
+  <header class="container-ver-eventos">
+    <button class="botao-seta" onclick="window.history.back()">
+      <img src="/imagens/left-arrow.png" alt="Voltar">
+    </button>
+    <span class="ver-eventos">Voltar</span>
+  </header>
+
+  <main>
     <form action="/pratique/solicitacao" method="POST" enctype="multipart/form-data">
-        <label for="nome">Nome do Local:</label>
-        <input type="text" id="nome" name="nome" required><br><br>
+      <section class="container">
+        <h1>Solicitação de Novo Local</h1>
+        <p class="subtitle">Preencha as informações do local que deseja sugerir.</p>
 
-        <label for="endereco">Endereço:</label>
-        <input type="text" id="endereco" name="endereco" required><br><br>
+        <label for="nome">Nome do Local *</label>
+        <input type="text" id="nome" name="nome" required>
 
-        <label for="foto">Insira uma foto do local</label>
-        <input type="file" id="foto" name="foto" accept="image/*"><br><br>
+        <label for="foto">Foto do Local</label>
+        <figure class="image-upload" id="image-drop">
+          <figcaption id="image-text">Clique ou arraste a imagem aqui</figcaption>
+          <input type="file" id="foto" name="foto" accept="image/*" style="display: none;">
+          <img id="image-preview" alt="Preview" style="display: none;">
+        </figure>
 
-        <% esportes.forEach(function(esporte) { %>
-    <div>
-      <input
-        type="checkbox"
-        id="esporte-<%= esporte.esporte_id %>"
-        name="esportes[]"
-        value="<%= esporte.esporte_id %>"
-      >
-      <label for="esporte-<%= esporte.esporte_id %>">
-        <%= esporte.esporte_nome %>
-      </label>
-    </div>
-  <% }) %>
+        <label for="endereco">Endereço *</label>
+        <input type="text" id="endereco" name="endereco" required>
 
-        <label for="link">Insira o link do google maps do local:</label><br>
-        <input type="text" id="link" name="link" rows="4" cols="50"><br><br>
+        <label for="link">Link do Google Maps</label>
+        <input type="text" id="link" name="link" placeholder="https://maps.google.com/...">
 
-        <button type="submit">Enviar Solicitação</button>
+        <label for="descricao">Descrição do Local</label>
+        <div id="toolbar"></div>
+        <div id="editor"></div>
+        <input type="hidden" name="descricao" id="descricao">
+
+        <label>Esportes praticados</label>
+        <section class="checkbox-container">
+          <% esportes.forEach(function(esporte) { %>
+            <article class="checkbox-item">
+              <input
+                type="checkbox"
+                id="esporte-<%= esporte.esporte_id %>"
+                name="esportes[]"
+                value="<%= esporte.esporte_id %>"
+              >
+              <label for="esporte-<%= esporte.esporte_id %>"><%= esporte.esporte_nome %></label>
+            </article>
+          <% }) %>
+        </section>
+        <article class="center">
+          <button type="submit" class="public-btn">Enviar Solicitação</button>
+        </article>
+      </section>
+    </form>
+  </main>
+
+  <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+  <script defer src="/js/criar-local.js"></script>
+
 </body>
 </html>

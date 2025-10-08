@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prática de Esportes</title>
     <link rel="stylesheet" href="/css/pratique.css">
-    <script src="/js/mapa.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <link rel="icon" href="imagens/SportAgora.png">
 </head>
 <body>
@@ -34,7 +35,24 @@
         <section class="locais-box">
             <h2>Locais</h2>
             <section class="cards-container">
-                <section class="card">
+                <% locais.forEach(local => { %>
+                <section class="card local-item" 
+                        data-id="<%= local.local_id %>" 
+                        data-lat="<%= local.latitude %>" 
+                        data-lng="<%= local.longitude %>">
+                <img src="<%= local.foto %>" alt="<%= local.nome %>">
+                <article class="info">
+                    <h3><%= local.nome %></h3>
+                    <p>Endereço: <%= local.endereco %></p>
+                    <p>Esportes: <%= local.esportes || 'Nenhum' %></p>
+                    <button class="botao" 
+                            onclick="window.open('https://www.google.com/maps/search/?api=1&query=<%= encodeURIComponent(local.endereco) %>','_blank')">
+                    Como chegar
+                    </button>
+                </article>
+                </section>
+            <% }) %>
+                <!-- <section class="card">
                     <img src="imagens/clube.jpeg" alt="Ginásio Poliesportivo">
                     <article class="info">
                         <h3>Clube Esportivo</h3>
@@ -57,7 +75,7 @@
                         <p>Endereço: Rua Exemplo, 123</p>
                         <button class="botao" onclick="location.href='https://maps.app.goo.gl/LgyRXREg1Fvhi1g58'">Como chegar</button>
                     </article>
-                </section>
+                </section> -->
                 <!-- Repetição dos cartões -->
             </section>    
         </section>
@@ -69,7 +87,51 @@
         </section>
     </main>
 
+    <!-- ESSE SCRIPT TEM QUE ESTAR NO EJS SE NAO ELE QUEBRA -->
+     <script>
+     const locais = <%- JSON.stringify(locais) %>;
+
+    const map = L.map('map').setView([-23.5505, -46.6333], 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    const defaultIcon = L.icon({
+    iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+    });
+
+    const markers = {};
+
+    locais.forEach(local => {
+      const marker = L.marker([local.latitude, local.longitude], { icon: defaultIcon }).addTo(map);
+      marker.bindPopup(`<b>${local.nome}</b><br>${local.endereco}<br><i>${local.esportes || 'Nenhum esporte'}</i>`);
+      markers[local.local_id] = marker;
+
+      marker.on('click', () => {
+        const item = document.querySelector(`[data-id="${local.local_id}"]`);
+        document.querySelectorAll('.local-item').forEach(i => i.style.background = '');
+        item.style.background = 'var(--cinza_claro)';
+        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+
+    document.querySelectorAll('.local-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const lat = item.dataset.lat;
+        const lng = item.dataset.lng;
+        const id = item.dataset.id;
+        map.setView([lat, lng], 15);
+        markers[id].openPopup();
+
+        document.querySelectorAll('.local-item').forEach(i => i.style.background = '');
+        item.style.background = 'var(--cinza_claro)';
+      });
+    });
+    </script>
+
     <%- include('../partials/footer'); %>
-    
 </body>
 </html>

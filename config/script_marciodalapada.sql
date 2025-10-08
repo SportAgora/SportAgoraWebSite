@@ -77,12 +77,21 @@ CREATE TABLE IF NOT EXISTS inscricao_evento (
 
 -- PRÁTICAS ESPORTIVAS
 CREATE TABLE IF NOT EXISTS locais (
-  locais_id INT AUTO_INCREMENT PRIMARY KEY,
-  locais_nome VARCHAR(100),
-  lcoais_foto VARCHAR(255),
-  locais_latitude DECIMAL(10,6),
-  locais_longitude DECIMAL(10,6)
+  local_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  local_nome VARCHAR(100) NOT NULL,
+  local_foto VARCHAR(255) NOT NULL,
+  local_endereco VARCHAR(255) NOT NULL,
+  local_latitude DECIMAL(10,6) NOT NULL,
+  local_longitude DECIMAL(10,6) NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS local_esporte (
+  local_id INT UNSIGNED NOT NULL,
+  esporte_id INT UNSIGNED NOT NULL,
+  FOREIGN KEY (local_id) REFERENCES locais(local_id),
+  FOREIGN KEY (esporte_id) REFERENCES esportes(esporte_id)
+);
+
 
 -- DENÚNCIAS
 CREATE TABLE IF NOT EXISTS denuncias (
@@ -168,3 +177,8 @@ VALUES
 ('Ingresso Padrão', 100, 300, 0, 5),
 ('Ingresso Padrão', 50, 300, 1, 5),
 ('Ingresso VIP', 350, 300, 0, 5);
+
+INSERT INTO locais (local_nome, local_foto, local_endereco, local_latitude, local_longitude) VALUES
+('Arena Central', 'imagens/esportes/futebol_banner.png', 'Rua A, 123', -23.5505, -46.6333),
+('Campo Verde', 'imagens/esportes/futebol_banner.png', 'Av. B, 456', -23.5580, -46.6400);
+INSERT INTO local_esporte (local_id, esporte_id) VALUES (1,1), (1,2), (2,2);

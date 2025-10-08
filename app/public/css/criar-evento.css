@@ -582,3 +582,54 @@
       width: 90%;
   }
   }
+
+  /* Wrapper para scroll horizontal da tabela em telas pequenas */
+#ingresso-tabela-wrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+/* Ajuste para a tabela ficar com largura mínima e evitar quebra */
+#ingresso-tabela {
+  min-width: 600px; /* Ajuste conforme necessário */
+  border-collapse: collapse;
+}
+
+/* Ajuste dos botões dentro da tabela para responsividade */
+#ingresso-tabela button {
+  padding: 8px 12px;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+/* Em telas menores */
+@media (max-width: 768px) {
+  /* Aumentar o scroll da tabela */
+  #ingresso-tabela-wrapper {
+    overflow-x: auto;
+  }
+  
+  /* Ajustar botão para ocupar 100% da célula e facilitar toque */
+  #ingresso-tabela button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Diminuir padding das células para caber melhor */
+  #ingresso-tabela th, #ingresso-tabela td {
+    padding: 8px 6px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ainda melhor para telas muito pequenas */
+  #ingresso-tabela {
+    min-width: 100%; /* Permitir que a tabela se adapte */
+  }
+  
+  #ingresso-tabela th, #ingresso-tabela td {
+    padding: 6px 4px;
+    font-size: 0.85em;
+  }
+}

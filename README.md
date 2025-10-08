@@ -4,7 +4,7 @@ npm install --save
 criar banco de dados (script.sql)
 criar .env
 
-DB_HOST        =
+DB_HOST        = 
 DB_USER        =
 DB_PASSWORD    =
 DB_NAME        =

@@ -36,6 +36,9 @@
         })
     }; %>
     <main>
+        <section id="logo-area">
+            <h1 class="tituloLogo">Novo Usuario</h1>
+        </section>
         <form id="formulario-usuario" method="post" action="/adm/novousuario">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" value="<%=dados.nome%>" class="<%= erroValidacao.nome %>" required>

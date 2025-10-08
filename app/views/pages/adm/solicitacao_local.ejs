@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADM Sport Agora </title>
+    <link rel="stylesheet" href="/css/adm/styles.css">
+    <link rel="stylesheet" href="/css/adm/solicitacao_local.css">
+    <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="icon" href="/imagens/SportAgora.png">
+</head>
+<body>
+    <%- include('../../partials/adm_navbar'); %>
+    <main>
+        <section class="logo-area">
+            <h1 class="tituloLogo">Solicitações de Locais</h1>
+        </section>
+        <form action="" method="post" class="buscarUso">
+            <h3>Pesquisar Locais</h3>
+            <aside class="imputis">
+                <input type="text" name="pesquisa" value="" placeholder="Locais solicitados">
+                <button type="submit" class="btnBuscar">Buscar</button>
+            </aside>
+        </form>
+        <section class="locais">
+            <h2>Locais Recebidos</h2>
+            <table class="locais-tabela">
+                <thead>
+                    <tr>
+                        <th>Nome do Local</th>
+                        <th>Endereço</th>
+                        <th>Esporte</th>
+                        <th>Link Google Maps</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="limite">a</td>
+                        <td class="limite">a</td>
+                        <td class="limite">a</td>
+                        <td class="limite">a</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="#"><button class="locais-btn">+ Novo Local</button></a>
+            </button>
+        </section>
+    </main>
+    <%- include('../../partials/adm_footer'); %>
+</body>
+</html>

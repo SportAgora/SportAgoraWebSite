@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css');
+@import url('/apis/fontsMontserrat.css');
+@import url('/apis/uiconsregularrounded.css');
 
 
 *{
@@ -249,13 +249,13 @@ strong {
 .postagens-tabela tr:hover {
     background-color: var(--branco);
 }
-
+*/
 .limite {
     max-width: 150px; 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  } */
+  } 
 
   .navbar {
     background-color: var(--principal);

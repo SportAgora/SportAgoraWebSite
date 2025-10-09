@@ -365,18 +365,24 @@ body {
 
 .name-info {
   margin-left: 15px;
-  color:var(--preto);
-  text-shadow: 0 0 5px rgba(0,0,0,0.8);
+  color: var(--branco); /* texto claro por padrão */
+  text-shadow: 0 0 8px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.7); /* sombra forte para contraste */
+  background-color: rgba(0,0,0,0.3); /* leve fundo semi-transparente */
+  padding: 5px 10px;
+  border-radius: 8px;
+  display: inline-block; /* para não ocupar toda a largura */
 }
 
 .name-info h2 {
   margin: 0;
   font-size: 1.4rem;
+  color: inherit; /* herda cor do pai */
 }
 
 .name-info p {
   margin: 0;
   font-size: 1rem;
+  color: inherit;
   opacity: 0.9;
 }
 

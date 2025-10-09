@@ -430,7 +430,6 @@ a {
     object-fit: cover !important;
   }
 
-  /* Encosta o card no carrossel e evita gap */
   .post-box {
     margin-top: 0;
     width: 100%;
@@ -443,3 +442,8 @@ a {
 
 }
 
+@media (max-width: 768px) {
+  .carousel-btn {
+    display: none !important;
+  }
+}

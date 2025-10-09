@@ -75,23 +75,18 @@ const AdmModel = {
   // Atualizar usuário
   UserAtualizar: async (id, userData) => {
     try {
-      const { nome, arroba, email, data_nascimento, logradouro_id, cpf, telefone, plano, tipo, foto, banner, bio, senha} = userData;
+      const { nome, email, data_nascimento, tipo, foto, banner, senha, status} = userData;
  
       // Preparar os dados para atualização
       const data = {
         usu_nome: nome,
-        perf_nome : arroba,
         usu_email: email,
         usu_senha:senha,
         usu_nasc: data_nascimento ? moment(data_nascimento).format('YYYY-MM-DD') : null,
-        endereco_id: logradouro_id || null,
-        usu_cpf: cpf ? formatCPF(cpf) : null,
-        contato_id: telefone,
-        plano_id : plano,
-        tipo : tipo,
-        usu_foto : foto,
-        usu_banner : banner,
-        biografia : bio
+        usu_foto: foto,
+        usu_banner: banner,
+        tipo: tipo,
+        usu_status: status
       };
  
       // Construir a query dinamicamente
@@ -244,6 +239,44 @@ const AdmModel = {
       throw error;
     }
   },
+ EventosListarComPaginacaoPesquisa: async (offset, limite, termo) => {
+  try {
+    // Consulta para obter os usuários com paginação e pesquisa
+    const queryEventos = 
+      `SELECT 
+          e.evento_id,
+          e.evento_nome,
+          e.evento_descricao,
+          e.evento_data_inicio,
+          e.evento_data_fim,
+          e.evento_data_hora,
+          s.esporte_nome,
+          COUNT(d.den_id) AS denuncias_count
+      FROM eventos e
+      LEFT JOIN esportes s ON e.esporte_id = s.esporte_id
+      LEFT JOIN denuncias d ON e.evento_id = d.den_evento_id
+      WHERE e.evento_nome LIKE ?
+      GROUP BY e.evento_id
+      LIMIT ?, ?`;
+   
+    // Consulta para obter o total de eventos filtrados
+    const queryTotal = "SELECT COUNT(*) as total FROM eventos WHERE evento_nome LIKE ?";
+
+    const searchTerm = `%${termo}%`;
+
+    // Executar as consultas
+    const [eventos] = await pool.query(queryEventos, [searchTerm, offset, limite]);
+    const [totalResult] = await pool.query(queryTotal, [searchTerm]);
+   
+    return {
+      eventos,
+      total: totalResult[0].total
+    };
+  } catch (error) {
+    console.error("Erro ao listar usuários:", error);
+    throw error;
+  }
+},
   EsportCreate: async (esporteData) => {
     try {
       const {nome, foto, banner} = esporteData;

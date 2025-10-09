@@ -71,8 +71,7 @@
     border-left: 3px solid var(--complementar);
 }
 
-/* Correção de Layout para a Seção de Tabela/Dados (a antiga .botoesHome) */
-.botoesHome {
+#botoesHome {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -83,7 +82,6 @@
     overflow-x: auto;
 }
 
-/* Cabeçalho da Seção de Dados (Informações + Botão) */
 .aaaaa {
     display: flex;
     justify-content: space-between;
@@ -103,7 +101,6 @@
     margin: 0;
 }
 
-/* Botão de Ação (Vizualizar Perfil) */
 .btnver {
     padding: 10px 15px;
     background-color: var(--complementar);
@@ -122,7 +119,6 @@
     color: var(--branco);
 }
 
-/* Tabela (Estilos genéricos para tabelas ADM) */
 .endereco-tabela {
     width: 100%;
     border-collapse: collapse;
@@ -131,12 +127,10 @@
 }
 
 .endereco-tabela thead th {
-    /* Ajuste para garantir que o texto não se quebre no cabeçalho */
     text-align: center;
 }
 
 .endereco-tabela tbody tr {
-    /* Ajuste de largura das colunas para os 3 itens */
     text-align: center;
 }
 
@@ -178,7 +172,7 @@
         max-width: 600px;
     }
 
-    .botoesHome {
+    #botoesHome {
         width: 100%;
         max-width: 100%;
         padding: 15px;
@@ -244,4 +238,84 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+#botoesHome form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#botoesHome form label {
+    font-weight: 600;
+    color: var(--principal_escura);
+}
+
+#botoesHome form input[type="text"],
+#botoesHome form input[type="password"],
+#botoesHome form select {
+    padding: 10px 12px;
+    border: 1px solid var(--cinza_claro);
+    border-radius: 4px;
+    font-size: 1em;
+    margin-bottom: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    /* Adicionado para garantir o estilo do select */
+    appearance: none;
+    background-color: var(--branco);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%;
+    background-size: 0.65em auto;
+}
+
+#botoesHome form input[type="file"] {
+    padding: 10px 0;
+    border: none;
+}
+
+/* Botão de Submit */
+#botoesHome form input[type="submit"] {
+    padding: 12px 20px;
+    background-color: var(--principal);
+    color: var(--branco);
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+}
+
+#botoesHome form input[type="submit"]:hover {
+    background-color: var(--principal_escura);
+}
+
+/* Preview da Foto Existente */
+.foto-preview-existente {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.foto-preview-existente img {
+    border-radius: 4px;
+    /* max-width definido no inline-style do EJS */
+}
+
+/* Preview da Nova Foto */
+#novaFotoPreview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px dashed var(--principal_claro);
+    padding: 5px;
+}
+#botoesHome{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
 }

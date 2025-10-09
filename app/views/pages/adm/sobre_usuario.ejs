@@ -3,24 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADM Sport Agora </title>
+    <title>ADM Sport Agora - Sobre Usuário</title>
     <link rel="stylesheet" href="/css/adm/styles.css">
-    <link rel="stylesheet" href="/css/adm/sobre_usuarios.css">
+    <link rel="stylesheet" href="/css/adm/sobre_usuarios.css"> 
     <link rel="icon" href="imagens/SportAgora.png">
     <link rel="icon" href="/imagens/SportAgora.png">
+    <style>
+        /* Estilos básicos para erros e notificações */
+        .erro-campo {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+        .notificacao {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid transparent;
+        }
+        .notificacao.success {
+            background-color: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+        .notificacao.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+    </style>
 </head>
 <body>
     <%- include('../../partials/adm_navbar'); %>
-    <%console.log(usuario)%>
+    
+    <%
+    // Mapeia os erros de validação para facilitar o acesso
+    const errorMap = {};
+    if (erros && erros.errors) {
+        erros.errors.forEach(err => {
+            // Usa 'path' ou 'param' dependendo de como o express-validator retorna
+            errorMap[err.path || err.param || 'geral'] = err.msg;
+        });
+    }
+    
+    // Converte o tipo do usuário para texto legível
+    let tipoUsuario;
+    switch(usuario.tipo) {
+        case "c":
+            tipoUsuario = "Comum";
+            break;
+        case "o":
+            tipoUsuario = "Organizador";
+            break;
+        case "a":
+            tipoUsuario = "Administrador";
+            break;
+        default:
+            tipoUsuario = "Tipo desconhecido";
+    }
+    %>
+
     <section class="container-ver-eventos">
-            <button class="botao-seta" onclick="window.history.back()">
-              <img src="/imagens/left-arrow.png" alt="Seta">
-              <span class="ver-eventos">Voltar</span>
-            </button>
+        <button class="botao-seta" onclick="window.history.back()">
+            <img src="/imagens/left-arrow.png" alt="Seta">
+            <span class="ver-eventos">Voltar</span>
+        </button>
     </section>
+    
     <section id="logo-area">
-            <h1 class="tituloLogo">Sobre Usuario</h1>
-        </section>
+        <h1 class="tituloLogo">Sobre Usuário</h1>
+    </section>
+
+    <% if (dadosNotificacao) { %>
+        <div class="notificacao <%= dadosNotificacao.tipo %>">
+            <strong><%= dadosNotificacao.titulo %></strong>
+            <p><%= dadosNotificacao.mensagem %></p>
+        </div>
+    <% } %>
+
     <main class="mainsobreuso">
         <section class="infoUSO">
             <p><%=usuario.usu_nome%></p>
@@ -28,84 +89,74 @@
             <h2>Sobre</h2>
             <section class="descricao">
                 <h3>Tipo de Usuario</h3>
-                <p><%
-                switch(usuario.tipo) {
-                    case "c":
-                        tipoUsuario = "Comum";
-                        break;
-                    case "o":
-                        tipoUsuario = "Organizador";
-                        break;
-                    case "a":
-                        tipoUsuario = "Administrador";
-                        break;
-                    default:
-                        tipoUsuario = "Tipo desconhecido";
-                }
-                %>
-                <%-tipoUsuario%>
-                </p>
+                <p><%= tipoUsuario %></p>
                 
                 <h3>Email do Usuario</h3>
-                <p><%-usuario.usu_email%></p>
+                <p><%=usuario.usu_email%></p>
             </section>
         </section>
+
         <section class="botoesHome">
             <section class="aaaaa">
-                <h2>Informações</h2> 
-                <!-- <a href="/perfil?id=<%=usuario.usu_id%>" id="aaa"><button class="btnver">Visualizar Perfil</button></a> -->
+                <h2>Editar Informações</h2> 
             </section>
 
             <section>
                 <form action="/adm/usuarios/editar" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="usu_id" value="<%= usuario.usu_id %>"> 
-    
+                    
+                    <input type="hidden" name="usu_id" value="<%= usuario.usu_id %>">
+                    
                     <label for="nome">Nome:</label>
                     <input type="text" name="nome" id="nome" value="<%= dadosForm.usu_nome %>">
                     <% if (errorMap.nome) { %><p class="erro-campo"><%= errorMap.nome %></p><% } %>
-    
+                    <br>
+                    
                     <label for="email">Email:</label>
                     <input type="text" name="email" id="email" value="<%= dadosForm.usu_email %>">
                     <% if (errorMap.email) { %><p class="erro-campo"><%= errorMap.email %></p><% } %>
-    
-                    <label for="senha">Nova Senha (deixe em branco para manter):</label>
-                    <input type="password" name="senha" id="senha" placeholder="********" value="<%= dadosForm.senha || '' %>">
-                    <% if (errorMap.senha) { %><p class="erro-campo"><%= errorMap.senha %></p><% } %>
-    
-                    <label for="repsenha">Confirmar Nova Senha:</label>
-                    <input type="password" name="repsenha" id="repsenha" placeholder="********" value="<%= dadosForm.repsenha || '' %>">
-                    <% if (errorMap.repsenha) { %><p class="erro-campo"><%= errorMap.repsenha %></p><% } %>
-                    
+                    <br>
+
                     <label for="tipo">Tipo de Usuário:</label>
                     <select name="tipo" id="tipo">
-                        <option value="c" <%= usuario.tipo === 'c' ? 'selected' : '' %>>Comum</option>
-                        <option value="o" <%= usuario.tipo === 'o' ? 'selected' : '' %>>Organizador</option>
-                        <option value="a" <%= usuario.tipo === 'a' ? 'selected' : '' %>>Administrador</option>
+                        <option value="c" <%= dadosForm.tipo === 'c' ? 'selected' : '' %>>Comum</option>
+                        <option value="o" <%= dadosForm.tipo === 'o' ? 'selected' : '' %>>Organizador</option>
+                        <option value="a" <%= dadosForm.tipo === 'a' ? 'selected' : '' %>>Administrador</option>
                     </select>
-    
+                    <br>
+                    
+                    <label for="senha">Nova Senha (deixe em branco para manter):</label><br>
+                    <input type="password" name="senha" id="senha" placeholder="********" value=""><br>
+                    <% if (errorMap.senha) { %><p class="erro-campo"><%= errorMap.senha %></p><% } %>
+                    
+                    <label for="repsenha">Confirmar Nova Senha:</label><br>
+                    <input type="password" name="repsenha" id="repsenha" placeholder="********" value="">
+                    <% if (errorMap.repsenha) { %><p class="erro-campo"><%= errorMap.repsenha %></p><% } %>
+                    <br>
+                    
                     <label for="foto">Foto:</label>
-    
+                    <br>
                     <% if (dadosForm.usu_foto) { %>
                         <div class="foto-preview-existente">
                             <img src="/<%= dadosForm.usu_foto %>" alt="Foto do Usuário" id="fotoExistente" style="max-width:200px; display:block; margin-bottom:5px;">
                         </div>
                         <input type="hidden" name="foto_antiga" value="<%= dadosForm.usu_foto %>">
                     <% } %> 
-    
+
                     <div id="novaFotoPreview" style="max-width:300px; margin-bottom: 10px;"></div>
-    
+
                     <input type="file" id="foto" name="foto" accept="image/*">
                     <% if (errorMap.foto) { %><p class="erro-campo"><%= errorMap.foto %></p><% } %>
-    
                     <br>
                     <input type="submit" value="Alterar dados">
                 </form>
+                
+                <% if (errorMap.geral) { %><p class="erro-campo"><%= errorMap.geral %></p><% } %>
             </section>
 
             <table class="endereco-tabela">
                 <thead>
                     <tr>
-                        <th>Ingressos</th>
+                        <th>Ingressos Comprados</th>
                         <th>Eventos Postados</th>
                     </tr>
                 </thead>

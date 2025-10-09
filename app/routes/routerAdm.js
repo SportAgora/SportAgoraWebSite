@@ -111,7 +111,7 @@ router.post('/local_editar', uploadFile(["foto"]), verificarAdm, function(req,re
 
 router.post(
   '/adm/usuarios/editar', 
-  upload.fields([{ name: 'foto', maxCount: 1 }]), // Usa o Multer para lidar com o campo 'foto'
+  uploadFileUsuario(['foto']), // Usa o Multer para lidar com o campo 'foto'
   (req, res, next) => {
       // Limpa o erro do Multer na sessão para ser tratado no controller
       if (req.fileValidationError) {
@@ -119,6 +119,7 @@ router.post(
       }
       next();
   },
+  verificarAdm,
   admController.regrasValidacaoEdicao, // Aplica as regras de validação para edição
   admController.editarUsuario
 )

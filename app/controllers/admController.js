@@ -332,7 +332,7 @@ module.exports = {
             // Adicionar contagens
             usuario.countIngressos = await AdmModel.UserCountIngressos(id);
             usuario.countEventos = await AdmModel.UserCountEventos(id);
-            res.render('pages/adm/sobre_usuario', { usuario });
+            res.render('pages/adm/sobre_usuario', { usuario, dadosForm:usuario });
         } catch (e) {
             console.error(e);
             res.status(500).send('Erro interno do servidor');

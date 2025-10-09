@@ -1333,13 +1333,13 @@ a {
 
 .footer {
     background-color: var(--principal); 
-    color: var(--branco); 
+    color: white; 
     padding: 2.5rem 1rem 1rem;
     box-shadow: 0 -4px 10px var(--sombra-moderada); 
 }
 
 .footer a {
-    color: var(--branco); 
+    color: white; 
     text-decoration: none; 
     transition: color 0.3s ease;
     display: flex; 
@@ -1366,7 +1366,7 @@ a {
 .footer-bloco h4 {
     font-size: 1.15rem;
     font-weight: 700;
-    color: var(--branco); 
+    color: white; 
     margin-bottom: 1rem;
     border-left: 3px solid var(--complementar); 
     padding-left: 0.5rem;
@@ -1394,7 +1394,7 @@ a {
 .footer-conecte h4 {
     font-size: 1.15rem;
     font-weight: 700;
-    color: var(--branco); 
+    color: white; 
     margin-bottom: 1rem;
     border-left: 3px solid var(--complementar); 
     padding-left: 0.5rem;

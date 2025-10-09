@@ -419,6 +419,8 @@ module.exports = {
         longitude: Number(longitude)
       });
 
+      console.log(localId)
+
       // Associar esportes
       if(esportes){
         // esportes pode vir como string se for 1 único, então transforma em array
@@ -453,6 +455,153 @@ module.exports = {
         console.error(e);
         res.status(500).send('Erro interno do servidor');
     }
-  }
+  },
+  carregarEditarLocal: async (req, res) => {
+    try {
+      const id = req.body.id || req.query.id;
+
+      // Busca o local com esportes associados
+      const local = await AdmModel.LocalFindId(id);
+      if (!local) {
+        return res.status(404).send("Local não encontrado");
+      }
+
+      // Busca todos os esportes para preencher o select/checkboxes
+      const esportes = await AdmModel.EsportFindAll();
+
+      // Extrai IDs dos esportes associados ao local
+      const esportesLocalIds = local.esportes.map(e => e.esporte_id);
+
+      return res.render("pages/adm/local_editar", {
+        erros: null,
+        dados: {
+          local_id: local.local_id,
+          local_nome: local.local_nome,
+          local_endereco: local.local_endereco,
+          local_latitude: local.local_latitude,
+          local_longitude: local.local_longitude,
+          local_foto: local.local_foto,
+          esportesSelecionados: esportesLocalIds,
+        },
+        esportes: esportes,
+        dadosNotificacao: null,
+      });
+    } catch (e) {
+      console.error("Erro ao carregar local:", e);
+      res.status(500).send("Erro interno no servidor");
+    }
+  },
+
+  // Edita o local e salva alterações no banco
+  editarLocal: async (req, res) => {
+    const erros = validationResult(req);
+    const erroMulter = req.session.erroMulter;
+
+    // Se houver erros de validação ou upload
+    if (!erros.isEmpty() || erroMulter != null) {
+      const lista = !erros.isEmpty() ? erros : { formatter: null, errors: [] };
+      if (erroMulter != null) lista.errors.push(erroMulter);
+
+      console.log(lista);
+      return res.render("pages/adm/local_editar", {
+        erros: lista,
+        dados: {
+          nome: req.body.nome,
+          endereco: req.body.endereco,
+          latitude: req.body.latitude,
+          longitude: req.body.longitude,
+          foto: req.body.fotoAntiga,
+          esportesSelecionados: req.body.esportes || [],
+        },
+        esportes: await AdmModel.EsportFindAll(),
+        dadosNotificacao: {
+          titulo: "Erro ao atualizar o local!",
+          mensagem: "Verifique se os dados foram inseridos corretamente.",
+          tipo: "error",
+        },
+      });
+    }
+
+    try {
+      const id = req.body.id || req.query.id;
+
+      // Monta dados do formulário
+      const dadosForm = {
+        nome: req.body.nome,
+        endereco: req.body.endereco,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        foto: req.body.fotoAntiga,
+        esportes: req.body.esportes
+          ? Array.isArray(req.body.esportes)
+            ? req.body.esportes
+            : [req.body.esportes]
+          : [],
+      };
+
+      // Se houve upload de imagem nova
+      if (req.files && req.files.foto) {
+        const caminhoFoto = "imagens/locais/" + req.files.foto[0].filename;
+
+        if (dadosForm.foto && dadosForm.foto !== caminhoFoto) {
+          removeImg(dadosForm.foto);
+        }
+
+        dadosForm.foto = caminhoFoto;
+      }
+
+      // Atualiza no banco
+      const resultUpdate = await AdmModel.editarLocal(id, dadosForm);
+
+      // Verifica resultado
+      if (resultUpdate && resultUpdate.sucesso) {
+        console.log("Local atualizado com sucesso!");
+        const localAtualizado = await AdmModel.LocalFindId(id);
+
+        return res.render("pages/adm/local_editar", {
+          erros: null,
+          dados: {
+            local_id: localAtualizado.local_id,
+            local_nome: localAtualizado.local_nome,
+            local_endereco: localAtualizado.local_endereco,
+            local_latitude: localAtualizado.local_latitude,
+            local_longitude: localAtualizado.local_longitude,
+            local_foto: localAtualizado.local_foto,
+            esportesSelecionados: localAtualizado.esportes.map(e => e.esporte_id),
+          },
+          esportes: await AdmModel.EsportFindAll(),
+          dadosNotificacao: {
+            titulo: "Local atualizado com sucesso!",
+            mensagem: "As alterações foram salvas com êxito.",
+            tipo: "success",
+          },
+        });
+      } else {
+        console.log("Nada para salvar.");
+        return res.render("pages/adm/local_editar", {
+          erros: null,
+          dados: dadosForm,
+          esportes: await AdmModel.EsportFindAll(),
+          dadosNotificacao: {
+            titulo: "Local atualizado!",
+            mensagem: "Nenhuma alteração detectada.",
+            tipo: "success",
+          },
+        });
+      }
+    } catch (e) {
+      console.error("Erro ao editar local:", e);
+      res.render("pages/adm/local_editar", {
+        dados: req.body,
+        esportes: await AdmModel.EsportFindAll(),
+        erros: erros,
+        dadosNotificacao: {
+          titulo: "Erro ao atualizar o local!",
+          mensagem: "Verifique os valores digitados e tente novamente.",
+          tipo: "error",
+        },
+      });
+    }
+  },
 
 }

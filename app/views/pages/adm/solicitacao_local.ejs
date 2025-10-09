@@ -103,13 +103,12 @@
               <td class="limite"><%= local.local_latitude %></td>
               <td class="limite"><%= local.local_longitude %></td>
               <td>
-                <a href="/adm/locais/editar?id=<%= local.local_id %>">
+                <a href="/adm/local_editar?id=<%= local.local_id %>">
                   <button class="btnEditar">Editar</button>
                 </a>
-                <form action="/adm/locais/apagar" method="post" style="display:inline;">
-                  <input type="hidden" name="id" value="<%= local.local_id %>">
-                  <button type="submit" class="btnApagar">Apagar</button>
-                </form>
+                <a href="/adm/local_remover?id=<%= local.local_id %>">
+                  <button class="btnApagar">Apagar</button>
+                </a>
               </td>
             </tr>
           <% }) %>

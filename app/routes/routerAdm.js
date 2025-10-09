@@ -96,4 +96,16 @@ router.get('/solicitacoes_remover', verificarAdm, function(req,res){
   admController.carregarSolicitacoesRemover(req,res);
 })
 
+router.get('/local_remover', verificarAdm, function(req,res){
+  admController.apagarLocal(req,res);
+})
+
+router.get('/local_editar', verificarAdm, function(req,res){
+  admController.carregarEditarLocal(req,res);
+})
+
+router.post('/local_editar', uploadFile(["foto"]), verificarAdm, function(req,res){
+  admController.editarLocal(req,res);
+})
+
 module.exports = router;

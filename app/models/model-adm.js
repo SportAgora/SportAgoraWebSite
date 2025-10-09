@@ -519,8 +519,100 @@ LocalCreate: async (localData) => {
     console.error("Erro ao buscar locais:", error);
     throw error;
   }
+}, 
+  LocalFindId: async (id) => {
+  try {
+    // Busca o local principal
+    const [locais] = await pool.query(
+      "SELECT * FROM locais WHERE local_id = ? AND local_ativo = 1",
+      [id]
+    );
+
+    if (locais.length === 0) {
+      return null; // Local não encontrado ou inativo
+    }
+
+    const local = locais[0];
+
+    // Busca os esportes associados ao local
+    const [esportes] = await pool.query(
+      `SELECT e.esporte_id, e.esporte_nome 
+       FROM local_esporte le
+       INNER JOIN esportes e ON e.esporte_id = le.esporte_id
+       WHERE le.local_id = ?`,
+      [id]
+    );
+
+    // Retorna o local com os esportes vinculados
+    return {
+      local_id: local.local_id,
+      local_nome: local.local_nome,
+      local_endereco: local.local_endereco,
+      local_latitude: local.local_latitude,
+      local_longitude: local.local_longitude,
+      local_foto: local.local_foto,
+      local_ativo: local.local_ativo,
+      esportes: esportes || [],
+    };
+  } catch (error) {
+    console.error("Erro ao buscar local por ID:", error);
+    throw error;
+  }
 },
 
+editarLocal: async (id, dados) => {
+  const conn = await pool.getConnection();
+  try {
+    const { nome, foto, endereco, latitude, longitude, esportes } = dados;
+
+    await conn.beginTransaction();
+
+    // Cria objeto apenas com os campos enviados
+    const campos = {
+      local_nome: nome,
+      local_foto: foto,
+      local_endereco: endereco,
+      local_latitude: latitude,
+      local_longitude: longitude
+    };
+
+    // Montar query de atualização dinâmica
+    const updates = Object.entries(campos)
+      .filter(([_, valor]) => valor !== undefined && valor !== null)
+      .map(([campo, _]) => `${campo} = ?`);
+
+    const values = Object.entries(campos)
+      .filter(([_, valor]) => valor !== undefined && valor !== null)
+      .map(([_, valor]) => valor);
+
+    if (updates.length > 0) {
+      const queryUpdate = `UPDATE locais SET ${updates.join(", ")} WHERE local_id = ?`;
+      values.push(id);
+      await conn.query(queryUpdate, values);
+    }
+
+    // Atualizar esportes se enviados
+    if (Array.isArray(esportes)) {
+      // Apaga associações antigas
+      await conn.query("DELETE FROM local_esporte WHERE local_id = ?", [id]);
+
+      if (esportes.length > 0) {
+        // Insere novas associações
+        const valuesEsportes = esportes.map(esporteId => [id, esporteId]);
+        await conn.query("INSERT INTO local_esporte (local_id, esporte_id) VALUES ?", [valuesEsportes]);
+      }
+    }
+
+    await conn.commit();
+    return { sucesso: true, mensagem: "Local atualizado com sucesso" };
+  } catch (error) {
+    await conn.rollback();
+    console.error("Erro ao editar local:", error);
+    throw error;
+  } finally {
+    conn.release();
+  }
+},
 
     
 }

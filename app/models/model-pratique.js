@@ -1,4 +1,5 @@
 const pool = require("../../config/pool-conexoes");
+const { apagarLocal } = require("../controllers/pratiqueController");
 
 module.exports = {
 listarLocais: async () => {

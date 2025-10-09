@@ -36,6 +36,10 @@
   justify-content: center;
 }
 
+.evento-box {
+  margin: 5px;
+}
+
 .sem-resultados{
   font-size: 1.5rem;
   color: var(--preto);

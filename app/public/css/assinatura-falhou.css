@@ -8,6 +8,14 @@
       padding: 20px;
   }
 
+  .icon_check img {
+    width: 300px;  
+    height: auto; 
+    object-fit: contain; 
+    margin: auto;
+    display: block; 
+  }
+
   /* Card */
   .sec {
       background: var(--erro);

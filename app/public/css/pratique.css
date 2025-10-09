@@ -179,14 +179,12 @@ select:hover, .input-data:hover, .input-localizacao:hover {
 .locais-box {
     width: 28%;
     margin-left: 50px;
-    height: 745px;
     color: var(--preto);
     background-color: var(--branco);
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
-
 
 .map-box {
     width: 60%;
@@ -384,7 +382,7 @@ h2 { font-size: 28px; font-family: "Montserrat", sans-serif; color: var(--preto)
     cursor: pointer;
     transition: transform 0.2s ease, opacity 0.2s ease;
 }
-.adicionarLocal:hover { opacity: 0.95; transform: scale(1.03); }
+.adicionarLocal:hover { opacity: 0.95; transform: scale(1.03); background-color: var(--principal_escura);}
 
 .cards-container::-webkit-scrollbar {
     height: 8px;

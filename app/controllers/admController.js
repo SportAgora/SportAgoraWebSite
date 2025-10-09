@@ -497,6 +497,9 @@ module.exports = {
     const erros = validationResult(req);
     const erroMulter = req.session.erroMulter;
 
+
+    console.log(req.files)
+
     // Se houver erros de validação ou upload
     if (!erros.isEmpty() || erroMulter != null) {
       const lista = !erros.isEmpty() ? erros : { formatter: null, errors: [] };
@@ -506,11 +509,11 @@ module.exports = {
       return res.render("pages/adm/local_editar", {
         erros: lista,
         dados: {
-          nome: req.body.nome,
-          endereco: req.body.endereco,
-          latitude: req.body.latitude,
-          longitude: req.body.longitude,
-          foto: req.body.fotoAntiga,
+          local_nome: req.body.nome,
+          local_endereco: req.body.endereco,
+          local_latitude: req.body.latitude,
+          local_longitude: req.body.longitude,
+          local_foto: req.body.fotoAntiga,
           esportesSelecionados: req.body.esportes || [],
         },
         esportes: await AdmModel.EsportFindAll(),
@@ -541,7 +544,7 @@ module.exports = {
 
       // Se houve upload de imagem nova
       if (req.files && req.files.foto) {
-        const caminhoFoto = "imagens/locais/" + req.files.foto[0].filename;
+        const caminhoFoto = "imagens/pratique/" + req.files.foto[0].filename;
 
         if (dadosForm.foto && dadosForm.foto !== caminhoFoto) {
           removeImg(dadosForm.foto);
@@ -603,5 +606,18 @@ module.exports = {
       });
     }
   },
+  apagarLocal: async (req,res) => {
+    try {
+      const id = req.query.id;
+      if (!id) return res.redirect('/adm/solicitacoes');
+
+      const local = await AdmModel.LocalRemoverById(id);
+
+      return res.redirect('/adm/solicitacoes');
+    } catch (e) {
+        console.error(e);
+        res.status(500).send('Erro interno do servidor');
+    }
+  }
 
 }

@@ -492,8 +492,8 @@ module.exports = {
             if (senhaHash) {
                 dadosAtualizacao.senha = senhaHash;
             }
-
-            const resultado = await AdmModel.UserUpdate(id, dadosAtualizacao); 
+            
+            const resultado = await AdmModel.UserAtualizar(id, dadosAtualizacao); 
             
             // 5. Recarregar a página com sucesso:
             const usuarioAtualizado = await AdmModel.UserFindId(id);

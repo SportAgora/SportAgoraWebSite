@@ -75,23 +75,18 @@ const AdmModel = {
   // Atualizar usuário
   UserAtualizar: async (id, userData) => {
     try {
-      const { nome, arroba, email, data_nascimento, logradouro_id, cpf, telefone, plano, tipo, foto, banner, bio, senha} = userData;
+      const { nome, email, data_nascimento, tipo, foto, banner, senha, status} = userData;
  
       // Preparar os dados para atualização
       const data = {
         usu_nome: nome,
-        perf_nome : arroba,
         usu_email: email,
         usu_senha:senha,
         usu_nasc: data_nascimento ? moment(data_nascimento).format('YYYY-MM-DD') : null,
-        endereco_id: logradouro_id || null,
-        usu_cpf: cpf ? formatCPF(cpf) : null,
-        contato_id: telefone,
-        plano_id : plano,
-        tipo : tipo,
-        usu_foto : foto,
-        usu_banner : banner,
-        biografia : bio
+        usu_foto: foto,
+        usu_banner: banner,
+        tipo: tipo,
+        usu_status: status
       };
  
       // Construir a query dinamicamente

@@ -110,7 +110,7 @@ router.post('/local_editar', uploadFile(["foto"]), verificarAdm, function(req,re
 })
 
 router.post(
-  '/adm/usuarios/editar', 
+  '/editar-usuario', 
   uploadFileUsuario(['foto']), // Usa o Multer para lidar com o campo 'foto'
   (req, res, next) => {
       // Limpa o erro do Multer na sessão para ser tratado no controller

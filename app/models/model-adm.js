@@ -239,6 +239,44 @@ const AdmModel = {
       throw error;
     }
   },
+ EventosListarComPaginacaoPesquisa: async (offset, limite, termo) => {
+  try {
+    // Consulta para obter os usuários com paginação e pesquisa
+    const queryEventos = 
+      `SELECT 
+          e.evento_id,
+          e.evento_nome,
+          e.evento_descricao,
+          e.evento_data_inicio,
+          e.evento_data_fim,
+          e.evento_data_hora,
+          s.esporte_nome,
+          COUNT(d.den_id) AS denuncias_count
+      FROM eventos e
+      LEFT JOIN esportes s ON e.esporte_id = s.esporte_id
+      LEFT JOIN denuncias d ON e.evento_id = d.den_evento_id
+      WHERE e.evento_nome LIKE ?
+      GROUP BY e.evento_id
+      LIMIT ?, ?`;
+   
+    // Consulta para obter o total de eventos filtrados
+    const queryTotal = "SELECT COUNT(*) as total FROM eventos WHERE evento_nome LIKE ?";
+
+    const searchTerm = `%${termo}%`;
+
+    // Executar as consultas
+    const [eventos] = await pool.query(queryEventos, [searchTerm, offset, limite]);
+    const [totalResult] = await pool.query(queryTotal, [searchTerm]);
+   
+    return {
+      eventos,
+      total: totalResult[0].total
+    };
+  } catch (error) {
+    console.error("Erro ao listar usuários:", error);
+    throw error;
+  }
+},
   EsportCreate: async (esporteData) => {
     try {
       const {nome, foto, banner} = esporteData;

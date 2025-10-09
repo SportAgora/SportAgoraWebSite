@@ -243,10 +243,11 @@ module.exports = {
     },
     carregarEventos: async (req,res) =>{
         try{
+            const pesquisa = req.query.pesquisa || '';
             const pagina = parseInt(req.query.pagina) || 1;
             const limite = 10;
             const offset = (pagina - 1) * limite;
-            const resultado = await AdmModel.EventosListarComPaginacao(offset, limite) 
+            const resultado = await AdmModel.EventosListarComPaginacaoPesquisa(offset, limite, pesquisa || "")
 
             const total_paginas = Math.ceil(resultado.total / limite);
 

@@ -48,19 +48,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //search bar
 const sugestoesFixas = [
-  "evento de futebol",
-  "esportes de bola",
-  "corrida de rua",
+  "atletismo",
+  "basquete",
+  "ciclismo",
+  "dança esportiva",
+  "esgrima",
+  "campeonato de futebol",
+  "ginástica",
+  "handball",
+  "ice hockey",
+  "judô",
+  "karate",
+  "luta olímpica",
+  "maratona",
+  "natação",
+  "orientação esportiva",
+  "polo aquático",
+  "quadra de tênis",
+  "rugby",
+  "skate",
+  "taekwondo",
+  "ultimate frisbee",
   "campeonato de vôlei",
-  "aula de zumba",
-  "treino funcional",
-  "futebol society",
-  "evento de dança",
-  "hip hop",
-  "evento de basquete"
+  "windsurf",
+  "xadrez",
+  "yoga esportiva",
+  "zumba"
 ];
 
-// Mostra sugestões enquanto digita
+
 function mostrarSugestoes(inputId, painelId) {
   const input = document.getElementById(inputId);
   const painel = document.getElementById(painelId);

@@ -22,6 +22,14 @@
     border: 3px solid var(--principal_escura);
 }
 
+.icon_check img {
+    width: 300px;  
+    height: auto; 
+    object-fit: contain; 
+    margin: auto;
+    display: block; 
+  }
+
 /* Ícone check animado */
 .icon_check {
     font-size: 6rem;

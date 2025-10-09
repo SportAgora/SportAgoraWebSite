@@ -1,20 +1,15 @@
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587, // Porta recomendada para envio de e-mails com STARTTLS
+    service: "gmail",
     secure: false, // Não usa SSL/TLS direto
     auth: {
-        user: process.env.EMAIL_USER, // Seu e-mail
-        pass: process.env.SECRET_KEY  // Sua senha, ou preferencialmente o senha configurada para App password
-    },
-    tls:{
-        secure: false,
-        ignoreTLS: true,
-        rejectUnauthorized: false, // ignorar certificado digital - APENAS EM DESENVOLVIMENTO
-    },
-    connectionTimeout: 60000,
-    socketTimeout: 60000,
+    user: process.env.EMAIL_USER,
+    pass: process.env.SECRET_KEY
+  },
+  tls: {
+    ciphers: 'SSLv3'
+  }
 });
 
 function enviarEmail(to, subject, text=null, html = null, callback) {

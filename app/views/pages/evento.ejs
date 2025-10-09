@@ -36,7 +36,7 @@
             <% if (usuario_dono == false) {  %>
             <button class="btn-denunciar" onclick="abrirModalDenuncia()">Denunciar</button>
             <% } else { %>
-            <button class="btn-editar" onclick="location.href='/editar-evento?id=<%=evento.evento_id%>'">Editar</button>
+            <button class="btn-editar" onclick="location.href='/editar-evento?id=<%=evento.evento_id%>'">Editar Evento</button>
             <%}%>
             </section>
             <h2 class="nome-evento"><%=evento.evento_nome%></h2>

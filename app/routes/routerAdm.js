@@ -13,7 +13,7 @@ router.get("/login", (req, res) => {
 });
 });
 
-router.post("/login",  (req, res) => { usuariosController.autenticarUsuario(req, res, "administrador")});
+router.post("/login",  (req, res) => { usuariosController.autenticarUsuario(req, res, "a")});
 
 
 router.get('/home',verificarAdm, function(req,res){

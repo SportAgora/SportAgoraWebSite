@@ -183,8 +183,8 @@ main {
 /* Botão Novo Usuário no rodapé da seção */
 .endereco-btn {
     padding: 12px 20px;
-    background-color: var(--principal);
-    color: var(--branco);
+    background-color: var(--complementar);
+    color: var(--preto);
     border: none;
     border-radius: 5px;
     font-size: 1em;
@@ -197,7 +197,8 @@ main {
 }
 
 .endereco-btn:hover {
-    background-color: var(--principal_escura);
+    background-color: var(--complementar2);
+    color: var(--branco);
     transform: translateY(-1px);
 }
 

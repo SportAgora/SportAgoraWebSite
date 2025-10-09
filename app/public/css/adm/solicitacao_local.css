@@ -61,8 +61,8 @@ main {
 
 .btnBuscar {
     padding: 12px 20px;
-    background-color: var(--principal);
-    color: var(--branco);
+    background-color: var(--complementar);
+    color: var(--preto);
     border: none;
     border-radius: 6px;
     font-size: 1em;
@@ -73,7 +73,8 @@ main {
 }
 
 .btnBuscar:hover {
-    background-color: var(--principal_escura);
+    background-color: var(--complementar2);
+    color: var(--branco);
 }
 
 /* --- Estilo da Seção de Locais e Tabela --- */

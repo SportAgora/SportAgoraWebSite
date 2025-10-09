@@ -119,8 +119,8 @@ main {
     width: 100%;
     padding: 12px 20px;
     margin-top: 30px;
-    background-color: var(--principal);
-    color: var(--branco);
+    background-color: var(--complementar);
+    color: var(--preto);
     border: none;
     border-radius: 4px;
     font-size: 1.1em;
@@ -131,7 +131,8 @@ main {
 }
 
 .enviar-btn:hover {
-    background-color: var(--principal_escura);
+    background-color: var(--complementar2);
+    color: var(--branco);
 }
 
 @media (max-width: 768px) {

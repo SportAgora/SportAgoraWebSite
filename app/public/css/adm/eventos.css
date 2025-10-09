@@ -279,12 +279,13 @@ main {
 }
 
 .esporte-btn {
-    background-color: var(--principal);
-    color: var(--branco);
+    background-color: var(--complementar);
+    color: var(--preto);
 }
 
 .esporte-btn:hover {
-    background-color: var(--principal_escura);
+    background-color: var(--complementar2);
+    color: var(--branco);
 }
 
 .esporte-btn-a {

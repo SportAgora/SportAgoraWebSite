@@ -105,14 +105,18 @@
     padding: 10px 15px;
     font-size: 1.1em;
     font-weight: 600;
-    color: var(--branco);
-    background-color: var(--principal);
+    color: var(--preto);
+    background-color: var(--complementar);
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-transform: uppercase;
+}
+.btnver:hover {
+    background-color: var(--complementar2);
+    color: var(--branco);
 }
 
 .endereco-tabela {

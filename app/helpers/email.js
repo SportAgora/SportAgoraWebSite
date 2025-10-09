@@ -1,16 +1,21 @@
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com', // Defina o host explicitamente
-    port: 587, 
+    service: 'gmail',
     auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.SECRET_KEY
-  },
+        user: process.env.EMAIL_USER, // Seu e-mail
+        pass: process.env.EMAIL_PASS  // Sua senha, ou preferencialmente o senha configurada para App password
+    },
+    tls: {
+        secure: false,
+        ignoreTLS: true,
+        rejectUnauthorized: false, // ignorar certificado digital - APENAS EM DESENVOLVIMENTO
+    }
 
 });
 
 function enviarEmail(to, subject, text=null, html = null, callback) {
+    
     const mailOptions = {
         from: process.env.EMAIL_USER,
         to,
@@ -36,4 +41,4 @@ function enviarEmail(to, subject, text=null, html = null, callback) {
 
 }
 
-module.exports = { enviarEmail, transporter }
+module.exports = { enviarEmail }

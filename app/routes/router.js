@@ -209,6 +209,10 @@ router.get('/sobre_ingresso', function(req,res){
   res.render('pages/sobre_ingresso');  
 });
 
+router.get('/solitacao-enviada', function(req,res){
+  res.render('pages/solitacao-enviada');  
+});
+
 /* MAPA */
 
 router.get('/pratique', pratiqueController.carregarMapa);

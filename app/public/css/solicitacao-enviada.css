@@ -1,0 +1,104 @@
+/* Container principal */
+.main_assinatura {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--background), var(--principal_claro_transparente));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Card central */
+  .sec {
+    background: var(--principal);
+    border-radius: 20px;
+    padding: 30px 40px 40px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 12px 30px rgba(215, 38, 56, 0.45);
+    color: var(--branco);
+    text-align: center;
+    animation: fadeInUp 0.7s ease forwards;
+    border: 3px solid var(--principal_escura);
+  }
+  
+  /* Ícone */
+  .icon_check {
+    font-size: 6rem;
+    color: var(--complementar);
+    margin-bottom: 20px;
+    animation: popIn 0.6s ease forwards;
+    filter: drop-shadow(0 0 6px var(--complementar));
+  }
+  
+  /* Título */
+  .info_assinatura h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.25);
+  }
+  
+  /* Texto */
+  .info_assinatura p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  
+  /* Botões */
+  .btn_group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .btn_solicitacao {
+    padding: 14px 40px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    min-width: 220px;
+  }
+  
+  .btn_primary {
+    background: var(--complementar);
+    color: var(--preto);
+  }
+  
+  .btn_primary:hover {
+    transform: translateY(-4px);
+    background: var(--complementar2);
+  }
+  
+  .btn_secondary {
+    background: var(--principal_claro);
+    color: var(--branco);
+  }
+  
+  .btn_secondary:hover {
+    transform: translateY(-4px);
+    background: var(--principal_escura);
+  }
+  
+  /* Animações */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  /* Responsivo */
+  @media (max-width: 700px) {
+    .btn_solicitacao {
+      min-width: 100%;
+    }
+  }
+  

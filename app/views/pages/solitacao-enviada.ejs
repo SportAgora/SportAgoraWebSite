@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitação Enviada</title>
+  <link rel="stylesheet" href="/css/solicitacao-enviada.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" href="imagens/SportAgora.png">
+</head>
+
+<body>
+  <header>
+    <%- include('../partials/navbar'); %>
+  </header>
+
+  <main class="main_assinatura">
+    <section class="sec">
+      <div class="info_assinatura">
+        <div class="icon_check" aria-hidden="true">📩</div>
+        <h1>Solicitação enviada com sucesso!</h1>
+        <p>
+          Recebemos sua solicitação para cadastro de local.<br>
+          Nossa equipe vai analisar as informações e retornaremos em breve.<br>
+          Você pode acompanhar o status no seu painel.
+        </p>
+        <div class="btn_group">
+          <button class="btn_solicitacao btn_primary" onclick="location.href='/home'">Voltar para o Início</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <%- include('../partials/footer'); %>
+  
+</body>
+</html>

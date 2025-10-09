@@ -118,7 +118,7 @@
       let dataFormatada = `${dia}/${mes}/${ano}`;  
     %>
       <section class="evento-box">
-      <img src="<%= e.evento_foto %>" alt="Imagem do Evento" class="evento-img">
+      <img src="/<%= e.evento_foto %>" alt="Imagem do Evento" class="evento-img">
       <article class="evento-status gratis"><%= e.esporte%></article>
       <h2 class="evento-nome"><%= e.evento_nome %></h2>
       <p class="evento-detalhes">  <%= e.cidade %>, <%= e.estado %><br><br><%= dataFormatada %></p>

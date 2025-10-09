@@ -55,6 +55,53 @@
                 <h2>Informações</h2> 
                 <!-- <a href="/perfil?id=<%=usuario.usu_id%>" id="aaa"><button class="btnver">Visualizar Perfil</button></a> -->
             </section>
+
+            <section>
+                <form action="/adm/usuarios/editar" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="usu_id" value="<%= usuario.usu_id %>"> 
+    
+                    <label for="nome">Nome:</label>
+                    <input type="text" name="nome" id="nome" value="<%= dadosForm.usu_nome %>">
+                    <% if (errorMap.nome) { %><p class="erro-campo"><%= errorMap.nome %></p><% } %>
+    
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" id="email" value="<%= dadosForm.usu_email %>">
+                    <% if (errorMap.email) { %><p class="erro-campo"><%= errorMap.email %></p><% } %>
+    
+                    <label for="senha">Nova Senha (deixe em branco para manter):</label>
+                    <input type="password" name="senha" id="senha" placeholder="********" value="<%= dadosForm.senha || '' %>">
+                    <% if (errorMap.senha) { %><p class="erro-campo"><%= errorMap.senha %></p><% } %>
+    
+                    <label for="repsenha">Confirmar Nova Senha:</label>
+                    <input type="password" name="repsenha" id="repsenha" placeholder="********" value="<%= dadosForm.repsenha || '' %>">
+                    <% if (errorMap.repsenha) { %><p class="erro-campo"><%= errorMap.repsenha %></p><% } %>
+                    
+                    <label for="tipo">Tipo de Usuário:</label>
+                    <select name="tipo" id="tipo">
+                        <option value="c" <%= usuario.tipo === 'c' ? 'selected' : '' %>>Comum</option>
+                        <option value="o" <%= usuario.tipo === 'o' ? 'selected' : '' %>>Organizador</option>
+                        <option value="a" <%= usuario.tipo === 'a' ? 'selected' : '' %>>Administrador</option>
+                    </select>
+    
+                    <label for="foto">Foto:</label>
+    
+                    <% if (dadosForm.usu_foto) { %>
+                        <div class="foto-preview-existente">
+                            <img src="/<%= dadosForm.usu_foto %>" alt="Foto do Usuário" id="fotoExistente" style="max-width:200px; display:block; margin-bottom:5px;">
+                        </div>
+                        <input type="hidden" name="foto_antiga" value="<%= dadosForm.usu_foto %>">
+                    <% } %> 
+    
+                    <div id="novaFotoPreview" style="max-width:300px; margin-bottom: 10px;"></div>
+    
+                    <input type="file" id="foto" name="foto" accept="image/*">
+                    <% if (errorMap.foto) { %><p class="erro-campo"><%= errorMap.foto %></p><% } %>
+    
+                    <br>
+                    <input type="submit" value="Alterar dados">
+                </form>
+            </section>
+
             <table class="endereco-tabela">
                 <thead>
                     <tr>

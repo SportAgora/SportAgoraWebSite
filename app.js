@@ -71,6 +71,10 @@ app.use((req, res, next) => {
   res.status(404).render('pages/error', { error: "404", mensagem: "Página não encontrada." }); // Passa a URL solicitada para o template
 });
 
+app.listen(port, () => {
+          console.log(`Servidor ouvindo na porta ${port}\nhttp://localhost:${port}`);
+        });
+
 transporter.verify(function(error, success) {
     if (error) {
         console.error("=========================================");
@@ -90,11 +94,10 @@ transporter.verify(function(error, success) {
         console.log("=========================================");
 
         // Iniciar o servidor
-        app.listen(port, () => {
-          console.log(`Servidor ouvindo na porta ${port}\nhttp://localhost:${port}`);
-        });
+        
     }
 });
+
 
 
  

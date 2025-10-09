@@ -12,9 +12,8 @@
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
-
+    <link rel="stylesheet" href="/apis/simple-notify.min.css" />
+    <script src="/apis/simple-notify.min.js"></script>
     <script src="/js/notify.js"></script>
 </head>
 
@@ -62,8 +61,8 @@
                         <script>
                             let msgErro ="<%= msgErro %>"
                             notify("Erro(s) no preenchimento", 
-                                   "Verifique o(s) campo(s) <br> " + msgErro.replace(/&lt;/g,"<").replace(/&gt;/g,">"), 
-                                   "error", "right bottom", 5000)                        
+                            "Verifique o(s) campo(s) <br> " + msgErro.replace(/&lt;/g,"<").replace(/&gt;/g,">"), 
+                            "error", "right bottom", 5000)                        
                         </script>
                     <%
                     }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Local</title>
-    <link rel="stylesheet" href="/css/adm/novousuario.css">
+    <link rel="stylesheet" href="/css/adm/novolocal.css">
     <link rel="stylesheet" href="/css/adm/styles.css">
     <link rel="stylesheet" href="/css/erro.css">
     <link rel="icon" href="/imagens/SportAgora.png">
@@ -28,7 +28,12 @@
         });
     }
     %>
-
+    <section class="container-ver-eventos">
+        <button class="botao-seta" onclick="window.history.back()">
+            <img src="/imagens/left-arrow.png" alt="Seta">
+            <span class="ver-eventos">Voltar</span>
+        </button>
+    </section>
     <main>
         <section id="logo-area">
             <h1 class="tituloLogo">Novo Local</h1>
@@ -48,12 +53,13 @@
             <label for="foto">Foto do Local:</label>
 
             <% if (dados.foto) { %>
-                <div class="foto-preview">
-                    <img src="/<%= dados.foto %>" alt="Foto do Local" style="max-width:200px; display:block; margin-bottom:5px;">
+                <div class="foto-preview-existente">
+                    <img src="/<%= dados.foto %>" alt="Foto do Local" id="fotoExistente" style="max-width:200px; display:block; margin-bottom:5px;">
                 </div>
-                <!-- Mantém o caminho da foto antiga -->
                 <input type="hidden" name="foto_antiga" value="<%= dados.foto %>">
             <% } %>
+            
+            <div id="novaFotoPreview" style="max-width:300px; margin-bottom: 10px;"></div>
 
             <input type="file" id="foto" name="foto" class="<%= erroValidacao.foto %>" accept="image/*" <%= dados.foto ? "" : "required" %>>
             <span class="spanerro"><%= msgErro.foto %></span><br>
@@ -82,7 +88,51 @@
             <button type="submit" class="enviar-btn">Registrar Local</button>
         </form>
     </main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputFoto = document.getElementById('foto');
+        const novaFotoPreview = document.getElementById('novaFotoPreview');
+        const fotoExistenteContainer = document.querySelector('.foto-preview-existente');
+        
+        // Listener para o campo de arquivo
+        inputFoto.addEventListener('change', function() {
+            // Verifica se um arquivo foi realmente selecionado
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
 
+                reader.onload = function(e) {
+                    // Limpa o conteúdo anterior de novaFotoPreview
+                    novaFotoPreview.innerHTML = ''; 
+                    
+                    // Cria o elemento <img>
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.alt = "Pré-visualização da nova foto";
+                    img.style.maxWidth = '200px';
+                    img.style.display = 'block';
+                    img.style.marginBottom = '5px';
+                    
+                    // Adiciona a nova imagem ao div de preview
+                    novaFotoPreview.appendChild(img);
+                    
+                    // Oculta a foto antiga, se houver, para mostrar apenas a nova
+                    if (fotoExistenteContainer) {
+                        fotoExistenteContainer.style.display = 'none';
+                    }
+                }
+
+                // Lê o arquivo como uma URL de dados (base64)
+                reader.readAsDataURL(this.files[0]);
+            } else {
+                // Se o usuário limpar o campo de seleção de arquivo, limpa o preview e reexibe a foto existente
+                novaFotoPreview.innerHTML = '';
+                if (fotoExistenteContainer) {
+                    fotoExistenteContainer.style.display = 'block';
+                }
+            }
+        });
+    });
+</script>
     <%- include('../../partials/adm_footer'); %>
 </body>
 </html>

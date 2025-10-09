@@ -160,7 +160,7 @@ main {
     color: var(--branco);
 }
 
-/* --- Responsividade --- */
+
 @media (max-width: 768px) {
     main {
         padding: 15px;
@@ -186,5 +186,61 @@ main {
 
     .locais {
         padding: 15px;
+    }
+}
+
+.locais-tabela td:last-child {
+    white-space: nowrap; 
+    text-align: center;
+}
+
+.locais-tabela td a {
+    text-decoration: none;
+    margin: 0 5px;
+    display: inline-block; 
+}
+
+.btnEditar {
+    padding: 8px 12px;
+    background-color: var(--principal); 
+    color: var(--branco);
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnEditar:hover {
+    background-color: var(--principal_escura);
+}
+
+.btnApagar {
+    padding: 8px 12px;
+    background-color: var(--erro);
+    color: var(--branco);
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnApagar:hover {
+    background-color: #c9302c; 
+}
+
+@media (max-width: 600px) {
+    .locais-tabela td:last-child {
+        text-align: left;
+        padding: 8px;
+    }
+    
+    .locais-tabela td a {
+        margin: 5px 0;
+        display: block; 
+        width: 100%;
     }
 }

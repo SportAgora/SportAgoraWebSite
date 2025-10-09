@@ -8,32 +8,50 @@
     <link rel="stylesheet" href="/css/adm/styles.css">
     <link rel="stylesheet" href="/css/erro.css">
     <link rel="icon" href="/imagens/SportAgora.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <script src="/js/notify.js"></script>   
+
+   
 </head>
 <body>
     <%- include('../../partials/adm_navbar'); %>
-
     <%
     let erroValidacao = {
-        nome:"", endereco:"", foto:"", latitude:"", longitude:"", esportes:""
+        nome: "", endereco: "", foto: "", latitude: "", longitude: "", esportes: ""
     };
-    let msgErro = {
-        nome:"", endereco:"", foto:"", latitude:"", longitude:"", esportes:""
-    };
-    if(erros) {
+    let msgErro = "";  // Alterado para string (igual ao primeiro exemplo)
+    if (erros) {
         erros.errors.forEach(function(erro) {
-            if(erro.path in erroValidacao){
+            if (erro.path in erroValidacao) {
                 erroValidacao[erro.path] = "erro";
-                msgErro[erro.path] = erro.msg;
+                msgErro += `* ${erro.msg} <br>`;  // Concatenando erro na variável msgErro
             }
         });
     }
-    %>
-
+    if (msgErro != "") {  // Este "if" fecha corretamente
+        %>
+        <script>
+            let msgErro = "<%= msgErro %>";
+            notify("Erro(s) no preenchimento", 
+            "Verifique o(s) campo(s) <br> " + msgErro.replace(/&lt;/g, "<").replace(/&gt;/g, ">"), 
+            "error", "right bottom", 5000);
+        </script>
+        <%
+    }
+    if (dadosNotificacao) {  // Este if também é necessário
+        %>
+        <script>
+            notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "right bottom")  
+        </script>
+    <% } %>  <!-- Aqui termina o bloco de dadosNotificacao -->
     <main>
         <section id="logo-area">
             <h1 class="tituloLogo">Editar Local</h1>
         </section>
-
+        
+        <%- console.log("Noti: ",dadosNotificacao) %>
+        <%- console.log("Erros: ",msgErro) %>
         <form id="formulario-local" method="POST" action="/adm/local_editar?id=<%= dados.local_id %>" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<%= dados.local_id %>">
 

@@ -143,10 +143,10 @@
 
                 <hr>
 
-                <div class="total">
+                <section class="total">
                     <strong>Total:</strong>
                     <strong>R$ <%= total.toFixed(2).replace('.', ',') %></strong>
-                </div>
+                </section>
                 <p class="subtexto">(<%= ingressos.reduce((acc, i) => acc + i.qtd, 0) %> item<%= ingressos.reduce((acc, i) => acc + i.qtd, 0) > 1 ? 's' : '' %>)</p>
                 </section>
             </aside>

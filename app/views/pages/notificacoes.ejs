@@ -16,22 +16,22 @@
     <main class="container">
         <header class="topbar">
           <h1>Notificações</h1>
-          <div class="settings">
-          </div>
+          <article class="settings">
+          </article>
         </header>
     
         <section class="selector">
-          <div class="tabs" role="tablist">
+          <section class="tabs" role="tablist">
             <button id="tab-unread" class="tab active" data-filter="unread" aria-pressed="true">
               Não lidas
             </button>
             <button id="tab-previous" class="tab" data-filter="previous" aria-pressed="false">
               Anteriores
             </button>
-          </div>
-          <div class="controls">
+          </section>
+          <section class="controls">
             <button id="markAllRead" class="small-btn">Marcar tudo como lido</button>
-          </div>
+          </section>
         </section>
     
         <section id="list" class="notifications-list" aria-live="polite">
@@ -43,28 +43,28 @@
         <template id="notification-template">
           <article class="notification-card" draggable="false">
             <img class="avatar" src="" alt="Avatar" />
-            <div class="content">
-              <div class="row">
+            <section class="content">
+              <section class="row">
                 <h3 class="title">Título</h3>
                 <button class="delete" aria-label="Excluir notificação">✕</button>
-              </div>
+              </section>
               <time class="date">4 de julho, 2025, 6:00</time>
               <p class="snippet visually-hidden">Detalhe</p>
-            </div>
-            <div class="actions">
+            </section>
+            <section class="actions">
               <button class="mark-btn small-btn" title="Marcar como não lida">●</button>
-            </div>
+            </section>
           </article>
         </template>
     
         <!-- modal simples para detalhe (opcional) -->
-        <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
-          <div class="modal-card">
+        <section id="modal" class="modal hidden" role="dialog" aria-modal="true">
+          <section class="modal-card">
             <button id="closeModal" class="close-modal">✕</button>
             <h2 id="modalTitle">Notificação</h2>
             <p id="modalBody">Detalhes da notificação</p>
-          </div>
-        </div>
+          </section>
+        </section>
       </main>
 
       <script src="js/notificacao.js"></script>

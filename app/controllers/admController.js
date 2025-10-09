@@ -125,7 +125,6 @@ module.exports = {
         }
     },
     
-    // ... (Outras funções omitidas para brevidade: carregarUsuarios, pesquisarUsuarios, cadastrarUsuario, apagarUsuario, etc.)
 
     carregarUsuarios: async (req,res) =>{
         try{
@@ -274,8 +273,12 @@ module.exports = {
             throw e;
         }
     },
+    regrasValidacaoEsporte: [
+        body('novoEsporte').isLength({ min: 3, max: 30 }).withMessage('O nome do esporte deve ter entre 3 e 30 caracteres.'),
+    ],
     criarEsporte: async (req, res) => {
         try {
+            const errors = validationResult(req);
             const {novoEsporte} = req.body;
             var foto, foto2;
             console.log(req.files)
@@ -283,6 +286,13 @@ module.exports = {
             if (req.session.erroMulter) {
             return carregarEventosErro(
                 { titulo: "Erro ao enviar foto", mensagem: req.session.erroMulter.msg },
+                req, res
+            );
+            }
+            if (!errors.isEmpty()) {
+            console.log(errors);
+            return carregarEventosErro(
+                { titulo: "Erro ao criar esporte", mensagem: errors.array().map(e => e.msg).join(' ') },
                 req, res
             );
             }

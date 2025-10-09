@@ -4,10 +4,13 @@ const multer = require('multer');
 
 module.exports = {
     carregarMapa: async (req, res) => {
-
         try {
+            if (req.query.busca) {
+                const locais = await PratiqueModel.buscarLocaisPorNome(req.query.busca);
+                return res.render('pages/pratique', { locais, busca: req.query.busca });
+            }
             const locais = await PratiqueModel.listarLocais();
-            res.render('pages/pratique', { locais });
+            res.render('pages/pratique', { locais,busca:"" });
         } catch (error) {
             console.error(error);
             res.status(500).send('Erro ao carregar o mapa');

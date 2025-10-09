@@ -15,9 +15,19 @@
     <h1 class="pratique-title">PRATIQUE</h1>
     <p class="pratique-subtitle">O mapa interativo para encontrar lugares para praticar esportes</p>
 
-    <main class="filtro-container">
-        <input type="text" class="input-localizacao" placeholder="Coloque o nome do local que procura">
-    </main>
+    <!-- <main class="filtro-container"> -->
+        <!-- <input type="text" class="input-localizacao" placeholder="Insira o nome do local que procura"> -->
+         <form action="/pratique" method="GET" class="filtro-container">
+        <input 
+        type="text" 
+        class="input-localizacao" 
+        placeholder="Insira o nome do local que procura"
+        name="busca" value="<%=busca%>" >
+        <button class="input-data" type="submit">Pesquisar</button>
+       </form>
+      
+    <!-- </main> -->
+    
 
     <!-- parte baixo -->
     <main class="container">

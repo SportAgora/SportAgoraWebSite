@@ -73,7 +73,13 @@
 .input-localizacao:focus { border-color: var(--principal); box-shadow: 0 0 10px var(--principal_escura); }
 
 
-.select-container { display:flex; flex-direction:column; align-items:flex-start; margin-left:15px; }
+.select-container { 
+    display:flex; 
+    flex-direction:column; 
+    align-items:flex-start; 
+    margin-left:15px; 
+}
+
 .select-container label { font-size: 18px; margin-bottom: 5px; font-weight: 500; }
 select, .input-data {
     border: 1px solid var(--cinza_claro);
@@ -108,10 +114,11 @@ select:focus, .input-data:focus { border-color: var(--cinza_claro); box-shadow: 
     font-weight: 500;
 }
 
-select, .input-data {
+.input-data {
     border: 1px solid var(--cinza_claro);
     border-radius: 15px;
-    color: var(--preto);
+    color: white;
+    background-color: var(--complementar2);
     padding: 25px;
     margin: 10px;
     font-size: 18px;
@@ -144,7 +151,7 @@ select:hover, .input-data:hover, .input-localizacao:hover {
 
 .input-data {
     padding-right: 30px;
-    background: none;
+    background: var(--principal);
 }
 
 @media (max-width: 900px) {

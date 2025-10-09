@@ -3,6 +3,7 @@ var router = express.Router();
 const admController = require("../controllers/admController");
 const usuariosController = require("../controllers/usuariosController");
 const uploadFile = require("../helpers/uploader")("./app/public/imagens/pratique");
+const uploadFileUsuario = require("../helpers/uploader")("./app/public/imagens/usuarios");
 
 const verificarAdm = admController.verificarAdm;
 
@@ -107,5 +108,19 @@ router.get('/local_editar', verificarAdm, function(req,res){
 router.post('/local_editar', uploadFile(["foto"]), verificarAdm, function(req,res){
   admController.editarLocal(req,res);
 })
+
+router.post(
+  '/adm/usuarios/editar', 
+  upload.fields([{ name: 'foto', maxCount: 1 }]), // Usa o Multer para lidar com o campo 'foto'
+  (req, res, next) => {
+      // Limpa o erro do Multer na sessão para ser tratado no controller
+      if (req.fileValidationError) {
+          req.session.erroMulter = { path: 'foto', msg: req.fileValidationError };
+      }
+      next();
+  },
+  admController.regrasValidacaoEdicao, // Aplica as regras de validação para edição
+  admController.editarUsuario
+)
 
 module.exports = router;

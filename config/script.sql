@@ -82,7 +82,8 @@ CREATE TABLE IF NOT EXISTS locais (
 	  local_foto VARCHAR(255) NOT NULL,
 	  local_endereco VARCHAR(255) NOT NULL,
 	  local_latitude DECIMAL(10,6) NOT NULL,
-	  local_longitude DECIMAL(10,6) NOT NULL
+	  local_longitude DECIMAL(10,6) NOT NULL,
+      local_ativo BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE IF NOT EXISTS local_esporte (

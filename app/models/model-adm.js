@@ -456,8 +456,6 @@ SolicitacoesRemoverById: async (solicitacaoId) => {
     conn.release();
   }
 },
-
-
 LocalCreate: async (localData) => {
     try {
       const { nome, foto, endereco, latitude, longitude } = localData;
@@ -613,7 +611,33 @@ editarLocal: async (id, dados) => {
     conn.release();
   }
 },
+LocalRemoverById: async (localId) => {
+  const conn = await pool.getConnection();
+  try {
+    await conn.beginTransaction();
 
+    // Remove os esportes associados
+    await conn.query(
+      "DELETE FROM local_esporte WHERE local_id = ?",
+      [localId]
+    );
+
+    // Remove a solicitação
+    const [result] = await conn.query(
+      "DELETE FROM locais WHERE local_id = ?",
+      [localId]
+    );
+
+    await conn.commit();
+    return result;
+  } catch (error) {
+    await conn.rollback();
+    console.error("Erro ao remover local:", error);
+    throw error;
+  } finally {
+    conn.release();
+  }
+},
     
 }
 

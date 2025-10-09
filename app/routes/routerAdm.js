@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const admController = require("../controllers/admController");
 const usuariosController = require("../controllers/usuariosController");
-const uploadFile = require("../helpers/uploader")("./app/public/imagens/esportes");
+const uploadFile = require("../helpers/uploader")("./app/public/imagens/pratique");
 
 const verificarAdm = admController.verificarAdm;
 

@@ -44,13 +44,13 @@
       <section class="logo-area">
             <h1 class="tituloLogo">Eventos</h1>
         </section>
-      <form action="/adm/buscar_evento" method="post" class="buscarEven">
                     <h3>Pesquisar Eventos</h3>
                     <aside class="imputis">
-                        <input type="text" name="pesquisa" value="" placeholder="Nome do Evento"/>
-                        <button type="submit" class="btnBuscar">Buscar</button>
+                        <form action="/adm/eventos" method="get">
+                            <input type="text" name="pesquisa" value="" placeholder="Nome do Evento"/>
+                            <button type="submit" class="btnBuscar">Buscar</button>
+                        </form>
                     </aside>
-                </form>
       <section class="teste">
         <section class="insertTable">
             <section class="esporte">

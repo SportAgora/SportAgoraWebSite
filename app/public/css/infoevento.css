@@ -753,3 +753,17 @@ strong {
 .modal-denuncia.mostrar-modal {
     display: flex;
 }
+
+.btn-editar {
+    background-color: var(--principal_claro);
+    color: var(--branco);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}

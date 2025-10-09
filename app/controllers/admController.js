@@ -341,10 +341,118 @@ module.exports = {
     carregarSolicitacoes: async (req, res) => {
       try {
           const solicitacoes = await AdmModel.SolicitacoesFindAll();
-          res.render('pages/adm/solicitacao_local', { solicitacoes });
+          const locais = await AdmModel.LocalFindAll();
+          res.render('pages/adm/solicitacao_local', { solicitacoes, locais });
       } catch (e) {
           console.error(e);
           res.status(500).send('Erro interno do servidor');
       }
+    },
+  carregarNovoLocal: async (req, res) => {
+  try {
+    const esportes = await AdmModel.EsportFindAll();
+    let dados = {};
+    
+    if (req.query.id) {
+      // Puxar dados da solicitação pelo id
+      const solicitacao = await AdmModel.SolicitacaoFindById(req.query.id);
+      if (solicitacao) {
+        dados = {
+          nome: solicitacao.solicitacao_nome,
+          foto: solicitacao.solicitacao_foto || "",
+          endereco: solicitacao.solicitacao_endereco,
+          latitude: solicitacao.solicitacao_latitude,
+          longitude: solicitacao.solicitacao_longitude,
+          esportes: solicitacao.esportes ? solicitacao.esportes.map(e => e.id) : [],
+          id: req.query.id || null
+        };
+      }
+    } else {
+      // Formulário em branco
+      dados = {
+        nome: "",
+        foto: "",
+        endereco: "",
+        latitude: "",
+        longitude: "",
+        esportes: [],
+        id: null
+      };
     }
+
+    
+
+    res.render("pages/adm/local_novo", {
+      dados,
+      erros: null,
+      esportes
+    });
+  } catch (error) {
+    console.error(error);
+    res.send("Erro ao carregar página de novo local");
+  }
+},
+  novoLocalCreate: async (req, res) => {
+    try {
+      const { nome, endereco, latitude, longitude, esportes, id } = req.body;
+      let foto;
+      if (req.files && req.files.foto && req.files.foto[0]) {
+          foto = "imagens/pratique/" + req.files.foto[0].filename;
+      } else {
+          // Mantém a foto antiga se nenhuma nova for enviada
+          foto = req.body.foto_antiga || null;
+      }
+
+      // Verifica se enviou arquivo
+      if(req.files && req.files.foto && req.files.foto[0]){
+        foto = req.files.foto[0].filename;
+        const caminhoFoto = "imagens/pratique/" + foto
+        foto = caminhoFoto;
+      }
+
+      // Criar local
+      const localId = await AdmModel.LocalCreate({
+        nome,
+        foto,
+        endereco,
+        latitude: Number(latitude),
+        longitude: Number(longitude)
+      });
+
+      // Associar esportes
+      if(esportes){
+        // esportes pode vir como string se for 1 único, então transforma em array
+        const esportesIds = Array.isArray(esportes) ? esportes : [esportes];
+        await AdmModel.LocalAddEsportes(localId, esportesIds);
+      }
+    
+    if (id) {
+      // Apagar solicitação se veio id na query
+      await AdmModel.SolicitacoesRemoverById(id);
+    }
+    return res.redirect(`/adm/solicitacoes`); // página de listagem
+    } catch (error) {
+      console.error(error);
+      const esportesLista = await AdmModel.EsportFindAll();
+      res.render("pages/adm/local_novo", {
+        dados: req.body,
+        erros: { errors: [{ path: "geral", msg: "Erro ao criar local" }] },
+        esportes: esportesLista
+      });
+    }
+  },
+  carregarSolicitacoesRemover: async (req, res) => {
+    try {
+      const id = req.query.id;
+      if (!id) return res.redirect('/adm/solicitacoes');
+
+      const solicitacoes = await AdmModel.SolicitacoesRemoverById(id);
+
+      return res.redirect('/adm/solicitacoes');
+    } catch (e) {
+        console.error(e);
+        res.status(500).send('Erro interno do servidor');
+    }
+  }
+
 }

@@ -23,7 +23,7 @@
             </aside>
         </form>
         <section class="locais">
-  <h2>Locais Recebidos</h2>
+  <h2>Solicitações de Locais</h2>
   <table class="locais-tabela">
       <thead>
           <tr>
@@ -32,6 +32,7 @@
               <th>Endereço</th>
               <th>Esporte</th>
               <th>Link Google Maps</th>
+              <th>Ações</th>
           </tr>
       </thead>
       <tbody>
@@ -53,16 +54,74 @@
               <td class="limite">
                 <a href="<%= solicitacao.solicitacao_link %>" target="_blank">Abrir no Maps</a>
               </td>
+              <td>
+                <a href="/adm/local_novo?id=<%= solicitacao.solicitacao_id %>">
+                  <button class="btnEditar">Criar local</button>
+                </a>
+                <a href="/adm/solicitacoes_remover?id=<%= solicitacao.solicitacao_id%>">
+                  <button type="submit" class="btnApagar">Apagar</button>
+                </a>
+              </td>
             </tr>
           <% }) %>
         <% } else { %>
           <tr>
-            <td colspan="5">Nenhuma solicitação encontrada</td>
+            <td colspan="6">Nenhuma solicitação encontrada</td>
           </tr>
         <% } %>
       </tbody>
   </table>
-  <a href="/"><button class="locais-btn">+ Novo Local</button></a>
+</section>
+
+<section class="locais">
+  <h2>Locais Cadastrados</h2>
+  <table class="locais-tabela">
+      <thead>
+          <tr>
+              <th>Nome do Local</th>
+              <th>Endereço</th>
+              <th>Esporte</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+              <th>Ações</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% if(locais.length > 0){ %>
+          <% locais.forEach(local=> { %>
+            <tr>
+              <td class="limite"><%= local.local_nome %></td>
+              <td class="limite"><%= local.local_endereco %></td>
+              <td class="limite">
+                <% if(local.esportes && local.esportes.length > 0){ %>
+                  <% local.esportes.forEach((e, index) => { %>
+                    <%= e.nome %><%= index < local.esportes.length - 1 ? ', ' : '' %>
+                  <% }) %>
+                <% } else { %>
+                  Nenhum
+                <% } %>
+              </td>
+              <td class="limite"><%= local.local_latitude %></td>
+              <td class="limite"><%= local.local_longitude %></td>
+              <td>
+                <a href="/adm/locais/editar?id=<%= local.local_id %>">
+                  <button class="btnEditar">Editar</button>
+                </a>
+                <form action="/adm/locais/apagar" method="post" style="display:inline;">
+                  <input type="hidden" name="id" value="<%= local.local_id %>">
+                  <button type="submit" class="btnApagar">Apagar</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="6">Nenhum local cadastrado</td>
+          </tr>
+        <% } %>
+      </tbody>
+  </table>
+  <a href="/adm/local_novo"><button class="locais-btn">+ Novo Local</button></a>
 </section>
 
     </main>

@@ -3,6 +3,8 @@ const pool = require("../../config/pool-conexoes");
 const moment = require("moment");
 const bcrypt = require("bcryptjs");
  
+const uploadFile = require("../helpers/uploader")("./app/public/imagens/pratique/");
+
 const AdmModel = {
     UserFindId: async (id) => {
     try {
@@ -362,6 +364,38 @@ const AdmModel = {
       }
     },
     SolicitacoesFindAll: async () => {
+    try {
+      const query = `
+        SELECT 
+          s.*,
+          se.esporte_id,
+          e.esporte_nome
+        FROM solicitacoes s
+        LEFT JOIN solicitacoes_esportes se ON s.solicitacao_id = se.solicitacao_id
+        LEFT JOIN esportes e ON se.esporte_id = e.esporte_id
+        WHERE s.solicitacao_status = 0
+      `;
+      const [rows] = await pool.query(query);
+
+      // Agrupar esportes por solicitacao_id
+      const grouped = {};
+      rows.forEach(row => {
+        const id = row.solicitacao_id;
+        if (!grouped[id]) {
+          grouped[id] = { ...row, esportes: [] };
+        }
+        if (row.esporte_id && row.esporte_nome) {
+          grouped[id].esportes.push({ id: row.esporte_id, nome: row.esporte_nome });
+        }
+      });
+
+      return Object.values(grouped);
+    } catch (error) {
+      console.error("Erro ao buscar solicitações:", error);
+      throw error;
+    }
+  },
+  SolicitacaoFindById: async (id) => {
   try {
     const query = `
       SELECT 
@@ -371,14 +405,107 @@ const AdmModel = {
       FROM solicitacoes s
       LEFT JOIN solicitacoes_esportes se ON s.solicitacao_id = se.solicitacao_id
       LEFT JOIN esportes e ON se.esporte_id = e.esporte_id
-      WHERE s.solicitacao_status = 0
+      WHERE s.solicitacao_id = ?
+    `;
+    const [rows] = await pool.query(query, [id]);
+
+    if (rows.length === 0) return null;
+
+    // Agrupar esportes
+    const grouped = {
+      ...rows[0],
+      esportes: []
+    };
+
+    rows.forEach(row => {
+      if (row.esporte_id && row.esporte_nome) {
+        grouped.esportes.push({ id: row.esporte_id, nome: row.esporte_nome });
+      }
+    });
+
+    return grouped;
+  } catch (error) {
+    console.error("Erro ao buscar solicitação pelo id:", error);
+    throw error;
+  }
+},// No model-adm.js
+SolicitacoesRemoverById: async (solicitacaoId) => {
+  const conn = await pool.getConnection();
+  try {
+    await conn.beginTransaction();
+
+    // Remove os esportes associados
+    await conn.query(
+      "DELETE FROM solicitacoes_esportes WHERE solicitacao_id = ?",
+      [solicitacaoId]
+    );
+
+    // Remove a solicitação
+    const [result] = await conn.query(
+      "DELETE FROM solicitacoes WHERE solicitacao_id = ?",
+      [solicitacaoId]
+    );
+
+    await conn.commit();
+    return result;
+  } catch (error) {
+    await conn.rollback();
+    console.error("Erro ao remover solicitação:", error);
+    throw error;
+  } finally {
+    conn.release();
+  }
+},
+
+
+LocalCreate: async (localData) => {
+    try {
+      const { nome, foto, endereco, latitude, longitude } = localData;
+
+      const query = `
+        INSERT INTO locais 
+          (local_nome, local_foto, local_endereco, local_latitude, local_longitude)
+        VALUES (?, ?, ?, ?, ?)
+      `;
+      const [result] = await pool.query(query, [nome, foto, endereco, latitude, longitude]);
+      return result.insertId;
+    } catch (error) {
+      console.error("Erro ao criar local:", error);
+      throw error;
+    }
+  },
+
+  // Associar esportes ao local
+  LocalAddEsportes: async (localId, esportesIds) => {
+    try {
+      if(!Array.isArray(esportesIds) || esportesIds.length === 0) return;
+
+      const values = esportesIds.map(esporteId => [localId, esporteId]);
+      const query = "INSERT INTO local_esporte (local_id, esporte_id) VALUES ?";
+      const [result] = await pool.query(query, [values]);
+      return result;
+    } catch (error) {
+      console.error("Erro ao associar esportes ao local:", error);
+      throw error;
+    }
+  },
+  LocalFindAll: async () => {
+  try {
+    const query = `
+      SELECT 
+        l.*,
+        le.esporte_id,
+        e.esporte_nome
+      FROM locais l
+      LEFT JOIN local_esporte le ON l.local_id = le.local_id
+      LEFT JOIN esportes e ON le.esporte_id = e.esporte_id
     `;
     const [rows] = await pool.query(query);
 
-    // Agrupar esportes por solicitacao_id
+    // Agrupar esportes por local_id
     const grouped = {};
     rows.forEach(row => {
-      const id = row.solicitacao_id;
+      const id = row.local_id;
       if (!grouped[id]) {
         grouped[id] = { ...row, esportes: [] };
       }
@@ -389,10 +516,11 @@ const AdmModel = {
 
     return Object.values(grouped);
   } catch (error) {
-    console.error("Erro ao buscar solicitações:", error);
+    console.error("Erro ao buscar locais:", error);
     throw error;
   }
-}
+},
+
 
     
 }

@@ -83,4 +83,17 @@ router.get('/solicitacoes', verificarAdm, function(req,res){
   admController.carregarSolicitacoes(req,res);
 }) 
 
+router.get('/local_novo', verificarAdm, function(req,res){
+  admController.carregarNovoLocal(req,res);
+})
+
+router.post('/local_novo', uploadFile(["foto"]), verificarAdm, 
+function(req,res){
+  admController.novoLocalCreate(req,res);
+})
+
+router.get('/solicitacoes_remover', verificarAdm, function(req,res){
+  admController.carregarSolicitacoesRemover(req,res);
+})
+
 module.exports = router;

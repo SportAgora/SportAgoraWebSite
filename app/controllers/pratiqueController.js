@@ -42,7 +42,7 @@ module.exports = {
     })
     ],
     gravarSolicitacao: async (req, res) => {
-  try {
+    try {
     const esportes = await PratiqueModel.listarEsportes();
     const errors = validationResult(req);
     const erroMulter = req.session.erroMulter;

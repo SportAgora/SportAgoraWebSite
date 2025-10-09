@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Local</title>
+    <link rel="stylesheet" href="/css/adm/novousuario.css">
+    <link rel="stylesheet" href="/css/adm/styles.css">
+    <link rel="stylesheet" href="/css/erro.css">
+    <link rel="icon" href="/imagens/SportAgora.png">
+</head>
+<body>
+    <%- include('../../partials/adm_navbar'); %>
+
+    <%
+    let erroValidacao = {
+        nome:"", endereco:"", foto:"", latitude:"", longitude:"", esportes:""
+    };
+    let msgErro = {
+        nome:"", endereco:"", foto:"", latitude:"", longitude:"", esportes:""
+    };
+    if(erros) {
+        erros.errors.forEach(function(erro) {
+            if(erro.path in erroValidacao){
+                erroValidacao[erro.path] = "erro";
+                msgErro[erro.path] = erro.msg;
+            }
+        });
+    }
+    %>
+
+    <main>
+        <section id="logo-area">
+            <h1 class="tituloLogo">Novo Local</h1>
+        </section>
+
+        <form id="formulario-local" method="post" action="/adm/local_novo" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<%= dados.id || "" %>">
+
+            <label for="nome">Nome do Local:</label>
+            <input type="text" id="nome" name="nome" value="<%=dados.nome%>" class="<%= erroValidacao.nome %>" required>
+            <span class="spanerro"><%= msgErro.nome %></span><br>
+
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" value="<%=dados.endereco%>" class="<%= erroValidacao.endereco %>" required>
+            <span class="spanerro"><%= msgErro.endereco %></span><br>
+
+            <label for="foto">Foto do Local:</label>
+
+            <% if (dados.foto) { %>
+                <div class="foto-preview">
+                    <img src="/<%= dados.foto %>" alt="Foto do Local" style="max-width:200px; display:block; margin-bottom:5px;">
+                </div>
+                <!-- Mantém o caminho da foto antiga -->
+                <input type="hidden" name="foto_antiga" value="<%= dados.foto %>">
+            <% } %>
+
+            <input type="file" id="foto" name="foto" class="<%= erroValidacao.foto %>" accept="image/*" <%= dados.foto ? "" : "required" %>>
+            <span class="spanerro"><%= msgErro.foto %></span><br>
+
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" name="latitude" value="<%=dados.latitude%>" class="<%= erroValidacao.latitude %>" required>
+            <span class="spanerro"><%= msgErro.latitude %></span><br>
+
+            <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" name="longitude" value="<%=dados.longitude%>" class="<%= erroValidacao.longitude %>" required>
+            <span class="spanerro"><%= msgErro.longitude %></span><br>
+
+            <label>Esportes disponíveis:</label>
+            <div class="checkbox-group <%= erroValidacao.esportes %>">
+                <% esportes.forEach(function(esporte){ %>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="esporte_<%= esporte.esporte_id %>" 
+                            name="esportes[]" value="<%= esporte.esporte_id %>"
+                            <%= dados.esportes && dados.esportes.includes(esporte.esporte_id) ? "checked" : "" %>>
+                        <label for="esporte_<%= esporte.esporte_id %>"><%= esporte.esporte_nome %></label>
+                    </div>
+                <% }) %>
+            </div>
+            <span class="spanerro"><%= msgErro.esportes %></span><br><br>
+
+            <button type="submit" class="enviar-btn">Registrar Local</button>
+        </form>
+    </main>
+
+    <%- include('../../partials/adm_footer'); %>
+</body>
+</html>

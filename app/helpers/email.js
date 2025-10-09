@@ -2,15 +2,11 @@ const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
-    port: 465,
-    secure: true, // Não usa SSL/TLS direto
     auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.SECRET_KEY
   },
-  tls: {
-    ciphers: 'SSLv3'
-  }
+
 });
 
 function enviarEmail(to, subject, text=null, html = null, callback) {

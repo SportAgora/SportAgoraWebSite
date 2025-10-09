@@ -36,4 +36,4 @@ function enviarEmail(to, subject, text=null, html = null, callback) {
 
 }
 
-module.exports = { enviarEmail }
+module.exports = { enviarEmail, transporter }

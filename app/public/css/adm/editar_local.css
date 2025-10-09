@@ -1,0 +1,157 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background-color: var(--background);
+    min-height: calc(100vh - 80px);
+}
+
+#logo-area {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.tituloLogo {
+    font-size: 2.5em;
+    color: var(--principal_escura);
+    font-weight: 700;
+    margin: 0;
+}
+
+/* --- Estilo do Formulário (Reutilizado) --- */
+#formulario-local {
+    width: 100%;
+    max-width: 700px;
+    background-color: var(--branco);
+    padding: 35px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#formulario-local label {
+    display: block;
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--principal_escura);
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+#formulario-local input[type="text"],
+#formulario-local input[type="file"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--cinza_claro);
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+#formulario-local input:focus {
+    border-color: var(--principal);
+    outline: none;
+}
+
+/* Estilo para campos com erro de validação (usando a classe .erro) */
+#formulario-local input.erro,
+.checkbox-group.erro {
+    border-color: var(--erro) !important;
+    box-shadow: 0 0 0 3px var(--erro_transparente);
+}
+
+.spanerro {
+    display: block;
+    color: var(--erro);
+    font-size: 0.85em;
+    margin-top: 4px;
+    min-height: 18px; 
+}
+
+/* Pré-visualização da Foto */
+.foto-preview {
+    margin-bottom: 15px;
+    border: 1px solid var(--cinza_claro);
+    padding: 10px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.foto-preview img {
+    border-radius: 4px;
+}
+
+/* --- Grupo de Checkboxes (Esportes) --- */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 25px;
+    padding: 15px;
+    border: 1px solid var(--cinza_claro);
+    border-radius: 4px;
+    background-color: var(--background);
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--principal);
+    cursor: pointer;
+}
+
+.checkbox-item label {
+    margin: 0;
+    font-weight: 400;
+    color: var(--cinza_escuro);
+}
+
+/* --- Botão de Envio (Salvar Alterações) --- */
+.enviar-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 30px;
+    background-color: var(--principal);
+    color: var(--branco);
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+}
+
+.enviar-btn:hover {
+    background-color: var(--principal_escura);
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    main {
+        padding: 15px;
+    }
+
+    .tituloLogo {
+        font-size: 2em;
+    }
+
+    #formulario-local {
+        padding: 20px;
+    }
+
+    .checkbox-group {
+        gap: 10px 15px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

@@ -55,6 +55,35 @@
                 <h2>Informações</h2> 
                 <!-- <a href="/perfil?id=<%=usuario.usu_id%>" id="aaa"><button class="btnver">Visualizar Perfil</button></a> -->
             </section>
+
+            <section>
+                <form action="/editar_perfil" method="POST" enctype="multipart/form-data">
+                    <label for="nome">Nome:</label><br>
+                    <input type="text" name="nome" id="nome" value="<%= dadosForm.usu_nome %>"><br>
+                    <label for="email">Email:</label><br>
+                    <input type="text" name="email" id="email" value="<%= dadosForm.usu_email %>"><br>
+                    <label for="senha">Senha:</label><br>
+                    <input type="text" name="senha" id="senha" placeholder="********" value="<%= dadosForm.senha || '' %>"><br>
+                    <label for="repsenha">Confirmar senha:</label><br>
+                    <input type="text" name="repsenha" id="repsenha" placeholder="********" value="<%= dadosForm.repsenha || '' %>">
+                    <br>
+                    <label for="foto">Foto:</label>
+
+                    <% if (dadosForm.usu_foto) { %>
+                        <div class="foto-preview-existente">
+                            <img src="/<%= dadosForm.usu_foto %>" alt="Foto do Local" id="fotoExistente" style="max-width:200px; display:block; margin-bottom:5px;">
+                        </div>
+                        <input type="hidden" name="foto_antiga" value="<%= dadosForm.usu_foto %>">
+                    <% } %> 
+
+                    <div id="novaFotoPreview" style="max-width:300px; margin-bottom: 10px;"></div>
+
+                    <input type="file" id="foto" name="foto" accept="image/*" <%= dadosForm.usu_foto ? "" : "required" %>>
+                    <br>
+                    <input type="submit" value="Alterar dados">
+                </form>
+            </section>
+
             <table class="endereco-tabela">
                 <thead>
                     <tr>

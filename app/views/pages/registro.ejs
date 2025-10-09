@@ -95,7 +95,11 @@
                 <span class="spanerro"><%= msgErroPag.nome %></span><br>
 
                 <input type="email" placeholder="Email" name="email" id="email" value="<%= dados.email  %>" class="<%= erroValidacao.email %>"> 
-                <span class="spanerro"><%= msgErroPag.email %></span><br>
+                <span class="spanerro"><%= msgErroPag.email %></span><br><br>
+                
+                <label for="datanasc" class="datanasctxt">Data de Nascimento:</label>
+                <input type="date" name="datanasc" id="datanasc" value="<%= dados.datanasc || '' %>" class="<%= erroValidacao.datanasc %>" required> 
+                <span class="spanerro"><%= msgErroPag.datanasc %></span>
                 
                     <input type="password" placeholder="Senha" name="senha" id="senha" value="<%= dados.senha  %>" class="<%= erroValidacao.senha %>">
                     <button type="button" id="toggleSenha" class="toggle-senha-btn2" aria-label="Mostrar senha">👁️</button>
@@ -130,10 +134,6 @@
                 <button type="button" id="ctoggleSenha" class="toggle-senha-btn3" aria-label="Mostrar senha">👁️</button>
                 <span class="spanerro"><%= msgErroPag.repsenha %></span><br>
                 
-                <section class="divCheck">
-                <input type="checkbox" />
-                <span>Lembre minha senha</span>
-                </section>
 
                 <input type="submit" id="enviar_login" value="REGISTRAR">
             </form>

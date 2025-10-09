@@ -110,6 +110,22 @@
     margin-left: 80px;
     border-radius: 7px 7px 0px 0px;
 }
+#datanasc{
+    border-top: 1px double var(--branco);
+    border-right: 1px double var(--branco);
+    border-bottom: 2px solid var(--cinza);
+    border-left: 1px double var(--branco);
+    margin-top: 10px;
+    padding: 8px 0 8px 15px;
+    outline: none;
+    width: 210%;
+    font-size: 20px;
+    background-color: var(--background);
+    color: var(--preto);
+    margin-left: 80px;
+    border-radius: 7px 7px 0px 0px;
+}
+
 
 /* 
 #email, #senha, #nome, #repsenha{
@@ -338,8 +354,8 @@
 }
 .toggle-senha-btn2 {
     position: absolute;
-    left: 240% ;
-    top: 69%;
+    left: 237%;
+    top: 109%;
     transform: translateY(-50%);
     background: none;
     border: none;
@@ -348,11 +364,17 @@
 }
 .toggle-senha-btn3 {
     position: absolute;
-    left: 240% ;
-    top: 147%;
+    left: 237%;
+    top: 186%;
     transform: translateY(-50%);
     background: none;
     border: none;
     cursor: pointer;
     font-size: 18px;
+}
+.datanasctxt{
+    color: var(--preto);
+    font-size: 18px;
+    margin-left: 80px;
+    margin-top: 20px;
 }

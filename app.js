@@ -79,18 +79,22 @@ transporter.verify(function(error, success) {
         console.error("Erro:", error.message); // Exibe o erro específico (e.g., ETIMEDOUT, EAUTH)
         console.error("=========================================");
         
-        // Em um ambiente de produção crítico, você pode optar por NÃO iniciar o servidor:
-        // process.exit(1);
+        // Iniciar o servidor
+        app.listen(port, () => {
+          console.log(`Servidor ouvindo na porta ${port}\nhttp://localhost:${port}`);
+        });
     } else {
         console.log("=========================================");
         console.log("Conexão SMTP OK!");
         console.log("O servidor está pronto para enviar e-mails.");
         console.log("=========================================");
+
+        // Iniciar o servidor
+        app.listen(port, () => {
+          console.log(`Servidor ouvindo na porta ${port}\nhttp://localhost:${port}`);
+        });
     }
 });
 
-// Iniciar o servidor
-app.listen(port, () => {
-  console.log(`Servidor ouvindo na porta ${port}\nhttp://localhost:${port}`);
-});
+
  

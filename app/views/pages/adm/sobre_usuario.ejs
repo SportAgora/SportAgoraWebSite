@@ -76,10 +76,10 @@
     </section>
 
     <% if (dadosNotificacao) { %>
-        <div class="notificacao <%= dadosNotificacao.tipo %>">
+        <section class="notificacao <%= dadosNotificacao.tipo %>">
             <strong><%= dadosNotificacao.titulo %></strong>
             <p><%= dadosNotificacao.mensagem %></p>
-        </div>
+        </section>
     <% } %>
 
     <main class="mainsobreuso">
@@ -136,13 +136,13 @@
                     <label for="foto">Foto:</label>
                     <br>
                     <% if (dadosForm.usu_foto) { %>
-                        <div class="foto-preview-existente">
+                        <section class="foto-preview-existente">
                             <img src="/<%= dadosForm.usu_foto %>" alt="Foto do Usuário" id="fotoExistente" style="max-width:200px; display:block; margin-bottom:5px;">
-                        </div>
+                        </section>
                         <input type="hidden" name="foto_antiga" value="<%= dadosForm.usu_foto %>">
                     <% } %> 
 
-                    <div id="novaFotoPreview" style="max-width:300px; margin-bottom: 10px;"></div>
+                    <section id="novaFotoPreview" style="max-width:300px; margin-bottom: 10px;"></section>
 
                     <input type="file" id="foto" name="foto" accept="image/*">
                     <% if (errorMap.foto) { %><p class="erro-campo"><%= errorMap.foto %></p><% } %>

@@ -74,13 +74,13 @@
             <label for="foto">Foto do Local:</label>
             
             <% if (dados.local_foto) { %>
-                <div class="foto-preview-existente" id="fotoExistenteContainer">
+                <section class="foto-preview-existente" id="fotoExistenteContainer">
                     <img src="/<%= dados.local_foto %>" alt="Foto do Local" style="max-width:200px; display:block; margin-bottom:5px;">
-                </div>
+                </section>
                 <input type="hidden" name="fotoAntiga" value="<%= dados.local_foto %>">
             <% } %>
             
-            <div id="novaFotoPreview" style="max-width:300px; margin-bottom: 10px;"></div>
+            <section id="novaFotoPreview" style="max-width:300px; margin-bottom: 10px;"></section>
 
             <input type="file" id="foto" name="foto" class="<%= erroValidacao.foto %>" accept="image/*">
             <span class="spanerro"><%= msgErro.foto %></span><br>
@@ -97,9 +97,9 @@
 
             <!-- Esportes -->
             <label>Esportes disponíveis:</label>
-            <div class="checkbox-group <%= erroValidacao.esportes %>">
+            <section class="checkbox-group <%= erroValidacao.esportes %>">
                 <% esportes.forEach(function(esporte){ %>
-                    <div class="checkbox-item">
+                    <section class="checkbox-item">
                         <input 
                             type="checkbox" 
                             id="esporte_<%= esporte.esporte_id %>" 
@@ -107,9 +107,9 @@
                             value="<%= esporte.esporte_id %>"
                             <%= dados.esportesSelecionados && dados.esportesSelecionados.includes(esporte.esporte_id) ? "checked" : "" %>>
                         <label for="esporte_<%= esporte.esporte_id %>"><%= esporte.esporte_nome %></label>
-                    </div>
+                    </section>
                 <% }) %>
-            </div>
+            </section>
             <span class="spanerro"><%= msgErro.esportes %></span><br><br>
 
             <!-- Botão -->

@@ -53,13 +53,13 @@
             <label for="foto">Foto do Local:</label>
 
             <% if (dados.foto) { %>
-                <div class="foto-preview-existente">
+                <section class="foto-preview-existente">
                     <img src="/<%= dados.foto %>" alt="Foto do Local" id="fotoExistente" style="max-width:200px; display:block; margin-bottom:5px;">
-                </div>
+                </section>
                 <input type="hidden" name="foto_antiga" value="<%= dados.foto %>">
             <% } %>
             
-            <div id="novaFotoPreview" style="max-width:300px; margin-bottom: 10px;"></div>
+            <section id="novaFotoPreview" style="max-width:300px; margin-bottom: 10px;"></section>
 
             <input type="file" id="foto" name="foto" class="<%= erroValidacao.foto %>" accept="image/*" <%= dados.foto ? "" : "required" %>>
             <span class="spanerro"><%= msgErro.foto %></span><br>
@@ -73,16 +73,16 @@
             <span class="spanerro"><%= msgErro.longitude %></span><br>
 
             <label>Esportes disponíveis:</label>
-            <div class="checkbox-group <%= erroValidacao.esportes %>">
+            <section class="checkbox-group <%= erroValidacao.esportes %>">
                 <% esportes.forEach(function(esporte){ %>
-                    <div class="checkbox-item">
+                    <section class="checkbox-item">
                         <input type="checkbox" id="esporte_<%= esporte.esporte_id %>" 
                             name="esportes[]" value="<%= esporte.esporte_id %>"
                             <%= dados.esportes && dados.esportes.includes(esporte.esporte_id) ? "checked" : "" %>>
                         <label for="esporte_<%= esporte.esporte_id %>"><%= esporte.esporte_nome %></label>
-                    </div>
+                    </section>
                 <% }) %>
-            </div>
+            </section>
             <span class="spanerro"><%= msgErro.esportes %></span><br><br>
 
             <button type="submit" class="enviar-btn">Registrar Local</button>
@@ -112,7 +112,7 @@
                     img.style.display = 'block';
                     img.style.marginBottom = '5px';
                     
-                    // Adiciona a nova imagem ao div de preview
+                    // Adiciona a nova imagem ao section de preview
                     novaFotoPreview.appendChild(img);
                     
                     // Oculta a foto antiga, se houver, para mostrar apenas a nova

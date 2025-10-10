@@ -7,7 +7,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const mercadopago = require('mercadopago');
 require("dotenv").config();
-const { transporter } = require('./app/helpers/email');
+
  
 app.use(helmet({
   contentSecurityPolicy: false // apenas para desenvolvimento
@@ -75,28 +75,6 @@ app.listen(port, () => {
           console.log(`Servidor ouvindo na porta ${port}\nhttp://localhost:${port}`);
         });
 
-transporter.verify(function(error, success) {
-    if (error) {
-        console.error("=========================================");
-        console.error("ERRO CRÍTICO: FALHA NA CONEXÃO SMTP!");
-        console.error("O servidor de e-mail NÃO está funcionando corretamente.");
-        console.error("Erro:", error.message); // Exibe o erro específico (e.g., ETIMEDOUT, EAUTH)
-        console.error("=========================================");
-        
-        // Iniciar o servidor
-        app.listen(port, () => {
-          console.log(`Servidor ouvindo na porta ${port}\nhttp://localhost:${port}`);
-        });
-    } else {
-        console.log("=========================================");
-        console.log("Conexão SMTP OK!");
-        console.log("O servidor está pronto para enviar e-mails.");
-        console.log("=========================================");
-
-        // Iniciar o servidor
-        
-    }
-});
 
 
 

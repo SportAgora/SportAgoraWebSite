@@ -1332,7 +1332,7 @@ a {
 } */
 
 .footer {
-    background-color: var(--principal); 
+    background-color: var(--principal_escura); 
     color: white; 
     padding: 2.5rem 1rem 1rem;
     box-shadow: 0 -4px 10px var(--sombra-moderada); 
@@ -1431,7 +1431,7 @@ a {
 }
 
 .footer-bottom {
-    border-top: 1px solid var(--cinza_escuro); 
+    border-top: 1px solid var(--complementar); 
     padding-top: 1rem;
     text-align: center;
 }

@@ -92,6 +92,7 @@ select, .input-data {
     min-width: 150px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 select { appearance: none; background: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%23666" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 10px center; background-color: var(--branco); background-size: 12px; padding-right: 40px; }
 select:focus, .input-data:focus { border-color: var(--cinza_claro); box-shadow: 0 0 10px var(--principal_escura); }
 
@@ -127,8 +128,10 @@ select:focus, .input-data:focus { border-color: var(--cinza_claro); box-shadow: 
     font-style: normal;
     outline: none;
     min-width: 150px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease , transform 0.3s;
 }
+
+/* esse */
 
 select:focus, .input-data:focus {
     border-color: var(--cinza_claro);

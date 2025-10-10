@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS inscricao_evento (
     genero ENUM('masculino','feminino','naoIdentificar') NOT NULL DEFAULT 'naoIdentificar',
     data_compra DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     pagamento_feito BOOLEAN DEFAULT FALSE,
+    entrada_validada BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usu_id) ON DELETE CASCADE,
     FOREIGN KEY (evento_id) REFERENCES eventos(evento_id) ON DELETE CASCADE,
     FOREIGN KEY (ingresso_id) REFERENCES ingressos(ingresso_id) ON DELETE CASCADE

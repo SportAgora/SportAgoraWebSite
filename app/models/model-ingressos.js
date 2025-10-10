@@ -126,6 +126,19 @@ module.exports= {
       console.error("Erro ao buscar inscrição por ID:", error);
       throw error;
     }
+  },
+  validarInscricao: async (inscricaoId) => {
+    try {
+      const queryCheck = "SELECT * FROM inscricao_evento WHERE inscricao_id = ? AND pagamento_feito = true";
+      const [rowsCheck] = await pool.query(queryCheck, [inscricaoId]);
+      if (rowsCheck.length === 0) return false;
+      const query = "UPDATE inscricao_evento SET entrada_validada = true WHERE inscricao_id = ?";
+      await pool.query(query, [inscricaoId]);
+      return true;
+    } catch (error) {
+      console.error("Erro ao validar inscrição:", error);
+      throw error;
+    }
   }
 
 }

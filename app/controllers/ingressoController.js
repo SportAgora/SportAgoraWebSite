@@ -232,6 +232,6 @@ carregarInscricaoEvento: async (req, res) => {
             });
         }
         await ingressosModel.validarInscricao(inscricao_id);
-        res.render('pages/ingresso_validado', {inscricao_id});
+        return res.render('pages/ingresso_validado', {inscricao_id});
     }
 }

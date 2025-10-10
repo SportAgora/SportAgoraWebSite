@@ -26,46 +26,36 @@
 
         <article class="content">
             <article class="detail-group">                
-                <img src="/imagens/natação-evento.png" alt=".evento_foto">
+                <img src="/<%=ingresso.evento_foto%>" alt=".evento_foto">
             </article>
             <article class="detail-group">
-                <label>Evento  .evento_id </label>
+                <label>Evento  #<%=ingresso.evento_id%> </label>
                 <p>
-                    .evento_nome 
+                    <%=ingresso.evento_nome%>
                 </p>
             </article>
             <article class="detail-group">
                 <label>Data e Local</label>
                 <p>
-                    .evento_data  
+                    <%= new Date(ingresso.evento_data_hora).toLocaleDateString('pt-BR') %> às 
+        <%= new Date(ingresso.evento_data_hora).toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'}) %> - 
+        <%= ingresso.evento_endereco_completo.logradouro %>, <%= ingresso.evento_endereco_numero %> - 
+        <%= ingresso.evento_endereco_completo.bairro %>, <%= ingresso.evento_endereco_completo.localidade %> - 
+        <%= ingresso.evento_endereco_completo.uf %>
                 </p>
             </article>
 
             <article class="detail-group">
                 <label>Nome do Ingresso</label>
                 <p>
-                    .ingresso_nome 
+                    <%=ingresso.ingresso_nome%>
                 </p>
             </article>
 
             <article class="detail-group">
                 <label>Tipo de Entrada</label>
                 <p>
-                    .ingresso_meia
-                </p>
-            </article>
-
-            <article class="detail-group">
-                <label>Quantidade</label>
-                <p>
-                    .ingresso_quantidade  
-                </p>
-            </article>
-
-            <article class="detail-group">
-                <label>Valor Unitário</label>
-                <p>
-                    R$ .ingresso_valor
+                    <%=ingresso.ingresso_meia == 0? "Inteira" : "Meia"%>
                 </p>
             </article>
 
@@ -74,8 +64,8 @@
                     Validar Ingresso
                 </button>
                 <section>
-                    <label>Total Pago</label>
-                    <p> R$  total</p>
+                    <label>Valor do ingresso</label>
+                    <p> R$  <%=ingresso.ingresso_valor%></p>
                 </section>
             </article>
 
@@ -87,7 +77,7 @@
                 <h2>QR Code do seu Ingresso</h2>
                 <p>Apresente este código para validação.</p>
                 <article class="qr-code-container">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=SeuIngressoID:XYZ123Evento:Futebol4" alt="QR Code do Ingresso" class="qr-code-image">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=IngressoID:<%= ingresso.inscricao_id %>" alt="QR Code do Ingresso" class="qr-code-image">
                 </article>
                 <p class="warning-text">Não compartilhe este QR Code com outras pessoas.</p>
             </article>

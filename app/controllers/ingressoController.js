@@ -35,7 +35,6 @@ carregarInscricaoEvento: async (req, res) => {
         dados: {
             telefone:"",
             cpf:"",
-            nascimento:"",
             genero:""
         },
         erros:""
@@ -55,27 +54,26 @@ carregarInscricaoEvento: async (req, res) => {
             }
             return true;
         }),
-    body("nascimento").custom(value => {
-    const hoje = new Date();
-    const dataNasc = new Date(value);
-    let idade = hoje.getFullYear() - dataNasc.getFullYear();
-    const m = hoje.getMonth() - dataNasc.getMonth();
-    if (m < 0 || (m === 0 && hoje.getDate() < dataNasc.getDate())) {
-        idade--;
-    }
-    if (idade < 14) {
-        throw new Error("Você precisa ter mais de 14 anos");
-    }
-    return true; // precisa retornar true se estiver válido
-})
+//     body("nascimento").custom(value => {
+//     const hoje = new Date();
+//     const dataNasc = new Date(value);
+//     let idade = hoje.getFullYear() - dataNasc.getFullYear();
+//     const m = hoje.getMonth() - dataNasc.getMonth();
+//     if (m < 0 || (m === 0 && hoje.getDate() < dataNasc.getDate())) {
+//         idade--;
+//     }
+//     if (idade < 14) {
+//         throw new Error("Você precisa ter mais de 14 anos");
+//     }
+//     return true; // precisa retornar true se estiver válido
+// })
     ],
 
     pagamentoEvento: async (req, res) => {
-    const {telefone, cpf, nascimento, genero} = req.body;
+    const {telefone, cpf, genero} = req.body;
     let dados = {
         telefone,
         cpf,
-        nascimento,
         genero
     }
     const evento = JSON.parse(req.body.evento);
@@ -126,7 +124,6 @@ carregarInscricaoEvento: async (req, res) => {
                 evento_id: evento.evento_id,
                 telefone,
                 cpf,
-                nascimento,
                 genero
             }, ingressos);
 

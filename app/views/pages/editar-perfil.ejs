@@ -36,7 +36,7 @@
                 if(erros){
                     erros.errors.forEach(function(itemErro){
                         if(itemErro.path == "nome"){
-                            avisoErro.nome = "erro";
+                            avisoErro.nome = "erro  ";
                             msgErro += `* ${itemErro.msg} <br>`
                         }
                         if(itemErro.path == "senha"){
@@ -120,12 +120,13 @@
 
             <!-- Aba Informações do Usuário -->
             <section id="form-usuario" class="form active">
-                <label>Nome Completo
+                <label>Nome de usuário
                     <input type="text" value="<%= valores.nome %>" name="nome" required>
                 </label>
-                <!-- <label>Nome de Usuário
-                    <input type="text" name="usuario" value="<%= valores.nome %>" required>
-                </label> -->
+                <label>Data de nascimento
+                    <%console.log(valores.nasc)%>
+                    <input type="date" name="nasc" value="<%= valores.nasc %>">
+                </label>
                  <small>Não preencha senha ou e-mail se não quiser alterar</small>
                 <label>E-mail
                     <input type="email" name="email" value="<%= valores.email %>">

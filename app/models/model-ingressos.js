@@ -48,8 +48,8 @@ module.exports= {
 
       const query = `
         INSERT INTO inscricao_evento 
-        (usuario_id, evento_id, ingresso_id, telefone, cpf, data_nasc, genero, pagamento_feito)
-        VALUES (?, ?, ?, ?, ?, ?, ?, false)
+        (usuario_id, evento_id, ingresso_id, telefone, cpf, genero, pagamento_feito)
+        VALUES (?, ?, ?, ?, ?, ?, false)
       `;
 
       const results = [];
@@ -63,7 +63,6 @@ module.exports= {
           ing.ingresso_id,
           dados.telefone,
           dados.cpf.replace(/\D/g, ""),
-          dados.nascimento,
           dados.genero,
         ]);
         results.push(result.insertId);

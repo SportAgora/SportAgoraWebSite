@@ -18,8 +18,8 @@
 </head>
 <body onload="testarSenha()">
     <%
-    let  erroValidacao =  {"nome":"","email":"", "repsenha":"","senha":""};
-    let  msgErroPag =  {"nome":"","email":"","repsenha":"","senha":""};
+    let  erroValidacao =  {"nome":"","email":"", "repsenha":"","senha":"","nasc":""};
+    let  msgErroPag =  {"nome":"","email":"","repsenha":"","senha":"","nasc":""};
     if(erros) {
         erros.errors.forEach(function(erro) {
             if (erro.path == "nome") {
@@ -38,11 +38,15 @@
                 erroValidacao.senha = "erro",
                 msgErroPag.senha = erro.msg
             }
+            if (erro.path == "nasc") {
+                erroValidacao.nasc = "erro",
+                msgErroPag.nasc = erro.msg
+            }
         })
     }; %>
 
     <% 
-    let avisoErro = {"nome":"","email":"", "senha":"","repsenha":""};
+    let avisoErro = {"nome":"","email":"", "senha":"","repsenha":"", "nasc":""};
     let msgErro = ""
         if(erros){
             erros.errors.forEach(function(erro){
@@ -60,6 +64,10 @@
                 }
                 if(erro.path == "repsenha"){
                     avisoErro.repsenha = "erro";
+                    msgErro += `* ${erro.msg} <br>`
+                }
+                if(erro.path == "nasc"){
+                    avisoErro.nasc = "erro";
                     msgErro += `* ${erro.msg} <br>`
                 }
             })
@@ -98,7 +106,7 @@
                 <span class="spanerro"><%= msgErroPag.email %></span><br><br>
                 
                 <label for="datanasc" class="datanasctxt">Data de Nascimento:</label>
-                <input type="date" name="datanasc" id="datanasc" value="<%= dados.datanasc || '' %>" class="<%= erroValidacao.datanasc %>" required> 
+                <input type="date" name="nasc" id="datanasc" value="<%= dados.nasc || '' %>" class="<%= erroValidacao.nasc %>" required> 
                 <span class="spanerro"><%= msgErroPag.datanasc %></span>
                 
                     <input type="password" placeholder="Senha" name="senha" id="senha" value="<%= dados.senha  %>" class="<%= erroValidacao.senha %>">

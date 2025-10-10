@@ -589,6 +589,18 @@ module.exports = {
             res.send("Erro ao carregar página de novo local");
         }
     },
+    regrasValidacaoLocal: [
+        body('nome').isLength({ min: 3, max: 50 }).withMessage('O nome do local deve ter entre 3 e 50 caracteres.'),
+        body('endereco').isLength({ min: 5, max: 100 }).withMessage('O endereço deve ter entre 5 e 100 caracteres.'),
+        body('latitude').isFloat({ min: -90, max: 90 }).withMessage('Latitude inválida.'),
+        body('longitude').isFloat({ min: -180, max: 180 }).withMessage('Longitude inválida.'),
+        body('esportes').custom((value, { req }) => {
+            if (!req.body.esportes || (Array.isArray(req.body.esportes) && req.body.esportes.length === 0)) {
+                throw new Error('Selecione pelo menos um esporte.');
+            }
+            return true;
+        })
+    ],
     novoLocalCreate: async (req, res) => {
         try {
             const { nome, endereco, latitude, longitude, esportes, id } = req.body;
@@ -653,6 +665,31 @@ module.exports = {
             res.status(500).send('Erro interno do servidor');
         }
     },
+    regrasValidacaoEditarLocal: [
+         body('nome')
+        .isLength({ min: 3, max: 50 })
+        .withMessage('O nome do local deve ter entre 3 e 50 caracteres.'),
+
+    body('endereco')
+        .isLength({ min: 5, max: 100 })
+        .withMessage('O endereço deve ter entre 5 e 100 caracteres.'),
+
+    body('latitude')
+        .isFloat({ min: -90, max: 90 })
+        .withMessage('Latitude inválida.'),
+
+    body('longitude')
+        .isFloat({ min: -180, max: 180 })
+        .withMessage('Longitude inválida.'),
+
+    body('esportes')
+        .custom((value, { req }) => {
+            if (!req.body.esportes || (Array.isArray(req.body.esportes) && req.body.esportes.length === 0)) {
+                throw new Error('Selecione pelo menos um esporte.');
+            }
+            return true;
+        })
+    ],
     carregarEditarLocal: async (req, res) => {
         try {
             const id = req.body.id || req.query.id;
@@ -668,7 +705,7 @@ module.exports = {
 
             // Extrai IDs dos esportes associados ao local
             const esportesLocalIds = local.esportes.map(e => e.esporte_id);
-
+            console.log("Local retornado:", local);
             return res.render("pages/adm/local_editar", {
                 erros: null,
                 dados: {
@@ -706,6 +743,7 @@ module.exports = {
             return res.render("pages/adm/local_editar", {
                 erros: lista,
                 dados: {
+                    local_id: req.body.id || req.query.id,
                     local_nome: req.body.nome,
                     local_endereco: req.body.endereco,
                     local_latitude: req.body.latitude,
@@ -724,6 +762,8 @@ module.exports = {
 
         try {
             const id = req.body.id || req.query.id;
+            console.log("Editando local ID:", id);
+            console.log("Dados recebidos:", req.body.id);
 
             // Monta dados do formulário
             const dadosForm = {
@@ -742,11 +782,6 @@ module.exports = {
             // Se houve upload de imagem nova
             if (req.files && req.files.foto) {
                 const caminhoFoto = "imagens/pratique/" + req.files.foto[0].filename;
-
-                if (dadosForm.foto && dadosForm.foto !== caminhoFoto) {
-                    removeImg(dadosForm.foto);
-                }
-
                 dadosForm.foto = caminhoFoto;
             }
 

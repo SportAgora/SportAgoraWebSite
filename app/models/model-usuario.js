@@ -43,7 +43,7 @@ const UsuarioModel = {
   // Criar novo usuário
   create: async (userData) => {
     try {
-      const { nome, email, senha, foto, banner, status } = userData;
+      const { nome, email, senha, foto, banner, status, nasc } = userData;
  
       // Preparar os dados para inserção
       const data = {
@@ -54,6 +54,7 @@ const UsuarioModel = {
         usu_foto:foto,
         usu_banner:banner,
         usu_status: status || 0, // Padrão para inativo
+        usu_nasc: nasc ? moment(nasc).format('YYYY-MM-DD') : null,
       };
  
       // Construir a query dinamicamente
@@ -74,7 +75,7 @@ const UsuarioModel = {
   // Atualizar usuário
   atualizar: async (id, userData) => {
     try {
-      const { nome, arroba, email, data_nascimento, telefone, plano, tipo, foto, banner, senha} = userData;
+      const { nome, arroba, email, nasc, telefone, plano, tipo, foto, banner, senha} = userData;
  
       // Preparar os dados para atualização
       const data = {
@@ -82,7 +83,7 @@ const UsuarioModel = {
         perf_nome : arroba,
         usu_email: email,
         usu_senha:senha,
-        usu_nasc: data_nascimento ? moment(data_nascimento).format('YYYY-MM-DD') : null,
+        usu_nasc: nasc ? moment(nasc).format('YYYY-MM-DD') : null,
         contato_id: telefone,
         plano_id : plano,
         tipo : tipo,

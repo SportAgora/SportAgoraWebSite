@@ -16,7 +16,13 @@ module.exports = {
     body("senha").isStrongPassword().withMessage("Senha muito fraca!"),
     body("repsenha").custom((value, { req }) => {
     return value === req.body.senha;
-    }).withMessage("Senhas estão diferentes")
+    }).withMessage("Senhas estão diferentes"),
+    body("nasc").isDate().withMessage("Data de nascimento inválida").custom((value) => {
+        const dataNascimento = new Date(value);
+        const dataAtual = new Date();
+        const idadeMinima = 18; // Idade mínima permitida
+        return (dataAtual.getFullYear() - dataNascimento.getFullYear() >= idadeMinima);
+    }).withMessage("Você deve ter no mínimo 18 anos para se cadastrar.")
   ],
   
 
@@ -34,7 +40,7 @@ module.exports = {
 
     try {
 
-      const {nome, email, senha } = req.body;
+      const {nome, email, senha, nasc } = req.body;
 
       if (email){
       const usuarioExistente = await UsuarioModel.findByEmail(email);
@@ -50,20 +56,6 @@ module.exports = {
       });
     }
 
-    if (nome){
-      const nomeExistente = await UsuarioModel.findByName(nome);
-      if (nomeExistente) {
-        return res.render("pages/registro", {
-        dados: req.body,
-        erros: { errors: [{ path: 'nome', msg: "Este nome já está cadastrado" }] },
-        dadosNotificacao: {
-          titulo: "Falha ao cadastrar!",
-          mensagem: "Este nome já está cadastrado!",
-          tipo: "error",
-        },
-      });
-    }
-  }
 
       }
      
@@ -75,7 +67,8 @@ module.exports = {
         senha: senhaHash,
         foto: "imagens/usuarios/default_user.jpg",
         banner: "imagens/usuarios/default_background.jpg",
-        status: 0
+        status: 0,
+        nasc: nasc
       });
 
       const token = jwt.sign(
@@ -87,7 +80,15 @@ module.exports = {
 
       const html = require('../helpers/email-ativar-conta')(process.env.URL_BASE, token, nome);
       console.log("configurou o email")
-      enviarEmail(email, "Cadastro no site SportAgora", null, html, ()=>{
+      enviarEmail(email, "Cadastro no site SportAgora", null, html, (erro)=>{
+        if (erro) {
+        return res.render("pages/registro", {
+            erros: [{ msg: "Erro ao enviar o e-mail. Tente novamente." }],
+            dadosNotificacao: null,
+            dados: req.body
+        });
+      }
+
         return res.render("pages/registro", {
           erros: null,
           dadosNotificacao: {
@@ -419,7 +420,8 @@ autenticarUsuario: async (req, res, tipo = "c") => {
   try {
     const user = req.session.usuario;
     const userinfos = await UsuarioModel.findByEmail(user.email);
-    
+    userinfos.usu_nasc = userinfos.usu_nasc ? userinfos.usu_nasc.toISOString().split('T')[0] : "";
+    console.log(userinfos)
     res.render("pages/editar-perfil", {
         valores: {
         id: userinfos.usu_id,
@@ -427,7 +429,8 @@ autenticarUsuario: async (req, res, tipo = "c") => {
         email: userinfos.usu_email,
         arroba: userinfos.perf_nome,
         foto: userinfos.usu_foto,
-        banner: userinfos.usu_banner
+        banner: userinfos.usu_banner,
+        nasc: userinfos.usu_nasc
         },
         erros:"",
         dadosNotificacao:""
@@ -451,7 +454,13 @@ autenticarUsuario: async (req, res, tipo = "c") => {
         .isStrongPassword().withMessage("Senha muito fraca!"),
         body("repsenha").custom((value, { req }) => {
           return value === req.body.senha;
-        }).withMessage("Senhas estão diferentes")
+        }).withMessage("Senhas estão diferentes"),
+        body("nasc").isDate().withMessage("Data de nascimento inválida").custom((value) => {
+        const dataNascimento = new Date(value);
+        const dataAtual = new Date();
+        const idadeMinima = 18; // Idade mínima permitida
+        return (dataAtual.getFullYear() - dataNascimento.getFullYear() >= idadeMinima);
+        }).withMessage("Você deve ter no mínimo 18 anos para se cadastrar.")
     ],
 
     gravarPerfil: async (req, res) => {
@@ -463,13 +472,15 @@ autenticarUsuario: async (req, res, tipo = "c") => {
                 lista.errors.push(erroMulter);
             } 
             console.log(lista)
-            return res.render("pages/editar-perfil", { erros: lista, 
+            return res.render("pages/editar-perfil", { 
+              erros: lista, 
               valores: {
               nome: req.body.nome,
                 email: req.body.email,
                 foto: req.session.usuario.foto,
                 banner: req.session.usuario.banner,
-                senha: ""
+                senha: "",
+                nasc: req.body.nasc
                 
               }, 
               dadosNotificacao: {
@@ -484,7 +495,8 @@ autenticarUsuario: async (req, res, tipo = "c") => {
                 email: req.body.email,
                 foto: req.session.usuario.foto,
                 banner: req.session.usuario.banner,
-                senha: req.body.senha
+                senha: req.body.senha,
+                nasc: req.body.nasc
             };
 
               if (req.body.senha && req.body.senha.trim() !== "") {
@@ -508,7 +520,7 @@ autenticarUsuario: async (req, res, tipo = "c") => {
                 }
               }
 
-
+              console.log(dadosForm)
             let resultUpdate = await UsuarioModel.atualizar(req.session.usuario.id, dadosForm);
             if (resultUpdate) {
                 if (resultUpdate.changedRows == 1) {
@@ -519,13 +531,14 @@ autenticarUsuario: async (req, res, tipo = "c") => {
                     foto: result.usu_foto,
                     email: result.usu_email,
                     banner: result.usu_banner,
-                    tipo: result.tipo
+                    tipo: result.tipo,
                   }
                 
                   
                    req.session.usuario = usuario;
 
                   var valores = usuario;
+                  valores.nasc = result.usu_nasc;
                   valores.senha = "";
                   console.log("salvo")
 

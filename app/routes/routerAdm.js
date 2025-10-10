@@ -88,7 +88,7 @@ router.get('/local_novo', verificarAdm, function(req,res){
   admController.carregarNovoLocal(req,res);
 })
 
-router.post('/local_novo', uploadFile(["foto"]), verificarAdm, 
+router.post('/local_novo', uploadFile(["foto"]), verificarAdm, admController.regrasValidacaoLocal, 
 function(req,res){
   admController.novoLocalCreate(req,res);
 })
@@ -105,7 +105,7 @@ router.get('/local_editar', verificarAdm, function(req,res){
   admController.carregarEditarLocal(req,res);
 })
 
-router.post('/local_editar', uploadFile(["foto"]), verificarAdm, function(req,res){
+router.post('/local_editar', uploadFile(["foto"]), verificarAdm, admController.regrasValidacaoEditarLocal, function(req,res){
   admController.editarLocal(req,res);
 })
 

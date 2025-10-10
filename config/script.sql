@@ -6,13 +6,12 @@ USE SPORTAGORA;
 CREATE TABLE IF NOT EXISTS usuarios (
     usu_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usu_email VARCHAR(55) NOT NULL UNIQUE,
-    usu_nome VARCHAR(50) NOT NULL UNIQUE,
+    usu_nome VARCHAR(30) NOT NULL,
     usu_senha VARCHAR(72) NOT NULL, -- VALOR ALTO PELA SENHA SER CRIPTOGRAFADA
     usu_nasc DATE,
     usu_foto VARCHAR(255) DEFAULT NULL,
     usu_banner VARCHAR(255) DEFAULT NULL,
     tipo ENUM('c', 'o', 'a') NOT NULL DEFAULT 'c',
-    perf_nome VARCHAR(50) NOT NULL,
     usu_status BOOLEAN DEFAULT 0
 );
 
@@ -66,7 +65,6 @@ CREATE TABLE IF NOT EXISTS inscricao_evento (
     ingresso_id INT UNSIGNED NOT NULL,
     telefone VARCHAR(11) NOT NULL,
     cpf VARCHAR(11) NOT NULL,
-    data_nasc DATE NOT NULL,
     genero ENUM('masculino','feminino','naoIdentificar') NOT NULL DEFAULT 'naoIdentificar',
     data_compra DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     pagamento_feito BOOLEAN DEFAULT FALSE,
@@ -98,7 +96,7 @@ CREATE TABLE IF NOT EXISTS solicitacoes (
 	  solicitacao_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	  solicitacao_nome VARCHAR(100) NOT NULL,
 	  solicitacao_foto VARCHAR(255) NOT NULL,
-	  solicitacao_endereco VARCHAR(255) NOT NULL,
+	  solicitacao_endereco VARCHAR(100) NOT NULL,
 	  solicitacao_link VARCHAR(500) NOT NULL, -- os links do google maps podem ser gigantescos
       solicitacao_status BOOLEAN NOT NULL DEFAULT FALSE,
 	  usuario_id INT UNSIGNED NOT NULL, -- foreing key
@@ -126,10 +124,10 @@ CREATE TABLE IF NOT EXISTS denuncias (
 );
 
 -- USUÁRIOS
-INSERT INTO usuarios (usu_email, usu_nome, usu_senha, usu_nasc, usu_foto, usu_banner, tipo, perf_nome, usu_status)
+INSERT INTO usuarios (usu_email, usu_nome, usu_senha, usu_nasc, usu_foto, usu_banner, tipo, usu_status)
 VALUES 
-('admin@sportagora.com', 'adminMaster', '$2b$10$z9NiJXWfm3QtLjXK3LEdu.URx7bNH9usxjjnMfUOH5pY8ItveDXaS', '1990-01-01', 'imagens/usuarios/default_user.jpg', 'imagens/usuarios/default_background.jpg', 'a', 'adminMaster', 1),
-('user@sportagora.com', 'Usuario', '$2b$10$z9NiJXWfm3QtLjXK3LEdu.URx7bNH9usxjjnMfUOH5pY8ItveDXaS', '1990-01-01', 'imagens/usuarios/default_user.jpg', 'imagens/usuarios/default_background.jpg', 'c', 'Usuario', 1);
+('admin@sportagora.com', 'adminMaster', '$2b$10$z9NiJXWfm3QtLjXK3LEdu.URx7bNH9usxjjnMfUOH5pY8ItveDXaS', '1990-01-01', 'imagens/usuarios/default_user.jpg', 'imagens/usuarios/default_background.jpg', 'a',  1),
+('user@sportagora.com', 'Usuario', '$2b$10$z9NiJXWfm3QtLjXK3LEdu.URx7bNH9usxjjnMfUOH5pY8ItveDXaS', '1990-01-01', 'imagens/usuarios/default_user.jpg', 'imagens/usuarios/default_background.jpg', 'c', 1);
 
 -- ESPORTES
 INSERT INTO esportes (esporte_nome, esporte_foto, esporte_banner)

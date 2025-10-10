@@ -12,8 +12,8 @@
 
 <body>
     <%
-    let  erroValidacao =  {"telefone":"", "cpf":"", "nascimento":"" };
-    let  msgErro =  {"telefone":"", "cpf":"", "nascimento":"" };
+    let  erroValidacao =  {"telefone":"", "cpf":""};
+    let  msgErro =  {"telefone":"", "cpf":""};
     if(erros) {
         erros.errors.forEach(function(erro) {
             if (erro.path == "telefone") {
@@ -24,10 +24,10 @@
                 erroValidacao.cpf = "erro"
                 msgErro.cpf = erro.msg
             }
-            if (erro.path == "nascimento") {
-                erroValidacao.nascimento = "erro"
-                msgErro.nascimento = erro.msg
-            }
+            // if (erro.path == "nascimento") {
+            //     erroValidacao.nascimento = "erro"
+            //     msgErro.nascimento = erro.msg
+            // }
         })
     }; %>
 
@@ -57,9 +57,9 @@
                         <label for="cpf">CPF:</label>
                         <input type="text" id="cpf" maxlength="14" name="cpf" value="<%=dados.cpf%>" class="<%= erroValidacao.cpf|| ''%>"required>
                         <span class="spanerro"><%= msgErro.cpf %></span><br>
-                        <label for="nascimento">Data de Nascimento:</label>
-                        <input type="date" id="nascimento" name="nascimento" value="<%=dados.nascimento%>" class="<%= erroValidacao.nascimento || ''%>" required>
-                        <span class="spanerro"><%= msgErro.nascimento %></span><br>
+                        <!-- <label for="nascimento">Data de Nascimento:</label>
+                        <input type="date" id="nascimento" name="nascimento" value="<%=dados.nascimento%>" class="<%= erroValidacao.nascimento || ''%>" required> -->
+                        <!-- <span class="spanerro"><%= msgErro.nascimento %></span><br> -->
                         <label for="genero">Gênero:</label>
                         <select id="genero" name="genero" required>
                             <option value="naoIdentificar"<%= dados.genero === 'naoIdentificar' ? 'selected' : '' %>>Não identificar</option>         

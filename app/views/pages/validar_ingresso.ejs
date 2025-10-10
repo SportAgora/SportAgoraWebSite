@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Validador de Ingressos</title>
 </head>
 <body>
     <div id="reader"></div>
+
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script>
+    // Pega evento_id injetado pelo controller
+    const evento_id = <%= evento_id %>;
+    console.log("Evento ID:", evento_id);
+
     function onScanSuccess(decodedText, decodedResult) {
         console.log(`QR Code lido: ${decodedText}`);
-        // Extrair o inscricao_id do decodedText
-        const params = new URLSearchParams(decodedText.replace(/&/g, '&'));
+
+        // Extrair o inscricao_id do QR code
         const inscricao_id = decodedText.match(/IngressoID:(\d+)/)[1];
 
-        // Enviar para o backend
+        // Enviar para o backend com evento_id
         fetch('/validar-ingresso', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ inscricao_id })
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ inscricao_id, evento_id })
         })
         .then(res => res.json())
         .then(data => alert(data.message))
@@ -27,9 +32,9 @@
     }
 
     var html5QrcodeScanner = new Html5QrcodeScanner(
-        "reader", { fps: 10, qrbox: 250 });
+        "reader", { fps: 10, qrbox: 250 }
+    );
     html5QrcodeScanner.render(onScanSuccess);
     </script>
-
 </body>
 </html>

@@ -205,15 +205,11 @@ router.get('/visualizar_ingresso', function(req,res){
   res.render('pages/visualizar_ingresso');  
 });
 
-router.get('/sobre_ingresso', function(req,res){
-  res.render('pages/sobre_ingresso');  
-});
-
 router.get('/solitacao-enviada', function(req,res){
   res.render('pages/solitacao-enviada');  
 });
 
-router.get('/ingresso', verificarAutenticacao, function(req,res){
+router.get('/sobre-ingresso', verificarAutenticacao, function(req,res){
   ingressoController.carregarIngresso(req,res);
 });
 
@@ -221,6 +217,9 @@ router.get('/validar-ingresso', verificarAutenticacao, function(req,res){
   ingressoController.carregarValidarIngresso(req,res);
 });
 
+router.post('/validar-ingresso', verificarAutenticacao, function(req,res){
+  ingressoController.validarIngresso(req,res);
+});
 /* MAPA */
 
 router.get('/pratique', pratiqueController.carregarMapa);

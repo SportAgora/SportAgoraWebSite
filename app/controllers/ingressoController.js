@@ -207,4 +207,31 @@ carregarInscricaoEvento: async (req, res) => {
     validarIngresso: async (req, res) => {
         const { inscricao_id, evento_id } = req.body;
         const ingresso = await ingressosModel.buscarInscricaoPorId(inscricao_id);
+        if (!ingresso) {
+            return res.render('pages/error', {
+                error: 404,
+                mensagem: "Inscrição não encontrada."
+            });
+        }
+        if (ingresso.evento_id != evento_id) {
+            return res.render('pages/error', {
+                error: 403,
+                mensagem: "Essa inscrição não é deste evento."
+            });
+        }
+        if (ingresso.inscricao_pago == 0) {
+            return res.render('pages/error', {
+                error: 403,
+                mensagem: "Essa inscrição não foi paga."
+            });
+        }
+        if (ingresso.inscricao_validado == 1) {
+            return res.render('pages/error', {
+                error: 403,
+                mensagem: "Essa inscrição já foi validada."
+            });
+        }
+        await ingressosModel.validarInscricao(inscricao_id);
+        res.render('pages/ingresso_validado', {inscricao_id});
+    }
 }

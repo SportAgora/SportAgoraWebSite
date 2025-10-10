@@ -1,4 +1,4 @@
-const OrganizadorModel = require('../models/model-organizador');
+  const OrganizadorModel = require('../models/model-organizador');
 const { body, validationResult } = require("express-validator");
 const axios = require('axios')
 

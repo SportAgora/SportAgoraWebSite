@@ -59,7 +59,7 @@ router.post("/login",   usuariosController.regrasValidacaoLogin, usuariosControl
 
 // Rota de logout
 router.get("/logout", usuariosController.logout);
-router.post("/logout", usuariosController.logout);
+router.post("/logout", usuariosController.logout);  
 
 router.get("/recuperar-senha", 
   function(req, res){
@@ -211,6 +211,14 @@ router.get('/sobre_ingresso', function(req,res){
 
 router.get('/solitacao-enviada', function(req,res){
   res.render('pages/solitacao-enviada');  
+});
+
+router.get('/ingresso', verificarAutenticacao, function(req,res){
+  ingressoController.carregarIngresso(req,res);
+});
+
+router.get('/validar-ingresso', verificarAutenticacao, function(req,res){
+  ingressoController.carregarValidarIngresso(req,res);
 });
 
 /* MAPA */

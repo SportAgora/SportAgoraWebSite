@@ -100,15 +100,13 @@
                             <i class="fi fi-rr-calendar"></i>
                             <span id="evento-data"><%= new Date(ingresso.evento_data_hora).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' }) %></span>
                             </aside>
-                            <aside>
+                            <!-- <aside>
                             <i class="fi fi-rr-marker"></i>
                             <span id="evento-local">Barueri, SP</span>
-                            </aside>
+                            </aside> -->
                         </aside>
                         <aside class="links">
-                            <h3><a href="#">Imprimir Ingresso</a></h3>
-                            <h3><a href="#" onclick="mandarEmail()">Fale com o produtor</a></h3>
-                            <h3><a href="#">Ver Pedido</a></h3>
+                            <h3><a href="/ingresso?id=<%=ingresso.ingresso_id%>">Ver Pedido</a></h3>
                         </aside>
                         </article>
                     </section>

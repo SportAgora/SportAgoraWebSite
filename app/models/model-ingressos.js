@@ -90,6 +90,42 @@ module.exports= {
     console.error("Erro ao ativar inscrições:", error);
     throw error;
   }
-}
+},
+  buscarInscricaoPorId: async (inscricaoId) => {
+    try {
+      const query = `
+       SELECT 
+    ie.*,
+    u.usu_nome AS usuario_nome,
+    u.usu_email AS usuario_email,
+    e.evento_id,
+    e.usuario_id AS evento_dono_id, -- renomeado
+    e.esporte_id,
+    e.evento_nome,
+    e.evento_foto,
+    e.evento_data_hora,
+    e.evento_endereco_cep,
+    e.evento_endereco_numero,
+    e.evento_endereco_complemento,
+    e.evento_endereco_uf,
+    e.evento_endereco_cidade,
+    e.evento_ativo,
+    i.ingresso_nome,
+    i.ingresso_valor,
+    i.ingresso_meia
+    FROM inscricao_evento ie
+    JOIN usuarios u ON ie.usuario_id = u.usu_id
+    JOIN eventos e ON ie.evento_id = e.evento_id
+    JOIN ingressos i ON ie.ingresso_id = i.ingresso_id AND ie.evento_id = i.evento_id
+    WHERE ie.inscricao_id = ?
+      `;
+      const [rows] = await pool.query(query, [inscricaoId]);
+      return rows.length > 0 ? rows[0] : null;
+    }
+    catch (error) {
+      console.error("Erro ao buscar inscrição por ID:", error);
+      throw error;
+    }
+  }
 
 }

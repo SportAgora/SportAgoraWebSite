@@ -2,6 +2,7 @@ const ingressosModel = require('../models/model-ingressos');
 const {MercadoPagoConfig, Preference, Payment} = require('mercadopago');
 const { body, validationResult } = require('express-validator');
 const {validarCPF} = require("../helpers/validar_pagamento");
+const axios = require('axios');
 
 const mp = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN,
@@ -162,5 +163,28 @@ carregarInscricaoEvento: async (req, res) => {
 
     erro: (req, res) => {
         res.redirect("/erro");
+    },
+    carregarIngresso: async (req, res) => {
+        const inscricaoId = req.query.id;
+        const ingresso = await ingressosModel.buscarInscricaoPorId(inscricaoId);
+
+        if (!ingresso) {
+            return res.render('pages/error', {
+                error: 404,
+                mensagem: "Inscrição não encontrada."
+            });
+        }
+        if (ingresso.usuario_id != req.session.usuario.id) {
+            return res.render('pages/error', {
+                error: 403,
+                mensagem: "Você não pode ver esse ingresso."
+            });
+        }
+
+        ingresso.evento_endereco_cep = ingresso.evento_endereco_cep.replace(/\D/g, '');
+        const { data } = await axios.get(`https://viacep.com.br/ws/${ingresso.evento_endereco_cep}/json/`);
+        if(data.erro) return res.render('pages/error', {error:500, mensagem:"Erro ao buscar endereço do evento."});
+        ingresso.evento_endereco_completo = data
+        res.render('pages/sobre_ingresso', { ingresso });
     }
 }

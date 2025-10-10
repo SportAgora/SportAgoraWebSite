@@ -186,5 +186,25 @@ carregarInscricaoEvento: async (req, res) => {
         if(data.erro) return res.render('pages/error', {error:500, mensagem:"Erro ao buscar endereço do evento."});
         ingresso.evento_endereco_completo = data
         res.render('pages/sobre_ingresso', { ingresso });
-    }
+    },
+    carregarValidarIngresso: async (req, res) => {
+        id = req.query.id;
+        const evento = await ingressosModel.buscarPagPorId(id);
+        if (!evento) {
+            return res.render('pages/error', {
+                error: 404,
+                mensagem: "Evento não encontrado."
+            });
+        }
+        if (evento.usuario_id != req.session.usuario.id) {
+            return res.render('pages/error', {
+                error: 403,
+                mensagem: "Você não pode validar ingressos deste evento."
+            });
+        }
+        res.render('pages/validar_ingresso', {evento_id: id});
+    },
+    validarIngresso: async (req, res) => {
+        const { inscricao_id, evento_id } = req.body;
+        const ingresso = await ingressosModel.buscarInscricaoPorId(inscricao_id);
 }

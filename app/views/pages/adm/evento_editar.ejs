@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Evento - ADM SportAgora</title>
+  <!-- <link rel="stylesheet" href="/css/adm/eventos.css"> -->
+  <link rel="icon" href="/imagens/SportAgora.png">
+  <script src="/js/notify.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+</head>
+<body>
+  <!-- <%- include('../../partials/adm_navbar'); %> -->
+
+  <% if (dadosNotificacao) { %>
+    <script>
+      notify("<%= dadosNotificacao.titulo %>", "<%= dadosNotificacao.mensagem %>", "<%= dadosNotificacao.tipo %>", "right bottom");
+    </script>
+  <% } %>
+
+  <main>
+    <section class="logo-area">
+      <h1 class="tituloLogo">Editar Evento</h1>
+    </section>
+
+    <form action="/adm/eventos/editar" method="POST" enctype="multipart/form-data" class="formulario-editar">
+      <input type="hidden" name="evento_id" value="<%= evento.evento_id %>">
+
+      <label>Nome do Evento:</label>
+      <input type="text" name="nome" value="<%= evento.evento_nome %>" required>
+<br>
+      <label>Descrição:</label>
+      <textarea name="descricao" rows="4" required><%= evento.evento_descricao %></textarea>
+<br>
+      <label>Data e Hora:</label>
+<input type="datetime-local" name="data_hora" 
+       value="<%= (() => {
+          const d = new Date(evento.evento_data_hora);
+          const offset = d.getTimezoneOffset();
+          return new Date(d.getTime() - offset*60000).toISOString().slice(0,16);
+       })() %>" required>
+
+<br>
+      <label>CEP:</label>
+      <input type="text" name="cep" value="<%= evento.evento_endereco_cep %>" required>
+<br>
+      <label>Número:</label>
+      <input type="text" name="numero" value="<%= evento.evento_endereco_numero %>">
+<br>
+      <label>Complemento:</label>
+      <input type="text" name="complemento" value="<%= evento.evento_endereco_complemento %>">
+<br>
+      <label>Esporte:</label>
+      <select name="esporte_id" required>
+        <% esportes.forEach(function(esporte) { %>
+          <option value="<%= esporte.esporte_id %>" <%= evento.esporte_id === esporte.esporte_id ? "selected" : "" %>><%= esporte.esporte_nome %></option>
+        <% }) %>
+      </select>
+<br>
+      <label>Imagem do Evento:</label>
+      <input type="file" name="foto" accept="image/*">
+      <% if (evento.evento_foto) { %>
+        <img src="/imagens/eventos/<%= evento.evento_foto %>" alt="Imagem atual" width="200">
+      <% } %>
+<br>
+      <button type="submit" class="btnSalvar">Salvar Alterações</button>
+    </form>
+  </main>
+
+  <!-- <%- include('../../partials/adm_footer'); %> -->
+</body>
+</html>

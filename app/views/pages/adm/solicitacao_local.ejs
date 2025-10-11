@@ -15,15 +15,14 @@
         <section class="logo-area">
             <h1 class="tituloLogo">Solicitações de Locais</h1>
         </section>
-        <form action="" method="post" class="buscarUso">
-            <h3>Pesquisar Locais</h3>
-            <aside class="imputis">
-                <input type="text" name="pesquisa" value="" placeholder="Locais solicitados">
-                <button type="submit" class="btnBuscar">Buscar</button>
-            </aside>
-        </form>
         <section class="locais">
   <h2>Solicitações de Locais</h2>
+  <form action="/adm/solicitacoes_pesquisa" method="post" class="buscarUso">
+            <h3>Pesquisar Locais</h3>
+            <aside class="imputis">
+                <input type="text" name="sp" value="<%=sp%>" placeholder="Locais solicitados">
+                <button type="submit" class="btnBuscar">Buscar</button>
+            </aside>
   <table class="locais-tabela">
       <thead>
           <tr>
@@ -55,11 +54,11 @@
                 <a href="<%= solicitacao.solicitacao_link %>" target="_blank">Abrir no Maps</a>
               </td>
               <td>
-                <a href="/adm/local_novo?id=<%= solicitacao.solicitacao_id %>">
-                  <button class="btnEditar">Criar local</button>
+                <a href="/adm/local_novo?id=<%= solicitacao.solicitacao_id %>" >
+                  <button class="btnEditar" type="button">Criar local</button>
                 </a>
-                <a href="/adm/solicitacoes_remover?id=<%= solicitacao.solicitacao_id%>">
-                  <button type="submit" class="btnApagar">Apagar</button>
+                <a href="/adm/solicitacoes_remover?id=<%= solicitacao.solicitacao_id%>" onclick="return confirm('Deseja apagar esta solicitação?');"> 
+                  <button type="button" class="btnApagar" >Apagar</button>
                 </a>
               </td>
             </tr>
@@ -72,8 +71,14 @@
       </tbody>
   </table>
 
-   <a href="/adm/local_novo"><button class="locais-btn">+ Novo Local</button></a>
+   <a href="/adm/local_novo"><button class="locais-btn" type="button">+ Novo Local</button></a>
   <h2>Locais Cadastrados</h2>
+            <h3>Pesquisar Locais</h3>
+            <aside class="imputis">
+                <input type="text" name="lp" value="<%=lp%>" placeholder="Locais cadastrados">
+                <button type="submit" class="btnBuscar">Buscar</button>
+            </aside>
+  </form>
   <table class="locais-tabela">
       <thead>
           <tr>
@@ -104,10 +109,10 @@
               <td class="limite"><%= local.local_longitude %></td>
                 <td>
                   <a href="/adm/local_editar?id=<%= local.local_id %>">
-                    <button class="btnEditar">Editar</button>
+                    <button class="btnEditar" type="button">Editar</button>
                   </a>
-                  <a href="/adm/local_remover?id=<%= local.local_id %>">
-                    <button class="btnApagar">Apagar</button>
+                  <a href="/adm/local_remover?id=<%= local.local_id %>" onclick="return confirm('Deseja apagar este evento?');">
+                    <button class="btnApagar" type="button">Apagar</button>
                   </a>
                 </td>
             </tr>

@@ -47,7 +47,7 @@
                     <h3>Pesquisar Eventos</h3>
                     <aside class="imputis">
                         <form action="/adm/eventos" method="get">
-                            <input type="text" name="pesquisa" value="" placeholder="Nome do Evento"/>
+                            <input type="text" name="pesquisa" value="<%=pesquisa%>" placeholder="Nome do Evento"/>
                             <button type="submit" class="btnBuscar">Buscar</button>
                         </form>
                     </aside>
@@ -141,11 +141,10 @@
                     <tr>
                         <th>Nome do Evento</th>
                         <th>Categoria</th>
-                        <th>Data incio</th>
-                        <th>Horario</th>
-                        <th>Data término</th>
-                        <th>Descrição</th>     
-                        <th>Denúncias</th>       
+                        <th>Data do evento</th>
+                        <th>Horário</th>   
+                        <th>Denúncias</th>      
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -157,11 +156,13 @@
                             <a href="/evento?id=<%= evento.evento_id %>"><%= evento.evento_nome %></a>
                           </td>
                           <td class="limite"><%= evento.esporte_nome %></td>
-                          <td class="limite"><%= new Date(evento.evento_data_inicio).toLocaleDateString("pt-BR") %></td>
+                          <td class="limite"><%= new Date(evento.evento_data_hora).toLocaleDateString("pt-BR") %></td>
                           <td class="limite"><%= new Date(evento.evento_data_hora).toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' }) %></td>
-                          <td class="limite"><%= new Date(evento.evento_data_fim).toLocaleDateString("pt-BR") %></td>
-                          <td class="limite"><%= evento.evento_descricao.length > 80 ? evento.evento_descricao.substring(0, 80) + '...' : evento.evento_descricao %></td>
                           <td class="limite"><a href="/adm/eventos/denuncias?id=<%=evento.evento_id%>"><%= evento.denuncias_count %></a></td>
+                          <td class="limite">
+                            <a href="/adm/eventos/editar?id=<%= evento.evento_id %>" class="botao cinza"><button>Editar</button></a>
+                            <a href="/adm/eventos/apagar?id=<%=evento.evento_id%>" onclick="return confirm('Deseja apagar esta solicitação?');"><button type="button" class="btnApagar">Apagar</button></a>
+                          </td>
                         </tr>
                       <% }); %>
                     <% } else { %>

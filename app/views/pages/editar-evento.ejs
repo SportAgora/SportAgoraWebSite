@@ -125,12 +125,12 @@
                       let horaMinuto = `${hora}:${minutos}`; 
                       %>
                     <section>
-                      <label>Data de início *</label>
+                      <label>Data do evento *</label>
                       <input name="data" type="date" value="<%=dataFormatada%>" >
                     </section>
 
                     <section>
-                      <label>Horário de início *</label>
+                      <label>Horário de início do evento *</label>
                       <input name="hora" type="time" value="<%=horaMinuto%>">
                     </section>
                     <%
@@ -143,6 +143,8 @@
                       let inscminutos = String(inscdata.getMinutes()).padStart(2, '0');
                       let inschoraMinuto = `${inschora}:${inscminutos}`; 
                       %>
+                      <br>
+                      <h1>Período de inscrição</h1>
                     <section>
                       <label>Início do periodo de inscrição*</label>
                       <input name="data_inicio" type="date" value="<%=inscdataFormatada%>" >

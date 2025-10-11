@@ -4,6 +4,7 @@ const admController = require("../controllers/admController");
 const usuariosController = require("../controllers/usuariosController");
 const uploadFile = require("../helpers/uploader")("./app/public/imagens/pratique");
 const uploadFileUsuario = require("../helpers/uploader")("./app/public/imagens/usuarios");
+const uploadFileEvento = require("../helpers/uploader")("./app/public/imagens/evento");
 
 const verificarAdm = admController.verificarAdm;
 
@@ -44,6 +45,14 @@ router.get('/cadastro_concluido', verificarAdm, function(req,res){
 router.get('/eventos', verificarAdm, function(req,res){
   admController.carregarEventos(req,res);
 }) 
+router.get("/eventos/editar", verificarAdm, (req, res) => {
+  admController.carregarEditarEvento(req, res);
+});
+
+router.post("/eventos/editar", verificarAdm, uploadFileEvento(["foto"]), (req, res) => {
+  admController.editarEvento(req, res);
+});
+
 
 router.post('/criar-esporte', verificarAdm, uploadFile(['foto','foto2']),
   admController.criarEsporte
@@ -59,6 +68,10 @@ router.post('/eventos/denuncias/apagar', verificarAdm, function(req,res){
 
 router.get('/eventos/denuncias', verificarAdm, function(req,res){
   admController.carregarDenuncias(req,res);
+})
+
+router.get('/eventos/apagar', verificarAdm, function(req,res){
+  admController.apagarEvento(req,res)
 })
 
 router.get('/', verificarAdm, function(req,res){
@@ -81,6 +94,10 @@ router.post('/usuarios/:id',
 )
 
 router.get('/solicitacoes', verificarAdm, function(req,res){
+  admController.carregarSolicitacoes(req,res);
+}) 
+router.post('/solicitacoes_pesquisa', verificarAdm, function(req,res){
+  console.log('oxi')
   admController.carregarSolicitacoes(req,res);
 }) 
 

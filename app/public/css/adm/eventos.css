@@ -434,6 +434,38 @@ main {
     flex-direction: row;
     gap: 30px;
 }
+
+/* .btnEditar {
+    padding: 8px 12px;
+    background-color: var(--principal); 
+    color: var(--branco);
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnEditar:hover {
+    background-color: var(--principal_escura);
+}
+
+.btnApagar {
+    padding: 8px 12px;
+    background-color: var(--erro);
+    color: var(--branco);
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnApagar:hover {
+    background-color: #c9302c; 
+} */
 @media (max-width: 1000px) {
     main {
         flex-direction: column;

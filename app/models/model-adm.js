@@ -204,6 +204,16 @@ const AdmModel = {
       throw error;
     }
   },
+  EventoApagar: async (id) => {
+    try {
+      const query = "UPDATE eventos SET evento_ativo = 0 WHERE evento_id = ?"
+      const [row] = await pool.query(query, [id])
+      return true;
+    } catch(e) {
+      console.error('Erro ao apagar evento: ', e)
+      throw e;
+    }
+  },
   EventosListarComPaginacao: async (offset, limite) => {
     try {
       // Consulta para obter os usuários com paginação
@@ -220,6 +230,7 @@ const AdmModel = {
         FROM eventos e
         LEFT JOIN esportes s ON e.esporte_id = s.esporte_id
         LEFT JOIN denuncias d ON e.evento_id = d.den_evento_id
+        WHERE e.evento_ativo = 1
         GROUP BY e.evento_id
         LIMIT ?, ?`;
      
@@ -256,6 +267,7 @@ const AdmModel = {
       LEFT JOIN esportes s ON e.esporte_id = s.esporte_id
       LEFT JOIN denuncias d ON e.evento_id = d.den_evento_id
       WHERE e.evento_nome LIKE ?
+      AND e.evento_ativo = 1
       GROUP BY e.evento_id
       LIMIT ?, ?`;
    
@@ -276,6 +288,37 @@ const AdmModel = {
     console.error("Erro ao listar usuários:", error);
     throw error;
   }
+  },
+  buscarEventoPorId: async (id) => {
+  const [rows] = await pool.query("SELECT * FROM eventos WHERE evento_id = ?", [id]);
+  return rows[0];
+},
+
+atualizarEvento: async (dados) => {
+  const sql = `
+    UPDATE eventos 
+    SET evento_nome = ?, evento_descricao = ?, evento_data_hora = ?, 
+        evento_endereco_cep = ?, evento_endereco_numero = ?, evento_endereco_complemento = ?, 
+        esporte_id = ?, evento_foto = COALESCE(?, evento_foto)
+    WHERE evento_id = ?
+  `;
+  const params = [
+    dados.nome,
+    dados.descricao,
+    dados.data_hora,
+    dados.cep,
+    dados.numero,
+    dados.complemento,
+    dados.esporte_id,
+    dados.foto,
+    dados.evento_id,
+  ];
+  await pool.query(sql, params);
+},
+
+buscarEsportes: async () => {
+  const [rows] = await pool.query("SELECT * FROM esportes");
+  return rows;
 },
   EsportCreate: async (esporteData) => {
     try {
@@ -396,9 +439,23 @@ const AdmModel = {
         throw error;
       }
     },
-    SolicitacoesFindAll: async () => {
+    SolicitacoesFindAll: async (pesquisa) => {
     try {
+      if (pesquisa && pesquisa.trim() !== '') {
+      console.log('banco:', pesquisa)
       const query = `
+        SELECT 
+          s.*,
+          se.esporte_id,
+          e.esporte_nome
+        FROM solicitacoes s
+        LEFT JOIN solicitacoes_esportes se ON s.solicitacao_id = se.solicitacao_id
+        LEFT JOIN esportes e ON se.esporte_id = e.esporte_id
+        WHERE s.solicitacao_status = 0 AND s.solicitacao_nome LIKE ?
+      `;
+       var [rows] = await pool.query(query, [`%${pesquisa.trim()}%`]);
+      } else {
+      var query = `
         SELECT 
           s.*,
           se.esporte_id,
@@ -408,7 +465,9 @@ const AdmModel = {
         LEFT JOIN esportes e ON se.esporte_id = e.esporte_id
         WHERE s.solicitacao_status = 0
       `;
-      const [rows] = await pool.query(query);
+       var [rows] = await pool.query(query);
+      }
+     
 
       // Agrupar esportes por solicitacao_id
       const grouped = {};
@@ -520,8 +579,9 @@ LocalCreate: async (localData) => {
       throw error;
     }
   },
-  LocalFindAll: async () => {
+  LocalFindAll: async (pesquisa) => {
   try {
+    if (pesquisa && pesquisa.trim() !== '') {
     const query = `
       SELECT 
         l.*,
@@ -530,8 +590,22 @@ LocalCreate: async (localData) => {
       FROM locais l
       LEFT JOIN local_esporte le ON l.local_id = le.local_id
       LEFT JOIN esportes e ON le.esporte_id = e.esporte_id
+      WHERE l.local_ativo = 1 AND (l.local_nome LIKE ?)
     `;
-    const [rows] = await pool.query(query);
+    var [rows] = await pool.query(query,[`%${pesquisa.trim()}%`]);
+    } else {
+    const query = `
+      SELECT 
+        l.*,
+        le.esporte_id,
+        e.esporte_nome
+      FROM locais l
+      LEFT JOIN local_esporte le ON l.local_id = le.local_id
+      LEFT JOIN esportes e ON le.esporte_id = e.esporte_id
+      WHERE l.local_ativo = 1
+    `;
+    var [rows] = await pool.query(query);
+    }
 
     // Agrupar esportes por local_id
     const grouped = {};

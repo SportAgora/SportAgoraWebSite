@@ -264,6 +264,7 @@ module.exports = {
                 total_paginas
                 }
             },
+            pesquisa,
             erros: null,
             dadosNotificacao: null
             });
@@ -273,6 +274,57 @@ module.exports = {
             throw e;
         }
     },
+    apagarEvento: async (req,res) => {
+        try{
+            const id = req.query.id
+            if (id == ''){
+                res.redirect('/adm/eventos')
+            }
+            await AdmModel.EventoApagar(id)
+
+            return res.redirect('/adm/eventos')
+        } catch(e){
+            console.error(e)
+            throw e;
+        }
+    },
+    carregarEditarEvento: async (req, res) => {
+    try {
+        const id = req.query.id;
+        const evento = await AdmModel.buscarEventoPorId(id);
+        const esportes = await AdmModel.buscarEsportes();
+
+        res.render("pages/adm/evento_editar", { evento, esportes, dadosNotificacao: null });
+    } catch (err) {
+        console.error("Erro ao carregar evento:", err);
+        res.redirect("/adm/eventos");
+    }
+    },
+
+    editarEvento: async (req, res) => {
+    try {
+        const { evento_id, nome, descricao, data_hora, cep, numero, complemento, esporte_id } = req.body;
+        const foto = req.files && req.files.foto ? `imagens/evento/${req.files.foto[0].filename}` : evento.evento_foto;      
+
+        await AdmModel.atualizarEvento({
+        evento_id,
+        nome,
+        descricao,
+        data_hora,
+        cep,
+        numero,
+        complemento,
+        esporte_id,
+        foto,
+        });
+
+        res.redirect(`/adm/eventos/editar?id=${evento_id}`);
+    } catch (err) {
+        console.error("Erro ao editar evento:", err);
+        res.redirect("/adm/eventos");
+    }
+    },
+
     regrasValidacaoEsporte: [
         body('novoEsporte').isLength({ min: 3, max: 30 }).withMessage('O nome do esporte deve ter entre 3 e 30 caracteres.'),
     ],
@@ -536,9 +588,16 @@ module.exports = {
 
     carregarSolicitacoes: async (req, res) => {
         try {
-            const solicitacoes = await AdmModel.SolicitacoesFindAll();
-            const locais = await AdmModel.LocalFindAll();
-            res.render('pages/adm/solicitacao_local', { solicitacoes, locais });
+            const solicitacoes_pesquisa = req.body.sp || '';
+            const locais_pesquisa = req.body.lp || '';
+            
+            console.log(solicitacoes_pesquisa)
+            console.log(locais_pesquisa)
+            const solicitacoes = await AdmModel.SolicitacoesFindAll(solicitacoes_pesquisa);
+            const locais = await AdmModel.LocalFindAll(locais_pesquisa);
+            console.log('solicitacoes:', solicitacoes)
+            console.log('locais:', locais)
+            res.render('pages/adm/solicitacao_local', { solicitacoes, locais, sp:solicitacoes_pesquisa, lp:locais_pesquisa });
         } catch (e) {
             console.error(e);
             res.status(500).send('Erro interno do servidor');

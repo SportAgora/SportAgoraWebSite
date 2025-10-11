@@ -26,19 +26,24 @@
         <h1 class="event-title">Editar Evento</h1>
       </section>
     <main class="main_sobreEvento"> 
-        <form id="evento-form" method="POST" action="/editar-evento">
+        <form id="evento-form" method="POST" action="/editar-evento" enctype="multipart/form-data">
           <input type="hidden" name="evento_id" value="<%=dados.evento_id%>">
         <section class="box-esquerda">
           <section class="container">
             <h1>Sobre o Evento</h1>
             <aside>
                 <section class="enventoimg-container">
-                    <figure class="enventoimg-overlay">
+                    <!-- <figure class="enventoimg-overlay">
                           <img src="<%=dados.evento_foto%>" alt="imagem Evento" id="">
                         <figcaption class="icon-overlay" id="editevento">
                             <img src="imagens/Logoz-_3_ (1).png" alt="Editar Evento">
                         </figcaption>
-                    </figure>
+                    </figure> -->
+
+                    <section class="foto-preview-existente" id="fotoExistenteContainer">
+                        <img src="/<%= dados.evento_foto %>" alt="Foto do Local">
+                    </section>
+                    <input type="file" id="foto" name="foto" accept="image/*">
             </aside>
           </section>
 

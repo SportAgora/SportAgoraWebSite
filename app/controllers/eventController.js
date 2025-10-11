@@ -240,6 +240,7 @@ editarEvento: async (req, res) => {
   delete req.session.erroMulter;
 
   let caminhoFoto = null;
+  
   if (req.files && req.files.foto && req.files.foto.length > 0) {
     caminhoFoto = "imagens/evento/" + req.files.foto[0].filename;
   }

@@ -18,7 +18,12 @@
       notify("<%= dadosNotificacao.titulo %>", "<%= dadosNotificacao.mensagem %>", "<%= dadosNotificacao.tipo %>", "right bottom");
     </script>
   <% } %>
-
+  <section class="container-ver-eventos">
+            <button class="botao-seta" onclick="window.history.back()">
+              <img src="/imagens/left-arrow.png" alt="Seta">
+              <span class="ver-eventos">Voltar</span>
+            </button>
+    </section>
   <main>
     <section class="logo-area">
       <h1 class="tituloLogo">Editar Evento</h1>

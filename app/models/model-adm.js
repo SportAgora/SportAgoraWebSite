@@ -222,8 +222,6 @@ const AdmModel = {
             e.evento_id,
             e.evento_nome,
             e.evento_descricao,
-            e.evento_data_inicio,
-            e.evento_data_fim,
             e.evento_data_hora,
             s.esporte_nome,
             COUNT(d.den_id) AS denuncias_count
@@ -258,8 +256,6 @@ const AdmModel = {
           e.evento_id,
           e.evento_nome,
           e.evento_descricao,
-          e.evento_data_inicio,
-          e.evento_data_fim,
           e.evento_data_hora,
           s.esporte_nome,
           COUNT(d.den_id) AS denuncias_count

@@ -1,40 +1,13 @@
-  const OrganizadorModel = require('../models/model-organizador');
+const OrganizadorModel = require('../models/model-organizador');
 const { body, validationResult } = require("express-validator");
 const axios = require('axios')
-
 const {removeImg}= require("../helpers/removeImg");
-const { carregarEditarPerfil } = require('./usuariosController');
-
  
 module.exports = {
   criarEventoValidacao: [
   body("nome")
     .isLength({ min: 10 }).withMessage("O nome do evento está muito curto.")
     .isLength({ max: 150 }).withMessage("O nome do evento está muito longo."),
-
- body("data_inicio").custom((value, { req }) => {
-    const horaInicio = req.body.hora_inicio || "00:00";
-    const inicio = new Date(`${value}T${horaInicio}`);
-    if (isNaN(inicio)) throw new Error("Data de início inválida.");
-
-    if (inicio.getTime() <= Date.now()) {
-      throw new Error("O início das vendas precisa ser posterior à data e hora atual.");
-    }
-    return true;
-  }),
-
-  body("data_final").custom((value, { req }) => {
-    const horaFinal = req.body.hora_final || "00:00";
-    const inicio = new Date(`${req.body.data_inicio}T${req.body.hora_inicio || "00:00"}`);
-    const fim = new Date(`${value}T${horaFinal}`);
-
-    if (isNaN(fim) || isNaN(inicio)) throw new Error("Data final inválida.");
-
-    if (fim.getTime() <= inicio.getTime()) {
-      throw new Error("A data final precisa ser posterior à data de início das vendas.");
-    }
-    return true;
-  }),
 
   body("data").custom((value, { req }) => {
     const horaEvento = req.body.hora_evento || "00:00";
@@ -100,7 +73,7 @@ module.exports = {
   }
 
   try {
-    const { nome, esporte, data, hora, data_inicio, hora_inicio, data_final, hora_final, descricao, cep, numero, complemento, uf, cidade, ingressos } = req.body;
+    const { nome, esporte, data, hora,  descricao, cep, numero, complemento, uf, cidade, ingressos } = req.body;
 
     const evento = {
       user: req.session.usuario.id,
@@ -108,8 +81,6 @@ module.exports = {
       foto: caminhoFoto || req.body.fotoAntiga,
       nome,
       data_hora: data + " " + hora,
-      data_inicio: data_inicio + " " + hora_inicio,
-      data_fim: data_final + " " + hora_final,
       descricao,
       cep: cep.replace(/\D/g, ''),
       numero,
@@ -142,8 +113,6 @@ module.exports = {
         "dados": {
           nome:"",
           foto:"", 
-          data_inicio:"", 
-          data_fim:"",
           data_hora:"", 
           descricao:"", 
           cep:"", 
@@ -248,6 +217,105 @@ module.exports = {
       console.error(err);
       return res.redirect("/error");
     }
+  },
+  editarEventoValidacao: [
+  body("nome")
+    .isLength({ min: 10 }).withMessage("O nome do evento está muito curto.")
+    .isLength({ max: 150 }).withMessage("O nome do evento está muito longo."),
+  body("data").custom((value, { req }) => {
+    const horaEvento = req.body.hora || "00:00";
+    const evento = new Date(`${value}T${horaEvento}`);
+    const fim = new Date(`${req.body.data_final}T${req.body.hora_final || "00:00"}`);
+    if (isNaN(evento) || isNaN(fim)) throw new Error("Data do evento inválida.");
+    if (evento.getTime() <= fim.getTime()) throw new Error("A data do evento precisa ser posterior ao fim das vendas.");
+    return true;
+  }),
+  body("descricao")
+    .isLength({ min: 100 }).withMessage("O texto está muito curto.")
+    .isLength({ max: 5000 }).withMessage("O texto está muito longo.")
+],
+editarEvento: async (req, res) => {
+  const errors = validationResult(req);
+  const erroMulter = req.session.erroMulter;
+  delete req.session.erroMulter;
+
+  let caminhoFoto = null;
+  if (req.files && req.files.foto && req.files.foto.length > 0) {
+    caminhoFoto = "imagens/evento/" + req.files.foto[0].filename;
   }
 
+  try {
+    console.log(req.body)
+    const eventoExistente = await OrganizadorModel.visualizarEventoId(req.body.evento_id);
+    console.log(eventoExistente)
+    if (eventoExistente.usuario_id !== req.session.usuario.id) {
+      return res.render("pages/error", {error:"403", mensagem:"Você não tem permissão de acessar esta página."});
+    }
+
+    if (!errors.isEmpty() || erroMulter) {
+      const lista = !errors.isEmpty() ? errors : { formatter: null, errors: [] };
+      if (erroMulter) lista.errors.push(erroMulter);
+
+      return res.render("pages/editar-evento", {
+        dados: { ...req.body, foto: caminhoFoto || eventoExistente.evento_foto },
+        erros: lista,
+        esporte: await OrganizadorModel.EsportFindAll(),
+        dadosNotificacao: null
+      });
+    }
+
+    const { nome, esporte, data, hora, descricao, cep, numero, complemento, uf, cidade } = req.body;
+
+    // Atualizar endereço pelo CEP se necessário
+    let logradouro = '';
+    let bairro = '';
+    let cidadeAPI = cidade;
+    let ufAPI = uf;
+
+    if (cep) {
+      try {
+        const resposta = await axios.get(`https://viacep.com.br/ws/${cep.replace(/\D/g,'')}/json/`);
+        logradouro = resposta.data.logradouro || '';
+        bairro = resposta.data.bairro || '';
+        cidadeAPI = resposta.data.localidade || cidade;
+        ufAPI = resposta.data.uf || uf;
+      } catch {
+        logradouro = '';
+        bairro = '';
+      }
+    }
+
+    const eventoAtualizado = {
+      esporte_id: esporte,
+      evento_nome: nome,
+      evento_foto: caminhoFoto || eventoExistente.evento_foto,
+      evento_data_hora: data + " " + hora,
+      evento_descricao: descricao,
+      evento_endereco_cep: cep.replace(/\D/g,''),
+      evento_endereco_numero: numero,
+      evento_endereco_complemento: complemento,
+      evento_endereco_uf: ufAPI,
+      evento_endereco_cidade: cidadeAPI,
+    };
+
+    await OrganizadorModel.atualizarEvento(req.body.evento_id, eventoAtualizado);
+
+
+    return res.redirect("/editar-evento?id=" + req.body.evento_id);
+  } catch (err) {
+    console.error(err);
+    if (caminhoFoto) removeImg(caminhoFoto);
+    return res.redirect("/error");
+  }
+},
+apagarEvento: async (req,res) => {
+  const id = req.query.id
+  const user_id = req.session.usuario.id;
+  const evento = await OrganizadorModel.visualizarEventoId(id);
+  if (id == '' || user_id !== evento.usuario_id ) {
+    return res.redirect('/error')
+  }
+  await OrganizadorModel.EventoApagar(id);
+  return res.redirect('/meus-eventos')
+}
 }

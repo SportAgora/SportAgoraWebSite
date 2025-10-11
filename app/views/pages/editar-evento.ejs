@@ -26,7 +26,8 @@
         <h1 class="event-title">Editar Evento</h1>
       </section>
     <main class="main_sobreEvento"> 
-        <form id="evento-form" method="POST" action="#">
+        <form id="evento-form" method="POST" action="/editar-evento">
+          <input type="hidden" name="evento_id" value="<%=dados.evento_id%>">
         <section class="box-esquerda">
           <section class="container">
             <h1>Sobre o Evento</h1>
@@ -133,46 +134,7 @@
                       <label>Horário de início do evento *</label>
                       <input name="hora" type="time" value="<%=horaMinuto%>">
                     </section>
-                    <%
-                      let inscdata = new Date(dados.evento_data_inicio);
-                      let inscdia = String(inscdata.getDate()).padStart(2, '0');
-                      let inscmes = String(inscdata.getMonth() + 1).padStart(2, '0'); 
-                      let inscano = inscdata.getFullYear();
-                      let inscdataFormatada = `${inscano}-${inscmes}-${inscdia}`;
-                      let inschora = String(inscdata.getHours()).padStart(2, '0');
-                      let inscminutos = String(inscdata.getMinutes()).padStart(2, '0');
-                      let inschoraMinuto = `${inschora}:${inscminutos}`; 
-                      %>
-                      <br>
-                      <h1>Período de inscrição</h1>
-                    <section>
-                      <label>Início do periodo de inscrição*</label>
-                      <input name="data_inicio" type="date" value="<%=inscdataFormatada%>" >
-                    </section>
-
-                    <section>
-                      <label>Hora inicial do periodo de inscrição*</label>
-                      <input name="hora_inicio" type="time" value="<%=inschoraMinuto%>" >
-                    </section>
-                    <%
-                      let fimdata = new Date(dados.evento_data_fim);
-                      let fimdia = String(fimdata.getDate()).padStart(2, '0');
-                      let fimmes = String(fimdata.getMonth() + 1).padStart(2, '0'); 
-                      let fimano = fimdata.getFullYear();
-                      let fimdataFormatada = `${fimano}-${fimmes}-${fimdia}`;
-                      let fimhora = String(fimdata.getHours()).padStart(2, '0');
-                      let fimminutos = String(fimdata.getMinutes()).padStart(2, '0');
-                      let fimhoraMinuto = `${fimhora}:${fimminutos}`; 
-                      %>
-                    <section>
-                      <label>Final do periodo de inscrição*</label>
-                      <input name="data_final" type="date" value="<%=fimdataFormatada%>" >
-                    </section>
-
-                    <section>
-                      <label>Hora final do periodo de inscrição*</label>
-                      <input name="hora_final" type="time" value="<%=fimhoraMinuto%>" >
-                    </section>
+                    
                   </article>
                 </section>
                 <article class="location-fields">
@@ -209,9 +171,9 @@
     <section class="fim">
       <input type="submit" class="publicar-evento" value="Salvar Alterações">
   </form>
-  <form method="POST" action="/apagar-evento?id=<%=dados.evento_id%>">
-    <input type="submit" class="publicar-evento" value="Apagar Evento">
-  </form>
+    <a href="/apagar-evento?id=<%=dados.evento_id%>" onclick="return confirm('Deseja apagar este evento?')">
+    <input type="button" class="publicar-evento" value="Apagar Evento">
+    </a>
   </section>
     
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>

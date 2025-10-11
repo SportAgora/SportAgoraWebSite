@@ -112,6 +112,14 @@ router.get('/editar-evento', verificarAutenticacao, function(req,res){
   eventController.carregarEditarEvento(req,res);
 })
 
+router.post('/editar-evento', verificarAutenticacao, function(req,res){
+  eventController.editarEvento(req,res);
+})
+
+router.get('/apagar-evento', verificarAutenticacao, function(req,res){
+  eventController.apagarEvento(req,res);
+})
+
 /*
 
 PAGINAS

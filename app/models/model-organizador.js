@@ -6,8 +6,7 @@ const OrganizadorModel = {
     createEvent: async (eventData) => {
   try {
     const { 
-      user, esporte, nome, foto, 
-      data_inicio, data_fim, data_hora, 
+      user, esporte, nome, foto, data_hora, 
       cep, numero, complemento, uf, cidade, descricao
     } = eventData;
 
@@ -17,8 +16,6 @@ const OrganizadorModel = {
       evento_nome: nome,
       evento_foto: foto,
       evento_data_publicacao: moment().format('YYYY-MM-DD HH:mm:ss'),
-      evento_data_inicio: data_inicio,
-      evento_data_fim: data_fim,
       evento_data_hora: data_hora,
       evento_descricao: descricao,
       evento_endereco_numero: numero,
@@ -191,7 +188,53 @@ const OrganizadorModel = {
     console.error("Erro ao buscar ingressos do evento:", error);
     throw error;
   }
-}
+},
+  atualizarEvento: async (evento_id, dados) => {
+  try {
+    await pool.query(
+      `UPDATE eventos SET 
+        esporte_id = ?, 
+        evento_nome = ?, 
+        evento_foto = ?, 
+        evento_data_hora = ?, 
+        evento_descricao = ?, 
+        evento_endereco_cep = ?, 
+        evento_endereco_numero = ?, 
+        evento_endereco_complemento = ?, 
+        evento_endereco_uf = ?, 
+        evento_endereco_cidade = ?
+      WHERE evento_id = ?`,
+      [
+        dados.esporte_id,
+        dados.evento_nome,
+        dados.evento_foto,
+        dados.evento_data_hora,
+        dados.evento_descricao,
+        dados.evento_endereco_cep,
+        dados.evento_endereco_numero,
+        dados.evento_endereco_complemento,
+        dados.evento_endereco_uf,
+        dados.evento_endereco_cidade,
+        evento_id
+      ]
+    );
+
+    return true;
+  } catch (err) {
+    console.error("Erro ao atualizar evento:", err);
+    throw err;
+  }
+},
+EventoApagar: async (id) => {
+    try {
+      const query = "UPDATE eventos SET evento_ativo = 0 WHERE evento_id = ?"
+      const [row] = await pool.query(query, [id])
+      return true;
+    } catch(e) {
+      console.error('Erro ao apagar evento: ', e)
+      throw e;
+    }
+  },
   
   
 };

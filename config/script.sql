@@ -31,8 +31,6 @@ CREATE TABLE IF NOT EXISTS eventos (
     evento_nome VARCHAR(150) NOT NULL,
     evento_foto VARCHAR(255) NOT NULL,
     evento_data_publicacao DATETIME NOT NULL,
-    evento_data_inicio DATETIME NOT NULL,
-    evento_data_fim DATETIME NOT NULL,
     evento_data_hora DATETIME NOT NULL,
     evento_descricao VARCHAR(5000) NOT NULL,
     evento_endereco_cep CHAR(8) NOT NULL,
@@ -137,9 +135,9 @@ VALUES
 ('Natação', 'imagens/esportes/natacao_foto.png', 'imagens/esportes/natacao_banner.png');
 
 -- EVENTO
-INSERT INTO eventos (usuario_id, esporte_id, evento_nome, evento_foto, evento_data_publicacao, evento_data_inicio, evento_data_fim, evento_data_hora, evento_descricao, evento_endereco_cep, evento_endereco_numero, evento_endereco_complemento, evento_endereco_uf, evento_endereco_cidade, evento_ativo)
+INSERT INTO eventos (usuario_id, esporte_id, evento_nome, evento_foto, evento_data_publicacao, evento_data_hora, evento_descricao, evento_endereco_cep, evento_endereco_numero, evento_endereco_complemento, evento_endereco_uf, evento_endereco_cidade, evento_ativo)
 VALUES (
-1,1,'Campeonato de Futebol 1','imagens/esportes/futebol_banner.png','2025-09-23 12:00:00','2025-09-23 13:00:00','2030-12-31 12:00:00','2031-10-12 16:00:00','<h1>Grande Clássico de Futebol 2025</h1><p>Evento 1 descrição</p>','06412090','110','Quadra','SP','Barueri',1);
+1,1,'Campeonato de Futebol 1','imagens/esportes/futebol_banner.png','2025-09-23 12:00:00','2025-09-23 13:00:00','<h1>Grande Clássico de Futebol 2025</h1><p>Evento 1 descrição</p>','06412090','110','Quadra','SP','Barueri',1);
 
 -- Inserir ingressos do Evento 1
 INSERT INTO ingressos (ingresso_nome, ingresso_valor, ingresso_quantidade, ingresso_meia, evento_id)
@@ -150,9 +148,9 @@ VALUES
 
 
 -- EVENTO 2
-INSERT INTO eventos (usuario_id, esporte_id, evento_nome, evento_foto, evento_data_publicacao, evento_data_inicio, evento_data_fim, evento_data_hora, evento_descricao, evento_endereco_cep, evento_endereco_numero, evento_endereco_complemento, evento_endereco_uf, evento_endereco_cidade, evento_ativo)
+INSERT INTO eventos (usuario_id, esporte_id, evento_nome, evento_foto, evento_data_publicacao, evento_data_hora, evento_descricao, evento_endereco_cep, evento_endereco_numero, evento_endereco_complemento, evento_endereco_uf, evento_endereco_cidade, evento_ativo)
 VALUES (
-1,1,'Campeonato de Futebol 2','imagens/esportes/futebol_banner.png','2025-09-24 12:00:00','2025-09-24 13:00:00','2030-12-31 12:00:00','2031-10-12 16:00:00','<h1>Grande Clássico de Futebol 2025</h1><p>Evento 2 descrição</p>','06412090','110','Quadra','SP','Barueri',1);
+1,1,'Campeonato de Futebol 2','imagens/esportes/futebol_banner.png','2025-09-24 12:00:00','2031-10-12 16:00:00','<h1>Grande Clássico de Futebol 2025</h1><p>Evento 2 descrição</p>','06412090','110','Quadra','SP','Barueri',1);
 
 -- Inserir ingressos do Evento 2
 INSERT INTO ingressos (ingresso_nome, ingresso_valor, ingresso_quantidade, ingresso_meia, evento_id)
@@ -162,9 +160,9 @@ VALUES
 ('Ingresso VIP', 350, 300, 0, 2);
 
 -- EVENTO 3
-INSERT INTO eventos (usuario_id, esporte_id, evento_nome, evento_foto, evento_data_publicacao, evento_data_inicio, evento_data_fim, evento_data_hora, evento_descricao, evento_endereco_cep, evento_endereco_numero, evento_endereco_complemento, evento_endereco_uf, evento_endereco_cidade, evento_ativo)
+INSERT INTO eventos (usuario_id, esporte_id, evento_nome, evento_foto, evento_data_publicacao,  evento_data_hora, evento_descricao, evento_endereco_cep, evento_endereco_numero, evento_endereco_complemento, evento_endereco_uf, evento_endereco_cidade, evento_ativo)
 VALUES (
-1,1,'Campeonato de Futebol 3','imagens/esportes/futebol_banner.png','2025-09-25 12:00:00','2025-09-25 13:00:00','2030-12-31 12:00:00','2031-10-12 16:00:00','<h1>Grande Clássico de Futebol 2025</h1><p>Evento 3 descrição</p>','06412090','110','Quadra','SP','Barueri',1);
+1,1,'Campeonato de Futebol 3','imagens/esportes/futebol_banner.png','2025-09-25 12:00:00','2031-10-12 16:00:00','<h1>Grande Clássico de Futebol 2025</h1><p>Evento 3 descrição</p>','06412090','110','Quadra','SP','Barueri',1);
 
 -- Inserir ingressos do Evento 3
 INSERT INTO ingressos (ingresso_nome, ingresso_valor, ingresso_quantidade, ingresso_meia, evento_id)
@@ -174,9 +172,9 @@ VALUES
 ('Ingresso VIP', 350, 300, 0, 3);
 
 -- EVENTO 4
-INSERT INTO eventos (usuario_id, esporte_id, evento_nome, evento_foto, evento_data_publicacao, evento_data_inicio, evento_data_fim, evento_data_hora, evento_descricao, evento_endereco_cep, evento_endereco_numero, evento_endereco_complemento, evento_endereco_uf, evento_endereco_cidade, evento_ativo)
+INSERT INTO eventos (usuario_id, esporte_id, evento_nome, evento_foto, evento_data_publicacao, evento_data_hora, evento_descricao, evento_endereco_cep, evento_endereco_numero, evento_endereco_complemento, evento_endereco_uf, evento_endereco_cidade, evento_ativo)
 VALUES (
-1,1,'Campeonato de Futebol 4','imagens/esportes/futebol_banner.png','2025-09-26 12:00:00','2025-09-26 13:00:00','2030-12-31 12:00:00','2031-10-12 16:00:00','<h1>Grande Clássico de Futebol 2025</h1><p>Evento 4 descrição</p>','06412090','110','Quadra','SP','Barueri',1);
+1,1,'Campeonato de Futebol 4','imagens/esportes/futebol_banner.png','2025-09-26 12:00:00','2031-10-12 16:00:00','<h1>Grande Clássico de Futebol 2025</h1><p>Evento 4 descrição</p>','06412090','110','Quadra','SP','Barueri',1);
 
 -- Inserir ingressos do Evento 4
 INSERT INTO ingressos (ingresso_nome, ingresso_valor, ingresso_quantidade, ingresso_meia, evento_id)
@@ -186,9 +184,9 @@ VALUES
 ('Ingresso VIP', 350, 300, 0, 4);
 
 -- EVENTO 5
-INSERT INTO eventos (usuario_id, esporte_id, evento_nome, evento_foto, evento_data_publicacao, evento_data_inicio, evento_data_fim, evento_data_hora, evento_descricao, evento_endereco_cep, evento_endereco_numero, evento_endereco_complemento, evento_endereco_uf, evento_endereco_cidade, evento_ativo)
+INSERT INTO eventos (usuario_id, esporte_id, evento_nome, evento_foto, evento_data_publicacao, evento_data_hora, evento_descricao, evento_endereco_cep, evento_endereco_numero, evento_endereco_complemento, evento_endereco_uf, evento_endereco_cidade, evento_ativo)
 VALUES (
-1,1,'Campeonato de Futebol 5','imagens/esportes/futebol_banner.png','2025-09-27 12:00:00','2025-09-27 13:00:00','2030-12-31 12:00:00','2031-10-12 16:00:00','<h1>Grande Clássico de Futebol 2025</h1><p>Evento 5 descrição</p>','06412090','110','Quadra','SP','Barueri',1);
+1,1,'Campeonato de Futebol 5','imagens/esportes/futebol_banner.png','2025-09-27 12:00:00','2031-10-12 16:00:00','<h1>Grande Clássico de Futebol 2025</h1><p>Evento 5 descrição</p>','06412090','110','Quadra','SP','Barueri',1);
 
 -- Inserir ingressos do Evento 5
 INSERT INTO ingressos (ingresso_nome, ingresso_valor, ingresso_quantidade, ingresso_meia, evento_id)

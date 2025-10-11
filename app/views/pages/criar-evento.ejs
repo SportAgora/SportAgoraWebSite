@@ -36,8 +36,6 @@
     let avisoErro = {
         nome:"", 
         foto:"", 
-        data_inicio:"", 
-        data_fim:"",
         data_hora:"", 
         descricao:"", 
         cep:"", 
@@ -55,22 +53,6 @@
                     break;
                 case "foto":
                     avisoErro.foto = "erro";
-                    msgErro += `* ${erro.msg} <br>`;
-                    break;
-                case "data_inicio":
-                    avisoErro.data_inicio = "erro";
-                    msgErro += `* ${erro.msg} <br>`;
-                    break;
-                case "hora_inicio":
-                    avisoErro.data_inicio = "erro"; 
-                    msgErro += `* ${erro.msg} <br>`;
-                    break;
-                case "data_final":
-                    avisoErro.data_fim = "erro";
-                    msgErro += `* ${erro.msg} <br>`;
-                    break;
-                case "hora_final":
-                    avisoErro.data_fim = "erro"; 
                     msgErro += `* ${erro.msg} <br>`;
                     break;
                 case "data":
@@ -127,7 +109,7 @@
 
 
     <form id="evento-form" method="POST"  enctype="multipart/form-data" action="/criar-evento">
-
+      
       <section class="container">
         <h1>1. Informações básicas</h1>
         <p class="subtitle">Adicione as principais informações do evento.</p>
@@ -180,7 +162,7 @@
         <p class="subtitle">Informe aos participantes quando seu evento vai acontecer.</p>
 
         <article class="datetime">
-          <legend class="visually-hidden">Data e horário do evento</legend>
+          
 
           <section>
             <label>Data do evento *</label>
@@ -193,27 +175,7 @@
           </section>
 
           <br>
-          <h1>Período de inscrição</h1>
-
-          <section>
-            <label>Início do periodo de inscrição*</label>
-            <input name="data_inicio" type="date" value="<%= dados.data_inicio || '' %>">
-          </section>
-
-          <section>
-            <label>Hora inicial do periodo de inscrição*</label>
-            <input name="hora_inicio" type="time" value="<%= dados.hora_inicio || '' %>">
-          </section>
-
-          <section>
-            <label>Final do periodo de inscrição*</label>
-            <input name="data_final" type="date" value="<%= dados.data_final || '' %>">
-          </section>
-
-          <section>
-            <label>Hora final do periodo de inscrição*</label>
-            <input name="hora_final" type="time" value="<%= dados.hora_final || '' %>">
-          </section>
+          
         </article>
       </section>
 
@@ -286,7 +248,7 @@
       <section class="container">
         <h1>5. Ingressos</h1>
         <p>Que tipo de ingresso você deseja criar?</p>
-
+        <legend>Atenção: estes dados NÃO podem ser alterados mais tarde devido as diretrizes de valores.</legend>
         <label>Nome do ingresso</label>
         <input type="text" id="nome-ingresso">
 

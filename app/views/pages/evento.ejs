@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informações sobre o Evento</title>
     <link rel="stylesheet" href="/css/infoevento.css">
-    <script src="js/ingressos-evento.js"></script>
-    <link rel="stylesheet" href="/css/evento.css">
+    <script src="js/ingressos-evento.js"></script>   
     <link rel="icon" href="imagens/SportAgora.png">
     <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 </head>
@@ -108,7 +107,25 @@
                 <button class="btn-fale-conosco">Fale conosco</button>
                 <button id="btnInscrever" class="btn-inscrever-se" >Inscrever-se</button>
             </article>
-            <% } %>
+            <% } else { %>
+              <section class="ingressos-container2">
+              <section class="ingressos">
+              <form method="POST" action="/inscricao-evento?id=<%=evento.evento_id%>" id="ingressos-form">
+              <input type="hidden" name="ingressosSelecionados" id="ingressosSelecionados">
+                <% if (evento.ingressos && evento.ingressos.length > 0) { %>
+                  <% evento.ingressos.forEach(ingresso => { %>
+                  <section class="ingresso-linha2">
+                   <section class="info-ingresso">
+                      <p class="nome-ingresso"><%= ingresso.ingresso_nome %></p>
+                      <p class="tipo-ingresso"><%= ingresso.ingresso_meia == 0 ? "Inteira" : "Meia"%></p>
+                </section>
+                <section class="preco-ingresso2">
+                  <%= Number(ingresso.ingresso_valor).toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                  }) %></section>
+              </section>
+            <% })}}%>
         </section>
     </section>
     </form>

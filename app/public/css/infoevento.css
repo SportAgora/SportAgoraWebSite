@@ -767,3 +767,33 @@ strong {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
+
+.ingresso-linha2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.preco-ingresso2 {
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--principal_escura);
+  text-align: center;
+}
+    
+.ingressos-container2 {
+  margin-top: 20px;
+  background-color: var(--branco);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  flex-shrink: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  font-family: "Montserrat", sans-serif;
+  margin: 10% 0 10%;
+}
+footer{
+    margin-top: 20px;
+}

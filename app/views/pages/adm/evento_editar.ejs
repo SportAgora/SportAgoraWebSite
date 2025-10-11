@@ -4,21 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Evento - ADM SportAgora</title>
-  <!-- <link rel="stylesheet" href="/css/adm/eventos.css"> -->
+  <link rel="stylesheet" href="/css/adm/evento_editar.css">
   <link rel="icon" href="/imagens/SportAgora.png">
   <script src="/js/notify.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 </head>
 <body>
-  <!-- <%- include('../../partials/adm_navbar'); %> -->
+<%- include('../../partials/adm_navbar'); %> 
 
   <% if (dadosNotificacao) { %>
     <script>
       notify("<%= dadosNotificacao.titulo %>", "<%= dadosNotificacao.mensagem %>", "<%= dadosNotificacao.tipo %>", "right bottom");
     </script>
   <% } %>
-
+  <section class="container-ver-eventos">
+            <button class="botao-seta" onclick="window.history.back()">
+              <img src="/imagens/left-arrow.png" alt="Seta">
+              <span class="ver-eventos">Voltar</span>
+            </button>
+    </section>
   <main>
     <section class="logo-area">
       <h1 class="tituloLogo">Editar Evento</h1>
@@ -58,16 +63,55 @@
         <% }) %>
       </select>
 <br>
-      <label>Imagem do Evento:</label>
-      <input type="file" name="foto" accept="image/*">
+      <label for="foto">Imagem do Evento:</label>
+      <input type="file" name="foto" id="inputFotoEvento" accept="image/*">
+ 
       <% if (evento.evento_foto) { %>
-        <img src="/imagens/eventos/<%= evento.evento_foto %>" alt="Imagem atual" width="200">
+        <section id="fotoExistenteContainer">
+          <img src="/imagens/eventos/<%= evento.evento_foto %>" alt="Imagem atual" id="fotoExistente" width="200" style="display: block; margin-top: 5px;">
+        </section>
       <% } %>
+
+      <section id="novaFotoPreview" style="margin-top: 5px;"></section>
 <br>
       <button type="submit" class="btnSalvar">Salvar Alterações</button>
     </form>
   </main>
-
-  <!-- <%- include('../../partials/adm_footer'); %> -->
+<%- include('../../partials/adm_footer'); %>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputFoto = document.getElementById('inputFotoEvento');
+        const novaFotoPreview = document.getElementById('novaFotoPreview');
+        const fotoExistenteContainer = document.getElementById('fotoExistenteContainer');
+
+        if (inputFoto) {
+            inputFoto.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        novaFotoPreview.innerHTML = '';
+                        if (fotoExistenteContainer) {
+                            fotoExistenteContainer.style.display = 'none';
+                        }
+                        
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.alt = "Pré-visualização da nova imagem";
+                        img.style.width = '200px'; 
+                        img.style.display = 'block';
+                        novaFotoPreview.appendChild(img);
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                } else {
+                    novaFotoPreview.innerHTML = '';
+                    if (fotoExistenteContainer) {
+                        fotoExistenteContainer.style.display = 'block';
+                    }
+                }
+            });
+        }
+    });
+</script>
 </html>

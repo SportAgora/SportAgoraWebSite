@@ -1,0 +1,126 @@
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
+    background-color: var(--background, #f4f7fa);
+    min-height: 100vh;
+    font-family: "Montserrat", sans-serif;
+}
+
+.logo-area {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.tituloLogo {
+    font-size: 2.5em;
+    color: var(--principal_escura, #2c3e50);
+    font-weight: 700;
+    margin: 0;
+}
+
+.formulario-editar {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--branco);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-editar label {
+    display: block;
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--principal_escura);
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+.formulario-editar input[type="text"],
+.formulario-editar input[type="datetime-local"],
+.formulario-editar input[type="file"],
+.formulario-editar select,
+.formulario-editar textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cinza_claro,);
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.formulario-editar input:focus,
+.formulario-editar select:focus,
+.formulario-editar textarea:focus {
+    border-color: var(--principal);
+    box-shadow: 0 0 0 3px var(--principal_claro_transparente, rgba(52, 152, 219, 0.2));
+    outline: none;
+}
+
+.formulario-editar textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.formulario-editar br {
+    display: none;
+}
+
+.formulario-editar img {
+    display: block;
+    margin-top: 10px;
+    border: 1px solid var(--cinza_claro);
+    border-radius: 4px;
+    padding: 5px;
+    max-width: 100%; 
+    height: auto;
+}
+
+.btnSalvar {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    margin-top: 30px;
+    background-color: var(--complementar);
+    color: var(--preto);
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+}
+
+.btnSalvar:hover {
+    background-color: var(--complementar2);
+    color: var(--branco);
+}
+
+@media (max-width: 600px) {
+    .tituloLogo {
+        font-size: 2em;
+    }
+
+    .formulario-editar {
+        padding: 20px;
+    }
+
+    .formulario-editar label {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    
+    .formulario-editar input, 
+    .formulario-editar select, 
+    .formulario-editar textarea,
+    .btnSalvar {
+        padding: 10px;
+    }
+}

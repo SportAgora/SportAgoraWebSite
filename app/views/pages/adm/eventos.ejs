@@ -144,7 +144,7 @@
                         <th>Data do evento</th>
                         <th>Horário</th>   
                         <th>Denúncias</th>      
-                        <th></th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -159,9 +159,13 @@
                           <td class="limite"><%= new Date(evento.evento_data_hora).toLocaleDateString("pt-BR") %></td>
                           <td class="limite"><%= new Date(evento.evento_data_hora).toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' }) %></td>
                           <td class="limite"><a href="/adm/eventos/denuncias?id=<%=evento.evento_id%>"><%= evento.denuncias_count %></a></td>
-                          <td class="limite">
-                            <a href="/adm/eventos/editar?id=<%= evento.evento_id %>" class="botao cinza"><button>Editar</button></a>
-                            <a href="/adm/eventos/apagar?id=<%=evento.evento_id%>" onclick="return confirm('Deseja apagar esta solicitação?');"><button type="button" class="btnApagar">Apagar</button></a>
+                          <td class="">
+                            <a href="/adm/eventos/editar?id=<%= evento.evento_id %>" class="botao cinza">
+                              <button class="btnEditar" type="button">Editar</button>
+                            </a>
+                            <a href="/adm/eventos/apagar?id=<%=evento.evento_id%>" onclick="return confirm('Deseja apagar esta solicitação?');">
+                              <button class="btnApagar" type="button">Apagar</button>
+                            </a>
                           </td>
                         </tr>
                       <% }); %>

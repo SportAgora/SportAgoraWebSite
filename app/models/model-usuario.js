@@ -175,7 +175,8 @@ const UsuarioModel = {
       i.ingresso_meia,        
       e.evento_nome,
       e.evento_foto,
-      e.evento_data_hora
+      e.evento_data_hora,
+      ie.inscricao_id
     FROM inscricao_evento ie
     JOIN ingressos i ON ie.ingresso_id = i.ingresso_id
     JOIN eventos e ON ie.evento_id = e.evento_id

@@ -8,7 +8,24 @@ return `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notificação Evento</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Montserrat', Arial, sans-serif;
+        background-color: #E6ECF0;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
+    a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+    }
+</style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #E6ECF0; font-family: 'Montserrat', Arial, sans-serif;">
     <center style="width: 100%; background-color: #E6ECF0;">

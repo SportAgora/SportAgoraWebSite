@@ -180,6 +180,7 @@ module.exports = {
       const esporte = await OrganizadorModel.EsportFindAll();
       const dados = await OrganizadorModel.visualizarEventoId(req.query.id)
       dados.ingressos= await OrganizadorModel.visualizarIngressoEventoId(req.query.id)
+      const inscritos = await OrganizadorModel.contarUsuariosEventoId(req.query.id)
 
       if (dados.usuario_id == req.session.usuario.id) {
         
@@ -208,7 +209,8 @@ module.exports = {
           "erros": null, 
           dados,
           esporte,
-          dadosNotificacao: null
+          dadosNotificacao: null,
+          inscritos
       });
       } else {
         return res.render("pages/error", {error:"403", mensagem:"Você não tem permissão de acessar esta página."})
@@ -236,6 +238,7 @@ module.exports = {
 ],
 editarEvento: async (req, res) => {
   const errors = validationResult(req);
+  const inscritos = await OrganizadorModel.contarUsuariosEventoId(req.body.evento_id)
   const erroMulter = req.session.erroMulter;
   delete req.session.erroMulter;
 
@@ -261,7 +264,8 @@ editarEvento: async (req, res) => {
         dados: { ...req.body, foto: caminhoFoto || eventoExistente.evento_foto },
         erros: lista,
         esporte: await OrganizadorModel.EsportFindAll(),
-        dadosNotificacao: null
+        dadosNotificacao: null,
+        inscritos
       });
     }
 

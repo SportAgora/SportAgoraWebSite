@@ -29,7 +29,6 @@ carregarInscricaoEvento: async (req, res) => {
     });
 
     const ingressosDados = await ingressosModel.buscarIngressos(ingressos);
-    console.log(ingressosDados);
     res.render('pages/evento-inscricao', { 
         evento, 
         ingressos: ingressosDados, 
@@ -147,9 +146,7 @@ carregarInscricaoEvento: async (req, res) => {
         const payment = await paymentClient.get({id: payment_id}); // Use the correct method: get
 
         if(payment.status === 'approved') {
-            console.log(req.session.inscricoesCriadas);
             await ingressosModel.ativarInscricaoPagamento(req.session.inscricoesCriadas);
-            console.log("Pagamento aprovado:", payment);
             let evento = await ingressosModel.buscarPagPorId(req.session.eventoId);
 
             return res.render('pages/evento-inscrito', {
@@ -205,33 +202,16 @@ carregarInscricaoEvento: async (req, res) => {
         res.render('pages/validar_ingresso', {evento_id: id});
     },
     validarIngresso: async (req, res) => {
-        const { inscricao_id, evento_id } = req.body;
-        const ingresso = await ingressosModel.buscarInscricaoPorId(inscricao_id);
-        if (!ingresso) {
-            return res.render('pages/error', {
-                error: 404,
-                mensagem: "Inscrição não encontrada."
-            });
-        }
-        if (ingresso.evento_id != evento_id) {
-            return res.render('pages/error', {
-                error: 403,
-                mensagem: "Essa inscrição não é deste evento."
-            });
-        }
-        if (ingresso.inscricao_pago == 0) {
-            return res.render('pages/error', {
-                error: 403,
-                mensagem: "Essa inscrição não foi paga."
-            });
-        }
-        if (ingresso.inscricao_validado == 1) {
-            return res.render('pages/error', {
-                error: 403,
-                mensagem: "Essa inscrição já foi validada."
-            });
-        }
-        await ingressosModel.validarInscricao(inscricao_id);
-        return res.render('pages/ingresso_validado', {inscricao_id});
+    const { inscricao_id, evento_id } = req.body;
+    const ingresso = await ingressosModel.buscarInscricaoPorId(inscricao_id);
+    console.log(ingresso)
+
+    if (!ingresso) return res.json({ error: true, message: "Inscrição não encontrada." });
+    if (ingresso.evento_id != evento_id) return res.json({ error: true, message: "Essa inscrição não é deste evento." });
+    if (ingresso.pagamento_feito == 0) return res.json({ error: true, message: "Essa inscrição não foi paga." });
+    if (ingresso.entrada_validada == 1) return res.json({ error: true, message: "Essa inscrição já foi validada." });
+
+    await ingressosModel.validarInscricao(inscricao_id);
+    return res.json({ success: true, message: "Ingresso validado com sucesso!" });
     }
 }

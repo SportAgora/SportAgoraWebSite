@@ -235,6 +235,18 @@ EventoApagar: async (id) => {
       throw e;
     }
   },
+  contarUsuariosEventoId: async (id) => {
+    try{
+      const query = `SELECT COUNT(usuario_id) AS total_inscritos
+                    FROM inscricao_evento
+                    WHERE evento_id = ?;`
+      const [rows] = await pool.query(query,[id])
+      return rows.length > 0 ? rows[0] : null;
+    } catch(e){
+      console.error("Erro ao contar quantas pessoas se inscreveram no evento: ", e)
+      throw e;
+    }
+  }
   
   
 };

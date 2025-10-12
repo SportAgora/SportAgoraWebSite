@@ -64,6 +64,9 @@
                                 <%}%>
                                 </td>
                                 <td>
+                                    <a href="/adm/usuarios/sobre_usuario?id=<%= u.usu_id %>" class="botao cinza">
+                                    <button class="btnEditar" type="button">Editar</button>
+                                    </a>
                                     <form action="/adm/usuarios/<%= u.usu_id %>" method="POST" onsubmit="return confirm('Deseja realmente excluir este usuário?');">
                                     <button type="submit"class="excluir">Excluir</button>
                                   </form>

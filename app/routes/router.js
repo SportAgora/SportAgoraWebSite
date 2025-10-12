@@ -243,4 +243,36 @@ router.post('/pratique/solicitacao',
   }
 );
 
+
+//improvisado pro email
+router.get('/pag-secreta', function(req,res){
+  res.render('pages/enviar_notificacao')
+}
+)
+
+router.post('/enviar-notificacao', function(req,res){
+  // const html = require('../helpers/email-ativar-conta')(process.env.URL_BASE, token, nome);
+  //     console.log("configurou o email")
+  //     enviarEmail(email, "Cadastro no site SportAgora", null, html, (erro)=>{
+  //       if (erro) {
+  //       return res.render("pages/registro", {
+  //           erros: [{ msg: "Erro ao enviar o e-mail. Tente novamente." }],
+  //           dadosNotificacao: null,
+  //           dados: req.body
+  //       });
+  //     }
+
+  //       return res.render("pages/registro", {
+  //         erros: null,
+  //         dadosNotificacao: {
+  //           titulo: "Cadastro realizado!",
+  //           mensagem: "Novo usuário criado com sucesso!<br>"+
+  //           "Enviamos um e-mail para a ativação de sua conta",
+  //           tipo: "success",
+  //         },
+  //         dados: req.body
+  //       });
+  // });
+})
+
 module.exports = router;

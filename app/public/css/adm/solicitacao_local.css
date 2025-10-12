@@ -2,74 +2,78 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
-    background-color: var(--background);
-    min-height: calc(100vh - 80px);
+    padding: 30px 15px;
+    background-color: var(--background, #f4f7fa);
+    min-height: 100vh;
 }
 
 .logo-area {
     width: 100%;
-    max-width: 900px;
-    margin-bottom: 25px;
+    max-width: 1200px;
+    margin-bottom: 30px;
     text-align: center;
 }
 
 .tituloLogo {
     font-size: 2.5em;
-    color: var(--principal_escura);
+    color: var(--principal_escura, #2c3e50);
     font-weight: 700;
     margin: 0;
 }
 
-/* --- Estilo da Busca --- */
-.buscarUso {
+.locais {
     width: 100%;
-    max-width: 700px;
-    background-color: var(--branco);
-    padding: 20px 30px;
+    max-width: 1200px;
+    background-color: var(--branco, #ffffff);
+    padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.locais h2 {
+    font-size: 1.8em;
+    color: var(--principal);
+    border-bottom: 2px solid var(--principal_claro);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.buscarUso {
     margin-bottom: 30px;
 }
 
 .buscarUso h3 {
     font-size: 1.2em;
-    color: var(--principal);
-    margin-bottom: 15px;
-    text-align: center;
+    color: var(--cinza_escuro);
+    margin-bottom: 10px;
+    font-weight: 500;
 }
 
 .imputis {
     display: flex;
-    gap: 15px;
-    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .imputis input[type="text"] {
     flex-grow: 1;
-    padding: 12px 15px;
+    padding: 10px 12px;
     border: 1px solid var(--cinza_claro);
-    border-radius: 6px;
+    border-radius: 4px;
     font-size: 1em;
-    transition: border-color 0.3s;
-}
-
-.imputis input[type="text"]:focus {
-    border-color: var(--principal);
-    outline: none;
 }
 
 .btnBuscar {
-    padding: 12px 20px;
+    padding: 10px 15px;
     background-color: var(--complementar);
     color: var(--preto);
     border: none;
-    border-radius: 6px;
-    font-size: 1em;
+    border-radius: 4px;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
-    flex-shrink: 0;
 }
 
 .btnBuscar:hover {
@@ -77,83 +81,17 @@ main {
     color: var(--branco);
 }
 
-/* --- Estilo da Seção de Locais e Tabela --- */
-.locais {
-    width: 100%;
-    max-width: 1000px;
-    background-color: var(--branco);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    overflow-x: auto;
-}
-
-.locais h2 {
-    font-size: 1.5em;
-    color: var(--principal_escura);
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--cinza_claro);
-    padding-bottom: 10px;
-    text-align: left;
-}
-
-.locais-tabela {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    min-width: 650px;
-}
-
-.locais-tabela th, .locais-tabela td {
-    border: 1px solid var(--cinza_claro);
-    padding: 12px;
-    text-align: left;
-    font-size: 0.95em;
-}
-
-.locais-tabela th {
-    background-color: var(--principal_claro);
-    color: var(--branco);
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.locais-tabela tbody tr:nth-child(even) {
-    background-color: var(--background);
-}
-
-.locais-tabela tbody tr:hover {
-    background-color: #d8dee3;
-}
-
-/* Limitação de Conteúdo nas Células */
-.locais-tabela .limite {
-    max-width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-/* Botão Novo Local */
 .locais-btn {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    margin: 20px auto 0;
-    padding: 12px 20px;
+    padding: 10px 20px;
     background-color: var(--complementar);
     color: var(--preto);
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     font-size: 1em;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
-    text-transform: uppercase;
-}
-
-.locais a{
-    text-decoration: none;
+    margin: 20px 0 30px 0;
 }
 
 .locais-btn:hover {
@@ -161,52 +99,78 @@ main {
     color: var(--branco);
 }
 
+.locais-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    min-width: 700px; 
+    overflow-x: auto; 
+}
 
-@media (max-width: 768px) {
-    main {
-        padding: 15px;
-    }
+.locais-tabela thead th {
+    background-color: var(--principal_claro);
+    color: var(--branco);
+    padding: 15px 10px;
+    text-align: left;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border: 1px solid var(--cinza_claro);
+}
 
-    .tituloLogo {
-        font-size: 2em;
-    }
+.locais-tabela tbody td {
+    padding: 12px 10px;
+    border: 1px solid var(--cinza_claro);
+    vertical-align: middle;
+    color: var(--cinza_escuro, #333);
+    font-size: 0.95em;
+}
 
-    .buscarUso {
-        padding: 15px;
-        margin-bottom: 20px;
-    }
+.locais-tabela tbody tr:nth-child(even) {
+    background-color: var(--background_claro, #f9f9f9);
+}
 
-    .imputis {
-        flex-direction: column;
-        gap: 10px;
-    }
+.locais-tabela tbody tr:hover {
+    background-color: #f0f0f0;
+}
 
-    .imputis input[type="text"], .btnBuscar {
-        width: 100%;
-    }
+.locais-tabela .limite {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
-    .locais {
-        padding: 15px;
-    }
+.locais-tabela td a {
+    color: var(--principal);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.locais-tabela td a:hover {
+    color: var(--principal_escura);
+    text-decoration: underline;
 }
 
 .locais-tabela td:last-child {
-    white-space: nowrap; 
+    white-space: nowrap;
     text-align: center;
+    min-width: 180px; 
 }
 
 .locais-tabela td a {
     text-decoration: none;
-    margin: 0 5px;
-    display: inline-block; 
+    margin: 3px;
+    display: inline-block;
 }
 
 .btnEditar {
-    padding: 8px 12px;
-    background-color: var(--principal); 
-    color: var(--branco);
+    padding: 8px 10px;
+    background-color: var(--principal);
+    color: var(--preto);
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     font-size: 0.9em;
     font-weight: 600;
     cursor: pointer;
@@ -215,14 +179,15 @@ main {
 
 .btnEditar:hover {
     background-color: var(--principal_escura);
+    color: var(--branco);
 }
 
 .btnApagar {
-    padding: 8px 12px;
+    padding: 8px 10px;
     background-color: var(--erro);
-    color: var(--branco);
+    color: var(--branco, #ffffff);
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     font-size: 0.9em;
     font-weight: 600;
     cursor: pointer;
@@ -230,18 +195,58 @@ main {
 }
 
 .btnApagar:hover {
-    background-color: #c9302c; 
+    background-color: var(--principal_escura);
+}
+
+
+@media (max-width: 1000px) {
+    .locais {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tituloLogo {
+        font-size: 2em;
+    }
+
+    .imputis {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .imputis input[type="text"] {
+        width: 100%;
+    }
+
+    .locais-tabela {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .locais-tabela thead, .locais-tabela tbody, .locais-tabela tr {
+        display: table-row; /* Reverte o efeito da linha anterior */
+    }
+    
+    .locais-tabela td:last-child {
+        display: block;
+        text-align: left;
+        padding: 10px;
+    }
+    .locais-tabela td:last-child a {
+        display: block;
+        margin: 5px 0;
+    }
+    .btnEditar, .btnApagar {
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
 
 @media (max-width: 600px) {
-    .locais-tabela td:last-child {
-        text-align: left;
-        padding: 8px;
-    }
-    
-    .locais-tabela td a {
-        margin: 5px 0;
-        display: block; 
-        width: 100%;
+    .locais {
+        padding: 15px;
     }
 }

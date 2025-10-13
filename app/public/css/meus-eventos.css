@@ -111,6 +111,10 @@
     gap: 20px;
     justify-content: start;
 }
+@media (max-width: 452px) {
+    
+    .event-title {font-size: 3.5rem;}
+}
 @media (min-width: 750px) {
     .evento-container {
         justify-content: center;
@@ -135,4 +139,51 @@
     .evento-container {
         justify-content: center;
     }
+}
+
+/* 1. CONTAINER DOS CARDS: Garante o alinhamento à esquerda, quebra de linha e responsividade */
+.ingressos-event {
+    display: flex;             /* Habilita o Flexbox */
+    flex-wrap: wrap;           /* Permite quebra de linha */
+    gap: 30px;                 /* Espaçamento entre os cards */
+    
+    /* ALINHAMENTO À ESQUERDA (COMO NO SEU DESENHO) */
+    justify-content: flex-start; 
+    
+    /* Centralização do BLOCO e limite máximo (Ajuste ou remova 'max-width' se necessário) */
+    /* Se você quer que o bloco se expanda por toda a largura disponível: */
+    max-width: none; 
+    margin: 0;
+    
+    /* Se você quer que o bloco seja centralizado com um limite: */
+    /* max-width: 1260px; */ 
+    /* margin: 0 auto; */
+    
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 2. CARD INDIVIDUAL: Item flexível que define o tamanho máximo */
+.eventoInfo {
+    flex: 1 1 auto;             /* Permite crescimento e encolhimento */
+    max-width: 400px;           /* Limita o esticamento excessivo (Ex: 400px) */
+    min-width: 300px;           /* Garante que o card não fique muito pequeno */
+
+    /* Estilos Visuais */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--branco);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Ocupa 100% da largura máxima definida pelo contêiner */
+}
+
+/* 3. Imagem */
+.evento-img{
+    width: 100%;
+    max-height: 350px;
+    border-radius: 10px 10px 0px 0px;
+    margin-bottom: 10px;
 }

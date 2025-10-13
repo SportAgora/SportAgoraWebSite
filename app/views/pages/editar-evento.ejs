@@ -25,7 +25,15 @@
       <section class="event-container">
         <h1 class="event-title">Editar Evento</h1>
       </section>
+      <section class="fim">
+      <input type="submit" class="publicar-evento" value="Salvar Alterações">
+  </form>
+    <a href="/apagar-evento?id=<%=dados.evento_id%>" onclick="return confirm('Deseja apagar este evento?')">
+    <input type="button" class="publicar-evento" value="Apagar Evento">
+    </a>
+  </section>
     <main class="main_sobreEvento"> 
+      
         <form id="evento-form" method="POST" action="/editar-evento" enctype="multipart/form-data">
           <input type="hidden" name="evento_id" value="<%=dados.evento_id%>">
         <section class="box-esquerda">
@@ -174,13 +182,7 @@
         </article>
       </section>                  
     </main>
-    <section class="fim">
-      <input type="submit" class="publicar-evento" value="Salvar Alterações">
-  </form>
-    <a href="/apagar-evento?id=<%=dados.evento_id%>" onclick="return confirm('Deseja apagar este evento?')">
-    <input type="button" class="publicar-evento" value="Apagar Evento">
-    </a>
-  </section>
+    
     
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script defer src="/js/editar-evento.js"></script>

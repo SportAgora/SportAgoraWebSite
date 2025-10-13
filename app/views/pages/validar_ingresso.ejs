@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/validar_ingresso.css">
+    <link rel="stylesheet" href="/css/base.css">
     <title>Validador de Ingressos</title>
 </head>
 <body>
-    <div id="reader"></div>
+    <section class="container-ver-eventos">
+            <button class="botao-seta" onclick="window.history.back()">
+              <img src="/imagens/left-arrow.png" alt="Seta">
+            </button>
+            <span class="ver-eventos">Voltar</span>
+        </section>
+        
+    <section id="reader"></section>
 
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script>

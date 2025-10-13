@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS locais (
 	  local_endereco VARCHAR(255) NOT NULL,
 	  local_latitude DECIMAL(10,6) NOT NULL,
 	  local_longitude DECIMAL(10,6) NOT NULL,
+      local_link VARCHAR (500) NOT NULL, -- os links do google maps podem ser gigantescos
       local_ativo BOOLEAN DEFAULT TRUE
 );
 
@@ -195,7 +196,7 @@ VALUES
 ('Ingresso Padrão', 50, 300, 1, 5),
 ('Ingresso VIP', 350, 300, 0, 5);
 
-INSERT INTO locais (local_nome, local_foto, local_endereco, local_latitude, local_longitude) VALUES
-('Arena Central', 'imagens/esportes/futebol_banner.png', 'Rua A, 123', -23.5505, -46.6333),
-('Campo Verde', 'imagens/esportes/futebol_banner.png', 'Av. B, 456', -23.5580, -46.6400);
+INSERT INTO locais (local_nome, local_foto, local_endereco, local_latitude, local_longitude, local_link) VALUES
+('Arena Central', 'imagens/esportes/futebol_banner.png', 'Rua A, 123', -23.5505, -46.6333, 'https://www.google.com/maps'),
+('Campo Verde', 'imagens/esportes/futebol_banner.png', 'Av. B, 456', -23.5580, -46.6400, 'https://www.google.com/maps');
 INSERT INTO local_esporte (local_id, esporte_id) VALUES (1,1), (1,2), (2,2);

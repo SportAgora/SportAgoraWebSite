@@ -181,9 +181,12 @@
 }
 
 /* 3. Imagem */
-.evento-img{
+
+.evento-img {
     width: 100%;
-    max-height: 350px;
+    height: 250px;
+    object-fit: cover;
+    object-position: top;
     border-radius: 10px 10px 0px 0px;
     margin-bottom: 10px;
 }

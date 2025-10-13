@@ -54,14 +54,7 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.evento-img{
-    width: 100%;
-    /* REMOVER o max-width: 350px; para que a imagem se ajuste a 100% da largura do card */
-    /* max-width: 350px; */
-    max-height: 350px;
-    border-radius: 10px 10px 0px 0px;
-    margin-bottom: 10px;
-}
+
 /* .eventoInfo{
     border-radius: 10px;
     display: flex;

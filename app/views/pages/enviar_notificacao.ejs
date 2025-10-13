@@ -7,7 +7,13 @@
 </head>
 <body>
     <h2>
-    <a href="#">enviar</a>
+    <form method="post" action="/enviar-notificacao">
+    <p>email</p>
+    <input type="text" name="email"><br>
+    <p>id</p>
+    <input type="number" name="evento_id"><br>
+    <input type="submit" value="enviar">
+    </form>
     </h2>
 </body>
 </html>

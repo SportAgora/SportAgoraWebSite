@@ -1,4 +1,4 @@
-module.exports = (nome_evento, hora_evento, local_evento, url, nome)=>{
+module.exports = (evento_nome, data_evento, url)=>{
 
 return `
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ return `
                 
                 <tr>
                     <td align="center" style="background-color: #A31C29; color: #ffffff; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-                        <h1 style="font-size: 24px; font-weight: 700; margin: 0;">Olá ${nome}!</h1>
+                        <h1 style="font-size: 24px; font-weight: 700; margin: 0;">Aviso!</h1>
                     </td>
                 </tr>
 
@@ -44,14 +44,14 @@ return `
                             O <b style="color: #A31C29; font-weight: 600;">SportAgora</b> Informa que o evento que você se increveu está próxmo!
                         </p>
                         <p style="font-size: 16px; color: #333333; margin: 0 0 20px 0; line-height: 1.5;">
-                            O Evento <b style="color: #A31C29; font-weight: 600;">${evento_nome}</b> irá acontercer no dia ${data_evento} no ${local_evento}!
+                            O Evento <b style="color: #A31C29; font-weight: 600;">${evento_nome}</b> irá acontercer no ${data_evento}!
                         </p>
                         
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 20px auto 0 auto;">
                             <tr>
                                 
                                 <td align="center" style="border-radius: 5px; background-color: #D72638;">
-                                    <a href="${url}/ativar-conta?token=${token}" 
+                                    <a href="${url}/perfil" 
                                        target="_blank" 
                                        style="display: block; 
                                               padding: 12px 25px; 

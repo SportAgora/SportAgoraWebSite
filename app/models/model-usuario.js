@@ -50,7 +50,6 @@ const UsuarioModel = {
         usu_nome : nome,
         usu_email:  email,
         usu_senha: senha, // Já deve estar com hash
-        perf_nome: nome,
         usu_foto:foto,
         usu_banner:banner,
         usu_status: status || 0, // Padrão para inativo
@@ -75,12 +74,11 @@ const UsuarioModel = {
   // Atualizar usuário
   atualizar: async (id, userData) => {
     try {
-      const { nome, arroba, email, nasc, telefone, plano, tipo, foto, banner, senha} = userData;
+      const { nome, email, nasc, telefone, plano, tipo, foto, banner, senha} = userData;
  
       // Preparar os dados para atualização
       const data = {
         usu_nome: nome,
-        perf_nome : arroba,
         usu_email: email,
         usu_senha:senha,
         usu_nasc: nasc ? moment(nasc).format('YYYY-MM-DD') : null,

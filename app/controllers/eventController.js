@@ -2,6 +2,7 @@ const OrganizadorModel = require('../models/model-organizador');
 const { body, validationResult } = require("express-validator");
 const axios = require('axios')
 const {removeImg}= require("../helpers/removeImg");
+const { enviarEmail } = require("../helpers/email");
  
 module.exports = {
   criarEventoValidacao: [
@@ -322,5 +323,33 @@ apagarEvento: async (req,res) => {
   }
   await OrganizadorModel.EventoApagar(id);
   return res.redirect('/meus-eventos')
-}
+},
+  enviarNotificacao: async (req,res) => {
+    const enderecoemail = req.body.email
+    const eventoid = req.body.evento_id
+    const evento = await OrganizadorModel.visualizarEventoId(eventoid)
+    if (evento !== null) {
+    const data = new Date(evento.evento_data_hora)
+    const opcoes = {
+      weekday: 'long',
+      day: '2-digit',
+      month: 'long'
+    };
+    const dataFormatada = data.toLocaleDateString('pt-BR', opcoes);
+
+
+    const html = require('../helpers/email-notificacao')(evento.evento_nome, dataFormatada, process.env.URL_BASE);
+        console.log("configurou o email")
+        enviarEmail(enderecoemail, "Seu evento está chegando", null, html, (erro)=>{
+          if (erro) {
+          return res.send('sucesso')
+        } else {
+          return res.send('erro')
+        }
+    })
+    }
+    else {
+      res.redirect('/pag-secreta')
+    }
+  }
 }

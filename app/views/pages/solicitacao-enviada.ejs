@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="stylesheet" href="/css/enviada.css">
+    <link rel="stylesheet" href="/css/base.css">
     <title>Solicitacao enviada</title>
 </head>
 <body>
-    <p>Sua solicitação para <%=dados.nome%> foi enviada com sucesso!</p>
+    <header class="container-ver-eventos">
+    <button class="botao-seta" onclick="window.history.back()">
+      <img src="/imagens/left-arrow.png" alt="Seta">
+    </button>
+    <span class="ver-eventos">Voltar</span>
+  </header>
+  <main>
+     <p>Sua solicitação para <%=dados.nome%> foi enviada com sucesso!</p>
+  </main>
+   
 </body>
 </html>

@@ -54,7 +54,24 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
+.evento-img {
+    /* 1. Define a largura total do card */
+    width: 100%;
+    
+    /* 2. Define uma altura visual fixa para o espaço da imagem */
+    /* Use 'height' (altura fixa) ou 'max-height' (altura máxima) */
+    height: 200px; /* <--- NOVO: Altura fixa razoável para a miniatura */
 
+    /* 3. ESSENCIAL: Garante que a imagem preencha o espaço sem esticar */
+    object-fit: cover; /* A imagem cobre a área, cortando o que for necessário para manter a proporção. */
+    
+    /* 4. Garante que a imagem comece do topo, evitando problemas de alinhamento */
+    object-position: top;
+    
+    /* Outros estilos visuais */
+    border-radius: 10px 10px 0px 0px;
+    margin-bottom: 10px;
+}
 /* .eventoInfo{
     border-radius: 10px;
     display: flex;

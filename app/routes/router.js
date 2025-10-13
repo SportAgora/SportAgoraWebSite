@@ -28,6 +28,13 @@ function verificarAutenticacao(req, res, next) {
   res.redirect("/login");
 }
 
+function verificarOrganizador(req, res, next) {
+  if (req.session && req.session.usuario && req.session.usuario.tipo === "o") {
+    return next();
+  }
+  res.redirect("/planos");
+}
+
 router.use((req, res, next) => {
   res.locals.usuario = req.session.usuario || null;
   next();
@@ -104,19 +111,19 @@ router.post('/salvar-perfil',
   }
 )
 
-router.get('/meus-eventos', verificarAutenticacao, function(req,res){
+router.get('/meus-eventos', verificarAutenticacao, verificarOrganizador, function(req,res){
   eventController.carregarMeusEventos(req,res);
 })
 
-router.get('/editar-evento', verificarAutenticacao, function(req,res){
+router.get('/editar-evento', verificarAutenticacao, verificarOrganizador, function(req,res){
   eventController.carregarEditarEvento(req,res);
 })
 
-router.post('/editar-evento', uploadFileEvent(['foto']), verificarAutenticacao, function(req,res){
+router.post('/editar-evento', uploadFileEvent(['foto']), verificarAutenticacao, verificarOrganizador, function(req,res){
   eventController.editarEvento(req,res);
 })
 
-router.get('/apagar-evento', verificarAutenticacao, eventController.editarEventoValidacao,function(req,res){
+router.get('/apagar-evento', verificarAutenticacao, verificarOrganizador, eventController.editarEventoValidacao,function(req,res){
   eventController.apagarEvento(req,res);
 })
 
@@ -171,20 +178,19 @@ router.get("/assinatura/sucesso", verificarAutenticacao, assinaturaController.su
 router.get("/assinatura/erro", assinaturaController.erro);
 router.post("/assinatura/webhook", assinaturaController.webhook);
 
-router.get('/meu-plano', verificarAutenticacao,  function(req,res){
-    if (req.session.usuario.tipo == "o"){
+router.get('/meu-plano', verificarAutenticacao,  verificarOrganizador, function(req,res){
     res.render('pages/meu-plano');
-  } else res.redirect('/planos')
 })
 
 /* EVENTOS */
 
-router.get('/criar-evento',  verificarAutenticacao, function(req,res){
+router.get('/criar-evento',  verificarAutenticacao, verificarOrganizador, function(req,res){
   eventController.carregarCriarEvento(req,res);
 });
 
 router.post('/criar-evento',
   verificarAutenticacao,
+  verificarOrganizador,
   uploadFileEvent(["foto"]),
     eventController.criarEventoValidacao,
   eventController.criarEvento

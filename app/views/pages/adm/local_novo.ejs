@@ -14,10 +14,10 @@
 
     <%
     let erroValidacao = {
-        nome:"", endereco:"", foto:"", latitude:"", longitude:"", esportes:""
+        nome:"", endereco:"", foto:"", latitude:"", longitude:"", esportes:"", link:""
     };
     let msgErro = {
-        nome:"", endereco:"", foto:"", latitude:"", longitude:"", esportes:""
+        nome:"", endereco:"", foto:"", latitude:"", longitude:"", esportes:"", link:""
     };
     if(erros) {
         erros.errors.forEach(function(erro) {
@@ -71,6 +71,10 @@
             <label for="longitude">Longitude:</label>
             <input type="text" id="longitude" name="longitude" value="<%=dados.longitude%>" class="<%= erroValidacao.longitude %>" required>
             <span class="spanerro"><%= msgErro.longitude %></span><br>
+
+            <label for="link">Link do Local:</label>
+            <input type="text" id="link" name="link" value="<%=dados.link%>" class="<%= erroValidacao.link %>" required>
+            <span class="spanerro"><%= msgErro.link %></span><br>
 
             <label>Esportes disponíveis:</label>
             <section class="checkbox-group <%= erroValidacao.esportes %>">

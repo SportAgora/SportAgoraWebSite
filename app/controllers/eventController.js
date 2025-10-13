@@ -13,12 +13,10 @@ module.exports = {
   body("data").custom((value, { req }) => {
     const horaEvento = req.body.hora_evento || "00:00";
     const evento = new Date(`${value}T${horaEvento}`);
-    const fim = new Date(`${req.body.data_final}T${req.body.hora_final || "00:00"}`);
-
-    if (isNaN(evento) || isNaN(fim)) throw new Error("Data do evento inválida.");
-
-    if (evento.getTime() <= fim.getTime()) {
-      throw new Error("A data do evento precisa ser posterior ao fim das vendas.");
+    const agora = new Date();
+  
+    if (evento.getTime() <= agora.getTime()) {
+      throw new Error("A data e hora do evento precisa ser posterior a hoje.");
     }
     return true;
   }),

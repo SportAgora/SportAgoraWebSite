@@ -2,7 +2,8 @@ const AdmModel = require('../models/model-adm');
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require("express-validator");
 
-const {removeImg }= require("../helpers/removeImg")
+const {removeImg }= require("../helpers/removeImg");
+const { link } = require('fs');
 
 
 async function carregarEventosErro (errors,req,res){ 
@@ -620,6 +621,7 @@ module.exports = {
                         latitude: solicitacao.solicitacao_latitude,
                         longitude: solicitacao.solicitacao_longitude,
                         esportes: solicitacao.esportes ? solicitacao.esportes.map(e => e.id) : [],
+                        link: solicitacao.solicitacao_link || "",
                         id: req.query.id || null
                     };
                 }
@@ -632,6 +634,7 @@ module.exports = {
                     latitude: "",
                     longitude: "",
                     esportes: [],
+                    link: "",
                     id: null
                 };
             }
@@ -658,11 +661,21 @@ module.exports = {
                 throw new Error('Selecione pelo menos um esporte.');
             }
             return true;
+        }),
+        body('link')
+        .notEmpty().withMessage('O link é obrigatório.')
+        .isString()
+        .custom((value) => {
+        const regex = /^(https?:\/\/)?(www\.)?(google\.[a-z]+\/maps|goo\.gl\/maps)/;
+        if (!regex.test(value)) {
+            throw new Error('O link deve ser um link válido do Google Maps.');
+        }
+        return true;
         })
     ],
     novoLocalCreate: async (req, res) => {
         try {
-            const { nome, endereco, latitude, longitude, esportes, id } = req.body;
+            const { nome, endereco, latitude, longitude, esportes, id, link } = req.body;
             let foto;
             if (req.files && req.files.foto && req.files.foto[0]) {
                 foto = "imagens/pratique/" + req.files.foto[0].filename;
@@ -684,7 +697,8 @@ module.exports = {
                 foto,
                 endereco,
                 latitude: Number(latitude),
-                longitude: Number(longitude)
+                longitude: Number(longitude),
+                link
             });
 
             console.log(localId)

@@ -546,14 +546,14 @@ SolicitacoesRemoverById: async (solicitacaoId) => {
 },
 LocalCreate: async (localData) => {
     try {
-      const { nome, foto, endereco, latitude, longitude } = localData;
+      const { nome, foto, endereco, latitude, longitude, link } = localData;
 
       const query = `
         INSERT INTO locais 
-          (local_nome, local_foto, local_endereco, local_latitude, local_longitude)
-        VALUES (?, ?, ?, ?, ?)
+          (local_nome, local_foto, local_endereco, local_latitude, local_longitude, local_link)
+        VALUES (?, ?, ?, ?, ?, ?)
       `;
-      const [result] = await pool.query(query, [nome, foto, endereco, latitude, longitude]);
+      const [result] = await pool.query(query, [nome, foto, endereco, latitude, longitude, link]);
       return result.insertId;
     } catch (error) {
       console.error("Erro ao criar local:", error);

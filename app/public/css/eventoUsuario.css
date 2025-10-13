@@ -1,17 +1,74 @@
-.evento-contianer{
+/* .evento-contianer{
     display: flex;
     align-items: center;
     justify-content: center;
+} */
+/* CONTAINER PRINCIPAL: Alinhamento à esquerda e largura dinâmica */
+.eventos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;                 
+    
+    /* 1. Alinhamento à Esquerda dos ITENS */
+    /* ESSENCIAL: Garante que os itens sempre se alinhem na borda esquerda do bloco */
+    justify-content: flex-start; 
+    
+    /* 2. Alinhamento do BLOCO INTEIRO */
+    /* REMOVER a centralização: mude para 'unset' ou 'initial' */
+    margin: 0; /* Remove 'auto' para que o bloco fique à esquerda da página */
+    
+    /* REMOVER ou AUMENTAR o max-width para que ele possa se expandir, 
+       OU DEIXE como está se o max-width estiver correto para o número máximo de colunas. */
+    /* max-width: 1260px; */ 
+    
+    /* Dica: Adicione um padding ou use 100% de largura */
+    width: 100%;
+    padding: 20px; 
+    box-sizing: border-box; /* Garante que o padding não adicione largura extra */
+}
+
+/* O item .evento-container (card) deve manter as propriedades que controlam a largura máxima para que não estique */
+.evento-container {
+    flex: 1 1 auto; 
+    max-width: 400px; /* Limita o tamanho máximo dos cards */
+    min-width: 300px;
 }
 .eventoInfo{
     border-radius: 10px;
-    /* padding: 15px; */
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    
+    /* REMOVER a largura fixa. Ocupa 100% do seu contêiner flexível. */
+    width: 100%;
+    
+    /* REMOVER a margem. Usamos 'gap' no .eventos-container para espaçamento. */
+    /* margin: 0; */ 
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--branco); /* Mantenha se quiser o fundo do card branco */
+}
+
+.eventoInfo:hover{
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.evento-img{
+    width: 100%;
+    /* REMOVER o max-width: 350px; para que a imagem se ajuste a 100% da largura do card */
+    /* max-width: 350px; */
+    max-height: 350px;
+    border-radius: 10px 10px 0px 0px;
+    margin-bottom: 10px;
+}
+/* .eventoInfo{
+    border-radius: 10px;
     display: flex;
     align-items: center;
     flex-direction: column; 
     width: 350px;
     margin: 15px;
-    /* box-shadow: 2px 3px 10px 2px rgba(0,0,0,0.71); */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background-color: var(--branco);
 }
@@ -21,9 +78,11 @@
 }
 .evento-img{
     width: 100%;
+    max-width: 350px;
+    max-height: 350px;
     border-radius: 10px 10px 0px 0px;
     margin-bottom: 10px;
-}
+} */
 .evento-nome{
     margin: 10px;
     color: var(--preto);
@@ -46,12 +105,3 @@
         transform: scale(1.05);
     }
 }
-/* .ingressos-event {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.ingressos-event > * {
-  flex: 1 1 calc(25% - 16px);
-} */

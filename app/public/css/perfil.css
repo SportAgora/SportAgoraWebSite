@@ -445,18 +445,12 @@
     transform: scale(1.05);
 }
 
-.ingressos-event {
+/* .ingressos-event {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
     gap: 20px;
     justify-content: start;
-}
-
-@media (min-width: 750px) {
-    .ingressos-event {
-        justify-content: center;
-    }
-}
+} */
 
 @media(max-width: 925px){
     .planodefundo{
@@ -527,9 +521,9 @@
     .btn-criarevento {
         padding: 15px 60px;
     }
-    .ingressos-event {
+    /* .ingressos-event {
         justify-content: center;
-    }
+    } */
 }
 
 @media(max-width: 600px){
@@ -628,81 +622,89 @@
     .bibi{
         margin-top: 20px;
     }
-    .ingressos-event {
+    /* .ingressos-event {
         justify-content: center;
-    }
+    } */
 }
 @media (max-width: 1292px) {
     .timePerfil {
         grid-template-columns: repeat(2, 1fr); 
     }
-    .ingressos-event {
+    /* .ingressos-event {
         justify-content: center;
-    }
+    } */
 }
 
 @media (max-width: 768px) {
     .timePerfil {
         grid-template-columns: 1fr;
     }
-    .ingressos-event {
+    /* .ingressos-event {
         justify-content: center;
+    } */
+     /* CONTAINER PRINCIPAL: Habilita o Flexbox e a quebra de linha */
+.evento-container {
+    /* Define o crescimento, encolhimento e largura base do item */
+    /* flex: 1 1 auto -> Permite que o item cresça se houver espaço e encolha até o min-width. */
+    flex: 1 1 auto; 
+    
+    /* ESSENCIAL: Define a largura máxima que o card pode atingir */
+    max-width: 400px; /* **NOVO** - Defina um tamanho máximo, por exemplo, 400px */
+    
+    min-width: 300px; /* Garante que o card não fique menor que este tamanho */
+}
+/* ITEM DO FLEXBOX: Define a largura responsiva de cada card */
+.evento-container {
+    /* Define o crescimento, encolhimento e largura base */
+    /* Garante que caibam 3 itens por linha em telas grandes (33.33%) */
+    flex: 1 1 calc(33.33% - 20px); 
+    min-width: 300px; /* Garante que o card não fique menor que este tamanho */
+    
+    /* Importante: Remove qualquer estilo de layout daqui, ele só contém o card visual. */
+}
+}
+/* 1. CONTAINER DOS EVENTOS (eventos-container) */
+.eventos-container {
+    display: flex;             /* ESSENCIAL: Habilita o layout Flexbox */
+    flex-direction: row;       /* Os itens se alinham em uma linha (padrão) */
+    flex-wrap: wrap;           /* ESSENCIAL: Permite que os itens quebrem para a próxima linha */
+    gap: 20px;                 /* Espaçamento entre os cards (ajuste se necessário) */
+
+    /* AJUSTE AQUI: O alinhamento horizontal dos itens. */
+    /* Você pode escolher: */
+    justify-content: flex-start; /* Os itens grudam na esquerda (como na sua imagem) */
+    /* justify-content: center;      * Os itens na linha incompleta (última) ficam centralizados. (Recomendado) */
+    /* justify-content: space-between; * Distribui o espaço somente entre os itens. */
+}
+
+/* 2. ITEM INDIVIDUAL DO EVENTO (evento-container) */
+.evento-container {
+    /* Define o crescimento, encolhimento e largura base do item */
+    /* O cálculo garante que caibam 3 itens por linha (com 20px de gap) */
+    flex: 1 1 calc(33.333% - 13.333px); /* Fórmula ajustada para 3 colunas e 20px de gap */
+    /* Explicação: 33.333% (para 3 itens) menos a proporção do gap */
+
+    min-width: 250px; /* Garante que o card não fique muito pequeno */
+
+    /* Adicione aqui os estilos visuais do seu card (borda, sombra, etc.) */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Garante que padding/border não aumente a largura */
+}
+
+/* 3. RESPONSIVIDADE (Para telas menores) */
+@media (max-width: 992px) {
+    /* Em telas de tablet, 2 cards por linha */
+    .evento-container {
+        /* flex: 1 1 50% (para 2 itens) menos a proporção do gap */
+        flex: 1 1 calc(50% - 10px);
     }
 }
-
-/* .ingressos-event {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: flex-start;
-}
-
-
-.ingressos-event > * {
-    flex: 1 1 calc(100%); 
-    max-width: 100%;
-}
-
-
-.ingressos-event > *:nth-child(1),
-.ingressos-event > *:nth-child(2) {
-    flex: 1 1 calc(48%);
-    max-width: 48%;
-}
-
-
-.ingressos-event > *:nth-child(3) {
-    flex: 1 1 calc(30%);
-    max-width: 30%;
-}
-
-
-.ingressos-event > *:nth-child(n+1):nth-child(-n+4),
-.ingressos-event > *:nth-child(n+5) {
-    flex: 1 1 calc(22%);
-    max-width: 22%;
-}
-
-@media (max-width: 1024px) {
-    .ingressos-event > * {
-        flex: 1 1 calc(45%);
-        max-width: 45%;
-    }
-}
-
 
 @media (max-width: 600px) {
-    .ingressos-event > * {
-        flex: 1 1 100%;
-        max-width: 100%;
+    /* Em telas de celular, 1 card por linha */
+    .evento-container {
+        flex: 1 1 100%; /* Ocupa a largura total */
     }
-} */
- 
-
-/* .ingressos-event > * {
-    
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 16px;
-    border-radius: 8px;
-} */
+}

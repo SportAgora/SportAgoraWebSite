@@ -348,18 +348,54 @@ a {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(255,255,255,0.7);
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 2;
-  font-size: 30px;
+  width: 48px;
+  height: 48px;
+  background: rgba(27, 27, 27, 0.6);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  color: var(--branco);
   border-radius: 50%;
-  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 22px;
+  transition: all .3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .carousel-btn:hover {
-  background-color: rgba(255,255,255,0.9);
+  background: var(--principal);
+  color: var(--branco);
+  border-color: var(--principal_claro);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 18px rgba(215, 38, 56, 0.4);
+}
+
+.carousel-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-btn.prev {
+  left: 15px;
+}
+
+.carousel-btn.next {
+  right: 15px;
+}
+
+/* Ícones mais modernos */
+.carousel-btn.prev::before {
+  content: "\f104"; /* icone de seta esquerda */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.carousel-btn.next::before {
+  content: "\f105"; /* icone seta direita */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
 }
 
 .prev {

@@ -106,7 +106,7 @@
 
 .carousel-arrow:hover {
     transform: translateY(-50%) scale(1.2);
-    background-color: var(--principal_escuro); 
+    background-color: var(--principal_escura); 
 }
 
 .carousel-arrow {

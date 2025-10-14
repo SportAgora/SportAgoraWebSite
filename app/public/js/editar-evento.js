@@ -419,11 +419,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function closeModal() {
-      if (!cropperModal) return;
-      cropperModal.style.display = 'none';
-      cropperModal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
+  if (!cropperModal) return;
+  cropperModal.style.display = 'none';
+  cropperModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = 'auto'; // <-- troque '' por 'auto'
+}
 
     function destroyCropper() {
       if (cropperInstance) {
@@ -434,4 +434,20 @@ document.addEventListener('DOMContentLoaded', function () {
       originalFile = null;
     }
   })();
+});
+
+window.addEventListener('load', () => {
+  const confirmCrop = document.getElementById('confirmCrop');
+  const cancelCrop = document.getElementById('cancelCrop');
+  const cropperModal = document.getElementById('cropperModal');
+
+  function restoreScroll() {
+    document.body.style.overflow = 'auto';
+  }
+
+  if (confirmCrop) confirmCrop.addEventListener('click', restoreScroll);
+  if (cancelCrop) cancelCrop.addEventListener('click', restoreScroll);
+  if (cropperModal) {
+    cropperModal.addEventListener('transitionend', restoreScroll);
+  }
 });

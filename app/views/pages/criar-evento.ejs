@@ -284,6 +284,18 @@
 
     </form>
   </main>
+  <script>
+  const ingressos = <%- JSON.stringify(
+    ingressos?.nome 
+      ? ingressos.nome.map((_, i) => ({
+          nome: ingressos.nome[i],
+          valor: parseFloat(ingressos.valor[i]),
+          quantidade: parseInt(ingressos.quantidade[i]),
+          meia: ingressos.meia[i] === "true"
+        }))
+      : (ingressos || [])
+  ) %>;
+</script>
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   <script defer src="/js/criar-evento.js"></script>
   

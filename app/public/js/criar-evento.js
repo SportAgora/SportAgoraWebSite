@@ -153,14 +153,42 @@ if (cepInput) {
 
   // Remover ingresso
   document.querySelector('#ingresso-tabela').addEventListener('click', (e) => {
-  if (e.target.classList.contains('remover-ingresso')) {
-    const linha = e.target.closest('tr');
-    const ingressoId = linha.getAttribute("data-id");
-    linha.remove();
-    // Corrigido: pegar os inputs dentro do form correto
-    document.querySelectorAll(`#evento-form input[data-id="${ingressoId}"]`)
-      .forEach(input => input.remove());
-  }
+    if (e.target.classList.contains('remover-ingresso')) {
+      const linha = e.target.closest('tr');
+      const ingressoId = linha.getAttribute("data-id");
+      linha.remove();
+      document.querySelectorAll(`#evento-form input[data-id="${ingressoId}"]`)
+        .forEach(input => input.remove());
+    }
   });
+
+  // ✅ Adiciona ingressos vindos do controller (se existir)
+  if (typeof ingressos !== "undefined" && Array.isArray(ingressos) && ingressos.length > 0) {
+    const tabela = document.querySelector('#ingresso-tabela tbody');
+    const form = document.getElementById('evento-form');
+
+    ingressos.forEach(ing => {
+      const ingressoId = Date.now() + Math.random();
+      const valorMeia = ing.meia ? (ing.valor / 2).toFixed(2) : '-';
+
+      const novaLinha = document.createElement('tr');
+      novaLinha.setAttribute("data-id", ingressoId);
+      novaLinha.innerHTML = `
+        <td>${ing.nome}${ing.meia ? ' (meia-entrada)' : ''}</td>
+        <td>${parseFloat(ing.valor).toFixed(2)}</td>
+        <td>${ing.quantidade}</td>
+        <td>${ing.meia ? `R$ ${valorMeia}` : 'Não'}</td>
+        <td><button type="button" class="remover-ingresso">❌ Remover</button></td>
+      `;
+      tabela.appendChild(novaLinha);
+
+      form.insertAdjacentHTML('beforeend', `
+        <input type="hidden" data-id="${ingressoId}" name="ingressos[nome][]" value="${ing.nome}">
+        <input type="hidden" data-id="${ingressoId}" name="ingressos[valor][]" value="${ing.valor}">
+        <input type="hidden" data-id="${ingressoId}" name="ingressos[quantidade][]" value="${ing.quantidade}">
+        <input type="hidden" data-id="${ingressoId}" name="ingressos[meia][]" value="${ing.meia}">
+      `);
+    });
+  }
 
 });

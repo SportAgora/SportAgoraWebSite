@@ -59,6 +59,7 @@ module.exports = {
       dados: req.body,
       erros: null,
       esporte: dadoesporte,
+      ingressos: req.body.ingressos || [],
       dadosNotificacao: { 
         titulo: "Foto não enviada", 
         mensagem: "É obrigatório o envio de uma foto para o evento.", 
@@ -80,6 +81,7 @@ module.exports = {
     return res.render('pages/criar-evento', {
       dados,
       erros: lista,
+      ingressos: req.body.ingressos || [],
       esporte: dadoesporte,
       dadosNotificacao: null
     });
@@ -130,6 +132,7 @@ module.exports = {
           ing_quantidade:"", 
           ing_meia:"",
         },
+        ingressos,
         esporte,
         dadosNotificacao: {
           titulo: "Erro ao criar evento",
@@ -161,6 +164,7 @@ module.exports = {
           ing_quantidade:"", 
           ing_meia:"",
         },
+        ingressos: [],
         esporte,
         dadosNotificacao: null
     });

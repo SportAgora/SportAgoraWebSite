@@ -445,7 +445,6 @@ a {
   .carousel-slide { aspect-ratio: 21 / 9; }
   .carousel-slide img {
     height: 70% !important;  
-    object-fit: fill !important; 
   }
 }
 

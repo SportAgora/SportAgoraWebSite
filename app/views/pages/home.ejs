@@ -23,12 +23,14 @@
         <link rel="stylesheet" href="/css/home.css">
         <link rel="stylesheet" href="/css/post.css">
         <link rel="stylesheet" href="/css/carrosel.css">
-            <link rel="stylesheet" href="/css/eventos.css">
-        <script src="js/darkmodeswitch.js"></script>
+        <link rel="stylesheet" href="/css/eventos.css">
+        <link rel="stylesheet" href="/css/filtro-rapido.css">
+        <link rel="stylesheet" href="/css/item-do-carrosel.css">
         <link rel="icon" href="imagens/SportAgora.png">
-                <script src="js/carrossel-home.js"></script>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-                <script src="js/carrossel.js"></script>
+        <script src="js/carrossel-home.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <script src="js/darkmodeswitch.js"></script>
+   
     </head>
 
 <body>
@@ -72,39 +74,8 @@
     <p class="event-filtros-p">Filtros rápidos</p>
 
     <!-- Carrosel -->
-   <%- include('../partials/filtros') %>
-
-    <!-- <form method="POST" action=>
-    <section class="filter-box">
-      <article class="filter-item">
-          <span class="filter-label">Filtros</span>
-      </article>
-      <article class="separator"></article>
-      <article class="filter-item">
-          <span class="filter-text">Estado</span>
-          <select class="filter-select">
-              <option>SP</option>
-              <option>RJ</option>
-              <option>BH</option>
-          </select>
-      </article>
-      <article class="filter-item">
-          <span class="filter-text">Cidade</span>
-          <select class="filter-select">
-              <option>Barueri</option>
-              <option>Jandira</option>
-              <option>Itapevi</option>
-          </select>
-      </article>
-      <article class="filter-item">
-          <span class="filter-text">Data</span>
-          <input type="date" class="filter-date">
-      </article>
-      <article class="filter-item">
-        <input type="submit" value="Filtrar" class="filter-button">
-      </article>
-  </section>
-  </form> -->
+    <%- include('../partials/filtros') %>
+    <script defer src="/js/carrossel.js"></script>
 
   
 

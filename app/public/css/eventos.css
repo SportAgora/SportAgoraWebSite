@@ -246,11 +246,11 @@
   }
   
   .evento-status.gratis {
-    background-color: var(--complementar); 
+    background-color: var(--complementar2); 
     color: var(--branco);
     text-align: center;
-    width: 50px;
-    padding: 10px;
+    width: 25%;
+    padding: 10px 20px;
   }
   
   .evento-status.pago {

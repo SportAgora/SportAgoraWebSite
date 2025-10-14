@@ -1431,14 +1431,14 @@ a {
 }
 
 .footer-bottom {
-    border-top: 1px solid var(--complementar); 
+    border-top: 1px solid W+hite; 
     padding-top: 1rem;
     text-align: center;
 }
 
 .copyright {
     font-size: 0.85rem;
-    color: var(--branco );
+    color: white;
     margin: 0;
 }
 

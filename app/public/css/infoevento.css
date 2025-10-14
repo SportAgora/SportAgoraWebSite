@@ -1,4 +1,4 @@
-INFORMAÇÔES DO EVENTO
+/* INFORMAÇÔES DO EVENTO */
 @import url('/apis/fontsMontserrat.css');
 @import url('/apis/uiconsregularrounded.css');
 
@@ -92,7 +92,7 @@ INFORMAÇÔES DO EVENTO
 .box-esquerda {
     flex: 1;
     margin-right: 20px;
-    margin-left: 30px;
+    margin-left: 120px;
     background-color: var(--branco);
     color: var(--preto);
     padding: 20px;

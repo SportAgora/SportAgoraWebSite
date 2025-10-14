@@ -271,7 +271,7 @@ strong {
 
 .logo a {
     color: var(--branco);
-    font-size: 1.8em;
+    font-size:48px;
     font-weight: 700;
     text-decoration: none;
     transition: color 0.3s ease;

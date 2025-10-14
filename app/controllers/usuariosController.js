@@ -317,7 +317,8 @@ autenticarUsuario: async (req, res, tipo = "c") => {
             console.log(errors);
             return res.render(pag,{
                 dados: req.body,
-                erros: errors
+                erros: errors,
+                dadosNotificacao: null
             })
         }
 

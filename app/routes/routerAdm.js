@@ -5,6 +5,7 @@ const usuariosController = require("../controllers/usuariosController");
 const uploadFile = require("../helpers/uploader")("./app/public/imagens/pratique");
 const uploadFileUsuario = require("../helpers/uploader")("./app/public/imagens/usuarios");
 const uploadFileEvento = require("../helpers/uploader")("./app/public/imagens/evento");
+const uploadFileEsporte = require("../helpers/uploader")("./app/public/imagens/esportes");
 
 const verificarAdm = admController.verificarAdm;
 
@@ -54,7 +55,7 @@ router.post("/eventos/editar", verificarAdm, uploadFileEvento(["foto"]), (req, r
 });
 
 
-router.post('/criar-esporte', verificarAdm, uploadFileEvento(['foto','foto2']),
+router.post('/criar-esporte', verificarAdm, uploadFileEsporte(['foto','foto2']),
   admController.criarEsporte
 );
 

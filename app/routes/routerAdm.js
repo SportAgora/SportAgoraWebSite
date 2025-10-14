@@ -54,7 +54,7 @@ router.post("/eventos/editar", verificarAdm, uploadFileEvento(["foto"]), (req, r
 });
 
 
-router.post('/criar-esporte', verificarAdm, uploadFile(['foto','foto2']),
+router.post('/criar-esporte', verificarAdm, uploadFileEvento(['foto','foto2']),
   admController.criarEsporte
 );
 

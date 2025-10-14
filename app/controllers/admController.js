@@ -22,13 +22,14 @@ async function carregarEventosErro (errors,req,res){
             paginador: {
                 pagina_atual: pagina,
                 total_paginas
-            },
+            }
         },
         dadosNotificacao: { 
             titulo: errors.titulo || "Erro", 
             mensagem: errors.mensagem || "Ocorreu um erro", 
             tipo: "error", 
-        }
+        },
+            pesquisa:''
     })
 } 
 

@@ -1,37 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solicitação Enviada</title>
-  <link rel="stylesheet" href="/css/solicitacao-enviada.css">
-  <link rel="stylesheet" href="/css/base.css">
-  <link rel="icon" href="imagens/SportAgora.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="stylesheet" href="/css/enviada.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <title>Solicitacao enviada</title>
 </head>
-
 <body>
-  <header>
-    <%- include('../partials/navbar'); %>
+    <header class="container-ver-eventos">
+    <button class="botao-seta" onclick="window.history.back()">
+      <img src="/imagens/left-arrow.png" alt="Seta">
+    </button>
+    <span class="ver-eventos">Voltar</span>
   </header>
-
-  <main class="main_assinatura">
-    <section class="sec">
-      <section class="info_assinatura">
-        <article class="icon_check" aria-hidden="true">📩</article>
-        <h1>Solicitação enviada com sucesso!</h1>
-        <p>
-          Recebemos sua solicitação para cadastro de local.<br>
-          Nossa equipe vai analisar as informações e retornaremos em breve.<br>
-          Você pode acompanhar o status no seu painel.
-        </p>
-        <section class="btn_group">
-          <button class="btn_solicitacao btn_primary" onclick="location.href='/home'">Voltar para o Início</button>
-        </section>
-      </section>
-    </section>
+  <main>
+     <p>Sua solicitação para <%=dados.nome%> foi enviada com sucesso!</p>
   </main>
-
-  <%- include('../partials/footer'); %>
-  
+   
 </body>
 </html>

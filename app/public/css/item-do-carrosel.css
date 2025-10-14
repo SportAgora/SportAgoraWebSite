@@ -23,7 +23,7 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    color: var(--branco);
+    color: white;
   }
   
   .hero-content h1 {

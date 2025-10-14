@@ -22,7 +22,21 @@ module.exports = {
   }),
   body("descricao")
     .isLength({ min: 100 }).withMessage("O texto está muito curto.")
-    .isLength({ max: 1500 }).withMessage("O texto está muito longo.")
+    .isLength({ max: 5000 }).withMessage("O texto está muito longo."),
+  body('cep')
+    .isLength({ min: 8, max: 9 }).withMessage("O CEP deve ter 8 dígitos (ou 9 com o hífen)."),
+  body('numero')
+    .isLength({ min: 1, max: 10 }).withMessage("O número deve ter entre 1 e 10 dígitos.")
+    .isAlphanumeric().withMessage("O número deve conter apenas letras e números."),
+  body('complemento')
+    .isLength({ max: 255 }).withMessage("O complemento deve ter no máximo 255 caracteres."),
+  body('uf')
+    .isLength({ min: 2, max: 2 }).withMessage("A UF deve ter 2 caracteres.")
+    .isAlpha().withMessage("A UF deve conter apenas letras."),
+  body('cidade')
+    .isLength({ min: 2, max: 30 }).withMessage("A cidade deve ter entre 2 e 30 caracteres.")
+    .isAlpha('pt-BR', { ignore: ' ' }).withMessage("A cidade deve conter apenas letras e espaços."),
+
 ],
   
 
@@ -99,7 +113,30 @@ module.exports = {
     return res.redirect("/evento?id=" + resultado);
   } catch (e) {
     console.error(e);
-    return res.redirect("/error");
+    res.render("pages/criar-evento", {
+        "erros": null, 
+        "dados": {
+          nome:"",
+          foto:"", 
+          data_hora:"", 
+          descricao:"", 
+          cep:"", 
+          numero:"", 
+          complemento:"",
+          uf:"",
+          cidade:"",
+          ing_nome:"", 
+          ing_valor:"", 
+          ing_quantidade:"", 
+          ing_meia:"",
+        },
+        esporte,
+        dadosNotificacao: {
+          titulo: "Erro ao criar evento",
+          mensagem: "Ocorreu um erro ao criar o evento. Por favor, tente novamente.",
+          tipo: "error"
+        }
+    });
   }
 },
 

@@ -35,7 +35,7 @@
         evento_descricao VARCHAR(5000) NOT NULL,
         evento_endereco_cep CHAR(8) NOT NULL,
         evento_endereco_numero CHAR(4) NOT NULL,
-        evento_endereco_complemento VARCHAR(40) NOT NULL,
+        evento_endereco_complemento VARCHAR(100) NOT NULL,
         evento_endereco_uf CHAR(2) NOT NULL,
         evento_endereco_cidade VARCHAR(30) NOT NULL,
         evento_ativo BOOLEAN DEFAULT 1,
@@ -200,3 +200,6 @@
     ('Arena Central', 'imagens/esportes/futebol_banner.png', 'Rua A, 123', -23.5505, -46.6333, 'https://www.google.com/maps'),
     ('Campo Verde', 'imagens/esportes/futebol_banner.png', 'Av. B, 456', -23.5580, -46.6400, 'https://www.google.com/maps');
     INSERT INTO local_esporte (local_id, esporte_id) VALUES (1,1), (1,2), (2,2);
+
+!-- roda esse aqui pedro
+ALTER TABLE eventos MODIFY COLUMN evento_endereco_complemento VARCHAR(255);

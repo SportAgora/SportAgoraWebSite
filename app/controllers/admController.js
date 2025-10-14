@@ -305,6 +305,7 @@ module.exports = {
 
     editarEvento: async (req, res) => {
     try {
+        const evento = await AdmModel.buscarEventoPorId(req.body.evento_id);
         const { evento_id, nome, descricao, data_hora, cep, numero, complemento, esporte_id } = req.body;
         const foto = req.files && req.files.foto ? `imagens/evento/${req.files.foto[0].filename}` : evento.evento_foto;      
 

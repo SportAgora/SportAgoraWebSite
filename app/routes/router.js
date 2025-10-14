@@ -29,7 +29,7 @@ function verificarAutenticacao(req, res, next) {
 }
 
 function verificarOrganizador(req, res, next) {
-  if (req.session && req.session.usuario && req.session.usuario.tipo === "o") {
+  if (req.session && req.session.usuario && (req.session.usuario.tipo === "o" || req.session.usuario.tipo === "a")) {
     return next();
   }
   res.redirect("/planos");

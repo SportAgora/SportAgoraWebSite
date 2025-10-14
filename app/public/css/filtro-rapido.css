@@ -50,11 +50,11 @@
   }
   
   .evento-status.gratis {
-    background-color: var(--complementar); 
+    background-color: var(--complementar2); 
     color: var(--branco);
     text-align: center;
-    width: 50px;
-    padding: 10px;
+    /* width: 50px; */
+    padding: 5px;
   }
   
   .evento-status.pago {
@@ -85,7 +85,7 @@
   
   .evento-btn {
     background-color: var(--principal);
-    color: var(--branco);
+    color: white;
     border: none;
     padding: 15px 25px;
     border-radius: 25px;

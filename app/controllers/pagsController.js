@@ -6,7 +6,7 @@ module.exports = {
     carregarHome: async (req,res) =>{
         try{
             const pagina = parseInt(req.query.pagina) || 1;
-            const limite = 18;
+            const limite = 17;
             const offset = (pagina - 1) * limite;
             const resultado = await PagsModel.EventosListarComPaginacao(offset, limite) 
 

@@ -44,12 +44,11 @@
 }
 
 .carousel-item img {
-    width: 35%;
-    height: 150px;
     object-fit: cover;
     border-radius: 50%; 
     height: auto;
     transition: transform 0.3s, border 0.5s ease;
+    width: 150px; height: 150px;
 }
 
 .carousel-item:hover img {
@@ -114,6 +113,24 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.carousel-home img {
+    width: 100%;
+    height: 300px; 
+    
+    /* Use 'cover' se quiser que a imagem preencha a área, aceitando cortes */
+    /* Use 'contain' se quiser que a imagem inteira apareça, aceitando barras laterais/topo/fundo */
+    object-fit: cover; 
+    
+    /* Garante que ela se ajuste à borda do `post-box` */
+    border-radius: 20px 20px 0 0; 
+}
+
+/* Garante que o container do carrossel tenha uma altura definida */
+.carousel-home {
+    height: 300px; /* Defina a mesma altura das imagens para evitar que o conteúdo pule */
+    position: relative;
+    overflow: hidden;
+}
 /* Responsiveness */
 
 @media (max-width: 900px) {

@@ -225,6 +225,7 @@
   
   .evento-box:hover {
     transform: scale(1.05);
+    cursor: pointer;
   }
   
   .evento-img {
@@ -270,8 +271,11 @@
     font-style: normal;
     font-weight: bold;
     margin: 20px 0;
+    max-width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
   }
-  
   .evento-detalhes {
     color: var(--cinza_escuro);
     font-size: 18px; 

@@ -98,6 +98,26 @@
         <td colspan="5">Nenhum registro encontrado.</td>
       </tr>
     <% } %>
+    <section class="paginacao">
+    <% if (paginador.total_paginas > 1) { %>
+      <section class="paginador-botoes">
+        <% if (paginador.pagina_atual > 1) { %>
+          <a href="/?pagina=<%= paginador.pagina_atual - 1 %>">&laquo; Anterior</a>
+        <% } %>
+
+        <% for (let i = 1; i <= paginador.total_paginas; i++) { %>
+          <a href="/?pagina=<%= i %>"
+            class="<%= i === paginador.pagina_atual ? 'ativo' : '' %>">
+            <%= i %>
+          </a>
+        <% } %>
+
+        <% if (paginador.pagina_atual < paginador.total_paginas) { %>
+          <a href="/?pagina=<%= paginador.pagina_atual + 1 %>">Próxima &raquo;</a>
+        <% } %>
+      </section>
+    <% } %>
+    </section>
 </section>
 
 

@@ -8,15 +8,15 @@ function carregarCarrossel() {
   const indicators = document.getElementById("carousel-indicators");
 
   eventos_js.forEach((evento, index) => {
-    const div = document.createElement("div");
-    div.classList.add("carousel-slide");
+    const section = document.createElement("section");
+    section.classList.add("carousel-slide");
     const img = document.createElement("img");
     img.src = evento.imagem;
     img.alt = evento.titulo;
-    div.appendChild(img);
-    inner.appendChild(div);
+    section.appendChild(img);
+    inner.appendChild(section);
 
-    const indicador = document.createElement("div");
+    const indicador = document.createElement("section");
     indicador.addEventListener("click", () => irParaSlide(index));
     indicators.appendChild(indicador);
   });
@@ -28,7 +28,7 @@ function carregarCarrossel() {
 
 function atualizarSlide() {
   const inner = document.getElementById("carousel-inner");
-  const indicadores = document.querySelectorAll(".carousel-indicators div");
+  const indicadores = document.querySelectorAll(".carousel-indicators section");
 
   inner.style.transform = `translateX(-${slideAtual * 100}%)`;
 

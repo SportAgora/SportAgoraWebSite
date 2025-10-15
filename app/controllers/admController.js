@@ -245,7 +245,7 @@ module.exports = {
         try{
             const pesquisa = req.query.pesquisa || '';
             const pagina = parseInt(req.query.pagina) || 1;
-            const limite = 10;
+            const limite = 50;
             const offset = (pagina - 1) * limite;
             const resultado = await AdmModel.EventosListarComPaginacaoPesquisa(offset, limite, pesquisa || "")
 

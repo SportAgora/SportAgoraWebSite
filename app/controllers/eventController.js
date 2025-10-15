@@ -289,9 +289,7 @@ editarEvento: async (req, res) => {
   }
 
   try {
-    console.log(req.body)
     const eventoExistente = await OrganizadorModel.visualizarEventoId(req.body.evento_id);
-    console.log(eventoExistente)
     if (eventoExistente.usuario_id !== req.session.usuario.id) {
       return res.render("pages/error", {error:"403", mensagem:"Você não tem permissão de acessar esta página."});
     }

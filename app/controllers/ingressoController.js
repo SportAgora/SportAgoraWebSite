@@ -179,10 +179,17 @@ carregarInscricaoEvento: async (req, res) => {
         }
 
         ingresso.evento_endereco_cep = ingresso.evento_endereco_cep.replace(/\D/g, '');
-        const { data } = await axios.get(`https://viacep.com.br/ws/${ingresso.evento_endereco_cep}/json/`);
-        if(data.erro) return res.render('pages/error', {error:500, mensagem:"Erro ao buscar endereço do evento."});
+        const { data } = await axios.get(`https://viacep.com.br/ws/${ingresso.evento_endereco_cep}/json/`, {
+        timeout: 10000, // 10 seconds
+        family: 4
+        });
+        if(data.erro) {
+        console.log('deu erro') 
+        return res.render('pages/error', {error:500, mensagem:"Erro ao buscar endereço do evento."});
+        }
         ingresso.evento_endereco_completo = data
-        res.render('pages/sobre_ingresso', { ingresso });
+        console.log('deu certo')
+        return res.render('pages/sobre_ingresso', { ingresso });
     },
     carregarValidarIngresso: async (req, res) => {
         id = req.query.id;
@@ -204,7 +211,6 @@ carregarInscricaoEvento: async (req, res) => {
     validarIngresso: async (req, res) => {
     const { inscricao_id, evento_id } = req.body;
     const ingresso = await ingressosModel.buscarInscricaoPorId(inscricao_id);
-    console.log(ingresso)
 
     if (!ingresso) return res.json({ error: true, message: "Inscrição não encontrada." });
     if (ingresso.evento_id != evento_id) return res.json({ error: true, message: "Essa inscrição não é deste evento." });

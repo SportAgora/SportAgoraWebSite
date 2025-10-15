@@ -18,13 +18,17 @@ module.exports = {
                         const resposta = await axios.get(`https://viacep.com.br/ws/${e.evento_endereco_cep}/json/`);
                         e.cidade = resposta.data.localidade || '';
                         e.estado = resposta.data.uf || '';
+                        console.log('resposta:',resposta)
                     } catch (error) {
                         e.cidade = '';
                         e.estado = '';
+                        console.log('error:',error)
+                        console.log('deu errado pra carai')
                     }
                 } else {
                     e.cidade = '';
                     e.estado = '';
+                    console.log('deu errado pra carai v2')
                 }
                 let esporte = await PagsModel.buscarEsporteId(e.esporte_id)
                 e.esporte = esporte.esporte_nome

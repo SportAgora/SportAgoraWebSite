@@ -298,6 +298,25 @@
 </script>
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   <script defer src="/js/criar-evento.js"></script>
+  <script>
+document.getElementById("evento-form").addEventListener("submit", function(e) {
+  const tabela = document.querySelector("#ingresso-tabela tbody");
+  const linhas = tabela.querySelectorAll("tr");
+
+  if (linhas.length === 0) {
+    e.preventDefault();
+    new Notify({
+      status: 'warning',
+      title: 'Aviso',
+      text: 'Você precisa adicionar pelo menos um ingresso antes de publicar o evento!',
+      effect: 'fade',
+      speed: 300,
+      autoclose: true,
+      autotimeout: 3000
+    });
+  }
+});
+</script>
   
     <%- include('../partials/footer'); %>
 </body>

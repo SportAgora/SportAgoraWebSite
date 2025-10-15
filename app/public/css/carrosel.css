@@ -159,3 +159,6 @@
         flex: 0 0 60%; /* Exibir 1 item em telas muito pequenas */
     }
 }
+.carousel-btn{
+    color: white;
+}

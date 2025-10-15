@@ -465,7 +465,7 @@ a {
   .carousel-inner { align-items: stretch; }
   .carousel-slide { aspect-ratio: 16 / 9; }  
   .carousel-slide img {
-    height: 100% !important;
+    /* height: 100% !important; */
     object-fit: cover !important;
   }
 

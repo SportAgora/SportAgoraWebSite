@@ -183,16 +183,11 @@ label {
 .main_sobreEvento input[type=submit]:hover{
   background-color: var(--principal_escura);
 }
+
 .main_sobreEvento input:focus, select:focus {
   border-color: var(--verde_especial);
   box-shadow: 0 0 5px rgba(0,123,255,0.25);
   outline: none;
-}
-.classification, .datetime, .location-fields {
-  display: inline;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 10px;
 }
 
 .location-fields {
@@ -461,6 +456,13 @@ label {
   flex-wrap: wrap;
   margin-top: 10px;
 }
+
+.datetime {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 @media (max-width: 768px) {
   .classification, .datetime, .location-fields {
     flex-direction: column;

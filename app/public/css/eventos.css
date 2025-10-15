@@ -338,6 +338,7 @@
 @media (max-width: 767px) {
     .evento-box {
         width: 100%; 
+        min-width: 100%;
         margin-bottom: 20px;
         height: auto; 
     }

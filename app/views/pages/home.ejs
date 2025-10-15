@@ -9,7 +9,7 @@
           const eventos_js = <%- JSON.stringify(eventos.slice(0, 5).map(e => ({
             imagem: e.evento_foto,
             titulo: e.evento_nome,
-            local: `${e.cidade} - ${e.estado}`,
+            local: `${e.evento_endereco_cidade} - ${e.evento_endereco_uf}`,
             data: new Date(e.evento_data_hora).toLocaleString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
             link: `/evento?id=${e.evento_id}`
           }))) %>;
@@ -77,8 +77,6 @@
     <%- include('../partials/filtros') %>
     <script defer src="/js/carrossel.js"></script>
 
-  
-
   <article class="carousel-title">Eventos Em Progresso</article>
   <section class="container-eventos">
     <% if(eventos_qtd > 5) { %>
@@ -93,7 +91,7 @@
       <img src="/<%= e.evento_foto %>" alt="Imagem do Evento" class="evento-img">
       <article class="evento-status gratis"><%= e.esporte%></article>
       <h2 class="evento-nome"><%= e.evento_nome %></h2>
-      <p class="evento-detalhes">  <%= e.cidade %>, <%= e.estado %><br><br><%= dataFormatada %></p>
+      <p class="evento-detalhes">  <%= e.evento_endereco_cidade %>, <%= e.evento_endereco_uf %><br><br><%= dataFormatada %></p>
       <button class="evento-btn" onclick="location.href='/evento?id=<%= e.evento_id %>'">Participar</button>
     </section>
 

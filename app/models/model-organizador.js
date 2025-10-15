@@ -7,7 +7,7 @@ const OrganizadorModel = {
   try {
     const { 
       user, esporte, nome, foto, data_hora, 
-      cep, numero, complemento, uf, cidade, descricao
+      cep, numero, complemento, uf, cidade, descricao, rua, estado
     } = eventData;
 
     const event = {
@@ -18,10 +18,12 @@ const OrganizadorModel = {
       evento_data_publicacao: moment().format('YYYY-MM-DD HH:mm:ss'),
       evento_data_hora: data_hora,
       evento_descricao: descricao,
+      evento_endereco_rua: rua,
       evento_endereco_numero: numero,
       evento_endereco_complemento: complemento,
       evento_endereco_uf: uf,
       evento_endereco_cidade: cidade,
+      evento_endereco_estado: estado,
       evento_endereco_cep: cep
     };
 
@@ -199,10 +201,12 @@ const OrganizadorModel = {
         evento_data_hora = ?, 
         evento_descricao = ?, 
         evento_endereco_cep = ?, 
+        evento_endereco_rua = ?,
         evento_endereco_numero = ?, 
         evento_endereco_complemento = ?, 
         evento_endereco_uf = ?, 
-        evento_endereco_cidade = ?
+        evento_endereco_cidade = ?,
+        evento_endereco_estado = ?
       WHERE evento_id = ?`,
       [
         dados.esporte_id,
@@ -211,10 +215,12 @@ const OrganizadorModel = {
         dados.evento_data_hora,
         dados.evento_descricao,
         dados.evento_endereco_cep,
+        dados.evento_endereco_rua,
         dados.evento_endereco_numero,
         dados.evento_endereco_complemento,
         dados.evento_endereco_uf,
         dados.evento_endereco_cidade,
+        dados.evento_endereco_estado,
         evento_id
       ]
     );

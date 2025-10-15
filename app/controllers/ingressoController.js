@@ -178,16 +178,6 @@ carregarInscricaoEvento: async (req, res) => {
             });
         }
 
-        ingresso.evento_endereco_cep = ingresso.evento_endereco_cep.replace(/\D/g, '');
-        const { data } = await axios.get(`https://viacep.com.br/ws/${ingresso.evento_endereco_cep}/json/`, {
-        timeout: 10000, // 10 seconds
-        family: 4
-        });
-        if(data.erro) {
-        console.log('deu erro') 
-        return res.render('pages/error', {error:500, mensagem:"Erro ao buscar endereço do evento."});
-        }
-        ingresso.evento_endereco_completo = data
         console.log('deu certo')
         return res.render('pages/sobre_ingresso', { ingresso });
     },

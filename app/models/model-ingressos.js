@@ -105,6 +105,7 @@ module.exports= {
     e.evento_foto,
     e.evento_data_hora,
     e.evento_endereco_cep,
+    e.evento_endereco_rua,
     e.evento_endereco_numero,
     e.evento_endereco_complemento,
     e.evento_endereco_uf,

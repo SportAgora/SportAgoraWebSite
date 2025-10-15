@@ -88,7 +88,7 @@ module.exports = {
   }
 
   try {
-    const { nome, esporte, data, hora,  descricao, cep, numero, complemento, uf, cidade, ingressos } = req.body;
+    const { nome, esporte, data, hora,  descricao, cep, numero, complemento, uf, cidade, ingressos, rua, estado } = req.body;
 
     const evento = {
       user: req.session.usuario.id,
@@ -101,7 +101,9 @@ module.exports = {
       numero,
       complemento,
       uf,
-      cidade
+      cidade,
+      rua,
+      estado:uf
     };
 
     const resultado = await OrganizadorModel.createEvent(evento);
@@ -122,7 +124,9 @@ module.exports = {
           foto:"", 
           data_hora:"", 
           descricao:"", 
-          cep:"", 
+          cep:"",
+          rua:'',
+          estado:'',
           numero:"", 
           complemento:"",
           uf:"",
@@ -163,6 +167,8 @@ module.exports = {
           ing_valor:"", 
           ing_quantidade:"", 
           ing_meia:"",
+          rua:'',
+          estado:''
         },
         ingressos: [],
         esporte,
@@ -182,25 +188,6 @@ module.exports = {
         const resultado = await OrganizadorModel.visualizarEventosUsuarioPaginacao(req.session.usuario.id, offset, limite) 
 
         const total_paginas = Math.ceil(resultado.total / limite);
-
-        for (const evento of resultado.eventos) {
-          if (evento.evento_endereco_cep) {
-            try {
-              const resposta = await axios.get(`https://viacep.com.br/ws/${evento.evento_endereco_cep}/json/`);
-              evento.logradouro = resposta.data.logradouro || '';
-              evento.cidade = resposta.data.localidade || '';
-              evento.estado = resposta.data.uf || '';
-            } catch (error) {
-              evento.logradouro = '';
-              evento.cidade = '';
-              evento.estado = '';
-            }
-          } else {
-            evento.logradouro = '';
-            evento.cidade = '';
-            evento.estado = '';
-          }
-        }
 
         return res.render('pages/meus-eventos', {
         eventos: resultado.eventos,
@@ -222,28 +209,7 @@ module.exports = {
       dados.ingressos= await OrganizadorModel.visualizarIngressoEventoId(req.query.id)
       const inscritos = await OrganizadorModel.contarUsuariosEventoId(req.query.id)
 
-      if (dados.usuario_id == req.session.usuario.id) {
-        
-          if (dados.evento_endereco_cep) {
-            try {
-              const resposta = await axios.get(`https://viacep.com.br/ws/${evento.evento_endereco_cep}/json/`);
-              dados.logradouro = resposta.data.logradouro || '';
-              dados.cidade = resposta.data.localidade || '';
-              dados.estado = resposta.data.uf || '';
-              dados.bairro = resposta.data.uf || '';
-            } catch (error) {
-              dados.logradouro = '';
-              dados.cidade = '';
-              dados.estado = '';
-              dados.bairro = '';
-            }
-          } else {
-            dados.logradouro = '';
-            dados.cidade = '';
-            dados.estado = '';
-            dados.bairro = '';
-          }
-        
+      if (dados.usuario_id == req.session.usuario.id) {        
   
       res.render("pages/editar-evento", {
           "erros": null, 
@@ -322,6 +288,7 @@ editarEvento: async (req, res) => {
         bairro = resposta.data.bairro || '';
         cidadeAPI = resposta.data.localidade || cidade;
         ufAPI = resposta.data.uf || uf;
+        estadoAPI = resposta.data.estado || estado;
       } catch {
         logradouro = '';
         bairro = '';
@@ -339,6 +306,8 @@ editarEvento: async (req, res) => {
       evento_endereco_complemento: complemento,
       evento_endereco_uf: ufAPI,
       evento_endereco_cidade: cidadeAPI,
+      evento_endereco_rua: logradouro || eventoExistente.evento_endereco_rua,
+      evento_endereco_estado: estadoAPI || eventoExistente.evento_endereco_estado
     };
 
     await OrganizadorModel.atualizarEvento(req.body.evento_id, eventoAtualizado);
@@ -376,7 +345,7 @@ apagarEvento: async (req,res) => {
 
 
     const html = require('../helpers/email-notificacao')(evento.evento_nome, dataFormatada, process.env.URL_BASE);
-        console.log("configurou o email")
+
         enviarEmail(enderecoemail, "Seu evento está chegando", null, html, (erro)=>{
           if (erro) {
           return res.send('sucesso')

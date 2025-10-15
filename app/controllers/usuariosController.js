@@ -30,7 +30,7 @@ module.exports = {
     
     const errors = validationResult(req);
         if(!errors.isEmpty()) {
-            console.log(errors);
+
             return res.render('pages/registro',{
                 dados: req.body,
                 erros: errors,
@@ -76,10 +76,10 @@ module.exports = {
         process.env.SECRET_KEY
       );
 
-      console.log("criou o token")
+
 
       const html = require('../helpers/email-ativar-conta')(process.env.URL_BASE, token, nome);
-      console.log("configurou o email")
+
       enviarEmail(email, "Cadastro no site SportAgora", null, html, (erro)=>{
         if (erro) {
         return res.render("pages/registro", {
@@ -121,7 +121,7 @@ module.exports = {
     // Busca o usuário
     const user = await UsuarioModel.findId(decoded.userId);
     if (!user) {
-      console.log({ message: "Usuário não encontrado" });
+
       return res.render("pages/login", {
         erros: null,
         dadosNotificacao: {
@@ -150,7 +150,7 @@ module.exports = {
     });
 
   } catch (err) {
-    console.log({ message: "Token inválido ou expirado", err });
+
     res.render("pages/login", {
       erros: ["Token inválido ou expirado"],
       dadosNotificacao: null,
@@ -225,14 +225,14 @@ module.exports = {
       });
 
     } catch (e) {
-      console.log(e);
+
     }
   },
 
   validarTokenNovaSenha: async (req, res) => {
     //receber token da URL
     const token = req.query.token;
-    console.log(token);
+
     //validar token
     jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
       if (err) {
@@ -273,7 +273,7 @@ module.exports = {
   
   resetarSenha: async (req, res) => {
     const erros = validationResult(req);
-    console.log(erros);
+
     if (!erros.isEmpty()) {
       return res.render("pages/resetar-senha", {
         erros: erros,
@@ -285,14 +285,12 @@ module.exports = {
     try {
       //gravar nova senha
       senha = await bcrypt.hash(req.body.senha, 10);
-      console.log(req.body.usu_id);
-      console.log(senha);
-      console.log(req.body.senha);
+
       const resetar = await UsuarioModel.atualizar(req.body.usu_id, {senha:senha} );
-      console.log(resetar);
+
       res.redirect("/login");
     } catch (e) {
-      console.log(e);
+
     }
   },
 
@@ -314,7 +312,7 @@ autenticarUsuario: async (req, res, tipo = "c") => {
 
       const errors = validationResult(req);
         if(!errors.isEmpty()) {
-            console.log(errors);
+
             return res.render(pag,{
                 dados: req.body,
                 erros: errors,
@@ -422,7 +420,7 @@ autenticarUsuario: async (req, res, tipo = "c") => {
     const user = req.session.usuario;
     const userinfos = await UsuarioModel.findByEmail(user.email);
     userinfos.usu_nasc = userinfos.usu_nasc ? userinfos.usu_nasc.toISOString().split('T')[0] : "";
-    console.log(userinfos)
+
     res.render("pages/editar-perfil", {
         valores: {
         id: userinfos.usu_id,
@@ -472,7 +470,7 @@ autenticarUsuario: async (req, res, tipo = "c") => {
             if(erroMulter != null ){
                 lista.errors.push(erroMulter);
             } 
-            console.log(lista)
+
             return res.render("pages/editar-perfil", { 
               erros: lista, 
               valores: {
@@ -506,7 +504,7 @@ autenticarUsuario: async (req, res, tipo = "c") => {
                   delete dadosForm.senha; // Remove do objeto para não sobrescrever
               }
             if (!req.files || (!req.files.foto && !req.files.banner)) {
-                console.log("Nenhuma imagem enviada.");
+
               } else {
                 if (req.files.foto) {
                   const caminhoFoto = "imagens/perfil/" + req.files.foto[0].filename;
@@ -521,7 +519,6 @@ autenticarUsuario: async (req, res, tipo = "c") => {
                 }
               }
 
-              console.log(dadosForm)
             let resultUpdate = await UsuarioModel.atualizar(req.session.usuario.id, dadosForm);
             if (resultUpdate) {
                 if (resultUpdate.changedRows == 1) {
@@ -541,7 +538,6 @@ autenticarUsuario: async (req, res, tipo = "c") => {
                   var valores = usuario;
                   valores.nasc = result.usu_nasc;
                   valores.senha = "";
-                  console.log("salvo")
 
                   //salvo certo
                   res.render("pages/editar-perfil", {
@@ -554,8 +550,7 @@ autenticarUsuario: async (req, res, tipo = "c") => {
                   }
                   });
                 } else {
-                  //salvo certo mas sem alterar nada
-                  console.log("nada pra salvar")
+
                   res.render("pages/editar-perfil", {
                     erros: null,
                     valores: dadosForm,
@@ -569,7 +564,7 @@ autenticarUsuario: async (req, res, tipo = "c") => {
             }
 
     } catch(e){
-      console.log(e)
+
       res.render("pages/editar-perfil", {valores: req.body, erros: erros,
         dadosNotificacao: {  
           titulo: "Erro ao atualizar o perfil!", 

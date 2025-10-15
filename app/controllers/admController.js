@@ -13,7 +13,7 @@ async function carregarEventosErro (errors,req,res){
     const resultado = await AdmModel.EventosListarComPaginacao(offset, limite) 
     const total_paginas = Math.ceil(resultado.total / limite);
     const esportes = await AdmModel.EsportFindAll();
-    console.log(errors)
+
     return res.render('pages/adm/eventos', {  
         dados: {
             eventos: resultado.eventos,
@@ -173,7 +173,7 @@ module.exports = {
     cadastrarUsuario: async (req, res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
-            console.log(errors);
+
             return res.render('pages/adm/novousuario',{
                 dados: req.body,
                 erros: errors
@@ -215,8 +215,7 @@ module.exports = {
             });
             
             const usuario = await AdmModel.UserFindByEmail(email);
-            
-            console.log("Sucesso! " + usuario)
+
     
             res.redirect("/adm/usuarios");
             
@@ -233,9 +232,9 @@ module.exports = {
     apagarUsuario: async (req,res) => {
         try{
             const id = req.params.id
-            console.log(id)
+
             const user = await AdmModel.UserExcluir(id)
-            console.log("Sucesso! " + user)
+
             res.redirect('/adm/usuarios')
         }catch(e){
             console.error(e);
@@ -336,7 +335,6 @@ module.exports = {
             const errors = validationResult(req);
             const {novoEsporte} = req.body;
             var foto, foto2;
-            console.log(req.files)
 
             if (req.session.erroMulter) {
             return carregarEventosErro(
@@ -345,7 +343,7 @@ module.exports = {
             );
             }
             if (!errors.isEmpty()) {
-            console.log(errors);
+
             return carregarEventosErro(
                 { titulo: "Erro ao criar esporte", mensagem: errors.array().map(e => e.msg).join(' ') },
                 req, res
@@ -353,7 +351,7 @@ module.exports = {
             }
 
             if (!req.files) {
-                console.log("Nenhuma foto enviada");
+
                 return carregarEventosErro({titulo:"Erro ao enviar foto", mensagem: "O envio da foto do esporte é obrigatório."} ,req,res);
             } else {
 
@@ -380,8 +378,6 @@ module.exports = {
 
             const esporteReturn = await AdmModel.EsportCreate({nome:novoEsporte, foto:foto, banner:foto2});
             
-            console.log("Sucesso ao criar esporte: " + esporteReturn)
-    
             res.redirect("/adm/eventos");
             
             } else {
@@ -417,7 +413,7 @@ module.exports = {
                 return carregarEventosErro({titulo:"Denúncias", mensagem: "Evento não encontrado."},req,res);
             }
             const resultado = await AdmModel.DenunciasFindEventoId(evento_id)
-            console.log(resultado)
+
             res.render('pages/adm/denuncias', {
                 evento,
                 denuncias: resultado,
@@ -429,7 +425,7 @@ module.exports = {
 
     },
     apagarDenuncia: async (req,res) => {
-        console.log("chegou")
+
         try{
 
             const den_id = req.query.den_id || null;
@@ -491,7 +487,7 @@ module.exports = {
         }
 
         if (!errors.isEmpty()) {
-            console.log("Erros de validação/multer:", errors.array());
+
             return carregarUsuarioErro(id, req, res, errors, {
                 titulo: "Erro de Atualização", 
                 mensagem: "Verifique os dados inseridos e tente novamente.", 
@@ -594,12 +590,10 @@ module.exports = {
             const solicitacoes_pesquisa = req.body.sp || '';
             const locais_pesquisa = req.body.lp || '';
             
-            console.log(solicitacoes_pesquisa)
-            console.log(locais_pesquisa)
+
             const solicitacoes = await AdmModel.SolicitacoesFindAll(solicitacoes_pesquisa);
             const locais = await AdmModel.LocalFindAll(locais_pesquisa);
-            console.log('solicitacoes:', solicitacoes)
-            console.log('locais:', locais)
+
             res.render('pages/adm/solicitacao_local', { solicitacoes, locais, sp:solicitacoes_pesquisa, lp:locais_pesquisa });
         } catch (e) {
             console.error(e);
@@ -703,7 +697,7 @@ module.exports = {
                 link
             });
 
-            console.log(localId)
+
 
             // Associar esportes
             if(esportes){
@@ -780,7 +774,7 @@ module.exports = {
 
             // Extrai IDs dos esportes associados ao local
             const esportesLocalIds = local.esportes.map(e => e.esporte_id);
-            console.log("Local retornado:", local);
+
             return res.render("pages/adm/local_editar", {
                 erros: null,
                 dados: {
@@ -807,14 +801,13 @@ module.exports = {
         const erroMulter = req.session.erroMulter;
 
 
-        console.log(req.files)
 
         // Se houver erros de validação ou upload
         if (!erros.isEmpty() || erroMulter != null) {
             const lista = !erros.isEmpty() ? erros : { formatter: null, errors: [] };
             if (erroMulter != null) lista.errors.push(erroMulter);
 
-            console.log(lista);
+
             return res.render("pages/adm/local_editar", {
                 erros: lista,
                 dados: {
@@ -837,8 +830,7 @@ module.exports = {
 
         try {
             const id = req.body.id || req.query.id;
-            console.log("Editando local ID:", id);
-            console.log("Dados recebidos:", req.body.id);
+
 
             // Monta dados do formulário
             const dadosForm = {
@@ -865,7 +857,7 @@ module.exports = {
 
             // Verifica resultado
             if (resultUpdate && resultUpdate.sucesso) {
-                console.log("Local atualizado com sucesso!");
+
                 const localAtualizado = await AdmModel.LocalFindId(id);
 
                 return res.render("pages/adm/local_editar", {
@@ -887,7 +879,7 @@ module.exports = {
                     },
                 });
             } else {
-                console.log("Nada para salvar.");
+
                 return res.render("pages/adm/local_editar", {
                     erros: null,
                     dados: dadosForm,

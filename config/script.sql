@@ -203,3 +203,6 @@
 
 !-- roda esse aqui pedro
 ALTER TABLE eventos MODIFY COLUMN evento_endereco_complemento VARCHAR(255);
+ALTER TABLE eventos
+ADD COLUMN evento_endereco_rua VARCHAR(255) NOT NULL AFTER evento_endereco_cep;
+ADD COLUMN evento_endereco_estado VARCHAR(30) NOT NULL AFTER evento_endereco_rua;

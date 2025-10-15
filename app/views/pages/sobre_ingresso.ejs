@@ -39,9 +39,8 @@
                 <p>
                     <%= new Date(ingresso.evento_data_hora).toLocaleDateString('pt-BR') %> às 
         <%= new Date(ingresso.evento_data_hora).toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'}) %> - 
-        <%= ingresso.evento_endereco_completo.logradouro %>, <%= ingresso.evento_endereco_numero %> - 
-        <%= ingresso.evento_endereco_completo.bairro %>, <%= ingresso.evento_endereco_completo.localidade %> - 
-        <%= ingresso.evento_endereco_completo.uf %>
+        <%= ingresso.evento_endereco_rua %>, <%= ingresso.evento_endereco_numero %> - 
+        <%= ingresso.evento_endereco_cidade %>, <%= ingresso.evento_endereco_uf %>
                 </p>
             </article>
 

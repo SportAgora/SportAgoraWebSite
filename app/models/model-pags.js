@@ -103,7 +103,6 @@ const PaginaModel = {
       SELECT * 
       FROM eventos
       WHERE evento_nome LIKE ? 
-      OR evento_descricao LIKE ?
       AND evento_ativo = 1
       ORDER BY evento_data_publicacao DESC
     `;

@@ -13,23 +13,6 @@ module.exports = {
             const total_paginas = Math.ceil(resultado.total / limite);
 
             for (let e of resultado.eventos) {
-                if (e.evento_endereco_cep) {
-                    try {
-                        const resposta = await axios.get(`https://viacep.com.br/ws/${e.evento_endereco_cep}/json/`);
-                        e.cidade = resposta.data.localidade || '';
-                        e.estado = resposta.data.uf || '';
-                        console.log('resposta:',resposta)
-                    } catch (error) {
-                        e.cidade = '';
-                        e.estado = '';
-                        console.log('error:',error)
-                        console.log('deu errado pra carai')
-                    }
-                } else {
-                    e.cidade = '';
-                    e.estado = '';
-                    console.log('deu errado pra carai v2')
-                }
                 let esporte = await PagsModel.buscarEsporteId(e.esporte_id)
                 e.esporte = esporte.esporte_nome
             }
@@ -61,23 +44,6 @@ module.exports = {
         }
         );
       }
-
-      if (evento.evento_endereco_cep) {
-      try {
-        const resposta = await axios.get(`https://viacep.com.br/ws/${evento.evento_endereco_cep}/json/`);
-        evento.logradouro = resposta.data.logradouro || '';
-        evento.cidade = resposta.data.localidade || '';
-        evento.estado = resposta.data.uf || '';
-      } catch (error) {
-        evento.logradouro = '';
-        evento.cidade = '';
-        evento.estado = '';
-      }
-    } else {
-      evento.logradouro = '';
-      evento.cidade = '';
-      evento.estado = '';
-    }
 
     const ingresso = await PagsModel.buscarIngressosPorEvento(id);
     evento.ingressos = ingresso;
@@ -113,22 +79,6 @@ module.exports = {
             const termo = req.query.q; // pega ?q= do form
             var eventos = await PagsModel.buscarEventos(termo);
 
-             for (let e of eventos) {
-                if (e.evento_endereco_cep) {
-                    try {
-                        const resposta = await axios.get(`https://viacep.com.br/ws/${e.evento_endereco_cep}/json/`);
-                        e.cidade = resposta.data.localidade || '';
-                        e.estado = resposta.data.uf || '';
-                    } catch (error) {
-                        e.cidade = '';
-                        e.estado = '';
-                    }
-                } else {
-                    e.cidade = '';
-                    e.estado = '';
-                }
-            }
-
             res.render('pages/pesquisa', { eventos, termo });
         } catch (e) {
             console.error(e);
@@ -144,21 +94,6 @@ module.exports = {
 
             const total_paginas = Math.ceil(resultado.total / limite);
 
-            for (let e of resultado.eventos) {
-                if (e.evento_endereco_cep) {
-                    try {
-                        const resposta = await axios.get(`https://viacep.com.br/ws/${e.evento_endereco_cep}/json/`);
-                        e.cidade = resposta.data.localidade || '';
-                        e.estado = resposta.data.uf || '';
-                    } catch (error) {
-                        e.cidade = '';
-                        e.estado = '';
-                    }
-                } else {
-                    e.cidade = '';
-                    e.estado = '';
-                }
-            }
             const filtro_usado = await PagsModel.buscarEsporteId(req.query.id);
 
             res.render('pages/filtro-rapido', {

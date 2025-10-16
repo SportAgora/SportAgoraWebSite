@@ -29,7 +29,7 @@
               <img src="<%= e.evento_foto %>" alt="Imagem do Evento" class="evento-img">
               <article class="evento-status gratis">Grátis</article>
               <h2 class="evento-nome"><%= e.evento_nome %></h2>
-              <p class="evento-detalhes"><%= e.cidade %>, <%= e.estado %><br><br><%= dataFormatada %></p>
+              <p class="evento-detalhes"><%= e.evento_endereco_cidade %>, <%= e.evento_endereco_uf %><br><br><%= dataFormatada %></p>
               <button class="evento-btn" onclick="location.href='/evento?id=<%= e.evento_id %>'">Participar</button>
             </section>
           <% }); %>

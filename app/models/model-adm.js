@@ -50,7 +50,6 @@ const AdmModel = {
         usu_nome : nome,
         usu_email:  email,
         usu_senha: senha, // Já deve estar com hash
-        perf_nome: nome,
         usu_foto:foto,
         usu_banner:banner,
         tipo:tipo,

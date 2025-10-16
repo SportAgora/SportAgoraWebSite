@@ -48,7 +48,8 @@
                     <% if(denuncias) { %>
                         <% denuncias.forEach(function(d) { %>
                           <tr>
-                            <td><%= d.den_data %></td>
+                            <td><%= new Date(d.den_data).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }) %>
+</td>
                             <td><%= d.den_descricao %></td>
                             <td><form action="/adm/eventos/denuncias/apagar?id=<%=evento.evento_id%>&den_id=<%=d.den_id%>" method="post">
                                 <input type="hidden" name="denuncia_id" value="<%= d.den_id %>">

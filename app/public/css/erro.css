@@ -57,21 +57,24 @@
 }
 .erroDireita h1{
     text-align: left;
+    color: var(--preto);
 }
 
 h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 3rem;
     text-align: center;
+    color: var(--preto);
 }
 h3 {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.8rem;
     text-align: left;
+    color: var(--preto);
 }
 
 .corErro {
-    color: var(--principal);
+    color: var(--principal_claro);
 }
 
 .voltarHome {
@@ -88,7 +91,7 @@ h3 {
 }
 .voltar {
     font-size: 25px;
-    color: var(--principal);
+    color: var(--principal_claro);
     font-weight: bold;
 }
 

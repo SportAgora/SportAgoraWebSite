@@ -340,6 +340,15 @@
     .google {
         width: 60px;
     }
+    .toggle-senha-btn2 {
+    left: 237%;
+    top: 115%;
+    }
+    .toggle-senha-btn3 {
+
+    left: 237%;
+    top: 193%;
+}
 }
 
 .toggle-senha-btn1 {
@@ -377,4 +386,16 @@
     font-size: 18px;
     margin-left: 80px;
     margin-top: 20px;
+}
+
+@media (max-width:600px) {
+    .toggle-senha-btn2 {
+    left: 237%;
+    top: 115%;
+    }
+    .toggle-senha-btn3 {
+
+    left: 237%;
+    top: 193%;
+}
 }

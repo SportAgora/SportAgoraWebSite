@@ -51,7 +51,7 @@ return `<!DOCTYPE html>
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 20px auto 0 auto;">
                             <tr>
                                 <td align="center" style="border-radius: 5px; background-color: #D72638;">
-                                    <a href="${url}reset-senha?token=${token}" 
+                                    <a href="${url}/reset-senha?token=${token}" 
                                        target="_blank" 
                                        style="display: block; 
                                               padding: 12px 25px; 

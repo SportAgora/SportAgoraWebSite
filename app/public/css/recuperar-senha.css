@@ -34,12 +34,12 @@
     .ab{
         height: 350px;
     }
-    aside{
+    /* aside{
         display: flex;
     }
     aside input{
         margin: 10px;
-    }
+    } */
     #email, .senha {
         border-top: 1px double var(--branco);
         border-right: 1px double var(--branco);
@@ -51,11 +51,12 @@
         outline: none;
         width: 98%;
         font-size: 18px;
+        color: white;
         background-color: var(--background);
     }
     .enviar-btn{
     background-color: var(--principal);
-    color: var(--branco);
+    color: white;
     border: none;
     padding: 10px 15px;
     font-size: 14px;
@@ -122,6 +123,46 @@ footer{
     }
 }
 
-@media (max-width: 600px) {
+    @media (max-width: 600px) {
+    /* Ajusta o container principal para telas menores */
+    .container5 {
+        margin: 3em 1em;    /* Reduz a margem para não ficar tão distante do topo/fundo */
+        padding: 20px 15px; /* Diminui o preenchimento lateral */
+        height: auto;       /* Permite que a altura se ajuste ao conteúdo */
+        font-size: 16px;    /* Reduz o tamanho da fonte base dentro do container */
+    }
+
+    /* Reduz o tamanho do título principal */
+    .buttonsForm h1 {
+        font-size: 30px;      /* Tamanho mais adequado para telas de celular */
+        text-align: center; /* Centraliza o título */
+    }
+
+    /* Garante que o link abaixo do título também seja legível */
+    .buttonsForm a {
+        font-size: 16px;
+    }
+
+    /* Remove o padding lateral excessivo do formulário */
+    .form-reset-senha form {
+        padding: 15px 10px; /* Simplifica e reduz o padding */
+    }
+
+    /* Ajusta o botão de envio para ocupar a largura total */
+    .enviar-btn {
+        margin-left: 0;     /* Remove a margem que o empurrava para a direita */
+        width: 100%;        /* Faz o botão ocupar toda a largura disponível */
+        padding: 12px;
+    }
     
+    /* Ajuste final no footer para garantir que não quebre o layout */
+    footer {
+        position: relative; /* Garante que o footer siga o fluxo da página */
+        width: 100%;
+    }
+}
+
+footer{
+    position: relative;
+    width: 97%;
 }

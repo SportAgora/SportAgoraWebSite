@@ -53,7 +53,7 @@ module.exports = {
     } else {
     usuario_dono = false
     }
-    res.render('pages/evento', {evento, usuario_dono});
+    res.render('pages/evento', {evento, usuario_dono, dadosNotificacao:null});
     } catch (error) {
       console.error(error);
       res.render('pages/error',
@@ -123,10 +123,10 @@ module.exports = {
 
             const ja_denunciou = await PagsModel.verificarDenuncia(evento_id, user);
             if(ja_denunciou){
-                return res.redirect(`/evento?id=${evento_id}`);
+            return res.render('pages/evento', {evento, usuario_dono:evento.usuario_id,dadosNotificacao:{tipo:'error', mensagem:'Evento já foi denunciado por você!'}});
             }
             await PagsModel.criarDenuncia(evento_id,user, desc);
-            return res.redirect(`/evento?id=${evento_id}`);
+            return res.render('pages/evento', {evento, usuario_dono:evento.usuario_id,dadosNotificacao:{tipo:'success', mensagem:'Denúncia enviada com sucesso!'}});
 
         }catch(e){
             res.redirect('pages/erro')

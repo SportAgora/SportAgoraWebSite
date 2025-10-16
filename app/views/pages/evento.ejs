@@ -7,10 +7,16 @@
     <link rel="stylesheet" href="/css/infoevento.css">
     <script src="js/ingressos-evento.js"></script>   
     <link rel="icon" href="imagens/SportAgora.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 </head>
 <body>
     <%- include('../partials/navbar'); %>
+    <%if (dadosNotificacao) { %>
+            <script>
+                    notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "right top")                    
+            </script>
+    <% } %>
 
  <main class="aba-evento">
     <section class="aba-evento">

@@ -183,7 +183,7 @@ select:hover, .input-data:hover, .input-localizacao:hover {
     flex-direction: row;
     justify-content: space-between;
     gap: 30px;
-    flex-wrap: wrap; 
+    flex-wrap: nowrap;
 }
 
 .locais-box {

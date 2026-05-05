@@ -1,60 +1,61 @@
 # SportAgora
 
-SportAgora é um sistema web para gerenciamento de eventos esportivos, inscrições de usuários e venda de ingressos. Ele permite que usuários se cadastrem, façam login, visualizem eventos e comprem ingressos (inteira ou meia), tudo integrado com banco de dados e envio de e-mails.
+SportAgora is a web system for managing sports events, user registrations, and ticket sales.
+It allows users to sign up, log in, browse events, and purchase tickets (full or half-price), all integrated with a database and email notifications.
 
 ---
 
-## Tecnologias utilizadas
+## Technologies Used
 
 * Node.js
 * Express
 * EJS (templating)
 * MySQL
-* Express-validator (validação de formulários)
-* Bcrypt (hash de senhas)
-* Express-session (sessões de usuário)
-* Leaflet (mapa interativo)
-* API do Mercado Pago (pagamento de ingressos)
+* Express-validator (form validation)
+* Bcrypt (password hashing)
+* Express-session (user sessions)
+* Leaflet (interactive map)
+* Mercado Pago API (ticket payments)
 
 ---
 
-## Pré-requisitos
+## Prerequisites
 
-* Node.js instalado
-* MySQL instalado
-* Conta de e-mail válida para envio de notificações
-* Conta do Mercado Pago para pagamentos (opcional)
+* Node.js installed
+* MySQL installed
+* Valid email account for notifications
+* Mercado Pago account for payments (optional)
 
 ---
 
-## Instalação
+## Installation
 
-1. Clone o repositório:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/SportAgora/SportAgoraWebSite
 cd sportagora
 ```
 
-2. Caso necessário, desative SSL estrito:
+2. If necessary, disable strict SSL:
 
 ```bash
 npm config set strict-ssl false
 ```
 
-3. Instale as dependências:
+3. Install dependencies:
 
 ```bash
 npm install --save
 ```
 
-4. Crie o banco de dados usando o script:
+4. Create the database using the script:
 
 ```sql
 -- script.sql
 ```
 
-5. Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+5. Create a `.env` file in the root directory with the following variables:
 
 ```env
 DB_HOST        =
@@ -70,7 +71,7 @@ URL_BASE       =
 MP_ACCESS_TOKEN =
 ```
 
-Exemplo:
+Example:
 
 ```env
 DB_HOST        = localhost
@@ -80,48 +81,48 @@ DB_NAME        = sportagora
 DB_PORT        = 3306
 APP_PORT       = 3000
 EMAIL_USER     = email@email.com
-SECRET_KEY     = senhasecreta
+SECRET_KEY     = your_secret_key
 EMAIL_SERVICE  = gmail
 URL_BASE       = https://localhost:3000
-MP_ACCESS_TOKEN = SEU_TOKEN_MERCADO_PAGO
+MP_ACCESS_TOKEN = YOUR_MERCADO_PAGO_TOKEN
 ```
 
 ---
 
-## Executando o projeto
+## Running the Project
 
 ```bash
 npm start
 ```
 
-O sistema estará disponível em: `http://localhost:3000` (ou na porta definida no `.env`).
+The system will be available at: `http://localhost:3000` (or the port defined in `.env`).
 
 ---
 
-## Funcionalidades
+## Features
 
-* Cadastro e login de usuários
-* Edição de perfil
-* Visualização de eventos esportivos
-* Seleção de ingressos (meia/inteira) e quantidade
-* Inscrição em eventos
-* Pagamento online via Mercado Pago
-* Notificações por e-mail
-* Mapa interativo dos eventos com Leaflet
-
----
-
-## Estrutura do projeto
-
-* `controllers/` → lógica de controle
-* `models/` → acesso ao banco de dados
-* `views/` → arquivos EJS
-* `public/` → arquivos estáticos (CSS, JS, imagens)
-* `routes/` → rotas do Express
-* `.env` → variáveis de ambiente
+* User registration and login
+* Profile editing
+* Browse sports events
+* Ticket selection (full/half-price) and quantity
+* Event registration
+* Online payment via Mercado Pago
+* Email notifications
+* Interactive event map using Leaflet
 
 ---
 
-## Contato
+## Project Structure
 
-📧 Email: [sportagora@outlook.com](mailto:sportagora@outlook.com)
+* `controllers/` → control logic
+* `models/` → database access
+* `views/` → EJS files
+* `public/` → static files (CSS, JS, images)
+* `routes/` → Express routes
+* `.env` → environment variables
+
+---
+
+## Contact
+
+📧 Email: [kaiquecerrifialho1@gmail.com](mailto:kaiquecerrifialho1@gmail.com)
